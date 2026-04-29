@@ -2,6 +2,7 @@
 title: "JLPT — Japanese Language Proficiency Test"
 description: "Vocabulary, quizzes and reference for every JLPT level — N5 through N1."
 date: 2025-01-01
+layout: single
 ---
 
 The JLPT has five levels. N5 is the entry point for beginners; N1 is near-native proficiency. Each level page has a vocabulary reference you can click to hear, plus an interactive quiz.

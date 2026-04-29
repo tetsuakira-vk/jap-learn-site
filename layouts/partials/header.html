@@ -69,8 +69,8 @@
             {{- if .HasChildren }}
             <li class="has-dropdown">
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    <span {{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
-                        {{- .Pre }}{{- .Name -}}{{ .Post -}} <span class="dropdown-arrow">▾</span>
+                    <span class="dd-label{{- if eq $menu_item_url $page_url }} active{{- end }}">
+                        {{- .Pre }}{{- .Name -}}{{ .Post -}}
                     </span>
                 </a>
                 <ul class="dropdown-menu">

@@ -39,6 +39,12 @@ buildExpired = false
   showtoc = true
   tocopen = false
 
+  [params.assets]
+    favicon = "favicon.svg"
+    favicon16x16 = "favicon.svg"
+    favicon32x32 = "favicon.svg"
+    apple_touch_icon = "favicon.svg"
+
   [params.homeInfoParams]
     Title = "日本語を学ぼう — Learn Japanese"
     Content = """Welcome! This site is your free companion for learning Japanese from scratch. Work through **hiragana → katakana → kanji → phrases** at your own pace with interactive quizzes and reference charts. Built to go alongside the YouTube channel — bookmark this, come back daily, and you'll be reading Japanese faster than you think."""

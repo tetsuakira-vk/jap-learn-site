@@ -385,7 +385,12 @@
 }
 .dropdown-menu li a:hover,
 .dropdown-menu li a.active { color: var(--secondary); background: rgba(128,128,128,0.12); }
-.dropdown-arrow { font-size: 0.65rem; opacity: 0.6; margin-left: 3px; vertical-align: middle; }
+.menu li.has-dropdown > a::after {
+  content: " ▾";
+  font-size: 0.65rem;
+  opacity: 0.6;
+  vertical-align: middle;
+}
 
 /* ── Responsive tweaks ── */
 @media (max-width: 480px) {
