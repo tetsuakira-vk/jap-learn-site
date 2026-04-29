@@ -97,6 +97,41 @@ buildExpired = false
     weight = 45
 
   [[menu.main]]
+    identifier = "jlpt-n5"
+    name = "N5 — Beginner"
+    url = "/jlpt/n5/"
+    parent = "jlpt"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "jlpt-n4"
+    name = "N4 — Elementary"
+    url = "/jlpt/n4/"
+    parent = "jlpt"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "jlpt-n3"
+    name = "N3 — Intermediate"
+    url = "/jlpt/n3/"
+    parent = "jlpt"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "jlpt-n2"
+    name = "N2 — Upper Int."
+    url = "/jlpt/n2/"
+    parent = "jlpt"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "jlpt-n1"
+    name = "N1 — Advanced"
+    url = "/jlpt/n1/"
+    parent = "jlpt"
+    weight = 5
+
+  [[menu.main]]
     identifier = "numbers"
     name = "Numbers"
     url = "/numbers/"
