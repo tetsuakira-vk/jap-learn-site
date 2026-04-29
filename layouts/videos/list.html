@@ -1,0 +1,52 @@
+{{- define "main" }}
+
+{{- $channel_id := "UC4sKbyer68mC8-p01uKW-Lw" }}
+{{- $channel_url := "https://www.youtube.com/@JapaneseLearning-z2x" }}
+{{- $rss_url := printf "https://www.youtube.com/feeds/videos.xml?channel_id=%s" $channel_id }}
+
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- if .Description }}<div class="post-description">{{ .Description }}</div>{{- end }}
+  </header>
+
+  <div class="post-content">
+    <p>Latest videos from the channel — new ones go up daily. Subscribe so you don't miss any.</p>
+
+    {{- $rss := resources.GetRemote $rss_url }}
+    {{- if $rss }}
+      {{- $raw := $rss.Content }}
+      {{- $id_matches := findRE `<id>yt:video:[A-Za-z0-9_-]{11}</id>` $raw 8 }}
+      {{- $title_matches := findRE `<title>[^<]+</title>` $raw 9 }}
+
+      {{- if $id_matches }}
+      <div class="video-grid">
+        {{- range $i, $id_match := $id_matches }}
+          {{- $vid_id := replaceRE `.*yt:video:([A-Za-z0-9_-]{11}).*` "$1" $id_match }}
+          {{- $title_match := index $title_matches (add $i 1) }}
+          {{- $title := replaceRE `<title>([^<]+)</title>` "$1" $title_match }}
+          <a class="video-card" href="https://www.youtube.com/watch?v={{ $vid_id }}" target="_blank" rel="noopener noreferrer">
+            <div class="vc-thumb-wrap">
+              <img class="vc-thumb" src="https://img.youtube.com/vi/{{ $vid_id }}/hqdefault.jpg" alt="{{ $title }}" loading="lazy" width="320" height="180">
+              <div class="vc-play">▶</div>
+            </div>
+            <p class="vc-title">{{ $title }}</p>
+          </a>
+        {{- end }}
+      </div>
+      {{- else }}
+      <p>No videos found. <a href="{{ $channel_url }}" target="_blank" rel="noopener">View channel on YouTube →</a></p>
+      {{- end }}
+    {{- else }}
+    <p>Videos couldn't be loaded at build time. <a href="{{ $channel_url }}" target="_blank" rel="noopener">Watch on YouTube →</a></p>
+    {{- end }}
+
+    <div class="yt-channel-cta">
+      <a href="{{ $channel_url }}" target="_blank" rel="noopener" class="yt-sub-btn">
+        ▶&nbsp; Subscribe on YouTube
+      </a>
+    </div>
+  </div>
+</article>
+
+{{- end }}
