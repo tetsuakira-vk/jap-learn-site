@@ -1,0 +1,503 @@
+[
+  {
+    "japanese": "おはようございます",
+    "english": "Good morning",
+    "type": "greeting",
+    "hint": "Used when greeting someone - Early."
+  },
+  {
+    "japanese": "こんにちは",
+    "english": "Hello / Good afternoon",
+    "type": "greeting",
+    "hint": "Used when greeting someone - Afternoon."
+  },
+  {
+    "japanese": "こんばんは",
+    "english": "Good evening",
+    "type": "greeting",
+    "hint": "Used when greeting someone - Evening."
+  },
+  {
+    "japanese": "さようなら",
+    "english": "Goodbye",
+    "type": "greeting",
+    "hint": "Used when leaving someone."
+  },
+  {
+    "japanese": "ありがとうございます",
+    "english": "Thank you",
+    "type": "politeness",
+    "hint": "A polite expression."
+  },
+  {
+    "japanese": "すみません",
+    "english": "Excuse me / Sorry",
+    "type": "apology",
+    "hint": "Use this when apologizing or getting attention."
+  },
+  {
+    "japanese": "ごめんなさい",
+    "english": "I'm sorry",
+    "type": "apology",
+    "hint": "Use this when apologizing."
+  },
+  {
+    "japanese": "はい",
+    "english": "Yes",
+    "type": "basic",
+    "hint": "Basic conversation word."
+  },
+  {
+    "japanese": "いいえ",
+    "english": "No",
+    "type": "basic",
+    "hint": "Basic conversation word."
+  },
+  {
+    "japanese": "わかります",
+    "english": "I understand",
+    "type": "basic",
+    "hint": "Basic conversation word."
+  },
+  {
+    "japanese": "わかりません",
+    "english": "I don't understand",
+    "type": "basic",
+    "hint": "Basic conversation word."
+  },
+  {
+    "japanese": "もう一度お願いします",
+    "english": "One more time, please",
+    "type": "classroom",
+    "hint": "Useful in conversations."
+  },
+  {
+    "japanese": "ゆっくり話してください",
+    "english": "Please speak slowly",
+    "type": "classroom",
+    "hint": "Useful in classroom situations or asking directions."
+  },
+  {
+    "japanese": "どこですか？",
+    "english": "Where is it?",
+    "type": "question",
+    "hint": "This is a question, maybe when asking directions."
+  },
+  {
+    "japanese": "いくらですか？",
+    "english": "How much is it?",
+    "type": "question",
+    "hint": "This is a question, maybe in a shop."
+  },
+  {
+    "japanese": "名前は何ですか？",
+    "english": "What is your name?",
+    "type": "question",
+    "hint": "This is a question, maybe when meeting someone."
+  },
+  {
+    "japanese": "私は学生です",
+    "english": "I am a student",
+    "type": "self-intro",
+    "hint": "Useful for introducing yourself."
+  },
+  {
+    "japanese": "私はイギリス人です",
+    "english": "I am British",
+    "type": "self-intro",
+    "hint": "Useful for introducing yourself."
+  },
+  {
+    "japanese": "私は日本語を勉強しています",
+    "english": "I am studying Japanese",
+    "type": "self-intro",
+    "hint": "Useful for introducing yourself or expressing interests."
+  },
+  {
+    "japanese": "東京に行きたいです",
+    "english": "I want to go to Tokyo",
+    "type": "travel",
+    "hint": "Maybe used when asking directions."
+  },
+  {
+    "japanese": "英語を話せますか？",
+    "english": "Can you speak English?",
+    "type": "question",
+    "hint": "Used when speaking to a native speaker."
+  },
+  {
+    "japanese": "助けてください",
+    "english": "Please help me",
+    "type": "emergency",
+    "hint": "Used in emergencies."
+  },
+  {
+    "japanese": "大丈夫です",
+    "english": "It's okay / I'm fine",
+    "type": "reassurance",
+    "hint": "Used to reassure someone."
+  },
+  {
+    "japanese": "何時ですか？",
+    "english": "What time is it?",
+    "type": "question",
+    "hint": "This is a question in an everyday situation."
+  },
+  {
+    "japanese": "お名前は？",
+    "english": "Your name?",
+    "type": "question",
+    "hint": "Use this to ask a question when meeting someone."
+  },
+  {
+    "japanese": "どこから来ましたか？",
+    "english": "Where are you from?",
+    "type": "self-intro",
+    "hint": "Useful for when meeting new people or introducing yourself."
+  },
+  {
+    "japanese": "これは何ですか？",
+    "english": "What is this?",
+    "type": "question",
+    "hint": "This is a question, maybe used in a shop."
+  },
+  {
+    "japanese": "どこに行きますか？",
+    "english": "Where are you going?",
+    "type": "question",
+    "hint": "Use this to ask a question in a social conversation."
+  },
+  {
+    "japanese": "いい天気ですね",
+    "english": "Nice weather, isn't it?",
+    "type": "smalltalk",
+    "hint": "Use this for casual conversation."
+  },
+  {
+    "japanese": "はじめまして",
+    "english": "Nice to meet you",
+    "type": "greeting",
+    "hint": "Used when greeting someone."
+  },
+  {
+    "japanese": "お元気ですか？",
+    "english": "How are you?",
+    "type": "greeting",
+    "hint": "This is a question you would ask a friend."
+  },
+  {
+    "japanese": "行ってきます",
+    "english": "I'm leaving (and will come back)",
+    "type": "daily",
+    "hint": "Common in daily life."
+  },
+  {
+    "japanese": "行ってらっしゃい",
+    "english": "Take care (said to someone leaving)",
+    "type": "daily",
+    "hint": "Common in daily life."
+  },
+  {
+    "japanese": "ただいま",
+    "english": "I'm home",
+    "type": "daily",
+    "hint": "Common in daily life."
+  },
+  {
+    "japanese": "おかえりなさい",
+    "english": "Welcome back",
+    "type": "daily",
+    "hint": "Common in daily life."
+  },
+  {
+    "japanese": "いらっしゃいませ",
+    "english": "Welcome (to a store)",
+    "type": "shopping",
+    "hint": "Common phrase you hear when entering a shop."
+  },
+  {
+    "japanese": "これをください",
+    "english": "I'll take this one, please",
+    "type": "shopping",
+    "hint": "Common phrase when shopping."
+  },
+  {
+    "japanese": "おすすめは何ですか？",
+    "english": "What do you recommend?",
+    "type": "restaurant",
+    "hint": "This is a question, common in a restaurant."
+  },
+  {
+    "japanese": "お会計お願いします",
+    "english": "Check, please",
+    "type": "restaurant",
+    "hint": "Used in a restaurant setting."
+  },
+  {
+    "japanese": "お水をください",
+    "english": "Water, please",
+    "type": "restaurant",
+    "hint": "Used in a restaurant setting."
+  },
+  {
+    "japanese": "トイレはどこですか？",
+    "english": "Where is the bathroom?",
+    "type": "question",
+    "hint": "This is a question common in a restaurant."
+  },
+  {
+    "japanese": "道に迷いました",
+    "english": "I'm lost",
+    "type": "emergency",
+    "hint": "Used in emergencies or asking directions."
+  },
+  {
+    "japanese": "助けてください",
+    "english": "Please help me",
+    "type": "emergency",
+    "hint": "Used in emergencies."
+  },
+  {
+    "japanese": "英語を話せますか？",
+    "english": "Can you speak English?",
+    "type": "question",
+    "hint": "Use this to ask a question about a persons ability."
+  },
+  {
+    "japanese": "写真を撮ってもいいですか？",
+    "english": "May I take a photo?",
+    "type": "question",
+    "hint": "A polite question."
+  },
+  {
+    "japanese": "これは何ですか？",
+    "english": "What is this?",
+    "type": "question",
+    "hint": "This is a question you would use in a shop maybe."
+  },
+  {
+    "japanese": "電車はどこですか？",
+    "english": "Where is the train?",
+    "type": "transport",
+    "hint": "This is a question you might ask in a station."
+  },
+  {
+    "japanese": "バス停はどこですか？",
+    "english": "Where is the bus stop?",
+    "type": "transport",
+    "hint": "This is a question you would use when trying to travel locally."
+  },
+  {
+    "japanese": "駅までお願いします",
+    "english": "To the station, please",
+    "type": "transport",
+    "hint": "Related to getting around."
+  },
+  {
+    "japanese": "予約しています",
+    "english": "I have a reservation",
+    "type": "hotel",
+    "hint": "Common at hotels or accommodations."
+  },
+  {
+    "japanese": "チェックインをお願いします",
+    "english": "I'd like to check in",
+    "type": "hotel",
+    "hint": "Common at hotels or accommodations."
+  },
+  {
+    "japanese": "チェックアウトをお願いします",
+    "english": "I'd like to check out",
+    "type": "hotel",
+    "hint": "Common at hotels or accommodations."
+  },
+  {
+    "japanese": "朝食は何時ですか？",
+    "english": "What time is breakfast?",
+    "type": "hotel",
+    "hint": "This is a question maybe asked to hotel staff."
+  },
+  {
+    "japanese": "部屋にWi-Fiはありますか？",
+    "english": "Is there Wi-Fi in the room?",
+    "type": "hotel",
+    "hint": "Common at hotels or accommodations."
+  },
+  {
+    "japanese": "これはいくらですか？",
+    "english": "How much is this?",
+    "type": "shopping",
+    "hint": "This is a question - common to ask this in a shop."
+  },
+  {
+    "japanese": "カードで払えますか？",
+    "english": "Can I pay by card?",
+    "type": "shopping",
+    "hint": "Common phrase when shopping."
+  },
+  {
+    "japanese": "領収書をください",
+    "english": "Please give me a receipt",
+    "type": "shopping",
+    "hint": "Common phrase when shopping."
+  },
+  {
+    "japanese": "試着してもいいですか？",
+    "english": "May I try this on?",
+    "type": "shopping",
+    "hint": "This is a question maybe when buying clothes."
+  },
+  {
+    "japanese": "サイズがありますか？",
+    "english": "Do you have this in my size?",
+    "type": "shopping",
+    "hint": "Common phrase when shopping."
+  },
+  {
+    "japanese": "これは何と読みますか？",
+    "english": "How do you read this?",
+    "type": "question",
+    "hint": "Use this when trying to understand a sign or some text."
+  },
+    {
+      "japanese": "私は ___ です",
+      "english": "I am a student",
+      "type": "self-intro",
+      "hint": "Introducing yourself as a student.",
+      "missing": "学生"
+    },
+    {
+      "japanese": "私は ___ 人です",
+      "english": "I am British",
+      "type": "self-intro",
+      "hint": "Introducing your nationality.",
+      "missing": "イギリス"
+    },
+    {
+      "japanese": "私は日本語を ___ しています",
+      "english": "I am studying Japanese",
+      "type": "self-intro",
+      "hint": "Talking about your studies.",
+      "missing": "勉強"
+    },
+    {
+      "japanese": "東京に ___ たいです",
+      "english": "I want to go to Tokyo",
+      "type": "travel",
+      "hint": "Expressing desire to go somewhere.",
+      "missing": "行き"
+    },
+    {
+      "japanese": "これは ___ ですか？",
+      "english": "What is this?",
+      "type": "question",
+      "hint": "Asking for the identity of an object.",
+      "missing": "何"
+    },
+    {
+      "japanese": "___ はどこですか？",
+      "english": "Where is the bathroom?",
+      "type": "question",
+      "hint": "Asking for a location.",
+      "missing": "トイレ"
+    },
+    {
+      "japanese": "___ をください",
+      "english": "Water, please",
+      "type": "restaurant",
+      "hint": "Requesting a drink.",
+      "missing": "お水"
+    },
+    {
+      "japanese": "おすすめは ___ ですか？",
+      "english": "What do you recommend?",
+      "type": "restaurant",
+      "hint": "Asking for suggestions.",
+      "missing": "何"
+    },
+    {
+      "japanese": "道に ___ いました",
+      "english": "I'm lost",
+      "type": "emergency",
+      "hint": "Describing you're lost.",
+      "missing": "迷"
+    },
+    {
+      "japanese": "___ を話せますか？",
+      "english": "Can you speak English?",
+      "type": "question",
+      "hint": "Asking about language ability.",
+      "missing": "英語"
+    },
+    {
+      "japanese": "チェックインを ___",
+      "english": "I'd like to check in",
+      "type": "hotel",
+      "hint": "At the hotel front desk.",
+      "missing": "お願いします"
+    },
+    {
+      "japanese": "チェックアウトを ___",
+      "english": "I'd like to check out",
+      "type": "hotel",
+      "hint": "Finishing your hotel stay.",
+      "missing": "お願いします"
+    },
+    {
+      "japanese": "部屋に ___ はありますか？",
+      "english": "Is there Wi-Fi in the room?",
+      "type": "hotel",
+      "hint": "Asking about internet access.",
+      "missing": "Wi-Fi"
+    },
+    {
+      "japanese": "カードで ___ ますか？",
+      "english": "Can I pay by card?",
+      "type": "shopping",
+      "hint": "Asking about payment method.",
+      "missing": "払え"
+    },
+    {
+      "japanese": "領収書を ___",
+      "english": "Please give me a receipt",
+      "type": "shopping",
+      "hint": "Asking for proof of payment.",
+      "missing": "ください"
+    },
+    {
+      "japanese": "___ を撮ってもいいですか？",
+      "english": "May I take a photo?",
+      "type": "question",
+      "hint": "Asking about taking a picture.",
+      "missing": "写真"
+    },
+    {
+      "japanese": "これは何と ___ ますか？",
+      "english": "How do you read this?",
+      "type": "question",
+      "hint": "Asking about pronunciation or reading.",
+      "missing": "読み"
+    },
+    {
+      "japanese": "___ をお願いします",
+      "english": "Check, please",
+      "type": "restaurant",
+      "hint": "Asking to pay at a restaurant.",
+      "missing": "お会計"
+    },
+    {
+      "japanese": "___ は何時ですか？",
+      "english": "What time is breakfast?",
+      "type": "hotel",
+      "hint": "Asking about meal times.",
+      "missing": "朝食"
+    },
+    {
+      "japanese": "___ はどこですか？",
+      "english": "Where is the bus stop?",
+      "type": "transport",
+      "hint": "Asking about transportation location.",
+      "missing": "バス停"
+    }
+  ]
+  

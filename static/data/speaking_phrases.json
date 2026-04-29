@@ -1,0 +1,34 @@
+{
+    "Greetings": [
+      {"japanese": "こんにちは", "english": "Hello"},
+      {"japanese": "おはようございます", "english": "Good morning"},
+      {"japanese": "こんばんは", "english": "Good evening"},
+      {"japanese": "さようなら", "english": "Goodbye"},
+      {"japanese": "またね", "english": "See you later"}
+    ],
+    "Basics": [
+      {"japanese": "はい", "english": "Yes"},
+      {"japanese": "いいえ", "english": "No"},
+      {"japanese": "わかりません", "english": "I don't understand"},
+      {"japanese": "わかります", "english": "I understand"},
+      {"japanese": "大丈夫です", "english": "It's okay"}
+    ],
+    "Questions": [
+      {"japanese": "何ですか？", "english": "What is it?"},
+      {"japanese": "どこですか？", "english": "Where is it?"},
+      {"japanese": "いつですか？", "english": "When is it?"},
+      {"japanese": "だれですか？", "english": "Who is it?"}
+    ],
+    "Travel": [
+      {"japanese": "トイレはどこですか？", "english": "Where is the toilet?"},
+      {"japanese": "この電車は東京に行きますか？", "english": "Does this train go to Tokyo?"},
+      {"japanese": "駅はどこですか？", "english": "Where is the station?"},
+      {"japanese": "バス停はどこですか？", "english": "Where is the bus stop?"}
+    ],
+    "Self-Intro": [
+      {"japanese": "私の名前はロブです", "english": "My name is Rob"},
+      {"japanese": "私はイギリスから来ました", "english": "I'm from the UK"},
+      {"japanese": "日本語を勉強しています", "english": "I'm studying Japanese"}
+    ]
+  }
+  
