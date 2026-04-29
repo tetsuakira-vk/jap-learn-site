@@ -4,50 +4,50 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
 ---
 
 <div class="section-grid">
-  <a class="section-card" href="/videos/">
-    <span class="sc-icon">▶️</span>
-    <span class="sc-title">Videos</span>
-    <span class="sc-desc">Latest from the YouTube channel</span>
-  </a>
-  <a class="section-card" href="/start/">
+  <a class="section-card" href="start/">
     <span class="sc-icon">🚀</span>
     <span class="sc-title">Start Here</span>
     <span class="sc-desc">Complete beginner? Start here.</span>
   </a>
-  <a class="section-card" href="/hiragana/">
+  <a class="section-card" href="hiragana/">
     <span class="sc-icon">あ</span>
     <span class="sc-title">Hiragana</span>
     <span class="sc-desc">46 characters. The foundation.</span>
   </a>
-  <a class="section-card" href="/katakana/">
+  <a class="section-card" href="katakana/">
     <span class="sc-icon">ア</span>
     <span class="sc-title">Katakana</span>
     <span class="sc-desc">Foreign words & emphasis.</span>
   </a>
-  <a class="section-card" href="/kanji/">
+  <a class="section-card" href="kanji/">
     <span class="sc-icon">漢</span>
     <span class="sc-title">Kanji</span>
     <span class="sc-desc">50 essential beginner kanji.</span>
   </a>
-  <a class="section-card" href="/vocab/">
-    <span class="sc-icon">📚</span>
-    <span class="sc-title">N5 Vocab</span>
-    <span class="sc-desc">100 essential N5 words + quiz.</span>
+  <a class="section-card" href="jlpt/">
+    <span class="sc-icon">🏆</span>
+    <span class="sc-title">JLPT Levels</span>
+    <span class="sc-desc">N5 → N1 vocab & quizzes.</span>
   </a>
-  <a class="section-card" href="/numbers/">
+  <a class="section-card" href="numbers/">
     <span class="sc-icon">🔢</span>
     <span class="sc-title">Numbers</span>
     <span class="sc-desc">Count to 10,000 with audio.</span>
   </a>
-  <a class="section-card" href="/phrases/">
+  <a class="section-card" href="phrases/">
     <span class="sc-icon">💬</span>
     <span class="sc-title">Phrases</span>
     <span class="sc-desc">Real sentences. Hear them spoken.</span>
   </a>
-  <a class="section-card" href="/sentences/quiz/">
+  <a class="section-card" href="sentences/quiz/">
     <span class="sc-icon">🎯</span>
     <span class="sc-title">Sentence Quiz</span>
     <span class="sc-desc">English → Japanese. Can you pick it?</span>
+  </a>
+  <a class="section-card" href="videos/">
+    <span class="sc-icon">▶️</span>
+    <span class="sc-title">Videos</span>
+    <span class="sc-desc">Latest from the YouTube channel.</span>
   </a>
 </div>
 
@@ -99,13 +99,11 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     {jp:'行ってきます',en:'I\'m heading out (and I\'ll be back)',hint:'Said when leaving home — deeply Japanese'},
     {jp:'ただいま',en:'I\'m home',hint:'Said when arriving home — the response is おかえり'}
   ];
-
   var idx = Math.floor(Date.now() / 86400000) % words.length;
   var w = words[idx];
   document.getElementById('wotd-jp').textContent = w.jp;
   document.getElementById('wotd-en').textContent = w.en;
   document.getElementById('wotd-hint').textContent = w.hint;
-
   window.wotdSpeak = function() {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
@@ -124,10 +122,8 @@ Each section has a **reference chart** you can click to hear pronunciations, and
 
 **Recommended order:**
 
-1. Read [Start Here](/start/) to understand the writing systems
-2. Learn [Hiragana](/hiragana/) — use the chart, then take the quiz daily
-3. Move to [Katakana](/katakana/) once hiragana clicks
-4. Build [N5 Vocab](/vocab/) and [Kanji](/kanji/) alongside the YouTube lessons
-5. Practice real [Phrases](/phrases/) and [Sentences](/sentences/quiz/) as soon as possible
-
-> Click any character or phrase button across the site to hear it pronounced.
+1. Read [Start Here](start/) to understand the writing systems
+2. Learn [Hiragana](hiragana/) — use the chart, then take the quiz daily
+3. Move to [Katakana](katakana/) once hiragana clicks
+4. Work through [JLPT N5](jlpt/n5/) vocab alongside the YouTube lessons
+5. Practice real [Phrases](phrases/) and [Sentences](sentences/quiz/) as soon as possible

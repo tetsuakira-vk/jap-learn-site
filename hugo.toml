@@ -67,12 +67,6 @@ buildExpired = false
 
 [menu]
   [[menu.main]]
-    identifier = "videos"
-    name = "Videos"
-    url = "/videos/"
-    weight = 5
-
-  [[menu.main]]
     identifier = "start"
     name = "Start Here"
     url = "/start/"
@@ -97,9 +91,9 @@ buildExpired = false
     weight = 40
 
   [[menu.main]]
-    identifier = "vocab"
-    name = "N5 Vocab"
-    url = "/vocab/"
+    identifier = "jlpt"
+    name = "JLPT"
+    url = "/jlpt/"
     weight = 45
 
   [[menu.main]]
@@ -125,6 +119,12 @@ buildExpired = false
     name = "About"
     url = "/about/"
     weight = 60
+
+  [[menu.main]]
+    identifier = "videos"
+    name = "Videos"
+    url = "/videos/"
+    weight = 65
 
   [[menu.main]]
     identifier = "search"
