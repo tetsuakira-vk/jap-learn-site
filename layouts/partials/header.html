@@ -1,18 +1,48 @@
-{{- $currentPage := . }}
 <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
-            {{- $label_text := (.Site.Params.label.text | default .Site.Title) }}
-            {{- if .Site.Title }}
+            {{- $label_text := (site.Params.label.text | default site.Title) }}
+            {{- if site.Title }}
+            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
+                {{- if site.Params.label.icon }}
+                {{- $img := resources.Get site.Params.label.icon }}
+                {{- if $img }}
+                    {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
+                    {{- if hugo.IsExtended -}}
+                        {{- $processableFormats = $processableFormats | append "webp" -}}
+                    {{- end -}}
+                    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
+                    {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
+                        {{- if site.Params.label.iconHeight }}
+                            {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}
+                        {{ else }}
+                            {{- $img = $img.Resize "x30" }}
+                        {{- end }}
+                    {{- end }}
+                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
+                        height="{{- site.Params.label.iconHeight | default "30" -}}">
+                {{- else }}
+                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
+                    height="{{- site.Params.label.iconHeight | default "30" -}}">
+                {{- end -}}
+                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
+                    {{ site.Params.label.iconSVG | safeHTML }}
+                {{- end -}}
+                {{- $label_text -}}
+            </a>
+            {{- end }}
+
+            {{- $lsenabled := (or (not site.Params.disableThemeToggle) (and (not site.Params.disableLangToggle) (hugo.IsMultilingual))) }}
+            {{- if $lsenabled }}
             <div class="logo-switches">
-                {{- if not (.Site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                {{- if (not site.Params.disableThemeToggle) }}
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -28,21 +58,18 @@
                 </button>
                 {{- end }}
             </div>
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-                {{- $label_text }}
-            </a>
             {{- end }}
         </div>
-        {{- if .Site.Menus.main }}
+        {{- $currentPage := . }}
         <ul id="menu" class="menu">
-            {{- range .Site.Menus.main }}
+            {{- range site.Menus.main }}
             {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
             {{- $page_url := $currentPage.Permalink | absLangURL }}
-            {{- $is_search := eq ($currentPage.Site.GetPage .KeyName).Layout `search` }}
+            {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
             {{- if .HasChildren }}
             <li class="has-dropdown">
                 <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    <span{{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
+                    <span {{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
                         {{- .Pre }}{{- .Name -}}{{ .Post -}} <span class="dropdown-arrow">▾</span>
                     </span>
                 </a>
@@ -60,16 +87,17 @@
             </li>
             {{- else }}
             <li>
-                <a href="{{ .URL | absLangURL }}"
-                    title="{{ .Title | default .Name }}{{ if $is_search }} (Alt + /)" accesskey="/"{{ else }}"{{ end }}>
-                    <span{{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
+                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
+                    <span {{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
                         {{- .Pre }}{{- .Name -}}{{ .Post -}}
                     </span>
                     {{- if (findRE "://" .URL) }}&nbsp;
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 14" width="14" height="14"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M10 3h1v1m0-1L6 7M4.5 6.5H3a1.5 1.5 0 0 0 0 3h8a1.5 1.5 0 0 0 0-3h-1.5"/>
+                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+                        <path d="M15 3h6v6"></path>
+                        <path d="M10 14L21 3"></path>
                     </svg>
                     {{- end }}
                 </a>
@@ -77,6 +105,5 @@
             {{- end }}
             {{- end }}
         </ul>
-        {{- end }}
     </nav>
 </header>
