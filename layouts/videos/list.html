@@ -11,7 +11,7 @@
   </header>
 
   <div class="post-content">
-    <p>Latest videos from the channel — new ones go up daily. Subscribe so you don't miss any.</p>
+    <p>Latest videos from the channel — click any to watch right here. Subscribe so you don't miss new ones.</p>
 
     {{- $rss := resources.GetRemote $rss_url }}
     {{- if $rss }}
@@ -25,13 +25,15 @@
           {{- $vid_id := replaceRE `.*yt:video:([A-Za-z0-9_-]{11}).*` "$1" $id_match }}
           {{- $title_match := index $title_matches (add $i 1) }}
           {{- $title := replaceRE `<title>([^<]+)</title>` "$1" $title_match }}
-          <a class="video-card" href="https://www.youtube.com/watch?v={{ $vid_id }}" target="_blank" rel="noopener noreferrer">
+          <div class="video-card" onclick="playVideo(this,'{{ $vid_id }}')" role="button" tabindex="0"
+               onkeydown="if(event.key==='Enter'||event.key===' ')playVideo(this,'{{ $vid_id }}')">
             <div class="vc-thumb-wrap">
-              <img class="vc-thumb" src="https://img.youtube.com/vi/{{ $vid_id }}/hqdefault.jpg" alt="{{ $title }}" loading="lazy" width="320" height="180">
+              <img class="vc-thumb" src="https://img.youtube.com/vi/{{ $vid_id }}/hqdefault.jpg"
+                   alt="{{ $title }}" loading="lazy" width="320" height="180">
               <div class="vc-play">▶</div>
             </div>
             <p class="vc-title">{{ $title }}</p>
-          </a>
+          </div>
         {{- end }}
       </div>
       {{- else }}
@@ -48,5 +50,15 @@
     </div>
   </div>
 </article>
+
+<script>
+function playVideo(card, id) {
+  var wrap = card.querySelector('.vc-thumb-wrap');
+  wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + id + '?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  card.style.cursor = 'default';
+  card.onclick = null;
+  card.onkeydown = null;
+}
+</script>
 
 {{- end }}
