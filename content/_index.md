@@ -1,5 +1,5 @@
 ---
-title: "Learn Japanese — Free Interactive Study Site"
+title: "Japanese Unlocked — Free Interactive Japanese Learning"
 description: "Free interactive Japanese learning with quizzes, reference charts, and phrase guides."
 ---
 

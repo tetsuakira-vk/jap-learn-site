@@ -1,6 +1,6 @@
 baseURL = "https://japaneseunlocked.com/"
 languageCode = "en-us"
-title = "Learn Japanese"
+title = "Japanese Unlocked"
 theme = "PaperMod"
 
 [pagination]
@@ -19,9 +19,9 @@ buildExpired = false
 
 [params]
   env = "production"
-  title = "Learn Japanese"
+  title = "Japanese Unlocked"
   description = "Free interactive Japanese learning — hiragana, katakana, kanji, and phrases. Quizzes, reference charts, and study guides."
-  keywords = ["Japanese", "Learn Japanese", "Hiragana", "Katakana", "Kanji", "Japanese quiz", "Japanese for beginners"]
+  keywords = ["Japanese Unlocked", "Japanese", "Learn Japanese", "Hiragana", "Katakana", "Kanji", "Japanese quiz", "Japanese for beginners"]
   author = "Rob"
   defaultTheme = "dark"
   disableThemeToggle = false
@@ -46,7 +46,7 @@ buildExpired = false
     apple_touch_icon = "favicon.svg"
 
   [params.homeInfoParams]
-    Title = "日本語を学ぼう — Learn Japanese"
+    Title = "日本語を学ぼう — Japanese Unlocked"
     Content = """Welcome! This site is your free companion for learning Japanese from scratch. Work through **hiragana → katakana → kanji → phrases** at your own pace with interactive quizzes and reference charts. Built to go alongside the YouTube channel — bookmark this, come back daily, and you'll be reading Japanese faster than you think."""
 
   [[params.socialIcons]]
