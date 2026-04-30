@@ -145,23 +145,32 @@
     </nav>
 </header>
 <script>
-(function(){
+// Close panel on outside click
+document.addEventListener('click', function() {
+  var p = document.getElementById('theme-picker-panel');
+  if (p) p.classList.remove('open');
+});
+var _tpp = document.getElementById('theme-picker-panel');
+if (_tpp) _tpp.addEventListener('click', function(e) { e.stopPropagation(); });
+
+// Wait for PaperMod's own listener to attach (it runs in a </body> script),
+// then clone the button to strip that listener and add only ours.
+setTimeout(function() {
   var btn = document.getElementById('theme-toggle');
   var panel = document.getElementById('theme-picker-panel');
   if (!btn || !panel) return;
-  // Remove PaperMod's toggle listener by cloning the button
   var fresh = btn.cloneNode(true);
   btn.parentNode.replaceChild(fresh, btn);
   fresh.addEventListener('click', function(e) {
     e.stopPropagation();
     panel.classList.toggle('open');
   });
-  document.addEventListener('click', function() { panel.classList.remove('open'); });
-  panel.addEventListener('click', function(e) { e.stopPropagation(); });
-})();
+}, 0);
+
 function setTheme(name) {
   document.documentElement.dataset.theme = name;
   localStorage.setItem('pref-theme', name);
-  document.getElementById('theme-picker-panel').classList.remove('open');
+  var p = document.getElementById('theme-picker-panel');
+  if (p) p.classList.remove('open');
 }
 </script>

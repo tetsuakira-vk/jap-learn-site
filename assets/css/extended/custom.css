@@ -204,47 +204,6 @@
 }
 .banner-close:hover { color: #fff; }
 
-/* ── Word of the Day card ── */
-.wotd-card {
-  background: var(--entry);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.4rem 1.8rem;
-  margin: 0 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  max-width: 520px;
-}
-.wotd-label {
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--secondary);
-  font-weight: 600;
-}
-.wotd-jp {
-  font-size: 2.4rem;
-  font-weight: 700;
-  cursor: pointer;
-  line-height: 1.15;
-  margin-top: 0.15rem;
-}
-.wotd-read {
-  font-size: 0.88rem;
-  color: var(--secondary);
-  font-style: italic;
-  margin-top: 0.1rem;
-}
-.wotd-en {
-  font-size: 1.05rem;
-  font-weight: 600;
-  margin-top: 0.2rem;
-}
-.wotd-hint {
-  font-size: 0.82rem;
-  color: var(--secondary);
-}
 
 /* ── Section nav cards (homepage + section indexes) ── */
 .section-grid {
