@@ -1,6 +1,6 @@
 ---
 title: "JLPT — Japanese Language Proficiency Test"
-description: "Vocabulary, quizzes and reference for every JLPT level — N5 through N1."
+description: "Free JLPT study guide for every level — N5 through N1. Vocabulary lists with audio and interactive quizzes to prepare for the Japanese Language Proficiency Test."
 date: 2025-01-01
 layout: single
 ---

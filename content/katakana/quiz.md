@@ -1,6 +1,6 @@
 ---
 title: "Katakana Quiz"
-description: "Test your katakana knowledge with this interactive multiple-choice quiz."
+description: "Test your katakana with this free interactive quiz. See the romaji — pick the correct katakana character. All 46 characters covered."
 date: 2025-01-01
 showtoc: false
 ---

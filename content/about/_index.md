@@ -1,6 +1,6 @@
 ---
 title: "About"
-description: "About this Japanese learning site."
+description: "About Japanese Unlocked — a free Japanese learning site with interactive quizzes, audio charts, and study guides for hiragana, katakana, kanji, and JLPT. Built alongside the YouTube channel."
 date: 2025-01-01
 ---
 

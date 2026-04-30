@@ -1,6 +1,6 @@
 ---
 title: "Japanese Phrases — Essential Sentences"
-description: "Essential Japanese phrases grouped by category. Click the speaker button to hear each phrase."
+description: "Essential Japanese phrases for beginners — greetings, travel, shopping, food, and more. Click any phrase to hear it spoken at natural speed."
 date: 2025-01-01
 ---
 

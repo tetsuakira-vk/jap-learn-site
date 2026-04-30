@@ -1,6 +1,6 @@
 ---
 title: "Resources"
-description: "Recommended tools, apps, and links for learning Japanese."
+description: "Recommended resources for learning Japanese — apps, dictionaries, textbooks, grammar references, and tools hand-picked for beginners through intermediate learners."
 date: 2025-01-01
 ---
 

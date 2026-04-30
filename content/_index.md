@@ -1,6 +1,6 @@
 ---
 title: "Japanese Unlocked — Free Interactive Japanese Learning"
-description: "Free interactive Japanese learning with quizzes, reference charts, and phrase guides."
+description: "Japanese Unlocked — free interactive Japanese learning for beginners. Study hiragana, katakana, kanji, JLPT vocab, grammar, and phrases with audio quizzes. No sign-up needed."
 ---
 
 <div id="wotd-card" class="wotd-card">

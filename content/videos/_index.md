@@ -1,5 +1,5 @@
 ---
 title: "Videos — Japanese Learning Channel"
-description: "Latest videos from the Japanese Learning YouTube channel."
+description: "Latest Japanese learning videos from the Japanese Unlocked YouTube channel. Lessons covering hiragana, katakana, kanji, grammar, JLPT vocabulary, and more."
 date: 2025-01-01
 ---
