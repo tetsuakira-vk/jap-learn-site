@@ -1,160 +1,115 @@
-<div id="site-banner" class="site-banner">
-  <span id="banner-msg" class="banner-msg"></span>
-  <button class="banner-close" onclick="(function(){document.getElementById('site-banner').style.display='none';try{sessionStorage.setItem('banner-closed','1')}catch(e){}})()" aria-label="Close">×</button>
-</div>
-<script>
-(function(){
-  try{ if(sessionStorage.getItem('banner-closed')) { document.getElementById('site-banner').style.display='none'; return; } }catch(e){}
-  var msgs = [
-    '🎌 <strong>日本語へようこそ</strong> — Welcome to Japanese. Pick a section below and start today.',
-    '✨ <strong>5 minutes a day</strong> beats 1 hour once a week. Every time. Open a quiz now.',
-    '🔤 Hiragana is 46 characters. Most learners crack it in <strong>one week</strong> with daily practice.',
-    '🏆 <strong>JLPT N5</strong> is the entry-level exam — test yourself on 65 core words right now.',
-    '📺 New lessons on <strong>YouTube</strong> — follow along and study at your own pace.',
-    '💡 <strong>Pro tip:</strong> Click any Japanese character on this site to hear it spoken aloud.',
-    '🎯 <strong>Sentence quiz:</strong> see English, pick the correct Japanese — great for building recall.'
-  ];
-  var i = Math.floor(Date.now() / 86400000) % msgs.length;
-  var el = document.getElementById('banner-msg');
-  el.innerHTML = msgs[i];
-  var next = (i + 1) % msgs.length;
-  setInterval(function(){
-    el.style.opacity = '0';
-    setTimeout(function(){ el.innerHTML = msgs[next]; el.style.opacity = '1'; next = (next + 1) % msgs.length; }, 350);
-  }, 6000);
-})();
-</script>
+{{- $currentPage := . }}
 <header class="header">
-    <nav class="header-nav">
-        <div class="logo">
-            {{- $label_text := (site.Params.label.text | default site.Title) }}
-            {{- if site.Title }}
-            <a href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-                {{- if site.Params.label.icon }}
-                {{- $img := resources.Get site.Params.label.icon }}
-                {{- if $img }}
-                    {{- $processableFormats := (slice "jpg" "jpeg" "png" "tif" "bmp" "gif") -}}
-                    {{- if hugo.IsExtended -}}
-                        {{- $processableFormats = $processableFormats | append "webp" -}}
-                    {{- end -}}
-                    {{- $prod := (hugo.IsProduction | or (eq site.Params.env "production")) }}
-                    {{- if and (in $processableFormats $img.MediaType.SubType) (eq $prod true)}}
-                        {{- if site.Params.label.iconHeight }}
-                            {{- $img = $img.Resize (printf "x%d" site.Params.label.iconHeight) }}
-                        {{ else }}
-                            {{- $img = $img.Resize "x30" }}
-                        {{- end }}
-                    {{- end }}
-                    <img src="{{ $img.Permalink }}" alt="" aria-label="logo"
-                        height="{{- site.Params.label.iconHeight | default "30" -}}">
-                {{- else }}
-                <img src="{{- site.Params.label.icon | absURL -}}" alt="" aria-label="logo"
-                    height="{{- site.Params.label.iconHeight | default "30" -}}">
-                {{- end -}}
-                {{- else if hasPrefix site.Params.label.iconSVG "<svg" }}
-                    {{ site.Params.label.iconSVG | safeHTML }}
-                {{- end -}}
-                {{- $label_text -}}
-            </a>
-            {{- end }}
 
-            {{- $lsenabled := (or (not site.Params.disableThemeToggle) (and (not site.Params.disableLangToggle) (hugo.IsMultilingual))) }}
-            {{- if $lsenabled }}
-            <div class="logo-switches">
-                {{- if (not site.Params.disableThemeToggle) }}
-                <div class="theme-picker-wrap">
-                  <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Pick theme">
-                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                    </svg>
-                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="5"></circle>
-                        <line x1="12" y1="1" x2="12" y2="3"></line>
-                        <line x1="12" y1="21" x2="12" y2="23"></line>
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                        <line x1="1" y1="12" x2="3" y2="12"></line>
-                        <line x1="21" y1="12" x2="23" y2="12"></line>
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                    </svg>
-                  </button>
-                  <div id="theme-picker-panel" class="theme-picker-panel" role="menu">
-                    <div class="tp-label">Theme</div>
-                    <button class="tp-opt" onclick="setTheme('dark')"><span class="tp-dot" style="background:#1d1e20;border:1px solid #555"></span>Dark</button>
-                    <button class="tp-opt" onclick="setTheme('light')"><span class="tp-dot" style="background:#fff;border:1px solid #ccc"></span>Light</button>
-                    <button class="tp-opt" onclick="setTheme('sakura')"><span class="tp-dot" style="background:#f4a0b5"></span>Sakura 🌸</button>
-                    <button class="tp-opt" onclick="setTheme('matcha')"><span class="tp-dot" style="background:#3d7a3d"></span>Matcha 🍵</button>
-                    <button class="tp-opt" onclick="setTheme('ocean')"><span class="tp-dot" style="background:#1a4a8a"></span>Ocean 🌊</button>
-                    <button class="tp-opt" onclick="setTheme('sunset')"><span class="tp-dot" style="background:#b84020"></span>Sunset 🌇</button>
-                  </div>
-                </div>
-                {{- end }}
-            </div>
-            {{- end }}
+  {{/* ── Masthead: site title left, theme toggle right ── */}}
+  <div class="site-masthead">
+    <div class="masthead-inner">
+      {{- $label_text := (site.Params.label.text | default site.Title) }}
+      {{- if site.Title }}
+      <a class="masthead-title" href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
+        {{- $label_text -}}
+      </a>
+      {{- end }}
+      {{- if (not site.Params.disableThemeToggle) }}
+      <div class="theme-picker-wrap">
+        <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Pick theme">
+          <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <div id="theme-picker-panel" class="theme-picker-panel" role="menu">
+          <div class="tp-label">Theme</div>
+          <button class="tp-opt" onclick="setTheme('dark')"><span class="tp-dot" style="background:#1d1e20;border:1px solid #555"></span>Dark</button>
+          <button class="tp-opt" onclick="setTheme('light')"><span class="tp-dot" style="background:#fff;border:1px solid #ccc"></span>Light</button>
+          <button class="tp-opt" onclick="setTheme('sakura')"><span class="tp-dot" style="background:#f4a0b5"></span>Sakura</button>
+          <button class="tp-opt" onclick="setTheme('matcha')"><span class="tp-dot" style="background:#3d7a3d"></span>Matcha</button>
+          <button class="tp-opt" onclick="setTheme('ocean')"><span class="tp-dot" style="background:#1a4a8a"></span>Ocean</button>
+          <button class="tp-opt" onclick="setTheme('sunset')"><span class="tp-dot" style="background:#b84020"></span>Sunset</button>
         </div>
-        {{- $currentPage := . }}
-        <ul id="menu" class="menu">
-            {{- range site.Menus.main }}
-            {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
-            {{- $page_url := $currentPage.Permalink | absLangURL }}
-            {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
-            {{- if .HasChildren }}
-            <li class="has-dropdown">
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
-                    <span class="dd-label{{- if eq $menu_item_url $page_url }} active{{- end }}">
-                        {{- .Pre }}{{- .Name -}}{{ .Post -}}
-                    </span>
-                </a>
-                <ul class="dropdown-menu">
-                    {{- range .Children }}
-                    {{- $child_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
-                    <li>
-                        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}"
-                            {{- if eq $child_url $page_url }} class="active"{{- end }}>
-                            {{- .Name -}}
-                        </a>
-                    </li>
-                    {{- end }}
-                </ul>
-            </li>
-            {{- else }}
-            <li>
-                <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
-                {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
-                    <span {{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
-                        {{- .Pre }}{{- .Name -}}{{ .Post -}}
-                    </span>
-                    {{- if (findRE "://" .URL) }}&nbsp;
-                    <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
-                        stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
-                        <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
-                        <path d="M15 3h6v6"></path>
-                        <path d="M10 14L21 3"></path>
-                    </svg>
-                    {{- end }}
-                </a>
-            </li>
-            {{- end }}
-            {{- end }}
+      </div>
+      {{- end }}
+    </div>
+  </div>
+
+  {{/* ── Site hero banner ── */}}
+  <div class="site-hero">
+    <div class="site-hero-bg-char" aria-hidden="true">日</div>
+    <div class="site-hero-content">
+      <div class="site-hero-jp">日本語を学ぼう</div>
+      <div class="site-hero-en">Free Interactive Japanese — Hiragana · Katakana · Kanji · JLPT</div>
+      <div class="site-hero-rule"></div>
+    </div>
+  </div>
+
+  {{/* ── Navigation strip ── */}}
+  <nav class="site-nav" aria-label="Main navigation">
+    <ul id="menu" class="menu">
+      {{- range site.Menus.main }}
+      {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+      {{- $page_url := $currentPage.Permalink | absLangURL }}
+      {{- $is_search := eq (site.GetPage .KeyName).Layout `search` }}
+      {{- if .HasChildren }}
+      <li class="has-dropdown">
+        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}">
+          <span class="dd-label{{- if eq $menu_item_url $page_url }} active{{- end }}">
+            {{- .Pre }}{{- .Name -}}{{ .Post -}}
+          </span>
+        </a>
+        <ul class="dropdown-menu">
+          {{- range .Children }}
+          {{- $child_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL) ) | absLangURL }}
+          <li>
+            <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }}"
+                {{- if eq $child_url $page_url }} class="active"{{- end }}>
+              {{- .Name -}}
+            </a>
+          </li>
+          {{- end }}
         </ul>
-    </nav>
+      </li>
+      {{- else }}
+      <li>
+        <a href="{{ .URL | absLangURL }}" title="{{ .Title | default .Name }} {{- cond $is_search (" (Alt + /)" | safeHTMLAttr) ("" | safeHTMLAttr ) }}"
+           {{- cond $is_search (" accesskey=/" | safeHTMLAttr) ("" | safeHTMLAttr ) }}>
+          <span {{- if eq $menu_item_url $page_url }} class="active"{{- end }}>
+            {{- .Pre }}{{- .Name -}}{{ .Post -}}
+          </span>
+          {{- if (findRE "://" .URL) }}&nbsp;
+          <svg fill="none" shape-rendering="geometricPrecision" stroke="currentColor" stroke-linecap="round"
+              stroke-linejoin="round" stroke-width="2.5" viewBox="0 0 24 24" height="12" width="12">
+            <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"></path>
+            <path d="M15 3h6v6"></path>
+            <path d="M10 14L21 3"></path>
+          </svg>
+          {{- end }}
+        </a>
+      </li>
+      {{- end }}
+      {{- end }}
+    </ul>
+  </nav>
+
 </header>
 <script>
-// Close panel on outside click
 document.addEventListener('click', function() {
   var p = document.getElementById('theme-picker-panel');
   if (p) p.classList.remove('open');
 });
 var _tpp = document.getElementById('theme-picker-panel');
 if (_tpp) _tpp.addEventListener('click', function(e) { e.stopPropagation(); });
-
-// Wait for PaperMod's own listener to attach (it runs in a </body> script),
-// then clone the button to strip that listener and add only ours.
 setTimeout(function() {
   var btn = document.getElementById('theme-toggle');
   var panel = document.getElementById('theme-picker-panel');
@@ -166,7 +121,6 @@ setTimeout(function() {
     panel.classList.toggle('open');
   });
 }, 0);
-
 function setTheme(name) {
   document.documentElement.dataset.theme = name;
   localStorage.setItem('pref-theme', name);

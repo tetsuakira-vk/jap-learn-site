@@ -172,37 +172,91 @@
   .wotd-side { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 1rem; }
 }
 
-/* ── Top announcement banner ── */
-.site-banner {
-  background: linear-gradient(90deg, #b01a1a 0%, #c0392b 50%, #b01a1a 100%);
-  color: #fff;
-  text-align: center;
-  padding: 0.55rem 3rem 0.55rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 400;
-  line-height: 1.4;
+/* ── Site masthead (title bar above hero) ── */
+.site-masthead {
+  background: var(--theme);
+  border-bottom: 1px solid var(--border);
+}
+.masthead-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gap);
+  height: var(--header-height);
+}
+.masthead-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+}
+.masthead-title:hover { color: var(--primary); opacity: 0.8; }
+
+/* ── Site hero banner ── */
+.site-hero {
+  background: #0e0e10;
   position: relative;
-  letter-spacing: 0.01em;
+  overflow: hidden;
+  text-align: center;
+  padding: 2.8rem var(--gap) 2.6rem;
+  border-bottom: 3px solid #c0392b;
 }
-.banner-msg {
-  display: inline-block;
-  transition: opacity 0.35s ease;
-}
-.banner-msg strong { font-weight: 700; }
-.banner-close {
+.site-hero-bg-char {
   position: absolute;
-  right: 0.9rem;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.75);
-  font-size: 1.1rem;
-  cursor: pointer;
+  font-size: 22rem;
+  font-weight: 900;
+  color: #c0392b;
+  opacity: 0.055;
+  top: -3rem;
+  right: -1rem;
   line-height: 1;
-  padding: 0.2rem 0.3rem;
+  pointer-events: none;
+  user-select: none;
 }
-.banner-close:hover { color: #fff; }
+.site-hero-content { position: relative; z-index: 1; }
+.site-hero-jp {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+.site-hero-en {
+  font-size: clamp(0.78rem, 1.5vw, 0.95rem);
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.6rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.site-hero-rule {
+  width: 48px;
+  height: 3px;
+  background: #c0392b;
+  border-radius: 2px;
+  margin: 1.1rem auto 0;
+}
+
+/* ── Navigation strip (below hero) ── */
+.site-nav {
+  background: var(--theme);
+  border-bottom: 1px solid var(--border);
+}
+.site-nav .menu {
+  max-width: calc(var(--nav-width) + var(--gap) * 2);
+  margin: 0 auto;
+  padding: 0 var(--gap);
+  height: var(--header-height);
+  align-items: center;
+  display: flex;
+  column-gap: var(--gap);
+  list-style: none;
+  overflow: visible;
+  white-space: nowrap;
+  word-break: keep-all;
+}
 
 
 /* ── Section nav cards (homepage + section indexes) ── */
