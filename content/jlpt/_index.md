@@ -9,27 +9,27 @@ The JLPT has five levels. N5 is the entry point for beginners; N1 is near-native
 
 <div class="section-grid">
   <a class="section-card" href="n5/">
-    <span class="sc-icon">🌱</span>
+    <span class="sc-icon">五</span>
     <span class="sc-title">N5</span>
     <span class="sc-desc">~800 words · absolute beginner</span>
   </a>
   <a class="section-card" href="n4/">
-    <span class="sc-icon">📗</span>
+    <span class="sc-icon">四</span>
     <span class="sc-title">N4</span>
     <span class="sc-desc">~1,500 words · beginner</span>
   </a>
   <a class="section-card" href="n3/">
-    <span class="sc-icon">📘</span>
+    <span class="sc-icon">三</span>
     <span class="sc-title">N3</span>
     <span class="sc-desc">~3,750 words · intermediate</span>
   </a>
   <a class="section-card" href="n2/">
-    <span class="sc-icon">📙</span>
+    <span class="sc-icon">二</span>
     <span class="sc-title">N2</span>
     <span class="sc-desc">~6,000 words · upper intermediate</span>
   </a>
   <a class="section-card" href="n1/">
-    <span class="sc-icon">🏅</span>
+    <span class="sc-icon">一</span>
     <span class="sc-title">N1</span>
     <span class="sc-desc">~10,000+ words · advanced</span>
   </a>

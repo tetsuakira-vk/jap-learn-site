@@ -96,7 +96,7 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
 
 <div class="section-grid">
   <a class="section-card" href="start/">
-    <span class="sc-icon">🚀</span>
+    <span class="sc-icon"><img src="/jap-learn-site/icons/torii-gate.svg" alt=""></span>
     <span class="sc-title">Start Here</span>
     <span class="sc-desc">Complete beginner? Start here.</span>
   </a>
@@ -116,27 +116,27 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     <span class="sc-desc">50 essential beginner kanji.</span>
   </a>
   <a class="section-card" href="jlpt/">
-    <span class="sc-icon">🏆</span>
+    <span class="sc-icon"><img src="/jap-learn-site/icons/daruma.svg" alt=""></span>
     <span class="sc-title">JLPT Levels</span>
     <span class="sc-desc">N5 → N1 vocab & quizzes.</span>
   </a>
   <a class="section-card" href="numbers/">
-    <span class="sc-icon">🔢</span>
+    <span class="sc-icon">数</span>
     <span class="sc-title">Numbers</span>
     <span class="sc-desc">Count to 10,000 with audio.</span>
   </a>
   <a class="section-card" href="phrases/">
-    <span class="sc-icon">💬</span>
+    <span class="sc-icon">話</span>
     <span class="sc-title">Phrases</span>
     <span class="sc-desc">Real sentences. Hear them spoken.</span>
   </a>
   <a class="section-card" href="grammar/">
-    <span class="sc-icon">📐</span>
+    <span class="sc-icon">文</span>
     <span class="sc-title">Grammar</span>
     <span class="sc-desc">Particles, verb forms &amp; sentence patterns.</span>
   </a>
   <a class="section-card" href="videos/">
-    <span class="sc-icon">▶️</span>
+    <span class="sc-icon">映</span>
     <span class="sc-title">Videos</span>
     <span class="sc-desc">Latest from the YouTube channel.</span>
   </a>

@@ -9,22 +9,22 @@ Japanese grammar is logical once you see the system. Work through these sections
 
 <div class="section-grid">
   <a class="section-card" href="particles/">
-    <span class="sc-icon">🔗</span>
+    <span class="sc-icon">助</span>
     <span class="sc-title">Particles</span>
     <span class="sc-desc">は・が・を・に・で and more — when and why.</span>
   </a>
   <a class="section-card" href="verbs/">
-    <span class="sc-icon">🔄</span>
+    <span class="sc-icon">動</span>
     <span class="sc-title">Verb Forms</span>
     <span class="sc-desc">Conjugation tables — る-verbs, う-verbs, irregular.</span>
   </a>
   <a class="section-card" href="patterns/">
-    <span class="sc-icon">📐</span>
+    <span class="sc-icon">文</span>
     <span class="sc-title">Sentence Patterns</span>
     <span class="sc-desc">50 key patterns with examples you can hear.</span>
   </a>
   <a class="section-card" href="/sentences/quiz/">
-    <span class="sc-icon">🎯</span>
+    <span class="sc-icon">試</span>
     <span class="sc-title">Sentence Quiz</span>
     <span class="sc-desc">English → Japanese. Can you pick it?</span>
   </a>
