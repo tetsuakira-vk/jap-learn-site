@@ -258,6 +258,7 @@
   padding: 0 var(--gap);
   height: var(--header-height);
   align-items: center;
+  justify-content: center;
   display: flex;
   column-gap: var(--gap);
   list-style: none;

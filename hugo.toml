@@ -54,10 +54,6 @@ buildExpired = false
     url = "https://www.youtube.com/@JapaneseLearning-z2x"
 
   [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/tetsuakira-vk/jap-learn-site"
-
-  [[params.socialIcons]]
     name = "rss"
     url = "/index.xml"
 
