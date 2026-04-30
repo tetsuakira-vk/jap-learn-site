@@ -7,7 +7,8 @@
       {{- $label_text := (site.Params.label.text | default site.Title) }}
       {{- if site.Title }}
       <a class="masthead-title" href="{{ "" | absLangURL }}" accesskey="h" title="{{ $label_text }} (Alt + H)">
-        {{- $label_text -}}
+        <span class="masthead-title-en">{{- $label_text -}}</span>
+        <span class="masthead-title-jp">日本語を学ぼう</span>
       </a>
       {{- end }}
       {{- if (not site.Params.disableThemeToggle) }}

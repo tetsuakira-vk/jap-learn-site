@@ -1,3 +1,13 @@
+/* ── Sigokae font ── */
+@font-face {
+  font-family: 'Sigokae';
+  src: url('/fonts/Sigokae.otf') format('opentype'),
+       url('/fonts/Sigokae.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Custom theme variables ── */
 :root[data-theme="sakura"] {
   color-scheme: light;
@@ -192,16 +202,34 @@
   max-width: calc(var(--nav-width) + var(--gap) * 2);
   margin: 0 auto;
   padding: 0 var(--gap);
-  height: var(--header-height);
+  min-height: var(--header-height);
+  height: auto;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
 }
 .masthead-title {
-  font-size: 1.3rem;
-  font-weight: 700;
   text-decoration: none;
-  color: var(--primary);
-  letter-spacing: -0.01em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.05rem;
+  line-height: 1;
 }
-.masthead-title:hover { color: var(--primary); opacity: 0.8; }
+.masthead-title:hover { opacity: 0.8; }
+.masthead-title-en {
+  font-family: 'Sigokae', serif;
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: var(--primary);
+  letter-spacing: 0.02em;
+}
+.masthead-title-jp {
+  font-size: 0.6rem;
+  font-weight: 400;
+  color: var(--secondary);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
 
 /* ── Site hero banner ── */
 .site-hero {
