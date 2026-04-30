@@ -328,6 +328,20 @@
   word-break: keep-all;
 }
 
+@media (max-width: 768px) {
+  .site-nav .menu {
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: visible;
+    padding: 0 1rem;
+    column-gap: 0.6rem;
+    scrollbar-width: none;
+  }
+  .site-nav .menu::-webkit-scrollbar { display: none; }
+  .site-nav .menu li a,
+  .site-nav .menu li a span { font-size: 0.82rem; }
+}
+
 
 /* ── Section nav cards (homepage + section indexes) ── */
 .section-grid {
