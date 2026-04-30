@@ -6,7 +6,7 @@ date: 2025-01-01
 
 Kanji are characters borrowed from Chinese, each carrying a meaning. Most kanji have two types of reading: **on'yomi** (Chinese-derived, used in compound words) and **kun'yomi** (Japanese-native, used when the kanji stands alone). You don't need to memorise all readings at once — focus on the meaning first.
 
-**[→ Take the Kanji Quiz](/kanji/quiz/)**
+**[→ Take the Kanji Quiz](quiz/)**
 
 ---
 

@@ -1,3 +1,29 @@
+<div id="site-banner" class="site-banner">
+  <span id="banner-msg" class="banner-msg"></span>
+  <button class="banner-close" onclick="(function(){document.getElementById('site-banner').style.display='none';try{sessionStorage.setItem('banner-closed','1')}catch(e){}})()" aria-label="Close">×</button>
+</div>
+<script>
+(function(){
+  try{ if(sessionStorage.getItem('banner-closed')) { document.getElementById('site-banner').style.display='none'; return; } }catch(e){}
+  var msgs = [
+    '🎌 <strong>日本語へようこそ</strong> — Welcome to Japanese. Pick a section below and start today.',
+    '✨ <strong>5 minutes a day</strong> beats 1 hour once a week. Every time. Open a quiz now.',
+    '🔤 Hiragana is 46 characters. Most learners crack it in <strong>one week</strong> with daily practice.',
+    '🏆 <strong>JLPT N5</strong> is the entry-level exam — test yourself on 65 core words right now.',
+    '📺 New lessons on <strong>YouTube</strong> — follow along and study at your own pace.',
+    '💡 <strong>Pro tip:</strong> Click any Japanese character on this site to hear it spoken aloud.',
+    '🎯 <strong>Sentence quiz:</strong> see English, pick the correct Japanese — great for building recall.'
+  ];
+  var i = Math.floor(Date.now() / 86400000) % msgs.length;
+  var el = document.getElementById('banner-msg');
+  el.innerHTML = msgs[i];
+  var next = (i + 1) % msgs.length;
+  setInterval(function(){
+    el.style.opacity = '0';
+    setTimeout(function(){ el.innerHTML = msgs[next]; el.style.opacity = '1'; next = (next + 1) % msgs.length; }, 350);
+  }, 6000);
+})();
+</script>
 <header class="header">
     <nav class="header-nav">
         <div class="logo">
