@@ -62,7 +62,8 @@
             {{- if $lsenabled }}
             <div class="logo-switches">
                 {{- if (not site.Params.disableThemeToggle) }}
-                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                <div class="theme-picker-wrap">
+                  <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Pick theme">
                     <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -81,7 +82,17 @@
                         <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
                         <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
                     </svg>
-                </button>
+                  </button>
+                  <div id="theme-picker-panel" class="theme-picker-panel" role="menu">
+                    <div class="tp-label">Theme</div>
+                    <button class="tp-opt" onclick="setTheme('dark')"><span class="tp-dot" style="background:#1d1e20;border:1px solid #555"></span>Dark</button>
+                    <button class="tp-opt" onclick="setTheme('light')"><span class="tp-dot" style="background:#fff;border:1px solid #ccc"></span>Light</button>
+                    <button class="tp-opt" onclick="setTheme('sakura')"><span class="tp-dot" style="background:#f4a0b5"></span>Sakura 🌸</button>
+                    <button class="tp-opt" onclick="setTheme('matcha')"><span class="tp-dot" style="background:#3d7a3d"></span>Matcha 🍵</button>
+                    <button class="tp-opt" onclick="setTheme('ocean')"><span class="tp-dot" style="background:#1a4a8a"></span>Ocean 🌊</button>
+                    <button class="tp-opt" onclick="setTheme('sunset')"><span class="tp-dot" style="background:#b84020"></span>Sunset 🌇</button>
+                  </div>
+                </div>
                 {{- end }}
             </div>
             {{- end }}
@@ -133,3 +144,24 @@
         </ul>
     </nav>
 </header>
+<script>
+(function(){
+  var btn = document.getElementById('theme-toggle');
+  var panel = document.getElementById('theme-picker-panel');
+  if (!btn || !panel) return;
+  // Remove PaperMod's toggle listener by cloning the button
+  var fresh = btn.cloneNode(true);
+  btn.parentNode.replaceChild(fresh, btn);
+  fresh.addEventListener('click', function(e) {
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+  document.addEventListener('click', function() { panel.classList.remove('open'); });
+  panel.addEventListener('click', function(e) { e.stopPropagation(); });
+})();
+function setTheme(name) {
+  document.documentElement.dataset.theme = name;
+  localStorage.setItem('pref-theme', name);
+  document.getElementById('theme-picker-panel').classList.remove('open');
+}
+</script>

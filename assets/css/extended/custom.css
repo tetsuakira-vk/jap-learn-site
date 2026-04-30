@@ -1,3 +1,177 @@
+/* ── Custom theme variables ── */
+:root[data-theme="sakura"] {
+  color-scheme: light;
+  --theme: #fff5f7;
+  --entry: #fdeef2;
+  --primary: #2c1015;
+  --secondary: #9b5a6e;
+  --tertiary: #fddde6;
+  --content: #3d1a22;
+  --code-block-bg: #2c1015;
+  --code-bg: #fde0e8;
+  --border: #f4ccd5;
+}
+:root[data-theme="matcha"] {
+  color-scheme: dark;
+  --theme: #0e1c0e;
+  --entry: #182a18;
+  --primary: #cfe8c4;
+  --secondary: #72a862;
+  --tertiary: #1e361e;
+  --content: #bad5ae;
+  --code-block-bg: #182a18;
+  --code-bg: #152315;
+  --border: #274527;
+}
+:root[data-theme="ocean"] {
+  color-scheme: dark;
+  --theme: #07101f;
+  --entry: #0c1a30;
+  --primary: #c4d8f2;
+  --secondary: #5888c0;
+  --tertiary: #102240;
+  --content: #aec8e8;
+  --code-block-bg: #0c1a30;
+  --code-bg: #091628;
+  --border: #183060;
+}
+:root[data-theme="sunset"] {
+  color-scheme: dark;
+  --theme: #180c04;
+  --entry: #2a160a;
+  --primary: #f0d8c0;
+  --secondary: #b87848;
+  --tertiary: #3a1e0e;
+  --content: #e0c4a8;
+  --code-block-bg: #2a160a;
+  --code-bg: #220e06;
+  --border: #4a2010;
+}
+/* Moon/sun icon logic for custom themes */
+:root[data-theme="sakura"] .moon,
+:root[data-theme="light"] .moon { display: none; }
+:root[data-theme="matcha"] .sun,
+:root[data-theme="ocean"] .sun,
+:root[data-theme="sunset"] .sun { display: none; }
+
+/* ── Theme picker panel ── */
+.theme-picker-wrap { position: relative; display: inline-flex; }
+.theme-picker-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.5rem 0.4rem;
+  min-width: 150px;
+  z-index: 300;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.35);
+}
+.theme-picker-panel.open { display: block; }
+.tp-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary);
+  padding: 0.2rem 0.7rem 0.4rem;
+  font-weight: 600;
+}
+.tp-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-size: 0.88rem;
+  padding: 0.42rem 0.7rem;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: left;
+}
+.tp-opt:hover { background: rgba(128,128,128,0.12); }
+.tp-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ── Word of the Day card (full-width, two-column) ── */
+.wotd-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem 1.8rem;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.5rem;
+  align-items: center;
+}
+.wotd-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+}
+.wotd-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--secondary);
+  font-weight: 600;
+}
+.wotd-jp {
+  font-size: 2.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  line-height: 1.15;
+  margin-top: 0.1rem;
+}
+.wotd-read {
+  font-size: 0.88rem;
+  color: var(--secondary);
+  font-style: italic;
+}
+.wotd-en {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-top: 0.15rem;
+}
+.wotd-hint { font-size: 0.82rem; color: var(--secondary); }
+.wotd-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+  min-width: 140px;
+  text-align: center;
+}
+.wotd-deco {
+  font-size: 3.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary);
+  opacity: 0.18;
+  letter-spacing: 0.04em;
+}
+.wotd-tip {
+  font-size: 0.78rem;
+  color: var(--secondary);
+  line-height: 1.5;
+  max-width: 180px;
+}
+@media (max-width: 600px) {
+  .wotd-card { grid-template-columns: 1fr; }
+  .wotd-side { border-left: none; border-top: 1px solid var(--border); padding-left: 0; padding-top: 1rem; }
+}
+
 /* ── Top announcement banner ── */
 .site-banner {
   background: linear-gradient(90deg, #b01a1a 0%, #c0392b 50%, #b01a1a 100%);

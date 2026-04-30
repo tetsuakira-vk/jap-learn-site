@@ -4,12 +4,18 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
 ---
 
 <div id="wotd-card" class="wotd-card">
-  <div class="wotd-label">Word of the Day</div>
-  <div id="wotd-jp" class="wotd-jp" onclick="wotdSpeak()" title="Click to hear">—</div>
-  <div id="wotd-read" class="wotd-read"></div>
-  <div id="wotd-en" class="wotd-en">Loading...</div>
-  <div id="wotd-hint" class="wotd-hint"></div>
-  <button class="pt-play" onclick="wotdSpeak()" style="margin-top:0.8rem">▶ Hear it</button>
+  <div class="wotd-main">
+    <div class="wotd-label">Word of the Day</div>
+    <div id="wotd-jp" class="wotd-jp" onclick="wotdSpeak()" title="Click to hear">—</div>
+    <div id="wotd-read" class="wotd-read"></div>
+    <div id="wotd-en" class="wotd-en">Loading...</div>
+    <div id="wotd-hint" class="wotd-hint"></div>
+    <button class="pt-play" onclick="wotdSpeak()" style="margin-top:0.9rem">▶ Hear it</button>
+  </div>
+  <div class="wotd-side">
+    <div id="wotd-deco" class="wotd-deco"></div>
+    <div id="wotd-tip" class="wotd-tip"></div>
+  </div>
 </div>
 
 <script>
@@ -27,7 +33,7 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     {jp:'また明日',read:'mata ashita',en:'See you tomorrow',hint:'Casual farewell'},
     {jp:'よろしくお願いします',read:'yoroshiku onegai shimasu',en:'Pleased to meet you',hint:'Heard constantly in Japan'},
     {jp:'大丈夫ですか？',read:'daijoubu desu ka?',en:'Are you okay?',hint:'Check in on someone'},
-    {jp:'はじめまして',read:'hajimemashite',en:'Nice to meet you (first time)',hint:'Always used at a first introduction'},
+    {jp:'はじめまして',read:'hajimemashite',en:'Nice to meet you',hint:'Always used at a first introduction'},
     {jp:'ゆっくり話してください',read:'yukkuri hanashite kudasai',en:'Please speak slowly',hint:'Native speakers appreciate the effort'},
     {jp:'日本語が好きです',read:'nihongo ga suki desu',en:'I like Japanese',hint:'True, right?'},
     {jp:'毎日練習します',read:'mainichi renshuu shimasu',en:'I practise every day',hint:'The secret to fluency'},
@@ -46,12 +52,38 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     {jp:'行ってきます',read:'itte kimasu',en:'I\'m heading out',hint:'Said when leaving home — deeply Japanese'},
     {jp:'ただいま',read:'tadaima',en:'I\'m home',hint:'Said when arriving home — response is おかえり'}
   ];
+  var decoWords = ['勉強','練習','上達','努力','継続','挑戦','学習','成長','忍耐','情熱',
+                   '夢','希望','前進','達成','言語','可能','未来','文化','知識','才能'];
+  var tips = [
+    'Japanese has no spaces between words — you spot boundaries by recognising patterns.',
+    'Verbs go at the END in Japanese. "I sushi eat" → 寿司を食べる.',
+    'Adding か to any sentence makes it a question. No question mark needed.',
+    'Japanese has 3 politeness levels — casual, polite (です/ます), and honorific.',
+    'Hiragana was created in the Heian period (794–1185) — originally a women\'s script.',
+    'Japan has ~50,000 kanji in total. Daily life only needs around 2,136.',
+    'Japanese primary school teaches 1,006 kanji over 6 years — that\'s your first target.',
+    '日本 (Nihon) means "origin of the sun" — that\'s where the name Japan comes from.',
+    'Japanese borrows from many languages. パン (pan, bread) came from Portuguese!',
+    'No grammatical gender in Japanese — there is no "he" or "she" distinction.',
+    'The subject is often dropped in Japanese — context does the work.',
+    'A single kanji can have multiple readings — on\'yomi (Chinese) and kun\'yomi (Japanese).',
+    'です and ます verb forms cover 90% of polite daily conversation. Master those first.',
+    'Japanese people rarely say a direct "no" — silence or 難しい often means no.',
+    'Writing kanji by hand helps memory — the stroke order has logic once you see it.',
+    'The Japanese alphabet (hiragana) can be learned in about one week with daily practice.',
+    'Japanese sentences follow Subject–Object–Verb order, unlike English Subject–Verb–Object.',
+    'Pitch accent exists in Japanese — the same word can mean different things depending on tone.',
+    'Reading manga in Japanese is one of the fastest ways to build vocabulary naturally.',
+    'Every hiragana character represents one mora (sound unit) — no silent letters.'
+  ];
   var idx = Math.floor(Date.now() / 86400000) % words.length;
   var w = words[idx];
   document.getElementById('wotd-jp').textContent = w.jp;
   document.getElementById('wotd-read').textContent = w.read;
   document.getElementById('wotd-en').textContent = w.en;
   document.getElementById('wotd-hint').textContent = w.hint;
+  document.getElementById('wotd-deco').textContent = decoWords[idx % decoWords.length];
+  document.getElementById('wotd-tip').textContent = tips[idx % tips.length];
   window.wotdSpeak = function() {
     if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
