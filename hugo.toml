@@ -150,10 +150,38 @@ buildExpired = false
     weight = 50
 
   [[menu.main]]
-    identifier = "sentences"
+    identifier = "grammar"
+    name = "Grammar"
+    url = "/grammar/"
+    weight = 55
+
+  [[menu.main]]
+    identifier = "grammar-particles"
+    name = "Particles"
+    url = "/grammar/particles/"
+    parent = "grammar"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "grammar-verbs"
+    name = "Verb Forms"
+    url = "/grammar/verbs/"
+    parent = "grammar"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "grammar-patterns"
+    name = "Sentence Patterns"
+    url = "/grammar/patterns/"
+    parent = "grammar"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "grammar-quiz"
     name = "Sentence Quiz"
     url = "/sentences/quiz/"
-    weight = 55
+    parent = "grammar"
+    weight = 4
 
   [[menu.main]]
     identifier = "about"

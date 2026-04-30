@@ -130,10 +130,10 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     <span class="sc-title">Phrases</span>
     <span class="sc-desc">Real sentences. Hear them spoken.</span>
   </a>
-  <a class="section-card" href="sentences/quiz/">
-    <span class="sc-icon">🎯</span>
-    <span class="sc-title">Sentence Quiz</span>
-    <span class="sc-desc">English → Japanese. Can you pick it?</span>
+  <a class="section-card" href="grammar/">
+    <span class="sc-icon">📐</span>
+    <span class="sc-title">Grammar</span>
+    <span class="sc-desc">Particles, verb forms &amp; sentence patterns.</span>
   </a>
   <a class="section-card" href="videos/">
     <span class="sc-icon">▶️</span>
@@ -153,5 +153,6 @@ Each section has a **reference chart** you can click to hear pronunciations, and
 1. Read [Start Here](start/) to understand the writing systems
 2. Learn [Hiragana](hiragana/) — use the chart, then take the quiz daily
 3. Move to [Katakana](katakana/) once hiragana clicks
-4. Work through [JLPT N5](jlpt/n5/) vocab alongside the YouTube lessons
-5. Practice real [Phrases](phrases/) and [Sentences](sentences/quiz/) as soon as possible
+4. Study [Grammar](grammar/) — particles and verb forms unlock everything
+5. Work through [JLPT N5](jlpt/n5/) vocab alongside the YouTube lessons
+6. Practice real [Phrases](phrases/) and the [Sentence Quiz](sentences/quiz/) as soon as possible
