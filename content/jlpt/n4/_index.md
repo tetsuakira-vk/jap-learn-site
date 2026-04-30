@@ -1,10 +1,10 @@
 ---
-title: "JLPT N4 Vocabulary"
-description: "Key JLPT N4 vocabulary. Click any word to hear it, then take the quiz."
+title: "JLPT N4 Vocabulary — 80 Key Words"
+description: "80 essential JLPT N4 vocabulary words with audio. Click any word to hear it, then test yourself with the quiz."
 date: 2025-01-01
 ---
 
-N4 builds on N5 — you should know your N5 words cold before tackling these. At this level you'll encounter more verb forms, na-adjectives, and vocabulary for daily situations. Click any word to hear it.
+N4 builds on N5 — you should know your N5 words cold before tackling these. At this level you'll encounter more verb forms, na-adjectives, giving/receiving verbs, and vocabulary for daily situations. Click any Japanese word to hear it.
 
 **[→ Take the N4 Quiz](quiz/)**
 
@@ -32,7 +32,7 @@ N4 builds on N5 — you should know your N5 words cold before tackling these. At
 <tr><td><span class="kt-char" onclick="speak('よやくする')">予約する</span></td><td>yoyaku suru</td><td>to reserve / book</td></tr>
 <tr><td><span class="kt-char" onclick="speak('もらう')">もらう</span></td><td>morau</td><td>to receive</td></tr>
 <tr><td><span class="kt-char" onclick="speak('あげる')">あげる</span></td><td>ageru</td><td>to give (to someone else)</td></tr>
-<tr><td><span class="kt-char" onclick="speak('くれる')">くれる</span></td><td>kureru</td><td>to give (to me/in-group)</td></tr>
+<tr><td><span class="kt-char" onclick="speak('くれる')">くれる</span></td><td>kureru</td><td>to give (to me / in-group)</td></tr>
 <tr><td><span class="kt-char" onclick="speak('おくる')">送る</span></td><td>okuru</td><td>to send</td></tr>
 <tr><td><span class="kt-char" onclick="speak('とどく')">届く</span></td><td>todoku</td><td>to arrive / be delivered</td></tr>
 </tbody>
@@ -81,6 +81,8 @@ N4 builds on N5 — you should know your N5 words cold before tackling these. At
 <tr><td><span class="kt-char" onclick="speak('りょこう')">旅行</span></td><td>ryokou</td><td>travel / trip</td></tr>
 <tr><td><span class="kt-char" onclick="speak('きかい')">機会</span></td><td>kikai</td><td>opportunity / chance</td></tr>
 <tr><td><span class="kt-char" onclick="speak('れんしゅう')">練習</span></td><td>renshuu</td><td>practice</td></tr>
+<tr><td><span class="kt-char" onclick="speak('きそく')">規則</span></td><td>kisoku</td><td>rule / regulation</td></tr>
+<tr><td><span class="kt-char" onclick="speak('しゃかい')">社会</span></td><td>shakai</td><td>society</td></tr>
 </tbody>
 </table>
 
@@ -98,6 +100,30 @@ N4 builds on N5 — you should know your N5 words cold before tackling these. At
 <tr><td><span class="kt-char" onclick="speak('あとで')">後で</span></td><td>ato de</td><td>later / afterwards</td></tr>
 </tbody>
 </table>
+
+---
+
+## Key N4 Grammar Patterns
+
+These grammar points appear frequently in N4 reading and listening. Each entry shows the pattern and an example sentence.
+
+| Pattern | Meaning | Example |
+|---------|---------|---------|
+| 〜てみる | try doing ~ | 食べてみてください。Try eating it. |
+| 〜てしまう | end up doing ~ / done (regret) | 忘れてしまった。I ended up forgetting. |
+| 〜てあげる | do ~ for someone | 教えてあげます。I'll teach you. |
+| 〜てもらう | have someone do ~ | 直してもらった。I had it fixed. |
+| 〜ている | ongoing action / state | 勉強しています。I'm studying. |
+| 〜たことがある | have done ~ before | 日本に行ったことがある。I've been to Japan. |
+| 〜たほうがいい | should do ~ | 休んだほうがいい。You should rest. |
+| 〜ないほうがいい | shouldn't do ~ | 食べないほうがいい。You shouldn't eat it. |
+| 〜なければならない | must do ~ | 行かなければならない。I must go. |
+| 〜てもいい | it's ok to do ~ | 入ってもいいですか？May I come in? |
+| 〜てはいけない | must not do ~ | ここで食べてはいけない。Don't eat here. |
+| 〜そうだ | looks like ~ / I heard ~ | 雨が降りそうだ。It looks like rain. |
+| 〜ようだ | seems like ~ | 彼は疲れたようだ。He seems tired. |
+| 〜ために | for the purpose of ~ | 合格するために勉強する。Study to pass. |
+| 〜ながら | while doing ~ | 音楽を聞きながら勉強する。Study while listening. |
 
 <script>
 function speak(text) {
