@@ -51,7 +51,7 @@ buildExpired = false
 
   [[params.socialIcons]]
     name = "youtube"
-    url = "https://youtube.com"
+    url = "https://www.youtube.com/@JapaneseLearning-z2x"
 
   [[params.socialIcons]]
     name = "github"

@@ -25,7 +25,7 @@ Everything here is free, no account needed.
 
 The site is built as a companion to the YouTube channel — lessons and explanations live there, the drills and reference tools live here. Subscribe and use both together for best results.
 
-[Watch on YouTube →](https://youtube.com)
+[Watch on YouTube →](https://www.youtube.com/@JapaneseLearning-z2x)
 
 ---
 
