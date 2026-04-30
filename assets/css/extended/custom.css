@@ -47,12 +47,20 @@
   --code-bg: #220e06;
   --border: #4a2010;
 }
-/* Moon/sun icon logic for custom themes */
-:root[data-theme="sakura"] .moon,
-:root[data-theme="light"] .moon { display: none; }
-:root[data-theme="matcha"] .sun,
-:root[data-theme="ocean"] .sun,
-:root[data-theme="sunset"] .sun { display: none; }
+/* ── Theme picker button — always visible on every theme ── */
+.theme-toggle {
+  background: transparent;
+  border: 1.5px solid var(--border, #888);
+  border-radius: 8px;
+  padding: 5px 9px;
+  cursor: pointer;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.theme-toggle:hover { background: rgba(128,128,128,0.15); }
 
 /* ── Theme picker panel ── */
 .theme-picker-wrap { position: relative; display: inline-flex; }
