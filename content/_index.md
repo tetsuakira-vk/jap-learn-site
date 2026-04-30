@@ -96,7 +96,7 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
 
 <div class="section-grid">
   <a class="section-card" href="start/">
-    <span class="sc-icon"><img src="/jap-learn-site/icons/torii-gate.svg" alt=""></span>
+    <span class="sc-icon"><img src="/icons/torii-gate.svg" alt=""></span>
     <span class="sc-title">Start Here</span>
     <span class="sc-desc">Complete beginner? Start here.</span>
   </a>
@@ -116,7 +116,7 @@ description: "Free interactive Japanese learning with quizzes, reference charts,
     <span class="sc-desc">50 essential beginner kanji.</span>
   </a>
   <a class="section-card" href="jlpt/">
-    <span class="sc-icon"><img src="/jap-learn-site/icons/daruma.svg" alt=""></span>
+    <span class="sc-icon"><img src="/icons/daruma.svg" alt=""></span>
     <span class="sc-title">JLPT Levels</span>
     <span class="sc-desc">N5 → N1 vocab & quizzes.</span>
   </a>
