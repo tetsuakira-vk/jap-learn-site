@@ -11,6 +11,17 @@
         <span class="masthead-title-jp">日本語を学ぼう</span>
       </a>
       {{- end }}
+      <form class="hdr-signup" id="hdr-sib-form" method="POST"
+            action="https://f535f95e.sibforms.com/serve/MUIFAGHqdF0sblAOWkL-GDH00bmZP2NoG9xPAmZHSP9uFWhnz_k8A5Fh2HSlkjMkRW4Xf2lToOT9jk5FSWjeDwfoC8_bPMBR_pAVEzmHx1ocndWV4_xPZUyJ1mnROhumDzxmOJF3OS0z5m5G2Gl0_qKYgAm53cMBr6U0nDoPVkKyDK6Cr9zFs22R-wn7R7_AIWxLhiRD0m2nL_CkSQ=="
+            data-type="subscription" novalidate>
+        <span class="hdr-signup__label">日 Word a Day</span>
+        <input class="hdr-signup__input" type="text" id="hdr-EMAIL" name="EMAIL"
+               placeholder="your@email.com" autocomplete="off" data-required="true" required />
+        <button class="hdr-signup__btn" type="submit">Subscribe</button>
+        <input type="text" name="email_address_check" value="" style="display:none">
+        <input type="hidden" name="locale" value="en">
+      </form>
+
       {{- if (not site.Params.disableThemeToggle) }}
       <div class="theme-picker-wrap">
         <button id="theme-toggle" class="theme-toggle" accesskey="t" title="Pick theme (Alt + T)" aria-label="Pick theme">
@@ -122,4 +133,33 @@ function setTheme(name) {
   var p = document.getElementById('theme-picker-panel');
   if (p) p.classList.remove('open');
 }
+(function() {
+  var form = document.getElementById('hdr-sib-form');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var emailVal = (document.getElementById('hdr-EMAIL') || {}).value || '';
+    if (!emailVal || !/\S+@\S+\.\S+/.test(emailVal)) {
+      hdrMsg('Please enter a valid email.', false);
+      return;
+    }
+    var btn = form.querySelector('.hdr-signup__btn');
+    if (btn) { btn.disabled = true; btn.textContent = '…'; }
+    fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+      .then(function() {
+        form.innerHTML = '<span class="hdr-signup__done">ありがとう！ You\'re subscribed.</span>';
+      })
+      .catch(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        hdrMsg('Something went wrong — try again.', false);
+      });
+  }, true);
+  function hdrMsg(text, ok) {
+    var m = document.getElementById('hdr-msg');
+    if (!m) { m = document.createElement('span'); m.id = 'hdr-msg'; m.className = 'hdr-signup__msg'; form.appendChild(m); }
+    m.textContent = text;
+    m.style.color = ok ? '#38a169' : '#c0392b';
+  }
+})();
 </script>

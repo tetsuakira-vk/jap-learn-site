@@ -263,6 +263,55 @@
   margin-top: 0.2rem;
 }
 
+/* ── Header inline signup ── */
+.hdr-signup {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+.hdr-signup__label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--secondary);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.hdr-signup__input {
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 0.82rem;
+  width: 180px;
+  outline: none;
+}
+.hdr-signup__input:focus { border-color: #c0392b; }
+.hdr-signup__btn {
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  background: #c0392b;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.hdr-signup__btn:hover { background: #a93226; }
+.hdr-signup__done {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #38a169;
+}
+.hdr-signup__msg { font-size: 0.78rem; }
+@media (max-width: 768px) {
+  .hdr-signup { display: none; }
+}
+
 /* ── Site hero banner ── */
 .site-hero {
   background: var(--hero-bg);
