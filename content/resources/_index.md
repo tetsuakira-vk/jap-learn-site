@@ -247,24 +247,37 @@ var AUTOHIDE=Boolean(0);
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var panels = ['success-message', 'error-message'].map(function(id) {
-    return document.getElementById(id);
-  }).filter(Boolean);
+  var successEl = document.getElementById('success-message');
+  var errorEl   = document.getElementById('error-message');
+  var formWrap  = document.getElementById('sib-container');
 
-  panels.forEach(function(el) {
-    new MutationObserver(function(mutations) {
-      mutations.forEach(function() {
-        // Brevo tried to change this panel — read what it wants and honour it
-        var wants = el.style.display;
-        if (wants && wants !== 'none') {
-          el.style.setProperty('display', 'block', 'important');
-          el.style.setProperty('visibility', 'visible', 'important');
-          el.style.setProperty('opacity', '1', 'important');
-          // scroll into view smoothly so user sees it
-          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
-      });
+  function showCustomMsg(type) {
+    // Remove any previous custom message
+    var old = document.getElementById('brevo-custom-msg');
+    if (old) old.remove();
+    // Hide Brevo's form
+    if (formWrap) formWrap.style.display = 'none';
+    // Create our own message
+    var msg = document.createElement('div');
+    msg.id = 'brevo-custom-msg';
+    msg.className = 'brevo-custom-msg brevo-custom-msg--' + type;
+    msg.textContent = type === 'success'
+      ? "You're in! 🎉 First word arrives tomorrow morning. ありがとう！"
+      : "Something went wrong — please try again.";
+    // Insert after the subtitle
+    var sub = document.querySelector('.brevo-signup__sub');
+    if (sub) sub.insertAdjacentElement('afterend', msg);
+  }
+
+  function watch(el, type) {
+    if (!el) return;
+    new MutationObserver(function() {
+      var d = el.style.display;
+      if (d && d !== 'none') showCustomMsg(type);
     }).observe(el, { attributes: true, attributeFilter: ['style', 'class'] });
-  });
+  }
+
+  watch(successEl, 'success');
+  watch(errorEl, 'error');
 });
 </script>
