@@ -192,6 +192,12 @@ buildExpired = false
     weight = 65
 
   [[menu.main]]
+    identifier = "resources"
+    name = "Resources"
+    url = "/resources/"
+    weight = 68
+
+  [[menu.main]]
     identifier = "search"
     name = "Search"
     url = "/search/"

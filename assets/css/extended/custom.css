@@ -746,6 +746,96 @@
   vertical-align: middle;
 }
 
+/* ── Resource cards ── */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+}
+.resource-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--entry);
+  text-decoration: none !important;
+  color: var(--primary) !important;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+.resource-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.28);
+}
+.rc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.4rem; }
+.rc-name { font-size: 0.98rem; font-weight: 700; }
+.rc-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.rc-badge.free     { background: rgba(72,187,120,0.18); color: #38a169; }
+.rc-badge.freemium { background: rgba(237,137,54,0.18); color: #c05621; }
+.rc-badge.paid     { background: rgba(128,90,213,0.18); color: #6b46c1; }
+.rc-desc { font-size: 0.82rem; color: var(--secondary); line-height: 1.45; }
+
+/* ── Mailing list signup box ── */
+.wotd-signup {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem 2rem 1.8rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+.wotd-signup h3 { margin: 0 0 0.4rem; font-size: 1.25rem; }
+.wotd-signup p  { margin: 0 0 1.2rem; color: var(--secondary); font-size: 0.9rem; }
+.wotd-signup form { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; }
+.wotd-signup input[type="email"] {
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--theme);
+  color: var(--primary);
+  font-size: 0.92rem;
+  width: 260px;
+  max-width: 100%;
+}
+.wotd-signup button[type="submit"] {
+  padding: 0.55rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary);
+  color: var(--theme);
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.wotd-signup .signup-note { font-size: 0.75rem; color: var(--secondary); margin-top: 0.8rem; }
+
+/* ── Coming soon strip ── */
+.coming-soon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+}
+.coming-soon-card {
+  padding: 1.1rem 1.2rem;
+  border: 1px dashed var(--border);
+  border-radius: 10px;
+  background: transparent;
+  opacity: 0.6;
+}
+.coming-soon-card .cs-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
+.coming-soon-card .cs-desc  { font-size: 0.8rem; color: var(--secondary); }
+
 /* ── Responsive tweaks ── */
 @media (max-width: 480px) {
   .kana-card { width: 58px; height: 58px; }
@@ -754,4 +844,6 @@
   .section-grid { grid-template-columns: repeat(2, 1fr); }
   .video-grid { grid-template-columns: 1fr; }
   .num-card { width: 70px; }
+  .resource-grid { grid-template-columns: 1fr; }
+  .coming-soon-grid { grid-template-columns: 1fr 1fr; }
 }
