@@ -23,7 +23,18 @@
       </form>
 
       {{- if (not site.Params.disableThemeToggle) }}
-      <div class="theme-picker-wrap">
+      <div class="hdr-icons">
+        <a href="/sitemap-page/" class="hdr-icon-btn" title="Site map" aria-label="Site map">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="2" width="8" height="4" rx="1"/>
+            <rect x="1" y="16" width="6" height="4" rx="1"/>
+            <rect x="9" y="16" width="6" height="4" rx="1"/>
+            <rect x="17" y="16" width="6" height="4" rx="1"/>
+            <path d="M12 6v4M4 16v-4h16v4"/>
+          </svg>
+        </a>
+        <div class="theme-picker-wrap">
         <button id="theme-toggle" class="theme-toggle" accesskey="t" title="Pick theme (Alt + T)" aria-label="Pick theme">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -43,7 +54,8 @@
           <button class="tp-opt" onclick="setTheme('ocean')"><span class="tp-dot" style="background:#1a4a8a"></span>Ocean</button>
           <button class="tp-opt" onclick="setTheme('sunset')"><span class="tp-dot" style="background:#b84020"></span>Sunset</button>
         </div>
-      </div>
+        </div><!-- /.theme-picker-wrap -->
+      </div><!-- /.hdr-icons -->
       {{- end }}
     </div>
   </div>
