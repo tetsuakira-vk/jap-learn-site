@@ -263,27 +263,41 @@
   margin-top: 0.2rem;
 }
 
-/* ── Header icon group (sitemap + theme picker) ── */
-.hdr-icons {
+/* ── Footer layout ── */
+.footer-inner {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.2rem 0;
+  justify-content: center;
 }
-.hdr-icon-btn {
-  display: flex;
+
+/* ── Footer icon group (sitemap + theme picker) ── */
+.ftr-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-left: 0.6rem;
+  vertical-align: middle;
+}
+.ftr-icon-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: transparent;
-  border: 1.5px solid var(--border, #888);
-  border-radius: 8px;
-  padding: 5px 9px;
-  color: var(--primary);
+  border: 1px solid var(--border, #888);
+  border-radius: 6px;
+  padding: 4px 7px;
+  color: var(--secondary);
   text-decoration: none;
   line-height: 1;
   cursor: pointer;
 }
-.hdr-icon-btn:hover { opacity: 0.7; }
+.ftr-icon-btn:hover { opacity: 0.7; }
+.theme-picker-panel--up {
+  top: auto;
+  bottom: calc(100% + 8px);
+}
 
 /* ── Sitemap page ── */
 .sitemap-grid {
@@ -318,11 +332,10 @@
 }
 .sitemap-links li a:hover { opacity: 1; text-decoration: underline; }
 
-/* ── Masthead right group (icons + signup) ── */
+/* ── Masthead right group (signup form only) ── */
 .masthead-right {
   display: flex;
   align-items: center;
-  gap: 0.8rem;
   flex-shrink: 0;
 }
 
