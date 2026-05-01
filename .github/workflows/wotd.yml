@@ -1,0 +1,27 @@
+name: Word of the Day Email
+
+on:
+  schedule:
+    - cron: "0 8 * * *"   # 8:00 AM UTC every day (adjust for your timezone)
+  workflow_dispatch:        # allows manual trigger from GitHub Actions tab for testing
+
+jobs:
+  send-wotd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Send Word of the Day
+        run: python .github/scripts/send_wotd.py
+        env:
+          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
+          BEEHIIV_PUB_ID:  ${{ secrets.BEEHIIV_PUB_ID }}

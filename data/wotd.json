@@ -1,0 +1,412 @@
+[
+  {
+    "jp": "勉強",
+    "reading": "べんきょう",
+    "romaji": "benkyou",
+    "en": "Study",
+    "pos": "noun / verb",
+    "sentence_jp": "毎日日本語を勉強しています。",
+    "sentence_en": "I study Japanese every day.",
+    "tip": "勉 means 'diligence' and 強 means 'strong' — the idea is that hard study makes you mentally strong."
+  },
+  {
+    "jp": "大丈夫",
+    "reading": "だいじょうぶ",
+    "romaji": "daijoubu",
+    "en": "Okay / Fine / No problem",
+    "pos": "adjective",
+    "sentence_jp": "大丈夫ですか？転んでしまいましたね。",
+    "sentence_en": "Are you okay? You took a fall there.",
+    "tip": "大丈夫 is incredibly versatile — it can mean 'I'm fine', 'it's okay', 'no need', or even a polite refusal. Context is everything."
+  },
+  {
+    "jp": "気持ち",
+    "reading": "きもち",
+    "romaji": "kimochi",
+    "en": "Feeling / Mood / Sensation",
+    "pos": "noun",
+    "sentence_jp": "今日はとても気持ちのいい天気ですね。",
+    "sentence_en": "The weather feels really nice today, doesn't it.",
+    "tip": "気 (spirit/energy) + 持ち (holding) = the feeling you're holding inside. 気持ちいい means something feels good physically or emotionally."
+  },
+  {
+    "jp": "頑張る",
+    "reading": "がんばる",
+    "romaji": "ganbaru",
+    "en": "To do one's best / To persevere",
+    "pos": "verb (Group 1)",
+    "sentence_jp": "試験に向けて頑張ります！",
+    "sentence_en": "I'll do my best for the exam!",
+    "tip": "One of the most culturally important words in Japanese. Telling someone 頑張って! is a powerful form of encouragement — 'give it everything you've got'."
+  },
+  {
+    "jp": "懐かしい",
+    "reading": "なつかしい",
+    "romaji": "natsukashii",
+    "en": "Nostalgic / Dear to one's memory",
+    "pos": "adjective (い)",
+    "sentence_jp": "この曲を聴くと、子供の頃を思い出す。懐かしいな。",
+    "sentence_en": "Hearing this song makes me remember childhood. So nostalgic.",
+    "tip": "懐かしい describes the warm, bittersweet feeling of nostalgia. English has no single word that captures it as precisely — a beautiful word to know."
+  },
+  {
+    "jp": "なるほど",
+    "reading": "なるほど",
+    "romaji": "naruhodo",
+    "en": "I see / That makes sense / Indeed",
+    "pos": "interjection",
+    "sentence_jp": "なるほど、だからそうなったんですね。",
+    "sentence_en": "I see, so that's why it turned out that way.",
+    "tip": "なるほど shows you've genuinely understood something. It's a natural conversation filler — though be careful using it with superiors, as it can sound slightly condescending in formal settings."
+  },
+  {
+    "jp": "雰囲気",
+    "reading": "ふんいき",
+    "romaji": "fun'iki",
+    "en": "Atmosphere / Vibe / Mood",
+    "pos": "noun",
+    "sentence_jp": "このカフェ、雰囲気がいいですね。",
+    "sentence_en": "This café has a great atmosphere.",
+    "tip": "雰囲気 is one of those words you'll hear constantly once you know it. Japanese people are very attuned to the atmosphere of a place or situation."
+  },
+  {
+    "jp": "仕方がない",
+    "reading": "しかたがない",
+    "romaji": "shikata ga nai",
+    "en": "It can't be helped / Nothing to be done",
+    "pos": "phrase",
+    "sentence_jp": "雨が降ってきたけど、仕方がない。",
+    "sentence_en": "It started raining, but it can't be helped.",
+    "tip": "This phrase reflects a very Japanese acceptance of things outside one's control. Also heard as しょうがない. It's a philosophy as much as a phrase."
+  },
+  {
+    "jp": "お疲れ様",
+    "reading": "おつかれさま",
+    "romaji": "otsukaresama",
+    "en": "Good work / Thanks for your efforts",
+    "pos": "phrase",
+    "sentence_jp": "お疲れ様でした！今日もよく頑張りましたね。",
+    "sentence_en": "Good work today! You really gave it your all.",
+    "tip": "Said at the end of work, after a long task, or when someone finishes something hard. It acknowledges effort — there's no real English equivalent."
+  },
+  {
+    "jp": "丁寧",
+    "reading": "ていねい",
+    "romaji": "teinei",
+    "en": "Polite / Careful / Thorough",
+    "pos": "adjective (な)",
+    "sentence_jp": "彼女はいつも丁寧な言葉を使います。",
+    "sentence_en": "She always uses polite language.",
+    "tip": "丁寧語 (teinei-go) is the polite speech register — the です/ます form you learn first. Being 丁寧 is a high compliment in Japanese culture."
+  },
+  {
+    "jp": "面倒くさい",
+    "reading": "めんどうくさい",
+    "romaji": "mendoukusai",
+    "en": "Bothersome / Too much effort / Annoying",
+    "pos": "adjective (い)",
+    "sentence_jp": "洗い物をするのが面倒くさい。",
+    "sentence_en": "Doing the dishes is such a bother.",
+    "tip": "Extremely common in casual speech. Often shortened to めんどい by younger speakers. If someone says this about studying, encourage them with 頑張って！"
+  },
+  {
+    "jp": "知らない",
+    "reading": "しらない",
+    "romaji": "shiranai",
+    "en": "I don't know / Unknown",
+    "pos": "verb phrase",
+    "sentence_jp": "その言葉の意味を知らない。",
+    "sentence_en": "I don't know the meaning of that word.",
+    "tip": "知る (shiru) means 'to come to know', so 知らない literally means 'I haven't come to know it'. Compare with わからない (I don't understand) — both useful but different!"
+  },
+  {
+    "jp": "暇",
+    "reading": "ひま",
+    "romaji": "hima",
+    "en": "Free time / Boredom / Unoccupied",
+    "pos": "noun / adjective (な)",
+    "sentence_jp": "今日は暇だから、一緒に映画でも見ない？",
+    "sentence_en": "I'm free today, want to watch a movie together?",
+    "tip": "暇 can mean having free time (positive) or feeling bored/idle (slightly negative). Context tells you which. 暇人 (hima-jin) is a person with nothing to do."
+  },
+  {
+    "jp": "やっぱり",
+    "reading": "やっぱり",
+    "romaji": "yappari",
+    "en": "As expected / Just as I thought / After all",
+    "pos": "adverb",
+    "sentence_jp": "やっぱり、日本語は難しいですね。",
+    "sentence_en": "As I expected, Japanese is difficult.",
+    "tip": "Also heard as やはり in more formal speech. One of the most satisfying words — it confirms your instinct was right all along."
+  },
+  {
+    "jp": "素直",
+    "reading": "すなお",
+    "romaji": "sunao",
+    "en": "Honest / Obedient / Straightforward",
+    "pos": "adjective (な)",
+    "sentence_jp": "彼は素直な性格で、みんなに好かれています。",
+    "sentence_en": "He has an honest, straightforward personality and is liked by everyone.",
+    "tip": "素直 describes someone who doesn't put up a front — genuine, easy to deal with, and receptive to guidance. A deeply valued trait in Japan."
+  },
+  {
+    "jp": "本音",
+    "reading": "ほんね",
+    "romaji": "honne",
+    "en": "True feelings / Real intentions",
+    "pos": "noun",
+    "sentence_jp": "本音を言えば、本当は行きたくなかった。",
+    "sentence_en": "If I'm being honest, I didn't really want to go.",
+    "tip": "本音 (true sound) is contrasted with 建前 (tatemae — public face). This distinction is central to Japanese social culture. What someone says publicly vs. what they truly feel."
+  },
+  {
+    "jp": "空気を読む",
+    "reading": "くうきをよむ",
+    "romaji": "kuuki wo yomu",
+    "en": "To read the room / To pick up on the atmosphere",
+    "pos": "phrase",
+    "sentence_jp": "空気が読めない人とは一緒にいるのが難しい。",
+    "sentence_en": "It's hard to be around people who can't read the room.",
+    "tip": "空気 means 'air/atmosphere' and 読む means 'to read'. Reading the air — picking up on unspoken social cues — is considered an essential social skill in Japan."
+  },
+  {
+    "jp": "諦める",
+    "reading": "あきらめる",
+    "romaji": "akirameru",
+    "en": "To give up / To abandon",
+    "pos": "verb (Group 2)",
+    "sentence_jp": "夢を諦めないでください。",
+    "sentence_en": "Please don't give up on your dreams.",
+    "tip": "The word comes from Buddhist philosophy — 諦 relates to accepting truth. Interestingly, in older usage it meant 'to see clearly', not just 'to quit'."
+  },
+  {
+    "jp": "相槌",
+    "reading": "あいづち",
+    "romaji": "aizuchi",
+    "en": "Backchannel / Listening sounds",
+    "pos": "noun",
+    "sentence_jp": "日本語で話すとき、相槌を打つことが大切です。",
+    "sentence_en": "When speaking Japanese, it's important to make listening sounds.",
+    "tip": "Japanese conversation depends on frequent あいづち — はい, そうですね, なるほど, ええ. Staying silent while someone talks can seem rude or inattentive."
+  },
+  {
+    "jp": "初めて",
+    "reading": "はじめて",
+    "romaji": "hajimete",
+    "en": "For the first time",
+    "pos": "adverb / noun",
+    "sentence_jp": "今日、初めて寿司を食べました！",
+    "sentence_en": "Today I ate sushi for the first time!",
+    "tip": "Don't confuse 初めて (hajimete — first time) with 始める (hajimeru — to start/begin). Same reading family, different kanji and meaning."
+  },
+  {
+    "jp": "我慢",
+    "reading": "がまん",
+    "romaji": "gaman",
+    "en": "Patience / Endurance / Holding back",
+    "pos": "noun / verb (する)",
+    "sentence_jp": "もう少しだけ我慢してください。",
+    "sentence_en": "Please hold on just a little longer.",
+    "tip": "我慢 isn't just patience — it implies stoically bearing hardship. A deeply respected quality in Japanese culture, particularly in adversity."
+  },
+  {
+    "jp": "言葉",
+    "reading": "ことば",
+    "romaji": "kotoba",
+    "en": "Word / Language / Speech",
+    "pos": "noun",
+    "sentence_jp": "言葉は文化を映す鏡です。",
+    "sentence_en": "Language is a mirror that reflects culture.",
+    "tip": "言葉 can mean a single word, language as a whole, or the things someone says. 言葉を選ぶ (choose one's words) is a phrase worth knowing early."
+  },
+  {
+    "jp": "縁",
+    "reading": "えん",
+    "romaji": "en",
+    "en": "Fate / Destiny / Connection between people",
+    "pos": "noun",
+    "sentence_jp": "縁があれば、また会えるでしょう。",
+    "sentence_en": "If fate allows, we'll meet again.",
+    "tip": "縁 refers to the mysterious thread that connects people — the idea that meetings and relationships aren't random but fated. A deeply Buddhist concept in everyday Japanese."
+  },
+  {
+    "jp": "いただきます",
+    "reading": "いただきます",
+    "romaji": "itadakimasu",
+    "en": "Let's eat / Thank you for this meal",
+    "pos": "phrase",
+    "sentence_jp": "では、いただきます！",
+    "sentence_en": "Well then, let's eat!",
+    "tip": "Said before every meal. It's a humble expression of receiving — thanking the food, the cook, the farmers, and nature. There's no real English translation that covers it all."
+  },
+  {
+    "jp": "ごちそうさま",
+    "reading": "ごちそうさま",
+    "romaji": "gochisousama",
+    "en": "Thank you for the meal (after eating)",
+    "pos": "phrase",
+    "sentence_jp": "ごちそうさまでした！とても美味しかったです。",
+    "sentence_en": "Thank you for the meal! It was delicious.",
+    "tip": "The pair to いただきます. 馳走 (chisou) originally meant 'running around' — referring to the effort of gathering ingredients. A meal is an act of care."
+  },
+  {
+    "jp": "木漏れ日",
+    "reading": "こもれび",
+    "romaji": "komorebi",
+    "en": "Sunlight filtering through leaves",
+    "pos": "noun",
+    "sentence_jp": "公園を歩きながら木漏れ日を楽しんだ。",
+    "sentence_en": "I enjoyed the dappled sunlight while walking through the park.",
+    "tip": "One of Japanese's most beautiful untranslatable words. The interplay of light and shadow through tree leaves. English needs a whole phrase; Japanese has one elegant word."
+  },
+  {
+    "jp": "物悲しい",
+    "reading": "ものがなしい",
+    "romaji": "monogana shii",
+    "en": "Melancholy / Wistfully sad",
+    "pos": "adjective (い)",
+    "sentence_jp": "秋の夕暮れは物悲しい気持ちになる。",
+    "sentence_en": "Autumn dusk fills me with a melancholy feeling.",
+    "tip": "物 (mono) here means 'things in general' — a vague sadness that arises from the nature of things. Related to 物の哀れ (mono no aware), a key concept in Japanese aesthetics."
+  },
+  {
+    "jp": "侘び寂び",
+    "reading": "わびさび",
+    "romaji": "wabi-sabi",
+    "en": "Beauty in imperfection and impermanence",
+    "pos": "noun / concept",
+    "sentence_jp": "古い茶碗の傷にも侘び寂びの美しさがある。",
+    "sentence_en": "There is a wabi-sabi beauty even in the cracks of an old tea bowl.",
+    "tip": "Perhaps the most famous Japanese aesthetic concept. 侘び (wabi) = simplicity and asymmetry; 寂び (sabi) = beauty that comes with age and wear. Imperfection is the point."
+  },
+  {
+    "jp": "生きがい",
+    "reading": "いきがい",
+    "romaji": "ikigai",
+    "en": "Reason for living / Purpose",
+    "pos": "noun",
+    "sentence_jp": "料理が私の生きがいです。",
+    "sentence_en": "Cooking is my reason for living.",
+    "tip": "生き (iki) = life, 甲斐 (gai) = worth/value. Your ikigai is the thing that gets you out of bed in the morning. Now a global concept — but it started here."
+  },
+  {
+    "jp": "森林浴",
+    "reading": "しんりんよく",
+    "romaji": "shinrin-yoku",
+    "en": "Forest bathing / Immersing oneself in nature",
+    "pos": "noun",
+    "sentence_jp": "週末は山で森林浴をして、ストレスを解消した。",
+    "sentence_en": "I relieved stress on the weekend with some forest bathing in the mountains.",
+    "tip": "A recognized health practice in Japan — spending time in forests to reduce cortisol and improve wellbeing. 浴 (yoku) means 'bath' — you bathe in the atmosphere of the forest."
+  },
+  {
+    "jp": "遠慮",
+    "reading": "えんりょ",
+    "romaji": "enryo",
+    "en": "Restraint / Holding back out of politeness",
+    "pos": "noun / verb (する)",
+    "sentence_jp": "どうぞ遠慮なく食べてください。",
+    "sentence_en": "Please help yourself — don't hold back.",
+    "tip": "遠慮 is the polite act of holding yourself back so as not to impose. When a host says 遠慮しないで, they're genuinely urging you to stop being so polite and just dig in."
+  },
+  {
+    "jp": "察する",
+    "reading": "さっする",
+    "romaji": "sassuru",
+    "en": "To sense / To infer / To read between the lines",
+    "pos": "verb (Group 1)",
+    "sentence_jp": "彼女の気持ちを察して、そっとしておいた。",
+    "sentence_en": "I sensed how she was feeling and left her in peace.",
+    "tip": "察する is the ability to understand what someone is feeling without being told. Highly valued in Japan — it's the skill underlying 空気を読む (reading the room)."
+  },
+  {
+    "jp": "積み重ね",
+    "reading": "つみかさね",
+    "romaji": "tsumikasane",
+    "en": "Accumulation / Building up over time",
+    "pos": "noun",
+    "sentence_jp": "語学の上達は毎日の積み重ねが大切です。",
+    "sentence_en": "For language improvement, daily accumulation is what matters.",
+    "tip": "積み重ね literally means 'stack of piles' — the image of progress building layer by layer. A word that applies perfectly to language learning."
+  },
+  {
+    "jp": "間",
+    "reading": "ま",
+    "romaji": "ma",
+    "en": "Pause / Interval / Negative space",
+    "pos": "noun",
+    "sentence_jp": "会話の間が大切なこともある。",
+    "sentence_en": "The pauses in a conversation can matter just as much.",
+    "tip": "間 is a foundational Japanese aesthetic and social concept — the meaningful pause, the space between things, the rest in music. Silence in Japan communicates as much as speech."
+  },
+  {
+    "jp": "一期一会",
+    "reading": "いちごいちえ",
+    "romaji": "ichigo ichie",
+    "en": "Once in a lifetime meeting / Treasure each moment",
+    "pos": "phrase (四字熟語)",
+    "sentence_jp": "一期一会の精神で、毎日を大切に生きましょう。",
+    "sentence_en": "Let's live each day preciously with the spirit of ichigo ichie.",
+    "tip": "A four-character idiom from the tea ceremony — every gathering is unique and will never happen the same way again. Treat each meeting as a once-in-a-lifetime encounter."
+  },
+  {
+    "jp": "七転び八起き",
+    "reading": "ななころびやおき",
+    "romaji": "nana korobi ya oki",
+    "en": "Fall seven times, rise eight",
+    "pos": "proverb",
+    "sentence_jp": "七転び八起き！失敗しても諦めないで。",
+    "sentence_en": "Fall seven times, rise eight — don't give up even when you fail.",
+    "tip": "Japan's most famous proverb about resilience. No matter how many times you fall, you get up one more time. The spirit behind the Daruma doll."
+  },
+  {
+    "jp": "猫をかぶる",
+    "reading": "ねこをかぶる",
+    "romaji": "neko wo kaburu",
+    "en": "To wear a cat / To hide one's true nature",
+    "pos": "phrase",
+    "sentence_jp": "彼女は先生の前では猫をかぶっています。",
+    "sentence_en": "She wears a cat (acts all sweet and innocent) in front of the teacher.",
+    "tip": "Literally 'to wear a cat' — pretending to be tame and harmless when you're actually not. The Japanese equivalent of 'wolf in sheep's clothing', but cuter."
+  },
+  {
+    "jp": "石の上にも三年",
+    "reading": "いしのうえにもさんねん",
+    "romaji": "ishi no ue ni mo sannen",
+    "en": "Three years even on a cold stone / Perseverance pays off",
+    "pos": "proverb",
+    "sentence_jp": "石の上にも三年という言葉のように、諦めずに続けましょう。",
+    "sentence_en": "Like the saying 'three years even on a cold stone' — let's keep going without giving up.",
+    "tip": "Sit long enough on a cold stone and it will warm up. Stick with something long enough and you'll get results. A perfect proverb for language learning."
+  },
+  {
+    "jp": "花より団子",
+    "reading": "はなよりだんご",
+    "romaji": "hana yori dango",
+    "en": "Dumplings over flowers / Practical over beautiful",
+    "pos": "proverb",
+    "sentence_jp": "花見より花より団子で、食べ物目当てで来ました。",
+    "sentence_en": "It's dumplings over flowers for me — I came for the food.",
+    "tip": "Said of someone who prefers practical pleasures (food, comfort) over aesthetic ones (viewing cherry blossoms). The source of the famous manga/anime title."
+  },
+  {
+    "jp": "出る杭は打たれる",
+    "reading": "でるくいはうたれる",
+    "romaji": "deru kui wa utareru",
+    "en": "The nail that sticks out gets hammered down",
+    "pos": "proverb",
+    "sentence_jp": "出る杭は打たれると言うが、それでも自分らしくいたい。",
+    "sentence_en": "They say the nail that sticks out gets hammered down, but I still want to be myself.",
+    "tip": "Japan's most famous cultural proverb. It describes social pressure towards conformity. Often quoted self-critically — modern Japan debates this one constantly."
+  },
+  {
+    "jp": "朝飯前",
+    "reading": "あさめしまえ",
+    "romaji": "asameshimae",
+    "en": "A piece of cake / Before breakfast easy",
+    "pos": "phrase",
+    "sentence_jp": "そんな計算、朝飯前だよ。",
+    "sentence_en": "That calculation? Easy — before-breakfast stuff.",
+    "tip": "Literally 'before morning rice' — something so simple you could do it before breakfast without effort. The Japanese equivalent of 'a piece of cake'."
+  }
+]
