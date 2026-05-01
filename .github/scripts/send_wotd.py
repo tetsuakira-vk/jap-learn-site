@@ -67,12 +67,15 @@ for placeholder, value in replacements.items():
 subject  = f"🇯🇵 Word of the Day: {word['en']} — {word['jp']}"
 subtitle = f"{word['reading']}  ·  {word['sentence_en'][:60]}…"
 
+# STATUS: "draft" = saves to Beehiiv for you to review & send manually
+#         "confirmed" = sends immediately to all subscribers
+STATUS = "draft"
+
 payload = {
-    "subject":       subject,
-    "subtitle":      subtitle,
-    "status":        "confirmed",        # send immediately; use "draft" to review first
-    "audience":      "free",             # send to all free subscribers
-    "content_html":  html,
+    "subject":      subject,
+    "subtitle":     subtitle,
+    "status":       STATUS,
+    "content_html": html,
 }
 
 headers = {
@@ -81,6 +84,10 @@ headers = {
     "Accept":        "application/json",
 }
 
+print(f"Posting to: {API_BASE}/publications/{PUB_ID}/posts")
+print(f"Subject: {subject}")
+print(f"Status: {STATUS}")
+
 resp = requests.post(
     f"{API_BASE}/publications/{PUB_ID}/posts",
     headers=headers,
@@ -88,9 +95,14 @@ resp = requests.post(
     timeout=30,
 )
 
+print(f"Response status: {resp.status_code}")
+print(f"Response body: {resp.text[:2000]}")
+
 if resp.ok:
     data = resp.json()
-    print(f"SUCCESS — Post created: {data.get('data', {}).get('id', 'unknown')}")
+    post_id = data.get("data", {}).get("id", "unknown")
+    print(f"SUCCESS — Draft created: {post_id}")
+    print(f"Review it at: https://app.beehiiv.com/posts/{post_id}")
 else:
-    print(f"ERROR {resp.status_code}: {resp.text}")
+    print("FAILED — see response above for details")
     sys.exit(1)
