@@ -245,3 +245,26 @@ window.translation={common:{selectedList:'{quantity} list selected',selectedList
 var AUTOHIDE=Boolean(0);
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var panels = ['success-message', 'error-message'].map(function(id) {
+    return document.getElementById(id);
+  }).filter(Boolean);
+
+  panels.forEach(function(el) {
+    new MutationObserver(function(mutations) {
+      mutations.forEach(function() {
+        // Brevo tried to change this panel — read what it wants and honour it
+        var wants = el.style.display;
+        if (wants && wants !== 'none') {
+          el.style.setProperty('display', 'block', 'important');
+          el.style.setProperty('visibility', 'visible', 'important');
+          el.style.setProperty('opacity', '1', 'important');
+          // scroll into view smoothly so user sees it
+          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      });
+    }).observe(el, { attributes: true, attributeFilter: ['style', 'class'] });
+  });
+});
+</script>
