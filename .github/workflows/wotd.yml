@@ -25,5 +25,6 @@ jobs:
       - name: Send Word of the Day
         run: python .github/scripts/send_wotd.py
         env:
-          BEEHIIV_API_KEY: ${{ secrets.BEEHIIV_API_KEY }}
-          BEEHIIV_PUB_ID:  ${{ secrets.BEEHIIV_PUB_ID }}
+          BREVO_API_KEY:      ${{ secrets.BREVO_API_KEY }}
+          BREVO_SENDER_EMAIL: ${{ secrets.BREVO_SENDER_EMAIL }}
+          BREVO_LIST_ID:      ${{ secrets.BREVO_LIST_ID }}

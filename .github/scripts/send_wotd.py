@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
 """
-Sends the daily Japanese Word of the Day email via Beehiiv API.
+Sends the daily Japanese Word of the Day email via Brevo (Sendinblue) API.
 Runs on a GitHub Actions cron schedule.
 
-Required secrets (set in GitHub repo settings → Secrets → Actions):
-  BEEHIIV_API_KEY  — from Beehiiv dashboard → Settings → API
-  BEEHIIV_PUB_ID   — from Beehiiv dashboard URL: /publications/pub_XXXXXXXX
+Required secrets (GitHub repo → Settings → Secrets → Actions):
+  BREVO_API_KEY      — from Brevo dashboard → Settings → API Keys
+  BREVO_SENDER_EMAIL — verified sender address in Brevo
+  BREVO_LIST_ID      — contact list ID (Brevo → Contacts → Lists — it's a number like 3)
 """
 
 import json
@@ -18,15 +19,20 @@ import requests
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-API_KEY = os.environ.get("BEEHIIV_API_KEY", "")
-PUB_ID  = os.environ.get("BEEHIIV_PUB_ID", "")
+API_KEY      = os.environ.get("BREVO_API_KEY", "")
+SENDER_EMAIL = os.environ.get("BREVO_SENDER_EMAIL", "")
+LIST_ID      = os.environ.get("BREVO_LIST_ID", "")
 
-if not API_KEY or not PUB_ID:
-    print("ERROR: BEEHIIV_API_KEY and BEEHIIV_PUB_ID must be set.")
+if not API_KEY or not SENDER_EMAIL or not LIST_ID:
+    print("ERROR: BREVO_API_KEY, BREVO_SENDER_EMAIL and BREVO_LIST_ID must all be set.")
     sys.exit(1)
 
-SITE_URL  = "https://japaneseunlocked.com"
-API_BASE  = "https://api.beehiiv.com/v2"
+API_BASE = "https://api.brevo.com/v3"
+HEADERS  = {
+    "accept":       "application/json",
+    "content-type": "application/json",
+    "api-key":      API_KEY,
+}
 
 # ── Load words ────────────────────────────────────────────────────────────────
 
@@ -36,10 +42,8 @@ words_file = repo_root / "data" / "wotd.json"
 with open(words_file, encoding="utf-8") as f:
     words = json.load(f)
 
-# Pick today's word — cycles through the list indefinitely
 day_index = datetime.now(timezone.utc).timetuple().tm_yday
 word = words[day_index % len(words)]
-
 print(f"Today's word ({day_index % len(words)}): {word['jp']} — {word['en']}")
 
 # ── Build email HTML ──────────────────────────────────────────────────────────
@@ -47,7 +51,6 @@ print(f"Today's word ({day_index % len(words)}): {word['jp']} — {word['en']}")
 template_path = repo_root / "static" / "email" / "wotd-preview.html"
 html = template_path.read_text(encoding="utf-8")
 
-# Replace placeholders
 replacements = {
     "{{WORD_JP}}":      word["jp"],
     "{{WORD_READING}}": word["reading"],
@@ -57,53 +60,47 @@ replacements = {
     "{{SENTENCE_JP}}":  word["sentence_jp"],
     "{{SENTENCE_EN}}":  word["sentence_en"],
     "{{TIP}}":          word["tip"],
-    "{{UNSUBSCRIBE_URL}}": "{{unsubscribe_url}}",  # Beehiiv injects this at send time
+    # Brevo injects its own unsubscribe link — remove the placeholder
+    "{{UNSUBSCRIBE_URL}}": "#",
 }
 for placeholder, value in replacements.items():
     html = html.replace(placeholder, value)
 
-# ── Send via Beehiiv API ──────────────────────────────────────────────────────
+# ── Create campaign ───────────────────────────────────────────────────────────
 
-subject  = f"🇯🇵 Word of the Day: {word['en']} — {word['jp']}"
-subtitle = f"{word['reading']}  ·  {word['sentence_en'][:60]}…"
+subject = f"🇯🇵 Word of the Day: {word['en']} — {word['jp']}"
 
-# STATUS: "draft" = saves to Beehiiv for you to review & send manually
-#         "confirmed" = sends immediately to all subscribers
-STATUS = "draft"
-
-payload = {
-    "title":        f"WOTD: {word['jp']} — {word['en']}",
-    "subject":      subject,
-    "subtitle":     subtitle,
-    "status":       STATUS,
-    "content_html": html,
+campaign_payload = {
+    "name":    f"WOTD {datetime.now(timezone.utc).strftime('%Y-%m-%d')} — {word['jp']}",
+    "subject": subject,
+    "sender":  {"name": "Japanese Unlocked", "email": SENDER_EMAIL},
+    "type":    "classic",
+    "htmlContent": html,
+    "recipients":  {"listIds": [int(LIST_ID)]},
 }
 
-headers = {
-    "Authorization": f"Bearer {API_KEY}",
-    "Content-Type":  "application/json",
-    "Accept":        "application/json",
-}
+print(f"Creating campaign: {subject}")
+resp = requests.post(f"{API_BASE}/emailCampaigns", headers=HEADERS, json=campaign_payload, timeout=30)
+print(f"Create response {resp.status_code}: {resp.text[:500]}")
 
-print(f"Posting to: {API_BASE}/publications/{PUB_ID}/posts")
-print(f"Subject: {subject}")
-print(f"Status: {STATUS}")
+if not resp.ok:
+    print("FAILED to create campaign.")
+    sys.exit(1)
 
-resp = requests.post(
-    f"{API_BASE}/publications/{PUB_ID}/posts",
-    headers=headers,
-    json=payload,
+campaign_id = resp.json().get("id")
+print(f"Campaign created: id={campaign_id}")
+
+# ── Send immediately ──────────────────────────────────────────────────────────
+
+send_resp = requests.post(
+    f"{API_BASE}/emailCampaigns/{campaign_id}/sendNow",
+    headers=HEADERS,
     timeout=30,
 )
+print(f"Send response {send_resp.status_code}: {send_resp.text[:500]}")
 
-print(f"Response status: {resp.status_code}")
-print(f"Response body: {resp.text[:2000]}")
-
-if resp.ok:
-    data = resp.json()
-    post_id = data.get("data", {}).get("id", "unknown")
-    print(f"SUCCESS — Draft created: {post_id}")
-    print(f"Review it at: https://app.beehiiv.com/posts/{post_id}")
+if send_resp.ok:
+    print(f"SUCCESS — email sent to list {LIST_ID}")
 else:
-    print("FAILED — see response above for details")
+    print("Campaign created but FAILED to send.")
     sys.exit(1)
