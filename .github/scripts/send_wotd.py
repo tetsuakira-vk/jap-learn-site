@@ -72,6 +72,7 @@ subtitle = f"{word['reading']}  ·  {word['sentence_en'][:60]}…"
 STATUS = "draft"
 
 payload = {
+    "title":        f"WOTD: {word['jp']} — {word['en']}",
     "subject":      subject,
     "subtitle":     subtitle,
     "status":       STATUS,
