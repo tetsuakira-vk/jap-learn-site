@@ -10,37 +10,52 @@ Sign up and we'll send you one Japanese word a day — the word in kanji and kan
 
 <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
-<div class="brevo-signup">
-  <div class="brevo-signup__inner">
-    <div class="brevo-signup__deco" aria-hidden="true">日</div>
-    <div class="brevo-signup__label">Word of the Day Email</div>
-    <h3 class="brevo-signup__title">日本語 一日一言</h3>
-    <p class="brevo-signup__sub">One word. One sentence. Every morning. Free.</p>
-    <div id="error-message" class="sib-form-message-panel brevo-msg brevo-msg--error">
-      Something went wrong — please try again.
+<div class="brevo-signup-wrap">
+  <div class="brevo-signup__deco" aria-hidden="true">日</div>
+  <div class="brevo-signup__label">Word of the Day Email</div>
+  <div class="brevo-signup__title">日本語 一日一言</div>
+  <div class="brevo-signup__sub">One word. One sentence. Every morning. Free.</div>
+
+  <div id="sib-form-container" class="sib-form-container">
+    <div id="error-message" class="sib-form-message-panel" style="display:none">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">Something went wrong — please try again.</span>
+      </div>
     </div>
-    <div id="success-message" class="sib-form-message-panel brevo-msg brevo-msg--success">
-      You're in! First word arrives tomorrow morning. ありがとう！
+    <div id="success-message" class="sib-form-message-panel" style="display:none">
+      <div class="sib-form-message-panel__text sib-form-message-panel__text--center">
+        <span class="sib-form-message-panel__inner-text">You're in! First word arrives tomorrow morning. ありがとう！</span>
+      </div>
     </div>
-    <div id="sib-container">
+    <div id="sib-container" class="sib-container--large sib-container--vertical">
       <form id="sib-form" method="POST"
             action="https://f535f95e.sibforms.com/serve/MUIFAGHqdF0sblAOWkL-GDH00bmZP2NoG9xPAmZHSP9uFWhnz_k8A5Fh2HSlkjMkRW4Xf2lToOT9jk5FSWjeDwfoC8_bPMBR_pAVEzmHx1ocndWV4_xPZUyJ1mnROhumDzxmOJF3OS0z5m5G2Gl0_qKYgAm53cMBr6U0nDoPVkKyDK6Cr9zFs22R-wn7R7_AIWxLhiRD0m2nL_CkSQ=="
             data-type="subscription">
-        <div class="brevo-signup__row">
-          <input class="input brevo-signup__input" type="text" id="EMAIL" name="EMAIL"
-                 autocomplete="off" placeholder="your@email.com"
-                 data-required="true" required />
-          <button class="brevo-signup__btn sib-form-block__button" type="submit" form="sib-form">
-            Subscribe
-          </button>
+        <div class="sib-input sib-form-block">
+          <div class="form__entry entry_block">
+            <div class="form__label-row brevo-signup__row">
+              <div class="entry__field">
+                <input class="input brevo-signup__input" type="text" id="EMAIL" name="EMAIL"
+                       autocomplete="off" value="" placeholder="your@email.com"
+                       data-required="true" required />
+              </div>
+              <button class="sib-form-block__button sib-form-block__button-with-loader brevo-signup__btn"
+                      form="sib-form" type="submit">
+                <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
+                  <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                </svg>
+                Subscribe
+              </button>
+            </div>
+            <label class="entry__error entry__error--primary" style="font-family:inherit;font-size:0.8rem;color:#c0392b;background:none;border:none;text-align:center;padding:0;margin-top:0.4rem;"></label>
+          </div>
         </div>
-        <label class="entry__error entry__error--primary brevo-entry-error"></label>
         <input type="text" name="email_address_check" value="" class="input--hidden">
         <input type="hidden" name="locale" value="en">
       </form>
     </div>
-    <div class="brevo-signup__note">No spam. Unsubscribe any time.</div>
   </div>
+  <div class="brevo-signup__note">No spam. Unsubscribe any time.</div>
 </div>
 
 ---

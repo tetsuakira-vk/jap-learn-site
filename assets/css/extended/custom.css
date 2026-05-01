@@ -786,19 +786,15 @@
 .rc-desc { font-size: 0.82rem; color: var(--secondary); line-height: 1.45; }
 
 /* ── Brevo signup form ── */
-.brevo-signup {
+.brevo-signup-wrap {
   position: relative;
   background: var(--entry);
   border: 1px solid var(--border);
   border-radius: 16px;
+  padding: 2.4rem 2rem 1.8rem;
   margin: 2rem 0;
-  overflow: hidden;
-}
-.brevo-signup__inner {
-  position: relative;
-  padding: 2.4rem 2rem 2rem;
   text-align: center;
-  z-index: 1;
+  overflow: hidden;
 }
 .brevo-signup__deco {
   position: absolute;
@@ -818,22 +814,41 @@
   margin-bottom: 0.5rem;
 }
 .brevo-signup__title {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin: 0 0 0.4rem;
+  margin-bottom: 0.35rem;
   color: var(--primary);
 }
 .brevo-signup__sub {
   font-size: 0.9rem;
   color: var(--secondary);
-  margin: 0 0 1.4rem;
+  margin-bottom: 1.4rem;
 }
+.brevo-signup__note {
+  font-size: 0.73rem;
+  color: var(--secondary);
+  margin-top: 0.9rem;
+}
+/* Strip Brevo's container chrome */
+.brevo-signup-wrap .sib-form-container { display: block; }
+.brevo-signup-wrap #sib-container {
+  background: transparent !important;
+  border: none !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  text-align: center !important;
+}
+.brevo-signup-wrap .sib-input { padding: 0 !important; }
+.brevo-signup-wrap .form__entry { padding: 0 !important; }
+/* Row: input + button side by side */
 .brevo-signup__row {
-  display: flex;
+  display: flex !important;
   gap: 0.6rem;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 0 !important;
 }
+/* Input */
 .brevo-signup__input {
   padding: 0.6rem 1rem !important;
   border: 1px solid var(--border) !important;
@@ -841,13 +856,13 @@
   background: var(--theme) !important;
   color: var(--primary) !important;
   font-size: 0.92rem !important;
-  width: 260px;
-  max-width: 100%;
-  outline: none;
+  width: 260px !important;
+  max-width: 100% !important;
+  height: auto !important;
+  box-shadow: none !important;
 }
-.brevo-signup__input:focus {
-  border-color: #c0392b !important;
-}
+.brevo-signup__input:focus { border-color: #c0392b !important; outline: none !important; }
+/* Button */
 .brevo-signup__btn {
   padding: 0.6rem 1.5rem !important;
   border-radius: 8px !important;
@@ -856,31 +871,34 @@
   color: #fff !important;
   font-size: 0.92rem !important;
   font-weight: 700 !important;
-  cursor: pointer;
-  letter-spacing: 0.04em;
+  cursor: pointer !important;
+  letter-spacing: 0.04em !important;
+  height: auto !important;
+  text-align: center !important;
 }
 .brevo-signup__btn:hover { background: #a93226 !important; }
-.brevo-signup__note {
-  font-size: 0.73rem;
-  color: var(--secondary);
-  margin-top: 0.9rem;
+.brevo-signup__btn .sib-hide-loader-icon { display: none; }
+/* Success / error panels */
+.brevo-signup-wrap .sib-form-message-panel {
+  border-radius: 8px !important;
+  padding: 0.6rem 1rem !important;
+  margin: 0 0 1rem !important;
+  font-size: 0.88rem !important;
+  font-weight: 600 !important;
+  max-width: 100% !important;
 }
-/* Brevo message panels */
-.brevo-msg {
-  border-radius: 8px;
-  padding: 0.6rem 1rem;
-  margin-bottom: 1rem;
-  font-size: 0.88rem;
-  font-weight: 600;
+.brevo-signup-wrap #error-message {
+  background: rgba(192,57,43,0.12) !important;
+  color: #c0392b !important;
+  border: 1px solid rgba(192,57,43,0.3) !important;
 }
-.brevo-msg--error   { background: rgba(192,57,43,0.12); color: #c0392b; border: 1px solid rgba(192,57,43,0.3); }
-.brevo-msg--success { background: rgba(56,161,105,0.12); color: #38a169; border: 1px solid rgba(56,161,105,0.3); }
-/* Brevo requires this to hide messages initially */
-:where(.sib-form-message-panel) { display: none; }
+.brevo-signup-wrap #success-message {
+  background: rgba(56,161,105,0.12) !important;
+  color: #38a169 !important;
+  border: 1px solid rgba(56,161,105,0.3) !important;
+}
 .input--hidden { display: none !important; }
-/* Override any Brevo container styles */
-#sib-container { background: transparent !important; border: none !important; max-width: 100% !important; text-align: center !important; }
-.brevo-entry-error { display: block; font-size: 0.8rem; color: #c0392b; margin-top: 0.4rem; }
+.brevo-signup-wrap .entry__specification { display: none !important; }
 
 /* ── Coming soon strip ── */
 .coming-soon-grid {
