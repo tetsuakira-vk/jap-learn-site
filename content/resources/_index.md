@@ -62,33 +62,41 @@ Sign up and we'll send you one Japanese word a day — the word in kanji and kan
 
 ## Japanese Unlocked — Free Downloads
 
-These are coming. Flashcard decks, printable kana charts, kanji study sheets and more — all free. Check back soon.
+Print-and-cut flashcard PDFs — all free, no sign-up needed.
 
-<div class="coming-soon-grid">
-  <div class="coming-soon-card">
-    <div class="cs-title">Hiragana Chart PDF</div>
-    <div class="cs-desc">Printable reference sheet — all 46 characters with stroke order.</div>
-  </div>
-  <div class="coming-soon-card">
-    <div class="cs-title">Katakana Chart PDF</div>
-    <div class="cs-desc">Printable reference sheet — all 46 characters with stroke order.</div>
-  </div>
-  <div class="coming-soon-card">
-    <div class="cs-title">JLPT N5 Flashcard Deck</div>
-    <div class="cs-desc">Anki deck for all N5 vocabulary with audio.</div>
-  </div>
-  <div class="coming-soon-card">
-    <div class="cs-title">N5 Kanji Study Sheet</div>
-    <div class="cs-desc">The 100 most common N5 kanji with readings and examples.</div>
-  </div>
-  <div class="coming-soon-card">
-    <div class="cs-title">Beginner Phrase Sheet</div>
-    <div class="cs-desc">50 essential phrases to print and stick on your wall.</div>
-  </div>
-  <div class="coming-soon-card">
-    <div class="cs-title">Particles Cheat Sheet</div>
-    <div class="cs-desc">は vs が, に vs で, and all the tricky ones explained.</div>
-  </div>
+<div class="download-grid">
+  <a class="download-card" href="/downloads/hiragana_flashcards.pdf" download>
+    <div class="dl-icon">あ</div>
+    <div class="dl-info">
+      <div class="dl-title">Hiragana Flashcards</div>
+      <div class="dl-desc">All 46 characters — print, cut, and drill. Romaji reading on the reverse.</div>
+      <div class="dl-meta">PDF · 46 cards · free</div>
+    </div>
+  </a>
+  <a class="download-card" href="/downloads/katakana_flashcards.pdf" download>
+    <div class="dl-icon">ア</div>
+    <div class="dl-info">
+      <div class="dl-title">Katakana Flashcards</div>
+      <div class="dl-desc">All 46 characters — print, cut, and drill. Romaji reading on the reverse.</div>
+      <div class="dl-meta">PDF · 46 cards · free</div>
+    </div>
+  </a>
+  <a class="download-card" href="/downloads/kanji_n5_flashcards.pdf" download>
+    <div class="dl-icon">漢</div>
+    <div class="dl-info">
+      <div class="dl-title">N5 Kanji Flashcards</div>
+      <div class="dl-desc">106 essential beginner kanji with readings and meanings on the reverse.</div>
+      <div class="dl-meta">PDF · 106 cards · free</div>
+    </div>
+  </a>
+  <a class="download-card" href="/downloads/japanese_complete_bundle.pdf" download>
+    <div class="dl-icon">束</div>
+    <div class="dl-info">
+      <div class="dl-title">Complete Bundle</div>
+      <div class="dl-desc">Hiragana + Katakana + N5 Kanji all in one PDF. The full beginner set.</div>
+      <div class="dl-meta">PDF · 198 cards · free</div>
+    </div>
+  </a>
 </div>
 
 ---

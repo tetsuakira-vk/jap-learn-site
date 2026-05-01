@@ -11,18 +11,8 @@
         <span class="masthead-title-jp">日本語を学ぼう</span>
       </a>
       {{- end }}
-      <form class="hdr-signup" id="hdr-sib-form" method="POST"
-            action="https://f535f95e.sibforms.com/serve/MUIFAGHqdF0sblAOWkL-GDH00bmZP2NoG9xPAmZHSP9uFWhnz_k8A5Fh2HSlkjMkRW4Xf2lToOT9jk5FSWjeDwfoC8_bPMBR_pAVEzmHx1ocndWV4_xPZUyJ1mnROhumDzxmOJF3OS0z5m5G2Gl0_qKYgAm53cMBr6U0nDoPVkKyDK6Cr9zFs22R-wn7R7_AIWxLhiRD0m2nL_CkSQ=="
-            data-type="subscription" novalidate>
-        <span class="hdr-signup__label">日 Word a Day</span>
-        <input class="hdr-signup__input" type="text" id="hdr-EMAIL" name="EMAIL"
-               placeholder="your@email.com" autocomplete="off" data-required="true" required />
-        <button class="hdr-signup__btn" type="submit">Subscribe</button>
-        <input type="text" name="email_address_check" value="" style="display:none">
-        <input type="hidden" name="locale" value="en">
-      </form>
-
       {{- if (not site.Params.disableThemeToggle) }}
+      <div class="masthead-right">
       <div class="hdr-icons">
         <a href="/sitemap-page/" class="hdr-icon-btn" title="Site map" aria-label="Site map">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
@@ -56,6 +46,18 @@
         </div>
         </div><!-- /.theme-picker-wrap -->
       </div><!-- /.hdr-icons -->
+
+      <form class="hdr-signup" id="hdr-sib-form" method="POST"
+            action="https://f535f95e.sibforms.com/serve/MUIFAGHqdF0sblAOWkL-GDH00bmZP2NoG9xPAmZHSP9uFWhnz_k8A5Fh2HSlkjMkRW4Xf2lToOT9jk5FSWjeDwfoC8_bPMBR_pAVEzmHx1ocndWV4_xPZUyJ1mnROhumDzxmOJF3OS0z5m5G2Gl0_qKYgAm53cMBr6U0nDoPVkKyDK6Cr9zFs22R-wn7R7_AIWxLhiRD0m2nL_CkSQ=="
+            data-type="subscription" novalidate>
+        <span class="hdr-signup__label">日 Word a Day</span>
+        <input class="hdr-signup__input" type="text" id="hdr-EMAIL" name="EMAIL"
+               placeholder="your@email.com" autocomplete="off" data-required="true" required />
+        <button class="hdr-signup__btn" type="submit">Subscribe</button>
+        <input type="text" name="email_address_check" value="" style="display:none">
+        <input type="hidden" name="locale" value="en">
+      </form>
+      </div><!-- /.masthead-right -->
       {{- end }}
     </div>
   </div>
