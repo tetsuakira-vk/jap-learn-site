@@ -59,6 +59,12 @@ showtoc: false
   <div class="sitemap-section">
     <div class="sitemap-section-title">Vocabulary & Phrases</div>
     <ul class="sitemap-links">
+      <li><a href="/vocab/">Vocabulary — Overview</a></li>
+      <li><a href="/vocab/colors/">Colors — 色</a></li>
+      <li><a href="/vocab/food/">Food & Drink</a></li>
+      <li><a href="/vocab/body/">Body Parts</a></li>
+      <li><a href="/vocab/family/">Family — 家族</a></li>
+      <li><a href="/vocab/animals/">Animals — 動物</a></li>
       <li><a href="/phrases/">Essential Phrases</a></li>
       <li><a href="/numbers/">Numbers</a></li>
     </ul>

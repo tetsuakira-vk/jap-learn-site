@@ -134,16 +134,66 @@ buildExpired = false
     weight = 5
 
   [[menu.main]]
-    identifier = "numbers"
-    name = "Numbers"
-    url = "/numbers/"
+    identifier = "vocabulary"
+    name = "Vocabulary"
+    url = "/vocab/"
     weight = 47
 
   [[menu.main]]
-    identifier = "phrases"
-    name = "Phrases"
+    identifier = "vocab-phrases"
+    name = "Essential Phrases"
     url = "/phrases/"
-    weight = 50
+    parent = "vocabulary"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "vocab-numbers"
+    name = "Numbers"
+    url = "/numbers/"
+    parent = "vocabulary"
+    weight = 2
+
+  [[menu.main]]
+    identifier = "vocab-n5"
+    name = "N5 Vocabulary"
+    url = "/vocab/"
+    parent = "vocabulary"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "vocab-colors"
+    name = "Colors — 色"
+    url = "/vocab/colors/"
+    parent = "vocabulary"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "vocab-food"
+    name = "Food & Drink"
+    url = "/vocab/food/"
+    parent = "vocabulary"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "vocab-body"
+    name = "Body Parts"
+    url = "/vocab/body/"
+    parent = "vocabulary"
+    weight = 6
+
+  [[menu.main]]
+    identifier = "vocab-family"
+    name = "Family — 家族"
+    url = "/vocab/family/"
+    parent = "vocabulary"
+    weight = 7
+
+  [[menu.main]]
+    identifier = "vocab-animals"
+    name = "Animals — 動物"
+    url = "/vocab/animals/"
+    parent = "vocabulary"
+    weight = 8
 
   [[menu.main]]
     identifier = "grammar"

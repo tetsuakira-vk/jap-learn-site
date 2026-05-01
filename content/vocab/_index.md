@@ -1,8 +1,37 @@
 ---
-title: "JLPT N5 Vocabulary — Essential 100 Words"
-description: "The 100 most important JLPT N5 vocabulary words. Click any word to hear it, then test yourself with the quiz."
+title: "Japanese Vocabulary — 語彙 Topics & Word Lists"
+description: "Free Japanese vocabulary lists by topic — colors, food, body parts, family, animals, and JLPT N5 words. Each page includes kanji, readings, romaji, and audio."
 date: 2025-01-01
+showtoc: false
 ---
+
+Browse vocabulary by topic or jump straight into the N5 word list below. Every page includes kanji, hiragana, romaji, and audio.
+
+<div class="sitemap-grid" style="margin-bottom:2rem">
+  <div class="sitemap-section">
+    <div class="sitemap-section-title">Topic Vocabulary</div>
+    <ul class="sitemap-links">
+      <li><a href="/vocab/colors/">Colors — 色</a></li>
+      <li><a href="/vocab/food/">Food & Drink — 食べ物・飲み物</a></li>
+      <li><a href="/vocab/body/">Body Parts — 体の部位</a></li>
+      <li><a href="/vocab/family/">Family — 家族</a></li>
+      <li><a href="/vocab/animals/">Animals — 動物</a></li>
+    </ul>
+  </div>
+  <div class="sitemap-section">
+    <div class="sitemap-section-title">Also See</div>
+    <ul class="sitemap-links">
+      <li><a href="/phrases/">Essential Phrases</a></li>
+      <li><a href="/numbers/">Numbers — 数字</a></li>
+      <li><a href="/jlpt/n5/">JLPT N5 Word List</a></li>
+      <li><a href="/vocab/quiz/">N5 Vocab Quiz</a></li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## JLPT N5 Vocabulary — Essential 100 Words
 
 N5 is the entry-level JLPT exam — roughly 800 words total. These 100 are the ones you'll encounter constantly. Click any Japanese word to hear it.
 
