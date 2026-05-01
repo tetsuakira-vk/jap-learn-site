@@ -247,37 +247,45 @@ var AUTOHIDE=Boolean(0);
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  var successEl = document.getElementById('success-message');
-  var errorEl   = document.getElementById('error-message');
-  var formWrap  = document.getElementById('sib-container');
+  var form = document.getElementById('sib-form');
+  if (!form) return;
 
-  function showCustomMsg(type) {
-    // Remove any previous custom message
+  // Capture phase — fires before Brevo's bubble-phase listener, blocking it
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    var emailVal = (document.getElementById('EMAIL') || {}).value || '';
+    if (!emailVal || !/\S+@\S+\.\S+/.test(emailVal)) {
+      showMsg('error', 'Please enter a valid email address.');
+      return;
+    }
+
+    var btn = form.querySelector('.brevo-signup__btn');
+    if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+
+    fetch(form.action, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+      .then(function() {
+        var container = document.getElementById('sib-container');
+        if (container) container.style.display = 'none';
+        showMsg('success', "You're in! First word arrives tomorrow morning. ありがとう！");
+      })
+      .catch(function() {
+        if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+        showMsg('error', 'Something went wrong — please try again.');
+      });
+
+  }, true); // true = capture phase
+
+  function showMsg(type, text) {
     var old = document.getElementById('brevo-custom-msg');
     if (old) old.remove();
-    // Hide Brevo's form
-    if (formWrap) formWrap.style.display = 'none';
-    // Create our own message
     var msg = document.createElement('div');
     msg.id = 'brevo-custom-msg';
     msg.className = 'brevo-custom-msg brevo-custom-msg--' + type;
-    msg.textContent = type === 'success'
-      ? "You're in! 🎉 First word arrives tomorrow morning. ありがとう！"
-      : "Something went wrong — please try again.";
-    // Insert after the subtitle
+    msg.textContent = text;
     var sub = document.querySelector('.brevo-signup__sub');
     if (sub) sub.insertAdjacentElement('afterend', msg);
   }
-
-  function watch(el, type) {
-    if (!el) return;
-    new MutationObserver(function() {
-      var d = el.style.display;
-      if (d && d !== 'none') showCustomMsg(type);
-    }).observe(el, { attributes: true, attributeFilter: ['style', 'class'] });
-  }
-
-  watch(successEl, 'success');
-  watch(errorEl, 'error');
 });
 </script>
