@@ -89,6 +89,14 @@ showtoc: false
   </div>
 
   <div class="sitemap-section">
+    <div class="sitemap-section-title">Resources</div>
+    <ul class="sitemap-links">
+      <li><a href="/resources/">Free Resources</a></li>
+      <li><a href="/resources/paid/">Books &amp; Paid Tools</a></li>
+    </ul>
+  </div>
+
+  <div class="sitemap-section">
     <div class="sitemap-section-title">Other</div>
     <ul class="sitemap-links">
       <li><a href="/videos/">Videos</a></li>

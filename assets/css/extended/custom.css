@@ -1918,6 +1918,136 @@
   text-align: center;
 }
 
+/* ── Paid resources / shop page ── */
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.shop-card {
+  border: 1px solid var(--border, #333);
+  border-radius: 10px;
+  background: var(--entry, #1e1e1e);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+.shop-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+.shop-card-body {
+  padding: 1rem 1.1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.shop-card-tags {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.55rem;
+}
+.shop-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.12rem 0.5rem;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.shop-tag--level { background: rgba(192,57,43,0.15); color: #e05c4a; border: 1px solid rgba(192,57,43,0.25); }
+.shop-tag--best  { background: rgba(237,137,54,0.15); color: #ed8936; border: 1px solid rgba(237,137,54,0.3); }
+.shop-tag--type  { background: rgba(120,120,120,0.18); color: #aaa; border: 1px solid rgba(120,120,120,0.28); }
+.shop-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--primary, #fff);
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+}
+.shop-card-desc {
+  font-size: 0.82rem;
+  color: var(--secondary, #aaa);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 0.85rem;
+}
+.shop-buy-btn {
+  display: block;
+  text-align: center;
+  padding: 0.55rem 1rem;
+  background: #f90;
+  color: #111 !important;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: opacity 0.15s;
+}
+.shop-buy-btn:hover { opacity: 0.85; }
+.tutor-card {
+  border: 2px solid #c0392b;
+  border-radius: 12px;
+  padding: 1.4rem 1.6rem;
+  background: var(--entry, #1e1e1e);
+  margin-bottom: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.tutor-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.tutor-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary, #fff);
+}
+.tutor-badge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.6rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: rgba(192,57,43,0.18);
+  color: #e05c4a;
+  border: 1px solid rgba(192,57,43,0.3);
+}
+.tutor-badge--rec {
+  background: rgba(56,161,105,0.15);
+  color: #38a169;
+  border: 1px solid rgba(56,161,105,0.3);
+}
+.tutor-desc {
+  font-size: 0.88rem;
+  color: var(--content, #ccc);
+  line-height: 1.6;
+}
+.tutor-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #c0392b;
+  text-decoration: none;
+}
+.tutor-link:hover { text-decoration: underline; }
+.paid-disclaimer {
+  font-size: 0.8rem;
+  color: var(--secondary, #888);
+  background: var(--entry, #1e1e1e);
+  border: 1px solid var(--border, #333);
+  border-radius: 7px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.55;
+}
+
 /* ── IME setup table on resources page ── */
 .ime-steps {
   counter-reset: ime-step;

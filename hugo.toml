@@ -283,6 +283,20 @@ buildExpired = false
     weight = 68
 
   [[menu.main]]
+    identifier = "resources-free"
+    name = "Free Resources"
+    url = "/resources/"
+    parent = "resources"
+    weight = 1
+
+  [[menu.main]]
+    identifier = "resources-paid"
+    name = "Books & Paid Tools"
+    url = "/resources/paid/"
+    parent = "resources"
+    weight = 2
+
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
