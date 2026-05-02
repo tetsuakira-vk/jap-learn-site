@@ -237,12 +237,6 @@ buildExpired = false
     weight = 4
 
   [[menu.main]]
-    identifier = "about"
-    name = "About"
-    url = "/about/"
-    weight = 60
-
-  [[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"
@@ -253,6 +247,12 @@ buildExpired = false
     name = "Resources"
     url = "/resources/"
     weight = 68
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 69
 
   [[menu.main]]
     identifier = "search"

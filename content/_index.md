@@ -144,15 +144,140 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
 
 ---
 
-## How this site works
+<div class="home-phrases-wrap">
+  <div class="home-phrases-hdr">
+    <span class="home-phrases-title">Hear some Japanese</span>
+    <span class="home-phrases-sub">Click any card to hear it spoken</span>
+  </div>
+  <div class="home-phrases-grid">
+    <div class="hp-card" onclick="hpSpeak('おはようございます')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">おはようございます</div>
+      <div class="hp-read">ohayou gozaimasu</div>
+      <div class="hp-en">Good morning</div>
+    </div>
+    <div class="hp-card" onclick="hpSpeak('ありがとうございます')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">ありがとうございます</div>
+      <div class="hp-read">arigatou gozaimasu</div>
+      <div class="hp-en">Thank you</div>
+    </div>
+    <div class="hp-card" onclick="hpSpeak('すみません')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">すみません</div>
+      <div class="hp-read">sumimasen</div>
+      <div class="hp-en">Excuse me</div>
+    </div>
+    <div class="hp-card" onclick="hpSpeak('いくらですか')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">いくらですか？</div>
+      <div class="hp-read">ikura desu ka?</div>
+      <div class="hp-en">How much is it?</div>
+    </div>
+    <div class="hp-card" onclick="hpSpeak('どこですか')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">どこですか？</div>
+      <div class="hp-read">doko desu ka?</div>
+      <div class="hp-en">Where is it?</div>
+    </div>
+    <div class="hp-card" onclick="hpSpeak('よろしくおねがいします')">
+      <div class="hp-play">▶</div>
+      <div class="hp-jp">よろしくお願いします</div>
+      <div class="hp-read">yoroshiku onegai shimasu</div>
+      <div class="hp-en">Pleased to meet you</div>
+    </div>
+  </div>
+  <a href="/phrases/" class="hp-more">See all phrases →</a>
+</div>
 
-Each section has a **reference chart** you can click to hear pronunciations, and an **interactive quiz** to test yourself. No sign-up. No ads. Just drill.
+<script>
+window.hpSpeak = function(text) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.82;
+  window.speechSynthesis.speak(u);
+};
+</script>
 
-**Recommended order:**
+---
 
-1. Read [Start Here](start/) to understand the writing systems
-2. Learn [Hiragana](hiragana/) — use the chart, then take the quiz daily
-3. Move to [Katakana](katakana/) once hiragana clicks
-4. Study [Grammar](grammar/) — particles and verb forms unlock everything
-5. Work through [JLPT N5](jlpt/n5/) vocab alongside the YouTube lessons
-6. Practice real [Phrases](phrases/) and the [Sentence Quiz](sentences/quiz/) as soon as possible
+<div class="jlpt-strip-wrap">
+  <div class="jlpt-strip-hdr">JLPT levels — which are you aiming for?</div>
+  <div class="jlpt-strip">
+    <a class="jlpt-tile" href="/jlpt/n5/">
+      <div class="jt-badge jt-n5">N5</div>
+      <div class="jt-name">Beginner</div>
+      <div class="jt-words">~800 words</div>
+      <div class="jt-detail">Hiragana, katakana, basic grammar</div>
+    </a>
+    <a class="jlpt-tile" href="/jlpt/n4/">
+      <div class="jt-badge jt-n4">N4</div>
+      <div class="jt-name">Elementary</div>
+      <div class="jt-words">~1,500 words</div>
+      <div class="jt-detail">Everyday conversation, 300 kanji</div>
+    </a>
+    <a class="jlpt-tile" href="/jlpt/n3/">
+      <div class="jt-badge jt-n3">N3</div>
+      <div class="jt-name">Intermediate</div>
+      <div class="jt-words">~3,750 words</div>
+      <div class="jt-detail">News, real-world reading</div>
+    </a>
+    <a class="jlpt-tile" href="/jlpt/n2/">
+      <div class="jt-badge jt-n2">N2</div>
+      <div class="jt-name">Upper Int.</div>
+      <div class="jt-words">~6,000 words</div>
+      <div class="jt-detail">Most jobs in Japan require this</div>
+    </a>
+    <a class="jlpt-tile" href="/jlpt/n1/">
+      <div class="jt-badge jt-n1">N1</div>
+      <div class="jt-name">Advanced</div>
+      <div class="jt-words">~10,000 words</div>
+      <div class="jt-detail">Near-native reading & listening</div>
+    </a>
+  </div>
+</div>
+
+---
+
+<div class="writing-systems-wrap">
+  <div class="writing-systems-hdr">Three writing systems — all used at once</div>
+  <div class="writing-systems-grid">
+    <a class="ws-card" href="/hiragana/">
+      <div class="ws-char">あ</div>
+      <div class="ws-name">Hiragana</div>
+      <div class="ws-count">46 characters</div>
+      <div class="ws-desc">The core phonetic alphabet. Every Japanese learner starts here. Can be learned in about one week.</div>
+      <div class="ws-example">例: たべる — to eat</div>
+    </a>
+    <a class="ws-card" href="/katakana/">
+      <div class="ws-char">ア</div>
+      <div class="ws-name">Katakana</div>
+      <div class="ws-count">46 characters</div>
+      <div class="ws-desc">Same sounds as hiragana, different shapes. Used for foreign loanwords, emphasis, and sound effects.</div>
+      <div class="ws-example">例: コーヒー — coffee</div>
+    </a>
+    <a class="ws-card" href="/kanji/">
+      <div class="ws-char">漢</div>
+      <div class="ws-name">Kanji</div>
+      <div class="ws-count">2,136 daily-use</div>
+      <div class="ws-desc">Characters adopted from Chinese. Each carries meaning. 50 essential ones get you surprisingly far.</div>
+      <div class="ws-example">例: 山 (yama) — mountain</div>
+    </a>
+  </div>
+</div>
+
+---
+
+## Learning path
+
+Each section has a reference chart you can click to hear, and an interactive quiz to drill. No account. No ads.
+
+<div class="learn-path">
+  <div class="lp-step"><span class="lp-num">1</span><div><strong><a href="/hiragana/">Hiragana</a></strong> — the foundation. 46 characters, learnable in a week.</div></div>
+  <div class="lp-step"><span class="lp-num">2</span><div><strong><a href="/katakana/">Katakana</a></strong> — same sounds, different shapes. Unlocks foreign loanwords.</div></div>
+  <div class="lp-step"><span class="lp-num">3</span><div><strong><a href="/grammar/">Grammar</a></strong> — particles and verb forms. These are what make sentences work.</div></div>
+  <div class="lp-step"><span class="lp-num">4</span><div><strong><a href="/jlpt/n5/">JLPT N5 vocab</a></strong> — the 800 most common words. Learn these first.</div></div>
+  <div class="lp-step"><span class="lp-num">5</span><div><strong><a href="/phrases/">Phrases</a></strong> — real sentences with audio. Start using Japanese as early as possible.</div></div>
+  <div class="lp-step"><span class="lp-num">6</span><div><strong><a href="/kanji/">Kanji</a></strong> — pick these up gradually as you build vocabulary, not all at once.</div></div>
+</div>
