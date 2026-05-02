@@ -1,6 +1,6 @@
 ---
 title: "Rhythm — Japanese Music Game"
-description: "Free Japanese rhythm game in your browser. Hit the right lane as hiragana, katakana, kanji, and vocabulary notes fall to the beat. Learn Japanese through music and timing."
+description: "Free Japanese rhythm game in your browser. A character appears at the top — pick the correct answer lane as the notes fall to the beat. Learn hiragana, katakana, kanji, and JLPT vocabulary."
 date: 2025-01-01
 showtoc: false
 ---
@@ -8,7 +8,7 @@ showtoc: false
 <!-- ── MENU SCREEN ── -->
 <div id="rg-menu" class="rg-active">
   <div class="rg-title">リズム — Rhythm</div>
-  <div class="rg-subtitle">Notes fall to the beat — hit the correct lane before they pass.</div>
+  <div class="rg-subtitle">A character appears at the top — hit the lane with the correct answer as it reaches the bar.</div>
 
   <div class="rg-mode-grid">
     <button class="rg-mode-btn rg-mode-active" onclick="RG.setMode('hiragana',this)">
@@ -30,24 +30,24 @@ showtoc: false
   </div>
 
   <div class="rg-howto">
-    <span>Press</span>
+    <span>Read the character at top — press</span>
     <kbd class="rg-kbd rg-kbd--0">D</kbd>
     <kbd class="rg-kbd rg-kbd--1">F</kbd>
     <kbd class="rg-kbd rg-kbd--2">J</kbd>
     <kbd class="rg-kbd rg-kbd--3">K</kbd>
-    <span>— or tap a lane — when the note hits the bar.</span>
+    <span>for the correct answer lane, or tap on mobile.</span>
   </div>
 
   <div class="rg-diff-heading">Difficulty</div>
   <div class="rg-diff-row">
     <button class="rg-diff-btn rg-diff-active" onclick="RG.setDiff('easy',this)">
-      Easy<span class="rg-diff-sub">Slow · 4 chars</span>
+      Easy<span class="rg-diff-sub">70 BPM · 20 rounds</span>
     </button>
     <button class="rg-diff-btn" onclick="RG.setDiff('medium',this)">
-      Medium<span class="rg-diff-sub">Steady · 6 chars</span>
+      Medium<span class="rg-diff-sub">90 BPM · 35 rounds</span>
     </button>
     <button class="rg-diff-btn" onclick="RG.setDiff('hard',this)">
-      Hard<span class="rg-diff-sub">Fast · 8 chars</span>
+      Hard<span class="rg-diff-sub">120 BPM · 55 rounds</span>
     </button>
   </div>
 
@@ -89,19 +89,15 @@ showtoc: false
     <div class="rg-lane-row">
       <div class="rg-lane-cell" data-lane="0" onclick="RG.pressLane(0)">
         <span class="rg-lane-key">D</span>
-        <span class="rg-lane-romaji" id="rg-l0">—</span>
       </div>
       <div class="rg-lane-cell" data-lane="1" onclick="RG.pressLane(1)">
         <span class="rg-lane-key">F</span>
-        <span class="rg-lane-romaji" id="rg-l1">—</span>
       </div>
       <div class="rg-lane-cell" data-lane="2" onclick="RG.pressLane(2)">
         <span class="rg-lane-key">J</span>
-        <span class="rg-lane-romaji" id="rg-l2">—</span>
       </div>
       <div class="rg-lane-cell" data-lane="3" onclick="RG.pressLane(3)">
         <span class="rg-lane-key">K</span>
-        <span class="rg-lane-romaji" id="rg-l3">—</span>
       </div>
     </div>
   </div>
@@ -128,12 +124,17 @@ showtoc: false
   /* ── CONSTANTS ── */
   var LANE_COLORS = ['#ef4444', '#f97316', '#3b82f6', '#a855f7'];
   var KEY_MAP = { KeyD: 0, KeyF: 1, KeyJ: 2, KeyK: 3 };
-
   var DIFF_CFG = {
-    easy:   { bpm: 70,  speed: 200, beatsPerNote: 2.0 },
-    medium: { bpm: 90,  speed: 270, beatsPerNote: 1.5 },
-    hard:   { bpm: 120, speed: 350, beatsPerNote: 1.0 }
+    easy:   { bpm: 70,  speed: 195 },
+    medium: { bpm: 90,  speed: 265 },
+    hard:   { bpm: 120, speed: 345 }
   };
+  var HIT_PERFECT  = 42;
+  var HIT_GOOD     = 78;
+  var MISS_PAST    = 85;
+  var MAX_LIVES    = 5;
+  var SONG_LENGTH  = { easy: 20, medium: 35, hard: 55 };
+  var QUESTION_H   = 82;
 
   /* ── DATA ── */
   var DATA = {
@@ -199,28 +200,24 @@ showtoc: false
     ]
   };
 
-  /* ── HIT WINDOWS & CONFIG ── */
-  var HIT_PERFECT  = 35;
-  var HIT_GOOD     = 65;
-  var MISS_PAST    = 70;
-  var MAX_LIVES    = 5;
-  var ROTATE_EVERY = 8;
-  var SONG_LENGTH  = { easy: 30, medium: 45, hard: 60 };
-
   /* ── STATE ── */
   var S = {
     mode: 'hiragana', diff: 'easy',
     notes: [], particles: [],
     score: 0, combo: 0, maxCombo: 0, mult: 1,
-    perfect: 0, good: 0, miss: 0, total: 0,
+    perfect: 0, good: 0, miss: 0, wrong: 0,
     lives: MAX_LIVES,
-    spawned: 0, songLength: 30, notesUntilRotate: ROTATE_EVERY,
+    spawned: 0, songLength: 20,
     songOver: false,
     running: false, animId: null,
     audioCtx: null, masterGain: null,
     beatCount: 0, nextBeatTime: 0, beatInt: null,
-    laneItems: [], laneActive: [false, false, false, false],
-    spawnTimer: 0, bpm: 70, speed: 200, interval: 1.71,
+    currentQuestion: null,
+    correctLane: -1,
+    questionResolved: true,
+    correctFlashTime: -9999,
+    laneActive: [false, false, false, false],
+    bpm: 70, speed: 195,
     W: 600, H: 460, dpr: 1
   };
 
@@ -249,28 +246,6 @@ showtoc: false
     var H=parseInt(window.getComputedStyle(canvas).height,10)||460;
     canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
     S.W=W; S.H=H; S.dpr=dpr;
-  }
-
-  /* ── LANE SETUP & ROTATION ── */
-  function setupLanes(){
-    var pool=shuffle(DATA[S.mode]);
-    S.laneItems=pool.slice(0,4);
-    for(var i=0;i<4;i++){var lbl=el('rg-l'+i);if(lbl)lbl.textContent=S.laneItems[i].en;}
-  }
-  function rotateLanes(){
-    var pool=shuffle(DATA[S.mode]);
-    var cur=S.laneItems.map(function(it){return it.jp;});
-    var fresh=pool.filter(function(it){return cur.indexOf(it.jp)===-1;});
-    if(fresh.length<4)fresh=pool;
-    S.laneItems=fresh.slice(0,4);
-    for(var i=0;i<4;i++){
-      (function(idx){
-        var lbl=el('rg-l'+idx); if(!lbl)return;
-        lbl.style.transition='opacity 0.2s'; lbl.style.opacity='0';
-        setTimeout(function(){lbl.textContent=S.laneItems[idx].en;lbl.style.opacity='1';},220);
-      })(i);
-    }
-    S.notesUntilRotate=ROTATE_EVERY;
   }
 
   /* ═══════════════════════════════════════
@@ -352,7 +327,7 @@ showtoc: false
   }
 
   /* ═══════════════════════════════════════
-     HIT DETECTION & SCORING
+     HUD & FEEDBACK
   ═══════════════════════════════════════ */
   function updateHUD(){
     el('rg-score').textContent=S.score.toLocaleString();
@@ -366,8 +341,12 @@ showtoc: false
     htEl.className='rg-hit-text rg-hit-text--'+quality.toLowerCase()+' rg-show';
     htEl.textContent=quality;
     clearTimeout(htEl._t);
-    htEl._t=setTimeout(function(){htEl.classList.remove('rg-show');},550);
+    htEl._t=setTimeout(function(){htEl.classList.remove('rg-show');},600);
   }
+
+  /* ═══════════════════════════════════════
+     HIT DETECTION & SCORING
+  ═══════════════════════════════════════ */
   function registerHit(note,quality){
     note.hit=true;note.alpha=0;
     S.combo++;if(S.combo>S.maxCombo)S.maxCombo=S.combo;
@@ -387,35 +366,97 @@ showtoc: false
     setTimeout(function(){sEl.classList.remove('rg-score-pulse');},240);
     showHitText(note.lane,quality);updateHUD();
   }
+
+  function registerWrong(pressedLane){
+    S.combo=0;S.mult=1;S.wrong++;
+    showHitText(pressedLane,'WRONG');
+    S.correctFlashTime=performance.now();
+    updateHUD();
+    S.questionResolved=true;
+    S.notes.forEach(function(n){n.missed=true;});
+    setTimeout(function(){
+      if(!S.running||S.songOver)return;
+      S.notes=[];
+      if(S.spawned>=S.songLength){finishSong();}
+      else{spawnQuestion();}
+    },1400);
+  }
+
   function registerMiss(note){
-    if(note.missed)return;
-    note.missed=true;S.combo=0;S.mult=1;S.miss++;S.lives=Math.max(0,S.lives-1);
+    if(note.missed||S.questionResolved)return;
+    S.questionResolved=true;
+    note.missed=true;
+    S.combo=0;S.mult=1;S.miss++;S.lives=Math.max(0,S.lives-1);
     showHitText(note.lane,'MISS');updateHUD();
     var wrap=el('rg-canvas')&&el('rg-canvas').parentElement;
     if(wrap){wrap.classList.remove('rg-shake');void wrap.offsetWidth;wrap.classList.add('rg-shake');
       setTimeout(function(){wrap.classList.remove('rg-shake');},300);}
+    S.notes.forEach(function(n){if(n!==note)n.missed=true;});
     if(S.lives<=0){
       setTimeout(function(){S.running=false;cancelAnimationFrame(S.animId);stopBeat();showResult(false);},600);
+      return;
     }
-  }
-  function tryHit(lane){
-    var hitY=S.H-68,best=null,bestDist=Infinity;
-    for(var i=0;i<S.notes.length;i++){
-      var note=S.notes[i];if(note.lane!==lane||note.hit||note.missed)continue;
-      var dist=Math.abs(note.y-hitY);if(dist<bestDist){bestDist=dist;best=note;}
-    }
-    if(!best)return;
-    if(bestDist<=HIT_PERFECT)registerHit(best,'PERFECT');
-    else if(bestDist<=HIT_GOOD)registerHit(best,'GOOD');
+    setTimeout(function(){
+      if(!S.running||S.songOver)return;
+      S.notes=[];
+      if(S.spawned>=S.songLength){finishSong();}
+      else{spawnQuestion();}
+    },700);
   }
 
-  /* ── SPAWN ── */
-  function spawnNote(){
-    if(S.spawned>=S.songLength)return;
-    var lane=Math.floor(Math.random()*4);
-    S.notes.push({lane:lane,item:S.laneItems[lane],y:-30,hit:false,missed:false,alpha:1});
-    S.spawned++;S.notesUntilRotate--;
-    if(S.notesUntilRotate<=0)rotateLanes();
+  function tryHit(lane){
+    if(!S.running||S.questionResolved)return;
+    var hitY=S.H-68;
+    var note=null;
+    for(var i=0;i<S.notes.length;i++){
+      var n=S.notes[i];
+      if(n.lane===lane&&!n.hit&&!n.missed){note=n;break;}
+    }
+    if(!note)return;
+    var dist=Math.abs(note.y-hitY);
+    if(dist>HIT_GOOD)return;
+    if(note.isCorrect){
+      var quality=dist<=HIT_PERFECT?'PERFECT':'GOOD';
+      registerHit(note,quality);
+      S.questionResolved=true;
+      S.notes.forEach(function(n){if(n!==note)n.missed=true;});
+      setTimeout(function(){
+        if(!S.running||S.songOver)return;
+        S.notes=[];
+        if(S.spawned>=S.songLength){finishSong();}
+        else{spawnQuestion();}
+      },500);
+    } else {
+      registerWrong(lane);
+    }
+  }
+
+  /* ── QUESTION SPAWN ── */
+  function spawnQuestion(){
+    if(!S.running||S.songOver||S.spawned>=S.songLength)return;
+    var pool=DATA[S.mode];
+    var shuffled=shuffle(pool);
+    var correct=shuffled[0];
+    var opts=shuffle([correct,shuffled[1],shuffled[2],shuffled[3]]);
+    var correctLane=opts.indexOf(correct);
+    S.currentQuestion=correct;
+    S.correctLane=correctLane;
+    S.questionResolved=false;
+    S.correctFlashTime=-9999;
+    S.spawned++;
+    for(var i=0;i<4;i++){
+      S.notes.push({
+        lane:i, item:opts[i], isCorrect:(i===correctLane),
+        y:QUESTION_H, hit:false, missed:false, alpha:1
+      });
+    }
+  }
+
+  function finishSong(){
+    if(S.songOver)return;
+    S.songOver=true;S.running=false;
+    cancelAnimationFrame(S.animId);stopBeat();
+    setTimeout(function(){showResult(true);},400);
   }
 
   /* ── ROUND RECT ── */
@@ -430,24 +471,26 @@ showtoc: false
   /* ── NOTE DRAW ── */
   function drawNote(ctx,note,laneW){
     if(note.alpha<=0)return;
-    var cx=(note.lane+0.5)*laneW,noteW=laneW*0.70,noteH=52;
+    var cx=(note.lane+0.5)*laneW,noteW=laneW*0.72,noteH=50;
     var x=cx-noteW/2,y=note.y-noteH/2;
-    var color=note.missed?'#4b5563':LANE_COLORS[note.lane];
+    var isFlash=note.isCorrect&&S.questionResolved&&!note.hit&&(performance.now()-S.correctFlashTime<1200);
+    var color=isFlash?'#22c55e':(note.missed?'#4b5563':LANE_COLORS[note.lane]);
     var hitY=S.H-68,dist=hitY-note.y;
     var glow=(!note.missed&&dist>0&&dist<120)?1+(1-dist/120)*0.8:1;
-    ctx.save();ctx.globalAlpha=note.alpha;ctx.shadowColor=color;ctx.shadowBlur=14*glow;
+    ctx.save();ctx.globalAlpha=note.alpha;
+    ctx.shadowColor=color;ctx.shadowBlur=isFlash?30:14*glow;
     roundRect(ctx,x,y,noteW,noteH,10);ctx.fillStyle='#0e0e1c';ctx.fill();
-    roundRect(ctx,x,y,noteW,noteH,10);ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();
+    roundRect(ctx,x,y,noteW,noteH,10);ctx.strokeStyle=color;ctx.lineWidth=isFlash?3:2.5;ctx.stroke();
     ctx.shadowBlur=0;
     var grad=ctx.createLinearGradient(x,y,x,y+noteH*0.4);
     grad.addColorStop(0,color+'30');grad.addColorStop(1,'transparent');
     roundRect(ctx,x+1,y+1,noteW-2,noteH-2,9);ctx.fillStyle=grad;ctx.fill();
-    var text=note.item.jp;
-    var fs=text.length<=1?26:text.length<=2?21:text.length<=4?16:12;
+    var text=note.item.en;
+    var fs=text.length<=3?20:text.length<=5?17:text.length<=8?14:11;
     ctx.fillStyle=note.missed?'#9ca3af':'#ffffff';
-    ctx.font='bold '+fs+'px system-ui,"Hiragino Sans",sans-serif';
+    ctx.font='bold '+fs+'px system-ui,sans-serif';
     ctx.textAlign='center';ctx.textBaseline='middle';
-    ctx.fillText(text,cx,note.y,noteW-8);ctx.restore();
+    ctx.fillText(text,cx,note.y,noteW-10);ctx.restore();
   }
 
   /* ── RENDER ── */
@@ -456,61 +499,94 @@ showtoc: false
     var ctx=canvas.getContext('2d'),W=S.W,H=S.H,dpr=S.dpr;
     ctx.setTransform(dpr,0,0,dpr,0,0);
     var laneW=W/4,hitY=H-68;
+
     ctx.fillStyle='#070710';ctx.fillRect(0,0,W,H);
+
+    /* question area background */
+    ctx.fillStyle='rgba(255,255,255,0.04)';ctx.fillRect(0,0,W,QUESTION_H);
+
+    /* big JP question character */
+    if(S.currentQuestion){
+      var jpText=S.currentQuestion.jp;
+      var qfs=jpText.length<=1?46:jpText.length<=2?34:jpText.length<=4?26:20;
+      ctx.save();
+      ctx.fillStyle='#ffffff';
+      ctx.font='bold '+qfs+'px system-ui,"Hiragino Sans","Noto Sans JP",sans-serif';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.shadowColor='rgba(255,255,255,0.7)';ctx.shadowBlur=20;
+      ctx.fillText(jpText,W/2,QUESTION_H/2);
+      ctx.restore();
+    }
+
+    /* question separator */
+    ctx.strokeStyle='rgba(255,255,255,0.2)';ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(0,QUESTION_H);ctx.lineTo(W,QUESTION_H);ctx.stroke();
+
+    /* lane backgrounds */
     for(var i=0;i<4;i++){
       var lx=i*laneW;
-      if(i%2===0){ctx.fillStyle='rgba(255,255,255,0.013)';ctx.fillRect(lx,0,laneW,H);}
+      if(i%2===0){ctx.fillStyle='rgba(255,255,255,0.013)';ctx.fillRect(lx,QUESTION_H,laneW,H-QUESTION_H);}
       var gBot=ctx.createLinearGradient(0,hitY-110,0,H);
       gBot.addColorStop(0,'transparent');gBot.addColorStop(1,LANE_COLORS[i]+'22');
-      ctx.fillStyle=gBot;ctx.fillRect(lx,0,laneW,H);
+      ctx.fillStyle=gBot;ctx.fillRect(lx,QUESTION_H,laneW,H-QUESTION_H);
     }
+
+    /* grid lines */
     ctx.strokeStyle='rgba(255,255,255,0.03)';ctx.lineWidth=1;
-    for(var gy=60;gy<H-80;gy+=60){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+    for(var gy=QUESTION_H+40;gy<H-80;gy+=60){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+
+    /* lane dividers */
     ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;
-    for(var j=1;j<4;j++){ctx.beginPath();ctx.moveTo(j*laneW,0);ctx.lineTo(j*laneW,H);ctx.stroke();}
+    for(var j=1;j<4;j++){ctx.beginPath();ctx.moveTo(j*laneW,QUESTION_H);ctx.lineTo(j*laneW,H);ctx.stroke();}
+
+    /* notes */
     for(var n=0;n<S.notes.length;n++)drawNote(ctx,S.notes[n],laneW);
-    /* particles — above notes */
+
+    /* particles */
     for(var p=0;p<S.particles.length;p++){
       var pt=S.particles[p];if(pt.alpha<=0)continue;
       ctx.save();ctx.globalAlpha=pt.alpha;ctx.fillStyle=pt.color;
       ctx.shadowColor=pt.color;ctx.shadowBlur=8;
       ctx.beginPath();ctx.arc(pt.x,pt.y,Math.max(0.5,pt.r),0,Math.PI*2);ctx.fill();ctx.restore();
     }
+
+    /* hit line */
     ctx.strokeStyle='rgba(255,255,255,0.18)';ctx.lineWidth=2;
     ctx.beginPath();ctx.moveTo(0,hitY);ctx.lineTo(W,hitY);ctx.stroke();
+
+    /* hit circles */
+    var now=performance.now();
     for(var k=0;k<4;k++){
       var cx=(k+0.5)*laneW,active=S.laneActive[k];
-      ctx.save();ctx.strokeStyle=LANE_COLORS[k];ctx.lineWidth=active?3.5:2.5;
-      ctx.shadowColor=LANE_COLORS[k];ctx.shadowBlur=active?24:12;
-      ctx.beginPath();ctx.arc(cx,hitY,active?23:20,0,Math.PI*2);ctx.stroke();
-      if(active){ctx.fillStyle=LANE_COLORS[k]+'28';ctx.fill();}
+      var isFlashCircle=S.questionResolved&&k===S.correctLane&&(now-S.correctFlashTime<1200);
+      ctx.save();
+      var circ=isFlashCircle?'#22c55e':LANE_COLORS[k];
+      ctx.strokeStyle=circ;ctx.lineWidth=(active||isFlashCircle)?3.5:2.5;
+      ctx.shadowColor=circ;ctx.shadowBlur=(active||isFlashCircle)?26:12;
+      ctx.beginPath();ctx.arc(cx,hitY,(active||isFlashCircle)?23:20,0,Math.PI*2);ctx.stroke();
+      if(active||isFlashCircle){ctx.fillStyle=circ+'28';ctx.fill();}
       ctx.restore();
     }
   }
 
   /* ── UPDATE ── */
   function update(dt){
-    S.spawnTimer+=dt;
-    if(S.spawnTimer>=S.interval){spawnNote();S.spawnTimer-=S.interval;}
-    /* particles */
     for(var p=S.particles.length-1;p>=0;p--){
       var pt=S.particles[p];
       pt.x+=pt.vx*dt;pt.y+=pt.vy*dt;pt.vy+=280*dt;pt.alpha-=dt*2.8;
       if(pt.alpha<=0)S.particles.splice(p,1);
     }
-    /* notes */
     var hitY=S.H-68,missY=S.H+60;
     for(var i=S.notes.length-1;i>=0;i--){
       var note=S.notes[i];note.y+=S.speed*dt;
       if(note.missed)note.alpha=Math.max(0,note.alpha-dt*4);
-      if(!note.hit&&!note.missed&&note.y>hitY+MISS_PAST)registerMiss(note);
+      if(!note.hit&&!note.missed&&note.isCorrect&&!S.questionResolved&&note.y>hitY+MISS_PAST){
+        registerMiss(note);
+      }
+      if(!note.hit&&!note.missed&&!note.isCorrect&&note.y>hitY+MISS_PAST){note.missed=true;}
       if(note.alpha<=0||note.y>missY)S.notes.splice(i,1);
     }
-    /* song clear */
-    if(!S.songOver&&S.spawned>=S.songLength&&S.notes.length===0){
-      S.songOver=true;S.running=false;cancelAnimationFrame(S.animId);stopBeat();
-      setTimeout(function(){showResult(true);},400);
-    }
+    if(!S.songOver&&S.spawned>=S.songLength&&S.notes.length===0&&S.questionResolved){finishSong();}
   }
 
   /* ── GAME LOOP ── */
@@ -537,15 +613,16 @@ showtoc: false
 
   /* ── RESULT ── */
   function showResult(cleared){
-    var total=S.perfect+S.good+S.miss;
-    var accuracy=total>0?Math.round((S.perfect+S.good)/total*100):0;
+    var correct=S.perfect+S.good;
+    var total=correct+S.miss+S.wrong;
+    var accuracy=total>0?Math.round(correct/total*100):0;
     var grade=accuracy>=95?'S':accuracy>=85?'A':accuracy>=70?'B':accuracy>=50?'C':'D';
     el('rg-grade').textContent=grade;
     el('rg-grade').className='rg-result-grade rg-result-grade--'+grade;
     el('rg-final-score').textContent=S.score.toLocaleString();
     el('rg-breakdown').innerHTML=
       '<strong>'+(cleared?'🎵 Stage Clear!':'💀 Game Over')+'</strong><br>'+
-      '✨ Perfect: '+S.perfect+' &nbsp;|&nbsp; ✔ Good: '+S.good+' &nbsp;|&nbsp; ✖ Miss: '+S.miss+'<br>'+
+      '✨ Perfect: '+S.perfect+' &nbsp;|&nbsp; ✔ Good: '+S.good+' &nbsp;|&nbsp; ✘ Wrong: '+S.wrong+' &nbsp;|&nbsp; ✖ Miss: '+S.miss+'<br>'+
       'Max Combo: '+S.maxCombo+' &nbsp;|&nbsp; Accuracy: '+accuracy+'%';
     show('rg-over');
   }
@@ -566,20 +643,21 @@ showtoc: false
       cancelAnimationFrame(S.animId);stopBeat();S.running=false;
       S.notes=[];S.particles=[];
       S.score=0;S.combo=0;S.maxCombo=0;S.mult=1;
-      S.perfect=0;S.good=0;S.miss=0;S.total=0;
+      S.perfect=0;S.good=0;S.miss=0;S.wrong=0;
       S.lives=MAX_LIVES;S.spawned=0;S.songOver=false;
-      S.spawnTimer=0;S.notesUntilRotate=ROTATE_EVERY;
+      S.currentQuestion=null;S.correctLane=-1;
+      S.questionResolved=true;S.correctFlashTime=-9999;
       S.laneActive=[false,false,false,false];
       var cfg=DIFF_CFG[S.diff];
       S.bpm=cfg.bpm;S.speed=cfg.speed;
-      S.interval=(60/cfg.bpm)*cfg.beatsPerNote;
       S.songLength=SONG_LENGTH[S.diff];
       show('rg-game');
       setTimeout(function(){
-        setupCanvas();setupLanes();updateHUD();
+        setupCanvas();updateHUD();
         startCountdown(function(){
           startBeat();S.running=true;lastTime=performance.now();
           S.animId=requestAnimationFrame(gameLoop);
+          setTimeout(function(){spawnQuestion();},300);
         });
       },30);
     },

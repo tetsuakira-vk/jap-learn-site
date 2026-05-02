@@ -2696,6 +2696,7 @@
 .rg-hit-text--perfect { color: #fbbf24; }
 .rg-hit-text--good    { color: #22c55e; }
 .rg-hit-text--miss    { color: #6b7280; }
+.rg-hit-text--wrong   { color: #ef4444; }
 
 /* — Lane labels row — */
 .rg-lane-row {
