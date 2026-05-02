@@ -93,6 +93,7 @@ showtoc: false
     <ul class="sitemap-links">
       <li><a href="/resources/">Free Resources</a></li>
       <li><a href="/resources/paid/">Books &amp; Paid Tools</a></li>
+      <li><a href="/widgets/">Phone Widgets</a></li>
     </ul>
   </div>
 

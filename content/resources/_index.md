@@ -1,6 +1,6 @@
 ---
-title: "Resources — Japanese Learning Tools & Guides"
-description: "Free Japanese learning resources — word-of-the-day email, recommended dictionaries, grammar guides, vocabulary apps, and reading tools for every level."
+title: "Free Japanese Learning Resources — Games, Dictionaries & Tools"
+description: "Free Japanese learning resources — dictionaries, grammar guides, free games, vocabulary apps, reading tools, and a guide to setting up a Japanese keyboard on Windows, Mac, and iPhone."
 date: 2025-01-01
 ---
 
@@ -230,6 +230,23 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
     <div class="rc-desc">Reverse WaniKani — given an English meaning, produce the Japanese. Great for production practice and syncs with WaniKani progress.</div>
   </a>
 </div>
+
+## Phone Widgets
+
+Put Japanese on your home screen — a new word, phrase, or kanji every morning without opening an app.
+
+<div class="resource-grid">
+  <a class="resource-card" href="/widgets/">
+    <div class="rc-top"><span class="rc-name">Japanese Unlocked Widgets</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">Free Scriptable scripts for iPhone — Word of the Day, Phrase of the Day, and Kanji Drill widgets. Copy, paste, done. Android guide included.</div>
+  </a>
+  <a class="resource-card" href="https://scriptable.app" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">Scriptable (iOS)</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">The free iOS app that powers the widgets. Download it first, then grab the scripts above. Lets you run JavaScript as home screen widgets — surprisingly powerful.</div>
+  </a>
+</div>
+
+---
 
 ## Free Games & Interactive Tools
 

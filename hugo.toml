@@ -297,6 +297,13 @@ buildExpired = false
     weight = 2
 
   [[menu.main]]
+    identifier = "resources-widgets"
+    name = "Phone Widgets"
+    url = "/widgets/"
+    parent = "resources"
+    weight = 3
+
+  [[menu.main]]
     identifier = "about"
     name = "About"
     url = "/about/"
