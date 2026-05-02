@@ -74,6 +74,17 @@ showtoc: false
   </div>
 
   <div class="sitemap-section">
+    <div class="sitemap-section-title">Speaking Practice</div>
+    <ul class="sitemap-links">
+      <li><a href="/conversation/">Conversation Practice</a></li>
+      <li><a href="/conversation/#cv-selector">Konbini Scenario</a></li>
+      <li><a href="/conversation/#cv-selector">Izakaya Scenario</a></li>
+      <li><a href="/conversation/#cv-selector">Asking Directions</a></li>
+      <li><a href="/conversation/#cv-selector">Hotel Check-in</a></li>
+    </ul>
+  </div>
+
+  <div class="sitemap-section">
     <div class="sitemap-section-title">Other</div>
     <ul class="sitemap-links">
       <li><a href="/videos/">Videos</a></li>

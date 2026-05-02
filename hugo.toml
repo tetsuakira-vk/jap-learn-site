@@ -237,6 +237,12 @@ buildExpired = false
     weight = 4
 
   [[menu.main]]
+    identifier = "conversation"
+    name = "Conversation"
+    url = "/conversation/"
+    weight = 55
+
+  [[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"
