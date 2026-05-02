@@ -104,6 +104,10 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
 ## Dictionaries & Reference
 
 <div class="resource-grid">
+  <a class="resource-card" href="/dictionary/">
+    <div class="rc-top"><span class="rc-name">Japanese Unlocked Dictionary</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">Our own built-in dictionary — search kanji, kana, romaji, or English and get readings, meanings, and part of speech instantly. Results appear as you type, no login needed.</div>
+  </a>
   <a class="resource-card" href="https://jisho.org" target="_blank" rel="noopener">
     <div class="rc-top"><span class="rc-name">Jisho</span><span class="rc-badge free">Free</span></div>
     <div class="rc-desc">The best English–Japanese dictionary. Search kanji by radical, draw characters, look up example sentences. Essential bookmark.</div>
