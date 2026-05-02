@@ -1,6 +1,6 @@
 ---
-title: "Books, Courses & Paid Tools — Japanese Learning"
-description: "The best paid Japanese learning resources — top textbooks on Amazon, online courses, tutors, and tools recommended by Japanese Unlocked."
+title: "Books, Games & Paid Tools — Japanese Learning"
+description: "The best paid Japanese learning resources — top textbooks on Amazon, Steam games built for learning Japanese, online courses, tutors, and tools recommended by Japanese Unlocked."
 date: 2025-01-01
 showtoc: false
 ---
@@ -107,6 +107,88 @@ The physical books that actually move the needle. If you're serious about Japane
       <div class="shop-card-title">Japanese From Zero! 1</div>
       <div class="shop-card-desc">A friendlier, more gradual alternative to Genki. Teaches hiragana progressively alongside romaji so the transition isn't overwhelming. Popular with self-taught learners.</div>
       <span class="shop-buy-btn">View on Amazon →</span>
+    </div>
+  </a>
+
+</div>
+
+---
+
+## Steam Games — Learn Through Play
+
+These are games built specifically for learning Japanese — not just games set in Japan. All on Steam, most under £5.
+
+<div class="shop-grid">
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=learn+japanese+to+survive+hiragana+battle" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">Beginner</span>
+        <span class="shop-tag shop-tag--type">JRPG</span>
+      </div>
+      <div class="shop-card-title">Learn Japanese To Survive! Hiragana Battle</div>
+      <div class="shop-card-desc">JRPG where you battle enemies by correctly reading hiragana. Surprisingly effective — you'll have all 46 characters memorised before the final boss. Best fun way to drill kana.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
+    </div>
+  </a>
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=learn+japanese+to+survive+katakana+war" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">Beginner</span>
+        <span class="shop-tag shop-tag--type">JRPG</span>
+      </div>
+      <div class="shop-card-title">Learn Japanese To Survive! Katakana War</div>
+      <div class="shop-card-desc">The katakana follow-up in the same series. Same battle format, same effectiveness. Get both — they're cheap and together cover all your kana in a few hours of play.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
+    </div>
+  </a>
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=learn+japanese+to+survive+kanji+combat" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">N5–N4</span>
+        <span class="shop-tag shop-tag--type">JRPG</span>
+      </div>
+      <div class="shop-card-title">Learn Japanese To Survive! Kanji Combat</div>
+      <div class="shop-card-desc">Third in the series, covering essential kanji. Same battle mechanic — each enemy is a kanji you have to read correctly to defeat it. A clever way to make kanji drilling feel rewarding.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
+    </div>
+  </a>
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=kana+quest+japanese+puzzle" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">Beginner</span>
+        <span class="shop-tag shop-tag--type">Puzzle</span>
+      </div>
+      <div class="shop-card-title">Kana Quest</div>
+      <div class="shop-card-desc">A tile-sliding puzzle game that teaches kana through gameplay rather than drilling. Each puzzle is built around matching sounds — you absorb hiragana and katakana without it feeling like study.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
+    </div>
+  </a>
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=nihongo+quest+n5+japanese" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">N5</span>
+        <span class="shop-tag shop-tag--type">RPG</span>
+      </div>
+      <div class="shop-card-title">Nihongo Quest N5</div>
+      <div class="shop-card-desc">A role-playing game built entirely around JLPT N5 vocabulary and grammar. Fights, story, and progression are all tied to your Japanese knowledge. Good for N5 exam prep with a fun wrapper.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
+    </div>
+  </a>
+
+  <a class="shop-card" href="https://store.steampowered.com/search/?term=japanese+dungeon+hiragana" target="_blank" rel="noopener">
+    <div class="shop-card-body">
+      <div class="shop-card-tags">
+        <span class="shop-tag shop-tag--level">Beginner</span>
+        <span class="shop-tag shop-tag--type">Dungeon</span>
+      </div>
+      <div class="shop-card-title">Japanese Dungeon: Hiragana</div>
+      <div class="shop-card-desc">A dungeon crawler where reading hiragana is the core mechanic. Simpler than the JLPT Survive series but great for absolute beginners who want something more game-like than flashcards.</div>
+      <span class="shop-buy-btn shop-buy-btn--steam">View on Steam →</span>
     </div>
   </a>
 

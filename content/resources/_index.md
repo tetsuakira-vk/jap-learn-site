@@ -231,6 +231,29 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
   </a>
 </div>
 
+## Free Games & Interactive Tools
+
+Learning through play is underrated. These are free browser and downloadable games built specifically for Japanese — not just "gamified" flashcards.
+
+<div class="resource-grid">
+  <a class="resource-card" href="https://www.kanshudo.com/games" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">Kanshudo Games</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">A suite of free Japanese learning games — kanji quizzes, kana drills, and vocabulary challenges. Kanshudo's game collection is one of the most varied free options online.</div>
+  </a>
+  <a class="resource-card" href="https://lrnj.com" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">Slime Forest Adventure</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">The original Japanese learning RPG — battle slimes by reading kana and kanji. A cult classic that's been teaching Japanese since the early 2000s. Free to download, surprisingly effective.</div>
+  </a>
+  <a class="resource-card" href="https://itch.io/games?q=learn+japanese" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">Itch.io — Japanese Learning Games</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">A growing collection of indie Japanese learning games — many free or pay-what-you-want. Worth browsing for hidden gems: kana games, kanji puzzles, and reading practice tools built by indie developers.</div>
+  </a>
+  <a class="resource-card" href="https://typekana.com" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">Type Kana</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">Minimalist speed-typing game for kana — a word appears, you type the romaji as fast as possible. Great for building muscle memory and testing whether you really know your kana under pressure.</div>
+  </a>
+</div>
+
 ---
 
 ## Recommended study routine
