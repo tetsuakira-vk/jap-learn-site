@@ -23,12 +23,12 @@ Learn Japanese through play. All games run in your browser — no downloads, no 
     <span class="ghc-badge ghc-badge--soon">Coming Soon</span>
   </div>
 
-  <div class="game-hub-card game-hub-card--soon">
+  <a class="game-hub-card" href="/games/match/">
     <div class="ghc-icon">🃏</div>
     <div class="ghc-name">Memory Match</div>
-    <div class="ghc-desc">Flip cards to match kanji with their readings or meanings. Beat the clock, chase combos, climb levels.</div>
-    <span class="ghc-badge ghc-badge--soon">Coming Soon</span>
-  </div>
+    <div class="ghc-desc">Flip cards to match Japanese characters with their romaji or meanings. Hiragana, katakana, kanji, and N5 vocab. Beat the clock, find every pair.</div>
+    <span class="ghc-badge ghc-badge--play">Play Now</span>
+  </a>
 
   <div class="game-hub-card game-hub-card--soon">
     <div class="ghc-icon">🗺️</div>

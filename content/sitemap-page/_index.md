@@ -82,6 +82,7 @@ showtoc: false
     <ul class="sitemap-links">
       <li><a href="/games/">Games Hub</a></li>
       <li><a href="/games/battle/">Kanji Quest — Battle RPG</a></li>
+      <li><a href="/games/match/">Memory Match — Flip Cards</a></li>
     </ul>
   </div>
 

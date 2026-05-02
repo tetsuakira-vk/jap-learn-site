@@ -284,6 +284,13 @@ buildExpired = false
     weight = 1
 
   [[menu.main]]
+    identifier = "games-match"
+    name = "Memory Match"
+    url = "/games/match/"
+    parent = "games"
+    weight = 2
+
+  [[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"

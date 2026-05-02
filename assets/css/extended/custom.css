@@ -2346,3 +2346,222 @@
   .jlpt-strip { grid-template-columns: repeat(2, 1fr); }
   .jt-detail { display: none; }
 }
+
+/* ═══════════════════════════════════════════════
+   MEMORY MATCH — Flip Card Game
+═══════════════════════════════════════════════ */
+
+/* — Screens — */
+#fm-menu, #fm-game, #fm-win { display: none; }
+#fm-menu.fm-active, #fm-game.fm-active, #fm-win.fm-active { display: block; }
+
+/* — Menu — */
+.fm-title {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--primary);
+}
+.fm-subtitle {
+  text-align: center;
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 1.6rem;
+}
+.fm-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  max-width: 480px;
+  margin: 0 auto 1.6rem;
+}
+.fm-mode-btn {
+  background: var(--entry);
+  border: 2px solid transparent;
+  border-radius: 10px;
+  padding: 0.9rem 0.7rem;
+  cursor: pointer;
+  text-align: center;
+  transition: border-color 0.2s, background 0.2s;
+  color: var(--primary);
+}
+.fm-mode-btn:hover { border-color: #c0392b; }
+.fm-mode-btn.fm-mode-active { border-color: #c0392b; background: rgba(192,57,43,0.1); }
+.fm-mode-icon { font-size: 1.8rem; display: block; margin-bottom: 0.3rem; }
+.fm-mode-label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--secondary); }
+
+.fm-diff-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.fm-diff-btn {
+  background: var(--entry);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  color: var(--primary);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition: border-color 0.15s, background 0.15s;
+}
+.fm-diff-btn:hover { border-color: #c0392b; }
+
+/* — HUD — */
+.fm-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--entry);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.1rem;
+  font-size: 0.88rem;
+  color: var(--secondary);
+}
+.fm-hud-stat { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; }
+.fm-hud-val { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+.fm-hud-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.fm-hud-btn {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  color: var(--secondary);
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+.fm-hud-btn:hover { border-color: #c0392b; color: var(--primary); }
+
+/* — Card Grid — */
+.fm-grid {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0 auto;
+}
+.fm-grid--3col { grid-template-columns: repeat(3, 1fr); max-width: 560px; }
+.fm-grid--4col { grid-template-columns: repeat(4, 1fr); max-width: 700px; }
+
+/* — Individual Card — */
+.fm-card {
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  perspective: 600px;
+  border-radius: 10px;
+}
+.fm-card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.42s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 10px;
+}
+.fm-card.fm-flipped .fm-card-inner { transform: rotateY(180deg); }
+
+/* Front (face down) */
+.fm-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.fm-face--back {
+  background: var(--entry);
+  border: 2px solid var(--border);
+  color: rgba(255,255,255,0.06);
+  font-size: 2.8rem;
+  font-weight: 900;
+  user-select: none;
+}
+.fm-face--front {
+  transform: rotateY(180deg);
+  border: 2px solid var(--border);
+  background: var(--code-bg, #1a1a2e);
+  padding: 0.4rem;
+  flex-direction: column;
+  gap: 0.2rem;
+  text-align: center;
+}
+/* JP card tint */
+.fm-card--jp .fm-face--front { border-color: rgba(192,57,43,0.55); background: rgba(192,57,43,0.07); }
+/* EN card tint */
+.fm-card--en .fm-face--front { border-color: rgba(59,130,246,0.45); background: rgba(59,130,246,0.06); }
+/* Matched */
+.fm-card--matched .fm-face--front { border-color: #22c55e; background: rgba(34,197,94,0.08); }
+.fm-card--matched { cursor: default; }
+
+.fm-card-char {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  color: var(--primary);
+  word-break: break-word;
+}
+.fm-card-sub {
+  font-size: 0.62rem;
+  color: var(--secondary);
+  letter-spacing: 0.03em;
+}
+
+/* — Animations — */
+@keyframes fm-nope {
+  0%,100% { transform: rotateY(180deg) translateX(0); }
+  20%      { transform: rotateY(180deg) translateX(-6px); }
+  40%      { transform: rotateY(180deg) translateX(6px); }
+  60%      { transform: rotateY(180deg) translateX(-5px); }
+  80%      { transform: rotateY(180deg) translateX(4px); }
+}
+@keyframes fm-match-pop {
+  0%   { transform: rotateY(180deg) scale(1); }
+  40%  { transform: rotateY(180deg) scale(1.13); }
+  70%  { transform: rotateY(180deg) scale(0.96); }
+  100% { transform: rotateY(180deg) scale(1); }
+}
+.fm-card.fm-nope .fm-card-inner  { animation: fm-nope 0.55s ease; }
+.fm-card.fm-match .fm-card-inner { animation: fm-match-pop 0.4s ease; }
+
+/* — Win Screen — */
+.fm-win-box {
+  text-align: center;
+  background: var(--entry);
+  border-radius: 14px;
+  padding: 2.5rem 1.5rem;
+  max-width: 420px;
+  margin: 2rem auto;
+}
+.fm-win-trophy { font-size: 3.5rem; margin-bottom: 0.5rem; }
+.fm-win-title { font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 0.3rem; }
+.fm-win-score { font-size: 2.6rem; font-weight: 900; color: #c0392b; margin: 0.6rem 0; }
+.fm-win-breakdown { color: var(--secondary); font-size: 0.85rem; margin-bottom: 1.4rem; line-height: 1.7; }
+.fm-win-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.fm-win-btn {
+  padding: 0.65rem 1.4rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.fm-win-btn--play { background: #c0392b; color: #fff; }
+.fm-win-btn--play:hover { background: #a93226; }
+.fm-win-btn--menu { background: var(--border); color: var(--primary); }
+.fm-win-btn--menu:hover { opacity: 0.8; }
+
+/* — Progress bar — */
+.fm-progress-wrap { height: 4px; background: var(--border); border-radius: 2px; margin-bottom: 0.8rem; }
+.fm-progress-fill { height: 100%; background: #22c55e; border-radius: 2px; transition: width 0.35s ease; }
+
+/* — Responsive — */
+@media (max-width: 560px) {
+  .fm-grid--3col { grid-template-columns: repeat(3, 1fr); max-width: 100%; }
+  .fm-grid--4col { grid-template-columns: repeat(4, 1fr); max-width: 100%; }
+  .fm-card-char { font-size: 1.5rem; }
+  .fm-mode-grid { grid-template-columns: repeat(2, 1fr); }
+}
