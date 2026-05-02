@@ -125,13 +125,16 @@ showtoc: false
   var LANE_COLORS = ['#ef4444', '#f97316', '#3b82f6', '#a855f7'];
   var KEY_MAP = { KeyD: 0, KeyF: 1, KeyJ: 2, KeyK: 3 };
   var DIFF_CFG = {
-    easy:   { bpm: 70,  speed: 195 },
-    medium: { bpm: 90,  speed: 265 },
-    hard:   { bpm: 120, speed: 345 }
+    easy:   { bpm: 70,  speed: 150, hp: 58, hg: 100 },
+    medium: { bpm: 90,  speed: 255, hp: 42, hg: 78 },
+    hard:   { bpm: 120, speed: 345, hp: 32, hg: 62 }
   };
-  var HIT_PERFECT  = 42;
-  var HIT_GOOD     = 78;
-  var MISS_PAST    = 85;
+  var MISS_PAST    = 88;
+  /* D-major pentatonic melody loop (8 beats): D4 F#4 A4 B4 A4 F#4 E4 D4 */
+  var MELODY_NOTES = [
+    {m:293.66,b:73.42},{m:369.99,b:0},{m:440.00,b:110.00},{m:493.88,b:0},
+    {m:440.00,b:73.42},{m:369.99,b:0},{m:329.63,b:110.00},{m:293.66,b:0}
+  ];
   var MAX_LIVES    = 5;
   var SONG_LENGTH  = { easy: 20, medium: 35, hard: 55 };
   var QUESTION_H   = 82;
@@ -217,7 +220,7 @@ showtoc: false
     questionResolved: true,
     correctFlashTime: -9999,
     laneActive: [false, false, false, false],
-    bpm: 70, speed: 195,
+    bpm: 70, speed: 150, hp: 58, hg: 100,
     W: 600, H: 460, dpr: 1
   };
 
@@ -269,29 +272,46 @@ showtoc: false
     var ac=S.audioCtx,osc=ac.createOscillator(),gain=ac.createGain();
     osc.connect(gain);gain.connect(S.masterGain);
     osc.frequency.setValueAtTime(100,when);osc.frequency.exponentialRampToValueAtTime(0.001,when+0.38);
-    gain.gain.setValueAtTime(1.0,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.38);
+    gain.gain.setValueAtTime(0.80,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.38);
     osc.start(when);osc.stop(when+0.4);
   }
   function playSnare(when){
     var ac=S.audioCtx,src=ac.createBufferSource();src.buffer=snareBuffer;
     var flt=ac.createBiquadFilter();flt.type='highpass';flt.frequency.value=1800;
-    var gain=ac.createGain();gain.gain.setValueAtTime(0.65,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.14);
+    var gain=ac.createGain();gain.gain.setValueAtTime(0.55,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.14);
     src.connect(flt);flt.connect(gain);gain.connect(S.masterGain);src.start(when);src.stop(when+0.15);
   }
   function playHihat(when,open){
     var ac=S.audioCtx,src=ac.createBufferSource();src.buffer=hihatBuffer;
     var flt=ac.createBiquadFilter();flt.type='highpass';flt.frequency.value=10000;
     var dur=open?0.045:0.022,gain=ac.createGain();
-    gain.gain.setValueAtTime(0.28,when);gain.gain.exponentialRampToValueAtTime(0.001,when+dur);
+    gain.gain.setValueAtTime(0.20,when);gain.gain.exponentialRampToValueAtTime(0.001,when+dur);
     src.connect(flt);flt.connect(gain);gain.connect(S.masterGain);src.start(when);src.stop(when+dur+0.005);
   }
+  function playTone(when,freq,type,vol,attack,decay){
+    var ac=S.audioCtx,osc=ac.createOscillator(),gain=ac.createGain();
+    osc.type=type;osc.frequency.value=freq;
+    osc.connect(gain);gain.connect(S.masterGain);
+    gain.gain.setValueAtTime(0,when);
+    gain.gain.linearRampToValueAtTime(vol,when+attack);
+    gain.gain.exponentialRampToValueAtTime(0.001,when+decay);
+    osc.start(when);osc.stop(when+decay+0.05);
+  }
+  function playBass(when,freq){playTone(when,freq,'triangle',0.52,0.010,0.28);}
+  function playMelody(when,freq){
+    playTone(when,freq,'sine',0.28,0.020,0.52);
+    playTone(when,freq*2,'sine',0.07,0.020,0.34);
+  }
   function playBeat(when,step){
+    var mn=MELODY_NOTES[step%8];
     switch(step%4){
       case 0:playKick(when);playHihat(when,true);break;
       case 1:playHihat(when,false);break;
       case 2:playKick(when);playSnare(when);playHihat(when,true);break;
       case 3:playHihat(when,false);break;
     }
+    playMelody(when,mn.m);
+    if(mn.b)playBass(when,mn.b);
   }
   function scheduleBeat(){
     if(!S.audioCtx||!S.running)return;
@@ -414,9 +434,9 @@ showtoc: false
     }
     if(!note)return;
     var dist=Math.abs(note.y-hitY);
-    if(dist>HIT_GOOD)return;
+    if(dist>S.hg)return;
     if(note.isCorrect){
-      var quality=dist<=HIT_PERFECT?'PERFECT':'GOOD';
+      var quality=dist<=S.hp?'PERFECT':'GOOD';
       registerHit(note,quality);
       S.questionResolved=true;
       S.notes.forEach(function(n){if(n!==note)n.missed=true;});
@@ -649,7 +669,7 @@ showtoc: false
       S.questionResolved=true;S.correctFlashTime=-9999;
       S.laneActive=[false,false,false,false];
       var cfg=DIFF_CFG[S.diff];
-      S.bpm=cfg.bpm;S.speed=cfg.speed;
+      S.bpm=cfg.bpm;S.speed=cfg.speed;S.hp=cfg.hp;S.hg=cfg.hg;
       S.songLength=SONG_LENGTH[S.diff];
       show('rg-game');
       setTimeout(function(){

@@ -2676,7 +2676,7 @@
   border: 1px solid var(--border); border-top: none; border-bottom: none;
   overflow: hidden;
 }
-#rg-canvas { display: block; width: 100%; height: 460px; background: #070710; }
+#rg-canvas { display: block; width: 100%; height: 540px; background: #070710; }
 
 /* Hit feedback text — shown absolutely over the canvas, one per lane */
 .rg-hit-layer {
@@ -2776,12 +2776,12 @@
 /* — Responsive — */
 @media (max-width: 640px) {
   .rg-mode-grid { grid-template-columns: repeat(2, 1fr); }
-  #rg-canvas { height: 340px; }
+  #rg-canvas { height: 420px; }
   .rg-hud-stat { min-width: 52px; }
   .rg-hud-val { font-size: 0.92rem; }
 }
 @media (max-width: 400px) {
-  #rg-canvas { height: 270px; }
+  #rg-canvas { height: 310px; }
   .rg-diff-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
 }
 
