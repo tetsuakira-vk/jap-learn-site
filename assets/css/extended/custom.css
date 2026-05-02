@@ -2783,3 +2783,13 @@
   #rg-canvas { height: 270px; }
   .rg-diff-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
 }
+
+/* Canvas shake on miss */
+@keyframes rg-shake {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-5px) translateY(2px); }
+  45%     { transform: translateX(5px) translateY(-1px); }
+  70%     { transform: translateX(-4px); }
+  90%     { transform: translateX(3px); }
+}
+.rg-canvas-wrap.rg-shake { animation: rg-shake 0.28s ease; }

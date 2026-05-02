@@ -70,6 +70,10 @@ showtoc: false
         <span class="rg-hud-val rg-hud-mult" id="rg-mult">×1</span>
         <span class="rg-hud-label">Mult</span>
       </div>
+      <div class="rg-hud-stat">
+        <span class="rg-hud-val" id="rg-lives" style="color:#ef4444;letter-spacing:0.06em">♥♥♥♥♥</span>
+        <span class="rg-hud-label">Lives</span>
+      </div>
       <button class="rg-quit-btn" onclick="RG.quit()">Quit</button>
     </div>
 
@@ -196,18 +200,32 @@ showtoc: false
     ]
   };
 
+  /* ── HIT WINDOWS (px from hit zone centre) ── */
+  var HIT_PERFECT = 35;
+  var HIT_GOOD    = 65;
+  var MISS_PAST   = 70;   /* px past hitY before auto-miss */
+  var MAX_LIVES   = 5;
+
   /* ── STATE ── */
   var S = {
     mode: 'hiragana', diff: 'easy',
     notes: [],
     score: 0, combo: 0, maxCombo: 0, mult: 1,
     perfect: 0, good: 0, miss: 0, total: 0,
+    lives: MAX_LIVES,
     running: false, animId: null,
-    audioCtx: null, beatInt: null,
+    /* audio */
+    audioCtx: null, masterGain: null,
+    beatCount: 0, nextBeatTime: 0, beatInt: null,
+    /* lane */
     laneItems: [], laneActive: [false, false, false, false],
     spawnTimer: 0, bpm: 70, speed: 200, interval: 1.71,
     W: 600, H: 460, dpr: 1
   };
+
+  /* pre-created noise buffers */
+  var snareBuffer = null;
+  var hihatBuffer = null;
 
   /* ── HELPERS ── */
   function el(id) { return document.getElementById(id); }
@@ -252,21 +270,198 @@ showtoc: false
     }
   }
 
+  /* ═══════════════════════════════════════
+     WEB AUDIO BEAT SYNTHESISER
+  ═══════════════════════════════════════ */
+
+  function ensureAudio() {
+    if (!S.audioCtx) {
+      try { S.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+      catch (e) { return false; }
+    }
+    if (S.audioCtx.state === 'suspended') S.audioCtx.resume();
+    return true;
+  }
+
+  function initBuffers() {
+    var ac = S.audioCtx, sr = ac.sampleRate;
+    /* snare — 140 ms white noise */
+    var sLen = Math.ceil(sr * 0.14);
+    snareBuffer = ac.createBuffer(1, sLen, sr);
+    var sd = snareBuffer.getChannelData(0);
+    for (var i = 0; i < sLen; i++) sd[i] = Math.random() * 2 - 1;
+    /* hi-hat — 45 ms white noise */
+    var hLen = Math.ceil(sr * 0.045);
+    hihatBuffer = ac.createBuffer(1, hLen, sr);
+    var hd = hihatBuffer.getChannelData(0);
+    for (var j = 0; j < hLen; j++) hd[j] = Math.random() * 2 - 1;
+  }
+
+  function playKick(when) {
+    var ac = S.audioCtx;
+    var osc  = ac.createOscillator();
+    var gain = ac.createGain();
+    osc.connect(gain);
+    gain.connect(S.masterGain);
+    osc.frequency.setValueAtTime(100, when);
+    osc.frequency.exponentialRampToValueAtTime(0.001, when + 0.38);
+    gain.gain.setValueAtTime(1.0, when);
+    gain.gain.exponentialRampToValueAtTime(0.001, when + 0.38);
+    osc.start(when); osc.stop(when + 0.4);
+  }
+
+  function playSnare(when) {
+    var ac  = S.audioCtx;
+    var src = ac.createBufferSource();
+    src.buffer = snareBuffer;
+    var flt = ac.createBiquadFilter();
+    flt.type = 'highpass'; flt.frequency.value = 1800;
+    var gain = ac.createGain();
+    gain.gain.setValueAtTime(0.65, when);
+    gain.gain.exponentialRampToValueAtTime(0.001, when + 0.14);
+    src.connect(flt); flt.connect(gain); gain.connect(S.masterGain);
+    src.start(when); src.stop(when + 0.15);
+  }
+
+  function playHihat(when, open) {
+    var ac  = S.audioCtx;
+    var src = ac.createBufferSource();
+    src.buffer = hihatBuffer;
+    var flt = ac.createBiquadFilter();
+    flt.type = 'highpass'; flt.frequency.value = 10000;
+    var dur  = open ? 0.045 : 0.022;
+    var gain = ac.createGain();
+    gain.gain.setValueAtTime(0.28, when);
+    gain.gain.exponentialRampToValueAtTime(0.001, when + dur);
+    src.connect(flt); flt.connect(gain); gain.connect(S.masterGain);
+    src.start(when); src.stop(when + dur + 0.005);
+  }
+
+  function playBeat(when, step) {
+    switch (step % 4) {
+      case 0: playKick(when); playHihat(when, true);             break;
+      case 1:                 playHihat(when, false);            break;
+      case 2: playKick(when); playSnare(when); playHihat(when, true); break;
+      case 3:                 playHihat(when, false);            break;
+    }
+  }
+
+  function scheduleBeat() {
+    if (!S.audioCtx || !S.running) return;
+    var lookahead = 0.1;
+    var now = S.audioCtx.currentTime;
+    while (S.nextBeatTime < now + lookahead) {
+      playBeat(S.nextBeatTime, S.beatCount);
+      S.nextBeatTime += 60 / S.bpm;
+      S.beatCount++;
+    }
+  }
+
+  function startBeat() {
+    if (!ensureAudio()) return;
+    if (S.masterGain) { try { S.masterGain.disconnect(); } catch (e) {} }
+    S.masterGain = S.audioCtx.createGain();
+    S.masterGain.gain.value = 0.45;
+    S.masterGain.connect(S.audioCtx.destination);
+    initBuffers();
+    S.beatCount = 0;
+    S.nextBeatTime = S.audioCtx.currentTime + 0.08;
+    clearInterval(S.beatInt);
+    S.beatInt = setInterval(scheduleBeat, 25);
+  }
+
+  function stopBeat() {
+    clearInterval(S.beatInt);
+    S.beatInt = null;
+    if (S.audioCtx) { try { S.audioCtx.suspend(); } catch (e) {} }
+  }
+
+  /* ═══════════════════════════════════════
+     HIT DETECTION & SCORING
+  ═══════════════════════════════════════ */
+
+  function updateHUD() {
+    el('rg-score').textContent = S.score.toLocaleString();
+    el('rg-combo').textContent = S.combo;
+    el('rg-mult').textContent  = '×' + S.mult;
+    var hearts = '';
+    for (var i = 0; i < MAX_LIVES; i++) hearts += i < S.lives ? '♥' : '♡';
+    el('rg-lives').textContent = hearts;
+  }
+
+  function showHitText(lane, quality) {
+    var htEl = el('rg-ht' + lane);
+    if (!htEl) return;
+    htEl.className = 'rg-hit-text rg-hit-text--' + quality.toLowerCase() + ' rg-show';
+    htEl.textContent = quality;
+    clearTimeout(htEl._t);
+    htEl._t = setTimeout(function () { htEl.classList.remove('rg-show'); }, 550);
+  }
+
+  function registerHit(note, quality) {
+    note.hit   = true;
+    note.alpha = 0;
+    S.combo++;
+    if (S.combo > S.maxCombo) S.maxCombo = S.combo;
+    S.mult = S.combo >= 40 ? 4 : S.combo >= 20 ? 3 : S.combo >= 10 ? 2 : 1;
+    var pts = (quality === 'PERFECT' ? 100 : 50) * S.mult;
+    S.score += pts;
+    if (quality === 'PERFECT') S.perfect++; else S.good++;
+    showHitText(note.lane, quality);
+    updateHUD();
+  }
+
+  function registerMiss(note) {
+    if (note.missed) return;
+    note.missed = true;
+    S.combo = 0;
+    S.mult  = 1;
+    S.miss++;
+    S.lives = Math.max(0, S.lives - 1);
+    showHitText(note.lane, 'MISS');
+    updateHUD();
+    /* canvas shake */
+    var wrap = el('rg-canvas') && el('rg-canvas').parentElement;
+    if (wrap) {
+      wrap.classList.remove('rg-shake');
+      void wrap.offsetWidth; /* reflow to restart animation */
+      wrap.classList.add('rg-shake');
+      setTimeout(function () { wrap.classList.remove('rg-shake'); }, 300);
+    }
+    if (S.lives <= 0) {
+      setTimeout(function () {
+        S.running = false;
+        cancelAnimationFrame(S.animId);
+        stopBeat();
+        showResult();
+      }, 600);
+    }
+  }
+
+  function tryHit(lane) {
+    var hitY = S.H - 68;
+    var best = null, bestDist = Infinity;
+    for (var i = 0; i < S.notes.length; i++) {
+      var note = S.notes[i];
+      if (note.lane !== lane || note.hit || note.missed) continue;
+      var dist = Math.abs(note.y - hitY);
+      if (dist < bestDist) { bestDist = dist; best = note; }
+    }
+    if (!best) return;
+    if (bestDist <= HIT_PERFECT)      registerHit(best, 'PERFECT');
+    else if (bestDist <= HIT_GOOD)    registerHit(best, 'GOOD');
+    /* outside window — press does nothing; miss fires in update() */
+  }
+
   /* ── NOTE SPAWN ── */
   function spawnNote() {
     var lane = Math.floor(Math.random() * 4);
-    S.notes.push({
-      lane: lane,
-      item: S.laneItems[lane],
-      y: -30,
-      hit: false,
-      missed: false,
-      alpha: 1
-    });
+    S.notes.push({ lane: lane, item: S.laneItems[lane], y: -30,
+                   hit: false, missed: false, alpha: 1 });
     S.total++;
   }
 
-  /* ── ROUND RECT HELPER ── */
+  /* ── ROUND RECT ── */
   function roundRect(ctx, x, y, w, h, r) {
     ctx.beginPath();
     ctx.moveTo(x + r, y);
@@ -289,49 +484,37 @@ showtoc: false
     var noteH = 52;
     var x     = cx - noteW / 2;
     var y     = note.y - noteH / 2;
-    var color = LANE_COLORS[note.lane];
-
-    /* brighten glow as note approaches hit zone */
-    var hitY       = S.H - 68;
-    var dist       = hitY - note.y;
-    var glowMult   = dist > 0 && dist < 120 ? 1 + (1 - dist / 120) * 0.8 : 1;
+    /* missed notes go gray */
+    var color = note.missed ? '#4b5563' : LANE_COLORS[note.lane];
+    /* glow brightens as note approaches hit zone */
+    var hitY     = S.H - 68;
+    var dist     = hitY - note.y;
+    var glowMult = (!note.missed && dist > 0 && dist < 120) ? 1 + (1 - dist / 120) * 0.8 : 1;
 
     ctx.save();
     ctx.globalAlpha = note.alpha;
-
-    /* glow */
     ctx.shadowColor = color;
     ctx.shadowBlur  = 14 * glowMult;
 
-    /* dark pill background */
     roundRect(ctx, x, y, noteW, noteH, 10);
-    ctx.fillStyle = '#0e0e1c';
-    ctx.fill();
+    ctx.fillStyle = '#0e0e1c'; ctx.fill();
 
-    /* colored border */
     roundRect(ctx, x, y, noteW, noteH, 10);
-    ctx.strokeStyle = color;
-    ctx.lineWidth   = 2.5;
-    ctx.stroke();
-    ctx.shadowBlur  = 0;
+    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.stroke();
+    ctx.shadowBlur = 0;
 
-    /* subtle top-color gradient accent */
     var grad = ctx.createLinearGradient(x, y, x, y + noteH * 0.4);
-    grad.addColorStop(0, color + '30');
-    grad.addColorStop(1, 'transparent');
+    grad.addColorStop(0, color + '30'); grad.addColorStop(1, 'transparent');
     roundRect(ctx, x + 1, y + 1, noteW - 2, noteH - 2, 9);
-    ctx.fillStyle = grad;
-    ctx.fill();
+    ctx.fillStyle = grad; ctx.fill();
 
-    /* Japanese character */
     var text  = note.item.jp;
     var fsize = text.length <= 1 ? 26 : text.length <= 2 ? 21 : text.length <= 4 ? 16 : 12;
-    ctx.fillStyle    = '#ffffff';
+    ctx.fillStyle    = note.missed ? '#9ca3af' : '#ffffff';
     ctx.font         = 'bold ' + fsize + 'px system-ui, "Hiragino Sans", sans-serif';
     ctx.textAlign    = 'center';
     ctx.textBaseline = 'middle';
     ctx.fillText(text, cx, note.y, noteW - 8);
-
     ctx.restore();
   }
 
@@ -346,66 +529,46 @@ showtoc: false
     var laneW = W / 4;
     var hitY  = H - 68;
 
-    /* background */
-    ctx.fillStyle = '#070710';
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#070710'; ctx.fillRect(0, 0, W, H);
 
     /* lane tints */
     for (var i = 0; i < 4; i++) {
       var lx = i * laneW;
-      if (i % 2 === 0) {
-        ctx.fillStyle = 'rgba(255,255,255,0.013)';
-        ctx.fillRect(lx, 0, laneW, H);
-      }
+      if (i % 2 === 0) { ctx.fillStyle = 'rgba(255,255,255,0.013)'; ctx.fillRect(lx, 0, laneW, H); }
       var gBot = ctx.createLinearGradient(0, hitY - 110, 0, H);
-      gBot.addColorStop(0, 'transparent');
-      gBot.addColorStop(1, LANE_COLORS[i] + '22');
-      ctx.fillStyle = gBot;
-      ctx.fillRect(lx, 0, laneW, H);
+      gBot.addColorStop(0, 'transparent'); gBot.addColorStop(1, LANE_COLORS[i] + '22');
+      ctx.fillStyle = gBot; ctx.fillRect(lx, 0, laneW, H);
     }
 
     /* beat grid */
-    ctx.strokeStyle = 'rgba(255,255,255,0.03)';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,0.03)'; ctx.lineWidth = 1;
     for (var gy = 60; gy < H - 80; gy += 60) {
       ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
     }
 
     /* lane dividers */
-    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
-    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
     for (var j = 1; j < 4; j++) {
-      ctx.beginPath();
-      ctx.moveTo(j * laneW, 0); ctx.lineTo(j * laneW, H);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(j * laneW, 0); ctx.lineTo(j * laneW, H); ctx.stroke();
     }
 
-    /* falling notes (below hit zone circles) */
-    for (var n = 0; n < S.notes.length; n++) {
-      drawNote(ctx, S.notes[n], laneW);
-    }
+    /* notes */
+    for (var n = 0; n < S.notes.length; n++) drawNote(ctx, S.notes[n], laneW);
 
     /* hit zone line */
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)';
-    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
     ctx.beginPath(); ctx.moveTo(0, hitY); ctx.lineTo(W, hitY); ctx.stroke();
 
-    /* hit zone circles — pulse when lane active */
+    /* hit zone circles */
     for (var k = 0; k < 4; k++) {
-      var cx     = (k + 0.5) * laneW;
-      var active = S.laneActive[k];
+      var cx = (k + 0.5) * laneW, active = S.laneActive[k];
       ctx.save();
       ctx.strokeStyle = LANE_COLORS[k];
       ctx.lineWidth   = active ? 3.5 : 2.5;
       ctx.shadowColor = LANE_COLORS[k];
       ctx.shadowBlur  = active ? 24 : 12;
-      ctx.beginPath();
-      ctx.arc(cx, hitY, active ? 23 : 20, 0, Math.PI * 2);
-      ctx.stroke();
-      if (active) {
-        ctx.fillStyle = LANE_COLORS[k] + '28';
-        ctx.fill();
-      }
+      ctx.beginPath(); ctx.arc(cx, hitY, active ? 23 : 20, 0, Math.PI * 2); ctx.stroke();
+      if (active) { ctx.fillStyle = LANE_COLORS[k] + '28'; ctx.fill(); }
       ctx.restore();
     }
   }
@@ -415,28 +578,55 @@ showtoc: false
     S.spawnTimer += dt;
     if (S.spawnTimer >= S.interval) {
       spawnNote();
-      S.spawnTimer -= S.interval; /* keep fractional remainder for tight timing */
+      S.spawnTimer -= S.interval;
     }
 
-    var missY = S.H + 50;
+    var hitY  = S.H - 68;
+    var missY = S.H + 60;
+
     for (var i = S.notes.length - 1; i >= 0; i--) {
-      S.notes[i].y += S.speed * dt;
-      if (S.notes[i].y > missY) {
-        S.notes.splice(i, 1); /* miss handling added in Task 3 */
-      }
+      var note = S.notes[i];
+      note.y += S.speed * dt;
+
+      /* fade missed notes */
+      if (note.missed) note.alpha = Math.max(0, note.alpha - dt * 4);
+
+      /* auto-miss: note passed hit zone without being hit */
+      if (!note.hit && !note.missed && note.y > hitY + MISS_PAST) registerMiss(note);
+
+      /* remove off-screen or fully-hit notes */
+      if (note.alpha <= 0 || note.y > missY) S.notes.splice(i, 1);
     }
   }
 
   /* ── GAME LOOP ── */
   var lastTime = 0;
   function gameLoop(ts) {
-    var dt = Math.min((ts - lastTime) / 1000, 0.1); /* cap at 100 ms */
+    var dt = Math.min((ts - lastTime) / 1000, 0.1);
     lastTime = ts;
     if (S.running) {
       update(dt);
       render();
       S.animId = requestAnimationFrame(gameLoop);
     }
+  }
+
+  /* ── RESULT SCREEN ── */
+  function showResult() {
+    var total    = S.perfect + S.good + S.miss;
+    var accuracy = total > 0 ? Math.round((S.perfect + S.good) / total * 100) : 0;
+    var grade    = accuracy >= 95 ? 'S' : accuracy >= 85 ? 'A' : accuracy >= 70 ? 'B' : accuracy >= 50 ? 'C' : 'D';
+    var gradeEl  = el('rg-grade');
+    gradeEl.textContent = grade;
+    gradeEl.className   = 'rg-result-grade rg-result-grade--' + grade;
+    el('rg-final-score').textContent = S.score.toLocaleString();
+    el('rg-breakdown').innerHTML =
+      '✨ Perfect: ' + S.perfect +
+      ' &nbsp;|&nbsp; ✔ Good: ' + S.good +
+      ' &nbsp;|&nbsp; ✖ Miss: ' + S.miss + '<br>' +
+      'Max Combo: ' + S.maxCombo +
+      ' &nbsp;|&nbsp; Accuracy: ' + accuracy + '%';
+    show('rg-over');
   }
 
   /* ── PUBLIC API ── */
@@ -455,14 +645,16 @@ showtoc: false
 
     start: function () {
       cancelAnimationFrame(S.animId);
+      stopBeat();
       S.running = false;
       S.notes = [];
       S.score = 0; S.combo = 0; S.maxCombo = 0; S.mult = 1;
       S.perfect = 0; S.good = 0; S.miss = 0; S.total = 0;
+      S.lives = MAX_LIVES;
       S.spawnTimer = 0;
       S.laneActive = [false, false, false, false];
 
-      var cfg   = DIFF_CFG[S.diff];
+      var cfg    = DIFF_CFG[S.diff];
       S.bpm      = cfg.bpm;
       S.speed    = cfg.speed;
       S.interval = (60 / cfg.bpm) * cfg.beatsPerNote;
@@ -471,9 +663,8 @@ showtoc: false
       setTimeout(function () {
         setupCanvas();
         setupLanes();
-        el('rg-score').textContent = '0';
-        el('rg-combo').textContent = '0';
-        el('rg-mult').textContent  = '×1';
+        updateHUD();
+        startBeat();
         S.running = true;
         lastTime  = performance.now();
         S.animId  = requestAnimationFrame(gameLoop);
@@ -483,6 +674,7 @@ showtoc: false
     quit: function () {
       S.running = false;
       cancelAnimationFrame(S.animId);
+      stopBeat();
       show('rg-menu');
     },
 
@@ -491,6 +683,7 @@ showtoc: false
     menu: function () {
       S.running = false;
       cancelAnimationFrame(S.animId);
+      stopBeat();
       show('rg-menu');
     },
 
@@ -505,7 +698,7 @@ showtoc: false
           S.laneActive[lane] = false;
         }, 130);
       }
-      /* hit detection added in Task 3 */
+      tryHit(lane);
     }
   };
 
