@@ -1121,6 +1121,174 @@
 .coming-soon-card .cs-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
 .coming-soon-card .cs-desc  { font-size: 0.8rem; color: var(--secondary); }
 
+/* ── Mock test UI ── */
+.mock-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+.mock-level-badge {
+  display: inline-block;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: #c0392b;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.mock-tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 0;
+}
+.mock-tab {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  border-radius: 4px 4px 0 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.mock-tab.active {
+  color: #c0392b;
+  border-bottom-color: #c0392b;
+}
+.mock-tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.mock-sect { display: none; }
+.mock-sect.active { display: block; }
+.mock-sect-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 1.8rem 0 0.4rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.mock-subsect-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--secondary);
+  margin: 1.4rem 0 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.mock-passage {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 1rem 0 1.2rem;
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+.mock-notice {
+  background: rgba(192,57,43,0.08);
+  border-left: 3px solid #c0392b;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 0.82rem;
+  color: var(--secondary);
+  border-radius: 0 6px 6px 0;
+}
+.mq {
+  margin: 1.2rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--entry);
+}
+.mq p { margin: 0 0 0.75rem; font-size: 0.95rem; line-height: 1.7; }
+.mq-opts { display: flex; flex-direction: column; gap: 0.4rem; }
+.mq-opts label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.12s;
+}
+.mq-opts label:hover { background: var(--code-bg); }
+.mq-opts input { margin-top: 3px; flex-shrink: 0; }
+.mq.mq-right {
+  border-color: #38a169;
+  background: rgba(56,161,105,0.07);
+}
+.mq.mq-wrong {
+  border-color: #c0392b;
+  background: rgba(192,57,43,0.06);
+}
+.mq-correct-lbl { color: #38a169; font-weight: 700; }
+.mq-wrong-lbl   { color: #c0392b; text-decoration: line-through; }
+.mock-score {
+  margin: 1.2rem 0;
+  padding: 1rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--entry);
+}
+.mock-score-pass { border-color: #38a169; color: #38a169; }
+.mock-score-fail { border-color: #c0392b; color: #c0392b; }
+.mock-total {
+  margin: 1.5rem 0 0.5rem;
+  padding: 1.1rem 1.4rem;
+  border-radius: 10px;
+  background: var(--entry);
+  border: 2px solid var(--border);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+.mock-btn-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+.mock-submit,
+.mock-next {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.12s;
+}
+.mock-submit {
+  background: #c0392b;
+  color: #fff;
+}
+.mock-next {
+  background: var(--border);
+  color: var(--primary);
+}
+.mock-submit:hover,
+.mock-next:hover { opacity: 0.85; transform: translateY(-1px); }
+.mock-submit:disabled,
+.mock-next:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
+.mock-hl {
+  background: rgba(192,57,43,0.12);
+  border-radius: 3px;
+  padding: 0 3px;
+  font-weight: 700;
+}
+
 /* ── Responsive tweaks ── */
 @media (max-width: 480px) {
   .kana-card { width: 58px; height: 58px; }

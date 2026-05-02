@@ -42,6 +42,9 @@ showtoc: false
       <li><a href="/jlpt/n2/quiz/">N2 Quiz</a></li>
       <li><a href="/jlpt/n1/">N1 — Advanced Vocabulary</a></li>
       <li><a href="/jlpt/n1/quiz/">N1 Quiz</a></li>
+      <li><a href="/jlpt/mock/">Mock Tests — Hub</a></li>
+      <li><a href="/jlpt/n5/mock/">N5 Mock Test</a></li>
+      <li><a href="/jlpt/n4/mock/">N4 Mock Test</a></li>
     </ul>
   </div>
 

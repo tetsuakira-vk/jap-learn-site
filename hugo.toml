@@ -134,6 +134,13 @@ buildExpired = false
     weight = 5
 
   [[menu.main]]
+    identifier = "jlpt-mock"
+    name = "Mock Tests"
+    url = "/jlpt/mock/"
+    parent = "jlpt"
+    weight = 10
+
+  [[menu.main]]
     identifier = "vocabulary"
     name = "Vocabulary"
     url = "/vocab/"
