@@ -85,6 +85,7 @@ showtoc: false
         <div class="rg-hit-cell"><span class="rg-hit-text" id="rg-ht2"></span></div>
         <div class="rg-hit-cell"><span class="rg-hit-text" id="rg-ht3"></span></div>
       </div>
+      <div id="rg-countdown" class="rg-countdown-overlay"></div>
     </div>
 
     <div class="rg-lane-row">
@@ -200,517 +201,417 @@ showtoc: false
     ]
   };
 
-  /* ── HIT WINDOWS (px from hit zone centre) ── */
-  var HIT_PERFECT = 35;
-  var HIT_GOOD    = 65;
-  var MISS_PAST   = 70;   /* px past hitY before auto-miss */
-  var MAX_LIVES   = 5;
+  /* ── HIT WINDOWS & CONFIG ── */
+  var HIT_PERFECT  = 35;
+  var HIT_GOOD     = 65;
+  var MISS_PAST    = 70;
+  var MAX_LIVES    = 5;
+  var ROTATE_EVERY = 8;
+  var SONG_LENGTH  = { easy: 30, medium: 45, hard: 60 };
 
   /* ── STATE ── */
   var S = {
     mode: 'hiragana', diff: 'easy',
-    notes: [],
+    notes: [], particles: [],
     score: 0, combo: 0, maxCombo: 0, mult: 1,
     perfect: 0, good: 0, miss: 0, total: 0,
     lives: MAX_LIVES,
+    spawned: 0, songLength: 30, notesUntilRotate: ROTATE_EVERY,
+    songOver: false,
     running: false, animId: null,
-    /* audio */
     audioCtx: null, masterGain: null,
     beatCount: 0, nextBeatTime: 0, beatInt: null,
-    /* lane */
     laneItems: [], laneActive: [false, false, false, false],
     spawnTimer: 0, bpm: 70, speed: 200, interval: 1.71,
     W: 600, H: 460, dpr: 1
   };
 
-  /* pre-created noise buffers */
   var snareBuffer = null;
   var hihatBuffer = null;
 
   /* ── HELPERS ── */
   function el(id) { return document.getElementById(id); }
-
   function show(id) {
-    ['rg-menu', 'rg-game', 'rg-over'].forEach(function (s) {
-      var e = el(s); if (!e) return;
-      e.classList.remove('rg-active'); e.style.display = '';
+    ['rg-menu','rg-game','rg-over'].forEach(function(s){
+      var e=el(s); if(!e)return; e.classList.remove('rg-active'); e.style.display='';
     });
-    var t = el(id);
-    if (t) { t.classList.add('rg-active'); t.style.display = 'block'; }
+    var t=el(id); if(t){t.classList.add('rg-active');t.style.display='block';}
   }
-
-  function shuffle(arr) {
-    var a = arr.slice();
-    for (var i = a.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var tmp = a[i]; a[i] = a[j]; a[j] = tmp;
-    }
+  function shuffle(arr){
+    var a=arr.slice();
+    for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
     return a;
   }
 
-  /* ── CANVAS SETUP ── */
-  function setupCanvas() {
-    var canvas = el('rg-canvas');
-    if (!canvas) return;
-    var dpr = window.devicePixelRatio || 1;
-    var W = canvas.parentElement.clientWidth || 600;
-    var H = parseInt(window.getComputedStyle(canvas).height, 10) || 460;
-    canvas.width  = Math.round(W * dpr);
-    canvas.height = Math.round(H * dpr);
-    S.W = W; S.H = H; S.dpr = dpr;
+  /* ── CANVAS ── */
+  function setupCanvas(){
+    var canvas=el('rg-canvas'); if(!canvas)return;
+    var dpr=window.devicePixelRatio||1;
+    var W=canvas.parentElement.clientWidth||600;
+    var H=parseInt(window.getComputedStyle(canvas).height,10)||460;
+    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
+    S.W=W; S.H=H; S.dpr=dpr;
   }
 
-  /* ── LANE SETUP ── */
-  function setupLanes() {
-    var pool = shuffle(DATA[S.mode]);
-    S.laneItems = pool.slice(0, 4);
-    for (var i = 0; i < 4; i++) {
-      var lbl = el('rg-l' + i);
-      if (lbl) lbl.textContent = S.laneItems[i].en;
+  /* ── LANE SETUP & ROTATION ── */
+  function setupLanes(){
+    var pool=shuffle(DATA[S.mode]);
+    S.laneItems=pool.slice(0,4);
+    for(var i=0;i<4;i++){var lbl=el('rg-l'+i);if(lbl)lbl.textContent=S.laneItems[i].en;}
+  }
+  function rotateLanes(){
+    var pool=shuffle(DATA[S.mode]);
+    var cur=S.laneItems.map(function(it){return it.jp;});
+    var fresh=pool.filter(function(it){return cur.indexOf(it.jp)===-1;});
+    if(fresh.length<4)fresh=pool;
+    S.laneItems=fresh.slice(0,4);
+    for(var i=0;i<4;i++){
+      (function(idx){
+        var lbl=el('rg-l'+idx); if(!lbl)return;
+        lbl.style.transition='opacity 0.2s'; lbl.style.opacity='0';
+        setTimeout(function(){lbl.textContent=S.laneItems[idx].en;lbl.style.opacity='1';},220);
+      })(i);
     }
+    S.notesUntilRotate=ROTATE_EVERY;
   }
 
   /* ═══════════════════════════════════════
      WEB AUDIO BEAT SYNTHESISER
   ═══════════════════════════════════════ */
-
-  function ensureAudio() {
-    if (!S.audioCtx) {
-      try { S.audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-      catch (e) { return false; }
-    }
-    if (S.audioCtx.state === 'suspended') S.audioCtx.resume();
+  function ensureAudio(){
+    if(!S.audioCtx){try{S.audioCtx=new(window.AudioContext||window.webkitAudioContext)();}catch(e){return false;}}
+    if(S.audioCtx.state==='suspended')S.audioCtx.resume();
     return true;
   }
-
-  function initBuffers() {
-    var ac = S.audioCtx, sr = ac.sampleRate;
-    /* snare — 140 ms white noise */
-    var sLen = Math.ceil(sr * 0.14);
-    snareBuffer = ac.createBuffer(1, sLen, sr);
-    var sd = snareBuffer.getChannelData(0);
-    for (var i = 0; i < sLen; i++) sd[i] = Math.random() * 2 - 1;
-    /* hi-hat — 45 ms white noise */
-    var hLen = Math.ceil(sr * 0.045);
-    hihatBuffer = ac.createBuffer(1, hLen, sr);
-    var hd = hihatBuffer.getChannelData(0);
-    for (var j = 0; j < hLen; j++) hd[j] = Math.random() * 2 - 1;
+  function initBuffers(){
+    var ac=S.audioCtx,sr=ac.sampleRate;
+    var sLen=Math.ceil(sr*0.14);
+    snareBuffer=ac.createBuffer(1,sLen,sr);
+    var sd=snareBuffer.getChannelData(0); for(var i=0;i<sLen;i++)sd[i]=Math.random()*2-1;
+    var hLen=Math.ceil(sr*0.045);
+    hihatBuffer=ac.createBuffer(1,hLen,sr);
+    var hd=hihatBuffer.getChannelData(0); for(var j=0;j<hLen;j++)hd[j]=Math.random()*2-1;
   }
-
-  function playKick(when) {
-    var ac = S.audioCtx;
-    var osc  = ac.createOscillator();
-    var gain = ac.createGain();
-    osc.connect(gain);
-    gain.connect(S.masterGain);
-    osc.frequency.setValueAtTime(100, when);
-    osc.frequency.exponentialRampToValueAtTime(0.001, when + 0.38);
-    gain.gain.setValueAtTime(1.0, when);
-    gain.gain.exponentialRampToValueAtTime(0.001, when + 0.38);
-    osc.start(when); osc.stop(when + 0.4);
+  function playKick(when){
+    var ac=S.audioCtx,osc=ac.createOscillator(),gain=ac.createGain();
+    osc.connect(gain);gain.connect(S.masterGain);
+    osc.frequency.setValueAtTime(100,when);osc.frequency.exponentialRampToValueAtTime(0.001,when+0.38);
+    gain.gain.setValueAtTime(1.0,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.38);
+    osc.start(when);osc.stop(when+0.4);
   }
-
-  function playSnare(when) {
-    var ac  = S.audioCtx;
-    var src = ac.createBufferSource();
-    src.buffer = snareBuffer;
-    var flt = ac.createBiquadFilter();
-    flt.type = 'highpass'; flt.frequency.value = 1800;
-    var gain = ac.createGain();
-    gain.gain.setValueAtTime(0.65, when);
-    gain.gain.exponentialRampToValueAtTime(0.001, when + 0.14);
-    src.connect(flt); flt.connect(gain); gain.connect(S.masterGain);
-    src.start(when); src.stop(when + 0.15);
+  function playSnare(when){
+    var ac=S.audioCtx,src=ac.createBufferSource();src.buffer=snareBuffer;
+    var flt=ac.createBiquadFilter();flt.type='highpass';flt.frequency.value=1800;
+    var gain=ac.createGain();gain.gain.setValueAtTime(0.65,when);gain.gain.exponentialRampToValueAtTime(0.001,when+0.14);
+    src.connect(flt);flt.connect(gain);gain.connect(S.masterGain);src.start(when);src.stop(when+0.15);
   }
-
-  function playHihat(when, open) {
-    var ac  = S.audioCtx;
-    var src = ac.createBufferSource();
-    src.buffer = hihatBuffer;
-    var flt = ac.createBiquadFilter();
-    flt.type = 'highpass'; flt.frequency.value = 10000;
-    var dur  = open ? 0.045 : 0.022;
-    var gain = ac.createGain();
-    gain.gain.setValueAtTime(0.28, when);
-    gain.gain.exponentialRampToValueAtTime(0.001, when + dur);
-    src.connect(flt); flt.connect(gain); gain.connect(S.masterGain);
-    src.start(when); src.stop(when + dur + 0.005);
+  function playHihat(when,open){
+    var ac=S.audioCtx,src=ac.createBufferSource();src.buffer=hihatBuffer;
+    var flt=ac.createBiquadFilter();flt.type='highpass';flt.frequency.value=10000;
+    var dur=open?0.045:0.022,gain=ac.createGain();
+    gain.gain.setValueAtTime(0.28,when);gain.gain.exponentialRampToValueAtTime(0.001,when+dur);
+    src.connect(flt);flt.connect(gain);gain.connect(S.masterGain);src.start(when);src.stop(when+dur+0.005);
   }
-
-  function playBeat(when, step) {
-    switch (step % 4) {
-      case 0: playKick(when); playHihat(when, true);             break;
-      case 1:                 playHihat(when, false);            break;
-      case 2: playKick(when); playSnare(when); playHihat(when, true); break;
-      case 3:                 playHihat(when, false);            break;
+  function playBeat(when,step){
+    switch(step%4){
+      case 0:playKick(when);playHihat(when,true);break;
+      case 1:playHihat(when,false);break;
+      case 2:playKick(when);playSnare(when);playHihat(when,true);break;
+      case 3:playHihat(when,false);break;
     }
   }
+  function scheduleBeat(){
+    if(!S.audioCtx||!S.running)return;
+    var now=S.audioCtx.currentTime;
+    while(S.nextBeatTime<now+0.1){playBeat(S.nextBeatTime,S.beatCount);S.nextBeatTime+=60/S.bpm;S.beatCount++;}
+  }
+  function startBeat(){
+    if(!ensureAudio())return;
+    if(S.masterGain){try{S.masterGain.disconnect();}catch(e){}}
+    S.masterGain=S.audioCtx.createGain();S.masterGain.gain.value=0.45;S.masterGain.connect(S.audioCtx.destination);
+    initBuffers();S.beatCount=0;S.nextBeatTime=S.audioCtx.currentTime+0.08;
+    clearInterval(S.beatInt);S.beatInt=setInterval(scheduleBeat,25);
+  }
+  function stopBeat(){
+    clearInterval(S.beatInt);S.beatInt=null;
+    if(S.audioCtx){try{S.audioCtx.suspend();}catch(e){}}
+  }
 
-  function scheduleBeat() {
-    if (!S.audioCtx || !S.running) return;
-    var lookahead = 0.1;
-    var now = S.audioCtx.currentTime;
-    while (S.nextBeatTime < now + lookahead) {
-      playBeat(S.nextBeatTime, S.beatCount);
-      S.nextBeatTime += 60 / S.bpm;
-      S.beatCount++;
+  /* ═══════════════════════════════════════
+     PARTICLES
+  ═══════════════════════════════════════ */
+  function spawnParticles(lane){
+    var hitY=S.H-68,laneW=S.W/4,cx=(lane+0.5)*laneW,color=LANE_COLORS[lane],count=14;
+    for(var i=0;i<count;i++){
+      var angle=(Math.PI*2/count)*i+(Math.random()-0.5)*0.7;
+      var spd=80+Math.random()*140;
+      S.particles.push({
+        x:cx+(Math.random()-0.5)*16, y:hitY,
+        vx:Math.cos(angle)*spd, vy:Math.sin(angle)*spd-50,
+        alpha:1, r:2.5+Math.random()*2.5, color:color
+      });
     }
-  }
-
-  function startBeat() {
-    if (!ensureAudio()) return;
-    if (S.masterGain) { try { S.masterGain.disconnect(); } catch (e) {} }
-    S.masterGain = S.audioCtx.createGain();
-    S.masterGain.gain.value = 0.45;
-    S.masterGain.connect(S.audioCtx.destination);
-    initBuffers();
-    S.beatCount = 0;
-    S.nextBeatTime = S.audioCtx.currentTime + 0.08;
-    clearInterval(S.beatInt);
-    S.beatInt = setInterval(scheduleBeat, 25);
-  }
-
-  function stopBeat() {
-    clearInterval(S.beatInt);
-    S.beatInt = null;
-    if (S.audioCtx) { try { S.audioCtx.suspend(); } catch (e) {} }
   }
 
   /* ═══════════════════════════════════════
      HIT DETECTION & SCORING
   ═══════════════════════════════════════ */
-
-  function updateHUD() {
-    el('rg-score').textContent = S.score.toLocaleString();
-    el('rg-combo').textContent = S.combo;
-    el('rg-mult').textContent  = '×' + S.mult;
-    var hearts = '';
-    for (var i = 0; i < MAX_LIVES; i++) hearts += i < S.lives ? '♥' : '♡';
-    el('rg-lives').textContent = hearts;
+  function updateHUD(){
+    el('rg-score').textContent=S.score.toLocaleString();
+    el('rg-combo').textContent=S.combo;
+    el('rg-mult').textContent='×'+S.mult;
+    var hearts=''; for(var i=0;i<MAX_LIVES;i++)hearts+=i<S.lives?'♥':'♡';
+    el('rg-lives').textContent=hearts;
   }
-
-  function showHitText(lane, quality) {
-    var htEl = el('rg-ht' + lane);
-    if (!htEl) return;
-    htEl.className = 'rg-hit-text rg-hit-text--' + quality.toLowerCase() + ' rg-show';
-    htEl.textContent = quality;
+  function showHitText(lane,quality){
+    var htEl=el('rg-ht'+lane); if(!htEl)return;
+    htEl.className='rg-hit-text rg-hit-text--'+quality.toLowerCase()+' rg-show';
+    htEl.textContent=quality;
     clearTimeout(htEl._t);
-    htEl._t = setTimeout(function () { htEl.classList.remove('rg-show'); }, 550);
+    htEl._t=setTimeout(function(){htEl.classList.remove('rg-show');},550);
   }
-
-  function registerHit(note, quality) {
-    note.hit   = true;
-    note.alpha = 0;
-    S.combo++;
-    if (S.combo > S.maxCombo) S.maxCombo = S.combo;
-    S.mult = S.combo >= 40 ? 4 : S.combo >= 20 ? 3 : S.combo >= 10 ? 2 : 1;
-    var pts = (quality === 'PERFECT' ? 100 : 50) * S.mult;
-    S.score += pts;
-    if (quality === 'PERFECT') S.perfect++; else S.good++;
-    showHitText(note.lane, quality);
-    updateHUD();
-  }
-
-  function registerMiss(note) {
-    if (note.missed) return;
-    note.missed = true;
-    S.combo = 0;
-    S.mult  = 1;
-    S.miss++;
-    S.lives = Math.max(0, S.lives - 1);
-    showHitText(note.lane, 'MISS');
-    updateHUD();
-    /* canvas shake */
-    var wrap = el('rg-canvas') && el('rg-canvas').parentElement;
-    if (wrap) {
-      wrap.classList.remove('rg-shake');
-      void wrap.offsetWidth; /* reflow to restart animation */
-      wrap.classList.add('rg-shake');
-      setTimeout(function () { wrap.classList.remove('rg-shake'); }, 300);
+  function registerHit(note,quality){
+    note.hit=true;note.alpha=0;
+    S.combo++;if(S.combo>S.maxCombo)S.maxCombo=S.combo;
+    var newMult=S.combo>=40?4:S.combo>=20?3:S.combo>=10?2:1;
+    if(newMult>S.mult){
+      var mEl=el('rg-mult');
+      mEl.classList.remove('rg-mult-pop');void mEl.offsetWidth;
+      mEl.classList.add('rg-mult-pop');
+      setTimeout(function(){mEl.classList.remove('rg-mult-pop');},480);
     }
-    if (S.lives <= 0) {
-      setTimeout(function () {
-        S.running = false;
-        cancelAnimationFrame(S.animId);
-        stopBeat();
-        showResult();
-      }, 600);
+    S.mult=newMult;
+    S.score+=(quality==='PERFECT'?100:50)*S.mult;
+    if(quality==='PERFECT'){S.perfect++;spawnParticles(note.lane);}else{S.good++;}
+    var sEl=el('rg-score');
+    sEl.classList.remove('rg-score-pulse');void sEl.offsetWidth;
+    sEl.classList.add('rg-score-pulse');
+    setTimeout(function(){sEl.classList.remove('rg-score-pulse');},240);
+    showHitText(note.lane,quality);updateHUD();
+  }
+  function registerMiss(note){
+    if(note.missed)return;
+    note.missed=true;S.combo=0;S.mult=1;S.miss++;S.lives=Math.max(0,S.lives-1);
+    showHitText(note.lane,'MISS');updateHUD();
+    var wrap=el('rg-canvas')&&el('rg-canvas').parentElement;
+    if(wrap){wrap.classList.remove('rg-shake');void wrap.offsetWidth;wrap.classList.add('rg-shake');
+      setTimeout(function(){wrap.classList.remove('rg-shake');},300);}
+    if(S.lives<=0){
+      setTimeout(function(){S.running=false;cancelAnimationFrame(S.animId);stopBeat();showResult(false);},600);
     }
   }
-
-  function tryHit(lane) {
-    var hitY = S.H - 68;
-    var best = null, bestDist = Infinity;
-    for (var i = 0; i < S.notes.length; i++) {
-      var note = S.notes[i];
-      if (note.lane !== lane || note.hit || note.missed) continue;
-      var dist = Math.abs(note.y - hitY);
-      if (dist < bestDist) { bestDist = dist; best = note; }
+  function tryHit(lane){
+    var hitY=S.H-68,best=null,bestDist=Infinity;
+    for(var i=0;i<S.notes.length;i++){
+      var note=S.notes[i];if(note.lane!==lane||note.hit||note.missed)continue;
+      var dist=Math.abs(note.y-hitY);if(dist<bestDist){bestDist=dist;best=note;}
     }
-    if (!best) return;
-    if (bestDist <= HIT_PERFECT)      registerHit(best, 'PERFECT');
-    else if (bestDist <= HIT_GOOD)    registerHit(best, 'GOOD');
-    /* outside window — press does nothing; miss fires in update() */
+    if(!best)return;
+    if(bestDist<=HIT_PERFECT)registerHit(best,'PERFECT');
+    else if(bestDist<=HIT_GOOD)registerHit(best,'GOOD');
   }
 
-  /* ── NOTE SPAWN ── */
-  function spawnNote() {
-    var lane = Math.floor(Math.random() * 4);
-    S.notes.push({ lane: lane, item: S.laneItems[lane], y: -30,
-                   hit: false, missed: false, alpha: 1 });
-    S.total++;
+  /* ── SPAWN ── */
+  function spawnNote(){
+    if(S.spawned>=S.songLength)return;
+    var lane=Math.floor(Math.random()*4);
+    S.notes.push({lane:lane,item:S.laneItems[lane],y:-30,hit:false,missed:false,alpha:1});
+    S.spawned++;S.notesUntilRotate--;
+    if(S.notesUntilRotate<=0)rotateLanes();
   }
 
   /* ── ROUND RECT ── */
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.lineTo(x + w - r, y);
-    ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-    ctx.lineTo(x + w, y + h - r);
-    ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-    ctx.lineTo(x + r, y + h);
-    ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-    ctx.lineTo(x, y + r);
-    ctx.quadraticCurveTo(x, y, x + r, y);
-    ctx.closePath();
+  function roundRect(ctx,x,y,w,h,r){
+    ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);
+    ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);
+    ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);
+    ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);
+    ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();
   }
 
   /* ── NOTE DRAW ── */
-  function drawNote(ctx, note, laneW) {
-    if (note.alpha <= 0) return;
-    var cx    = (note.lane + 0.5) * laneW;
-    var noteW = laneW * 0.70;
-    var noteH = 52;
-    var x     = cx - noteW / 2;
-    var y     = note.y - noteH / 2;
-    /* missed notes go gray */
-    var color = note.missed ? '#4b5563' : LANE_COLORS[note.lane];
-    /* glow brightens as note approaches hit zone */
-    var hitY     = S.H - 68;
-    var dist     = hitY - note.y;
-    var glowMult = (!note.missed && dist > 0 && dist < 120) ? 1 + (1 - dist / 120) * 0.8 : 1;
-
-    ctx.save();
-    ctx.globalAlpha = note.alpha;
-    ctx.shadowColor = color;
-    ctx.shadowBlur  = 14 * glowMult;
-
-    roundRect(ctx, x, y, noteW, noteH, 10);
-    ctx.fillStyle = '#0e0e1c'; ctx.fill();
-
-    roundRect(ctx, x, y, noteW, noteH, 10);
-    ctx.strokeStyle = color; ctx.lineWidth = 2.5; ctx.stroke();
-    ctx.shadowBlur = 0;
-
-    var grad = ctx.createLinearGradient(x, y, x, y + noteH * 0.4);
-    grad.addColorStop(0, color + '30'); grad.addColorStop(1, 'transparent');
-    roundRect(ctx, x + 1, y + 1, noteW - 2, noteH - 2, 9);
-    ctx.fillStyle = grad; ctx.fill();
-
-    var text  = note.item.jp;
-    var fsize = text.length <= 1 ? 26 : text.length <= 2 ? 21 : text.length <= 4 ? 16 : 12;
-    ctx.fillStyle    = note.missed ? '#9ca3af' : '#ffffff';
-    ctx.font         = 'bold ' + fsize + 'px system-ui, "Hiragino Sans", sans-serif';
-    ctx.textAlign    = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText(text, cx, note.y, noteW - 8);
-    ctx.restore();
+  function drawNote(ctx,note,laneW){
+    if(note.alpha<=0)return;
+    var cx=(note.lane+0.5)*laneW,noteW=laneW*0.70,noteH=52;
+    var x=cx-noteW/2,y=note.y-noteH/2;
+    var color=note.missed?'#4b5563':LANE_COLORS[note.lane];
+    var hitY=S.H-68,dist=hitY-note.y;
+    var glow=(!note.missed&&dist>0&&dist<120)?1+(1-dist/120)*0.8:1;
+    ctx.save();ctx.globalAlpha=note.alpha;ctx.shadowColor=color;ctx.shadowBlur=14*glow;
+    roundRect(ctx,x,y,noteW,noteH,10);ctx.fillStyle='#0e0e1c';ctx.fill();
+    roundRect(ctx,x,y,noteW,noteH,10);ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();
+    ctx.shadowBlur=0;
+    var grad=ctx.createLinearGradient(x,y,x,y+noteH*0.4);
+    grad.addColorStop(0,color+'30');grad.addColorStop(1,'transparent');
+    roundRect(ctx,x+1,y+1,noteW-2,noteH-2,9);ctx.fillStyle=grad;ctx.fill();
+    var text=note.item.jp;
+    var fs=text.length<=1?26:text.length<=2?21:text.length<=4?16:12;
+    ctx.fillStyle=note.missed?'#9ca3af':'#ffffff';
+    ctx.font='bold '+fs+'px system-ui,"Hiragino Sans",sans-serif';
+    ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(text,cx,note.y,noteW-8);ctx.restore();
   }
 
   /* ── RENDER ── */
-  function render() {
-    var canvas = el('rg-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var W = S.W, H = S.H, dpr = S.dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    var laneW = W / 4;
-    var hitY  = H - 68;
-
-    ctx.fillStyle = '#070710'; ctx.fillRect(0, 0, W, H);
-
-    /* lane tints */
-    for (var i = 0; i < 4; i++) {
-      var lx = i * laneW;
-      if (i % 2 === 0) { ctx.fillStyle = 'rgba(255,255,255,0.013)'; ctx.fillRect(lx, 0, laneW, H); }
-      var gBot = ctx.createLinearGradient(0, hitY - 110, 0, H);
-      gBot.addColorStop(0, 'transparent'); gBot.addColorStop(1, LANE_COLORS[i] + '22');
-      ctx.fillStyle = gBot; ctx.fillRect(lx, 0, laneW, H);
+  function render(){
+    var canvas=el('rg-canvas');if(!canvas)return;
+    var ctx=canvas.getContext('2d'),W=S.W,H=S.H,dpr=S.dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    var laneW=W/4,hitY=H-68;
+    ctx.fillStyle='#070710';ctx.fillRect(0,0,W,H);
+    for(var i=0;i<4;i++){
+      var lx=i*laneW;
+      if(i%2===0){ctx.fillStyle='rgba(255,255,255,0.013)';ctx.fillRect(lx,0,laneW,H);}
+      var gBot=ctx.createLinearGradient(0,hitY-110,0,H);
+      gBot.addColorStop(0,'transparent');gBot.addColorStop(1,LANE_COLORS[i]+'22');
+      ctx.fillStyle=gBot;ctx.fillRect(lx,0,laneW,H);
     }
-
-    /* beat grid */
-    ctx.strokeStyle = 'rgba(255,255,255,0.03)'; ctx.lineWidth = 1;
-    for (var gy = 60; gy < H - 80; gy += 60) {
-      ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+    ctx.strokeStyle='rgba(255,255,255,0.03)';ctx.lineWidth=1;
+    for(var gy=60;gy<H-80;gy+=60){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+    ctx.strokeStyle='rgba(255,255,255,0.07)';ctx.lineWidth=1;
+    for(var j=1;j<4;j++){ctx.beginPath();ctx.moveTo(j*laneW,0);ctx.lineTo(j*laneW,H);ctx.stroke();}
+    for(var n=0;n<S.notes.length;n++)drawNote(ctx,S.notes[n],laneW);
+    /* particles — above notes */
+    for(var p=0;p<S.particles.length;p++){
+      var pt=S.particles[p];if(pt.alpha<=0)continue;
+      ctx.save();ctx.globalAlpha=pt.alpha;ctx.fillStyle=pt.color;
+      ctx.shadowColor=pt.color;ctx.shadowBlur=8;
+      ctx.beginPath();ctx.arc(pt.x,pt.y,Math.max(0.5,pt.r),0,Math.PI*2);ctx.fill();ctx.restore();
     }
-
-    /* lane dividers */
-    ctx.strokeStyle = 'rgba(255,255,255,0.07)'; ctx.lineWidth = 1;
-    for (var j = 1; j < 4; j++) {
-      ctx.beginPath(); ctx.moveTo(j * laneW, 0); ctx.lineTo(j * laneW, H); ctx.stroke();
-    }
-
-    /* notes */
-    for (var n = 0; n < S.notes.length; n++) drawNote(ctx, S.notes[n], laneW);
-
-    /* hit zone line */
-    ctx.strokeStyle = 'rgba(255,255,255,0.18)'; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(0, hitY); ctx.lineTo(W, hitY); ctx.stroke();
-
-    /* hit zone circles */
-    for (var k = 0; k < 4; k++) {
-      var cx = (k + 0.5) * laneW, active = S.laneActive[k];
-      ctx.save();
-      ctx.strokeStyle = LANE_COLORS[k];
-      ctx.lineWidth   = active ? 3.5 : 2.5;
-      ctx.shadowColor = LANE_COLORS[k];
-      ctx.shadowBlur  = active ? 24 : 12;
-      ctx.beginPath(); ctx.arc(cx, hitY, active ? 23 : 20, 0, Math.PI * 2); ctx.stroke();
-      if (active) { ctx.fillStyle = LANE_COLORS[k] + '28'; ctx.fill(); }
+    ctx.strokeStyle='rgba(255,255,255,0.18)';ctx.lineWidth=2;
+    ctx.beginPath();ctx.moveTo(0,hitY);ctx.lineTo(W,hitY);ctx.stroke();
+    for(var k=0;k<4;k++){
+      var cx=(k+0.5)*laneW,active=S.laneActive[k];
+      ctx.save();ctx.strokeStyle=LANE_COLORS[k];ctx.lineWidth=active?3.5:2.5;
+      ctx.shadowColor=LANE_COLORS[k];ctx.shadowBlur=active?24:12;
+      ctx.beginPath();ctx.arc(cx,hitY,active?23:20,0,Math.PI*2);ctx.stroke();
+      if(active){ctx.fillStyle=LANE_COLORS[k]+'28';ctx.fill();}
       ctx.restore();
     }
   }
 
   /* ── UPDATE ── */
-  function update(dt) {
-    S.spawnTimer += dt;
-    if (S.spawnTimer >= S.interval) {
-      spawnNote();
-      S.spawnTimer -= S.interval;
+  function update(dt){
+    S.spawnTimer+=dt;
+    if(S.spawnTimer>=S.interval){spawnNote();S.spawnTimer-=S.interval;}
+    /* particles */
+    for(var p=S.particles.length-1;p>=0;p--){
+      var pt=S.particles[p];
+      pt.x+=pt.vx*dt;pt.y+=pt.vy*dt;pt.vy+=280*dt;pt.alpha-=dt*2.8;
+      if(pt.alpha<=0)S.particles.splice(p,1);
     }
-
-    var hitY  = S.H - 68;
-    var missY = S.H + 60;
-
-    for (var i = S.notes.length - 1; i >= 0; i--) {
-      var note = S.notes[i];
-      note.y += S.speed * dt;
-
-      /* fade missed notes */
-      if (note.missed) note.alpha = Math.max(0, note.alpha - dt * 4);
-
-      /* auto-miss: note passed hit zone without being hit */
-      if (!note.hit && !note.missed && note.y > hitY + MISS_PAST) registerMiss(note);
-
-      /* remove off-screen or fully-hit notes */
-      if (note.alpha <= 0 || note.y > missY) S.notes.splice(i, 1);
+    /* notes */
+    var hitY=S.H-68,missY=S.H+60;
+    for(var i=S.notes.length-1;i>=0;i--){
+      var note=S.notes[i];note.y+=S.speed*dt;
+      if(note.missed)note.alpha=Math.max(0,note.alpha-dt*4);
+      if(!note.hit&&!note.missed&&note.y>hitY+MISS_PAST)registerMiss(note);
+      if(note.alpha<=0||note.y>missY)S.notes.splice(i,1);
+    }
+    /* song clear */
+    if(!S.songOver&&S.spawned>=S.songLength&&S.notes.length===0){
+      S.songOver=true;S.running=false;cancelAnimationFrame(S.animId);stopBeat();
+      setTimeout(function(){showResult(true);},400);
     }
   }
 
   /* ── GAME LOOP ── */
-  var lastTime = 0;
-  function gameLoop(ts) {
-    var dt = Math.min((ts - lastTime) / 1000, 0.1);
-    lastTime = ts;
-    if (S.running) {
-      update(dt);
-      render();
-      S.animId = requestAnimationFrame(gameLoop);
-    }
+  var lastTime=0;
+  function gameLoop(ts){
+    var dt=Math.min((ts-lastTime)/1000,0.1);lastTime=ts;
+    if(S.running){update(dt);render();S.animId=requestAnimationFrame(gameLoop);}
   }
 
-  /* ── RESULT SCREEN ── */
-  function showResult() {
-    var total    = S.perfect + S.good + S.miss;
-    var accuracy = total > 0 ? Math.round((S.perfect + S.good) / total * 100) : 0;
-    var grade    = accuracy >= 95 ? 'S' : accuracy >= 85 ? 'A' : accuracy >= 70 ? 'B' : accuracy >= 50 ? 'C' : 'D';
-    var gradeEl  = el('rg-grade');
-    gradeEl.textContent = grade;
-    gradeEl.className   = 'rg-result-grade rg-result-grade--' + grade;
-    el('rg-final-score').textContent = S.score.toLocaleString();
-    el('rg-breakdown').innerHTML =
-      '✨ Perfect: ' + S.perfect +
-      ' &nbsp;|&nbsp; ✔ Good: ' + S.good +
-      ' &nbsp;|&nbsp; ✖ Miss: ' + S.miss + '<br>' +
-      'Max Combo: ' + S.maxCombo +
-      ' &nbsp;|&nbsp; Accuracy: ' + accuracy + '%';
+  /* ── COUNTDOWN ── */
+  function startCountdown(callback){
+    var overlay=el('rg-countdown'),counts=['3','2','1','GO!'],i=0;
+    overlay.style.display='flex';
+    function tick(){
+      overlay.textContent=counts[i];
+      overlay.style.animation='none';void overlay.offsetWidth;
+      overlay.style.animation='rg-count-pop 0.75s ease forwards';
+      i++;
+      if(i<counts.length){setTimeout(tick,750);}
+      else{setTimeout(function(){overlay.style.display='none';callback();},550);}
+    }
+    tick();
+  }
+
+  /* ── RESULT ── */
+  function showResult(cleared){
+    var total=S.perfect+S.good+S.miss;
+    var accuracy=total>0?Math.round((S.perfect+S.good)/total*100):0;
+    var grade=accuracy>=95?'S':accuracy>=85?'A':accuracy>=70?'B':accuracy>=50?'C':'D';
+    el('rg-grade').textContent=grade;
+    el('rg-grade').className='rg-result-grade rg-result-grade--'+grade;
+    el('rg-final-score').textContent=S.score.toLocaleString();
+    el('rg-breakdown').innerHTML=
+      '<strong>'+(cleared?'🎵 Stage Clear!':'💀 Game Over')+'</strong><br>'+
+      '✨ Perfect: '+S.perfect+' &nbsp;|&nbsp; ✔ Good: '+S.good+' &nbsp;|&nbsp; ✖ Miss: '+S.miss+'<br>'+
+      'Max Combo: '+S.maxCombo+' &nbsp;|&nbsp; Accuracy: '+accuracy+'%';
     show('rg-over');
   }
 
   /* ── PUBLIC API ── */
-  window.RG = {
-    setMode: function (mode, btn) {
-      S.mode = mode;
-      document.querySelectorAll('.rg-mode-btn').forEach(function (b) { b.classList.remove('rg-mode-active'); });
-      if (btn) btn.classList.add('rg-mode-active');
+  window.RG={
+    setMode:function(mode,btn){
+      S.mode=mode;
+      document.querySelectorAll('.rg-mode-btn').forEach(function(b){b.classList.remove('rg-mode-active');});
+      if(btn)btn.classList.add('rg-mode-active');
     },
-
-    setDiff: function (diff, btn) {
-      S.diff = diff;
-      document.querySelectorAll('.rg-diff-btn').forEach(function (b) { b.classList.remove('rg-diff-active'); });
-      if (btn) btn.classList.add('rg-diff-active');
+    setDiff:function(diff,btn){
+      S.diff=diff;
+      document.querySelectorAll('.rg-diff-btn').forEach(function(b){b.classList.remove('rg-diff-active');});
+      if(btn)btn.classList.add('rg-diff-active');
     },
-
-    start: function () {
-      cancelAnimationFrame(S.animId);
-      stopBeat();
-      S.running = false;
-      S.notes = [];
-      S.score = 0; S.combo = 0; S.maxCombo = 0; S.mult = 1;
-      S.perfect = 0; S.good = 0; S.miss = 0; S.total = 0;
-      S.lives = MAX_LIVES;
-      S.spawnTimer = 0;
-      S.laneActive = [false, false, false, false];
-
-      var cfg    = DIFF_CFG[S.diff];
-      S.bpm      = cfg.bpm;
-      S.speed    = cfg.speed;
-      S.interval = (60 / cfg.bpm) * cfg.beatsPerNote;
-
+    start:function(){
+      cancelAnimationFrame(S.animId);stopBeat();S.running=false;
+      S.notes=[];S.particles=[];
+      S.score=0;S.combo=0;S.maxCombo=0;S.mult=1;
+      S.perfect=0;S.good=0;S.miss=0;S.total=0;
+      S.lives=MAX_LIVES;S.spawned=0;S.songOver=false;
+      S.spawnTimer=0;S.notesUntilRotate=ROTATE_EVERY;
+      S.laneActive=[false,false,false,false];
+      var cfg=DIFF_CFG[S.diff];
+      S.bpm=cfg.bpm;S.speed=cfg.speed;
+      S.interval=(60/cfg.bpm)*cfg.beatsPerNote;
+      S.songLength=SONG_LENGTH[S.diff];
       show('rg-game');
-      setTimeout(function () {
-        setupCanvas();
-        setupLanes();
-        updateHUD();
-        startBeat();
-        S.running = true;
-        lastTime  = performance.now();
-        S.animId  = requestAnimationFrame(gameLoop);
-      }, 30);
+      setTimeout(function(){
+        setupCanvas();setupLanes();updateHUD();
+        startCountdown(function(){
+          startBeat();S.running=true;lastTime=performance.now();
+          S.animId=requestAnimationFrame(gameLoop);
+        });
+      },30);
     },
-
-    quit: function () {
-      S.running = false;
-      cancelAnimationFrame(S.animId);
-      stopBeat();
+    quit:function(){
+      S.running=false;cancelAnimationFrame(S.animId);stopBeat();
+      var cd=el('rg-countdown');if(cd)cd.style.display='none';
       show('rg-menu');
     },
-
-    playAgain: function () { RG.start(); },
-
-    menu: function () {
-      S.running = false;
-      cancelAnimationFrame(S.animId);
-      stopBeat();
+    playAgain:function(){RG.start();},
+    menu:function(){
+      S.running=false;cancelAnimationFrame(S.animId);stopBeat();
+      var cd=el('rg-countdown');if(cd)cd.style.display='none';
       show('rg-menu');
     },
-
-    pressLane: function (lane) {
-      if (!S.running) return;
-      S.laneActive[lane] = true;
-      var cell = document.querySelector('.rg-lane-cell[data-lane="' + lane + '"]');
-      if (cell) {
+    pressLane:function(lane){
+      if(!S.running)return;
+      S.laneActive[lane]=true;
+      var cell=document.querySelector('.rg-lane-cell[data-lane="'+lane+'"]');
+      if(cell){
         cell.classList.add('rg-lane-flash');
-        setTimeout(function () {
-          cell.classList.remove('rg-lane-flash');
-          S.laneActive[lane] = false;
-        }, 130);
+        setTimeout(function(){cell.classList.remove('rg-lane-flash');S.laneActive[lane]=false;},130);
       }
       tryHit(lane);
     }
   };
 
-  /* ── KEYBOARD ── */
-  document.addEventListener('keydown', function (e) {
-    if (e.code in KEY_MAP) { e.preventDefault(); RG.pressLane(KEY_MAP[e.code]); }
+  document.addEventListener('keydown',function(e){
+    if(e.code in KEY_MAP){e.preventDefault();RG.pressLane(KEY_MAP[e.code]);}
   });
-
-  /* ── RESIZE ── */
-  window.addEventListener('resize', function () {
-    if (S.running) setupCanvas();
-  });
+  window.addEventListener('resize',function(){if(S.running)setupCanvas();});
 
   show('rg-menu');
 })();
