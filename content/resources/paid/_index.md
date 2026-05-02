@@ -143,10 +143,10 @@ Nothing replaces a real conversation. A good tutor will catch mistakes you don't
 
 <div class="tutor-card">
   <div class="tutor-card-top">
-    <span class="tutor-name">Study Japanese — Claire Sensei</span>
+    <span class="tutor-name">Study Japanese — Erina Yamamoto</span>
     <span class="tutor-badge tutor-badge--rec">Personal Recommendation</span>
   </div>
-  <div class="tutor-desc">Taught me personally — genuinely one of the best Japanese tutors I've come across. Claire runs private online Japanese lessons tailored to your level and goals. Highly recommended if you want 1-on-1 instruction that's structured, clear, and actually fun. Based in the UK, teaches online worldwide.</div>
+  <div class="tutor-desc">Taught me personally — genuinely one of the best Japanese tutors I've come across. Erina runs private online Japanese lessons tailored to your level and goals. Highly recommended if you want 1-on-1 instruction that's structured, clear, and actually fun. Based in the UK, teaches online worldwide.</div>
   <a class="tutor-link" href="https://www.studyjapanese.co.uk" target="_blank" rel="noopener">→ studyjapanese.co.uk</a>
 </div>
 
