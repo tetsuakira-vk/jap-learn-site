@@ -241,6 +241,59 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
 
 Consistency beats intensity. Twenty minutes every day beats three hours on the weekend.
 
+---
+
+## Typing in Japanese — Setting Up Your IME
+
+Outside Japan your keyboard is configured for Latin characters. To type Japanese you need to enable a **Japanese IME** (Input Method Editor). It's already built into Windows and Mac — no downloads required.
+
+### How it works
+
+Type romaji on your normal keyboard → the IME converts it to kana → press **Space** to cycle through kanji candidates → press **Enter** to confirm.
+
+| You type | → Kana | → Press Space | Confirmed |
+|----------|--------|---------------|-----------|
+| `nihongo` | にほんご | 日本語 (cycle options) | ✓ |
+| `kawaii` | かわいい | 可愛い | ✓ |
+| `tokyo` | とうきょう | 東京 | ✓ |
+
+### Windows — Microsoft IME (built-in)
+
+<ol class="ime-steps">
+  <li>Open <strong>Settings → Time &amp; Language → Language &amp; Region</strong></li>
+  <li>Click <strong>Add a language</strong>, search for <strong>Japanese</strong>, and install — the IME is included automatically</li>
+  <li>Switch input language with <strong>Windows + Space</strong></li>
+  <li>Once in Japanese mode, toggle hiragana/romaji input with <strong>Alt + `</strong> (grave accent)</li>
+  <li>The taskbar will show あ (hiragana) or A (romaji) — click it to switch between modes</li>
+</ol>
+
+### Mac — Japanese Hiragana (built-in)
+
+<ol class="ime-steps">
+  <li>Go to <strong>System Settings → Keyboard</strong></li>
+  <li>Click <strong>Edit</strong> next to Input Sources</li>
+  <li>Click <strong>+</strong>, search for <strong>Japanese</strong>, select <strong>Japanese – Hiragana</strong>, and click Add</li>
+  <li>Switch input with <strong>Control + Space</strong> or the flag icon in the Mac menu bar</li>
+  <li>The kana suggestions appear inline as you type — press Space to cycle, Enter to confirm</li>
+</ol>
+
+### iPhone & Android
+
+Both have Japanese keyboards built in — no app needed.
+
+- **iPhone/iPad:** Settings → General → Keyboard → Keyboards → Add New Keyboard → **Japanese – Romaji**
+- **Android:** Settings → General Management → Language and Input → On-screen Keyboard → **Add keyboard → Japanese**
+
+Once installed, switch to Japanese input in any app and type romaji — the phone handles the rest.
+
+---
+
+## Japanese–English Dictionary
+
+We've built a free Japanese–English dictionary right here on the site. Search any word, kanji, or romaji and get readings, meanings, JLPT level, and part of speech — no login needed.
+
+**[→ Open the Japanese Dictionary](/dictionary/)**
+
 <script>
 window.REQUIRED_CODE_ERROR_MESSAGE='Please choose a country code';
 window.LOCALE='en';

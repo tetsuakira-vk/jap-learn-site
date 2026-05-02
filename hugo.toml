@@ -224,6 +224,13 @@ buildExpired = false
     weight = 11
 
   [[menu.main]]
+    identifier = "vocab-dictionary"
+    name = "Dictionary 辞書"
+    url = "/dictionary/"
+    parent = "vocabulary"
+    weight = 12
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"

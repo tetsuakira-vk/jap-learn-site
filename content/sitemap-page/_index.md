@@ -71,6 +71,7 @@ showtoc: false
       <li><a href="/vocab/weather/">Weather — 天気</a></li>
       <li><a href="/vocab/time/">Time & Days — 時間・曜日</a></li>
       <li><a href="/vocab/places/">Places — 場所</a></li>
+      <li><a href="/dictionary/">Dictionary — 辞書</a></li>
       <li><a href="/phrases/">Essential Phrases</a></li>
       <li><a href="/numbers/">Numbers</a></li>
     </ul>
