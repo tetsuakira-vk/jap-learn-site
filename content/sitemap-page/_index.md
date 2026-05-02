@@ -78,6 +78,14 @@ showtoc: false
   </div>
 
   <div class="sitemap-section">
+    <div class="sitemap-section-title">Games</div>
+    <ul class="sitemap-links">
+      <li><a href="/games/">Games Hub</a></li>
+      <li><a href="/games/battle/">Kanji Quest — Battle RPG</a></li>
+    </ul>
+  </div>
+
+  <div class="sitemap-section">
     <div class="sitemap-section-title">Speaking Practice</div>
     <ul class="sitemap-links">
       <li><a href="/conversation/">Conversation Practice</a></li>

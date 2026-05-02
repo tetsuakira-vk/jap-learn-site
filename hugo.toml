@@ -271,6 +271,19 @@ buildExpired = false
     weight = 55
 
   [[menu.main]]
+    identifier = "games"
+    name = "Games"
+    url = "/games/"
+    weight = 58
+
+  [[menu.main]]
+    identifier = "games-battle"
+    name = "Kanji Quest ⚔️"
+    url = "/games/battle/"
+    parent = "games"
+    weight = 1
+
+  [[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"
