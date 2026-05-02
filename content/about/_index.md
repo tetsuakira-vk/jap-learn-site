@@ -70,3 +70,72 @@ Japanese uses three scripts simultaneously, which is the thing that looks most i
 | **漢字** Kanji | 2,136 (daily use) | Meaning-carrying words, names |
 
 A typical Japanese sentence mixes all three. Once you can read hiragana and katakana, you can sound out any Japanese text even without knowing what it means — which is a huge first step.
+
+---
+
+## Get in touch
+
+Questions, suggestions, or just want to say hi — use the form below.
+
+<form id="contact-form" class="contact-form" novalidate>
+  <div class="cf-row">
+    <label class="cf-label" for="cf-name">Name</label>
+    <input class="cf-input" type="text" id="cf-name" name="name" placeholder="Your name" required>
+  </div>
+  <div class="cf-row">
+    <label class="cf-label" for="cf-email">Email</label>
+    <input class="cf-input" type="email" id="cf-email" name="email" placeholder="your@email.com" required>
+  </div>
+  <div class="cf-row">
+    <label class="cf-label" for="cf-message">Message</label>
+    <textarea class="cf-input cf-textarea" id="cf-message" name="message" placeholder="Your message…" rows="5" required></textarea>
+  </div>
+  <input type="checkbox" name="botcheck" style="display:none">
+  <div id="cf-msg"></div>
+  <button type="submit" class="cf-submit" id="cf-btn">Send message</button>
+</form>
+
+<script>
+(function() {
+  var form = document.getElementById('contact-form');
+  var btn  = document.getElementById('cf-btn');
+  var msg  = document.getElementById('cf-msg');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+    msg.className = '';
+    msg.textContent = '';
+    var data = {
+      access_key: '61150fb6-a3d6-44ca-b5f2-b323b8a59f1b',
+      name: document.getElementById('cf-name').value,
+      email: document.getElementById('cf-email').value,
+      message: document.getElementById('cf-message').value
+    };
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(res) {
+      if (res.success) {
+        msg.className = 'cf-msg cf-msg--ok';
+        msg.textContent = 'Message sent — thanks! I\'ll get back to you soon.';
+        form.reset();
+      } else {
+        throw new Error(res.message || 'Error');
+      }
+    })
+    .catch(function() {
+      msg.className = 'cf-msg cf-msg--err';
+      msg.textContent = 'Something went wrong. Please try again or email directly.';
+    })
+    .finally(function() {
+      btn.disabled = false;
+      btn.textContent = 'Send message';
+    });
+  });
+})();
+</script>
