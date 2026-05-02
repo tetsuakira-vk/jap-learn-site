@@ -2669,6 +2669,13 @@
   font-size: 0.76rem; transition: border-color 0.15s, color 0.15s;
 }
 .rg-quit-btn:hover { border-color: #c0392b; color: var(--primary); }
+.rg-fs-btn {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.28rem 0.55rem; color: var(--secondary); cursor: pointer;
+  font-size: 0.80rem; transition: border-color 0.15s, color 0.15s; margin-left: 0.3rem;
+  line-height: 1;
+}
+.rg-fs-btn:hover { border-color: #3b82f6; color: var(--primary); }
 
 /* — Canvas wrapper — */
 .rg-canvas-wrap {
@@ -2823,3 +2830,27 @@
   40%     { transform: scale(1.15); }
 }
 .rg-hud-val.rg-score-pulse { animation: rg-score-pulse 0.22s ease; }
+
+/* Fullscreen mode */
+#rg-game:fullscreen,
+#rg-game:-webkit-full-screen {
+  background: #070710;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+#rg-game:fullscreen .rg-game-inner,
+#rg-game:-webkit-full-screen .rg-game-inner {
+  height: 100vh;
+  max-width: 960px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#rg-game:fullscreen #rg-canvas,
+#rg-game:-webkit-full-screen #rg-canvas {
+  flex: 1 !important;
+  height: auto !important;
+  min-height: 0;
+}

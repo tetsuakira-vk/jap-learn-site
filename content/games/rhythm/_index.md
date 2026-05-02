@@ -75,6 +75,7 @@ showtoc: false
         <span class="rg-hud-label">Lives</span>
       </div>
       <button class="rg-quit-btn" onclick="RG.quit()">Quit</button>
+      <button class="rg-fs-btn" id="rg-fs-btn" onclick="RG.toggleFullscreen()" title="Fullscreen">⛶</button>
     </div>
     <div class="rg-canvas-wrap">
       <canvas id="rg-canvas"></canvas>
@@ -394,12 +395,7 @@ showtoc: false
     updateHUD();
     S.questionResolved=true;
     S.notes.forEach(function(n){n.missed=true;});
-    setTimeout(function(){
-      if(!S.running||S.songOver)return;
-      S.notes=[];
-      if(S.spawned>=S.songLength){finishSong();}
-      else{spawnQuestion();}
-    },1400);
+    scheduleNextSpawn(1.4);
   }
 
   function registerMiss(note){
@@ -416,12 +412,7 @@ showtoc: false
       setTimeout(function(){S.running=false;cancelAnimationFrame(S.animId);stopBeat();showResult(false);},600);
       return;
     }
-    setTimeout(function(){
-      if(!S.running||S.songOver)return;
-      S.notes=[];
-      if(S.spawned>=S.songLength){finishSong();}
-      else{spawnQuestion();}
-    },700);
+    scheduleNextSpawn(0.7);
   }
 
   function tryHit(lane){
@@ -440,12 +431,7 @@ showtoc: false
       registerHit(note,quality);
       S.questionResolved=true;
       S.notes.forEach(function(n){if(n!==note)n.missed=true;});
-      setTimeout(function(){
-        if(!S.running||S.songOver)return;
-        S.notes=[];
-        if(S.spawned>=S.songLength){finishSong();}
-        else{spawnQuestion();}
-      },500);
+      scheduleNextSpawn(0.5);
     } else {
       registerWrong(lane);
     }
@@ -477,6 +463,27 @@ showtoc: false
     S.songOver=true;S.running=false;
     cancelAnimationFrame(S.animId);stopBeat();
     setTimeout(function(){showResult(true);},400);
+  }
+
+  /* snap the next question spawn to the nearest upcoming beat */
+  function scheduleNextSpawn(minSec){
+    var beatSec=60/S.bpm;
+    var delayMs;
+    if(S.audioCtx){
+      var now=S.audioCtx.currentTime;
+      var target=S.nextBeatTime;
+      var earliest=now+(minSec||0.1);
+      while(target<earliest)target+=beatSec;
+      delayMs=Math.max(20,(target-now)*1000);
+    }else{
+      delayMs=(minSec||0.1)*1000;
+    }
+    setTimeout(function(){
+      if(!S.running||S.songOver)return;
+      S.notes=[];
+      if(S.spawned>=S.songLength){finishSong();}
+      else{spawnQuestion();}
+    },delayMs);
   }
 
   /* ── ROUND RECT ── */
@@ -677,7 +684,7 @@ showtoc: false
         startCountdown(function(){
           startBeat();S.running=true;lastTime=performance.now();
           S.animId=requestAnimationFrame(gameLoop);
-          setTimeout(function(){spawnQuestion();},300);
+          scheduleNextSpawn(0.3);
         });
       },30);
     },
@@ -701,6 +708,17 @@ showtoc: false
         setTimeout(function(){cell.classList.remove('rg-lane-flash');S.laneActive[lane]=false;},130);
       }
       tryHit(lane);
+    },
+    toggleFullscreen:function(){
+      var g=el('rg-game');
+      var fsEl=document.fullscreenElement||document.webkitFullscreenElement;
+      if(!fsEl){
+        if(g.requestFullscreen)g.requestFullscreen();
+        else if(g.webkitRequestFullscreen)g.webkitRequestFullscreen();
+      }else{
+        if(document.exitFullscreen)document.exitFullscreen();
+        else if(document.webkitExitFullscreen)document.webkitExitFullscreen();
+      }
     }
   };
 
@@ -708,6 +726,14 @@ showtoc: false
     if(e.code in KEY_MAP){e.preventDefault();RG.pressLane(KEY_MAP[e.code]);}
   });
   window.addEventListener('resize',function(){if(S.running)setupCanvas();});
+  function onFsChange(){
+    var btn=el('rg-fs-btn');
+    var isFs=!!(document.fullscreenElement||document.webkitFullscreenElement);
+    if(btn)btn.textContent=isFs?'⊡':'⛶';
+    if(S.running)setTimeout(setupCanvas,80);
+  }
+  document.addEventListener('fullscreenchange',onFsChange);
+  document.addEventListener('webkitfullscreenchange',onFsChange);
 
   show('rg-menu');
 })();
