@@ -2565,3 +2565,221 @@
   .fm-card-char { font-size: 1.5rem; }
   .fm-mode-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ═══════════════════════════════════════════════
+   RHYTHM GAME
+═══════════════════════════════════════════════ */
+
+/* — Screen switching — */
+#rg-menu, #rg-game, #rg-over { display: none; }
+#rg-menu.rg-active, #rg-game.rg-active, #rg-over.rg-active { display: block; }
+
+/* — Menu — */
+.rg-title {
+  text-align: center; font-size: 1.75rem; font-weight: 800;
+  letter-spacing: 0.04em; margin-bottom: 0.2rem; color: var(--primary);
+}
+.rg-subtitle {
+  text-align: center; color: var(--secondary); font-size: 0.9rem;
+  margin-bottom: 1.6rem;
+}
+.rg-mode-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0.65rem; max-width: 560px; margin: 0 auto 1.4rem;
+}
+.rg-mode-btn {
+  background: var(--entry); border: 2px solid transparent;
+  border-radius: 10px; padding: 0.9rem 0.5rem; cursor: pointer;
+  text-align: center; transition: border-color 0.15s, background 0.15s;
+  color: var(--primary);
+}
+.rg-mode-btn:hover { border-color: rgba(192,57,43,0.5); }
+.rg-mode-btn.rg-mode-active { border-color: #c0392b; background: rgba(192,57,43,0.1); }
+.rg-mode-icon { font-size: 1.6rem; display: block; margin-bottom: 0.3rem; }
+.rg-mode-label { font-size: 0.73rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--secondary); }
+
+/* How to play hint with colored key badges */
+.rg-howto {
+  display: flex; gap: 0.4rem; align-items: center; justify-content: center;
+  flex-wrap: wrap; color: var(--secondary); font-size: 0.82rem;
+  margin-bottom: 1.4rem; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+.rg-kbd {
+  display: inline-block; border-radius: 4px; padding: 0.12rem 0.5rem;
+  font-size: 0.78rem; font-weight: 700; font-family: monospace;
+  border: 1px solid;
+}
+.rg-kbd--0 { color: #ef4444; border-color: rgba(239,68,68,0.45); background: rgba(239,68,68,0.08); }
+.rg-kbd--1 { color: #f97316; border-color: rgba(249,115,22,0.45); background: rgba(249,115,22,0.08); }
+.rg-kbd--2 { color: #3b82f6; border-color: rgba(59,130,246,0.45); background: rgba(59,130,246,0.08); }
+.rg-kbd--3 { color: #a855f7; border-color: rgba(168,85,247,0.45); background: rgba(168,85,247,0.08); }
+
+/* Difficulty row */
+.rg-diff-heading {
+  text-align: center; color: var(--secondary); font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 0.5rem;
+}
+.rg-diff-row {
+  display: flex; gap: 0.65rem; justify-content: center; margin-bottom: 2rem;
+}
+.rg-diff-btn {
+  background: var(--entry); border: 2px solid var(--border);
+  border-radius: 8px; padding: 0.6rem 1.5rem; cursor: pointer;
+  color: var(--primary); font-weight: 600; font-size: 0.88rem;
+  transition: border-color 0.15s, background 0.15s; line-height: 1.4;
+}
+.rg-diff-btn:hover { border-color: rgba(192,57,43,0.5); }
+.rg-diff-btn.rg-diff-active { border-color: #c0392b; background: rgba(192,57,43,0.1); }
+.rg-diff-sub { font-size: 0.7rem; font-weight: 400; color: var(--secondary); display: block; }
+
+/* Start button */
+.rg-start-btn {
+  display: block; margin: 0 auto;
+  background: #c0392b; color: #fff; border: none; border-radius: 10px;
+  padding: 0.9rem 3.2rem; font-size: 1.05rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase;
+  animation: rg-pulse 2s ease-in-out infinite;
+  transition: background 0.15s, transform 0.1s;
+}
+.rg-start-btn:hover { background: #a93226; transform: scale(1.03); animation: none; }
+.rg-start-btn:active { transform: scale(0.97); }
+@keyframes rg-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.45); }
+  50%      { box-shadow: 0 0 0 14px rgba(192,57,43,0); }
+}
+
+/* — Game screen inner wrapper — */
+.rg-game-inner { max-width: 640px; margin: 0 auto; }
+
+/* — HUD — */
+.rg-hud {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--entry);
+  border: 1px solid var(--border); border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  padding: 0.5rem 1rem;
+}
+.rg-hud-stat { display: flex; flex-direction: column; align-items: center; min-width: 64px; }
+.rg-hud-val { font-size: 1.05rem; font-weight: 700; color: var(--primary); }
+.rg-hud-label { font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--secondary); }
+.rg-hud-mult { color: #f97316; }
+.rg-quit-btn {
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  padding: 0.28rem 0.7rem; color: var(--secondary); cursor: pointer;
+  font-size: 0.76rem; transition: border-color 0.15s, color 0.15s;
+}
+.rg-quit-btn:hover { border-color: #c0392b; color: var(--primary); }
+
+/* — Canvas wrapper — */
+.rg-canvas-wrap {
+  position: relative; background: #070710; line-height: 0;
+  border: 1px solid var(--border); border-top: none; border-bottom: none;
+  overflow: hidden;
+}
+#rg-canvas { display: block; width: 100%; height: 460px; background: #070710; }
+
+/* Hit feedback text — shown absolutely over the canvas, one per lane */
+.rg-hit-layer {
+  position: absolute; inset: 0; pointer-events: none;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.rg-hit-cell {
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 90px;
+}
+.rg-hit-text {
+  font-size: 0.85rem; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.1em; opacity: 0; transition: opacity 0.08s;
+  text-shadow: 0 0 8px currentColor;
+}
+.rg-hit-text.rg-show { opacity: 1; }
+.rg-hit-text--perfect { color: #fbbf24; }
+.rg-hit-text--good    { color: #22c55e; }
+.rg-hit-text--miss    { color: #6b7280; }
+
+/* — Lane labels row — */
+.rg-lane-row {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border); border-top: none;
+  border-radius: 0 0 10px 10px; overflow: hidden;
+  background: var(--entry);
+}
+.rg-lane-cell {
+  padding: 0.5rem 0.4rem; text-align: center;
+  border-right: 1px solid var(--border);
+  border-top: 3px solid transparent;
+  cursor: pointer; transition: background 0.1s;
+  user-select: none;
+}
+.rg-lane-cell:last-child { border-right: none; }
+.rg-lane-cell:active { background: rgba(255,255,255,0.04); }
+.rg-lane-cell[data-lane="0"] { border-top-color: #ef4444; }
+.rg-lane-cell[data-lane="1"] { border-top-color: #f97316; }
+.rg-lane-cell[data-lane="2"] { border-top-color: #3b82f6; }
+.rg-lane-cell[data-lane="3"] { border-top-color: #a855f7; }
+.rg-lane-key {
+  display: inline-block; border-radius: 4px; padding: 0.1rem 0.42rem;
+  font-size: 0.75rem; font-weight: 700; font-family: monospace;
+  border: 1px solid; margin-bottom: 0.25rem;
+}
+.rg-lane-cell[data-lane="0"] .rg-lane-key { color: #ef4444; border-color: rgba(239,68,68,0.4); background: rgba(239,68,68,0.08); }
+.rg-lane-cell[data-lane="1"] .rg-lane-key { color: #f97316; border-color: rgba(249,115,22,0.4); background: rgba(249,115,22,0.08); }
+.rg-lane-cell[data-lane="2"] .rg-lane-key { color: #3b82f6; border-color: rgba(59,130,246,0.4); background: rgba(59,130,246,0.08); }
+.rg-lane-cell[data-lane="3"] .rg-lane-key { color: #a855f7; border-color: rgba(168,85,247,0.4); background: rgba(168,85,247,0.08); }
+.rg-lane-romaji {
+  display: block; font-size: 0.78rem; color: var(--secondary);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  min-height: 1.1em;
+}
+
+/* Lane flash when key pressed (added/removed by JS) */
+.rg-lane-cell.rg-lane-flash[data-lane="0"] { background: rgba(239,68,68,0.15); }
+.rg-lane-cell.rg-lane-flash[data-lane="1"] { background: rgba(249,115,22,0.15); }
+.rg-lane-cell.rg-lane-flash[data-lane="2"] { background: rgba(59,130,246,0.15); }
+.rg-lane-cell.rg-lane-flash[data-lane="3"] { background: rgba(168,85,247,0.15); }
+
+/* — Result screen — */
+.rg-result-box {
+  text-align: center; background: var(--entry); border-radius: 14px;
+  padding: 2.5rem 1.5rem; max-width: 420px; margin: 2rem auto;
+}
+.rg-result-grade {
+  font-size: 5rem; font-weight: 900; line-height: 1; margin-bottom: 0.1rem;
+}
+.rg-result-grade--S { color: #fbbf24; text-shadow: 0 0 28px rgba(251,191,36,0.6); }
+.rg-result-grade--A { color: #22c55e; text-shadow: 0 0 24px rgba(34,197,94,0.5); }
+.rg-result-grade--B { color: #3b82f6; text-shadow: 0 0 20px rgba(59,130,246,0.45); }
+.rg-result-grade--C { color: #a855f7; }
+.rg-result-grade--D { color: #6b7280; }
+.rg-result-rank-label {
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--secondary); margin-bottom: 0.7rem;
+}
+.rg-result-score {
+  font-size: 2.6rem; font-weight: 900; color: var(--primary); margin-bottom: 0.4rem;
+}
+.rg-result-breakdown {
+  color: var(--secondary); font-size: 0.83rem; line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+.rg-result-btns { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+.rg-result-btn {
+  padding: 0.65rem 1.4rem; border-radius: 8px; border: none;
+  cursor: pointer; font-size: 0.9rem; font-weight: 600;
+}
+.rg-result-btn--play { background: #c0392b; color: #fff; }
+.rg-result-btn--play:hover { background: #a93226; }
+.rg-result-btn--menu { background: var(--border); color: var(--primary); }
+.rg-result-btn--menu:hover { opacity: 0.8; }
+
+/* — Responsive — */
+@media (max-width: 640px) {
+  .rg-mode-grid { grid-template-columns: repeat(2, 1fr); }
+  #rg-canvas { height: 340px; }
+  .rg-hud-stat { min-width: 52px; }
+  .rg-hud-val { font-size: 0.92rem; }
+}
+@media (max-width: 400px) {
+  #rg-canvas { height: 270px; }
+  .rg-diff-btn { padding: 0.5rem 0.9rem; font-size: 0.82rem; }
+}

@@ -16,12 +16,12 @@ Learn Japanese through play. All games run in your browser — no downloads, no 
     <span class="ghc-badge ghc-badge--play">Play Now</span>
   </a>
 
-  <div class="game-hub-card game-hub-card--soon">
-    <div class="ghc-icon">🌧️</div>
-    <div class="ghc-name">Word Drop</div>
-    <div class="ghc-desc">Words fall from the top — type the romaji before they hit the bottom. Speed increases with every level. How long can you last?</div>
-    <span class="ghc-badge ghc-badge--soon">Coming Soon</span>
-  </div>
+  <a class="game-hub-card" href="/games/rhythm/">
+    <div class="ghc-icon">🎵</div>
+    <div class="ghc-name">Rhythm</div>
+    <div class="ghc-desc">Notes fall to the beat — hit the correct lane as they reach the bar. Hiragana, katakana, kanji, and N5 vocab. Combos, multipliers, and a live beat engine.</div>
+    <span class="ghc-badge ghc-badge--play">Play Now</span>
+  </a>
 
   <a class="game-hub-card" href="/games/match/">
     <div class="ghc-icon">🃏</div>

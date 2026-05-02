@@ -291,6 +291,13 @@ buildExpired = false
     weight = 2
 
   [[menu.main]]
+    identifier = "games-rhythm"
+    name = "Rhythm"
+    url = "/games/rhythm/"
+    parent = "games"
+    weight = 3
+
+  [[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"
