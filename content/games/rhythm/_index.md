@@ -76,7 +76,6 @@ showtoc: false
       </div>
       <button class="rg-quit-btn" onclick="RG.quit()">Quit</button>
     </div>
-
     <div class="rg-canvas-wrap">
       <canvas id="rg-canvas"></canvas>
       <div class="rg-hit-layer">
@@ -87,7 +86,6 @@ showtoc: false
       </div>
       <div id="rg-countdown" class="rg-countdown-overlay"></div>
     </div>
-
     <div class="rg-lane-row">
       <div class="rg-lane-cell" data-lane="0" onclick="RG.pressLane(0)">
         <span class="rg-lane-key">D</span>
