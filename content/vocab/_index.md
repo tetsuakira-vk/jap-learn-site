@@ -16,6 +16,9 @@ Browse vocabulary by topic or jump straight into the N5 word list below. Every p
       <li><a href="/vocab/body/">Body Parts — 体の部位</a></li>
       <li><a href="/vocab/family/">Family — 家族</a></li>
       <li><a href="/vocab/animals/">Animals — 動物</a></li>
+      <li><a href="/vocab/weather/">Weather — 天気</a></li>
+      <li><a href="/vocab/time/">Time & Days — 時間・曜日</a></li>
+      <li><a href="/vocab/places/">Places — 場所</a></li>
     </ul>
   </div>
   <div class="sitemap-section">

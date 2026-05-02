@@ -68,6 +68,9 @@ showtoc: false
       <li><a href="/vocab/body/">Body Parts</a></li>
       <li><a href="/vocab/family/">Family — 家族</a></li>
       <li><a href="/vocab/animals/">Animals — 動物</a></li>
+      <li><a href="/vocab/weather/">Weather — 天気</a></li>
+      <li><a href="/vocab/time/">Time & Days — 時間・曜日</a></li>
+      <li><a href="/vocab/places/">Places — 場所</a></li>
       <li><a href="/phrases/">Essential Phrases</a></li>
       <li><a href="/numbers/">Numbers</a></li>
     </ul>

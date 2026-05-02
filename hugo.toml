@@ -203,6 +203,27 @@ buildExpired = false
     weight = 8
 
   [[menu.main]]
+    identifier = "vocab-weather"
+    name = "Weather — 天気"
+    url = "/vocab/weather/"
+    parent = "vocabulary"
+    weight = 9
+
+  [[menu.main]]
+    identifier = "vocab-time"
+    name = "Time & Days — 時間"
+    url = "/vocab/time/"
+    parent = "vocabulary"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "vocab-places"
+    name = "Places — 場所"
+    url = "/vocab/places/"
+    parent = "vocabulary"
+    weight = 11
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"
@@ -235,6 +256,12 @@ buildExpired = false
     url = "/sentences/quiz/"
     parent = "grammar"
     weight = 4
+
+  [[menu.main]]
+    identifier = "conversation"
+    name = "Conversation"
+    url = "/conversation/"
+    weight = 55
 
   [[menu.main]]
     identifier = "videos"

@@ -8,7 +8,10 @@ showtoc: false
 Pick a scenario and have a real Japanese conversation. The other character speaks — you respond using your microphone. Works best in **Chrome or Edge on desktop**.
 
 <div id="cv-selector">
-  <div id="cv-no-speech" class="cv-warn" style="display:none">⚠️ Speech recognition needs Chrome or Edge on desktop. You can still practise by typing your responses.</div>
+  <div class="cv-beta-notice">
+    🧪 <strong>Beta feature</strong> — this works best in <strong>Chrome or Edge on desktop</strong>. Speech recognition can be temperamental: it needs mic permission, a quiet environment, and clear speech. Firefox and Safari don't support it at all — you'll get a text input instead. If it misbehaves, hit the microphone button again or switch to typing. We're working on improving it!
+  </div>
+  <div id="cv-no-speech" class="cv-warn" style="display:none">⚠️ Speech recognition isn't supported in your browser — Chrome or Edge on desktop works best. You can still practise by typing your responses below.</div>
   <div class="cv-scenario-grid">
     <div class="cv-sc-card" data-id="konbini">
       <div class="cv-sc-emoji">🏪</div>
