@@ -846,7 +846,17 @@
   margin: 0;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 }
+/* Invisible bridge covering the gap so hover is never lost mid-cursor-move */
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 0;
+  right: 0;
+  height: 8px;
+}
 .menu li.has-dropdown:hover .dropdown-menu,
+.menu li.has-dropdown.open .dropdown-menu,
 .menu li.has-dropdown:focus-within .dropdown-menu { display: block; }
 .dropdown-menu li { display: block; }
 .dropdown-menu li a {

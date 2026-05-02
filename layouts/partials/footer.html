@@ -117,6 +117,28 @@
 {{- end }}
 
 <script>
+    // Nav dropdown hover management — delay prevents flicker when cursor crosses the gap
+    (function() {
+        var items = document.querySelectorAll('.menu li.has-dropdown');
+        items.forEach(function(li) {
+            var timer;
+            li.addEventListener('mouseenter', function() {
+                clearTimeout(timer);
+                items.forEach(function(other) { if (other !== li) other.classList.remove('open'); });
+                li.classList.add('open');
+            });
+            li.addEventListener('mouseleave', function() {
+                timer = setTimeout(function() { li.classList.remove('open'); }, 150);
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.has-dropdown')) {
+                items.forEach(function(li) { li.classList.remove('open'); });
+            }
+        });
+    })();
+</script>
+<script>
     // Theme picker panel
     document.addEventListener('click', function() {
         var p = document.getElementById('theme-picker-panel');
