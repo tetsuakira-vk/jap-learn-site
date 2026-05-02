@@ -278,7 +278,7 @@ buildExpired = false
 
   [[menu.main]]
     identifier = "games-battle"
-    name = "Kanji Quest ⚔️"
+    name = "Kanji Quest"
     url = "/games/battle/"
     parent = "games"
     weight = 1

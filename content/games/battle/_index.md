@@ -7,7 +7,7 @@ showtoc: false
 
 <div class="game-wrap">
 
-<!-- ── MENU SCREEN ── -->
+<!-- ── MENU ── -->
 <div id="scr-menu" class="game-screen">
   <div class="game-logo">⚔️ <span>KANJI</span> QUEST</div>
   <div class="game-tagline">Answer correctly to attack. Wrong answers hurt you. How far can you get?</div>
@@ -15,54 +15,62 @@ showtoc: false
     <button class="mode-btn" onclick="GM.start('hiragana')">
       <div class="mode-icon">あ</div>
       <div class="mode-name">Hiragana</div>
-      <div class="mode-desc">46 characters</div>
+      <div class="mode-desc">66 characters</div>
     </button>
     <button class="mode-btn" onclick="GM.start('katakana')">
       <div class="mode-icon">ア</div>
       <div class="mode-name">Katakana</div>
-      <div class="mode-desc">46 characters</div>
+      <div class="mode-desc">66 characters</div>
     </button>
     <button class="mode-btn" onclick="GM.start('kanji')">
       <div class="mode-icon">水</div>
       <div class="mode-name">Kanji N5</div>
-      <div class="mode-desc">50 kanji</div>
+      <div class="mode-desc">60 kanji</div>
     </button>
     <button class="mode-btn" onclick="GM.start('vocab')">
       <div class="mode-icon">語</div>
       <div class="mode-name">JLPT N5</div>
-      <div class="mode-desc">50 words</div>
+      <div class="mode-desc">52 words</div>
     </button>
   </div>
 </div>
 
-<!-- ── BATTLE SCREEN ── -->
+<!-- ── BATTLE ── -->
 <div id="scr-battle" class="game-screen" style="display:none">
+
   <div class="battle-hud">
     <div class="hud-lv">LV <b id="h-lv">1</b></div>
     <div class="hud-mode" id="h-mode">HIRAGANA</div>
     <div class="hud-score">⭐ <b id="h-score">0</b></div>
   </div>
 
+  <!-- Monster portrait (emoji + glow) -->
   <div class="enemy-zone">
-    <div class="enemy-label" id="e-label">スライム <span class="enemy-lv">Lv.1</span></div>
+    <div class="enemy-label" id="e-label">スライム <span class="enemy-lv">— Slime</span></div>
     <div class="enemy-card" id="e-card">
-      <div class="enemy-char" id="e-char">あ</div>
+      <div class="enemy-char" id="e-char">🟢</div>
     </div>
     <div class="enemy-hp-track"><div class="enemy-hp-fill" id="e-hp"></div></div>
     <div class="hit-msg" id="hit-msg"></div>
   </div>
 
-  <div class="q-label" id="q-label">How do you read this?</div>
+  <!-- Japanese character display (separate, adaptive size) -->
+  <div class="char-box">
+    <div class="char-display" id="char-display">あ</div>
+    <div class="char-hint" id="char-hint"></div>
+  </div>
 
+  <div class="q-label" id="q-label">How do you read this?</div>
   <div class="answer-grid" id="ans-grid"></div>
 
   <div class="player-bar">
     <div class="player-hearts" id="p-hearts"></div>
     <div class="streak-tag" id="streak-tag"></div>
   </div>
+
 </div>
 
-<!-- ── LEVEL UP SCREEN ── -->
+<!-- ── LEVEL UP ── -->
 <div id="scr-lvup" class="game-screen" style="display:none">
   <div class="bscreen-icon">⬆️</div>
   <div class="bscreen-title">LEVEL UP!</div>
@@ -71,7 +79,7 @@ showtoc: false
   <button class="game-btn game-btn--ghost" onclick="GM.menu()">Quit to Menu</button>
 </div>
 
-<!-- ── GAME OVER SCREEN ── -->
+<!-- ── GAME OVER ── -->
 <div id="scr-over" class="game-screen" style="display:none">
   <div class="bscreen-icon">💀</div>
   <div class="bscreen-title">GAME OVER</div>
@@ -80,12 +88,12 @@ showtoc: false
   <button class="game-btn game-btn--ghost" onclick="GM.menu()">Change Mode</button>
 </div>
 
-</div><!-- .game-wrap -->
+</div>
 
 <script>
 (function () {
 
-/* ── DATA ─────────────────────────────────────────────────── */
+/* ── DATA ── */
 var DATA = {
   hiragana: [
     {q:'あ',a:'a'},{q:'い',a:'i'},{q:'う',a:'u'},{q:'え',a:'e'},{q:'お',a:'o'},
@@ -133,23 +141,22 @@ var DATA = {
     {q:'学',a:'study',h:'がく'},{q:'生',a:'life / birth',h:'せい'},{q:'子',a:'child',h:'こ'},
     {q:'女',a:'woman',h:'おんな'},{q:'男',a:'man',h:'おとこ'},{q:'口',a:'mouth',h:'くち'},
     {q:'手',a:'hand',h:'て'},{q:'目',a:'eye',h:'め'},{q:'耳',a:'ear',h:'みみ'},
-    {q:'力',a:'strength / power',h:'ちから'},{q:'金',a:'gold / money',h:'かね'},
+    {q:'力',a:'strength',h:'ちから'},{q:'金',a:'gold / money',h:'かね'},
     {q:'土',a:'earth / soil',h:'つち'},{q:'田',a:'rice field',h:'た'},
-    {q:'電',a:'electricity',h:'でん'},{q:'車',a:'car / vehicle',h:'くるま'},
+    {q:'電',a:'electricity',h:'でん'},{q:'車',a:'car',h:'くるま'},
     {q:'駅',a:'station',h:'えき'},{q:'道',a:'road / way',h:'みち'},
     {q:'食',a:'food / eat',h:'しょく'},{q:'飲',a:'drink',h:'の'},
-    {q:'見',a:'see / look',h:'み'},{q:'聞',a:'hear / listen',h:'き'},
+    {q:'見',a:'see',h:'み'},{q:'聞',a:'listen',h:'き'},
     {q:'読',a:'read',h:'よ'},{q:'書',a:'write',h:'か'},
     {q:'話',a:'speak / story',h:'はな'},{q:'来',a:'come',h:'く'},
     {q:'行',a:'go',h:'い'},{q:'出',a:'exit / leave',h:'で'},
     {q:'入',a:'enter',h:'はい'},{q:'高',a:'tall / expensive',h:'たか'},
     {q:'安',a:'cheap / safe',h:'やす'},{q:'新',a:'new',h:'あたら'},
-    {q:'古',a:'old',h:'ふる'},{q:'白',a:'white',h:'しろ'},
-    {q:'黒',a:'black',h:'くろ'},{q:'赤',a:'red',h:'あか'},
-    {q:'青',a:'blue / green',h:'あお'},{q:'名',a:'name',h:'な'}
+    {q:'白',a:'white',h:'しろ'},{q:'黒',a:'black',h:'くろ'},
+    {q:'赤',a:'red',h:'あか'},{q:'青',a:'blue',h:'あお'}
   ],
   vocab: [
-    {q:'ありがとう',a:'thank you',h:'arigatou'},{q:'すみません',a:'excuse me / sorry',h:'sumimasen'},
+    {q:'ありがとう',a:'thank you',h:'arigatou'},{q:'すみません',a:'excuse me',h:'sumimasen'},
     {q:'はい',a:'yes',h:'hai'},{q:'いいえ',a:'no',h:'iie'},
     {q:'おはよう',a:'good morning',h:'ohayou'},{q:'こんにちは',a:'hello',h:'konnichiwa'},
     {q:'こんばんは',a:'good evening',h:'konbanwa'},{q:'さようなら',a:'goodbye',h:'sayounara'},
@@ -158,41 +165,41 @@ var DATA = {
     {q:'なに',a:'what',h:'nani'},{q:'いつ',a:'when',h:'itsu'},
     {q:'だれ',a:'who',h:'dare'},{q:'いくら',a:'how much',h:'ikura'},
     {q:'おいしい',a:'delicious',h:'oishii'},{q:'かわいい',a:'cute',h:'kawaii'},
-    {q:'たのしい',a:'fun / enjoyable',h:'tanoshii'},{q:'むずかしい',a:'difficult',h:'muzukashii'},
-    {q:'やさしい',a:'easy / kind',h:'yasashii'},{q:'おおきい',a:'big / large',h:'ookii'},
-    {q:'ちいさい',a:'small / tiny',h:'chiisai'},{q:'あたらしい',a:'new',h:'atarashii'},
-    {q:'たかい',a:'tall / expensive',h:'takai'},{q:'やすい',a:'cheap',h:'yasui'},
+    {q:'たのしい',a:'fun',h:'tanoshii'},{q:'むずかしい',a:'difficult',h:'muzukashii'},
+    {q:'やさしい',a:'easy / kind',h:'yasashii'},{q:'おおきい',a:'big',h:'ookii'},
+    {q:'ちいさい',a:'small',h:'chiisai'},{q:'あたらしい',a:'new',h:'atarashii'},
+    {q:'たかい',a:'expensive',h:'takai'},{q:'やすい',a:'cheap',h:'yasui'},
     {q:'いきます',a:'to go',h:'ikimasu'},{q:'きます',a:'to come',h:'kimasu'},
     {q:'たべます',a:'to eat',h:'tabemasu'},{q:'のみます',a:'to drink',h:'nomimasu'},
-    {q:'みます',a:'to see / watch',h:'mimasu'},{q:'ききます',a:'to listen',h:'kikimasu'},
+    {q:'みます',a:'to see',h:'mimasu'},{q:'ききます',a:'to listen',h:'kikimasu'},
     {q:'よみます',a:'to read',h:'yomimasu'},{q:'かきます',a:'to write',h:'kakimasu'},
     {q:'はなします',a:'to speak',h:'hanashimasu'},{q:'ねます',a:'to sleep',h:'nemasu'},
     {q:'おきます',a:'to wake up',h:'okimasu'},{q:'かいます',a:'to buy',h:'kaimasu'},
     {q:'わかります',a:'to understand',h:'wakarimasu'},{q:'います',a:'to exist (living)',h:'imasu'},
     {q:'あります',a:'to exist (object)',h:'arimasu'},
     {q:'がっこう',a:'school',h:'gakkou'},{q:'びょういん',a:'hospital',h:'byouin'},
-    {q:'えき',a:'train station',h:'eki'},{q:'としょかん',a:'library',h:'toshokan'},
+    {q:'えき',a:'station',h:'eki'},{q:'としょかん',a:'library',h:'toshokan'},
     {q:'ぎんこう',a:'bank',h:'ginkou'},{q:'ともだち',a:'friend',h:'tomodachi'},
-    {q:'せんせい',a:'teacher',h:'sensei'},{q:'がくせい',a:'student',h:'gakusei'},
-    {q:'でんしゃ',a:'train',h:'densha'},{q:'くるま',a:'car',h:'kuruma'},
-    {q:'おかね',a:'money',h:'okane'},{q:'じかん',a:'time',h:'jikan'}
+    {q:'せんせい',a:'teacher',h:'sensei'},{q:'でんしゃ',a:'train',h:'densha'},
+    {q:'おかね',a:'money',h:'okane'},{q:'じかん',a:'time',h:'jikan'},
+    {q:'がくせい',a:'student',h:'gakusei'}
   ]
 };
 
-/* ── ENEMIES ───────────────────────────────────────────────── */
+/* ── ENEMIES (emoji portrait + glow colour) ── */
 var ENEMIES = [
-  {n:'スライム',  e:'Slime',     glow:'#22c55e', hp:2},
-  {n:'コウモリ',  e:'Bat',       glow:'#a78bfa', hp:2},
-  {n:'ゴースト',  e:'Ghost',     glow:'#7c3aed', hp:3},
-  {n:'オーク',    e:'Orc',       glow:'#fb923c', hp:3},
-  {n:'スケルトン',e:'Skeleton',  glow:'#94a3b8', hp:3},
-  {n:'ウィザード',e:'Wizard',    glow:'#60a5fa', hp:4},
-  {n:'ドラゴン',  e:'Dragon',    glow:'#ef4444', hp:4},
-  {n:'デーモン',  e:'Demon',     glow:'#dc2626', hp:5},
-  {n:'魔王',      e:'Dark Lord', glow:'#fbbf24', hp:6}
+  {n:'スライム',  e:'Slime',     emoji:'🟢', glow:'#22c55e', hp:2},
+  {n:'コウモリ',  e:'Bat',       emoji:'🦇', glow:'#a78bfa', hp:2},
+  {n:'ゴースト',  e:'Ghost',     emoji:'👻', glow:'#7c3aed', hp:3},
+  {n:'オーク',    e:'Orc',       emoji:'👹', glow:'#fb923c', hp:3},
+  {n:'スケルトン',e:'Skeleton',  emoji:'💀', glow:'#94a3b8', hp:3},
+  {n:'ウィザード',e:'Wizard',    emoji:'🧙', glow:'#60a5fa', hp:4},
+  {n:'ドラゴン',  e:'Dragon',    emoji:'🐉', glow:'#ef4444', hp:4},
+  {n:'デーモン',  e:'Demon',     emoji:'😈', glow:'#dc2626', hp:5},
+  {n:'魔王',      e:'Dark Lord', emoji:'👁️',  glow:'#fbbf24', hp:6}
 ];
 
-/* ── STATE ─────────────────────────────────────────────────── */
+/* ── STATE ── */
 var S = {
   mode:null, pool:[], qi:0, cur:null,
   pHP:5, pHPmax:5,
@@ -200,7 +207,7 @@ var S = {
   score:0, streak:0, level:1, killed:0
 };
 
-/* ── HELPERS ───────────────────────────────────────────────── */
+/* ── HELPERS ── */
 function shuffle(a) { return a.slice().sort(function(){ return Math.random()-0.5; }); }
 function el(id)     { return document.getElementById(id); }
 
@@ -210,26 +217,38 @@ function showScreen(id) {
   });
 }
 
-function scoreAdd(n) {
-  S.score += n;
-  el('h-score').textContent = Math.floor(S.score);
+/* Adaptive font size based on text length */
+function setCharSize(text) {
+  var len = text.length;
+  var size = len <= 1 ? '4.2rem'
+           : len <= 2 ? '3.8rem'
+           : len <= 3 ? '3rem'
+           : len <= 4 ? '2.4rem'
+           : len <= 5 ? '2rem'
+           : len <= 6 ? '1.7rem'
+           :             '1.4rem';
+  el('char-display').style.fontSize = size;
 }
 
-/* ── ENEMY ─────────────────────────────────────────────────── */
+/* ── ENEMY ── */
 function spawnEnemy() {
-  var idx = Math.min(S.ei, ENEMIES.length-1);
-  var e = ENEMIES[idx];
+  var idx = Math.min(S.ei, ENEMIES.length - 1);
+  var e   = ENEMIES[idx];
   var bonus = Math.floor(S.level / 2);
   S.eHP = e.hp + bonus;
   S.eHPmax = S.eHP;
+
   el('e-label').innerHTML = e.n + ' <span class="enemy-lv">— ' + e.e + '</span>';
+  el('e-char').textContent = e.emoji;
   el('e-card').style.borderColor = e.glow;
-  el('e-card').style.boxShadow = '0 0 28px '+e.glow+'55, 0 0 8px '+e.glow+'33';
-  // restart idle animation
+  el('e-card').style.boxShadow = '0 0 28px ' + e.glow + '55, 0 0 8px ' + e.glow + '33';
+
+  /* restart idle animation */
   var ch = el('e-char');
   ch.style.animation = 'none';
   void ch.offsetWidth;
   ch.style.animation = '';
+
   refreshEnemyHP();
 }
 
@@ -240,17 +259,25 @@ function refreshEnemyHP() {
   bar.style.background = pct > 55 ? '#22c55e' : pct > 25 ? '#f59e0b' : '#ef4444';
 }
 
-/* ── QUESTIONS ─────────────────────────────────────────────── */
+/* ── QUESTIONS ── */
 function nextQ() {
   if (S.qi >= S.pool.length) { S.pool = shuffle(DATA[S.mode]); S.qi = 0; }
   S.cur = S.pool[S.qi++];
-  el('e-char').textContent = S.cur.q;
 
-  var qText = (S.mode==='hiragana'||S.mode==='katakana') ? 'How do you read this?' : 'What does this mean?';
-  el('q-label').textContent = qText;
+  /* update character display */
+  el('char-display').textContent = S.cur.q;
+  setCharSize(S.cur.q);
 
-  // Build 4 options: 1 correct + 3 wrong from pool
-  var wrong = shuffle(DATA[S.mode].filter(function(x){ return x.a !== S.cur.a; })).slice(0,3);
+  /* clear hint from previous wrong answer */
+  var hint = el('char-hint');
+  hint.textContent = '';
+  hint.classList.remove('visible');
+
+  el('q-label').textContent = (S.mode === 'hiragana' || S.mode === 'katakana')
+    ? 'How do you read this?' : 'What does this mean?';
+
+  /* 4 answer options */
+  var wrong = shuffle(DATA[S.mode].filter(function(x){ return x.a !== S.cur.a; })).slice(0, 3);
   var opts  = shuffle([S.cur].concat(wrong));
 
   var grid = el('ans-grid');
@@ -266,17 +293,7 @@ function nextQ() {
   refreshHearts();
 }
 
-/* ── ANSWER ────────────────────────────────────────────────── */
-function lockButtons() {
-  el('ans-grid').querySelectorAll('.answer-btn').forEach(function(b){ b.disabled = true; });
-}
-function markButtons(chosen) {
-  el('ans-grid').querySelectorAll('.answer-btn').forEach(function(b){
-    if (b.textContent === chosen)    b.classList.add(chosen===S.cur.a ? 'answer-btn--ok' : 'answer-btn--bad');
-    if (b.textContent === S.cur.a)   b.classList.add('answer-btn--ok');
-  });
-}
-
+/* ── ANIMATIONS ── */
 function floatMsg(text, cls) {
   var m = el('hit-msg');
   m.textContent = text;
@@ -285,18 +302,36 @@ function floatMsg(text, cls) {
   m.classList.add('msg-go');
 }
 
-function animate(id, cls, dur) {
+function anim(id, cls, dur) {
   var node = el(id);
   node.classList.add(cls);
-  setTimeout(function(){ node.classList.remove(cls); }, dur||520);
+  setTimeout(function(){ node.classList.remove(cls); }, dur || 520);
 }
 
-/* ── PUBLIC API ────────────────────────────────────────────── */
+function lockBtns() {
+  el('ans-grid').querySelectorAll('.answer-btn').forEach(function(b){ b.disabled = true; });
+}
+function markBtns(chosen) {
+  el('ans-grid').querySelectorAll('.answer-btn').forEach(function(b){
+    if (b.textContent === chosen)  b.classList.add(chosen === S.cur.a ? 'answer-btn--ok' : 'answer-btn--bad');
+    if (b.textContent === S.cur.a) b.classList.add('answer-btn--ok');
+  });
+}
+
+/* ── HEARTS ── */
+function refreshHearts() {
+  var h = el('p-hearts');
+  h.innerHTML = '';
+  for (var i = 0; i < S.pHPmax; i++) {
+    h.innerHTML += (i < S.pHP) ? '❤️' : '🖤';
+  }
+}
+
+/* ── PUBLIC ── */
 window.GM = {
+
   start: function(mode) {
-    S.mode = mode;
-    S.pool = shuffle(DATA[mode]);
-    S.qi = 0;
+    S.mode = mode; S.pool = shuffle(DATA[mode]); S.qi = 0;
     S.pHP = 5; S.pHPmax = 5;
     S.score = 0; S.streak = 0; S.level = 1; S.killed = 0; S.ei = 0;
     el('h-mode').textContent = {hiragana:'HIRAGANA',katakana:'KATAKANA',kanji:'KANJI N5',vocab:'JLPT N5'}[mode];
@@ -308,39 +343,40 @@ window.GM = {
   },
 
   answer: function(chosen) {
-    lockButtons();
-    markButtons(chosen);
+    lockBtns();
+    markBtns(chosen);
 
     if (chosen === S.cur.a) {
-      /* ── HIT ── */
+      /* ── CORRECT ── */
       S.streak++;
-      var pts = 10 + Math.floor((S.streak-1) * 4);
-      scoreAdd(pts);
+      var pts = 10 + Math.floor((S.streak - 1) * 4);
+      S.score += pts;
+      el('h-score').textContent = Math.floor(S.score);
       S.eHP--;
+
       floatMsg('+' + pts, 'hit-msg--hit');
       if (S.streak >= 3) {
         var stk = el('streak-tag');
         stk.textContent = '🔥 ' + S.streak + ' streak!';
         stk.style.opacity = '1';
       }
-      animate('e-char', 'gm-shake');
+      anim('e-card', 'gm-shake');
+
       setTimeout(function(){
         refreshEnemyHP();
         if (S.eHP <= 0) {
-          /* enemy dead */
-          animate('e-card', 'gm-dissolve', 650);
+          anim('e-card', 'gm-dissolve', 650);
           S.killed++;
-          scoreAdd(50);
+          S.score += 50;
+          el('h-score').textContent = Math.floor(S.score);
           S.ei++;
           setTimeout(function(){
-            if (S.killed > 0 && S.killed % 5 === 0) {
-              /* level up every 5 kills */
+            if (S.killed % 5 === 0) {
               S.level++;
               el('h-lv').textContent = S.level;
-              // restore 1 HP on level up (max 5)
-              if (S.pHP < S.pHPmax) { S.pHP++; refreshHearts(); }
+              if (S.pHP < S.pHPmax) { S.pHP++; }
               el('lvup-sub').innerHTML =
-                'Level <b>' + S.level + '</b> — enemies get tougher!<br>' +
+                'Level <b>' + S.level + '</b> unlocked — enemies get tougher!<br>' +
                 'Score: ' + Math.floor(S.score) + ' &nbsp;|&nbsp; Defeated: ' + S.killed;
               showScreen('lvup');
             } else {
@@ -351,16 +387,25 @@ window.GM = {
         } else {
           nextQ();
         }
-      }, 550);
+      }, 560);
 
     } else {
-      /* ── MISS ── */
+      /* ── WRONG ── */
       S.streak = 0;
       el('streak-tag').style.opacity = '0';
       S.pHP--;
-      floatMsg('✗ ' + S.cur.a, 'hit-msg--miss');
-      animate('p-hearts', 'gm-phit');
+
+      /* show reading hint for kanji/vocab */
+      if (S.cur.h) {
+        var hint = el('char-hint');
+        hint.textContent = S.cur.h;
+        hint.classList.add('visible');
+      }
+
+      floatMsg('✗', 'hit-msg--miss');
+      anim('p-hearts', 'gm-phit');
       refreshHearts();
+
       setTimeout(function(){
         if (S.pHP <= 0) {
           el('over-sub').innerHTML =
@@ -370,27 +415,14 @@ window.GM = {
         } else {
           nextQ();
         }
-      }, 700);
+      }, 750);
     }
   },
 
-  continueGame: function() {
-    showScreen('battle');
-    spawnEnemy();
-    nextQ();
-  },
-
-  restart: function() { GM.start(S.mode); },
-  menu:    function() { showScreen('menu'); }
+  continueGame: function() { showScreen('battle'); spawnEnemy(); nextQ(); },
+  restart:      function() { GM.start(S.mode); },
+  menu:         function() { showScreen('menu'); }
 };
-
-function refreshHearts() {
-  var h = el('p-hearts');
-  h.innerHTML = '';
-  for (var i=0; i<S.pHPmax; i++) {
-    h.innerHTML += (i < S.pHP) ? '❤️' : '🖤';
-  }
-}
 
 })();
 </script>
