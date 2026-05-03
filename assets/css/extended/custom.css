@@ -382,7 +382,23 @@
 }
 .hdr-signup__msg { font-size: 0.78rem; }
 @media (max-width: 768px) {
-  .hdr-signup { display: none; }
+  .masthead-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+  }
+  .hdr-signup {
+    width: 100%;
+    gap: 0.4rem;
+  }
+  .hdr-signup__label { display: none; }
+  .hdr-signup__input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+  }
 }
 
 /* ── Site hero banner ── */
@@ -451,7 +467,12 @@
 }
 
 @media (max-width: 768px) {
+  .site-nav {
+    /* prevent the flex menu from stretching the page wider than the viewport */
+    overflow: hidden;
+  }
   .site-nav .menu {
+    max-width: 100%;   /* constrain flex container so overflow-x:auto actually scrolls */
     justify-content: flex-start;
     overflow-x: auto;
     overflow-y: hidden;
