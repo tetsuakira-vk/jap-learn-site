@@ -454,7 +454,7 @@
   .site-nav .menu {
     justify-content: flex-start;
     overflow-x: auto;
-    overflow-y: visible;
+    overflow-y: hidden;
     padding: 0 1rem;
     column-gap: 0.6rem;
     scrollbar-width: none;
@@ -462,6 +462,10 @@
   .site-nav .menu::-webkit-scrollbar { display: none; }
   .site-nav .menu li a,
   .site-nav .menu li a span { font-size: 0.82rem; }
+  /* Dropdowns don't work in a scrollable bar on mobile — hide them.
+     Parent links navigate to the section overview page instead. */
+  .dropdown-menu { display: none !important; }
+  .menu li.has-dropdown > a::after { display: none; }
 }
 
 
@@ -2602,7 +2606,21 @@
 .rg-howto {
   display: flex; gap: 0.4rem; align-items: center; justify-content: center;
   flex-wrap: wrap; color: var(--secondary); font-size: 0.82rem;
-  margin-bottom: 1.4rem; max-width: 560px; margin-left: auto; margin-right: auto;
+  margin-bottom: 0.8rem; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+.rg-mobile-hint {
+  display: none;
+  text-align: center; font-size: 0.82rem;
+  color: var(--secondary);
+  background: rgba(59,130,246,0.08);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  margin: 0 auto 1.2rem; max-width: 400px;
+  line-height: 1.5;
+}
+@media (max-width: 640px) {
+  .rg-mobile-hint { display: block; }
 }
 .rg-kbd {
   display: inline-block; border-radius: 4px; padding: 0.12rem 0.5rem;

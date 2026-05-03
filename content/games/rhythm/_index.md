@@ -35,8 +35,9 @@ showtoc: false
     <kbd class="rg-kbd rg-kbd--1">F</kbd>
     <kbd class="rg-kbd rg-kbd--2">J</kbd>
     <kbd class="rg-kbd rg-kbd--3">K</kbd>
-    <span>for the correct answer lane, or tap on mobile.</span>
+    <span>for the correct answer lane.</span>
   </div>
+  <div class="rg-mobile-hint">📱 On mobile — tap the four lane buttons below the game board to hit notes. No keyboard needed.</div>
 
   <div class="rg-diff-heading">Difficulty</div>
   <div class="rg-diff-row">
