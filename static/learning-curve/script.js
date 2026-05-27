@@ -463,6 +463,7 @@ function buildComprehensionChart(vocab) {
         legend: {
           position: 'right',
           labels: {
+            color: '#9999aa',
             padding: 16,
             usePointStyle: true,
             generateLabels: chart => {
@@ -471,6 +472,7 @@ function buildComprehensionChart(vocab) {
                 text: `${label} — ${data.datasets[0].data[i]}%`,
                 fillStyle: data.datasets[0].backgroundColor[i],
                 strokeStyle: data.datasets[0].borderColor[i],
+                color: '#9999aa',
                 hidden: false,
                 index: i,
               }));
@@ -484,6 +486,25 @@ function buildComprehensionChart(vocab) {
         },
       },
     },
+    plugins: [{
+      id: 'doughnutCenter',
+      afterDraw(chart) {
+        const { ctx: c, chartArea } = chart;
+        if (!chartArea) return;
+        const cx = (chartArea.left + chartArea.right) / 2;
+        const cy = (chartArea.top + chartArea.bottom) / 2;
+        c.save();
+        c.textAlign = 'center';
+        c.textBaseline = 'middle';
+        c.font = '900 2.2rem Inter,"Segoe UI",system-ui,sans-serif';
+        c.fillStyle = '#e8e8f0';
+        c.fillText(convPct + '%', cx, cy - 11);
+        c.font = '0.72rem Inter,"Segoe UI",system-ui,sans-serif';
+        c.fillStyle = '#666677';
+        c.fillText('conversation', cx, cy + 16);
+        c.restore();
+      },
+    }],
   });
 }
 

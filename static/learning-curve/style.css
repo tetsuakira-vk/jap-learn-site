@@ -452,12 +452,7 @@ output {
   height: 340px;
 }
 .donut-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  pointer-events: none;
+  display: none; /* centre text drawn directly on canvas via afterDraw plugin */
 }
 #donut-pct {
   font-size: 2.4rem;
