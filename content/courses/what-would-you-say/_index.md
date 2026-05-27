@@ -5,7 +5,7 @@ date: 2025-01-01
 showtoc: false
 ---
 
-Ten everyday situations. Each one asks you to type what you'd actually say in Japanese — casual, natural, the way people really talk. Vocabulary chips help when you get stuck, and model answers show three levels of formality when you're ready.
+Ten everyday situations. Each one asks you to type what you'd actually say in Japanese — casual, natural, the way people really talk. Vocabulary chips help when you get stuck, autocomplete suggests words as you type, and model answers show three levels of formality when you're ready.
 
 <div class="wws-wrap" id="wws-app">
 <div class="wws-progress-wrap">
@@ -34,17 +34,17 @@ var SCENARIOS=[
   emoji:'📱',
   situation:"Your friend texts: <em>\"Want to hang out tonight?\"</em> You're exhausted after a long day. Decline nicely.",
   chips:[
-    {jp:'ごめん',en:'sorry'},
-    {jp:'無理',en:'no way / can\'t'},
-    {jp:'疲れた',en:'I\'m tired'},
-    {jp:'今日は',en:'today (topic)'},
-    {jp:'また今度',en:'next time'},
-    {jp:'きつい',en:'rough / tough'},
-    {jp:'ちょっと',en:'a little / kind of'}
+    {jp:'ごめん',en:'sorry',romaji:'gomen'},
+    {jp:'無理',en:'no way / can\'t',romaji:'muri'},
+    {jp:'疲れた',en:'I\'m tired',romaji:'tsukareta'},
+    {jp:'今日は',en:'today (topic)',romaji:'kyouwa'},
+    {jp:'また今度',en:'next time',romaji:'matakondo'},
+    {jp:'きつい',en:'rough / tough',romaji:'kitsui'},
+    {jp:'ちょっと',en:'a little / kind of',romaji:'chotto'}
   ],
   hints:[
     'ごめん (gomen) is the most natural opener for a casual apology or decline.',
-    '無理 literally means "impossible" — in casual Japanese it\'s the standard way to say "I can\'t" or "no way." Much more natural than 行けない.',
+    '無理 literally means "impossible" — in casual Japanese it\'s the standard way to say "I can\'t." Much more natural than 行けない.',
     'Try: ごめん + your reason (疲れた) + a soft close (また今度ね).'
   ],
   answers:[
@@ -62,13 +62,13 @@ var SCENARIOS=[
   emoji:'🏃',
   situation:"You're running 15 minutes late to meet a friend at a café. Send them a quick text.",
   chips:[
-    {jp:'ごめん',en:'sorry'},
-    {jp:'遅れる',en:'running late'},
-    {jp:'あと',en:'more / remaining'},
-    {jp:'分',en:'minutes'},
-    {jp:'今向かってる',en:'heading there now'},
-    {jp:'もうすぐ',en:'almost there / soon'},
-    {jp:'着く',en:'to arrive'}
+    {jp:'ごめん',en:'sorry',romaji:'gomen'},
+    {jp:'遅れる',en:'running late',romaji:'okureru'},
+    {jp:'あと',en:'more / remaining',romaji:'ato'},
+    {jp:'分',en:'minutes',romaji:'fun'},
+    {jp:'今向かってる',en:'heading there now',romaji:'imamukatteru'},
+    {jp:'もうすぐ',en:'almost there / soon',romaji:'mousugu'},
+    {jp:'着く',en:'to arrive',romaji:'tsuku'}
   ],
   hints:[
     'あと + number + 分 = "in X more minutes." あと15分で着く = "I\'ll be there in 15 minutes."',
@@ -90,13 +90,13 @@ var SCENARIOS=[
   emoji:'🎵',
   situation:"You've been completely obsessed with a song all week. Text a friend — they <em>have</em> to listen to it.",
   chips:[
-    {jp:'ハマる',en:'to be hooked / obsessed'},
-    {jp:'聞いてみて',en:'try listening to it'},
-    {jp:'絶対',en:'definitely / for sure'},
-    {jp:'ヤバい',en:'insane / amazing (slang)'},
-    {jp:'めちゃ',en:'super / very (casual)'},
-    {jp:'最高',en:'the best'},
-    {jp:'好きそう',en:'seems like you\'d like it'}
+    {jp:'ハマる',en:'to be hooked / obsessed',romaji:'hamaru'},
+    {jp:'聞いてみて',en:'try listening to it',romaji:'kiitemite'},
+    {jp:'絶対',en:'definitely / for sure',romaji:'zettai'},
+    {jp:'ヤバい',en:'insane / amazing (slang)',romaji:'yabai'},
+    {jp:'めちゃ',en:'super / very (casual)',romaji:'mecha'},
+    {jp:'最高',en:'the best',romaji:'saikou'},
+    {jp:'好きそう',en:'seems like you\'d like it',romaji:'sukisou'}
   ],
   hints:[
     'ハマる = to be hooked/obsessed. 最近これにハマってる = "I\'ve been really into this lately."',
@@ -118,13 +118,13 @@ var SCENARIOS=[
   emoji:'🍜',
   situation:"You want to grab ramen with a friend this weekend. Casually suggest going somewhere.",
   chips:[
-    {jp:'ラーメン',en:'ramen'},
-    {jp:'食べに行かない？',en:'wanna go eat?'},
-    {jp:'一緒に',en:'together'},
-    {jp:'週末',en:'this weekend'},
-    {jp:'あそこ',en:'that place over there'},
-    {jp:'美味しそう',en:'looks delicious'},
-    {jp:'どう？',en:'how about it?'}
+    {jp:'ラーメン',en:'ramen',romaji:'raamen'},
+    {jp:'食べに行かない？',en:'wanna go eat?',romaji:'tabenikanai'},
+    {jp:'一緒に',en:'together',romaji:'isshoni'},
+    {jp:'週末',en:'this weekend',romaji:'shuumatsu'},
+    {jp:'あそこ',en:'that place over there',romaji:'asoko'},
+    {jp:'美味しそう',en:'looks delicious',romaji:'oishisou'},
+    {jp:'どう？',en:'how about it?',romaji:'dou'}
   ],
   hints:[
     '〜に行かない？ = "Wanna go to ~?" — the negative question form is the most natural casual invitation.',
@@ -146,13 +146,13 @@ var SCENARIOS=[
   emoji:'📅',
   situation:"You haven't seen your friend in ages. Text them to check if they're free this weekend.",
   chips:[
-    {jp:'暇？',en:'free? / got time?'},
-    {jp:'週末',en:'this weekend'},
-    {jp:'久しぶり',en:'long time no see'},
-    {jp:'遊ぼう',en:'let\'s hang out'},
-    {jp:'最近どう？',en:'how have you been?'},
-    {jp:'会いたい',en:'I want to see you'},
-    {jp:'時間ある？',en:'got time?'}
+    {jp:'暇？',en:'free? / got time?',romaji:'hima'},
+    {jp:'週末',en:'this weekend',romaji:'shuumatsu'},
+    {jp:'久しぶり',en:'long time no see',romaji:'hisashiburi'},
+    {jp:'遊ぼう',en:'let\'s hang out',romaji:'asobou'},
+    {jp:'最近どう？',en:'how have you been?',romaji:'saikindou'},
+    {jp:'会いたい',en:'I want to see you',romaji:'aitai'},
+    {jp:'時間ある？',en:'got time?',romaji:'jikanaru'}
   ],
   hints:[
     '暇？ alone is the most casual way to ask "are you free?" in Japanese — literally "bored / free time?"',
@@ -174,14 +174,14 @@ var SCENARIOS=[
   emoji:'😩',
   situation:"Work or school has been completely overwhelming. Text your friend to vent about how rough things have been.",
   chips:[
-    {jp:'しんどい',en:'rough / exhausted'},
-    {jp:'きつい',en:'tough / intense'},
-    {jp:'マジ',en:'seriously / really'},
-    {jp:'最近',en:'lately / recently'},
-    {jp:'忙しすぎ',en:'way too busy'},
-    {jp:'限界',en:'my limit / breaking point'},
-    {jp:'疲れた',en:'I\'m tired'},
-    {jp:'やばい',en:'crazy / intense'}
+    {jp:'しんどい',en:'rough / exhausted',romaji:'shindoi'},
+    {jp:'きつい',en:'tough / intense',romaji:'kitsui'},
+    {jp:'マジ',en:'seriously / really',romaji:'maji'},
+    {jp:'最近',en:'lately / recently',romaji:'saikin'},
+    {jp:'忙しすぎ',en:'way too busy',romaji:'isogashisugi'},
+    {jp:'限界',en:'my limit / breaking point',romaji:'genkai'},
+    {jp:'疲れた',en:'I\'m tired',romaji:'tsukareta'},
+    {jp:'やばい',en:'crazy / intense',romaji:'yabai'}
   ],
   hints:[
     'しんどい and きつい both mean "rough/tough." しんどい is more about fatigue and emotional exhaustion; きつい is about intensity.',
@@ -203,13 +203,13 @@ var SCENARIOS=[
   emoji:'📺',
   situation:"You just binge-watched an amazing show. Text your friend to find out if they've seen it.",
   chips:[
-    {jp:'もう見た？',en:'have you seen it yet?'},
-    {jp:'一気見',en:'binge-watch'},
-    {jp:'ハマる',en:'to be hooked'},
-    {jp:'絶対見て',en:'you have to watch it'},
-    {jp:'ヤバい',en:'insane / amazing'},
-    {jp:'おすすめ',en:'recommendation'},
-    {jp:'感動した',en:'I was moved / blown away'}
+    {jp:'もう見た？',en:'have you seen it yet?',romaji:'moumita'},
+    {jp:'一気見',en:'binge-watch',romaji:'ikkimi'},
+    {jp:'ハマる',en:'to be hooked',romaji:'hamaru'},
+    {jp:'絶対見て',en:'you have to watch it',romaji:'zettaimite'},
+    {jp:'ヤバい',en:'insane / amazing',romaji:'yabai'},
+    {jp:'おすすめ',en:'recommendation',romaji:'osusume'},
+    {jp:'感動した',en:'I was moved / blown away',romaji:'kandoushita'}
   ],
   hints:[
     'もう見た？ = "Have you seen it yet?" — the most natural way to ask this. もう = "already," past tense = "have done."',
@@ -229,15 +229,15 @@ var SCENARIOS=[
 },
 {
   emoji:'🍽️',
-  situation:"It\'s 3pm and you haven\'t eaten since breakfast. Dramatically text your friend about how hungry you are.",
+  situation:"It's 3pm and you haven't eaten since breakfast. Dramatically text your friend about how hungry you are.",
   chips:[
-    {jp:'お腹すいた',en:'I\'m hungry'},
-    {jp:'すぎる',en:'way too much'},
-    {jp:'死にそう',en:'I feel like I\'m dying (hyperbole)'},
-    {jp:'マジ',en:'seriously'},
-    {jp:'腹ペコ',en:'starving (cute/casual)'},
-    {jp:'なにか食べたい',en:'I want to eat something'},
-    {jp:'ご飯',en:'food / rice / meal'}
+    {jp:'お腹すいた',en:'I\'m hungry',romaji:'onakasuita'},
+    {jp:'すぎる',en:'way too much',romaji:'sugiru'},
+    {jp:'死にそう',en:'I feel like I\'m dying (hyperbole)',romaji:'shinisou'},
+    {jp:'マジ',en:'seriously',romaji:'maji'},
+    {jp:'腹ペコ',en:'starving (cute/casual)',romaji:'harapeko'},
+    {jp:'なにか食べたい',en:'I want to eat something',romaji:'nanikatabetai'},
+    {jp:'ご飯',en:'food / rice / meal',romaji:'gohan'}
   ],
   hints:[
     'お腹すいた = "I\'m hungry." The most natural everyday phrase — works alone as a full sentence.',
@@ -259,13 +259,13 @@ var SCENARIOS=[
   emoji:'🙏',
   situation:"Your friend stayed up late to help you with an important problem. Text them a heartfelt thank you.",
   chips:[
-    {jp:'助かった',en:'you saved me / that helped so much'},
-    {jp:'めちゃ',en:'so much / really (casual)'},
-    {jp:'ありがとう',en:'thank you'},
-    {jp:'本当に',en:'truly / really'},
-    {jp:'おかげで',en:'thanks to you'},
-    {jp:'昨日',en:'yesterday'},
-    {jp:'なんとかなった',en:'it worked out / I managed'}
+    {jp:'助かった',en:'you saved me / that helped so much',romaji:'tasukatta'},
+    {jp:'めちゃ',en:'so much / really (casual)',romaji:'mecha'},
+    {jp:'ありがとう',en:'thank you',romaji:'arigatou'},
+    {jp:'本当に',en:'truly / really',romaji:'hontouni'},
+    {jp:'おかげで',en:'thanks to you',romaji:'okagede'},
+    {jp:'昨日',en:'yesterday',romaji:'kinou'},
+    {jp:'なんとかなった',en:'it worked out / I managed',romaji:'nantokanatta'}
   ],
   hints:[
     '助かった (tasukatta) = "you saved me / that really helped." More heartfelt than just ありがとう.',
@@ -287,13 +287,13 @@ var SCENARIOS=[
   emoji:'😱',
   situation:"Your friend texts you shocking news — they quit their job, got into a dream school, or something totally unexpected. React!",
   chips:[
-    {jp:'うそ！',en:'no way! / you\'re kidding!'},
-    {jp:'マジで？',en:'seriously?!'},
-    {jp:'びっくりした',en:'I\'m shocked / surprised'},
-    {jp:'すごい',en:'amazing / wow'},
-    {jp:'え',en:'what / huh (reaction)'},
-    {jp:'やばい',en:'insane / wow'},
-    {jp:'信じられない',en:'I can\'t believe it'}
+    {jp:'うそ！',en:'no way! / you\'re kidding!',romaji:'uso'},
+    {jp:'マジで？',en:'seriously?!',romaji:'majide'},
+    {jp:'びっくりした',en:'I\'m shocked / surprised',romaji:'bikkurishita'},
+    {jp:'すごい',en:'amazing / wow',romaji:'sugoi'},
+    {jp:'え',en:'what / huh (reaction)',romaji:'e'},
+    {jp:'やばい',en:'insane / wow',romaji:'yabai'},
+    {jp:'信じられない',en:'I can\'t believe it',romaji:'shinjirarenai'}
   ],
   hints:[
     'うそ！ = "No way! / You\'re kidding!" — literally "lie," used as an exclamation of disbelief. Very common.',
@@ -306,28 +306,154 @@ var SCENARIOS=[
     {label:'Softer',jp:'え、本当に！？それはすごいね、びっくりした',romaji:'E, hontou ni!? Sore wa sugoi ne, bikkuri shita',en:'Wait, really!? That\'s amazing, I\'m surprised'}
   ],
   grammar:[
-    {term:'うそ',note:'Literally "lie/false." As an exclamation: "No way! / You\'re kidding!" Don\'t confuse with うそつき (liar) — alone as a reaction it\'s very friendly.'},
+    {term:'うそ',note:'Literally "lie." As an exclamation: "No way! / You\'re kidding!" Don\'t confuse with うそつき (liar) — alone as a reaction it\'s very friendly.'},
     {term:'マジで',note:'Casual 本当に ("really"). マジで？ = "Seriously?" You\'ll hear this constantly in casual Japanese.'},
     {term:'すごいじゃん',note:'じゃん = casual じゃない ("isn\'t it"). すごいじゃん = "That\'s amazing, isn\'t it!" Seeks agreement and shares excitement.'}
   ]
 }
 ];
 
+/* ── State ── */
 var progress=[];
 for(var i=0;i<SCENARIOS.length;i++)progress.push(null);
-
-var cur=0;
-var hintLevel=0;
-var answered=false;
-var assessed=false;
-var composing=false;
-
+var cur=0,hintLevel=0,answered=false,assessed=false,composing=false;
 var selStart=0,selEnd=0;
 
+/* ── Helpers ── */
 function el(id){return document.getElementById(id);}
-function qs(sel,ctx){return (ctx||document).querySelector(sel);}
 function qsa(sel,ctx){return (ctx||document).querySelectorAll(sel);}
 
+/* ─────────────────────────────────────────────────
+   GRADING — bigram overlap against all model answers
+   ───────────────────────────────────────────────── */
+function gradeInput(userText,answers){
+  if(!userText||!userText.trim())return{score:0,grade:'D',bestIdx:0,hint:'Type something to get graded!'};
+  function norm(s){
+    return s.replace(/[\s　！？、。「」…〜・ー～!?○]/g,'');
+  }
+  function bigramScore(u,a){
+    var nu=norm(u),na=norm(a);
+    if(na.length===0)return 0;
+    if(na.length===1)return nu.indexOf(na)>=0?1:0;
+    var matched=0,total=na.length-1;
+    for(var i=0;i<total;i++){
+      if(nu.indexOf(na.slice(i,i+2))>=0)matched++;
+    }
+    return matched/total;
+  }
+  var best=0,bestIdx=0;
+  for(var i=0;i<answers.length;i++){
+    var s=bigramScore(userText,answers[i].jp);
+    if(s>best){best=s;bestIdx=i;}
+  }
+  var grade,hint;
+  if(best>=0.78){grade='S';hint='Excellent — very close to natural Japanese!';}
+  else if(best>=0.55){grade='A';hint='Great work — the key elements are there.';}
+  else if(best>=0.35){grade='B';hint='Good attempt — check the model answers to refine it.';}
+  else if(best>=0.12){grade='C';hint='You\'re trying — compare with the model answers to see what to add.';}
+  else{grade='D';hint='Have a look at the vocabulary chips and model answers for ideas.';}
+  return{score:Math.round(best*100),grade:grade,bestIdx:bestIdx,hint:hint};
+}
+
+function showGrade(result){
+  var wrap=el('wws-grade-wrap');
+  if(!wrap)return;
+  var ta=el('wws-ta');
+  var empty=!ta||!ta.value.trim();
+  if(empty){wrap.classList.remove('wws-vis');return;}
+  var matchLabel=result.score>0?' — closest to: '+SCENARIOS[cur].answers[result.bestIdx].label:'';
+  wrap.innerHTML=
+    '<div class="wws-grade-badge wws-grade-badge--'+result.grade+'">'+result.grade+'</div>'+
+    '<div>'+
+    '<div class="wws-grade-score">Match score: '+result.score+'%'+matchLabel+'</div>'+
+    '<div class="wws-grade-msg">'+result.hint+'</div>'+
+    '</div>';
+  wrap.classList.add('wws-vis');
+}
+
+function preSetAssessment(grade){
+  var map={S:'got-it',A:'got-it',B:'almost',C:'practice',D:'practice'};
+  var auto=map[grade]||'almost';
+  var btns=qsa('.wws-assess-btn');
+  for(var i=0;i<btns.length;i++){
+    if(btns[i].getAttribute('data-result')===auto){
+      btns[i].classList.add('wws-pre-select');
+      btns[i].innerHTML=btns[i].innerHTML+'<span class="wws-pre-label">← suggested</span>';
+    }
+  }
+}
+
+/* ─────────────────────────────────────────────────
+   AUTOCOMPLETE — romaji prefix + kana prefix match
+   ───────────────────────────────────────────────── */
+function getCurrentToken(text,cursorPos){
+  var before=text.slice(0,cursorPos);
+  var romMatch=before.match(/[a-zA-Z]+$/);
+  if(romMatch)return{text:romMatch[0],start:cursorPos-romMatch[0].length,end:cursorPos,type:'romaji'};
+  var kanaMatch=before.match(/[぀-ヿ一-龯々]+$/);
+  if(kanaMatch)return{text:kanaMatch[0],start:cursorPos-kanaMatch[0].length,end:cursorPos,type:'kana'};
+  return null;
+}
+
+function getSuggestions(text,cursorPos,chips){
+  var token=getCurrentToken(text,cursorPos);
+  if(!token||token.text.length<1)return[];
+  var t=token.text.toLowerCase();
+  var out=[];
+  for(var i=0;i<chips.length;i++){
+    var c=chips[i];
+    if(token.type==='romaji'){
+      var r=(c.romaji||'').toLowerCase().replace(/\s/g,'');
+      if(r.indexOf(t)===0&&r.length>t.length)out.push(c);
+    }else{
+      if(c.jp.indexOf(token.text)===0&&c.jp.length>token.text.length)out.push(c);
+    }
+  }
+  return out.slice(0,4);
+}
+
+function updateSuggestions(){
+  var ta=el('wws-ta');
+  var wrap=el('wws-suggest');
+  if(!ta||!wrap)return;
+  var suggs=getSuggestions(ta.value,ta.selectionStart,SCENARIOS[cur].chips);
+  wrap.innerHTML='';
+  for(var i=0;i<suggs.length;i++){
+    (function(chip){
+      var btn=document.createElement('button');
+      btn.className='wws-suggest-pill';
+      btn.type='button';
+      btn.innerHTML='<span class="wws-suggest-jp">'+chip.jp+'</span><span class="wws-suggest-en">'+chip.en+'</span>';
+      btn.addEventListener('mousedown',function(e){e.preventDefault();insertSuggestion(chip);});
+      btn.addEventListener('touchstart',function(e){e.preventDefault();insertSuggestion(chip);},{passive:false});
+      wrap.appendChild(btn);
+    })(suggs[i]);
+  }
+}
+
+function insertSuggestion(chip){
+  var ta=el('wws-ta');
+  if(!ta)return;
+  var token=getCurrentToken(ta.value,selStart);
+  var before,after,newPos;
+  if(token){
+    before=ta.value.slice(0,token.start);
+    after=ta.value.slice(token.end);
+    newPos=token.start+chip.jp.length;
+  }else{
+    before=ta.value.slice(0,selStart);
+    after=ta.value.slice(selStart);
+    newPos=selStart+chip.jp.length;
+  }
+  ta.value=before+chip.jp+after;
+  ta.focus();
+  ta.setSelectionRange(newPos,newPos);
+  selStart=newPos;selEnd=newPos;
+  updateChipLighting();
+  updateSuggestions();
+}
+
+/* ── UI builders ── */
 function buildDots(){
   var wrap=el('wws-dots');
   wrap.innerHTML='';
@@ -356,7 +482,6 @@ function buildCard(){
   var s=SCENARIOS[cur];
   var area=el('wws-card-area');
   area.innerHTML='';
-
   var card=document.createElement('div');
   card.className='wws-card';
 
@@ -366,7 +491,8 @@ function buildCard(){
 
   html+='<div class="wws-input-area">';
   html+='<label class="wws-input-label" for="wws-ta">What would you say? Type in Japanese:</label>';
-  html+='<textarea class="wws-textarea" id="wws-ta" placeholder="Type your response in Japanese…" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><'+'\/textarea>';
+  html+='<textarea class="wws-textarea" id="wws-ta" placeholder="Type your response in Japanese… (romaji autocomplete: try \'go\' for ごめん)" rows="3" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"><'+'\/textarea>';
+  html+='<div class="wws-suggest" id="wws-suggest"></div>';
   html+='</div>';
 
   html+='<div class="wws-chips-label">Vocabulary — click to insert at cursor:</div>';
@@ -378,6 +504,8 @@ function buildCard(){
     html+='</button>';
   }
   html+='</div>';
+
+  html+='<div class="wws-grade-wrap" id="wws-grade-wrap"></div>';
 
   html+='<div class="wws-actions">';
   html+='<button class="wws-btn wws-btn--check" id="wws-check">Check answers</button>';
@@ -427,7 +555,6 @@ function buildCard(){
 
   card.innerHTML=html;
   area.appendChild(card);
-
   wireEvents();
 }
 
@@ -442,14 +569,31 @@ function wireEvents(){
   var assessBtns=qsa('.wws-assess-btn');
 
   ta.addEventListener('compositionstart',function(){composing=true;});
-  ta.addEventListener('compositionend',function(){composing=false;updateChipLighting();});
-  ta.addEventListener('input',function(){if(!composing)updateChipLighting();});
-  ta.addEventListener('blur',function(){selStart=ta.selectionStart;selEnd=ta.selectionEnd;});
+  ta.addEventListener('compositionend',function(){
+    composing=false;
+    updateChipLighting();
+    updateSuggestions();
+  });
+  ta.addEventListener('input',function(){
+    if(!composing){
+      updateChipLighting();
+      updateSuggestions();
+    }
+  });
+  ta.addEventListener('blur',function(){
+    selStart=ta.selectionStart;selEnd=ta.selectionEnd;
+    setTimeout(function(){
+      var wrap=el('wws-suggest');
+      if(wrap&&document.activeElement&&!document.activeElement.classList.contains('wws-suggest-pill')){
+        wrap.innerHTML='';
+      }
+    },200);
+  });
   ta.addEventListener('keyup',function(){selStart=ta.selectionStart;selEnd=ta.selectionEnd;});
   ta.addEventListener('click',function(){selStart=ta.selectionStart;selEnd=ta.selectionEnd;});
 
   for(var i=0;i<chips.length;i++){
-    chips[i].addEventListener('click',function(e){
+    chips[i].addEventListener('click',function(){
       var jp=decodeURIComponent(this.getAttribute('data-jp'));
       insertChip(jp);
     });
@@ -463,8 +607,7 @@ function wireEvents(){
 
   for(var j=0;j<assessBtns.length;j++){
     assessBtns[j].addEventListener('click',function(){
-      var result=this.getAttribute('data-result');
-      setAssessment(result);
+      setAssessment(this.getAttribute('data-result'));
     });
   }
 
@@ -473,19 +616,17 @@ function wireEvents(){
 
 function insertChip(jp){
   var ta=el('wws-ta');
-  var start=selStart;
-  var end=selEnd;
+  var start=selStart,end=selEnd;
   var val=ta.value;
   if(start===undefined||start===null)start=val.length;
   if(end===undefined||end===null)end=val.length;
-  var before=val.substring(0,start);
-  var after=val.substring(end);
-  ta.value=before+jp+after;
+  ta.value=val.substring(0,start)+jp+val.substring(end);
   var newPos=start+jp.length;
   ta.focus();
   ta.setSelectionRange(newPos,newPos);
   selStart=newPos;selEnd=newPos;
   updateChipLighting();
+  updateSuggestions();
 }
 
 function updateChipLighting(){
@@ -495,11 +636,8 @@ function updateChipLighting(){
   var chips=qsa('.wws-chip');
   for(var i=0;i<chips.length;i++){
     var jp=decodeURIComponent(chips[i].getAttribute('data-jp'));
-    if(val.indexOf(jp)>=0){
-      chips[i].classList.add('wws-chip--lit');
-    }else{
-      chips[i].classList.remove('wws-chip--lit');
-    }
+    if(val.indexOf(jp)>=0){chips[i].classList.add('wws-chip--lit');}
+    else{chips[i].classList.remove('wws-chip--lit');}
   }
 }
 
@@ -508,29 +646,28 @@ function showNextHint(){
   if(hintLevel>=s.hints.length)return;
   hintLevel++;
   var box=el('wws-hint-box');
-  var num=el('wws-hint-num');
-  var txt=el('wws-hint-text');
-  num.textContent='Hint '+hintLevel+' of '+s.hints.length;
-  txt.textContent=s.hints[hintLevel-1];
+  el('wws-hint-num').textContent='Hint '+hintLevel+' of '+s.hints.length;
+  el('wws-hint-text').textContent=s.hints[hintLevel-1];
   box.classList.add('wws-vis');
   var btn=el('wws-hint');
-  if(hintLevel>=s.hints.length){
-    btn.textContent='No more hints';
-    btn.disabled=true;
-  }else{
-    btn.textContent='💡 Next hint';
-  }
+  if(hintLevel>=s.hints.length){btn.textContent='No more hints';btn.disabled=true;}
+  else{btn.textContent='💡 Next hint';}
 }
 
 function revealAnswers(){
   if(answered)return;
   answered=true;
-  var ans=el('wws-answers');
-  var assess=el('wws-assess');
-  ans.classList.add('wws-vis');
-  assess.classList.add('wws-vis');
+  var ta=el('wws-ta');
+  var userText=ta?ta.value.trim():'';
+  var result=gradeInput(userText,SCENARIOS[cur].answers);
+  showGrade(result);
+  el('wws-answers').classList.add('wws-vis');
+  el('wws-assess').classList.add('wws-vis');
+  if(userText)preSetAssessment(result.grade);
   var checkBtn=el('wws-check');
   if(checkBtn){checkBtn.disabled=true;checkBtn.textContent='✓ Revealed';}
+  var suggest=el('wws-suggest');
+  if(suggest)suggest.innerHTML='';
 }
 
 function setAssessment(result){
@@ -547,12 +684,9 @@ function setAssessment(result){
   if(noteEl)noteEl.textContent=notes[result]||'';
   var btns=qsa('.wws-assess-btn');
   for(var i=0;i<btns.length;i++){
-    if(btns[i].getAttribute('data-result')===result){
-      btns[i].classList.add('wws-chosen');
-    }else{
-      btns[i].disabled=true;
-      btns[i].style.opacity='0.4';
-    }
+    btns[i].classList.remove('wws-pre-select');
+    if(btns[i].getAttribute('data-result')===result){btns[i].classList.add('wws-chosen');}
+    else{btns[i].disabled=true;btns[i].style.opacity='0.4';}
   }
   var nextRow=el('wws-next-row');
   if(nextRow)nextRow.classList.add('wws-vis');
@@ -567,23 +701,15 @@ function skipScenario(){
 function advance(dir){
   var next=cur+dir;
   if(next<0)return;
-  if(next>=SCENARIOS.length){
-    showComplete();
-    return;
-  }
+  if(next>=SCENARIOS.length){showComplete();return;}
   goTo(next);
 }
 
 function goTo(idx){
-  cur=idx;
-  hintLevel=0;
-  answered=false;
-  assessed=false;
+  cur=idx;hintLevel=0;answered=false;assessed=false;
   el('wws-complete').classList.remove('wws-vis');
   el('wws-card-area').style.display='';
-  buildProgress();
-  buildDots();
-  buildCard();
+  buildProgress();buildDots();buildCard();
   window.scrollTo({top:el('wws-app').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
 }
 
@@ -592,15 +718,13 @@ function showComplete(){
   buildProgress();
   el('wws-prog-fill').style.width='100%';
   el('wws-prog-label').textContent='Complete!';
-  var got=0,almost=0,practice=0,skip=0;
+  var got=0,almost=0,practice=0;
   for(var i=0;i<progress.length;i++){
     if(progress[i]==='got-it')got++;
     else if(progress[i]==='almost')almost++;
     else if(progress[i]==='practice')practice++;
-    else skip++;
   }
-  var statsEl=el('wws-complete-stats');
-  statsEl.innerHTML=
+  el('wws-complete-stats').innerHTML=
     '<div class="wws-stat-block"><div class="wws-stat-num wws-stat-num--got">'+got+'</div><div class="wws-stat-lbl">Got it</div></div>'+
     '<div class="wws-stat-block"><div class="wws-stat-num wws-stat-num--almost">'+almost+'</div><div class="wws-stat-lbl">Almost</div></div>'+
     '<div class="wws-stat-block"><div class="wws-stat-num wws-stat-num--practice">'+practice+'</div><div class="wws-stat-lbl">Need practice</div></div>';
@@ -609,12 +733,7 @@ function showComplete(){
   window.scrollTo({top:el('wws-app').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'});
 }
 
-var WWS={
-  restart:function(){
-    for(var i=0;i<progress.length;i++)progress[i]=null;
-    goTo(0);
-  }
-};
+var WWS={restart:function(){for(var i=0;i<progress.length;i++)progress[i]=null;goTo(0);}};
 window.WWS=WWS;
 
 buildProgress();
