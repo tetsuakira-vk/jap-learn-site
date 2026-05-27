@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japanese Learning Curve Calculator — Japanese Unlocked</title>
+  <meta name="description" content="Predict your Japanese learning trajectory. Enter your vocabulary size, daily study time, and target level — get personalised charts for your forgetting curve, vocab projection, comprehension estimate, and spaced repetition schedule." />
+  <meta property="og:title" content="Japanese Learning Curve Calculator — Japanese Unlocked" />
+  <meta property="og:description" content="Data-science-backed tool that models how long it takes to reach N5, N4, N3, N2, N1, or conversational Japanese fluency based on your actual study habits." />
+  <meta property="og:url" content="https://japaneseunlocked.com/learning-curve/" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://japaneseunlocked.com/learning-curve/" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    .back-bar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: rgba(13,13,15,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 24px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: #9999aa;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: #e8e8f0; }
+    .back-link svg { stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .back-bar-brand {
+      font-size: 0.78rem;
+      color: #666677;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── BACK NAV ─── -->
+<div class="back-bar">
+  <a class="back-link" href="https://japaneseunlocked.com/">
+    <svg width="14" height="14" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Japanese Unlocked
+  </a>
+  <span class="back-bar-brand">Learning Curve Calculator</span>
+</div>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header" style="position:relative;top:auto;">
+  <div class="header-inner">
+    <div class="logo">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="18" cy="18" r="17" stroke="#c0392b" stroke-width="2"/>
+        <text x="18" y="24" text-anchor="middle" font-size="18" fill="#c0392b" font-family="serif" font-weight="bold">語</text>
+      </svg>
+      <span class="logo-text">Language Learning Curve</span>
+    </div>
+    <span class="logo-sub">Japanese Edition</span>
+  </div>
+</header>
+
+<!-- ─── HERO / INPUT ─── -->
+<main>
+  <section class="input-section" id="input-section">
+    <div class="section-title-wrap">
+      <h1>Where are you on your <em>Japanese journey?</em></h1>
+      <p class="subtitle">Fill in your details and we'll model your personalised learning trajectory using research-backed algorithms.</p>
+    </div>
+
+    <form class="input-form" id="learner-form" novalidate>
+      <div class="form-grid">
+
+        <!-- Vocabulary -->
+        <div class="form-group">
+          <label for="vocab">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Current vocabulary size
+          </label>
+          <input type="number" id="vocab" min="0" max="50000" value="500" placeholder="e.g. 500" />
+          <span class="hint">Not sure? Guess — N5 ≈ 800 words · Everyday conversation ≈ 2,000 · Fluent ≈ 8,000+</span>
+        </div>
+
+        <!-- Study time -->
+        <div class="form-group">
+          <label for="study-time">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Daily study time
+          </label>
+          <div class="slider-wrap">
+            <input type="range" id="study-time" min="5" max="120" value="30" step="5" />
+            <output id="study-time-out">30 min/day</output>
+          </div>
+        </div>
+
+        <!-- Consistency -->
+        <div class="form-group">
+          <label for="consistency">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Study consistency
+          </label>
+          <div class="slider-wrap">
+            <input type="range" id="consistency" min="1" max="7" value="5" step="1" />
+            <output id="consistency-out">5 days/week</output>
+          </div>
+        </div>
+
+        <!-- Months studying -->
+        <div class="form-group">
+          <label for="months-studying">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Months studying so far
+          </label>
+          <input type="number" id="months-studying" min="0" max="240" value="3" placeholder="e.g. 3" />
+          <span class="hint">Enter 0 if you're just starting out</span>
+        </div>
+
+        <!-- Target level -->
+        <div class="form-group full-width">
+          <label>
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Target level
+          </label>
+          <div class="radio-group">
+            <label class="radio-card">
+              <input type="radio" name="target" value="N5" />
+              <span class="rc-label">N5</span>
+              <span class="rc-sub">~800 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="N4" />
+              <span class="rc-label">N4</span>
+              <span class="rc-sub">~1,500 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="N3" />
+              <span class="rc-label">N3</span>
+              <span class="rc-sub">~3,750 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="N2" checked />
+              <span class="rc-label">N2</span>
+              <span class="rc-sub">~6,000 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="N1" />
+              <span class="rc-label">N1</span>
+              <span class="rc-sub">~10,000 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="Conversational" />
+              <span class="rc-label">Conv.</span>
+              <span class="rc-sub">~2,000 words</span>
+            </label>
+            <label class="radio-card">
+              <input type="radio" name="target" value="Fluent" />
+              <span class="rc-label">Fluent</span>
+              <span class="rc-sub">~8,000 words</span>
+            </label>
+          </div>
+        </div>
+
+      </div><!-- /form-grid -->
+
+      <div class="form-cta">
+        <button type="submit" class="btn-primary" id="calculate-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          Calculate my learning curve
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <!-- ─── DASHBOARD (hidden until submit) ─── -->
+  <section class="dashboard hidden" id="dashboard">
+
+    <!-- Level badge -->
+    <div class="dashboard-header">
+      <div class="level-badge-wrap">
+        <span class="level-label">Current level estimate</span>
+        <span class="level-badge" id="level-badge">—</span>
+        <span class="level-hint" id="level-hint"></span>
+      </div>
+      <div class="dashboard-headline">
+        <h2>Your Japanese Learning Trajectory</h2>
+        <p id="dashboard-summary"></p>
+      </div>
+    </div>
+
+    <!-- ─── STAT CARDS ─── -->
+    <div class="stat-cards" id="stat-cards">
+      <div class="stat-card" id="sc-months-to-target">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="sc-value" id="sc-months-val">—</div>
+        <div class="sc-label">months to target</div>
+      </div>
+      <div class="stat-card" id="sc-wpd">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="sc-value" id="sc-wpd-val">—</div>
+        <div class="sc-label">words/day to hit target in 12 months</div>
+      </div>
+      <div class="stat-card" id="sc-comprehension">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+        </div>
+        <div class="sc-value" id="sc-comp-val">—</div>
+        <div class="sc-label">conversation comprehension</div>
+      </div>
+      <div class="stat-card" id="sc-rec-words">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="sc-value" id="sc-rec-val">—</div>
+        <div class="sc-label">recommended new words/day</div>
+      </div>
+      <div class="stat-card wide" id="sc-proj">
+        <div class="sc-icon">
+          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <div class="sc-proj-row">
+          <div><span class="sc-value" id="sc-p6">—</span><span class="sc-label">in 6 months</span></div>
+          <div><span class="sc-value" id="sc-p12">—</span><span class="sc-label">in 12 months</span></div>
+          <div><span class="sc-value" id="sc-p24">—</span><span class="sc-label">in 24 months</span></div>
+        </div>
+        <div class="sc-label" style="margin-top:4px">Projected vocabulary</div>
+      </div>
+    </div>
+
+    <!-- ─── CHART 1: Forgetting Curve ─── -->
+    <div class="chart-block" id="chart-forgetting">
+      <div class="chart-block-header">
+        <div class="chart-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div>
+          <h3>Your Forgetting Curve</h3>
+          <p class="chart-subtitle">How quickly memories fade — and how spaced repetition fights back</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="forgettingChart"></canvas>
+      </div>
+      <details class="explainer">
+        <summary>
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How this works
+        </summary>
+        <div class="explainer-body">
+          <p><strong>Hermann Ebbinghaus</strong> (1850–1909) was a German psychologist who became the first person to scientifically study memory and forgetting. He memorised lists of nonsense syllables and tested himself at intervals — discovering that memory decays in a predictable curve.</p>
+          <p>The <strong>forgetting curve</strong> is modelled as:<br>
+          <code>R = e<sup>−t/S</sup></code><br>
+          where <em>R</em> is retention (0–1), <em>t</em> is time in days, and <em>S</em> is the "stability" of the memory — how long it takes to decay to ~37% retention.</p>
+          <p><strong>Spaced repetition</strong> works by reviewing a word just before you'd forget it. Each successful review increases <em>S</em> — so the same word takes progressively longer to forget: 1 day → 3 days → 7 days → 14 days → 30 days → 90 days.</p>
+          <p><strong>What this means for you:</strong> Without review, a new word learned today will be ~50% forgotten in 3–4 days. With Anki or a similar app, the same word can be retained at 90%+ with just a few seconds of review per year once it's "mature".</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── CHART 2: Vocabulary Projection ─── -->
+    <div class="chart-block" id="chart-vocab">
+      <div class="chart-block-header">
+        <div class="chart-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div>
+          <h3>Vocabulary Acquisition Projection</h3>
+          <p class="chart-subtitle">Where you'll be in 5 years, based on your current study habits</p>
+        </div>
+      </div>
+      <div class="chart-container tall">
+        <canvas id="vocabChart"></canvas>
+      </div>
+      <details class="explainer">
+        <summary>
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How this works
+        </summary>
+        <div class="explainer-body">
+          <p>The projection uses a simple but realistic model of word acquisition:</p>
+          <p><code>daily_new_words = (study_minutes × consistency_factor) ÷ 20</code></p>
+          <p>The "20 minutes per word" estimate comes from research on deliberate vocabulary study: it takes roughly 10–20 minutes of spaced practice spread over several days to reliably encode a new word family into long-term memory.</p>
+          <p><strong>Consistency factor</strong> is a multiplier based on your days/week. Study 7 days/week = 1.0 (full efficiency). Studying 5 days/week ≈ 0.78 — not because you study less total time, but because irregular practice leads to more forgetting between sessions.</p>
+          <p><strong>The confidence band</strong> represents ±20% around the central estimate. The <em>optimistic</em> scenario assumes you encounter lots of vocabulary in context (reading/listening), making each word easier to retain. The <em>pessimistic</em> scenario accounts for life disruptions, difficult vocabulary domains, and forgetting of rarely-used words.</p>
+          <p>The <strong>horizontal level lines</strong> are JLPT vocabulary thresholds — widely cited estimates that the real exam doesn't publish an official word list, but these are the community consensus targets.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── CHART 3: Time to Target ─── -->
+    <div class="chart-block" id="chart-time">
+      <div class="chart-block-header">
+        <div class="chart-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div>
+          <h3>Time to Each Level</h3>
+          <p class="chart-subtitle">How long to reach each milestone from where you are now</p>
+        </div>
+      </div>
+      <div class="chart-container">
+        <canvas id="timeChart"></canvas>
+      </div>
+      <details class="explainer">
+        <summary>
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How this works
+        </summary>
+        <div class="explainer-body">
+          <p>Each bar shows estimated months to reach a vocabulary milestone from your <em>current</em> position, based on your study inputs.</p>
+          <p>The JLPT (Japanese Language Proficiency Test) levels represent:</p>
+          <ul>
+            <li><strong>N5</strong> — Can read basic hiragana/katakana, understand very simple Japanese. Good for surviving tourism.</li>
+            <li><strong>N4</strong> — Everyday greetings, simple conversations, basic kanji (~300). Watch anime with subtitles comfortably.</li>
+            <li><strong>N3</strong> — Intermediate. Can handle many daily situations. ~650 kanji. Starting to read simple manga.</li>
+            <li><strong>N2</strong> — Upper intermediate. Sufficient for most workplaces. ~1,000 kanji. Read news with dictionary help.</li>
+            <li><strong>N1</strong> — Near-native reading. ~2,000 kanji. University level. Rare for non-native speakers.</li>
+          </ul>
+          <p><strong>Important caveat:</strong> These are vocabulary-only estimates. Kanji, grammar, listening, and speaking are separate skills. Real JLPT preparation also requires grammar study and reading practice. The model assumes vocabulary is your primary bottleneck, which is often (but not always) true.</p>
+          <p>The <strong>optimistic estimate</strong> assumes you hit the upper bound of the confidence band. The <strong>realistic estimate</strong> uses the central model projection.</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── CHART 4: Comprehension ─── -->
+    <div class="chart-block" id="chart-comprehension">
+      <div class="chart-block-header">
+        <div class="chart-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div>
+          <h3>Comprehension Estimate</h3>
+          <p class="chart-subtitle">How much of real Japanese you can understand right now</p>
+        </div>
+      </div>
+      <div class="chart-container donut-container">
+        <canvas id="compChart"></canvas>
+        <div class="donut-center">
+          <span id="donut-pct">—</span>
+          <span class="donut-label">conversation</span>
+        </div>
+      </div>
+      <details class="explainer">
+        <summary>
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How this works
+        </summary>
+        <div class="explainer-body">
+          <p>Based on research by <strong>Paul Nation</strong> (2001) and <strong>Batia Laufer</strong> (1989), text comprehension follows a threshold model:</p>
+          <ul>
+            <li>Knowing <strong>95%</strong> of words in a text = "comfortable reading" (can guess unknowns from context)</li>
+            <li>Knowing <strong>98%</strong> of words = "independent reading" (rare unknown words don't disrupt flow)</li>
+            <li>For Japanese, 95% coverage of conversation ≈ ~2,000 word families</li>
+            <li>98% coverage ≈ ~5,000 word families; novels/news ≈ 8,000+</li>
+          </ul>
+          <p>The formula used here is a logarithmic curve:</p>
+          <p><code>comprehension% = min(98, log(vocab + 1) / log(8001) × 98)</code></p>
+          <p>The logarithmic shape reflects a real phenomenon: <strong>the last few percent are disproportionately hard.</strong> Going from 0 to 2,000 words buys you enormous comprehension gains. Going from 7,000 to 8,000 barely moves the needle — but those last few percent are what separates "near-fluent" from "fully fluent".</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- ─── CHART 5: SR Schedule ─── -->
+    <div class="chart-block" id="chart-sr">
+      <div class="chart-block-header">
+        <div class="chart-icon">
+          <svg viewBox="0 0 24 24" width="28" height="28"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <div>
+          <h3>Spaced Repetition Optimal Schedule</h3>
+          <p class="chart-subtitle">When to review each word for maximum retention with minimum effort</p>
+        </div>
+      </div>
+      <div class="sr-grid" id="sr-grid"></div>
+      <div class="chart-container sr-decay-container">
+        <canvas id="srDecayChart"></canvas>
+      </div>
+      <details class="explainer">
+        <summary>
+          <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+          How this works
+        </summary>
+        <div class="explainer-body">
+          <p><strong>SM-2</strong> (SuperMemo 2) is the algorithm invented by Piotr Wozniak in 1987 and used as the basis for Anki's scheduling. It works by adjusting the <em>interval</em> between reviews based on how well you recalled the card.</p>
+          <p>After each review, the interval is multiplied by an "ease factor" (default 2.5). If you struggle with a card, the ease factor decreases, making intervals shorter. If you find it easy, the factor stays high, spacing reviews out further.</p>
+          <p>The key insight: <strong>each successful review doesn't just reset the clock — it increases how long the memory will last.</strong> A word reviewed 6 times can persist for months without review; a word reviewed once will be forgotten in days.</p>
+          <p><strong>Daily review load:</strong> This grows with your total vocabulary. With 500 words in your deck at mature intervals, you'll have ~15–25 reviews per day. At 3,000 words, expect 60–120 reviews/day — which is why many learners separate "new cards per day" (e.g. 15–20) from "review load" in Anki settings.</p>
+        </div>
+      </details>
+    </div>
+
+  </section><!-- /dashboard -->
+</main>
+
+<footer>
+  <p>Models based on Ebbinghaus (1885), Nation &amp; Laufer (1989–2001), SM-2 algorithm (Wozniak 1987). All projections are estimates — your actual progress depends on study quality, not just quantity.</p>
+  <p>Built with <a href="https://www.chartjs.org/" target="_blank" rel="noopener">Chart.js</a> · Pure client-side · No data sent anywhere · <a href="https://japaneseunlocked.com/">Back to Japanese Unlocked</a></p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

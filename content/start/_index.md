@@ -59,3 +59,15 @@ Don't wait until you've mastered one before starting the next. Overlap is fine a
 Go to [Hiragana](/hiragana/), read the chart from top to bottom (click every character to hear the sound), then take the quiz. Don't stress about the score — just get familiar with the shapes.
 
 See you on the other side. がんばって！ *(Ganbatte — do your best!)*
+
+---
+
+<a class="lc-banner" href="/learning-curve/">
+<div class="lc-banner-icon">📈</div>
+<div class="lc-banner-body">
+<div class="lc-banner-label">Free Tool</div>
+<div class="lc-banner-title">How long will it take you to reach your goal?</div>
+<div class="lc-banner-desc">Plug in your vocabulary size, study time, and target JLPT level — get personalised charts modelling your learning curve, forgetting rate, comprehension estimate, and spaced repetition schedule. Built on real linguistics research.</div>
+</div>
+<span class="lc-banner-cta">Calculate my path →</span>
+</a>

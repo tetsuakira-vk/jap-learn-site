@@ -142,6 +142,16 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
   </a>
 </div>
 
+<a class="lc-banner" href="/learning-curve/">
+<div class="lc-banner-icon">📈</div>
+<div class="lc-banner-body">
+<div class="lc-banner-label">Free Tool</div>
+<div class="lc-banner-title">How long will it take you to learn Japanese?</div>
+<div class="lc-banner-desc">Enter your vocabulary size and study habits — get personalised charts for your learning curve, forgetting curve, JLPT timeline, and comprehension estimate. Based on real research.</div>
+</div>
+<span class="lc-banner-cta">Calculate my path →</span>
+</a>
+
 ---
 
 <div class="home-phrases-wrap">

@@ -11,6 +11,7 @@ showtoc: false
     <div class="sitemap-section-title">Getting Started</div>
     <ul class="sitemap-links">
       <li><a href="/start/">Start Here</a></li>
+      <li><a href="/learning-curve/">Learning Curve Calculator</a></li>
       <li><a href="/about/">About</a></li>
       <li><a href="/resources/">Resources</a></li>
     </ul>

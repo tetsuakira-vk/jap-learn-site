@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(hugo)"
+      "Bash(hugo)",
+      "Bash(ls -la \"/Users/robertnelson/llc/\")",
+      "Read(//Users/robertnelson/llc/**)"
     ]
   }
 }
