@@ -231,10 +231,23 @@ buildExpired = false
     weight = 12
 
   [[menu.main]]
+    identifier = "courses"
+    name = "Courses"
+    url = "/courses/"
+    weight = 56
+
+  [[menu.main]]
+    identifier = "courses-wws"
+    name = "What Would You Say?"
+    url = "/courses/what-would-you-say/"
+    parent = "courses"
+    weight = 1
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"
-    weight = 55
+    weight = 57
 
   [[menu.main]]
     identifier = "grammar-particles"

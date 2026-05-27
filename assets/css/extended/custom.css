@@ -2900,3 +2900,261 @@
   height: auto !important;
   min-height: 0;
 }
+
+/* ══════════════════════════════════════════════════
+   COURSES HUB
+══════════════════════════════════════════════════ */
+.courses-hub-intro {
+  color: var(--secondary);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+.courses-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 1.25rem;
+}
+.course-hub-card {
+  display: flex; flex-direction: column;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem 1.4rem 1.25rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
+}
+.course-hub-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 24px rgba(59,130,246,0.12);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.course-hub-card--soon {
+  opacity: 0.55;
+  pointer-events: none;
+}
+.chc-icon { font-size: 2.4rem; margin-bottom: 0.65rem; line-height: 1; }
+.chc-name { font-size: 1.08rem; font-weight: 700; color: var(--primary); margin-bottom: 0.45rem; }
+.chc-desc { font-size: 0.87rem; color: var(--secondary); line-height: 1.6; flex: 1; margin-bottom: 1rem; }
+.chc-badge {
+  display: inline-block;
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.04em;
+  padding: 0.3rem 0.8rem; border-radius: 6px;
+  align-self: flex-start;
+}
+.chc-badge--start { background: rgba(59,130,246,0.15); color: #3b82f6; }
+.chc-badge--soon  { background: var(--border); color: var(--secondary); }
+
+/* ══════════════════════════════════════════════════
+   WHAT WOULD YOU SAY — COURSE
+══════════════════════════════════════════════════ */
+.wws-wrap { max-width: 700px; margin: 0 auto; padding: 0 0 4rem; }
+
+/* Progress */
+.wws-progress-wrap {
+  display: flex; align-items: center;
+  gap: 0.75rem; margin-bottom: 1.5rem;
+}
+.wws-progress-bar {
+  flex: 1; height: 6px;
+  background: var(--border); border-radius: 99px; overflow: hidden;
+}
+.wws-progress-fill {
+  height: 100%; border-radius: 99px;
+  background: linear-gradient(90deg,#3b82f6,#8b5cf6);
+  transition: width 0.4s ease;
+}
+.wws-progress-label {
+  font-size: 0.78rem; color: var(--secondary);
+  white-space: nowrap; min-width: 54px; text-align: right;
+}
+
+/* Dot nav */
+.wws-dot-nav {
+  display: flex; gap: 0.45rem; justify-content: center;
+  margin-bottom: 1.75rem; flex-wrap: wrap;
+}
+.wws-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--border); border: none; cursor: pointer;
+  transition: background 0.2s, transform 0.2s; padding: 0;
+}
+.wws-dot:hover { transform: scale(1.2); }
+.wws-dot--active   { background: #3b82f6; transform: scale(1.3); }
+.wws-dot--got-it   { background: #22c55e; }
+.wws-dot--almost   { background: #f59e0b; }
+.wws-dot--practice { background: #ef4444; }
+
+/* Card */
+.wws-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem 1.75rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.wws-card-emoji { font-size: 2.6rem; line-height: 1; margin-bottom: 0.9rem; }
+.wws-card-label {
+  font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #3b82f6; margin-bottom: 0.45rem;
+}
+.wws-situation { font-size: 1.08rem; line-height: 1.65; color: var(--primary); }
+
+/* Input */
+.wws-input-area { margin: 1.25rem 0 0.75rem; }
+.wws-input-label {
+  font-size: 0.75rem; color: var(--secondary);
+  margin-bottom: 0.5rem; display: block;
+}
+.wws-textarea {
+  width: 100%; min-height: 88px; box-sizing: border-box;
+  background: var(--code-bg,rgba(0,0,0,0.1));
+  border: 1.5px solid var(--border); border-radius: 10px;
+  padding: 0.85rem 1rem; font-size: 1.15rem; line-height: 1.65;
+  color: var(--primary); resize: vertical; font-family: inherit;
+  transition: border-color 0.15s;
+}
+.wws-textarea:focus {
+  outline: none; border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+}
+.wws-textarea::placeholder { color: var(--secondary); opacity: 0.55; }
+
+/* Chips */
+.wws-chips-label {
+  font-size: 0.71rem; color: var(--secondary);
+  letter-spacing: 0.04em; margin-bottom: 0.45rem; display: block;
+}
+.wws-chips { display: flex; flex-wrap: wrap; gap: 0.38rem 0.42rem; margin-bottom: 1.1rem; }
+.wws-chip {
+  display: inline-flex; align-items: baseline; gap: 0.28rem;
+  background: var(--border); border: 1px solid transparent;
+  border-radius: 20px; padding: 0.26rem 0.72rem;
+  cursor: pointer; font-size: 0.87rem;
+  transition: background 0.14s, border-color 0.14s, transform 0.1s;
+  user-select: none;
+}
+.wws-chip:hover { background: rgba(59,130,246,0.12); border-color: rgba(59,130,246,0.5); }
+.wws-chip:active { transform: scale(0.95); }
+.wws-chip--lit { background: rgba(59,130,246,0.18); border-color: #3b82f6; }
+.wws-chip-jp { font-weight: 600; color: var(--primary); }
+.wws-chip-en { font-size: 0.73rem; color: var(--secondary); }
+
+/* Action buttons */
+.wws-actions { display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.1rem; }
+.wws-btn {
+  padding: 0.6rem 1.25rem; border-radius: 8px; border: none;
+  font-size: 0.88rem; font-weight: 600; cursor: pointer;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
+}
+.wws-btn--check  { background: #3b82f6; color: #fff; }
+.wws-btn--check:hover  { background: #2563eb; }
+.wws-btn--hint   { background: var(--border); color: var(--secondary); }
+.wws-btn--hint:hover   { color: var(--primary); }
+.wws-btn--next   { background: #22c55e; color: #fff; }
+.wws-btn--next:hover   { background: #16a34a; }
+.wws-btn--restart { background: #8b5cf6; color: #fff; }
+.wws-btn--restart:hover { background: #7c3aed; }
+.wws-btn--skip   { background: none; border: 1px solid var(--border); color: var(--secondary); font-size: 0.78rem; padding: 0.5rem 0.9rem; }
+.wws-btn--skip:hover   { color: var(--primary); border-color: var(--primary); }
+.wws-btn:disabled { opacity: 0.38; cursor: default; }
+
+/* Hint box */
+.wws-hint-box {
+  display: none;
+  background: rgba(59,130,246,0.07);
+  border: 1px solid rgba(59,130,246,0.25);
+  border-radius: 10px;
+  padding: 0.85rem 1.1rem;
+  font-size: 0.87rem; color: var(--secondary); line-height: 1.6;
+  margin-bottom: 1.1rem;
+}
+.wws-hint-box.wws-vis { display: block; }
+.wws-hint-num {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  color: #3b82f6; margin-bottom: 0.28rem;
+}
+
+/* Answers */
+.wws-answers { display: none; border-top: 1px solid var(--border); padding-top: 1.4rem; margin-top: 0.75rem; }
+.wws-answers.wws-vis { display: block; }
+.wws-answers-title {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--secondary); margin-bottom: 0.9rem;
+}
+.wws-answer-block {
+  background: rgba(34,197,94,0.06);
+  border: 1px solid rgba(34,197,94,0.22);
+  border-radius: 10px; padding: 0.88rem 1.1rem; margin-bottom: 0.6rem;
+}
+.wws-answer-label {
+  font-size: 0.68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  color: #22c55e; margin-bottom: 0.32rem;
+}
+.wws-answer-jp { font-size: 1.22rem; font-weight: 600; color: var(--primary); margin-bottom: 0.18rem; }
+.wws-answer-romaji { font-size: 0.79rem; color: var(--secondary); margin-bottom: 0.12rem; }
+.wws-answer-en { font-size: 0.81rem; color: var(--secondary); font-style: italic; }
+
+/* Grammar notes */
+.wws-grammar { margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+.wws-grammar-title {
+  font-size: 0.7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--secondary); margin-bottom: 0.7rem;
+}
+.wws-grammar-item { display: flex; gap: 0.7rem; margin-bottom: 0.6rem; align-items: flex-start; }
+.wws-grammar-term { font-weight: 700; color: #8b5cf6; white-space: nowrap; min-width: 68px; font-size: 0.91rem; padding-top: 0.06rem; }
+.wws-grammar-note { font-size: 0.83rem; color: var(--secondary); line-height: 1.6; }
+
+/* Self-assessment */
+.wws-assess { display: none; margin-top: 1.4rem; padding-top: 1.15rem; border-top: 1px solid var(--border); }
+.wws-assess.wws-vis { display: block; }
+.wws-assess-title { font-size: 0.78rem; color: var(--secondary); margin-bottom: 0.7rem; }
+.wws-assess-btns { display: flex; gap: 0.55rem; flex-wrap: wrap; }
+.wws-assess-btn {
+  padding: 0.52rem 1.05rem; border-radius: 8px;
+  border: 1px solid var(--border); background: var(--entry);
+  color: var(--primary); font-size: 0.83rem; font-weight: 600; cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.wws-assess-btn--got-it  { border-color: #22c55e; color: #22c55e; }
+.wws-assess-btn--got-it.wws-chosen,
+.wws-assess-btn--got-it:hover  { background: rgba(34,197,94,0.12); }
+.wws-assess-btn--almost  { border-color: #f59e0b; color: #f59e0b; }
+.wws-assess-btn--almost.wws-chosen,
+.wws-assess-btn--almost:hover  { background: rgba(245,158,11,0.12); }
+.wws-assess-btn--practice { border-color: #ef4444; color: #ef4444; }
+.wws-assess-btn--practice.wws-chosen,
+.wws-assess-btn--practice:hover { background: rgba(239,68,68,0.12); }
+.wws-assess-note { font-size: 0.8rem; color: var(--secondary); margin-top: 0.55rem; }
+
+/* Next row */
+.wws-next-row { display: none; margin-top: 1.2rem; justify-content: flex-end; gap: 0.6rem; }
+.wws-next-row.wws-vis { display: flex; }
+
+/* Completion */
+.wws-complete { display: none; text-align: center; padding: 3rem 1rem; }
+.wws-complete.wws-vis { display: block; }
+.wws-complete-icon { font-size: 4rem; margin-bottom: 0.9rem; }
+.wws-complete-title { font-size: 1.6rem; font-weight: 900; color: var(--primary); margin-bottom: 0.5rem; }
+.wws-complete-sub { font-size: 0.95rem; color: var(--secondary); margin-bottom: 2rem; line-height: 1.7; }
+.wws-complete-stats { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+.wws-stat-block { text-align: center; }
+.wws-stat-num { font-size: 2.2rem; font-weight: 900; }
+.wws-stat-num--got     { color: #22c55e; }
+.wws-stat-num--almost  { color: #f59e0b; }
+.wws-stat-num--practice { color: #ef4444; }
+.wws-stat-lbl { font-size: 0.73rem; color: var(--secondary); text-transform: uppercase; letter-spacing: 0.08em; }
+
+@media (max-width: 640px) {
+  .wws-card { padding: 1.4rem 1.1rem 1.25rem; }
+  .wws-situation { font-size: 1rem; }
+  .wws-answer-jp { font-size: 1.08rem; }
+  .wws-complete-stats { gap: 1.25rem; }
+}

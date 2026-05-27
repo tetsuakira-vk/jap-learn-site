@@ -49,6 +49,14 @@ showtoc: false
   </div>
 
   <div class="sitemap-section">
+    <div class="sitemap-section-title">Courses</div>
+    <ul class="sitemap-links">
+      <li><a href="/courses/">Courses Hub</a></li>
+      <li><a href="/courses/what-would-you-say/">What Would You Say?</a></li>
+    </ul>
+  </div>
+
+  <div class="sitemap-section">
     <div class="sitemap-section-title">Grammar</div>
     <ul class="sitemap-links">
       <li><a href="/grammar/">Grammar Overview</a></li>
