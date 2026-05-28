@@ -3275,3 +3275,103 @@
 /* Pre-selected assessment suggestion */
 .wws-assess-btn.wws-pre-select { box-shadow: 0 0 0 2px currentColor; }
 .wws-pre-label { font-size: 0.67em; opacity: 0.6; margin-left: 0.3em; }
+
+/* ── Shadowing Trainer Course ── */
+.sh-wrap { max-width: 700px; margin: 0 auto; padding: 0.5rem 1rem 2rem; }
+.sh-intro { text-align: center; color: var(--secondary); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+.sh-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+.sh-cat-btn {
+  padding: 0.32rem 0.85rem; border-radius: 99px;
+  border: 1.5px solid var(--border); background: transparent;
+  color: var(--content); cursor: pointer; font-size: 0.82rem; transition: all .18s;
+}
+.sh-cat-btn:hover { border-color: var(--primary); color: var(--primary); }
+.sh-cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.sh-card {
+  background: var(--code-bg); border-radius: 16px; padding: 1.8rem 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.sh-sentence { text-align: center; margin-bottom: 1.6rem; }
+.sh-jp { font-size: 2rem; font-weight: 700; letter-spacing: 0.06em; line-height: 1.2; }
+.sh-en { font-size: 0.97rem; color: var(--secondary); margin-top: 0.35rem; }
+.sh-cat-badge {
+  display: inline-block; font-size: 0.73rem; padding: 0.18rem 0.65rem;
+  border-radius: 99px; background: rgba(128,128,180,0.12); color: #8888aa;
+  margin-top: 0.55rem;
+}
+
+.sh-controls { display: flex; gap: 0.9rem; justify-content: center; margin-bottom: 0.8rem; }
+.sh-btn {
+  padding: 0.55rem 1.3rem; border-radius: 8px; border: none;
+  cursor: pointer; font-size: 0.97rem; font-weight: 600; transition: all .18s;
+}
+.sh-btn-play  { background: #1e3a6e; color: #88aaff; }
+.sh-btn-play:hover:not(:disabled)  { background: #254a88; }
+.sh-btn-rec   { background: #6e1e1e; color: #ff8888; }
+.sh-btn-rec:hover:not(:disabled)   { background: #882525; }
+.sh-btn:disabled { opacity: 0.38; cursor: not-allowed; }
+
+@keyframes sh-pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.7;transform:scale(0.97)} }
+.sh-recording { animation: sh-pulse 0.9s ease-in-out infinite; }
+@keyframes sh-ready-flash { 0%,100%{box-shadow:0 0 0 0 rgba(100,200,100,0)} 50%{box-shadow:0 0 0 6px rgba(100,200,100,0.3)} }
+.sh-ready-flash { animation: sh-ready-flash 1.1s ease-in-out infinite; }
+
+.sh-hint {
+  text-align: center; font-size: 0.88rem; color: var(--secondary);
+  min-height: 1.3rem; margin-bottom: 0.9rem;
+}
+
+.sh-waves { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+.sh-canvas-wrap canvas {
+  display: block; width: 100%; height: 80px; border-radius: 8px;
+  background: #12121e;
+}
+
+.sh-results { margin: 0.8rem 0 0.6rem; }
+.sh-score-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 0.6rem; }
+.sh-score-pill {
+  padding: 0.5rem 1.1rem; border-radius: 10px; text-align: center;
+  min-width: 80px;
+}
+.sh-score-pill strong { display: block; font-size: 1.5rem; font-weight: 800; line-height: 1; }
+.sh-score-pill span   { font-size: 0.72rem; opacity: 0.7; }
+.sh-score-timing { background: rgba(40,160,90,0.12); color: #44cc88; }
+.sh-score-rhythm { background: rgba(60,100,200,0.12); color: #6699ee; }
+.sh-score-detail { text-align: center; font-size: 0.88rem; color: var(--secondary); margin-bottom: 0.35rem; }
+.sh-score-verdict { text-align: center; font-size: 0.94rem; color: var(--content); }
+
+.sh-actions {
+  display: none; gap: 0.9rem; justify-content: center; margin-top: 1rem;
+}
+.sh-btn-secondary {
+  background: transparent; border: 1.5px solid var(--border);
+  color: var(--content); padding: 0.5rem 1.2rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; transition: border-color .18s;
+}
+.sh-btn-secondary:hover { border-color: var(--primary); }
+.sh-btn-primary {
+  background: var(--primary); color: #fff; border: none;
+  padding: 0.5rem 1.4rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; font-weight: 600;
+}
+
+.sh-dots {
+  display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center;
+  margin-top: 0.5rem;
+}
+.sh-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #2a2a3e; cursor: pointer; transition: background .2s;
+  border: 1.5px solid #333355;
+}
+.sh-dot.visited { background: #334466; border-color: #4466aa; }
+.sh-dot.current { background: var(--primary); border-color: var(--primary); }
+
+.sh-perm-err {
+  background: rgba(200,60,60,0.08); border: 1px solid rgba(200,60,60,0.25);
+  border-radius: 8px; padding: 0.8rem 1rem; text-align: center;
+  color: #cc7777; font-size: 0.9rem; margin: 0.5rem 0;
+}

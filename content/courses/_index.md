@@ -16,12 +16,12 @@ Learn Japanese you'll actually use. Each course puts you in real situations — 
 <span class="chc-badge chc-badge--start">Start Course →</span>
 </a>
 
-<div class="course-hub-card course-hub-card--soon">
-<div class="chc-icon">🗣️</div>
-<div class="chc-name">Speaking in Context</div>
-<div class="chc-desc">Short audio clips of real Japanese speech — slang, filler words, and natural rhythm. Practise comprehension and build an ear for how Japanese actually sounds.</div>
-<span class="chc-badge chc-badge--soon">Coming Soon</span>
-</div>
+<a class="course-hub-card" href="/courses/shadowing/">
+<div class="chc-icon">🎙️</div>
+<div class="chc-name">Shadowing Trainer</div>
+<div class="chc-desc">Listen to a phrase, then repeat it out loud right after — that's shadowing. See a visual rhythm comparison and a timing score. Trains your mouth to move at Japanese speed without any uploads or installs.</div>
+<span class="chc-badge chc-badge--start">Start Course →</span>
+</a>
 
 <div class="course-hub-card course-hub-card--soon">
 <div class="chc-icon">📖</div>

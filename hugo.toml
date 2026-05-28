@@ -244,6 +244,13 @@ buildExpired = false
     weight = 1
 
   [[menu.main]]
+    identifier = "courses-shadowing"
+    name = "Shadowing Trainer"
+    url = "/courses/shadowing/"
+    parent = "courses"
+    weight = 2
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"

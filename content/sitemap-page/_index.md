@@ -54,6 +54,7 @@ showtoc: false
     <ul class="sitemap-links">
       <li><a href="/courses/">Courses Hub</a></li>
       <li><a href="/courses/what-would-you-say/">What Would You Say?</a></li>
+      <li><a href="/courses/shadowing/">Shadowing Trainer</a></li>
     </ul>
   </div>
 
