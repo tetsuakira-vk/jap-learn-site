@@ -1,0 +1,38 @@
+name: Weekly Article Refresh
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  # Allow manual trigger from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch NHK article
+        run: python scripts/fetch_nhk_article.py
+        env:
+          # Add DEEPL_API_KEY in repo Settings → Secrets and variables → Actions
+          # If absent the script falls back to the free MyMemory API
+          DEEPL_API_KEY: ${{ secrets.DEEPL_API_KEY }}
+
+      - name: Commit updated article bank
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: weekly NHK article refresh"
+          file_pattern: 'static/data/immersive-articles.json'
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"

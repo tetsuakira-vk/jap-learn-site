@@ -251,6 +251,13 @@ buildExpired = false
     weight = 2
 
   [[menu.main]]
+    identifier = "courses-immersive"
+    name = "Immersive Reader"
+    url = "/courses/immersive-reader/"
+    parent = "courses"
+    weight = 3
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"

@@ -23,11 +23,11 @@ Learn Japanese you'll actually use. Each course puts you in real situations — 
 <span class="chc-badge chc-badge--start">Start Course →</span>
 </a>
 
-<div class="course-hub-card course-hub-card--soon">
-<div class="chc-icon">📖</div>
-<div class="chc-name">Reading Between the Lines</div>
-<div class="chc-desc">Short passages — manga dialogue, social media posts, menus — where context is everything. Practice reading real written Japanese, not just textbook sentences.</div>
-<span class="chc-badge chc-badge--soon">Coming Soon</span>
-</div>
+<a class="course-hub-card" href="/courses/immersive-reader/">
+<div class="chc-icon">📰</div>
+<div class="chc-name">Immersive Reader</div>
+<div class="chc-desc">Real Japanese paragraphs — news stories, food reviews, culture pieces. Hover any kanji to see its meaning instantly, then write a short English summary and see how much you understood. Refreshed weekly with new articles.</div>
+<span class="chc-badge chc-badge--start">Start Reading →</span>
+</a>
 
 </div>

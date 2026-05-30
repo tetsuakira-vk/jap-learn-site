@@ -3375,3 +3375,141 @@
   border-radius: 8px; padding: 0.8rem 1rem; text-align: center;
   color: #cc7777; font-size: 0.9rem; margin: 0.5rem 0;
 }
+
+/* ── Immersive Reader Course ── */
+.ir-wrap { max-width: 760px; margin: 0 auto; padding: 0.5rem 1rem 2.5rem; }
+.ir-intro { color: var(--secondary); font-size: 0.95rem; margin-bottom: 1.4rem; text-align: center; }
+
+.ir-cats { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; }
+.ir-cat-btn {
+  padding: 0.3rem 0.85rem; border-radius: 99px;
+  border: 1.5px solid var(--border); background: transparent;
+  color: var(--content); cursor: pointer; font-size: 0.82rem; transition: all .18s;
+}
+.ir-cat-btn:hover { border-color: var(--primary); color: var(--primary); }
+.ir-cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+.ir-loading { text-align: center; color: var(--secondary); padding: 2rem; font-size: 0.95rem; }
+
+.ir-card {
+  background: var(--code-bg); border-radius: 16px;
+  padding: 1.8rem 1.8rem 1.4rem; margin-bottom: 1rem;
+}
+
+.ir-meta {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  margin-bottom: 0.8rem;
+}
+.ir-source { font-size: 0.75rem; color: #666688; font-style: italic; }
+.ir-date   { font-size: 0.75rem; color: #555577; }
+.ir-cat-badge {
+  font-size: 0.72rem; padding: 0.15rem 0.6rem; border-radius: 99px;
+  background: rgba(128,128,180,0.12); color: #8888aa;
+}
+
+.ir-title {
+  font-size: 1.35rem; font-weight: 700; line-height: 1.35;
+  margin: 0 0 1rem; color: var(--content);
+}
+
+.ir-text {
+  font-size: 1.12rem; line-height: 2; color: var(--content);
+  margin-bottom: 1.6rem; letter-spacing: 0.02em;
+}
+
+/* Hoverable kanji */
+.ir-kanji {
+  cursor: pointer; border-bottom: 1.5px dotted rgba(120,160,255,0.5);
+  transition: color .15s, border-color .15s; border-radius: 2px; padding: 0 1px;
+}
+.ir-kanji:hover, .ir-kanji--active {
+  color: #88aaff; border-bottom-color: #88aaff;
+  background: rgba(100,140,255,0.08);
+}
+
+/* Floating tooltip */
+.ir-tip {
+  position: fixed; z-index: 9999;
+  background: #1a1a2e; color: #ccccee;
+  border: 1px solid #334466; border-radius: 6px;
+  padding: 0.3rem 0.7rem; font-size: 0.84rem; line-height: 1.4;
+  max-width: 220px; pointer-events: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+/* Task area */
+.ir-task { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 1.2rem; }
+.ir-task-label { font-size: 0.95rem; color: var(--secondary); margin-bottom: 0.7rem; font-weight: 500; }
+.ir-summary {
+  width: 100%; box-sizing: border-box;
+  background: rgba(255,255,255,0.04); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 0.7rem 0.9rem;
+  color: var(--content); font-size: 0.97rem; line-height: 1.55;
+  resize: vertical; min-height: 100px; font-family: inherit;
+  transition: border-color .2s;
+}
+.ir-summary:focus { outline: none; border-color: var(--primary); }
+.ir-summary:disabled { opacity: 0.55; }
+.ir-submit {
+  margin-top: 0.75rem; padding: 0.55rem 1.4rem;
+  background: var(--primary); color: #fff; border: none;
+  border-radius: 8px; cursor: pointer; font-size: 0.97rem; font-weight: 600;
+  transition: opacity .18s;
+}
+.ir-submit:hover:not(:disabled) { opacity: 0.85; }
+.ir-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+/* Results */
+.ir-results {
+  background: var(--code-bg); border-radius: 16px;
+  padding: 1.6rem 1.8rem; margin-bottom: 1rem;
+}
+.ir-score-header { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 1rem; }
+.ir-score-num {
+  font-size: 2.4rem; font-weight: 900; color: var(--primary); line-height: 1;
+  white-space: nowrap;
+}
+.ir-score-num span { font-size: 1.2rem; font-weight: 400; color: var(--secondary); }
+.ir-score-pct    { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; }
+.ir-score-verdict { font-size: 0.9rem; color: var(--secondary); }
+
+.ir-keywords { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.2rem; }
+.ir-kw {
+  padding: 0.2rem 0.65rem; border-radius: 99px;
+  font-size: 0.8rem; font-weight: 500;
+}
+.ir-kw--hit  { background: rgba(60,180,100,0.14); color: #55cc88; border: 1px solid rgba(60,180,100,0.25); }
+.ir-kw--miss { background: rgba(180,60,60,0.08); color: #aa6666; border: 1px solid rgba(180,60,60,0.2); text-decoration: line-through; }
+
+.ir-model-answer { margin-bottom: 1.2rem; }
+.ir-model-label { font-size: 0.82rem; color: #666688; margin-bottom: 0.4rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+.ir-model-text  { font-size: 0.95rem; color: var(--content); line-height: 1.6; background: rgba(255,255,255,0.03); border-left: 3px solid var(--primary); padding: 0.6rem 0.9rem; border-radius: 0 6px 6px 0; }
+
+.ir-actions { display: flex; gap: 0.9rem; justify-content: center; }
+.ir-btn-secondary {
+  background: transparent; border: 1.5px solid var(--border);
+  color: var(--content); padding: 0.5rem 1.2rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; transition: border-color .18s;
+}
+.ir-btn-secondary:hover { border-color: var(--primary); }
+.ir-btn-primary {
+  background: var(--primary); color: #fff; border: none;
+  padding: 0.5rem 1.4rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; font-weight: 600;
+}
+
+/* Dots */
+.ir-dots { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-top: 0.5rem; }
+.ir-dot {
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #2a2a3e; cursor: pointer; transition: background .2s;
+  border: 1.5px solid #333355;
+}
+.ir-dot.visited { background: #334466; border-color: #4466aa; }
+.ir-dot.current { background: var(--primary); border-color: var(--primary); }
+
+@media (max-width: 600px) {
+  .ir-title { font-size: 1.1rem; }
+  .ir-text  { font-size: 1.05rem; line-height: 1.95; }
+  .ir-card, .ir-results { padding: 1.2rem 1rem; }
+}

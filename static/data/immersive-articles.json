@@ -1,0 +1,82 @@
+[
+  {
+    "id": "starter-001",
+    "title": "大阪で大きな夏祭りが行われました",
+    "category": "culture",
+    "date": "2025-08-01",
+    "source": "Japanese Unlocked",
+    "japanese": "大阪市の中心部で、今年も大きな夏祭りが行われました。期間は3日間で、約10万人の人が祭りに来ました。祭りでは、たくさんの屋台が並び、夜には花火も打ち上げられました。子どもたちは色鮮やかな浴衣を着て、楽しそうに歩いていました。地元の人たちは「今年も良い祭りでした。来年もまた来たいです」と話していました。",
+    "english_model": "A large summer festival was held again this year in central Osaka. The event lasted three days and about 100,000 people attended. Many food stalls lined the streets and fireworks were launched at night. Children walked around happily in colourful yukata (summer kimonos). Local residents said, 'It was a great festival this year too. We want to come back next year.'",
+    "keywords": ["festival", "osaka", "summer", "fireworks", "100000", "yukata", "stalls", "children", "local", "three days"]
+  },
+  {
+    "id": "starter-002",
+    "title": "東京・渋谷に話題のラーメン店がオープン",
+    "category": "food",
+    "date": "2025-07-15",
+    "source": "Japanese Unlocked",
+    "japanese": "東京の渋谷に新しいラーメン屋がオープンして、話題になっています。このお店では、北海道の食材を使った濃厚な味噌スープのラーメンが人気です。太い麺とやわらかいチャーシューが特徴で、値段は一杯1200円です。週末には開店前から行列ができ、1時間以上待つことも珍しくありません。店長は「地元の人にも観光客にも喜んでもらえるお店を目指しています」と話しています。",
+    "english_model": "A new ramen restaurant that opened in Shibuya, Tokyo, has become a hot topic. The restaurant is popular for its rich miso broth ramen made with ingredients from Hokkaido. It features thick noodles and tender chashu pork and costs 1,200 yen per bowl. On weekends, queues form before opening and waits of over an hour are not unusual. The owner says, 'We aim to be a restaurant that both locals and tourists enjoy.'",
+    "keywords": ["ramen", "shibuya", "tokyo", "hokkaido", "miso", "noodles", "queue", "1200 yen", "weekends", "popular"]
+  },
+  {
+    "id": "starter-003",
+    "title": "大阪の病院でAIロボットが薬の配達を開始",
+    "category": "technology",
+    "date": "2025-06-20",
+    "source": "Japanese Unlocked",
+    "japanese": "大阪市内の大きな病院で、AIを使ったロボットが薬の配達を始めました。このロボットはエレベーターを使って病棟を移動し、患者に薬を届けることができます。センサーで人や障害物を避けながら自動で動きます。病院のスタッフは「ロボットのおかげで、私たちが患者さんのケアにもっと集中できるようになりました」と話しています。今後は廊下の清掃や食事の配達にも活用する予定です。",
+    "english_model": "An AI-powered robot has started delivering medicine at a large hospital in Osaka. The robot can move between hospital wards using elevators and deliver medicine to patients. It moves automatically, using sensors to avoid people and obstacles. Hospital staff say, 'Thanks to the robot, we can now focus more on patient care.' Plans are in place to also use it for corridor cleaning and meal delivery in the future.",
+    "keywords": ["robot", "AI", "osaka", "hospital", "medicine", "delivery", "sensors", "elevator", "staff", "patient care"]
+  },
+  {
+    "id": "starter-004",
+    "title": "日本人選手が国際マラソン大会で優勝",
+    "category": "sports",
+    "date": "2025-05-10",
+    "source": "Japanese Unlocked",
+    "japanese": "先週、東京で行われた国際マラソン大会で、日本人選手の田中健太さんが1位になりました。田中さんは2時間5分32秒という日本新記録を出し、ゴールした後は大きな声援を受けました。田中さんは「毎日30キロ以上の練習を続けた結果です。チームと家族に感謝しています」と喜びの涙を見せました。来年のオリンピックでもメダルを目指すと話しています。",
+    "english_model": "Last week at an international marathon held in Tokyo, Japanese athlete Kenta Tanaka came in first place. Tanaka set a new Japanese record of 2 hours 5 minutes 32 seconds and received loud cheers after crossing the finish line. With tears of joy, Tanaka said, 'It's the result of training over 30km every day. I'm grateful to my team and family.' He says he is aiming for a medal at next year's Olympics.",
+    "keywords": ["marathon", "tokyo", "first place", "record", "2 hours", "olympics", "training", "victory", "grateful", "cheers"]
+  },
+  {
+    "id": "starter-005",
+    "title": "京都への外国人観光客が過去最多に",
+    "category": "culture",
+    "date": "2025-04-25",
+    "source": "Japanese Unlocked",
+    "japanese": "今年の春、京都への外国人観光客の数が過去最多になりました。特に桜の季節の4月は、金閣寺や嵐山などの有名な観光スポットが非常に混雑しました。京都市によると、今年の4月だけで約150万人の外国人が訪れたということです。急増する観光客に対応するため、京都市は新しいマナールールを設け、特定の場所での写真撮影を制限しています。",
+    "english_model": "This spring, the number of foreign tourists visiting Kyoto reached a record high. April in particular — the cherry blossom season — saw famous spots such as Kinkakuji and Arashiyama become extremely crowded. According to Kyoto City, approximately 1.5 million foreigners visited in April alone this year. To deal with the surge in tourists, Kyoto City has established new manner rules and is restricting photography in certain locations.",
+    "keywords": ["kyoto", "tourists", "record", "cherry blossom", "kinkakuji", "arashiyama", "1.5 million", "crowded", "rules", "photography"]
+  },
+  {
+    "id": "starter-006",
+    "title": "今年の夏、記録的な猛暑が日本各地を続く",
+    "category": "news",
+    "date": "2025-08-05",
+    "source": "Japanese Unlocked",
+    "japanese": "今年の夏、日本全国で記録的な猛暑が続いています。東京では気温が40度を超える日が続き、これは観測史上初めてのことです。熱中症で病院に運ばれた人の数は全国で2万人を超え、昨年の同じ時期より40パーセント増えています。気象庁は「この猛暑はしばらく続く見込みです。外出するときは帽子をかぶり、こまめに水を飲んでください」と呼びかけています。",
+    "english_model": "Recordbreaking heatwaves have continued across Japan this summer. In Tokyo, temperatures exceeding 40 degrees have persisted, the first time ever recorded. The number of people taken to hospital nationwide with heatstroke has exceeded 20,000, up 40 percent compared to the same period last year. The Meteorological Agency is urging people: 'This heatwave is expected to continue for some time. When going out, wear a hat and drink water frequently.'",
+    "keywords": ["heatwave", "japan", "40 degrees", "tokyo", "record", "heatstroke", "20000", "40 percent", "meteorological agency", "water"]
+  },
+  {
+    "id": "starter-007",
+    "title": "日本のキャッシュレス決済が初めて現金を上回る",
+    "category": "news",
+    "date": "2025-03-15",
+    "source": "Japanese Unlocked",
+    "japanese": "政府の調査によると、日本でのキャッシュレス決済の割合が初めて50パーセントを超え、現金での支払いを上回りました。スマートフォンのアプリや交通系ICカードを使った支払いが急速に普及しています。コンビニやスーパーだけでなく、神社やお寺の賽銭箱でもキャッシュレス対応が始まっています。一方、高齢者の中には「使い方がわからない」「現金の方が安心」という声もあり、デジタル格差が課題となっています。",
+    "english_model": "According to a government survey, the proportion of cashless payments in Japan has exceeded 50 percent for the first time, surpassing cash payments. Payments using smartphone apps and transit IC cards are spreading rapidly. Not only convenience stores and supermarkets, but also shrines and temple offering boxes are introducing cashless options. On the other hand, some elderly people say 'I don't know how to use it' or 'Cash feels safer,' and the digital divide has become a challenge.",
+    "keywords": ["cashless", "50 percent", "cash", "smartphone", "japan", "elderly", "digital divide", "convenience stores", "shrines", "government survey"]
+  },
+  {
+    "id": "starter-008",
+    "title": "人気アニメシリーズの劇場版が来年春に公開決定",
+    "category": "entertainment",
+    "date": "2025-07-01",
+    "source": "Japanese Unlocked",
+    "japanese": "日本で大人気のアニメシリーズの新しい劇場版映画が、来年の春に公開されることが発表されました。映画では、テレビシリーズでは描かれなかった主人公たちのその後の物語が展開される予定です。ファンからはSNS上で「ずっと待っていた！」「絶対に見に行く！」といった声がたくさん上がっています。チケットの先行販売は12月から始まる予定で、すでに多くのファンが楽しみにしています。",
+    "english_model": "It has been announced that a new theatrical film in a hugely popular Japanese anime series will be released next spring. The film is planned to depict the characters' story after the events of the TV series that were not shown. Fans on social media are reacting with comments like 'I've been waiting so long!' and 'I'm definitely going to see it!' Advance ticket sales are scheduled to begin in December, and many fans are already looking forward to it.",
+    "keywords": ["anime", "film", "movie", "spring", "release", "fans", "social media", "advance tickets", "december", "television series"]
+  }
+]
