@@ -3513,3 +3513,14 @@
   .ir-text  { font-size: 1.05rem; line-height: 1.95; }
   .ir-card, .ir-results { padding: 1.2rem 1rem; }
 }
+
+/* Kanji not in dictionary — lighter style, pointer shows it's clickable to Jisho */
+.ir-kanji--unknown {
+  border-bottom-color: rgba(120,160,255,0.2);
+  cursor: alias;
+}
+.ir-kanji--unknown:hover, .ir-kanji--unknown.ir-kanji--active {
+  color: #aabbdd;
+  border-bottom-color: rgba(120,160,255,0.4);
+  background: rgba(100,140,255,0.04);
+}

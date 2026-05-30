@@ -177,15 +177,17 @@ function esc(str) {
 }
 
 function processJapanese(text) {
-  /* Wrap each kanji that exists in KD in a hoverable span */
+  /* Wrap ALL kanji — known ones show meaning, unknown ones link to Jisho */
   var out = '';
   for (var i = 0; i < text.length; i++) {
     var c    = text[i];
     var code = c.charCodeAt(0);
     var isKanji = (code >= 0x4E00 && code <= 0x9FAF) ||
                   (code >= 0x3400 && code <= 0x4DBF);
-    if (isKanji && KD[c]) {
-      out += '<span class="ir-kanji" data-m="' + esc(KD[c]) + '">' + esc(c) + '</span>';
+    if (isKanji) {
+      var meaning = KD[c] || '';
+      var cls = meaning ? 'ir-kanji' : 'ir-kanji ir-kanji--unknown';
+      out += '<span class="' + cls + '" data-m="' + esc(meaning) + '" data-c="' + esc(c) + '">' + esc(c) + '</span>';
     } else if (c === '\n') {
       out += '<br>';
     } else {
@@ -294,7 +296,8 @@ function attachKanjiEvents() {
   var spans = document.querySelectorAll('.ir-kanji');
   spans.forEach(function(span) {
     span.addEventListener('mouseover', function(e) {
-      showTip(this.dataset.m, e.clientX, e.clientY);
+      var m = this.dataset.m;
+      showTip(m || ('🔍 ' + this.dataset.c + ' — tap to look up on Jisho'), e.clientX, e.clientY);
     });
     span.addEventListener('mousemove', function(e) {
       moveTip(e.clientX, e.clientY);
@@ -302,16 +305,29 @@ function attachKanjiEvents() {
     span.addEventListener('mouseout', function() {
       hideTip();
     });
+    // Click unknown kanji → open Jisho in new tab
+    span.addEventListener('click', function() {
+      if (!this.dataset.m) {
+        window.open('https://jisho.org/search/' + encodeURIComponent(this.dataset.c), '_blank');
+      }
+    });
     // Touch support
     span.addEventListener('touchstart', function(e) {
       e.preventDefault();
       var active = document.querySelector('.ir-kanji--active');
-      if (active) active.classList.remove('ir-kanji--active');
-      if (active === this) { hideTip(); return; }
+      if (active && active !== this) active.classList.remove('ir-kanji--active');
+      if (active === this) { hideTip(); active.classList.remove('ir-kanji--active'); return; }
       this.classList.add('ir-kanji--active');
       var r = this.getBoundingClientRect();
-      showTip(this.dataset.m, r.left + r.width / 2, r.top);
+      var m = this.dataset.m;
+      showTip(m || ('🔍 ' + this.dataset.c + ' — tap again to look up on Jisho'), r.left + r.width / 2, r.top);
     }, {passive: false});
+    // Double-tap unknown kanji on touch → open Jisho
+    span.addEventListener('dblclick', function() {
+      if (!this.dataset.m) {
+        window.open('https://jisho.org/search/' + encodeURIComponent(this.dataset.c), '_blank');
+      }
+    });
   });
   document.addEventListener('touchstart', function(e) {
     if (!e.target.classList.contains('ir-kanji')) {
