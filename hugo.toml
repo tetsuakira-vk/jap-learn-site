@@ -258,6 +258,13 @@ buildExpired = false
     weight = 3
 
   [[menu.main]]
+    identifier = "courses-forge"
+    name = "Sentence Forge"
+    url = "/courses/sentence-forge/"
+    parent = "courses"
+    weight = 4
+
+  [[menu.main]]
     identifier = "grammar"
     name = "Grammar"
     url = "/grammar/"

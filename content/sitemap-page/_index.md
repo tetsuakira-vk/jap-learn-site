@@ -56,6 +56,7 @@ showtoc: false
       <li><a href="/courses/what-would-you-say/">What Would You Say?</a></li>
       <li><a href="/courses/shadowing/">Shadowing Trainer</a></li>
       <li><a href="/courses/immersive-reader/">Immersive Reader</a></li>
+      <li><a href="/courses/sentence-forge/">Sentence Forge</a></li>
     </ul>
   </div>
 

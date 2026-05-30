@@ -3524,3 +3524,180 @@
   border-bottom-color: rgba(120,160,255,0.4);
   background: rgba(100,140,255,0.04);
 }
+
+/* ── Sentence Forge Course ── */
+.sf-wrap { max-width: 720px; margin: 0 auto; padding: 0.5rem 1rem 2.5rem; }
+.sf-intro { color: var(--secondary); font-size: 0.95rem; text-align: center; margin-bottom: 1.2rem; }
+
+/* Category tabs */
+.sf-cats { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-bottom: 0.8rem; }
+.sf-cat-btn {
+  padding: 0.28rem 0.8rem; border-radius: 99px;
+  border: 1.5px solid var(--border); background: transparent;
+  color: var(--content); cursor: pointer; font-size: 0.8rem; transition: all .18s;
+}
+.sf-cat-btn:hover { border-color: var(--primary); color: var(--primary); }
+.sf-cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+/* Progress bar */
+.sf-progress-bar {
+  height: 3px; background: rgba(255,255,255,0.06); border-radius: 99px;
+  margin-bottom: 1.2rem; overflow: hidden;
+}
+.sf-progress-fill {
+  height: 100%; background: var(--primary); border-radius: 99px;
+  width: 0; transition: width .4s ease;
+}
+
+/* Main card */
+.sf-card {
+  background: var(--code-bg); border-radius: 16px;
+  padding: 1.8rem 1.6rem 1.4rem; margin-bottom: 1rem;
+}
+
+/* Prompt section */
+.sf-type-row { display: flex; align-items: center; gap: 0.55rem; margin-bottom: 0.55rem; }
+.sf-type-label { font-size: 0.78rem; color: #777799; font-weight: 500; }
+.sf-level-badge {
+  font-size: 0.68rem; font-weight: 700; padding: 0.1rem 0.55rem;
+  border-radius: 99px; color: #fff; letter-spacing: 0.03em;
+}
+.sf-focus {
+  font-size: 1.6rem; font-weight: 800; letter-spacing: 0.04em;
+  color: var(--primary); margin-bottom: 0.4rem; line-height: 1.25;
+}
+.sf-instruction {
+  font-size: 0.95rem; color: var(--content); margin-bottom: 0.75rem; line-height: 1.5;
+}
+.sf-hint-row { display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.sf-pattern-badge {
+  font-size: 0.8rem; padding: 0.22rem 0.75rem; border-radius: 6px;
+  background: rgba(100,130,255,0.1); color: #88aaee; font-family: monospace;
+  border: 1px solid rgba(100,130,255,0.2);
+}
+.sf-example-btn {
+  background: transparent; border: none; color: var(--secondary);
+  cursor: pointer; font-size: 0.82rem; padding: 0; text-decoration: underline dotted;
+}
+.sf-example {
+  font-size: 0.92rem; color: var(--content); line-height: 1.55;
+  background: rgba(255,255,255,0.04); border-left: 3px solid var(--primary);
+  padding: 0.5rem 0.85rem; border-radius: 0 6px 6px 0; margin-top: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Input area */
+.sf-input-area { margin-top: 1.3rem; }
+.sf-textarea-wrap { position: relative; margin-bottom: 0.7rem; }
+.sf-input {
+  width: 100%; box-sizing: border-box;
+  background: rgba(255,255,255,0.04); border: 1.5px solid var(--border);
+  border-radius: 8px; padding: 0.75rem 3rem 0.75rem 0.9rem;
+  color: var(--content); font-size: 1.05rem; line-height: 1.6;
+  resize: vertical; min-height: 80px; font-family: inherit;
+  transition: border-color .2s;
+}
+.sf-input:focus { outline: none; border-color: var(--primary); }
+.sf-input:disabled { opacity: 0.55; }
+.sf-mic {
+  position: absolute; right: 0.6rem; top: 0.6rem;
+  background: transparent; border: none; font-size: 1.15rem;
+  cursor: pointer; opacity: 0.6; transition: opacity .18s; padding: 0.2rem;
+}
+.sf-mic:hover { opacity: 1; }
+@keyframes sf-mic-pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.sf-mic-active { animation: sf-mic-pulse 0.8s infinite; opacity: 1 !important; }
+.sf-mic-err { font-size: 0.83rem; color: #cc7777; margin-top: 0.3rem; }
+
+/* Chips */
+.sf-chips-label { font-size: 0.78rem; color: #666688; margin-bottom: 0.5rem; }
+.sf-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; margin-bottom: 0.9rem; }
+.sf-chip {
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0.3rem 0.75rem; border-radius: 8px; cursor: pointer;
+  background: rgba(100,130,255,0.08); border: 1.5px solid rgba(100,130,255,0.18);
+  transition: all .18s; user-select: none;
+}
+.sf-chip:hover { background: rgba(100,130,255,0.16); border-color: rgba(100,130,255,0.35); }
+.sf-chip:active { transform: scale(0.96); }
+.sf-chip[draggable="true"] { cursor: grab; }
+.sf-chip[draggable="true"]:active { cursor: grabbing; }
+.sf-chip-jp { font-size: 0.92rem; color: #aabbff; font-weight: 500; }
+.sf-chip-en { font-size: 0.68rem; color: #666688; margin-top: 0.1rem; }
+
+/* Grade result */
+.sf-grade-result {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: rgba(255,255,255,0.03); border-radius: 10px;
+  padding: 0.9rem 1rem; margin: 0.8rem 0 0.6rem;
+}
+.sf-grade-badge {
+  font-size: 1.8rem; font-weight: 900; width: 52px; height: 52px;
+  border-radius: 10px; display: flex; align-items: center; justify-content: center;
+  border: 2px solid currentColor; flex-shrink: 0;
+}
+.sf-grade-badge--S { color: #a78bfa; background: rgba(167,139,250,0.1); }
+.sf-grade-badge--A { color: #34d399; background: rgba(52,211,153,0.1); }
+.sf-grade-badge--B { color: #60a5fa; background: rgba(96,165,250,0.1); }
+.sf-grade-badge--C { color: #fb923c; background: rgba(251,146,60,0.1); }
+.sf-grade-badge--D { color: #f87171; background: rgba(248,113,113,0.1); }
+.sf-grade-detail { flex: 1; }
+.sf-grade-score { font-size: 0.8rem; color: var(--secondary); margin-bottom: 0.25rem; }
+.sf-grade-verdict { font-size: 0.93rem; color: var(--content); line-height: 1.45; margin-bottom: 0.35rem; }
+.sf-grade-chips-used { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.35rem; }
+.sf-cu-tag {
+  font-size: 0.75rem; padding: 0.1rem 0.5rem; border-radius: 99px;
+  background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.2);
+}
+
+/* Actions */
+.sf-card-actions { margin-top: 0.6rem; }
+.sf-submit {
+  padding: 0.55rem 1.5rem; background: var(--primary); color: #fff;
+  border: none; border-radius: 8px; cursor: pointer;
+  font-size: 0.97rem; font-weight: 600; transition: opacity .18s;
+}
+.sf-submit:hover:not(:disabled) { opacity: 0.85; }
+.sf-submit:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Model answers */
+.sf-models-wrap { margin-top: 1rem; }
+.sf-models-label { font-size: 0.78rem; color: #666688; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 0.55rem; }
+.sf-model-item {
+  margin-bottom: 0.7rem; padding: 0.6rem 0.9rem;
+  background: rgba(255,255,255,0.03); border-radius: 8px;
+  border-left: 3px solid rgba(100,130,255,0.35);
+}
+.sf-model-jp { font-size: 1rem; color: var(--content); margin-bottom: 0.18rem; }
+.sf-model-en { font-size: 0.83rem; color: var(--secondary); }
+
+/* Nav row */
+.sf-nav-row {
+  display: none; gap: 0.9rem; margin-top: 1rem; flex-wrap: wrap; justify-content: center;
+}
+.sf-btn-secondary {
+  background: transparent; border: 1.5px solid var(--border);
+  color: var(--content); padding: 0.5rem 1.2rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; transition: border-color .18s;
+}
+.sf-btn-secondary:hover { border-color: var(--primary); }
+.sf-btn-primary {
+  background: var(--primary); color: #fff; border: none;
+  padding: 0.5rem 1.4rem; border-radius: 8px;
+  cursor: pointer; font-size: 0.93rem; font-weight: 600;
+}
+
+/* Dots */
+.sf-dots { display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; margin-top: 0.8rem; }
+.sf-dot {
+  width: 11px; height: 11px; border-radius: 50%; background: #2a2a3e;
+  cursor: pointer; transition: all .2s; border: 1.5px solid #333355;
+}
+.sf-dot.current { box-shadow: 0 0 0 2.5px var(--primary); border-color: var(--primary); }
+
+@media (max-width: 560px) {
+  .sf-focus { font-size: 1.3rem; }
+  .sf-card  { padding: 1.2rem 1rem; }
+  .sf-grade-result { flex-direction: column; align-items: center; text-align: center; }
+  .sf-grade-chips-used { justify-content: center; }
+}

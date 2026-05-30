@@ -30,4 +30,11 @@ Learn Japanese you'll actually use. Each course puts you in real situations — 
 <span class="chc-badge chc-badge--start">Start Reading →</span>
 </a>
 
+<a class="course-hub-card" href="/courses/sentence-forge/">
+<div class="chc-icon">⚒️</div>
+<div class="chc-name">Sentence Forge</div>
+<div class="chc-desc">You get a grammar pattern or vocabulary word — build a sentence. Use vocabulary chips, type freely, or speak into the mic. We grade your attempt (S–D) and show natural model answers. 20 prompts across N5–N3.</div>
+<span class="chc-badge chc-badge--start">Start Forging →</span>
+</a>
+
 </div>
