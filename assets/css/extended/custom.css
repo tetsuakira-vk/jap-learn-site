@@ -3701,3 +3701,117 @@
   .sf-grade-result { flex-direction: column; align-items: center; text-align: center; }
   .sf-grade-chips-used { justify-content: center; }
 }
+
+/* ── Widget live preview (Phone Widgets page) ──────────────────── */
+.widget-demo {
+  margin: 1.5rem 0 2rem;
+  padding: 1.2rem;
+  border-radius: 16px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+}
+.widget-demo-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.widget-demo-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--theme);
+  background: var(--primary);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+.widget-demo-date {
+  font-size: 0.85rem;
+  color: var(--secondary);
+}
+.widget-demo-screen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  justify-content: center;
+  padding: 1.5rem;
+  border-radius: 14px;
+  background: linear-gradient(160deg, #2b2b3d 0%, #14141f 100%);
+}
+.wd-widget {
+  background: #0e0e10;
+  border-radius: 22px;
+  padding: 14px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+.wd-small  { width: 155px; height: 155px; }
+.wd-medium { width: 330px; height: 155px; }
+.wd-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #c0392b;
+}
+.wd-jp-big {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.05;
+  margin-top: 8px;
+}
+.wd-jp-phrase {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-top: 10px;
+  line-height: 1.25;
+}
+.wd-rd {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  margin-top: 2px;
+}
+.wd-rd-italic { font-style: italic; }
+.wd-en {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  margin-top: 4px;
+}
+.wd-en-phrase { color: rgba(255,255,255,0.8); }
+.wd-k {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  margin-top: 4px;
+}
+.wd-readings {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.6);
+  margin-top: 4px;
+}
+.wd-foot {
+  margin-top: auto;
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.2);
+  white-space: nowrap;
+}
+.widget-demo-caption {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .wd-small  { width: 145px; height: 145px; }
+  .wd-medium { width: 100%; max-width: 290px; height: 145px; }
+  .wd-jp-big { font-size: 2.1rem; }
+  .wd-k      { font-size: 2.6rem; }
+  .wd-label  { font-size: 0.55rem; white-space: nowrap; }
+  .wd-foot   { font-size: 0.5rem; }
+}

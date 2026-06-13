@@ -7,6 +7,149 @@ showtoc: true
 
 Put Japanese on your home screen. These widgets show a new word or phrase every day — glance at your phone, absorb a little Japanese, build a habit without thinking about it.
 
+<div class="widget-demo">
+  <div class="widget-demo-head">
+    <span class="widget-demo-badge">Live Preview</span>
+    <span class="widget-demo-date" id="wd-date"></span>
+  </div>
+  <div class="widget-demo-screen">
+    <div class="wd-widget wd-small">
+      <div class="wd-label">WORD OF THE DAY</div>
+      <div class="wd-jp wd-jp-big" id="wd-word-jp"></div>
+      <div class="wd-rd" id="wd-word-rd"></div>
+      <div class="wd-en" id="wd-word-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+    <div class="wd-widget wd-medium">
+      <div class="wd-label">PHRASE OF THE DAY</div>
+      <div class="wd-jp wd-jp-phrase" id="wd-phrase-jp"></div>
+      <div class="wd-rd wd-rd-italic" id="wd-phrase-rd"></div>
+      <div class="wd-en wd-en-phrase" id="wd-phrase-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+    <div class="wd-widget wd-small">
+      <div class="wd-label">KANJI</div>
+      <div class="wd-k" id="wd-kanji-k"></div>
+      <div class="wd-readings" id="wd-kanji-readings"></div>
+      <div class="wd-en" id="wd-kanji-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+  </div>
+  <p class="widget-demo-caption">↑ This is exactly what today's widgets show — same date-seeded logic as the scripts below. Set them up once and they'll change every morning.</p>
+</div>
+
+<script>
+(function(){
+  var WORDS = [
+    {jp:"水",rd:"みず",en:"water"},{jp:"火",rd:"ひ",en:"fire"},
+    {jp:"山",rd:"やま",en:"mountain"},{jp:"川",rd:"かわ",en:"river"},
+    {jp:"木",rd:"き",en:"tree / wood"},{jp:"空",rd:"そら",en:"sky"},
+    {jp:"海",rd:"うみ",en:"sea / ocean"},{jp:"雨",rd:"あめ",en:"rain"},
+    {jp:"風",rd:"かぜ",en:"wind"},{jp:"花",rd:"はな",en:"flower"},
+    {jp:"鳥",rd:"とり",en:"bird"},{jp:"犬",rd:"いぬ",en:"dog"},
+    {jp:"猫",rd:"ねこ",en:"cat"},{jp:"魚",rd:"さかな",en:"fish"},
+    {jp:"食べる",rd:"たべる",en:"to eat"},{jp:"飲む",rd:"のむ",en:"to drink"},
+    {jp:"見る",rd:"みる",en:"to see"},{jp:"聞く",rd:"きく",en:"to listen"},
+    {jp:"話す",rd:"はなす",en:"to speak"},{jp:"行く",rd:"いく",en:"to go"},
+    {jp:"来る",rd:"くる",en:"to come"},{jp:"帰る",rd:"かえる",en:"to go home"},
+    {jp:"寝る",rd:"ねる",en:"to sleep"},{jp:"起きる",rd:"おきる",en:"to wake up"},
+    {jp:"大きい",rd:"おおきい",en:"big"},{jp:"小さい",rd:"ちいさい",en:"small"},
+    {jp:"新しい",rd:"あたらしい",en:"new"},{jp:"古い",rd:"ふるい",en:"old"},
+    {jp:"高い",rd:"たかい",en:"tall / expensive"},{jp:"安い",rd:"やすい",en:"cheap"},
+    {jp:"おいしい",rd:"おいしい",en:"delicious"},{jp:"楽しい",rd:"たのしい",en:"fun"},
+    {jp:"難しい",rd:"むずかしい",en:"difficult"},{jp:"今日",rd:"きょう",en:"today"},
+    {jp:"明日",rd:"あした",en:"tomorrow"},{jp:"昨日",rd:"きのう",en:"yesterday"},
+    {jp:"学校",rd:"がっこう",en:"school"},{jp:"家",rd:"いえ",en:"home"},
+    {jp:"電車",rd:"でんしゃ",en:"train"},{jp:"友達",rd:"ともだち",en:"friend"},
+    {jp:"先生",rd:"せんせい",en:"teacher"},{jp:"本",rd:"ほん",en:"book"},
+    {jp:"お金",rd:"おかね",en:"money"},{jp:"時間",rd:"じかん",en:"time"},
+    {jp:"名前",rd:"なまえ",en:"name"},{jp:"言葉",rd:"ことば",en:"word / language"},
+    {jp:"勉強",rd:"べんきょう",en:"study"},{jp:"日本語",rd:"にほんご",en:"Japanese"},
+    {jp:"心",rd:"こころ",en:"heart / mind"},{jp:"夢",rd:"ゆめ",en:"dream"},
+  ];
+
+  var PHRASES = [
+    {jp:"ありがとうございます",rd:"arigatou gozaimasu",en:"Thank you very much"},
+    {jp:"すみません",rd:"sumimasen",en:"Excuse me / Sorry"},
+    {jp:"おはようございます",rd:"ohayou gozaimasu",en:"Good morning"},
+    {jp:"こんにちは",rd:"konnichiwa",en:"Hello / Good afternoon"},
+    {jp:"こんばんは",rd:"konbanwa",en:"Good evening"},
+    {jp:"おやすみなさい",rd:"oyasuminasai",en:"Good night"},
+    {jp:"はじめまして",rd:"hajimemashite",en:"Nice to meet you"},
+    {jp:"よろしくお願いします",rd:"yoroshiku onegaishimasu",en:"Please look after me"},
+    {jp:"いただきます",rd:"itadakimasu",en:"(said before eating)"},
+    {jp:"ごちそうさまでした",rd:"gochisousama deshita",en:"Thanks for the meal"},
+    {jp:"大丈夫ですか？",rd:"daijoubu desu ka?",en:"Are you okay?"},
+    {jp:"わかりません",rd:"wakarimasen",en:"I don't understand"},
+    {jp:"もう一度お願いします",rd:"mou ichido onegaishimasu",en:"Please say that again"},
+    {jp:"トイレはどこですか？",rd:"toire wa doko desu ka?",en:"Where is the bathroom?"},
+    {jp:"いくらですか？",rd:"ikura desu ka?",en:"How much is it?"},
+    {jp:"これをください",rd:"kore wo kudasai",en:"I'll have this please"},
+    {jp:"日本語を勉強しています",rd:"nihongo wo benkyou shite imasu",en:"I'm studying Japanese"},
+    {jp:"少し日本語が話せます",rd:"sukoshi nihongo ga hanasemasu",en:"I can speak a little Japanese"},
+    {jp:"頑張ってください",rd:"ganbatte kudasai",en:"Good luck / Do your best"},
+    {jp:"お疲れ様でした",rd:"otsukaresama deshita",en:"Good work / Well done"},
+    {jp:"気をつけてください",rd:"ki wo tsukete kudasai",en:"Please take care"},
+    {jp:"また明日",rd:"mata ashita",en:"See you tomorrow"},
+    {jp:"どうぞよろしく",rd:"douzo yoroshiku",en:"Nice to meet you (casual)"},
+    {jp:"ちょっと待ってください",rd:"chotto matte kudasai",en:"Please wait a moment"},
+  ];
+
+  var KANJI = [
+    {k:"日",on:"ニチ",kun:"ひ",en:"sun / day"},
+    {k:"月",on:"ゲツ",kun:"つき",en:"moon / month"},
+    {k:"火",on:"カ",kun:"ひ",en:"fire"},
+    {k:"水",on:"スイ",kun:"みず",en:"water"},
+    {k:"木",on:"モク",kun:"き",en:"tree"},
+    {k:"金",on:"キン",kun:"かね",en:"gold / money"},
+    {k:"土",on:"ド",kun:"つち",en:"earth / soil"},
+    {k:"山",on:"サン",kun:"やま",en:"mountain"},
+    {k:"川",on:"セン",kun:"かわ",en:"river"},
+    {k:"田",on:"デン",kun:"た",en:"rice field"},
+    {k:"人",on:"ジン",kun:"ひと",en:"person"},
+    {k:"口",on:"コウ",kun:"くち",en:"mouth"},
+    {k:"手",on:"シュ",kun:"て",en:"hand"},
+    {k:"目",on:"モク",kun:"め",en:"eye"},
+    {k:"耳",on:"ジ",kun:"みみ",en:"ear"},
+    {k:"足",on:"ソク",kun:"あし",en:"foot / leg"},
+    {k:"力",on:"リョク",kun:"ちから",en:"power / strength"},
+    {k:"大",on:"ダイ",kun:"おお",en:"big / large"},
+    {k:"小",on:"ショウ",kun:"ちい",en:"small"},
+    {k:"中",on:"チュウ",kun:"なか",en:"inside / middle"},
+    {k:"上",on:"ジョウ",kun:"うえ",en:"above / up"},
+    {k:"下",on:"カ",kun:"した",en:"below / down"},
+    {k:"左",on:"サ",kun:"ひだり",en:"left"},
+    {k:"右",on:"ウ",kun:"みぎ",en:"right"},
+    {k:"本",on:"ホン",kun:"もと",en:"book / origin"},
+    {k:"国",on:"コク",kun:"くに",en:"country"},
+    {k:"年",on:"ネン",kun:"とし",en:"year"},
+    {k:"円",on:"エン",kun:"まる",en:"yen / circle"},
+    {k:"学",on:"ガク",kun:"まな",en:"study / learn"},
+    {k:"生",on:"セイ",kun:"いき",en:"life / birth"},
+  ];
+
+  var d = new Date();
+  var seed = d.getFullYear() * 10000 + (d.getMonth()+1) * 100 + d.getDate();
+  var word = WORDS[seed % WORDS.length];
+  var phrase = PHRASES[seed % PHRASES.length];
+  var kanji = KANJI[seed % KANJI.length];
+
+  document.getElementById('wd-word-jp').textContent = word.jp;
+  document.getElementById('wd-word-rd').textContent = word.rd;
+  document.getElementById('wd-word-en').textContent = word.en;
+
+  document.getElementById('wd-phrase-jp').textContent = phrase.jp;
+  document.getElementById('wd-phrase-rd').textContent = phrase.rd;
+  document.getElementById('wd-phrase-en').textContent = phrase.en;
+
+  document.getElementById('wd-kanji-k').textContent = kanji.k;
+  document.getElementById('wd-kanji-readings').textContent = kanji.on + ' · ' + kanji.kun;
+  document.getElementById('wd-kanji-en').textContent = kanji.en;
+
+  document.getElementById('wd-date').textContent = d.toLocaleDateString(undefined, {month:'short', day:'numeric'});
+})();
+</script>
+
 ---
 
 ## iPhone — Scriptable Widgets
