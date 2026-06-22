@@ -4,6 +4,31 @@ description: "Free Japanese learning resources — dictionaries, grammar guides,
 date: 2025-01-01
 ---
 
+## Free downloads — course companions
+
+Two free files to go alongside the [Japanese Unlocked beginner course](/book/). No sign-up needed, just download and use.
+
+<div class="download-grid">
+  <a class="download-card" href="/downloads/japanese-unlocked-flashcards.csv" download>
+    <div class="dl-icon">🃏</div>
+    <div class="dl-info">
+      <div class="dl-title">Anki Flashcard Deck</div>
+      <div class="dl-desc">200+ cards covering hiragana, katakana, core vocabulary, particles and kanji. Import into Anki free — File → Import → select CSV.</div>
+      <div class="dl-meta">CSV · works with Anki desktop, AnkiDroid &amp; AnkiMobile · free</div>
+    </div>
+  </a>
+  <a class="download-card" href="/downloads/japanese-unlocked-reference-pack.pdf" download>
+    <div class="dl-icon">📄</div>
+    <div class="dl-info">
+      <div class="dl-title">Reference Pack PDF</div>
+      <div class="dl-desc">Grammar tables, verb conjugations, particle cheat sheets and the most common kanji at a glance. Referenced throughout all six course modules.</div>
+      <div class="dl-meta">PDF · free</div>
+    </div>
+  </a>
+</div>
+
+---
+
 ## Get a free Japanese word every day
 
 Sign up and we'll send you one Japanese word a day — the word in kanji and kana, the reading, the English meaning, and a natural example sentence so you can see it in context.

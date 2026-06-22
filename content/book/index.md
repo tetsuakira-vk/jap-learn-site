@@ -22,7 +22,7 @@ hidemeta: true
     <div class="bp-format-price-main">£1.99</div>
     <div class="bp-format-price-sub">per module &nbsp;·&nbsp; full bundle £10.99</div>
     <p class="bp-format-desc">Instant download. Read on any device — phone, tablet, laptop. Print-friendly. Each module is a standalone PDF; buy one or grab all six at a discount.</p>
-    <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-format-btn bp-format-btn--primary" target="_blank" rel="noopener">Buy PDF →</a>
+    <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/67c16a2c-0233-4b0c-9b5f-c07418dae924" class="bp-format-btn bp-format-btn--primary" target="_blank" rel="noopener">Buy PDF →</a>
   </div>
 
   <div class="bp-format-card">
@@ -56,7 +56,7 @@ hidemeta: true
       <div class="bp-module-desc">All 46 characters with mnemonics, stroke order, and reading practice. The foundation everything else builds on.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/b32b5968-0206-49ad-bb21-91892c56ddaa" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Step-Step-Characters-ebook/dp/B0H5KPZKFQ" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
@@ -68,7 +68,7 @@ hidemeta: true
       <div class="bp-module-desc">The alphabet for foreign words, brand names and emphasis. Complete character set with real vocabulary examples.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/6739edd6-ba06-4b58-893a-703f8047db38" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Katakana-Loanwords-Alphabet-ebook/dp/B0H5L3ML4F" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
@@ -80,7 +80,7 @@ hidemeta: true
       <div class="bp-module-desc">The most useful everyday words grouped by theme, with pronunciation guides and example sentences.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/4400eca1-6558-42c9-8274-b6745d2f2c97" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Vocabulary-High-Frequency-Expressions-ebook/dp/B0H5KY2JXM" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
@@ -92,7 +92,7 @@ hidemeta: true
       <div class="bp-module-desc">How Japanese sentences actually work. Particles, verb conjugation and grammar patterns explained clearly without jargon.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/7a98ad83-ac9e-47bd-bb25-9c837b76e60c" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Sentences-Particles-Grammar-ebook/dp/B0H5KY152W" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
@@ -104,7 +104,7 @@ hidemeta: true
       <div class="bp-module-desc">Annotated real-world dialogues — greetings, directions, restaurants, shopping. Read and understand natural Japanese as it's actually spoken.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/bf051f04-eb4a-4fcc-8d30-c0308b1c0299" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Conversations-Annotated-Directions-ebook/dp/B0GX47NK85" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
@@ -116,7 +116,7 @@ hidemeta: true
       <div class="bp-module-desc">The most common kanji with readings, meanings and example sentences. The foundation for reading Japanese in the wild.</div>
     </div>
     <div class="bp-module-links">
-      <a href="https://japaneseunlocked.lemonsqueezy.com/" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
+      <a href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/89923b39-a27b-43cc-8249-694594b09e34" class="bp-module-link bp-module-link--pdf" target="_blank" rel="noopener">PDF £1.99</a>
       <a href="https://www.amazon.co.uk/Japanese-Unlocked-Starter-Everyday-Characters-ebook/dp/B0H5KTN3MW" class="bp-module-link bp-module-link--epub" target="_blank" rel="noopener">eBook £3.72</a>
     </div>
   </div>
