@@ -50,17 +50,18 @@ STOPWORDS = {
 
 # ── HTTP helpers ───────────────────────────────────────────────────────────────
 
-def fetch(url, retries=3):
+def fetch(url, retries=4):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     for attempt in range(retries):
         try:
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=30) as r:
                 return r.read()
         except Exception as exc:
             if attempt == retries - 1:
                 raise
-            print(f"  Retry {attempt+1}: {exc}")
-            time.sleep(2 ** attempt)
+            wait = 2 ** attempt
+            print(f"  Retry {attempt+1}/{retries-1}: {exc} — waiting {wait}s")
+            time.sleep(wait)
 
 # ── HTML processing ────────────────────────────────────────────────────────────
 
@@ -205,7 +206,12 @@ def main():
     print("=== NHK Web Easy weekly fetch ===")
 
     print("Fetching article list…")
-    list_data = json.loads(fetch(NHK_LIST))
+    try:
+        list_data = json.loads(fetch(NHK_LIST))
+    except Exception as exc:
+        print(f"WARNING: Could not reach NHK ({exc})")
+        print("Skipping this week — article bank unchanged. Will retry next Monday.")
+        sys.exit(0)
 
     # Flatten: list is [{date: [articles]}, ...]
     all_articles = []

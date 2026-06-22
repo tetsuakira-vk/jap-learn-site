@@ -23,6 +23,7 @@ jobs:
           python-version: '3.11'
 
       - name: Fetch NHK article
+        continue-on-error: true
         run: python scripts/fetch_nhk_article.py
         env:
           # Add DEEPL_API_KEY in repo Settings → Secrets and variables → Actions
