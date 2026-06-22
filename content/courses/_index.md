@@ -1,6 +1,6 @@
 ---
-title: "Japanese Courses — Learn Real, Natural Japanese"
-description: "Free interactive Japanese courses on Japanese Unlocked. Practice real situations — texting friends, ordering food, reacting to news. Learn colloquial Japanese that actually sounds natural."
+title: "Practice Hub — Interactive Japanese Tools"
+description: "Free interactive Japanese practice tools on Japanese Unlocked. Practice real situations — texting friends, ordering food, reacting to news. Shadowing, immersive reading, sentence building and more."
 date: 2025-01-01
 showtoc: false
 ---

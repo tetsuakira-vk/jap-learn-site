@@ -1,0 +1,206 @@
+#separator:Comma
+#html:false
+#tags column:3
+おはようございます,ohayō gozaimasu · good morning (formal),module-03
+おはよう,ohayō · good morning (casual),module-03
+こんにちは,konnichiwa · hello; good afternoon,module-03
+こんばんは,konbanwa · good evening,module-03
+おやすみなさい,oyasuminasai · good night (formal),module-03
+おやすみ,oyasumi · good night (casual),module-03
+さようなら,sayōnara · goodbye (formal),module-03
+じゃあね,jā ne · bye (casual),module-03
+ありがとうございます,arigatō gozaimasu · thank you (formal),module-03
+ありがとう,arigatō · thank you (casual),module-03
+すみません,sumimasen · excuse me; sorry,module-03
+ごめんなさい,gomen nasai · I'm sorry (apology),module-03
+はい,hai · yes,module-03
+いいえ,iie · no,module-03
+どうぞ,dōzo · please; go ahead; here you are,module-03
+どういたしまして,dō itashimashite · you're welcome,module-03
+ぜろ,zero · zero (0),module-03
+れい,rei · zero (0),module-03
+いち,ichi · one (1),module-03
+に,ni · two (2),module-03
+さん,san · three (3),module-03
+し / よん,shi / yon · four (4),module-03
+ご,go · five (5),module-03
+ろく,roku · six (6),module-03
+しち / なな,shichi / nana · seven (7),module-03
+はち,hachi · eight (8),module-03
+く / きゅう,ku / kyū · nine (9),module-03
+じゅう,jū · ten (10),module-03
+ひゃく,hyaku · one hundred (100),module-03
+せん,"sen · one thousand (1,000)",module-03
+まん,"man · ten thousand (10,000)",module-03
+にちようび,nichiyōbi · Sunday,module-03
+げつようび,getsuyōbi · Monday,module-03
+かようび,kayōbi · Tuesday,module-03
+すいようび,suiyōbi · Wednesday,module-03
+もくようび,mokuyōbi · Thursday,module-03
+きんようび,kin'yōbi · Friday,module-03
+どようび,doyōbi · Saturday,module-03
+がつ,gatsu · month (counter),module-03
+ごぜん,gozen · AM; before noon,module-03
+ごご,gogo · PM; after noon,module-03
+じ,ji · o'clock (counter for hours),module-03
+ふん / ぷん,fun / pun · minutes (counter),module-03
+いま,ima · now,module-03
+きょう,kyō · today,module-03
+あした,ashita · tomorrow,module-03
+きのう,kinō · yesterday,module-03
+まいにち,mainichi · every day,module-03
+あさ,asa · morning,module-03
+ひる,hiru · noon; daytime,module-03
+よる,yoru · evening; night,module-03
+わたし,watashi · I; me,module-03
+あなた,anata · you,module-03
+かれ,kare · he; him,module-03
+かのじょ,kanojo · she; her,module-03
+わたしたち,watashitachi · we; us,module-03
+みなさん,minasan · everyone; ladies and gentlemen,module-03
+ひと,hito · person; people,module-03
+おとこのひと,otoko no hito · man; male person,module-03
+おんなのひと,onna no hito · woman; female person,module-03
+こども,kodomo · child,module-03
+おとな,otona · adult,module-03
+ちち,chichi · (my) father,module-03
+はは,haha · (my) mother,module-03
+あに,ani · (my) older brother,module-03
+あね,ane · (my) older sister,module-03
+おとうさん,otōsan · father (polite / someone else's),module-03
+おかあさん,okāsan · mother (polite / someone else's),module-03
+おにいさん,onīsan · older brother (polite / someone else's),module-03
+おねえさん,onēsan · older sister (polite / someone else's),module-03
+がっこう,gakkō · school,module-03
+えき,eki · train station,module-03
+びょういん,byōin · hospital,module-03
+ぎんこう,ginkō · bank,module-03
+スーパー,sūpā · supermarket,module-03
+レストラン,resutoran · restaurant,module-03
+みせ,mise · shop; store,module-03
+いえ,ie · house; home,module-03
+うち,uchi · home (informal; intimate),module-03
+こうえん,kōen · park,module-03
+トイレ,toire · toilet; restroom,module-03
+ごはん,gohan · cooked rice; a meal,module-03
+みず,mizu · water,module-03
+おちゃ,ocha · green tea,module-03
+コーヒー,kōhī · coffee,module-03
+パン,pan · bread,module-03
+さかな,sakana · fish (as food),module-03
+にく,niku · meat,module-03
+やさい,yasai · vegetables,module-03
+たまご,tamago · egg,module-03
+くだもの,kudamono · fruit,module-03
+ほん,hon · book,module-03
+かばん,kaban · bag; briefcase,module-03
+でんわ,denwa · telephone,module-03
+スマートフォン,sumātofon · smartphone,module-03
+かぎ,kagi · key,module-03
+おおきい,ōkī · big; large · い-adjective,module-03
+ちいさい,chīsai · small; little · い-adjective,module-03
+あたらしい,atarashii · new · い-adjective,module-03
+ふるい,"furui · old (of things, not people) · い-adjective",module-03
+たかい,takai · expensive; tall; high · い-adjective,module-03
+やすい,yasui · cheap; inexpensive · い-adjective,module-03
+あつい,atsui · hot (weather or temperature) · い-adjective,module-03
+さむい,samui · cold (of weather or air) · い-adjective,module-03
+つめたい,"tsumetai · cold (of food, drink, or things to the touch) · い-adjective",module-03
+いい / よい,ii / yoi · good · い-adjective,module-03
+わるい,warui · bad · い-adjective,module-03
+たのしい,tanoshii · fun; enjoyable · い-adjective,module-03
+むずかしい,muzukashii · difficult · い-adjective,module-03
+かんたん,kantan · easy; simple · な-adjective,module-03
+きれい,kirei · beautiful; clean · な-adjective,module-03
+げんき,genki · healthy; energetic; well · な-adjective,module-03
+しずか,shizuka · quiet; calm · な-adjective,module-03
+にぎやか,nigiyaka · lively; bustling · な-adjective,module-03
+たべる,taberu · to eat · dictionary form,module-03
+のむ,nomu · to drink · dictionary form,module-03
+いく,iku · to go · dictionary form,module-03
+くる,kuru · to come · dictionary form,module-03
+みる,miru · to see; to watch · dictionary form,module-03
+きく,kiku · to listen; to ask · dictionary form,module-03
+よむ,yomu · to read · dictionary form,module-03
+かく,kaku · to write · dictionary form,module-03
+はなす,hanasu · to speak; to talk · dictionary form,module-03
+わかる,wakaru · to understand · dictionary form,module-03
+かう,kau · to buy · dictionary form,module-03
+かえる,kaeru · to return; to go home · dictionary form,module-03
+する,suru · to do · dictionary form,module-03
+ある,aru · to exist; to have (inanimate things) · inanimate things only — use いる for people and animals,module-03
+いる,iru · to exist; to be (people and animals) · animate only (people and animals) — use ある for inanimate things,module-03
+なに / なん,nani / nan · what,module-03
+だれ,dare · who,module-03
+いつ,itsu · when,module-03
+いくら,ikura · how much (price),module-03
+いくつ,ikutsu · how many; how old,module-03
+なぜ,naze · why (formal),module-03
+どうして,dōshite · why (colloquial),module-03
+どう,dō · how; in what way,module-03
+これ,kore · this (thing near speaker),module-03
+それ,sore · that (thing near listener),module-03
+あれ,are · that (thing away from both),module-03
+どれ,dore · which one?,module-03
+この,kono · this [noun],module-03
+その,sono · that [noun] (near listener),module-03
+あの,ano · that [noun] (over there),module-03
+どの,dono · which [noun]?,module-03
+どこ,doko · where?,module-03
+ここ,koko · here (near speaker),module-03
+そこ,soko · there (near listener),module-03
+あそこ,asoko · over there,module-03
+ください,kudasai · please give me; please (polite request),module-03
+ねこ,neko · cat,module-04
+にほんご,nihongo · Japanese language,module-04
+はじめまして,hajimemashite · how do you do (first meeting only),module-05
+よろしくおねがいします,yoroshiku onegai shimasu · pleased to meet you; I request your favour,module-05
+なまえ,namae · name,module-05
+しごと,shigoto · work; job,module-05
+しゅっしん,shusshin · hometown; where one is from,module-05
+がくせい,gakusei · student,module-05
+かいしゃいん,kaishain · company employee; office worker,module-05
+せんせい,sensei · teacher,module-05
+にほん,nihon · Japan,module-05
+から,kara · from (particle),module-05
+いらっしゃいませ,irasshaimase · welcome (shop/restaurant greeting),module-05
+えん,en · yen (¥),module-05
+おかいけい,okaikei · the bill; the check,module-05
+おつり,otsuri · change (money returned after payment),module-05
+いただきます,itadakimasu · set phrase before eating or drinking,module-05
+ごちそうさまでした,gochisōsama deshita · set phrase after eating,module-05
+おいしい,oishii · delicious · い-adjective,module-05
+みぎ,migi · right (direction),module-05
+ひだり,hidari · left (direction),module-05
+まっすぐ,massugu · straight ahead,module-05
+ちかい,chikai · near; close · い-adjective,module-05
+となり,tonari · next to; neighbouring,module-05
+まえ,mae · in front of; before,module-05
+うしろ,ushiro · behind; back,module-05
+そうですか,sō desu ka · I see; is that so?,module-05
+ね,ne · right?; isn't it? (sentence-final particle),module-05
+もう一度,mō ichido · one more time,module-05
+ゆっくり,yukkuri · slowly,module-05
+わかりました,wakarimashita · I understand; I see; got it,module-05
+もしもし,moshi moshi · hello (telephone only),module-05
+ふくろ,fukuro · bag; carrier bag; sack,module-05
+すこし,sukoshi · a little; a small amount,module-05
+やま,yama · mountain,module-06
+かわ,kawa · river,module-06
+てがみ,tegami · letter (hand-written),module-06
+め,me · eye,module-06
+くち,kuchi · mouth,module-06
+て,te · hand,module-06
+なか,naka · inside; middle,module-06
+つき,tsuki · moon; month,module-06
+でぐち,deguchi · exit,module-06
+いりぐち,iriguchi · entrance,module-06
+き,ki · tree; wood,module-06
+かね,kane · money; metal,module-06
+にほんじん,nihonjin · Japanese person,module-06
+おかね,okane · money (polite form),module-06
+だいがく,daigaku · university,module-06
+やすみ,yasumi · rest; day off; holiday,module-06
+はたらきます,hatarakimasu · to work (polite form) · dictionary form,module-06
+しょうがっこう,shōgakkō · primary school,module-06
+にほんじゅう,nihonjū · throughout Japan,module-06

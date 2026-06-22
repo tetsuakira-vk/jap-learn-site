@@ -142,6 +142,24 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
   </a>
 </div>
 
+<div class="book-promo">
+  <img src="/images/book-promo-banner.jpg" alt="Japanese Unlocked — Complete Beginner Course">
+  <div class="book-promo-body">
+    <div class="book-promo-text">
+      <p>A complete structured path from zero to reading and speaking basic Japanese.</p>
+      <p>Six modules covering hiragana, katakana, vocabulary, sentence structure, conversation and kanji — with 200+ flashcards included. Written to go alongside the YouTube channel and the free content on this site.</p>
+      <div class="book-promo-badges">
+        <span class="book-promo-badge">PDF download</span>
+        <span class="book-promo-badge">Kindle eBook</span>
+        <span class="book-promo-badge">Paperback</span>
+        <span class="book-promo-badge">6 modules</span>
+        <span class="book-promo-badge">200+ flashcards</span>
+      </div>
+    </div>
+    <a href="/book/" class="book-promo-cta">Find out more →</a>
+  </div>
+</div>
+
 <a class="lc-banner" href="/learning-curve/">
 <div class="lc-banner-icon">📈</div>
 <div class="lc-banner-body">

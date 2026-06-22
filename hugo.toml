@@ -232,7 +232,7 @@ buildExpired = false
 
   [[menu.main]]
     identifier = "courses"
-    name = "Courses"
+    name = "Practice Hub"
     url = "/courses/"
     weight = 56
 

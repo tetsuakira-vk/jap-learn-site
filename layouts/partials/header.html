@@ -1,4 +1,25 @@
 {{- $currentPage := . }}
+<div class="ann-bar" id="ann-bar">
+  <a href="/book/">
+    <span class="ann-bar-badge">New</span>
+    <span class="ann-bar-text">Japanese Unlocked Course — the complete beginner guide, all 6 modules.</span>
+    <span class="ann-bar-cta">From £1.99 →</span>
+  </a>
+  <button class="ann-bar-close" id="ann-bar-close" aria-label="Dismiss">&#x2715;</button>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('ann-dismissed')==='1'){
+    document.getElementById('ann-bar').style.display='none';
+  }
+  document.addEventListener('click',function(e){
+    if(e.target.closest('#ann-bar-close')){
+      document.getElementById('ann-bar').style.display='none';
+      localStorage.setItem('ann-dismissed','1');
+    }
+  });
+})();
+</script>
 <header class="header">
 
   {{/* ── Masthead: site title left, theme toggle right ── */}}
