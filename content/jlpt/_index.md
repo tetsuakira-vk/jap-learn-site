@@ -197,6 +197,58 @@ If you're at the very beginning — no hiragana, no vocabulary — the JLPT mock
 
 The mock tests on this site follow the official JLPT format — same question types, same section structure, same difficulty weighting. Written to match the style of the official exam, not reproductions of past papers.
 
+<details class="jlpt-firsttime">
+  <summary>First time taking the JLPT? Here's what each question type means</summary>
+  <div class="jlpt-firsttime-body">
+    <div class="jlpt-firsttime-col">
+      <strong>Vocabulary section 〔語彙〕</strong>
+      <table>
+        <tr>
+          <td>問題１</td>
+          <td><b>読み方 — Reading</b>An underlined kanji word — pick the correct furigana reading from four options.</td>
+        </tr>
+        <tr>
+          <td>問題２</td>
+          <td><b>漢字 — Writing</b>An underlined kana word — pick the correct kanji spelling from four options.</td>
+        </tr>
+        <tr>
+          <td>問題３</td>
+          <td><b>文脈語彙 — Vocabulary in context</b>A sentence with a gap — choose the word that fits the meaning.</td>
+        </tr>
+        <tr>
+          <td>問題４</td>
+          <td><b>類義語 — Synonyms</b>A highlighted word or phrase — find the option closest in meaning.</td>
+        </tr>
+        <tr>
+          <td>問題５</td>
+          <td><b>用法 — Word usage</b>A sentence with a gap — choose the word that fits the context best.</td>
+        </tr>
+      </table>
+    </div>
+    <div class="jlpt-firsttime-col">
+      <strong>Grammar &amp; Reading section 〔文法・読解〕</strong>
+      <table>
+        <tr>
+          <td>問題１</td>
+          <td><b>文法 — Grammar</b>A sentence with a gap — choose the correct grammar form or particle.</td>
+        </tr>
+        <tr>
+          <td>問題２</td>
+          <td><b>文章の文法 — Passage grammar</b>A short passage with five numbered gaps — fill each one in sequence.</td>
+        </tr>
+        <tr>
+          <td>問題３</td>
+          <td><b>読解 — Reading comprehension</b>Read a passage, then answer questions about its content and meaning.</td>
+        </tr>
+        <tr>
+          <td>問題４</td>
+          <td><b>情報検索 — Notice reading</b>Read a notice, timetable, or sign — answer questions about the specific information it contains.</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</details>
+
 <div class="jlpt-mock-grid">
   <a class="jlpt-mock-card jlpt-mock--available" href="/jlpt/n5/mock/">
     <div class="jlpt-mock-level">N5</div>
