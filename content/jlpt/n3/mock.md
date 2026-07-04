@@ -15,6 +15,10 @@ showtoc: false
 
 > Original practice questions written to match the style and difficulty of the official JLPT N3 exam. Format based on the official specification published by the [Japan Foundation](https://www.jlpt.jp/e/) — not reproductions of past papers.
 
+<div class="jlpt-tip-box">
+  <strong>First time taking a JLPT mock?</strong> The exam uses a specific set of question types — kanji reading, vocabulary in context, sentence ordering, and more. <a href="/jlpt/mock/guide/">Read the question-type guide →</a> for a plain-English explanation of each one with an example to try, so nothing surprises you mid-test.
+</div>
+
 <div class="mock-tab-bar">
   <button class="mock-tab active" id="tab-vocab" onclick="showSection('vocab')">言語知識〔語彙〕</button>
   <button class="mock-tab" id="tab-grammar" onclick="showSection('grammar')">文法・読解</button>
