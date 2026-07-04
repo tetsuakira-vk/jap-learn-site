@@ -66,7 +66,7 @@ layout: single
     <div class="jlpt-res-links">
       <a href="/jlpt/n3/">Vocabulary reference + audio</a>
       <a href="/jlpt/n3/quiz/">Interactive quiz</a>
-      <span class="jlpt-res-coming">Mock test — coming soon</span>
+      <a href="/jlpt/n3/mock/">Full mock test</a>
     </div>
     <div class="jlpt-res-note">Intermediate. The bridge level — understands most daily conversation and simple written Japanese.</div>
   </div>
@@ -208,10 +208,11 @@ The mock tests on this site follow the official JLPT format — same question ty
     <div class="jlpt-mock-detail">50 questions · ~60 min · Vocabulary &amp; Grammar/Reading</div>
     <div class="jlpt-mock-cta">Take the test →</div>
   </a>
-  <div class="jlpt-mock-card jlpt-mock--soon">
+  <a class="jlpt-mock-card jlpt-mock--available" href="/jlpt/n3/mock/">
     <div class="jlpt-mock-level">N3</div>
-    <div class="jlpt-mock-detail">Coming soon</div>
-  </div>
+    <div class="jlpt-mock-detail">50 questions · ~70 min · Vocabulary &amp; Grammar/Reading</div>
+    <div class="jlpt-mock-cta">Take the test →</div>
+  </a>
   <div class="jlpt-mock-card jlpt-mock--soon">
     <div class="jlpt-mock-level">N2</div>
     <div class="jlpt-mock-detail">Coming soon</div>
