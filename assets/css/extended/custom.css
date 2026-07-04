@@ -4322,12 +4322,144 @@
   margin-bottom: 0.15rem;
 }
 
+/* ── Guide page ─────────────────────────────────────────────────────── */
+.guide-intro {
+  font-size: 1rem;
+  color: #8090b8;
+  line-height: 1.75;
+  max-width: 70ch;
+  margin-bottom: 2rem;
+}
+.guide-at-glance {
+  background: #0d1120;
+  border: 1px solid #1a1f3a;
+  border-radius: 10px;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 2.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 2rem;
+  font-size: 0.85rem;
+  color: #7a8ab0;
+  line-height: 1.6;
+}
+.guide-at-glance strong { color: #b0bcd8; }
+.guide-section-hd {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #3a4460;
+  font-weight: 700;
+  margin: 2.5rem 0 1.1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #1a1f3a;
+}
+.guide-qtype {
+  background: #0f1120;
+  border: 1px solid #1a1f3a;
+  border-radius: 10px;
+  padding: 1.2rem 1.3rem 1.3rem;
+  margin-bottom: 1rem;
+}
+.guide-qtype-hd {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  margin-bottom: 0.7rem;
+  flex-wrap: wrap;
+}
+.guide-qtype-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #c0392b;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+.guide-qtype-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #d0d6f0;
+}
+.guide-qtype-name span {
+  font-size: 0.8rem;
+  color: #6a74a0;
+  font-weight: 400;
+  margin-left: 0.35rem;
+}
+.guide-qtype-badge {
+  font-size: 0.67rem;
+  background: #1c2040;
+  color: #5a6890;
+  border-radius: 4px;
+  padding: 0.15rem 0.55rem;
+  margin-left: auto;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.guide-qtype-desc {
+  font-size: 0.86rem;
+  color: #7a8ab0;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.guide-example-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #3a4870;
+  font-weight: 700;
+  margin-bottom: 0.55rem;
+}
+/* Sentence-ordering display */
+.mq-ordering-sentence {
+  font-size: 0.97rem;
+  color: #c0c8e0;
+  line-height: 2.4;
+  margin-bottom: 0.3rem;
+}
+.mq-blank-slot {
+  display: inline-block;
+  min-width: 3.2em;
+  border-bottom: 2px solid #252a48;
+  margin: 0 0.1em;
+  vertical-align: bottom;
+  text-align: center;
+}
+.mq-star-slot {
+  border-bottom-color: #c0392b;
+  color: #c0392b;
+  font-weight: 700;
+  min-width: 1.8em;
+}
+.mq-chunks {
+  font-size: 0.88rem;
+  color: #8090b8;
+  margin: 0.2rem 0 0.6rem;
+  line-height: 2;
+}
+.mq-ordering-q {
+  font-size: 0.82rem;
+  color: #5a6890;
+  font-style: italic;
+  margin-bottom: 0.4rem;
+}
+/* Guide CTA */
+.guide-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+
 @media (max-width: 900px) {
   .jlpt-format-grid { grid-template-columns: 1fr; }
   .jlpt-mock-grid   { grid-template-columns: repeat(3, 1fr); }
+  .guide-cta-grid   { grid-template-columns: 1fr 1fr 1fr; }
 }
 @media (max-width: 700px) {
   .jlpt-firsttime-body { grid-template-columns: 1fr; }
+  .guide-at-glance     { grid-template-columns: 1fr; }
+  .guide-cta-grid      { grid-template-columns: 1fr; }
 }
 @media (max-width: 600px) {
   .jlpt-resources-grid { grid-template-columns: 1fr 1fr; }

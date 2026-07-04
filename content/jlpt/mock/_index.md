@@ -7,6 +7,10 @@ showtoc: false
 
 Practice tests that closely follow the official JLPT format — same question types, same section structure, same difficulty level. Work through each section at your own pace, then check your answers.
 
+<div class="jlpt-tip-box" style="margin-top:1rem">
+  <strong>New to the JLPT?</strong> The exam uses a specific set of question types that can feel unfamiliar the first time. <a href="/jlpt/mock/guide/" style="color:#6090d0;font-weight:600">Read the question-type guide →</a> — it explains every type in plain English with an example you can try, so nothing catches you off guard in the mock.
+</div>
+
 > **Source:** Question format based on the official JLPT specification published by the [Japan Foundation](https://www.jlpt.jp/e/) and Japan Educational Exchanges and Services (JFSAT). These are **original practice questions** written to match the style and difficulty of the official exam — not reproductions of past exam papers.
 
 ---

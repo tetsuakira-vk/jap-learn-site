@@ -198,7 +198,7 @@ If you're at the very beginning — no hiragana, no vocabulary — the JLPT mock
 The mock tests on this site follow the official JLPT format — same question types, same section structure, same difficulty weighting. Written to match the style of the official exam, not reproductions of past papers.
 
 <details class="jlpt-firsttime">
-  <summary>First time taking the JLPT? Here's what each question type means</summary>
+  <summary>First time taking the JLPT? Here's what each question type means — <a href="/jlpt/mock/guide/" onclick="event.stopPropagation()" style="color:#6090d0;font-weight:600">full guide with examples →</a></summary>
   <div class="jlpt-firsttime-body">
     <div class="jlpt-firsttime-col">
       <strong>Vocabulary section 〔語彙〕</strong>
