@@ -4094,3 +4094,170 @@
   .bp-module  { flex-wrap: wrap; }
   .bp-module-links { width: 100%; justify-content: flex-start; margin-top: 0.3rem; }
 }
+
+/* ── JLPT gateway page ────────────────────────────────────────────── */
+.jlpt-lead {
+  font-size: 1.05rem;
+  color: #b0bcd8;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 72ch;
+}
+
+/* Per-level resource cards */
+.jlpt-resources-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+.jlpt-res-card {
+  background: #13162a;
+  border: 1px solid #1e2240;
+  border-radius: 10px;
+  padding: 1rem 1.1rem 1.1rem;
+}
+.jlpt-res-level {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #c0392b;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.04em;
+}
+.jlpt-res-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.7rem;
+}
+.jlpt-res-links a {
+  font-size: 0.83rem;
+  color: #6090d0;
+  text-decoration: none;
+}
+.jlpt-res-links a:hover { text-decoration: underline; }
+.jlpt-res-coming {
+  font-size: 0.83rem;
+  color: #3a4060;
+  font-style: italic;
+}
+.jlpt-res-note {
+  font-size: 0.78rem;
+  color: #5a6490;
+  line-height: 1.5;
+}
+
+/* Level table wrapper */
+.jlpt-level-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; }
+
+/* Exam format cards */
+.jlpt-format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+}
+.jlpt-format-card {
+  background: #0f1120;
+  border: 1px solid #1a1f3a;
+  border-radius: 10px;
+  padding: 1.2rem 1.1rem;
+}
+.jlpt-format-section {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #3a4460;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+.jlpt-format-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d0d6f0;
+  line-height: 1.3;
+  margin-bottom: 0.6rem;
+}
+.jlpt-format-name span {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #6a74a0;
+  margin-top: 0.2rem;
+}
+.jlpt-format-desc {
+  font-size: 0.82rem;
+  color: #5a6490;
+  line-height: 1.55;
+}
+
+/* Tip box */
+.jlpt-tip-box {
+  background: #0d1422;
+  border: 1px solid #1a2a4a;
+  border-left: 3px solid #4a7ac0;
+  border-radius: 8px;
+  padding: 0.9rem 1.1rem;
+  font-size: 0.88rem;
+  color: #7a90b8;
+  line-height: 1.6;
+  margin: 1.2rem 0 2rem;
+}
+.jlpt-tip-box strong { color: #a0b4d4; }
+
+/* Slim book promo variant */
+.book-promo--slim img { max-height: 220px; object-fit: cover; object-position: left center; }
+
+/* Mock test cards */
+.jlpt-mock-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+}
+.jlpt-mock-card {
+  border-radius: 10px;
+  padding: 1.1rem 0.9rem;
+  text-decoration: none;
+  display: block;
+}
+.jlpt-mock-card:hover { text-decoration: none; }
+.jlpt-mock--available {
+  background: #160e0e;
+  border: 1px solid #3a1010;
+  transition: background 0.15s, transform 0.15s;
+}
+.jlpt-mock--available:hover { background: #1e1010; transform: translateY(-2px); }
+.jlpt-mock--soon {
+  background: #0f1120;
+  border: 1px solid #1a1f3a;
+  opacity: 0.55;
+  cursor: default;
+}
+.jlpt-mock-level {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.jlpt-mock--available .jlpt-mock-level { color: #e07060; }
+.jlpt-mock--soon     .jlpt-mock-level { color: #3a4060; }
+.jlpt-mock-detail {
+  font-size: 0.75rem;
+  color: #5a6490;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.jlpt-mock-cta {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #c0392b;
+}
+
+@media (max-width: 900px) {
+  .jlpt-format-grid { grid-template-columns: 1fr; }
+  .jlpt-mock-grid   { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .jlpt-resources-grid { grid-template-columns: 1fr 1fr; }
+  .jlpt-mock-grid      { grid-template-columns: 1fr 1fr; }
+}
