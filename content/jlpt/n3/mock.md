@@ -9,7 +9,7 @@ showtoc: false
   <div class="mock-level-badge">N3</div>
   <div class="mock-header-info">
     <strong>JLPT N3 Mock Test</strong><br>
-    <span>語彙 25問 ・ 文法・読解 25問 ・ 全50問</span>
+    <span>語彙 25問 ・ 文法・読解 30問 ・ 全55問</span>
   </div>
 </div>
 
@@ -624,6 +624,73 @@ showtoc: false
     <label><input type="radio" name="q50" value="1">② 参加者には記念品がもらえる</label>
     <label><input type="radio" name="q50" value="2">③ 昼食が用意されている</label>
     <label><input type="radio" name="q50" value="3">④ 申し込みは電話でしなければならない</label>
+  </div>
+</div>
+
+<div class="mock-subsect-title">問題５　文を正しい順番に並べて、★に入るものを選んでください。</div>
+
+<div class="mq" data-answer="3">
+  <span class="mq-num">51</span>
+  <p class="mq-ordering-sentence">この問題は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> ある。</p>
+  <p class="mq-chunks">① が　　② 解決する　　③ ただちに　　④ 必要</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q51" value="0">① が</label>
+    <label><input type="radio" name="q51" value="1">② 解決する</label>
+    <label><input type="radio" name="q51" value="2">③ ただちに</label>
+    <label><input type="radio" name="q51" value="3">④ 必要</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="2">
+  <span class="mq-num">52</span>
+  <p class="mq-ordering-sentence">彼は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 結果を出した。</p>
+  <p class="mq-chunks">① 続けた　　② どんな　　③ 努力を　　④ 困難でも</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q52" value="0">① 続けた</label>
+    <label><input type="radio" name="q52" value="1">② どんな</label>
+    <label><input type="radio" name="q52" value="2">③ 努力を</label>
+    <label><input type="radio" name="q52" value="3">④ 困難でも</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="2">
+  <span class="mq-num">53</span>
+  <p class="mq-ordering-sentence">彼女は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 働いています。</p>
+  <p class="mq-chunks">① として　　② この会社で　　③ エンジニア　　④ 先月から</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q53" value="0">① として</label>
+    <label><input type="radio" name="q53" value="1">② この会社で</label>
+    <label><input type="radio" name="q53" value="2">③ エンジニア</label>
+    <label><input type="radio" name="q53" value="3">④ 先月から</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="1">
+  <span class="mq-num">54</span>
+  <p class="mq-ordering-sentence">その映画は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> れています。</p>
+  <p class="mq-chunks">① 多くの　　② 愛さ　　③ 人に　　④ 今でも</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q54" value="0">① 多くの</label>
+    <label><input type="radio" name="q54" value="1">② 愛さ</label>
+    <label><input type="radio" name="q54" value="2">③ 人に</label>
+    <label><input type="radio" name="q54" value="3">④ 今でも</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="0">
+  <span class="mq-num">55</span>
+  <p class="mq-ordering-sentence">試験に <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 勉強しています。</p>
+  <p class="mq-chunks">① ように　　② できる　　③ 合格　　④ 毎日</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q55" value="0">① ように</label>
+    <label><input type="radio" name="q55" value="1">② できる</label>
+    <label><input type="radio" name="q55" value="2">③ 合格</label>
+    <label><input type="radio" name="q55" value="3">④ 毎日</label>
   </div>
 </div>
 

@@ -142,6 +142,16 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
   </a>
 </div>
 
+<div class="whats-new">
+  <div class="wn-hdr">Recently added</div>
+  <ul class="wn-list">
+    <li><span class="wn-date">4 Jul 2026</span> Sentence ordering questions (問題５) added to <a href="/jlpt/n5/mock/">N5</a>, <a href="/jlpt/n4/mock/">N4</a> &amp; <a href="/jlpt/n3/mock/">N3</a> mocks</li>
+    <li><span class="wn-date">4 Jul 2026</span> <a href="/jlpt/mock/guide/">JLPT question-type guide</a> — every question type explained in plain English with interactive examples</li>
+    <li><span class="wn-date">4 Jul 2026</span> <a href="/jlpt/n3/mock/">N3 mock test</a> — full 50-question practice exam now live</li>
+    <li><span class="wn-date">22 Jun 2026</span> <a href="/book/">Japanese Unlocked course</a> — the complete beginner course is now available</li>
+  </ul>
+</div>
+
 <div class="book-promo">
   <img src="/images/book-promo-banner.jpg" alt="Japanese Unlocked — Complete Beginner Course">
   <div class="book-promo-body">

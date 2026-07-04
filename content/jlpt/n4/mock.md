@@ -9,7 +9,7 @@ showtoc: false
   <div class="mock-level-badge">N4</div>
   <div class="mock-header-info">
     <strong>JLPT N4 Mock Test</strong><br>
-    <span>語彙 25問 ・ 文法・読解 25問 ・ 全50問</span>
+    <span>語彙 25問 ・ 文法・読解 29問 ・ 全54問</span>
   </div>
 </div>
 
@@ -618,6 +618,60 @@ showtoc: false
     <label><input type="radio" name="q50" value="1">② 食べ物を買う。</label>
     <label><input type="radio" name="q50" value="2">③ 来られるかどうか返事をする。</label>
     <label><input type="radio" name="q50" value="3">④ 東京駅に行く。</label>
+  </div>
+</div>
+
+<div class="mock-subsect-title">問題５　文を正しい順番に並べて、★に入るものを選んでください。</div>
+
+<div class="mq" data-answer="0">
+  <span class="mq-num">51</span>
+  <p class="mq-ordering-sentence">彼女は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> います。</p>
+  <p class="mq-chunks">① を　　② 毎日　　③ ピアノ　　④ 弾いて</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q51" value="0">① を</label>
+    <label><input type="radio" name="q51" value="1">② 毎日</label>
+    <label><input type="radio" name="q51" value="2">③ ピアノ</label>
+    <label><input type="radio" name="q51" value="3">④ 弾いて</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="3">
+  <span class="mq-num">52</span>
+  <p class="mq-ordering-sentence">山田さんは <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> くれました。</p>
+  <p class="mq-chunks">① て　　② 漢字を　　③ やさしく　　④ 教え</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q52" value="0">① て</label>
+    <label><input type="radio" name="q52" value="1">② 漢字を</label>
+    <label><input type="radio" name="q52" value="2">③ やさしく</label>
+    <label><input type="radio" name="q52" value="3">④ 教え</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="0">
+  <span class="mq-num">53</span>
+  <p class="mq-ordering-sentence">風邪を <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> ください。</p>
+  <p class="mq-chunks">① 薬を　　② ひいた　　③ 飲んで　　④ ら</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q53" value="0">① 薬を</label>
+    <label><input type="radio" name="q53" value="1">② ひいた</label>
+    <label><input type="radio" name="q53" value="2">③ 飲んで</label>
+    <label><input type="radio" name="q53" value="3">④ ら</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="0">
+  <span class="mq-num">54</span>
+  <p class="mq-ordering-sentence">この <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> どうですか。</p>
+  <p class="mq-chunks">① 食べて　　② ケーキを　　③ みたら　　④ 一緒に</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q54" value="0">① 食べて</label>
+    <label><input type="radio" name="q54" value="1">② ケーキを</label>
+    <label><input type="radio" name="q54" value="2">③ みたら</label>
+    <label><input type="radio" name="q54" value="3">④ 一緒に</label>
   </div>
 </div>
 

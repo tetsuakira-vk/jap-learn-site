@@ -9,7 +9,7 @@ showtoc: false
   <div class="mock-level-badge">N5</div>
   <div class="mock-header-info">
     <strong>JLPT N5 Mock Test</strong><br>
-    <span>語彙 25問 ・ 文法・読解 25問 ・ 全50問</span>
+    <span>語彙 25問 ・ 文法・読解 28問 ・ 全53問</span>
   </div>
 </div>
 
@@ -620,6 +620,47 @@ showtoc: false
     <label><input type="radio" name="q50" value="1">② 15名</label>
     <label><input type="radio" name="q50" value="2">③ 20名</label>
     <label><input type="radio" name="q50" value="3">④ 25名</label>
+  </div>
+</div>
+
+<div class="mock-subsect-title">問題５　文を正しい順番に並べて、★に入るものを選んでください。</div>
+
+<div class="mq" data-answer="2">
+  <span class="mq-num">51</span>
+  <p class="mq-ordering-sentence">姉は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 住んでいます。</p>
+  <p class="mq-chunks">① に　　② 今　　③ 東京　　④ 友達と</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q51" value="0">① に</label>
+    <label><input type="radio" name="q51" value="1">② 今</label>
+    <label><input type="radio" name="q51" value="2">③ 東京</label>
+    <label><input type="radio" name="q51" value="3">④ 友達と</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="2">
+  <span class="mq-num">52</span>
+  <p class="mq-ordering-sentence">私は <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 好きです。</p>
+  <p class="mq-chunks">① が　　② 日本　　③ 料理　　④ の</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q52" value="0">① が</label>
+    <label><input type="radio" name="q52" value="1">② 日本</label>
+    <label><input type="radio" name="q52" value="2">③ 料理</label>
+    <label><input type="radio" name="q52" value="3">④ の</label>
+  </div>
+</div>
+
+<div class="mq" data-answer="3">
+  <span class="mq-num">53</span>
+  <p class="mq-ordering-sentence">田中さんは <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot">&nbsp;</span> <span class="mq-blank-slot mq-star-slot">★</span> <span class="mq-blank-slot">&nbsp;</span> 帰りました。</p>
+  <p class="mq-chunks">① うちへ　　② えきから　　③ バスで　　④ 一人で</p>
+  <p class="mq-ordering-q">★の位置に入るものはどれですか。</p>
+  <div class="mq-opts">
+    <label><input type="radio" name="q53" value="0">① うちへ</label>
+    <label><input type="radio" name="q53" value="1">② えきから</label>
+    <label><input type="radio" name="q53" value="2">③ バスで</label>
+    <label><input type="radio" name="q53" value="3">④ 一人で</label>
   </div>
 </div>
 
