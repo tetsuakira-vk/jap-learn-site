@@ -1,6 +1,6 @@
 ---
 title: "N5 Vocab Quiz"
-description: "Test your JLPT N5 vocabulary. See the Japanese word — pick the correct English meaning."
+description: "Interactive Japanese vocabulary quiz — see a word in Japanese and choose the correct English meaning. Covers core N5 vocabulary for beginners."
 date: 2025-01-01
 showtoc: false
 ---
