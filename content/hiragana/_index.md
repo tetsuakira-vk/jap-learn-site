@@ -1,6 +1,6 @@
 ---
 title: "Hiragana — Reference Chart & Quiz"
-description: "Complete hiragana chart with audio. Click any character to hear it. Take the interactive quiz to test yourself."
+description: "Complete hiragana chart with audio — learn hiragana from scratch, understand how to read hiragana, and test yourself with the interactive quiz."
 date: 2025-01-01
 ---
 
@@ -199,3 +199,178 @@ function speak(text) {
   });
 }
 </script>
+
+---
+
+## What is hiragana?
+
+Hiragana (平仮名) is a phonetic syllabary — a writing system where each character represents a sound rather than a meaning. It is one of three scripts used in modern Japanese, and it is always the first one learners tackle. The 46 core characters cover every syllable in the Japanese language, which means that anything spoken in Japanese can be written in hiragana alone. In practice, hiragana appears everywhere: at the end of verbs and adjectives, as grammatical particles, in children's books, and as reading aids (*furigana*) printed above kanji to show pronunciation. Hiragana developed during the Heian period (794–1185) from simplified, cursive forms of kanji, and was originally used predominantly in literature and personal correspondence. Today it is the first script taught in Japanese primary schools and the logical starting point for every learner.
+
+---
+
+## Hiragana, katakana, and kanji — how they fit together
+
+Japanese uses all three scripts simultaneously, often within the same sentence. Understanding where each one fits removes a great deal of early confusion.
+
+- **Hiragana** — native Japanese words, verb and adjective endings, grammatical particles (は, を, が). Rounded, flowing shapes.
+- **[Katakana](/katakana/)** — foreign loanwords (*terebi* for television, *kōhī* for coffee), scientific terms, onomatopoeia, and occasional emphasis. Angular, sharp shapes representing the same sounds as hiragana.
+- **[Kanji](/kanji/)** — Chinese-derived characters, each carrying meaning. Used for nouns, verb stems, and adjective roots.
+
+A sentence such as *私はすしを食べた* ("I ate sushi") uses kanji (私, 食), hiragana (は, を, べた), and would include katakana if a loanword appeared. Learning hiragana first gives you the phonetic backbone that makes every other script easier to approach.
+
+---
+
+## How to learn hiragana — method and a two-week schedule
+
+The most common mistake is trying to memorise all 46 characters in one sitting. A row-by-row approach — five characters at a time — is far more effective. Pair each session with audio (click the chart above to hear every character), write each character by hand several times, then test yourself before moving on. Active recall, even imperfect, cements retention far faster than passive review.
+
+The table below maps out a realistic two-week schedule. Adjust the pace to suit yourself — some learners finish the core 46 in a single week with daily effort.
+
+| Day | Characters | Row |
+|-----|-----------|-----|
+| 1 | あ い う え お | Vowels |
+| 2 | か き く け こ | K-row |
+| 3 | さ し す せ そ | S-row |
+| 4 | た ち つ て と | T-row |
+| 5 | な に ぬ ね の | N-row |
+| 6 | Review days 1–5 | — |
+| 7 | は ひ ふ へ ほ | H-row |
+| 8 | ま み む め も | M-row |
+| 9 | や ゆ よ | Y-row |
+| 10 | ら り る れ ろ | R-row |
+| 11 | わ を ん | W-row & N |
+| 12 | Dakuten rows (が ざ だ ば) | Voiced |
+| 13 | Handakuten (ぱ row) + combination sounds | Advanced |
+| 14 | Full review — read simple words without looking up | Consolidation |
+
+By day 14, most learners can read all 46 core characters with reasonable fluency. The combination sounds (*yōon*) take a little longer to become automatic, but they follow a predictable pattern that makes them easier than they initially appear.
+
+---
+
+## Stroke order and why it matters
+
+Each hiragana character is drawn in a specific sequence of strokes, and that sequence is not arbitrary. Correct stroke order produces naturally flowing, legible handwriting — it also makes the characters look like themselves rather than like unrelated squiggles. The general principles are straightforward: work top to bottom, left to right, and draw horizontal strokes before vertical ones where they cross.
+
+You do not need to memorise stroke order as a separate task. Writing each character in the correct order a few times whilst learning it is sufficient — the hand learns the pattern quickly, and once learnt it becomes automatic. If you plan to communicate in Japanese in any written context, forming the characters correctly from the start is far easier than unlearning bad habits later.
+
+---
+
+## Dakuten, handakuten, and combination sounds
+
+The chart above covers these visually, but understanding the underlying system makes the whole thing far less daunting.
+
+**Dakuten (゛)** — two small strokes added to the upper right of a character. They *voice* the underlying consonant: *k* becomes *g*, *s* becomes *z*, *t* becomes *d*, and *h* becomes *b*. So か (*ka*) becomes が (*ga*), and the same logic applies across the entire row. Once you know one dakuten row, the rest follow automatically.
+
+**Handakuten (゜)** — a small circle, used exclusively on the H-row to produce the P-row. は (*ha*) becomes ぱ (*pa*), and so on. The H-row is the only row that takes a handakuten — every other consonant either takes a dakuten or neither.
+
+**Combination sounds (yōon — 拗音)** — a full-size *i*-row character followed by a *small* や, ゆ, or よ. The two characters together represent a single contracted sound: き + small ゃ = きゃ (*kya*). The small size of the second character is the signal that distinguishes a contracted sound from two separate syllables written one after the other.
+
+---
+
+## Commonly confused characters
+
+A handful of character pairs catch out almost every learner. Here are the most frequently confused ones, with a distinguishing clue for each.
+
+| Pair | How to tell them apart |
+|------|------------------------|
+| **き** / **さ** | き has a vertical stroke on the right that links the two horizontal strokes; さ is open at the bottom |
+| **は** / **ほ** | ほ has an extra horizontal stroke and a small closed loop on the right; は has only two strokes |
+| **ぬ** / **め** | ぬ has a looping tail that swings out to the right; め closes into a neater, rounder loop |
+| **れ** / **ね** / **わ** | ね loops back on itself at the bottom; れ curves but does not loop; わ is similar to ね but the upper portion is open |
+| **る** / **ろ** | る ends with a small hook or inward curl; ろ simply ends its downward curve flatly |
+| **あ** / **お** | あ has a short horizontal stroke crossing the main vertical; お has a horizontal stroke on the left side and a small hook curving to the upper right |
+
+The quickest fix is to click each character in a confusing pair on the audio chart above in quick succession. Hearing them alongside each other whilst looking at the shapes makes the difference stick far more readily than studying diagrams alone.
+
+---
+
+## Read your first words
+
+Once you know the basic 46 characters, you can immediately read real Japanese. Here are ten common words written entirely in hiragana — try reading each one before checking the romanisation.
+
+| Hiragana | Reading | Meaning |
+|----------|---------|---------|
+| あお | ao | blue |
+| うみ | umi | sea / ocean |
+| かわ | kawa | river |
+| きれい | kirei | beautiful / clean |
+| さかな | sakana | fish |
+| たべる | taberu | to eat |
+| なに | nani | what |
+| はな | hana | flower |
+| みず | mizu | water |
+| やま | yama | mountain |
+
+These are not specially chosen beginner words — they are ordinary words you will encounter constantly. Being able to read them in hiragana, without falling back on rōmaji, is a small but genuine milestone worth marking.
+
+---
+
+## Frequently asked questions
+
+**How long does it take to learn hiragana?**
+Most learners who study for 20–30 minutes a day can recognise all 46 core characters within one to two weeks. Building genuine reading fluency — recognising characters without hesitation — takes a few more weeks of regular exposure to real Japanese text.
+
+**Is hiragana difficult to learn?**
+No. Hiragana is widely considered the most approachable writing system for English speakers. Each character represents one sound with very few exceptions, and the total set of 46 is small compared with the thousands of kanji required for full literacy. Most learners are pleasantly surprised by how quickly it comes.
+
+**What is the difference between hiragana and rōmaji?**
+Rōmaji is the representation of Japanese sounds using the Latin alphabet (*a*, *ka*, *shi*, and so on). It is a transcription tool for non-Japanese readers, not a script that Japanese people read and write. Hiragana is a real Japanese writing system. Moving away from rōmaji and towards hiragana as soon as possible is one of the single most effective things you can do for your progress.
+
+**Do I need to learn hiragana before I can speak Japanese?**
+Not strictly — you can learn spoken phrases from audio without reading anything. However, learning to read hiragana accelerates vocabulary acquisition considerably, improves pronunciation by giving you a phonetic system that matches Japanese sounds more accurately than rōmaji, and unlocks almost every Japanese learning resource available.
+
+**Should I learn hiragana or katakana first?**
+Hiragana first, without exception. It appears far more frequently in everyday Japanese text, it handles the grammatical elements you cannot avoid, and every major learning resource introduces hiragana before katakana. Once hiragana is solid — usually within a few weeks — katakana follows quickly because it represents exactly the same sounds in a different visual form.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How long does it take to learn hiragana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most learners who study for 20–30 minutes a day can recognise all 46 core characters within one to two weeks. Building genuine reading fluency takes a few more weeks of regular exposure to real Japanese text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is hiragana difficult to learn?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Hiragana is widely considered the most approachable writing system for English speakers. Each character represents one sound with very few exceptions, and the total set of 46 is small compared with the thousands of kanji required for full literacy."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between hiragana and romaji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Romaji is the representation of Japanese sounds using the Latin alphabet. It is a transcription tool for non-Japanese readers, not a script that Japanese people actually read and write. Hiragana is a real Japanese writing system, and moving towards it as soon as possible is one of the most effective things you can do for your progress."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to learn hiragana before I can speak Japanese?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not strictly — you can learn spoken phrases from audio without reading anything. However, learning to read hiragana accelerates vocabulary acquisition, improves pronunciation, and unlocks almost every Japanese learning resource available."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I learn hiragana or katakana first?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Hiragana first, without exception. It appears far more frequently in everyday Japanese text, handles grammatical elements you cannot avoid, and every major learning resource introduces hiragana before katakana. Once hiragana is solid, katakana follows quickly because it represents the same sounds in a different visual form."
+      }
+    }
+  ]
+}
+</script>
+
+---
+
+If you'd like a printable hiragana chart alongside structured exercises and vocabulary lists, the [Japanese Unlocked course](/book/) covers hiragana in full as its opening module — available as a PDF download, Kindle eBook, or paperback.
