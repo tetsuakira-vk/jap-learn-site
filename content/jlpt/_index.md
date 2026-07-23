@@ -172,6 +172,38 @@ The JLPT runs **twice a year**: the first Sunday of **July** and the first Sunda
 
 ---
 
+## Why take the JLPT?
+
+The JLPT is not mandatory for learning Japanese — plenty of people study for years without ever sitting it. But for many learners, the certificate opens doors that informal study does not.
+
+**Career and employment** — N2 is the most widely cited requirement for working in a Japanese company or in a Japanese-language role overseas. Many job listings in finance, IT, engineering, and translation specify N2 as a minimum; N1 is expected at senior or specialist level. In Japan, a number of employers formally recognise JLPT certification in salary grading. If working in or with Japan is your goal, N2 is the practical target.
+
+**University study** — Japanese universities generally require N2 for admission to undergraduate or postgraduate programmes taught in Japanese. Some foreign universities accept JLPT certification as evidence of language ability for Japanese Studies programmes or exchange applications.
+
+**Visa and residency** — certain Japanese visa categories (particularly the Specified Skilled Worker visa) list JLPT N4 as a language requirement. Higher-skilled categories such as the Highly Skilled Professional visa award points for N1 and N2 certification.
+
+**Structured motivation** — many learners find that having an exam date on the calendar with a defined syllabus is the single most effective thing they can do for their study consistency. N5 in particular is an achievable short-term target for a beginner that provides genuine external validation of progress.
+
+**It does not expire** — unlike many language certificates, JLPT certification has no expiry date. A certificate earned today remains valid indefinitely.
+
+---
+
+## How to prepare for the JLPT
+
+The JLPT tests vocabulary, kanji, grammar, reading, and listening. The weighting varies by level, but vocabulary and grammar together account for the majority of marks at every level. A few principles that apply regardless of which level you are targeting:
+
+**Build vocabulary first.** The single biggest predictor of JLPT performance is vocabulary size. At N5, that means around 800 words; at N3, around 3,750. Use the vocabulary lists and quizzes on this site to build your word bank systematically — recognising a word in context is the skill the exam tests, not reciting it from a list.
+
+**Learn grammar patterns in context.** The grammar section tests whether you can identify correct usage in a sentence, not whether you can recite rules. Reading lots of simple Japanese — including the reading comprehension passages in mock tests — is more effective preparation than grammar drilling alone.
+
+**Practise reading under time pressure.** Many candidates run out of time on the reading section, particularly at N3 and above. Timed mock tests are essential. Aim to finish with a few minutes to spare rather than reaching the end with questions unanswered.
+
+**Do not neglect listening.** The listening section cannot be compensated for with a strong vocabulary or grammar score — the minimum per-section requirement applies. The official practice workbooks (公式問題集) include audio and are the closest available material to the real exam. Regular exposure to natural spoken Japanese — podcasts, drama, YouTube — builds the processing speed the listening section demands.
+
+**Use the mock tests here.** The N5, N4, and N3 mock tests on this site follow the official format and question types. Taking one under timed conditions two to four weeks before the exam gives you an accurate picture of where you stand and which section needs the most attention.
+
+---
+
 ## Starting from zero?
 
 If you're at the very beginning — no hiragana, no vocabulary — the JLPT mock tests here will be too hard to be useful yet. The right starting point is building the foundation first.
@@ -274,3 +306,85 @@ The mock tests on this site follow the official JLPT format — same question ty
     <div class="jlpt-mock-detail">Coming soon</div>
   </div>
 </div>
+
+---
+
+## Frequently asked questions
+
+**What is the JLPT?**
+The JLPT (Japanese Language Proficiency Test / 日本語能力試験) is the world's most widely recognised Japanese language qualification. It is administered jointly by the Japan Foundation and Japan Educational Exchanges and Services, and taken by over 1.4 million candidates a year across more than 80 countries. It has five levels — N5 (beginner) through N1 (near-native) — and tests vocabulary, kanji, grammar, reading, and listening.
+
+**Which JLPT level should I start with?**
+Start with N5 if you are a beginner or have been studying for less than six months. N5 tests the fundamentals — hiragana, katakana, around 800 vocabulary items, and basic sentence structures — and passing it gives you a concrete benchmark to build from. If you have been studying for a year or more and can handle simple conversations, N4 may be a more appropriate target.
+
+**How long does it take to pass JLPT N5?**
+Most learners who study consistently for 20–30 minutes a day reach N5 readiness within three to six months. The total study hours quoted for N5 is typically 150–300 hours for learners with no prior Japanese. That figure varies considerably depending on prior experience with Asian languages, study method, and how much natural exposure (TV, music, speaking practice) you get alongside formal study.
+
+**Does JLPT certification expire?**
+No. JLPT certificates do not have an expiry date and remain valid indefinitely. This distinguishes the JLPT from some other language qualifications that require periodic renewal.
+
+**Is N3 good enough to work in Japan?**
+N3 demonstrates solid intermediate ability and is a meaningful milestone, but most Japanese employers require N2 as a minimum for roles conducted in Japanese. N3 may be sufficient for roles where Japanese is not the primary working language, or for positions that value the qualification as a signal of commitment rather than operational fluency. If employment in a Japanese-language environment is your goal, N2 is the practical threshold to aim for.
+
+**How hard is the JLPT compared to other language exams?**
+Difficulty is relative to your starting point, but Japanese consistently ranks among the hardest languages for English speakers — the Foreign Service Institute estimates 2,200 classroom hours to professional working proficiency, compared with 600–750 for French or Spanish. N5 is genuinely achievable for a dedicated beginner in a few months; N1 typically represents several years of sustained study. The exam itself is multiple-choice throughout (no writing, no speaking), which removes some of the unpredictability of other formats.
+
+**Can I take the JLPT online?**
+No — the JLPT is a paper-based exam administered at official test centres. There is no online or remote sitting option. Test centres are available in Japan and in major cities worldwide; the Japan Foundation website lists all registered venues by country.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the JLPT?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The JLPT (Japanese Language Proficiency Test) is the world's most widely recognised Japanese language qualification, taken by over 1.4 million candidates a year in more than 80 countries. It has five levels — N5 (beginner) through N1 (near-native) — and tests vocabulary, kanji, grammar, reading, and listening."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which JLPT level should I start with?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Start with N5 if you are a beginner or have been studying for less than six months. N5 tests hiragana, katakana, around 800 vocabulary items, and basic sentence structures. If you have been studying for a year or more and can handle simple conversations, N4 may be a more appropriate target."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to pass JLPT N5?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most learners who study consistently for 20–30 minutes a day reach N5 readiness within three to six months. The total study hours quoted for N5 is typically 150–300 hours for learners with no prior Japanese."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does JLPT certification expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. JLPT certificates do not have an expiry date and remain valid indefinitely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is JLPT N3 good enough to work in Japan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "N3 is a meaningful milestone but most Japanese employers require N2 as a minimum for roles conducted in Japanese. If employment in a Japanese-language environment is your goal, N2 is the practical threshold to aim for."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I take the JLPT online?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No — the JLPT is a paper-based exam administered at official test centres only. There is no online or remote sitting option. Test centres are available in Japan and in major cities worldwide."
+      }
+    }
+  ]
+}
+</script>
