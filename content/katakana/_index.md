@@ -1,6 +1,6 @@
 ---
 title: "Katakana — Reference Chart & Quiz"
-description: "Complete katakana chart with audio. Click any character to hear it. Take the interactive quiz."
+description: "Complete katakana chart with audio — learn katakana from scratch, read Japanese loanwords, and test yourself with the interactive quiz."
 date: 2025-01-01
 ---
 
@@ -166,3 +166,174 @@ function speak(text) {
   });
 }
 </script>
+
+---
+
+## What is katakana?
+
+Katakana (片仮名) is one of three scripts used in modern Japanese. Like [hiragana](/hiragana/), it is a phonetic syllabary — each character represents a sound, not a meaning. The two scripts cover exactly the same set of 46 core sounds; what differs is their purpose and their visual character. Where hiragana is rounded and flowing, katakana is angular and sharp. Katakana developed during the Heian period (794–1185) from abbreviated fragments of kanji strokes, originally used by Buddhist monks to annotate Chinese texts. Today it has four main jobs: writing foreign loanwords (*gairaigo* — コーヒー for coffee, テレビ for television), writing foreign personal and place names (アメリカ for America, マクドナルド for McDonald's), adding emphasis in the way that italics function in English, and writing scientific and technical terms including the names of plants and animals. Once you have learnt hiragana, katakana is the natural next step — and because you already know all the sounds, only the shapes are new.
+
+---
+
+## Katakana, hiragana, and kanji — how they fit together
+
+All three scripts appear simultaneously in ordinary Japanese text. Understanding what each one signals makes reading far less daunting.
+
+- **Katakana** — foreign loanwords, foreign names, place names outside Japan, onomatopoeia, and emphasis. Angular, geometric shapes.
+- **[Hiragana](/hiragana/)** — native Japanese words, verb and adjective endings, grammatical particles. Rounded, cursive shapes representing the same sounds.
+- **[Kanji](/kanji/)** — Chinese-derived characters carrying meaning. Used for nouns, verb stems, and adjective roots.
+
+When you see an angular script that you cannot immediately match to a hiragana character, it is almost certainly katakana — and the word it spells is almost certainly a loanword you already know in English. アイスクリーム (*aisukurīmu*) looks intimidating until you realise it is simply "ice cream" transliterated into Japanese sounds. That pattern repeats itself thousands of times across the katakana vocabulary, which makes it a surprisingly rewarding script to learn.
+
+---
+
+## How to learn katakana — method and a ten-day schedule
+
+Learners who already know hiragana have a significant advantage: the sounds are identical, so the only task is matching new shapes to familiar sounds. This makes katakana faster to learn than hiragana for most people. The same row-by-row method applies — five characters at a time, with audio and handwriting practice — but the pace can be a little brisker.
+
+The table below maps out a realistic ten-day schedule.
+
+| Day | Characters | Row |
+|-----|-----------|-----|
+| 1 | ア イ ウ エ オ | Vowels |
+| 2 | カ キ ク ケ コ | K-row |
+| 3 | サ シ ス セ ソ | S-row |
+| 4 | タ チ ツ テ ト | T-row |
+| 5 | ナ ニ ヌ ネ ノ / ハ ヒ フ ヘ ホ | N + H rows |
+| 6 | マ ミ ム メ モ / ヤ ユ ヨ | M + Y rows |
+| 7 | ラ リ ル レ ロ / ワ ヲ ン | R + W rows |
+| 8 | Dakuten rows — ガ ザ ダ バ | Voiced |
+| 9 | Handakuten (パ row) + combination sounds + ー | Advanced |
+| 10 | Full review — read real loanwords without looking up | Consolidation |
+
+As with hiragana, the goal for the final day is reading with genuine fluency rather than slow letter-by-letter decoding. Spending that session reading real katakana words — menus, product packaging, signs — turns the abstract characters into something immediately useful.
+
+---
+
+## Stroke order and why it matters
+
+Katakana characters are angular rather than cursive, which means they tend to have fewer strokes than their hiragana equivalents and can look deceptively simple. The same general principles apply: work top to bottom and left to right, draw horizontal strokes before vertical ones where they cross. Writing each character in the correct order from the start is far easier than correcting ingrained habits later, and it also helps distinguish characters that look similar when drawn quickly — a difference in stroke direction is often the clearest visual cue between commonly confused pairs.
+
+---
+
+## Dakuten, handakuten, combination sounds, and the long vowel mark
+
+These work exactly as they do in hiragana, with one additional feature that is unique to katakana.
+
+**Dakuten (゛)** — two small strokes that voice the consonant. カ (*ka*) becomes ガ (*ga*), サ (*sa*) becomes ザ (*za*), タ (*ta*) becomes ダ (*da*), and ハ (*ha*) becomes バ (*ba*). Once you know one row, the rest follow automatically.
+
+**Handakuten (゜)** — a small circle, used exclusively on the H-row to produce the P-row. ハ (*ha*) becomes パ (*pa*). This is the only row that takes a handakuten.
+
+**Combination sounds (yōon — 拗音)** — a full-size *i*-row character followed by a small ヤ, ユ, or ヨ. キ + small ャ = キャ (*kya*). The small size of the second character signals a contracted sound rather than two separate syllables.
+
+**The long vowel mark — ー (chōonpu)** — this is a feature unique to katakana and one of the most useful things to know. Rather than repeating the vowel character, katakana uses a single horizontal dash to extend the preceding vowel sound. コーヒー (*kōhī*) contains two long vowels: the ー after コ extends the *o*, and the ー after ヒ extends the *i*. Once you spot the pattern, it becomes second nature, and it also makes katakana words more readable since they tend to look closer to their English originals.
+
+---
+
+## Commonly confused characters
+
+Katakana is notorious for character pairs that look almost identical at a glance, especially in print. Here are the most frequent culprits.
+
+| Pair | How to tell them apart |
+|------|------------------------|
+| **シ** / **ツ** | Both have two short strokes plus a longer sweeping stroke. In シ (*shi*) the two short strokes sit on the *left* and angle more horizontally; in ツ (*tsu*) they sit on the *right* and are more vertical. The sweeping stroke direction is a secondary clue. |
+| **ソ** / **ン** | Both have a short tick at the top and a main curving stroke. In ソ (*so*) the main stroke curves *downward* to the right; in ン (*n*) it curves *upward* to the right. |
+| **ア** / **マ** | ア (*a*) has a short horizontal stroke on the upper left; マ (*ma*) has a longer horizontal stroke that extends further right before the vertical drops down. |
+| **ウ** / **ラ** | ウ (*u*) has a short horizontal bar with a vertical stroke hanging below; ラ (*ra*) has a horizontal stroke with a curved hook sweeping down and to the left. |
+| **オ** / **ホ** | ホ (*ho*) has *three* horizontal strokes and a central vertical; オ (*o*) has *two* horizontal strokes with a curved stroke in place of the third. |
+| **フ** / **ワ** | フ (*fu*) hooks downward from a horizontal; ワ (*wa*) has a diagonal stroke descending from the left end of the horizontal. |
+
+The シ/ツ and ソ/ン pairs are the most notorious — almost every learner mixes them up at least once. The best fix is to write them side by side several times whilst paying deliberate attention to stroke direction, rather than simply looking at them. Your hand will learn the difference before your eye does.
+
+---
+
+## Read your first loanwords
+
+Katakana becomes genuinely exciting once you realise how many words you already know. Here are ten common loanwords to read — try each one before checking the English.
+
+| Katakana | Reading | English |
+|----------|---------|---------|
+| コーヒー | kōhī | coffee |
+| テレビ | terebi | television |
+| レストラン | resutoran | restaurant |
+| ホテル | hoteru | hotel |
+| タクシー | takushī | taxi |
+| チョコレート | chokoreēto | chocolate |
+| アイスクリーム | aisukurīmu | ice cream |
+| スマホ | sumaho | smartphone |
+| ピアノ | piano | piano |
+| アメリカ | Amerika | America |
+
+Notice how the long vowel mark ー appears wherever the original English word has a long or stressed vowel. Reading loanwords in katakana is a useful workout precisely because you have a built-in answer key — once you hear the Japanese pronunciation, the English original usually becomes obvious.
+
+---
+
+## Frequently asked questions
+
+**Is katakana harder than hiragana?**
+Most learners find katakana slightly harder to retain because the characters are used less frequently in everyday Japanese text than hiragana. The angular shapes also look more similar to one another than hiragana's rounded forms do. That said, knowing hiragana first means the sounds are already familiar — only the shapes are new, which cuts the learning task roughly in half.
+
+**Do I need to learn katakana to speak Japanese?**
+Not strictly — you can learn spoken Japanese from audio without reading a single character. However, katakana unlocks an enormous slice of everyday vocabulary: restaurant menus, product names, signage, and virtually every word borrowed from English. Skipping it slows your reading progress considerably and leaves obvious gaps in your comprehension.
+
+**Why does Japanese need both hiragana and katakana?**
+They evolved separately for different writing communities during the Heian period, and by the time the modern writing system was standardised, both were too deeply embedded to remove. Today the functional distinction is clear and consistent: hiragana handles native Japanese grammar; katakana handles foreign and borrowed content. Far from being redundant, the two scripts together act as a visual layer of information — you can tell at a glance whether a word is native Japanese or a loanword simply from the script it is written in.
+
+**What is the long vowel mark ー and when is it used?**
+The chōonpu (ー) is a horizontal dash that extends the vowel sound of the preceding character. It appears only in katakana (and occasionally in casual hiragana writing, though that is non-standard). コーヒー (*kōhī*, coffee) uses it twice: after コ to lengthen the *o*, and after ヒ to lengthen the *i*. It is one of the most common characters in katakana text and worth making sure you can recognise immediately.
+
+**Should I learn katakana before or after kanji?**
+Before. Katakana, like hiragana, is a phonetic system with a fixed set of 46 characters. Kanji number in the thousands and require far more sustained study. Finishing both kana systems first gives you a solid phonetic foundation and the ability to read a meaningful amount of real Japanese before tackling kanji. Most learners spend one to three months on both kana combined before beginning kanji in earnest.
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is katakana harder than hiragana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most learners find katakana slightly harder to retain because it is used less frequently in everyday text. The angular shapes also look more similar to one another. However, knowing hiragana first means the sounds are already familiar — only the shapes are new, which cuts the learning task roughly in half."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to learn katakana to speak Japanese?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not strictly, but katakana unlocks an enormous slice of everyday vocabulary: restaurant menus, product names, signage, and virtually every word borrowed from English. Skipping it slows reading progress considerably and leaves obvious gaps in comprehension."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does Japanese need both hiragana and katakana?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They evolved separately during the Heian period and became too embedded to remove. Today the distinction is clear: hiragana handles native Japanese grammar; katakana handles foreign and borrowed content. The two scripts together act as a visual layer of information — you can tell at a glance whether a word is native Japanese or a loanword simply from the script it is written in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the long vowel mark ー and when is it used?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The chōonpu (ー) is a horizontal dash that extends the vowel sound of the preceding character. It appears mainly in katakana. For example, コーヒー (kōhī, coffee) uses it twice to lengthen the o and i sounds. It is one of the most common characters in katakana text."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I learn katakana before or after kanji?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Before. Katakana is a phonetic system with a fixed set of 46 characters. Kanji number in the thousands and require far more sustained study. Finishing both kana systems first gives you a solid phonetic foundation and the ability to read a meaningful amount of real Japanese before tackling kanji."
+      }
+    }
+  ]
+}
+</script>
+
+---
+
+If you'd like structured exercises and vocabulary lists to go alongside the chart, the [Japanese Unlocked course](/book/) covers both kana systems in its opening modules — available as a PDF download, Kindle eBook, or paperback.
