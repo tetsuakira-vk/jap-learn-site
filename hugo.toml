@@ -161,13 +161,6 @@ buildExpired = false
     weight = 2
 
   [[menu.main]]
-    identifier = "vocab-n5"
-    name = "N5 Vocabulary"
-    url = "/vocab/"
-    parent = "vocabulary"
-    weight = 3
-
-  [[menu.main]]
     identifier = "vocab-colors"
     name = "Colors — 色"
     url = "/vocab/colors/"
@@ -369,12 +362,6 @@ buildExpired = false
     name = "About"
     url = "/about/"
     weight = 69
-
-  [[menu.main]]
-    identifier = "search"
-    name = "Search"
-    url = "/search/"
-    weight = 70
 
 [taxonomies]
   tag = "tags"
