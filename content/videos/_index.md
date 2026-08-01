@@ -6,10 +6,6 @@ date: 2025-01-01
 
 The **Japanese Unlocked** YouTube channel is where the site and video content come together. Videos are kept short and focused — no filler, no long intros, just useful Japanese you can actually remember.
 
-{{< rawhtml >}}
-<a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block;margin:1rem 0 1.5rem;padding:0.6rem 1.4rem;background:var(--primary);color:#fff;border-radius:6px;text-decoration:none;font-weight:600;">Watch on YouTube →</a>
-{{< /rawhtml >}}
-
 ---
 
 ## What the videos cover
@@ -47,10 +43,6 @@ The plan:
 
 If you want to know when new videos drop, subscribe on YouTube — that's where everything goes first.
 
-{{< rawhtml >}}
-<a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block;margin:1rem 0;padding:0.6rem 1.4rem;background:var(--primary);color:#fff;border-radius:6px;text-decoration:none;font-weight:600;">Subscribe on YouTube →</a>
-{{< /rawhtml >}}
-
 ---
 
 ## How this site and the videos connect
@@ -58,3 +50,5 @@ If you want to know when new videos drop, subscribe on YouTube — that's where 
 The tools on this site are built to go alongside the videos — not replace them. Watch a video on a grammar pattern, then drill it with the [Sentence Forge](/courses/sentence-forge/). Hear a word in a lesson, look it up in the [Dictionary](/dictionary/). Work through the [JLPT mock tests](/jlpt/mock/) to check what's actually sticking.
 
 The site gives you somewhere to *practice*. The videos give you something to *learn from*. Used together, they cover both sides of how language learning actually works.
+
+---

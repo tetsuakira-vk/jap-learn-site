@@ -11,7 +11,10 @@
   </header>
 
   <div class="post-content">
-    <p>Latest videos from the channel — click any to watch right here. Subscribe so you don't miss new ones.</p>
+    {{- with .Content }}{{ . }}{{ end }}
+
+    <h2>Latest Videos</h2>
+    <p>Click any video to watch right here, or <a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener noreferrer">open on YouTube</a>.</p>
 
     {{- $rss := resources.GetRemote $rss_url }}
     {{- if $rss }}
