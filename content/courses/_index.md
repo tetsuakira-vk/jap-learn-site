@@ -5,7 +5,7 @@ date: 2025-01-01
 showtoc: false
 ---
 
-Learn Japanese you'll actually use. Each course puts you in real situations — no textbook scripts, no train-station roleplay. Just the Japanese people actually speak.
+Learn Japanese you'll actually use. Each tool puts you in a real situation — no textbook scripts, no filler exercises. Just the Japanese people actually speak.
 
 <div class="courses-hub-grid">
 
@@ -38,3 +38,40 @@ Learn Japanese you'll actually use. Each course puts you in real situations — 
 </a>
 
 </div>
+
+---
+
+## Which tool should I start with?
+
+That depends on where you are. Here's a rough guide:
+
+**Just starting out (absolute beginner):** Start with [Sentence Forge](/courses/sentence-forge/). It gives you a grammar pattern and walks you through building a sentence from scratch — you're not expected to know what to say, you're being shown the structure. Work through the N5 prompts first.
+
+**Can read kana, know basic grammar:** [What Would You Say?](/courses/what-would-you-say/) is where you start thinking in Japanese rather than translating. It gives you real social situations — the kind of thing you'd actually need to say — and lets you practice before you have to do it for real.
+
+**Working on your listening and accent:** [Shadowing Trainer](/courses/shadowing/) is specifically for pronunciation and rhythm. Japanese has a very distinct speed and melody — shadowing is the fastest way to train your mouth to keep up. Use it daily, even in short sessions.
+
+**Reading Japanese (N4 and above):** [Immersive Reader](/courses/immersive-reader/) puts you in front of real Japanese text — not textbook sentences, but the kind of Japanese you'd find in a news article or restaurant review. The kanji hover feature means you can push through material that would normally be too hard.
+
+---
+
+## How the tools work together
+
+The tools are designed to cover different parts of the learning loop — understanding, speaking, reading, and producing. Used together they reinforce each other.
+
+A good weekly routine might look like this:
+
+- **Monday / Wednesday / Friday** — Sentence Forge (15 mins). Build sentences with new grammar patterns. Keep notes on which ones you got wrong.
+- **Tuesday / Thursday** — Shadowing Trainer (10 mins). Pick a sentence type from what you studied. Repeat until the rhythm feels natural.
+- **Weekend** — Immersive Reader (one full article). Push yourself to read without looking every word up. Use the hover feature sparingly — try to get meaning from context first.
+- **Whenever** — What Would You Say? for a quick situational challenge when you have a spare few minutes.
+
+---
+
+## Why production matters more than you think
+
+Most Japanese learners spend 90% of their time inputting — reading, listening, watching. That's important, but it creates a gap: you *recognise* Japanese but you can't *produce* it when you need to.
+
+The tools here are all production-focused. You're not clicking multiple choice answers — you're typing, speaking, or building from scratch. That's harder. It's also what makes it stick.
+
+If you're studying for JLPT, combine these tools with the [JLPT mock tests](/jlpt/mock/) to balance recognition practice with production practice. The combination is much more effective than either alone.
