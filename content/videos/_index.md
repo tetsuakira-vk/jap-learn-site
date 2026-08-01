@@ -4,10 +4,6 @@ description: "Japanese Unlocked YouTube channel — short vocabulary and sentenc
 date: 2025-01-01
 ---
 
-The **Japanese Unlocked** YouTube channel is where the site and video content come together. Videos are kept short and focused — no filler, no long intros, just useful Japanese you can actually remember.
-
----
-
 ## What the videos cover
 
 Most videos follow a simple format: pick a Japanese word or sentence, break down exactly what it means, and show how it's actually used in context.
