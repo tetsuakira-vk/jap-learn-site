@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JLPT N5 Study Guide — Vocabulary, Grammar & Kanji | Japanese Unlocked</title>
+<meta name="description" content="Complete JLPT N5 study guide. 800 vocabulary words, 100 grammar patterns, 80 kanji, and free mock tests. Everything you need to pass N5, free.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+
+/* ── Level badge ── */
+.level-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--ink); padding: 8px 18px;
+  margin-bottom: 24px;
+}
+.lb-level {
+  font-family: var(--serif); font-size: 28px; font-weight: 700;
+  line-height: 1; color: var(--ink);
+}
+.lb-divider { width: 1.5px; height: 28px; background: var(--rule); }
+.lb-info { display: flex; flex-direction: column; gap: 2px; }
+.lb-name { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.lb-sub  { font-size: 11px; color: var(--mid); }
+
+/* ── Stats row ── */
+.stats-row {
+  display: flex; gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.stat-item {
+  flex: 1; padding: 18px 16px;
+  border-right: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 4px;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num  { font-family: var(--serif); font-size: 26px; font-weight: 700; color: var(--ink); line-height: 1; }
+.stat-label { font-size: 11px; color: var(--mid); font-weight: 600; letter-spacing: 0.04em; }
+
+/* ── Study path cards ── */
+.path-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin-bottom: 40px;
+}
+.path-card {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 24px 22px;
+  display: flex; flex-direction: column; gap: 6px;
+  text-decoration: none; color: inherit;
+  transition: background 0.14s;
+  min-height: 140px;
+}
+a.path-card:hover { background: var(--faint); }
+.path-card.soon { opacity: 0.6; cursor: default; }
+.pc-jp    { font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1; color: var(--ink); }
+.pc-label { font-size: 14px; font-weight: 700; color: var(--ink); margin-top: 4px; }
+.pc-count { font-size: 12px; color: var(--mid); }
+.pc-cta   {
+  margin-top: auto; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent);
+}
+.pc-soon  {
+  margin-top: auto; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--rule); border: 1px solid var(--rule);
+  padding: 3px 8px; align-self: flex-start;
+}
+
+/* ── Test format table ── */
+.test-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--rule); margin-bottom: 32px;
+}
+.test-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  padding: 10px 16px; text-align: left;
+  background: var(--faint); border-bottom: 1.5px solid var(--rule);
+}
+.test-table td {
+  padding: 12px 16px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; vertical-align: top;
+}
+.test-table tr:last-child td { border-bottom: none; }
+.test-table .td-section { font-weight: 700; }
+.test-table .td-time { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.test-table .td-marks { color: var(--mid); }
+
+/* ── Pass score bar ── */
+.pass-bar {
+  border: 1px solid var(--rule); padding: 20px 22px;
+  margin-bottom: 32px;
+  display: flex; align-items: center; gap: 24px;
+}
+.pass-track {
+  flex: 1; height: 8px; background: var(--rule);
+  position: relative;
+}
+.pass-fill {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  background: var(--accent); width: 44.4%; /* 80/180 */
+}
+.pass-info { flex-shrink: 0; }
+.pass-score { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+.pass-label { font-size: 11px; color: var(--mid); }
+
+@media (max-width: 600px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .stats-row { flex-wrap: wrap; }
+  .stat-item { min-width: 45%; border-bottom: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    JLPT
+    <span class="sep">›</span>
+    N5
+  </div>
+  <h1 class="page-h1">JLPT N5 <span class="h1-jp">日本語能力試験</span></h1>
+  <div class="page-meta">
+    <span>Beginner</span>
+    <span class="meta-pill">Study Guide</span>
+    <span class="meta-pill">Free</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#path">Study Path</a>
+  <a href="#format">Test Format</a>
+  <a href="#tips">Tips</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">N5</p>
+    <ul class="sidebar-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#path">Study path</a></li>
+      <li><a href="#format">Test format</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">N5 Resources</p>
+    <ul class="sidebar-links">
+      <li><a href="vocab/">Vocabulary <span class="side-hint">~800</span></a></li>
+      <li><a href="../../kanji/#n5">Kanji <span class="side-hint">80</span></a></li>
+      <li><a href="../../jlpt/mock/">Mock Tests</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Other Levels</p>
+    <ul class="sidebar-links">
+      <li><a href="../n4/">N4</a></li>
+      <li><a href="../n3/">N3</a></li>
+      <li><a href="../n2/">N2</a></li>
+      <li><a href="../n1/">N1</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <!-- ── OVERVIEW ── -->
+    <section class="section" id="overview">
+      <div class="section-heading">
+        <h2>What is N5?</h2>
+        <span class="sh-jp">N5とは</span>
+      </div>
+
+      <div class="level-badge">
+        <div class="lb-level">N5</div>
+        <div class="lb-divider"></div>
+        <div class="lb-info">
+          <div class="lb-name">Beginner</div>
+          <div class="lb-sub">JLPT Level 5 of 5</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">~800</div>
+          <div class="stat-label">Vocabulary words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">~100</div>
+          <div class="stat-label">Grammar patterns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">80</div>
+          <div class="stat-label">Kanji</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">105<span style="font-size:16px;font-weight:400">min</span></div>
+          <div class="stat-label">Total test time</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>N5 is the entry level of the Japanese Language Proficiency Test (JLPT) — the world's most widely-taken Japanese language exam. It certifies that you can understand basic Japanese in limited everyday situations: simple conversations about familiar topics, short texts, and straightforward written material like signs and schedules.</p>
+        <p>N5 is a realistic goal for someone who has studied Japanese seriously for three to six months. You don't need to speak or write Japanese to pass — the test is entirely multiple choice (reading and listening). There's no pass/fail on individual sections; you need a total score above a threshold, with each section having a minimum mark.</p>
+      </div>
+    </section>
+
+    <!-- ── STUDY PATH ── -->
+    <section class="section" id="path">
+      <div class="section-heading">
+        <h2>Study Path</h2>
+        <span class="sh-jp">学習の流れ</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Work through these in order — vocabulary first, then grammar, then kanji, then practice under test conditions.</p>
+      </div>
+      <div class="path-grid">
+        <a class="path-card" href="vocab/">
+          <div class="pc-jp">語彙</div>
+          <div class="pc-label">Vocabulary</div>
+          <div class="pc-count">~800 words with audio</div>
+          <div class="pc-cta">Study now →</div>
+        </a>
+        <div class="path-card soon">
+          <div class="pc-jp">文法</div>
+          <div class="pc-label">Grammar</div>
+          <div class="pc-count">~100 patterns with examples</div>
+          <div class="pc-soon">Coming soon</div>
+        </div>
+        <a class="path-card" href="../../kanji/#n5">
+          <div class="pc-jp">漢字</div>
+          <div class="pc-label">Kanji</div>
+          <div class="pc-count">80 characters with readings</div>
+          <div class="pc-cta">View N5 kanji →</div>
+        </a>
+        <a class="path-card" href="../../jlpt/mock/">
+          <div class="pc-jp">練習</div>
+          <div class="pc-label">Mock Tests</div>
+          <div class="pc-count">Full timed practice tests</div>
+          <div class="pc-cta">Practice →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── TEST FORMAT ── -->
+    <section class="section" id="format">
+      <div class="section-heading">
+        <h2>Test Format</h2>
+        <span class="sh-jp">試験の構成</span>
+      </div>
+
+      <table class="test-table">
+        <thead><tr>
+          <th>Section</th><th>What's tested</th><th>Time</th><th>Max score</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-section">Language Knowledge<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">言語知識（文字・語彙・文法）</span></td>
+            <td>Kanji readings, vocabulary meaning and usage, grammar patterns, sentence structure</td>
+            <td class="td-time">25 min</td>
+            <td class="td-marks">120 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Reading<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">読解</span></td>
+            <td>Short passages, notices, messages — understanding the main point and details</td>
+            <td class="td-time">50 min<br><span style="font-size:11px;color:var(--mid)">(combined with above)</span></td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Listening<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">聴解</span></td>
+            <td>Short conversations and questions; choosing the correct answer from pictures or phrases</td>
+            <td class="td-time">30 min</td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-weight:700">Total</td>
+            <td class="td-time">~105 min</td>
+            <td class="td-marks">180 pts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="prose" style="margin-bottom:20px"><p style="font-weight:700;margin-bottom:8px">Pass marks</p></div>
+      <div class="pass-bar">
+        <div class="pass-info">
+          <div class="pass-score">80 / 180</div>
+          <div class="pass-label">Total pass threshold</div>
+        </div>
+        <div class="pass-track"><div class="pass-fill"></div></div>
+        <div class="pass-info" style="text-align:right">
+          <div class="pass-score" style="font-size:16px">19 / 120<br>19 / 60<br>19 / 60</div>
+          <div class="pass-label">Section minimums</div>
+        </div>
+      </div>
+      <div class="prose">
+        <p>You need at least 80 points total <em>and</em> at least 19 points in each individual section. A very high score in one section cannot compensate for failing another. The test is offered twice a year in Japan (July and December) and once a year in many countries.</p>
+      </div>
+    </section>
+
+    <!-- ── TIPS ── -->
+    <section class="section" id="tips">
+      <div class="section-heading">
+        <h2>Passing Tips</h2>
+        <span class="sh-jp">合格のコツ</span>
+      </div>
+      <div class="prose">
+        <h3>Vocabulary is the highest return on time</h3>
+        <p>N5 vocabulary (~800 words) is the single biggest contributor to your score. It feeds directly into the vocabulary section, the grammar section (where you need to understand the words in questions), and the listening section. Do vocabulary daily — 20 new words a day means the whole list in 40 days.</p>
+
+        <h3>Learn hiragana and katakana first</h3>
+        <p>If you haven't already, spend the first two weeks solidly on the two kana scripts. The test is written almost entirely in hiragana and katakana at N5 level — you cannot read the questions without them. The kanji appear with furigana at this level, but you need to be able to read their readings. <a href="../../hiragana/" style="color:var(--accent)">Hiragana guide →</a></p>
+
+        <h3>Grammar patterns over rules</h3>
+        <p>Don't try to memorise grammar rules abstractly. Learn the ~100 N5 patterns as fixed phrases with example sentences, then vary them. は vs が, て-form,〜たい, 〜ている — learn each one with two or three examples and you'll recognise them in the test without needing to consciously apply a rule.</p>
+
+        <h3>Listening: don't translate</h3>
+        <p>The listening section moves quickly. If you try to translate everything you hear into English you'll fall behind. Train yourself to understand Japanese directly by listening to lots of native material at your level — the N5 mock tests on this site use the same format as the real exam.</p>
+
+        <h3>Kanji: recognition, not writing</h3>
+        <p>The JLPT does not test writing. You only need to recognise kanji and their readings. Focus on the 80 N5 kanji in reading context — see them in vocabulary (日本語、学校、先生) rather than memorising them in isolation. The vocabulary study naturally covers the kanji.</p>
+
+        <h3>Time management on the day</h3>
+        <p>The language knowledge and reading sections are combined. Many test-takers spend too long on grammar and run out of time for reading. Aim for 20 minutes on language knowledge, leaving 30 minutes for reading. If you're stuck on a question, mark your best guess and move on — there's no penalty for wrong answers.</p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How long does it take to prepare for N5?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Most people with no prior Japanese knowledge need 3–6 months of consistent study (around 1–2 hours a day). If you already know hiragana and katakana, you can shave off 2–3 weeks. The Japan Foundation estimates approximately 150 hours of study for N5. That's around 1 hour a day for 5 months, or 2 hours a day for 2.5 months.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is N5 worth taking?<span class="faq-icon">+</span></button>
+          <div class="faq-a">It depends on your goal. If you want a formal certificate of your Japanese ability, yes — it's the recognised starting point. If you're studying purely for enjoyment or travel, the test prep itself is valuable (it gives you a clear syllabus and deadline) even if the certificate isn't your main aim. For employment or academic purposes, N3 or above is typically required; N5 alone has limited formal use but is a meaningful milestone.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Can I take N5 outside Japan?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes. The JLPT is administered in over 80 countries. In most non-Japan locations it's offered once a year in December. Registration typically opens 3–4 months before the exam date. Check the official JLPT website for test sites in your country — availability varies significantly by location.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What's the difference between N5 and N4?<span class="faq-icon">+</span></button>
+          <div class="faq-a">N5 covers everyday survival Japanese — you can handle very basic situations, read simple signs, and follow short conversations on familiar topics. N4 adds the ability to understand basic Japanese in more varied everyday contexts. The vocabulary roughly doubles (from ~800 to ~1,500 words), grammar complexity increases, and the reading passages become longer. Many learners find N4 significantly harder than N5.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  var sections  = document.querySelectorAll('.section[id]');
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JLPT N3 Study Guide — Vocabulary, Grammar & Kanji | Japanese Unlocked</title>
+<meta name="description" content="Complete JLPT N3 study guide. 3,750 vocabulary words, 250 grammar patterns, 650 kanji. The step up from beginner to authentic Japanese — free study guide and mock tests.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.level-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--ink); padding: 8px 18px; margin-bottom: 24px;
+}
+.lb-level { font-family: var(--serif); font-size: 28px; font-weight: 700; line-height: 1; }
+.lb-divider { width: 1.5px; height: 28px; background: var(--rule); }
+.lb-info { display: flex; flex-direction: column; gap: 2px; }
+.lb-name { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.lb-sub  { font-size: 11px; color: var(--mid); }
+
+.stats-row { display: flex; gap: 0; border: 1px solid var(--rule); margin-bottom: 32px; }
+.stat-item { flex: 1; padding: 18px 16px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
+.stat-item:last-child { border-right: none; }
+.stat-num  { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 11px; color: var(--mid); font-weight: 600; letter-spacing: 0.04em; }
+
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 40px; }
+.path-card { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 24px 22px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: inherit; transition: background 0.14s; min-height: 140px; }
+a.path-card:hover { background: var(--faint); }
+.path-card.soon { opacity: 0.6; cursor: default; }
+.pc-jp    { font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1; }
+.pc-label { font-size: 14px; font-weight: 700; margin-top: 4px; }
+.pc-count { font-size: 12px; color: var(--mid); }
+.pc-cta   { margin-top: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.pc-soon  { margin-top: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule); border: 1px solid var(--rule); padding: 3px 8px; align-self: flex-start; }
+
+.test-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); margin-bottom: 32px; }
+.test-table th { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); padding: 10px 16px; text-align: left; background: var(--faint); border-bottom: 1.5px solid var(--rule); }
+.test-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; vertical-align: top; }
+.test-table tr:last-child td { border-bottom: none; }
+.test-table .td-section { font-weight: 700; }
+.test-table .td-time { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.test-table .td-marks { color: var(--mid); }
+
+.pass-bar { border: 1px solid var(--rule); padding: 20px 22px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
+.pass-track { flex: 1; height: 8px; background: var(--rule); position: relative; }
+.pass-fill  { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); width: 52.8%; }
+.pass-info  { flex-shrink: 0; }
+.pass-score { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+.pass-label { font-size: 11px; color: var(--mid); }
+
+.grammar-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); margin-bottom: 24px; }
+.grammar-table th { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); padding: 8px 14px; text-align: left; background: var(--faint); border-bottom: 1.5px solid var(--rule); }
+.grammar-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.grammar-table tr:last-child td { border-bottom: none; }
+.gt-jp { font-family: var(--serif); font-size: 16px; font-weight: 700; }
+.gt-en { color: var(--mid); font-size: 12px; }
+
+/* N3-specific: separate sections callout */
+.callout {
+  border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+  padding: 14px 18px; margin-bottom: 24px; font-size: 13px;
+}
+.callout strong { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .stats-row { flex-wrap: wrap; }
+  .stat-item { min-width: 45%; border-bottom: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    JLPT
+    <span class="sep">›</span>
+    N3
+  </div>
+  <h1 class="page-h1">JLPT N3 <span class="h1-jp">日本語能力試験</span></h1>
+  <div class="page-meta">
+    <span>Pre-Intermediate</span>
+    <span class="meta-pill">Study Guide</span>
+    <span class="meta-pill">Free</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#path">Study Path</a>
+  <a href="#grammar">Grammar</a>
+  <a href="#format">Test Format</a>
+  <a href="#tips">Tips</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">N3</p>
+    <ul class="sidebar-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#path">Study path</a></li>
+      <li><a href="#grammar">Key grammar</a></li>
+      <li><a href="#format">Test format</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">N3 Resources</p>
+    <ul class="sidebar-links">
+      <li><a href="vocab/">Vocabulary <span class="side-hint">~3,750</span></a></li>
+      <li><a href="../../kanji/#n3">Kanji <span class="side-hint">650</span></a></li>
+      <li><a href="../../jlpt/mock/">Mock Tests</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Other Levels</p>
+    <ul class="sidebar-links">
+      <li><a href="../n5/">N5</a></li>
+      <li><a href="../n4/">N4</a></li>
+      <li><a href="../n2/">N2</a></li>
+      <li><a href="../n1/">N1</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <!-- ── OVERVIEW ── -->
+    <section class="section" id="overview">
+      <div class="section-heading">
+        <h2>What is N3?</h2>
+        <span class="sh-jp">N3とは</span>
+      </div>
+
+      <div class="level-badge">
+        <div class="lb-level">N3</div>
+        <div class="lb-divider"></div>
+        <div class="lb-info">
+          <div class="lb-name">Pre-Intermediate</div>
+          <div class="lb-sub">JLPT Level 3 of 5</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">~3,750</div>
+          <div class="stat-label">Vocabulary words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">~250</div>
+          <div class="stat-label">Grammar patterns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">650</div>
+          <div class="stat-label">Kanji</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">155<span style="font-size:16px;font-weight:400">min</span></div>
+          <div class="stat-label">Total test time</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>N3 sits at the crossover point between the beginner levels (N5, N4) and the upper levels (N2, N1). It's the first JLPT level that engages with authentic, naturally-written Japanese — real newspaper headlines, TV programme descriptions, notices, and articles aimed at native speakers rather than learners.</p>
+        <p>Passing N3 is a significant milestone. It signals that you can understand Japanese in a wider range of everyday contexts, follow conversations on familiar topics at close to natural speed, and extract information from written Japanese that wasn't designed for learners. The vocabulary more than doubles from N4 (~1,500 to ~3,750 words), and the grammar grows in complexity and subtlety.</p>
+        <p>N3 is often described as the hardest jump in the JLPT system. Many learners who passed N4 in six months find they need twelve to eighteen months to reach N3 — not because the material is harder to understand, but because the sheer volume of vocabulary and exposure to authentic Japanese takes time to build.</p>
+      </div>
+    </section>
+
+    <!-- ── STUDY PATH ── -->
+    <section class="section" id="path">
+      <div class="section-heading">
+        <h2>Study Path</h2>
+        <span class="sh-jp">学習の流れ</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>At N3, immersion starts to become a serious study tool alongside textbooks. Reading native content and listening to native audio is no longer just motivational — it's how you acquire the vocabulary volume this level requires.</p>
+      </div>
+      <div class="path-grid">
+        <div class="path-card soon">
+          <div class="pc-jp">語彙</div>
+          <div class="pc-label">Vocabulary</div>
+          <div class="pc-count">~3,750 words with audio</div>
+          <div class="pc-soon">Coming soon</div>
+        </div>
+        <div class="path-card soon">
+          <div class="pc-jp">文法</div>
+          <div class="pc-label">Grammar</div>
+          <div class="pc-count">~250 patterns with examples</div>
+          <div class="pc-soon">Coming soon</div>
+        </div>
+        <a class="path-card" href="../../kanji/#n3">
+          <div class="pc-jp">漢字</div>
+          <div class="pc-label">Kanji</div>
+          <div class="pc-count">650 characters with readings</div>
+          <div class="pc-cta">View N3 kanji →</div>
+        </a>
+        <a class="path-card" href="../../jlpt/mock/">
+          <div class="pc-jp">練習</div>
+          <div class="pc-label">Mock Tests</div>
+          <div class="pc-count">Full timed practice tests</div>
+          <div class="pc-cta">Practice →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── GRAMMAR ── -->
+    <section class="section" id="grammar">
+      <div class="section-heading">
+        <h2>Key Grammar Areas</h2>
+        <span class="sh-jp">文法のポイント</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>N3 grammar moves beyond conjugation mechanics into nuance and expression — patterns that convey speaker attitude, expectation, and contrast. These ten are the highest-frequency in the test.</p>
+      </div>
+
+      <table class="grammar-table">
+        <thead><tr>
+          <th>Pattern</th><th>Meaning</th><th>Example</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="gt-jp">〜ために</span><br><span class="gt-en">plain form + ために</span></td>
+            <td>Purpose or cause — "in order to…" / "because of…"</td>
+            <td>日本語を話せるよう<strong>になるために</strong>、毎日練習する。<br><span style="color:var(--mid);font-size:12px">I practise every day in order to be able to speak Japanese.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜のに</span><br><span class="gt-en">plain form + のに</span></td>
+            <td>Contrary expectation — "even though…" / "despite the fact that…"</td>
+            <td>練習した<strong>のに</strong>、試験に落ちた。<br><span style="color:var(--mid);font-size:12px">Even though I studied, I failed the exam.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜ところ</span><br><span class="gt-en">verb + ところ</span></td>
+            <td>Point in time of action — "just about to…" / "in the middle of…" / "just finished…"</td>
+            <td>ちょうど出かける<strong>ところ</strong>です。<br><span style="color:var(--mid);font-size:12px">I'm just about to go out.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜てしまう</span><br><span class="gt-en">te-form + しまう</span></td>
+            <td>Completion with regret or finality — "end up doing…" / "accidentally…"</td>
+            <td>財布を忘れ<strong>てしまった</strong>。<br><span style="color:var(--mid);font-size:12px">I ended up forgetting my wallet.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜ておく</span><br><span class="gt-en">te-form + おく</span></td>
+            <td>Preparation or leaving as-is — "do in advance" / "leave it…"</td>
+            <td>旅行の前に計画を立て<strong>ておく</strong>。<br><span style="color:var(--mid);font-size:12px">I'll make a plan in advance of the trip.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜はずだ</span><br><span class="gt-en">plain form + はずだ</span></td>
+            <td>Reasonable expectation — "should be…" / "supposed to…"</td>
+            <td>彼はもう着いている<strong>はずだ</strong>。<br><span style="color:var(--mid);font-size:12px">He should have arrived by now.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜かもしれない</span><br><span class="gt-en">plain form + かもしれない</span></td>
+            <td>Uncertainty — "might…" / "may…" / "possibly…"</td>
+            <td>明日は雨が降る<strong>かもしれない</strong>。<br><span style="color:var(--mid);font-size:12px">It might rain tomorrow.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜によって</span><br><span class="gt-en">noun + によって</span></td>
+            <td>Means, cause, or variation — "by…" / "depending on…" / "due to…"</td>
+            <td>人<strong>によって</strong>意見が違う。<br><span style="color:var(--mid);font-size:12px">Opinions differ depending on the person.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜という</span><br><span class="gt-en">plain form + という</span></td>
+            <td>Defining or quoting — "called…" / "the fact that…" / "which means…"</td>
+            <td>「侍」<strong>という</strong>言葉を知っていますか。<br><span style="color:var(--mid);font-size:12px">Do you know the word "samurai"?</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜ようにする</span><br><span class="gt-en">potential form + ようにする</span></td>
+            <td>Deliberate effort toward a goal — "make sure to…" / "try to…"</td>
+            <td>毎日運動する<strong>ようにしている</strong>。<br><span style="color:var(--mid);font-size:12px">I make sure to exercise every day.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── TEST FORMAT ── -->
+    <section class="section" id="format">
+      <div class="section-heading">
+        <h2>Test Format</h2>
+        <span class="sh-jp">試験の構成</span>
+      </div>
+
+      <div class="callout">
+        <strong>N3 structure change:</strong> Unlike N4 and N5, N3 splits Reading into its own separate scored section. Language Knowledge, Reading, and Listening are each scored independently — and each has its own minimum pass mark.
+      </div>
+
+      <table class="test-table">
+        <thead><tr>
+          <th>Section</th><th>What's tested</th><th>Time</th><th>Max score</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-section">Language Knowledge<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">言語知識（文字・語彙・文法）</span></td>
+            <td>Kanji readings, vocabulary meaning and usage, grammar patterns, sentence ordering</td>
+            <td class="td-time">30 min</td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Reading<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">読解</span></td>
+            <td>Short, mid, and long passages — understanding main idea, details, and the writer's intent from near-authentic texts</td>
+            <td class="td-time">70 min</td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Listening<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">聴解</span></td>
+            <td>Task-based listening, key point questions, overview questions — conversations and monologues at near-natural speed</td>
+            <td class="td-time">40 min</td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-weight:700">Total</td>
+            <td class="td-time">~155 min</td>
+            <td class="td-marks">180 pts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="prose" style="margin-bottom:20px"><p style="font-weight:700;margin-bottom:8px">Pass marks</p></div>
+      <div class="pass-bar">
+        <div class="pass-info">
+          <div class="pass-score">95 / 180</div>
+          <div class="pass-label">Total pass threshold</div>
+        </div>
+        <div class="pass-track"><div class="pass-fill"></div></div>
+        <div class="pass-info" style="text-align:right">
+          <div class="pass-score" style="font-size:16px">19 / 60<br>19 / 60<br>19 / 60</div>
+          <div class="pass-label">Section minimums</div>
+        </div>
+      </div>
+      <div class="prose">
+        <p>You need 95 total <em>and</em> at least 19 in each of the three sections. Because Reading is now its own graded section, you can no longer rely on grammar strength to prop up a weak reading score. The N3 pass rate sits around 33–38% — lower than N4, reflecting the jump in difficulty.</p>
+      </div>
+    </section>
+
+    <!-- ── TIPS ── -->
+    <section class="section" id="tips">
+      <div class="section-heading">
+        <h2>Passing Tips</h2>
+        <span class="sh-jp">合格のコツ</span>
+      </div>
+      <div class="prose">
+        <h3>Immersion is now a study tool, not a reward</h3>
+        <p>The vocabulary jump from N4 to N3 (~1,500 to ~3,750 words) is too large to cover with flashcards alone. You need mass input — reading and listening to Japanese aimed at native speakers. Start with NHK Web Easy (simplified news with furigana), graded readers, and J-dramas with Japanese subtitles. Every word you encounter in context is more likely to stick than one you drill in isolation.</p>
+
+        <h3>Reading is now its own scored section — take it seriously</h3>
+        <p>At N4, reading was bundled with language knowledge. At N3, it's separate with its own minimum pass mark. Many learners who breeze through the grammar section run out of time or struggle in reading. Practise reading full passages under time pressure regularly, not just vocabulary lists.</p>
+
+        <h3>Kanji: 650 is a lot — start early</h3>
+        <p>650 kanji is the tipping point where you can start reading real Japanese newspapers and understand the majority of characters on signs, menus, and everyday documents. But getting from 300 (N4) to 650 takes sustained effort. Spread the new 350 kanji across your entire study period — 2 new kanji per day for six months is enough, as long as you're also reviewing them in reading context.</p>
+
+        <h3>Grammar nuance matters now</h3>
+        <p>N3 grammar questions often test subtle differences between near-synonyms: のに vs が for contrast, ために vs ように for purpose, ようだ vs らしい vs そうだ for hearsay and inference. This isn't memorisation — it's about internalising nuance through lots of examples. Reading native Japanese naturally exposes you to these distinctions in context.</p>
+
+        <h3>Listening: move to native speed content</h3>
+        <p>If you've been training your listening on learner-targeted audio (slow podcasts, textbook dialogues), N3 will feel abrupt. Switch to native material with subtitles — anime, variety shows, YouTube — and then gradually reduce reliance on subtitles. The test listening is faster than N4 and includes more implied meaning you need to infer.</p>
+
+        <h3>Use the mock tests to identify your actual weak section</h3>
+        <p>Most people discover their real weakness when they do a timed full mock test — not when doing vocabulary drills. Common patterns: strong vocabulary but slow reading (→ practise skimming); strong grammar but weak vocabulary (→ immersion); strong reading but poor listening (→ native audio, daily). A practice test result tells you where to put your time more clearly than any syllabus.</p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How long does it take to reach N3 from N4?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Most learners need 12–18 months of consistent study after passing N4. The Japan Foundation estimates around 450 hours total study from scratch for N3, compared to 300 for N4. The extra time isn't because the grammar is much harder than N4 — it's because the vocabulary volume (~3,750 words) and the shift to authentic Japanese input requires sustained daily exposure. Learners who add immersion (watching Japanese shows, reading native content) often close the gap faster than those who stick to textbooks alone.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is N3 recognised by employers and universities?<span class="faq-icon">+</span></button>
+          <div class="faq-a">More so than N4 or N5. Some Japanese companies and universities accept N3 as proof of basic Japanese ability, particularly for customer-facing or administrative roles that don't require complex written communication. However, most professional positions and university courses in Japan require N2. N3 is a meaningful milestone that opens some doors — service industry jobs in Japan, some teaching assistant roles, and entry-level positions at companies with Japanese connections. For serious professional or academic use, N2 is the realistic target.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Why is N3 considered the hardest jump in the JLPT?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Two reasons. First, the vocabulary more than doubles from N4 to N3 — it's the biggest absolute jump in word count of any level transition. Second, N3 is the point where the test stops using learner-friendly Japanese and starts using authentic material. Up to N4, texts are written for learners: short, simple sentences, familiar contexts, heavy furigana. At N3, you're reading real newspaper articles and show descriptions. The cognitive shift from "learner Japanese" to "real Japanese" is qualitative, not just quantitative — and it takes significant immersion time.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What can I actually do with N3 Japanese?<span class="faq-icon">+</span></button>
+          <div class="faq-a">With N3, you can hold reasonably fluent conversations on familiar topics, follow native-speed speech when the topic is clear, read everyday written Japanese (notices, articles, product descriptions, social media), and understand the majority of characters you'll encounter in daily life in Japan. Japanese TV and film becomes genuinely accessible — not everything, but the majority with subtitles. You can use Japanese social media, apps, and websites without constant dictionary lookups. It's the level where Japanese stops being a set of lessons and starts being something you can live in.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  var sections  = document.querySelectorAll('.section[id]');
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

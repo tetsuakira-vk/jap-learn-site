@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanji Reference — N5 to N1 by JLPT Level | Japanese Unlocked</title>
+<meta name="description" content="Complete kanji reference organised by JLPT level. Every character with on'yomi, kun'yomi, English meaning, and audio. N5 to N1, free and interactive.">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* ── Kanji grid ── */
+.kanji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.kanji-card {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 14px 10px 12px;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 5px;
+  cursor: pointer;
+  transition: background 0.14s, border-color 0.14s;
+  text-align: center; position: relative;
+}
+.kanji-card:hover  { background: var(--faint); }
+.kanji-card.playing { border-color: var(--accent); }
+.kj-char {
+  font-family: var(--serif);
+  font-size: 40px; font-weight: 700; line-height: 1;
+  color: var(--ink); transition: color 0.14s;
+}
+.kanji-card:hover .kj-char { color: var(--accent); }
+.kj-on  { font-size: 10px; color: var(--mid); font-family: var(--serif); line-height: 1.3; }
+.kj-kun { font-size: 10px; color: var(--mid); font-family: var(--serif); line-height: 1.3; }
+.kj-en  { font-size: 11px; font-weight: 600; color: var(--ink); margin-top: 2px; line-height: 1.3; }
+.kj-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--rule); position: absolute;
+  bottom: 8px; right: 8px;
+  transition: background 0.14s;
+}
+.kanji-card:hover .kj-dot  { background: var(--mid); }
+.kanji-card.playing .kj-dot { background: var(--accent); }
+
+/* ── Level group heading ── */
+.kanji-group { margin-bottom: 40px; }
+.kanji-group-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mid);
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── Coming-soon tier ── */
+.level-soon {
+  border: 1px solid var(--rule);
+  padding: 24px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.level-soon-left { display: flex; flex-direction: column; gap: 4px; }
+.level-soon-name { font-weight: 700; font-size: 15px; }
+.level-soon-count { font-size: 13px; color: var(--mid); }
+.level-soon-badge {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 4px 10px;
+}
+
+@media (max-width: 600px) {
+  .kanji-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+  .kj-char { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    <a href="/redesign/hiragana/">Scripts</a>
+    <span class="sep">›</span>
+    Kanji
+  </div>
+  <h1 class="page-h1">Kanji <span class="h1-jp">漢字</span></h1>
+  <div class="page-meta">
+    <span>N5 → N1</span>
+    <span class="meta-pill">Reference</span>
+    <span class="meta-pill">Audio</span>
+    <span class="meta-pill">By JLPT level</span>
+  </div>
+</header>
+
+<!-- ── SECTION NAV ── -->
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#n5">N5</a>
+  <a href="#n4">N4</a>
+  <a href="#n3">N3</a>
+  <a href="#n2">N2</a>
+  <a href="#n1">N1</a>
+  <a href="#guide">Guide</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<!-- ── PAGE BODY ── -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Page navigation">
+    <p class="sidebar-label">Kanji</p>
+    <ul class="sidebar-links">
+      <li><a href="#n5">N5 <span class="side-hint">80</span></a></li>
+      <li><a href="#n4">N4 <span class="side-hint">168</span></a></li>
+      <li><a href="#n3">N3 <span class="side-hint">370</span></a></li>
+      <li><a href="#n2">N2 <span class="side-hint">380</span></a></li>
+      <li><a href="#n1">N1 <span class="side-hint">600+</span></a></li>
+      <li><a href="#guide">Reading Guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Other Scripts</p>
+    <ul class="sidebar-links">
+      <li><a href="../hiragana/">Hiragana <span class="side-hint">あ</span></a></li>
+      <li><a href="../katakana/">Katakana <span class="side-hint">ア</span></a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <a class="sidebar-cta" href="../jlpt/n5/">Start N5 →</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content" id="main-content">
+
+    <!-- ── N5 ── -->
+    <section class="section" id="n5">
+      <div class="section-heading">
+        <h2>N5 Kanji</h2>
+        <span class="sh-jp">日本語能力試験</span>
+        <span class="sh-count">~80 characters</span>
+      </div>
+
+      <div class="prose" style="margin-bottom:28px">
+        <p>The N5 kanji are the most essential characters in Japanese — numbers, time words, basic verbs, and the building blocks of everyday reading. Tap any card to hear the character read aloud. On'yomi (Chinese-derived reading) is shown first; kun'yomi (native Japanese reading) follows.</p>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Numbers</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="一"><div class="kj-char">一</div><div class="kj-on">イチ・イツ</div><div class="kj-kun">ひと(つ)</div><div class="kj-en">one</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="二"><div class="kj-char">二</div><div class="kj-on">ニ</div><div class="kj-kun">ふた(つ)</div><div class="kj-en">two</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="三"><div class="kj-char">三</div><div class="kj-on">サン</div><div class="kj-kun">み(つ)</div><div class="kj-en">three</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="四"><div class="kj-char">四</div><div class="kj-on">シ</div><div class="kj-kun">よ(つ)・よん</div><div class="kj-en">four</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="五"><div class="kj-char">五</div><div class="kj-on">ゴ</div><div class="kj-kun">いつ(つ)</div><div class="kj-en">five</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="六"><div class="kj-char">六</div><div class="kj-on">ロク</div><div class="kj-kun">む(つ)</div><div class="kj-en">six</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="七"><div class="kj-char">七</div><div class="kj-on">シチ</div><div class="kj-kun">なな(つ)</div><div class="kj-en">seven</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="八"><div class="kj-char">八</div><div class="kj-on">ハチ</div><div class="kj-kun">や(つ)</div><div class="kj-en">eight</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="九"><div class="kj-char">九</div><div class="kj-on">ク・キュウ</div><div class="kj-kun">ここの(つ)</div><div class="kj-en">nine</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="十"><div class="kj-char">十</div><div class="kj-on">ジュウ</div><div class="kj-kun">とお</div><div class="kj-en">ten</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="百"><div class="kj-char">百</div><div class="kj-on">ヒャク</div><div class="kj-kun">—</div><div class="kj-en">hundred</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="千"><div class="kj-char">千</div><div class="kj-on">セン</div><div class="kj-kun">ち</div><div class="kj-en">thousand</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="万"><div class="kj-char">万</div><div class="kj-on">マン・バン</div><div class="kj-kun">—</div><div class="kj-en">ten thousand</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="円"><div class="kj-char">円</div><div class="kj-on">エン</div><div class="kj-kun">まる</div><div class="kj-en">yen / circle</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Time</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="日"><div class="kj-char">日</div><div class="kj-on">ニチ・ジツ</div><div class="kj-kun">ひ・か</div><div class="kj-en">day / sun</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="月"><div class="kj-char">月</div><div class="kj-on">ゲツ・ガツ</div><div class="kj-kun">つき</div><div class="kj-en">month / moon</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="火"><div class="kj-char">火</div><div class="kj-on">カ</div><div class="kj-kun">ひ</div><div class="kj-en">fire / Tuesday</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="水"><div class="kj-char">水</div><div class="kj-on">スイ</div><div class="kj-kun">みず</div><div class="kj-en">water / Wednesday</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="木"><div class="kj-char">木</div><div class="kj-on">モク・ボク</div><div class="kj-kun">き</div><div class="kj-en">tree / Thursday</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="金"><div class="kj-char">金</div><div class="kj-on">キン・コン</div><div class="kj-kun">かね</div><div class="kj-en">gold / money / Friday</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="土"><div class="kj-char">土</div><div class="kj-on">ド・ト</div><div class="kj-kun">つち</div><div class="kj-en">earth / Saturday</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="年"><div class="kj-char">年</div><div class="kj-on">ネン</div><div class="kj-kun">とし</div><div class="kj-en">year</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="時"><div class="kj-char">時</div><div class="kj-on">ジ</div><div class="kj-kun">とき</div><div class="kj-en">time / hour</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="分"><div class="kj-char">分</div><div class="kj-on">フン・ブン</div><div class="kj-kun">わ(かる)</div><div class="kj-en">minute / understand</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="半"><div class="kj-char">半</div><div class="kj-on">ハン</div><div class="kj-kun">なか(ば)</div><div class="kj-en">half</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="今"><div class="kj-char">今</div><div class="kj-on">コン・キン</div><div class="kj-kun">いま</div><div class="kj-en">now</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="毎"><div class="kj-char">毎</div><div class="kj-on">マイ</div><div class="kj-kun">—</div><div class="kj-en">every</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="週"><div class="kj-char">週</div><div class="kj-on">シュウ</div><div class="kj-kun">—</div><div class="kj-en">week</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">People &amp; Family</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="人"><div class="kj-char">人</div><div class="kj-on">ジン・ニン</div><div class="kj-kun">ひと</div><div class="kj-en">person</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="女"><div class="kj-char">女</div><div class="kj-on">ジョ・ニョ</div><div class="kj-kun">おんな</div><div class="kj-en">woman</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="男"><div class="kj-char">男</div><div class="kj-on">ダン・ナン</div><div class="kj-kun">おとこ</div><div class="kj-en">man</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="子"><div class="kj-char">子</div><div class="kj-on">シ・ス</div><div class="kj-kun">こ</div><div class="kj-en">child</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="父"><div class="kj-char">父</div><div class="kj-on">フ</div><div class="kj-kun">ちち</div><div class="kj-en">father</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="母"><div class="kj-char">母</div><div class="kj-on">ボ</div><div class="kj-kun">はは</div><div class="kj-en">mother</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="友"><div class="kj-char">友</div><div class="kj-on">ユウ</div><div class="kj-kun">とも</div><div class="kj-en">friend</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Size &amp; Direction</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="大"><div class="kj-char">大</div><div class="kj-on">ダイ・タイ</div><div class="kj-kun">おお(きい)</div><div class="kj-en">big</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="小"><div class="kj-char">小</div><div class="kj-on">ショウ</div><div class="kj-kun">ちい(さい)</div><div class="kj-en">small</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="中"><div class="kj-char">中</div><div class="kj-on">チュウ</div><div class="kj-kun">なか</div><div class="kj-en">inside / middle</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="上"><div class="kj-char">上</div><div class="kj-on">ジョウ</div><div class="kj-kun">うえ・のぼ(る)</div><div class="kj-en">above / up</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="下"><div class="kj-char">下</div><div class="kj-on">カ・ゲ</div><div class="kj-kun">した・くだ(る)</div><div class="kj-en">below / down</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="左"><div class="kj-char">左</div><div class="kj-on">サ</div><div class="kj-kun">ひだり</div><div class="kj-en">left</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="右"><div class="kj-char">右</div><div class="kj-on">ウ・ユウ</div><div class="kj-kun">みぎ</div><div class="kj-en">right</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="前"><div class="kj-char">前</div><div class="kj-on">ゼン</div><div class="kj-kun">まえ</div><div class="kj-en">before / front</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="後"><div class="kj-char">後</div><div class="kj-on">ゴ・コウ</div><div class="kj-kun">あと・うし(ろ)</div><div class="kj-en">after / behind</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="東"><div class="kj-char">東</div><div class="kj-on">トウ</div><div class="kj-kun">ひがし</div><div class="kj-en">east</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="西"><div class="kj-char">西</div><div class="kj-on">セイ・サイ</div><div class="kj-kun">にし</div><div class="kj-en">west</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="南"><div class="kj-char">南</div><div class="kj-on">ナン</div><div class="kj-kun">みなみ</div><div class="kj-en">south</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="北"><div class="kj-char">北</div><div class="kj-on">ホク</div><div class="kj-kun">きた</div><div class="kj-en">north</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="外"><div class="kj-char">外</div><div class="kj-on">ガイ・ゲ</div><div class="kj-kun">そと・はず(れる)</div><div class="kj-en">outside</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Nature</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="山"><div class="kj-char">山</div><div class="kj-on">サン</div><div class="kj-kun">やま</div><div class="kj-en">mountain</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="川"><div class="kj-char">川</div><div class="kj-on">セン</div><div class="kj-kun">かわ</div><div class="kj-en">river</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="田"><div class="kj-char">田</div><div class="kj-on">デン</div><div class="kj-kun">た</div><div class="kj-en">rice field</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="林"><div class="kj-char">林</div><div class="kj-on">リン</div><div class="kj-kun">はやし</div><div class="kj-en">grove / woods</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="森"><div class="kj-char">森</div><div class="kj-on">シン</div><div class="kj-kun">もり</div><div class="kj-en">forest</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="花"><div class="kj-char">花</div><div class="kj-on">カ</div><div class="kj-kun">はな</div><div class="kj-en">flower</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="雨"><div class="kj-char">雨</div><div class="kj-on">ウ</div><div class="kj-kun">あめ</div><div class="kj-en">rain</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="空"><div class="kj-char">空</div><div class="kj-on">クウ</div><div class="kj-kun">そら・から(っぽ)</div><div class="kj-en">sky / empty</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Body</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="口"><div class="kj-char">口</div><div class="kj-on">コウ・ク</div><div class="kj-kun">くち</div><div class="kj-en">mouth</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="手"><div class="kj-char">手</div><div class="kj-on">シュ</div><div class="kj-kun">て</div><div class="kj-en">hand</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="目"><div class="kj-char">目</div><div class="kj-on">モク・ボク</div><div class="kj-kun">め</div><div class="kj-en">eye</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="耳"><div class="kj-char">耳</div><div class="kj-on">ジ</div><div class="kj-kun">みみ</div><div class="kj-en">ear</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="足"><div class="kj-char">足</div><div class="kj-on">ソク</div><div class="kj-kun">あし・た(りる)</div><div class="kj-en">foot / leg / enough</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="力"><div class="kj-char">力</div><div class="kj-on">リョク・リキ</div><div class="kj-kun">ちから</div><div class="kj-en">power / strength</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">School &amp; Language</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="学"><div class="kj-char">学</div><div class="kj-on">ガク</div><div class="kj-kun">まな(ぶ)</div><div class="kj-en">study / learn</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="校"><div class="kj-char">校</div><div class="kj-on">コウ</div><div class="kj-kun">—</div><div class="kj-en">school</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="先"><div class="kj-char">先</div><div class="kj-on">セン</div><div class="kj-kun">さき</div><div class="kj-en">ahead / previous</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="生"><div class="kj-char">生</div><div class="kj-on">セイ・ショウ</div><div class="kj-kun">い(きる)・う(まれる)</div><div class="kj-en">life / born</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="本"><div class="kj-char">本</div><div class="kj-on">ホン</div><div class="kj-kun">もと</div><div class="kj-en">book / origin</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="文"><div class="kj-char">文</div><div class="kj-on">ブン・モン</div><div class="kj-kun">ふみ</div><div class="kj-en">writing / sentence</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="字"><div class="kj-char">字</div><div class="kj-on">ジ</div><div class="kj-kun">あざ</div><div class="kj-en">character / letter</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="語"><div class="kj-char">語</div><div class="kj-on">ゴ</div><div class="kj-kun">かた(る)</div><div class="kj-en">language / word</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="国"><div class="kj-char">国</div><div class="kj-on">コク</div><div class="kj-kun">くに</div><div class="kj-en">country</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="名"><div class="kj-char">名</div><div class="kj-on">メイ・ミョウ</div><div class="kj-kun">な</div><div class="kj-en">name</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Actions</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="食"><div class="kj-char">食</div><div class="kj-on">ショク</div><div class="kj-kun">た(べる)・く(う)</div><div class="kj-en">eat / food</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="飲"><div class="kj-char">飲</div><div class="kj-on">イン</div><div class="kj-kun">の(む)</div><div class="kj-en">drink</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="見"><div class="kj-char">見</div><div class="kj-on">ケン</div><div class="kj-kun">み(る)</div><div class="kj-en">see / look</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="聞"><div class="kj-char">聞</div><div class="kj-on">ブン・モン</div><div class="kj-kun">き(く)</div><div class="kj-en">hear / ask</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="書"><div class="kj-char">書</div><div class="kj-on">ショ</div><div class="kj-kun">か(く)</div><div class="kj-en">write</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="読"><div class="kj-char">読</div><div class="kj-on">ドク・トク</div><div class="kj-kun">よ(む)</div><div class="kj-en">read</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="話"><div class="kj-char">話</div><div class="kj-on">ワ</div><div class="kj-kun">はな(す)・はなし</div><div class="kj-en">speak / story</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="行"><div class="kj-char">行</div><div class="kj-on">コウ・ギョウ</div><div class="kj-kun">い(く)・おこな(う)</div><div class="kj-en">go</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="来"><div class="kj-char">来</div><div class="kj-on">ライ</div><div class="kj-kun">く(る)・きた(る)</div><div class="kj-en">come</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="帰"><div class="kj-char">帰</div><div class="kj-on">キ</div><div class="kj-kun">かえ(る)</div><div class="kj-en">return home</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="出"><div class="kj-char">出</div><div class="kj-on">シュツ・スイ</div><div class="kj-kun">で(る)・だ(す)</div><div class="kj-en">exit / put out</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="入"><div class="kj-char">入</div><div class="kj-on">ニュウ</div><div class="kj-kun">い(る)・はい(る)</div><div class="kj-en">enter</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="休"><div class="kj-char">休</div><div class="kj-on">キュウ</div><div class="kj-kun">やす(む)</div><div class="kj-en">rest</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="買"><div class="kj-char">買</div><div class="kj-on">バイ</div><div class="kj-kun">か(う)</div><div class="kj-en">buy</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="立"><div class="kj-char">立</div><div class="kj-on">リツ・リュウ</div><div class="kj-kun">た(つ)</div><div class="kj-en">stand</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Transport &amp; Places</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="電"><div class="kj-char">電</div><div class="kj-on">デン</div><div class="kj-kun">—</div><div class="kj-en">electricity</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="車"><div class="kj-char">車</div><div class="kj-on">シャ</div><div class="kj-kun">くるま</div><div class="kj-en">car / vehicle</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="門"><div class="kj-char">門</div><div class="kj-on">モン</div><div class="kj-kun">かど</div><div class="kj-en">gate</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="間"><div class="kj-char">間</div><div class="kj-on">カン・ケン</div><div class="kj-kun">あいだ・ま</div><div class="kj-en">between / space / time</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="町"><div class="kj-char">町</div><div class="kj-on">チョウ</div><div class="kj-kun">まち</div><div class="kj-en">town</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="村"><div class="kj-char">村</div><div class="kj-on">ソン</div><div class="kj-kun">むら</div><div class="kj-en">village</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Colours &amp; Descriptions</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="白"><div class="kj-char">白</div><div class="kj-on">ハク・ビャク</div><div class="kj-kun">しろ・しら</div><div class="kj-en">white</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="黒"><div class="kj-char">黒</div><div class="kj-on">コク</div><div class="kj-kun">くろ</div><div class="kj-en">black</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="赤"><div class="kj-char">赤</div><div class="kj-on">セキ・シャク</div><div class="kj-kun">あか</div><div class="kj-en">red</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="青"><div class="kj-char">青</div><div class="kj-on">セイ・ショウ</div><div class="kj-kun">あお</div><div class="kj-en">blue / green</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="正"><div class="kj-char">正</div><div class="kj-on">セイ・ショウ</div><div class="kj-kun">ただ(しい)・まさ</div><div class="kj-en">correct / right</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="早"><div class="kj-char">早</div><div class="kj-on">ソウ・サッ</div><div class="kj-kun">はや(い)</div><div class="kj-en">early / fast</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="天"><div class="kj-char">天</div><div class="kj-on">テン</div><div class="kj-kun">あめ・あま</div><div class="kj-en">sky / heaven</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="何"><div class="kj-char">何</div><div class="kj-on">カ</div><div class="kj-kun">なに・なん</div><div class="kj-en">what</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── N4 ── -->
+    <section class="section" id="n4">
+      <div class="section-heading">
+        <h2>N4 Kanji</h2>
+        <span class="sh-jp">日本語能力試験</span>
+        <span class="sh-count">~168 characters</span>
+      </div>
+      <div class="prose" style="margin-bottom:28px">
+        <p>N4 extends N5 into everyday verbs, abstract concepts, and compound vocabulary. These characters appear constantly in N4-level reading material and form the core of conversational written Japanese.</p>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">People &amp; Society</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="家"><div class="kj-char">家</div><div class="kj-on">カ・ケ</div><div class="kj-kun">いえ・うち</div><div class="kj-en">house / family</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="族"><div class="kj-char">族</div><div class="kj-on">ゾク</div><div class="kj-kun">—</div><div class="kj-en">family / tribe</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="兄"><div class="kj-char">兄</div><div class="kj-on">ケイ・キョウ</div><div class="kj-kun">あに</div><div class="kj-en">older brother</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="弟"><div class="kj-char">弟</div><div class="kj-on">テイ・ダイ</div><div class="kj-kun">おとうと</div><div class="kj-en">younger brother</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="姉"><div class="kj-char">姉</div><div class="kj-on">シ</div><div class="kj-kun">あね</div><div class="kj-en">older sister</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="妹"><div class="kj-char">妹</div><div class="kj-on">マイ</div><div class="kj-kun">いもうと</div><div class="kj-en">younger sister</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="主"><div class="kj-char">主</div><div class="kj-on">シュ・ス</div><div class="kj-kun">ぬし・おも</div><div class="kj-en">main / owner</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="会"><div class="kj-char">会</div><div class="kj-on">カイ・エ</div><div class="kj-kun">あ(う)</div><div class="kj-en">meet / society</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="社"><div class="kj-char">社</div><div class="kj-on">シャ</div><div class="kj-kun">やしろ</div><div class="kj-en">company / shrine</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="員"><div class="kj-char">員</div><div class="kj-on">イン</div><div class="kj-kun">—</div><div class="kj-en">member / staff</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Places &amp; Buildings</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="駅"><div class="kj-char">駅</div><div class="kj-on">エキ</div><div class="kj-kun">—</div><div class="kj-en">station</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="店"><div class="kj-char">店</div><div class="kj-on">テン</div><div class="kj-kun">みせ</div><div class="kj-en">shop / store</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="室"><div class="kj-char">室</div><div class="kj-on">シツ</div><div class="kj-kun">むろ</div><div class="kj-en">room</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="部"><div class="kj-char">部</div><div class="kj-on">ブ</div><div class="kj-kun">—</div><div class="kj-en">part / section</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="屋"><div class="kj-char">屋</div><div class="kj-on">オク</div><div class="kj-kun">や</div><div class="kj-en">shop / roof</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="道"><div class="kj-char">道</div><div class="kj-on">ドウ・トウ</div><div class="kj-kun">みち</div><div class="kj-en">road / way</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="橋"><div class="kj-char">橋</div><div class="kj-on">キョウ</div><div class="kj-kun">はし</div><div class="kj-en">bridge</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="海"><div class="kj-char">海</div><div class="kj-on">カイ</div><div class="kj-kun">うみ</div><div class="kj-en">sea / ocean</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="池"><div class="kj-char">池</div><div class="kj-on">チ</div><div class="kj-kun">いけ</div><div class="kj-en">pond</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="公"><div class="kj-char">公</div><div class="kj-on">コウ</div><div class="kj-kun">おおやけ</div><div class="kj-en">public</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="園"><div class="kj-char">園</div><div class="kj-on">エン</div><div class="kj-kun">その</div><div class="kj-en">garden / park</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="館"><div class="kj-char">館</div><div class="kj-on">カン</div><div class="kj-kun">やかた</div><div class="kj-en">hall / building</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Time &amp; Quantity</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="朝"><div class="kj-char">朝</div><div class="kj-on">チョウ</div><div class="kj-kun">あさ</div><div class="kj-en">morning</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="昼"><div class="kj-char">昼</div><div class="kj-on">チュウ</div><div class="kj-kun">ひる</div><div class="kj-en">noon / daytime</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="夜"><div class="kj-char">夜</div><div class="kj-on">ヤ</div><div class="kj-kun">よる・よ</div><div class="kj-en">night</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="曜"><div class="kj-char">曜</div><div class="kj-on">ヨウ</div><div class="kj-kun">—</div><div class="kj-en">day of the week</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="度"><div class="kj-char">度</div><div class="kj-on">ド・タク</div><div class="kj-kun">たび</div><div class="kj-en">degree / time(s)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="回"><div class="kj-char">回</div><div class="kj-on">カイ・エ</div><div class="kj-kun">まわ(る)</div><div class="kj-en">time(s) / rotate</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="番"><div class="kj-char">番</div><div class="kj-on">バン</div><div class="kj-kun">—</div><div class="kj-en">number / turn</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="号"><div class="kj-char">号</div><div class="kj-on">ゴウ</div><div class="kj-kun">—</div><div class="kj-en">number / issue</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="多"><div class="kj-char">多</div><div class="kj-on">タ</div><div class="kj-kun">おお(い)</div><div class="kj-en">many</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="少"><div class="kj-char">少</div><div class="kj-on">ショウ</div><div class="kj-kun">すく(ない)・すこ(し)</div><div class="kj-en">few / a little</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Actions &amp; States</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="思"><div class="kj-char">思</div><div class="kj-on">シ</div><div class="kj-kun">おも(う)</div><div class="kj-en">think</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="知"><div class="kj-char">知</div><div class="kj-on">チ</div><div class="kj-kun">し(る)</div><div class="kj-en">know</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="言"><div class="kj-char">言</div><div class="kj-on">ゲン・ゴン</div><div class="kj-kun">い(う)・こと</div><div class="kj-en">say / word</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="使"><div class="kj-char">使</div><div class="kj-on">シ</div><div class="kj-kun">つか(う)</div><div class="kj-en">use</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="作"><div class="kj-char">作</div><div class="kj-on">サク・サ</div><div class="kj-kun">つく(る)</div><div class="kj-en">make / create</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="持"><div class="kj-char">持</div><div class="kj-on">ジ</div><div class="kj-kun">も(つ)</div><div class="kj-en">hold / have</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="待"><div class="kj-char">待</div><div class="kj-on">タイ</div><div class="kj-kun">ま(つ)</div><div class="kj-en">wait</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="急"><div class="kj-char">急</div><div class="kj-on">キュウ</div><div class="kj-kun">いそ(ぐ)</div><div class="kj-en">hurry / urgent</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="止"><div class="kj-char">止</div><div class="kj-on">シ</div><div class="kj-kun">と(まる)・と(める)</div><div class="kj-en">stop</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="起"><div class="kj-char">起</div><div class="kj-on">キ</div><div class="kj-kun">お(きる)・お(こす)</div><div class="kj-en">wake up / occur</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="寝"><div class="kj-char">寝</div><div class="kj-on">シン</div><div class="kj-kun">ね(る)</div><div class="kj-en">sleep</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="働"><div class="kj-char">働</div><div class="kj-on">ドウ</div><div class="kj-kun">はたら(く)</div><div class="kj-en">work</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="始"><div class="kj-char">始</div><div class="kj-on">シ</div><div class="kj-kun">はじ(める)</div><div class="kj-en">begin</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="終"><div class="kj-char">終</div><div class="kj-on">シュウ</div><div class="kj-kun">お(わる)</div><div class="kj-en">end / finish</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="教"><div class="kj-char">教</div><div class="kj-on">キョウ</div><div class="kj-kun">おし(える)</div><div class="kj-en">teach</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="習"><div class="kj-char">習</div><div class="kj-on">シュウ</div><div class="kj-kun">なら(う)</div><div class="kj-en">learn / practise</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="貸"><div class="kj-char">貸</div><div class="kj-on">タイ</div><div class="kj-kun">か(す)</div><div class="kj-en">lend</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="借"><div class="kj-char">借</div><div class="kj-on">シャク</div><div class="kj-kun">か(りる)</div><div class="kj-en">borrow</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="送"><div class="kj-char">送</div><div class="kj-on">ソウ</div><div class="kj-kun">おく(る)</div><div class="kj-en">send</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="受"><div class="kj-char">受</div><div class="kj-on">ジュ</div><div class="kj-kun">う(ける)</div><div class="kj-en">receive</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Descriptions</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="新"><div class="kj-char">新</div><div class="kj-on">シン</div><div class="kj-kun">あたら(しい)</div><div class="kj-en">new</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="古"><div class="kj-char">古</div><div class="kj-on">コ</div><div class="kj-kun">ふる(い)</div><div class="kj-en">old</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="長"><div class="kj-char">長</div><div class="kj-on">チョウ</div><div class="kj-kun">なが(い)・おさ</div><div class="kj-en">long / leader</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="短"><div class="kj-char">短</div><div class="kj-on">タン</div><div class="kj-kun">みじか(い)</div><div class="kj-en">short</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="高"><div class="kj-char">高</div><div class="kj-on">コウ</div><div class="kj-kun">たか(い)</div><div class="kj-en">tall / expensive</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="安"><div class="kj-char">安</div><div class="kj-on">アン</div><div class="kj-kun">やす(い)</div><div class="kj-en">cheap / safe</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="重"><div class="kj-char">重</div><div class="kj-on">ジュウ・チョウ</div><div class="kj-kun">おも(い)・かさ(ねる)</div><div class="kj-en">heavy / important</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="軽"><div class="kj-char">軽</div><div class="kj-on">ケイ</div><div class="kj-kun">かる(い)</div><div class="kj-en">light (weight)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="広"><div class="kj-char">広</div><div class="kj-on">コウ</div><div class="kj-kun">ひろ(い)</div><div class="kj-en">wide / broad</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="暑"><div class="kj-char">暑</div><div class="kj-on">ショ</div><div class="kj-kun">あつ(い)</div><div class="kj-en">hot (weather)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="寒"><div class="kj-char">寒</div><div class="kj-on">カン</div><div class="kj-kun">さむ(い)</div><div class="kj-en">cold (weather)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="暖"><div class="kj-char">暖</div><div class="kj-on">ダン</div><div class="kj-kun">あたた(かい)</div><div class="kj-en">warm</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="涼"><div class="kj-char">涼</div><div class="kj-on">リョウ</div><div class="kj-kun">すず(しい)</div><div class="kj-en">cool (weather)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="忙"><div class="kj-char">忙</div><div class="kj-on">ボウ</div><div class="kj-kun">いそが(しい)</div><div class="kj-en">busy</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="楽"><div class="kj-char">楽</div><div class="kj-on">ガク・ラク</div><div class="kj-kun">たの(しい)</div><div class="kj-en">fun / music / easy</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="便"><div class="kj-char">便</div><div class="kj-on">ベン・ビン</div><div class="kj-kun">—</div><div class="kj-en">convenient / flight</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+      <div class="kanji-group">
+        <div class="kanji-group-label">Body, Health &amp; Food</div>
+        <div class="kanji-grid">
+          <div class="kanji-card" data-sound="体"><div class="kj-char">体</div><div class="kj-on">タイ・テイ</div><div class="kj-kun">からだ</div><div class="kj-en">body</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="頭"><div class="kj-char">頭</div><div class="kj-on">トウ・ズ</div><div class="kj-kun">あたま</div><div class="kj-en">head</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="顔"><div class="kj-char">顔</div><div class="kj-on">ガン</div><div class="kj-kun">かお</div><div class="kj-en">face</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="声"><div class="kj-char">声</div><div class="kj-on">セイ・ショウ</div><div class="kj-kun">こえ</div><div class="kj-en">voice</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="病"><div class="kj-char">病</div><div class="kj-on">ビョウ・ヘイ</div><div class="kj-kun">や(む)</div><div class="kj-en">illness</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="薬"><div class="kj-char">薬</div><div class="kj-on">ヤク</div><div class="kj-kun">くすり</div><div class="kj-en">medicine</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="米"><div class="kj-char">米</div><div class="kj-on">ベイ・マイ</div><div class="kj-kun">こめ</div><div class="kj-en">rice (uncooked)</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="肉"><div class="kj-char">肉</div><div class="kj-on">ニク</div><div class="kj-kun">—</div><div class="kj-en">meat</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="魚"><div class="kj-char">魚</div><div class="kj-on">ギョ</div><div class="kj-kun">さかな・うお</div><div class="kj-en">fish</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="野"><div class="kj-char">野</div><div class="kj-on">ヤ</div><div class="kj-kun">の</div><div class="kj-en">field / wild</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="菜"><div class="kj-char">菜</div><div class="kj-on">サイ</div><div class="kj-kun">な</div><div class="kj-en">vegetable / greens</div><div class="kj-dot"></div></div>
+          <div class="kanji-card" data-sound="茶"><div class="kj-char">茶</div><div class="kj-on">チャ・サ</div><div class="kj-kun">—</div><div class="kj-en">tea / brown</div><div class="kj-dot"></div></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── N3 ── -->
+    <section class="section" id="n3">
+      <div class="section-heading">
+        <h2>N3 Kanji</h2>
+        <span class="sh-jp">日本語能力試験</span>
+        <span class="sh-count">~370 characters</span>
+      </div>
+      <div class="prose" style="margin-bottom:24px">
+        <p>N3 marks the transition into intermediate Japanese — newspaper headlines, short articles, and longer conversations become readable. The ~370 characters at this level include abstract nouns, formal vocabulary, and a wider range of compound words.</p>
+      </div>
+      <div id="n3-grid"></div>
+    </section>
+
+    <!-- ── N2 ── -->
+    <section class="section" id="n2">
+      <div class="section-heading">
+        <h2>N2 Kanji</h2>
+        <span class="sh-jp">日本語能力試験</span>
+        <span class="sh-count">~380 characters</span>
+      </div>
+      <div class="prose" style="margin-bottom:24px">
+        <p>N2 represents near-fluent reading ability. The ~380 additional characters cover formal writing, business language, literary vocabulary, and complex compound words encountered in native Japanese media.</p>
+      </div>
+      <div id="n2-grid"></div>
+    </section>
+
+    <!-- ── N1 ── -->
+    <section class="section" id="n1">
+      <div class="section-heading">
+        <h2>N1 Kanji</h2>
+        <span class="sh-jp">日本語能力試験</span>
+        <span class="sh-count">600+ characters</span>
+      </div>
+      <div class="prose" style="margin-bottom:24px">
+        <p>N1 is the highest JLPT level. The 600+ additional characters include rare literary kanji, classical vocabulary, and highly formal or specialised terms. Reading native Japanese novels, news editorials, and academic texts requires N1-level kanji familiarity.</p>
+      </div>
+      <div id="n1-grid"></div>
+    </section>
+
+    <!-- ── READING GUIDE ── -->
+    <section class="section" id="guide">
+      <div class="section-heading">
+        <h2>Reading Guide</h2>
+        <span class="sh-jp">漢字の読み方</span>
+      </div>
+      <div class="prose">
+        <h3>On'yomi and kun'yomi</h3>
+        <p>Every kanji has two types of reading. On'yomi (音読み) are Chinese-derived pronunciations — they're typically used in compound words (two or more kanji together). Kun'yomi (訓読み) are native Japanese pronunciations — they appear when a kanji stands alone or is followed by hiragana endings (okurigana).</p>
+        <ul>
+          <li><strong>食べる</strong> — kun'yomi たべる, because 食 stands alone with a verb ending</li>
+          <li><strong>食事</strong> — on'yomi しょく, because 食 and 事 form a compound (meal / dining)</li>
+        </ul>
+        <p>A single kanji can have multiple readings of each type. 日 reads にち in 日曜日 (Sunday), にほん in 日本 (Japan), ひ in 日 (the sun), and か when counting days — 一日 (ついたち, first day of the month) is a completely irregular reading. Context and vocabulary are the only way through.</p>
+
+        <h3>Radicals — the building blocks</h3>
+        <p>Kanji are built from smaller components called radicals (部首, bushu). Many kanji share common radicals that hint at meaning. 海 (sea), 泳 (swim), and 湖 (lake) all contain the water radical 氵on the left. Recognising radicals helps you guess the rough meaning of unfamiliar kanji and makes them easier to remember as a group.</p>
+
+        <h3>Stroke count and dictionary order</h3>
+        <p>Traditional kanji dictionaries are indexed by radical and then by stroke count. The stroke count listed on each card above is the total strokes — including all components. Most digital tools use on'yomi readings for indexing, so knowing the on'yomi of common radicals helps when using paper references.</p>
+
+        <h3>How many kanji do I need?</h3>
+        <p>The Japanese government publishes a list of 2,136 kanji for everyday use (常用漢字, jōyō kanji). Japanese children learn all of them by the end of high school. N5 covers about 80, N4 about 250 total, N3 about 650, N2 about 1,000, and N1 about 2,000. For practical reading — news, social media, everyday signs — 1,500–2,000 is where things become comfortable.</p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How do I know which reading to use?<span class="faq-icon">+</span></button>
+          <div class="faq-a">The main rule of thumb: on'yomi in compound words (two kanji together), kun'yomi when the kanji stands alone or has hiragana after it. 山 alone = やま. 富士山 = ふじさん (Fujisan). 山道 = やまみち — kun'yomi for both because it's a native compound. There are exceptions, but this rule handles the majority of cases. The rest comes from memorising vocabulary rather than rules.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What's the fastest way to learn kanji?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Learn kanji in context — through vocabulary, not in isolation. Seeing 食 in 食べる, 食事, 食堂, and 和食 teaches you the kanji across four different contexts at once, and the readings stick because they're attached to real words you use. Flashcard systems like Anki are effective for this. Learning "kanji lists" in order without vocabulary context is the slow route.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Do I need to write kanji by hand?<span class="faq-icon">+</span></button>
+          <div class="faq-a">For most modern learners, no. Typed Japanese is the norm in everyday life. However, hand-writing helps many people memorise characters more deeply — the physical act of writing stroke by stroke forces you to notice the structure. If your goal is reading and typing, prioritise recognition over writing. If you plan to take the JLPT, it tests reading only — no writing required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Should I learn N5 kanji before N4?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Yes, but don't wait until you "know" all N5 kanji before starting N4 vocabulary. Learn the N5 set to solid recognition, then start N4 material — you'll encounter the N5 kanji constantly, which reinforces them. The JLPT levels are cumulative: N4 assumes N5, N3 assumes N4, and so on.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+/* ── Kanji level data + renderer ── */
+(function () {
+  var N3 = [
+    { g: 'Mind & Emotion', k: [
+      { c: '感', on: 'カン', kun: 'かん(じる)', en: 'feel / sense' },
+      { c: '情', on: 'ジョウ・セイ', kun: 'なさ(け)', en: 'emotion / feeling' },
+      { c: '意', on: 'イ', kun: '—', en: 'intention / meaning' },
+      { c: '想', on: 'ソウ・ソ', kun: '—', en: 'idea / imagine' },
+      { c: '望', on: 'ボウ・モウ', kun: 'のぞ(む)', en: 'hope / desire' },
+      { c: '願', on: 'ガン', kun: 'ねが(う)', en: 'wish / request' },
+      { c: '信', on: 'シン', kun: '—', en: 'trust / believe' },
+      { c: '悲', on: 'ヒ', kun: 'かな(しい)', en: 'sad / sorrowful' },
+      { c: '喜', on: 'キ', kun: 'よろこ(ぶ)', en: 'joy / rejoice' },
+      { c: '怒', on: 'ド・ヌ', kun: 'おこ(る)', en: 'anger' },
+      { c: '笑', on: 'ショウ', kun: 'わら(う)', en: 'laugh / smile' },
+      { c: '涙', on: 'ルイ', kun: 'なみだ', en: 'tear(s)' },
+      { c: '苦', on: 'ク', kun: 'くる(しい)', en: 'suffer / bitter' },
+      { c: '悩', on: 'ノウ', kun: 'なや(む)', en: 'worry / trouble' },
+      { c: '愛', on: 'アイ', kun: '—', en: 'love' },
+    ]},
+    { g: 'Communication & Study', k: [
+      { c: '説', on: 'セツ・ゼイ', kun: 'と(く)', en: 'explain / theory' },
+      { c: '問', on: 'モン', kun: 'と(う)', en: 'question / ask' },
+      { c: '答', on: 'トウ', kun: 'こた(える)', en: 'answer' },
+      { c: '解', on: 'カイ・ゲ', kun: 'と(く)', en: 'solve / untie' },
+      { c: '研', on: 'ケン', kun: '—', en: 'research / polish' },
+      { c: '究', on: 'キュウ', kun: 'きわ(める)', en: 'investigate / exhaust' },
+      { c: '調', on: 'チョウ', kun: 'しら(べる)', en: 'investigate / tune' },
+      { c: '査', on: 'サ', kun: '—', en: 'inspect / examine' },
+      { c: '報', on: 'ホウ', kun: 'むく(いる)', en: 'report / reward' },
+      { c: '告', on: 'コク', kun: 'つ(げる)', en: 'announce / tell' },
+      { c: '記', on: 'キ', kun: 'しる(す)', en: 'record / write' },
+      { c: '注', on: 'チュウ', kun: 'そそ(ぐ)', en: 'pour / note / attention' },
+    ]},
+    { g: 'Change & Movement', k: [
+      { c: '変', on: 'ヘン', kun: 'か(わる)', en: 'change' },
+      { c: '動', on: 'ドウ', kun: 'うご(く)', en: 'move' },
+      { c: '進', on: 'シン', kun: 'すす(む)', en: 'advance / progress' },
+      { c: '退', on: 'タイ', kun: 'しりぞ(く)', en: 'retreat / withdraw' },
+      { c: '続', on: 'ゾク', kun: 'つづ(く)', en: 'continue' },
+      { c: '移', on: 'イ', kun: 'うつ(る)', en: 'move / shift' },
+      { c: '転', on: 'テン', kun: 'ころ(がる)', en: 'roll / turn' },
+      { c: '落', on: 'ラク', kun: 'お(ちる)', en: 'fall / drop' },
+      { c: '飛', on: 'ヒ', kun: 'と(ぶ)', en: 'fly' },
+      { c: '走', on: 'ソウ', kun: 'はし(る)', en: 'run' },
+      { c: '追', on: 'ツイ', kun: 'お(う)', en: 'chase / follow' },
+      { c: '向', on: 'コウ', kun: 'む(く)', en: 'face / direction' },
+      { c: '集', on: 'シュウ', kun: 'あつ(まる)', en: 'gather / collect' },
+      { c: '別', on: 'ベツ', kun: 'わか(れる)', en: 'separate / different' },
+      { c: '決', on: 'ケツ', kun: 'き(める)', en: 'decide' },
+    ]},
+    { g: 'Society & Economy', k: [
+      { c: '政', on: 'セイ', kun: 'まつりごと', en: 'government / politics' },
+      { c: '府', on: 'フ', kun: '—', en: 'urban prefecture / govern' },
+      { c: '法', on: 'ホウ', kun: '—', en: 'law / method' },
+      { c: '律', on: 'リツ', kun: '—', en: 'law / rule / rhythm' },
+      { c: '民', on: 'ミン', kun: 'たみ', en: 'people / folk' },
+      { c: '制', on: 'セイ', kun: '—', en: 'system / control' },
+      { c: '経', on: 'ケイ', kun: 'へ(る)', en: 'pass through / manage' },
+      { c: '済', on: 'サイ', kun: 'す(む)', en: 'settle / economy / finish' },
+      { c: '産', on: 'サン', kun: 'う(む)', en: 'produce / birth / property' },
+      { c: '税', on: 'ゼイ', kun: '—', en: 'tax' },
+      { c: '費', on: 'ヒ', kun: 'つい(やす)', en: 'expense / spend' },
+      { c: '利', on: 'リ', kun: 'き(く)', en: 'profit / advantage / useful' },
+    ]},
+    { g: 'Places & Geography', k: [
+      { c: '所', on: 'ショ', kun: 'ところ', en: 'place' },
+      { c: '場', on: 'ジョウ', kun: 'ば', en: 'place / scene' },
+      { c: '市', on: 'シ', kun: 'いち', en: 'city / market' },
+      { c: '区', on: 'ク', kun: '—', en: 'ward / district' },
+      { c: '辺', on: 'ヘン', kun: 'あた(り)', en: 'area / vicinity' },
+      { c: '周', on: 'シュウ', kun: 'まわ(り)', en: 'circumference / around' },
+      { c: '港', on: 'コウ', kun: 'みなと', en: 'port / harbour' },
+      { c: '島', on: 'トウ', kun: 'しま', en: 'island' },
+      { c: '原', on: 'ゲン', kun: 'はら', en: 'field / origin / plain' },
+      { c: '湖', on: 'コ', kun: 'みずうみ', en: 'lake' },
+      { c: '岸', on: 'ガン', kun: 'きし', en: 'shore / bank / coast' },
+      { c: '岩', on: 'ガン', kun: 'いわ', en: 'rock / boulder' },
+    ]},
+    { g: 'Objects & Nature', k: [
+      { c: '石', on: 'セキ', kun: 'いし', en: 'stone' },
+      { c: '星', on: 'セイ', kun: 'ほし', en: 'star' },
+      { c: '光', on: 'コウ', kun: 'ひかり', en: 'light / shine' },
+      { c: '熱', on: 'ネツ', kun: 'あつ(い)', en: 'heat / fever' },
+      { c: '風', on: 'フウ', kun: 'かぜ', en: 'wind / style' },
+      { c: '雪', on: 'セツ', kun: 'ゆき', en: 'snow' },
+      { c: '氷', on: 'ヒョウ', kun: 'こおり', en: 'ice' },
+      { c: '紙', on: 'シ', kun: 'かみ', en: 'paper' },
+      { c: '服', on: 'フク', kun: '—', en: 'clothing / obey' },
+      { c: '鏡', on: 'キョウ', kun: 'かがみ', en: 'mirror' },
+      { c: '刀', on: 'トウ', kun: 'かたな', en: 'sword / blade' },
+      { c: '箱', on: 'ソウ', kun: 'はこ', en: 'box' },
+      { c: '糸', on: 'シ', kun: 'いと', en: 'thread / string' },
+      { c: '針', on: 'シン', kun: 'はり', en: 'needle / hand (clock)' },
+      { c: '油', on: 'ユ', kun: 'あぶら', en: 'oil / fat' },
+    ]},
+  ];
+
+  var N2 = [
+    { g: 'Formal & Abstract', k: [
+      { c: '議', on: 'ギ', kun: 'はか(る)', en: 'deliberate / discuss' },
+      { c: '論', on: 'ロン', kun: '—', en: 'theory / argument' },
+      { c: '案', on: 'アン', kun: '—', en: 'proposal / idea / draft' },
+      { c: '計', on: 'ケイ', kun: 'はか(る)', en: 'calculate / plan' },
+      { c: '画', on: 'カク・ガ', kun: 'えが(く)', en: 'plan / draw / stroke' },
+      { c: '予', on: 'ヨ', kun: 'あらかじ(め)', en: 'beforehand / predict' },
+      { c: '定', on: 'テイ', kun: 'さだ(める)', en: 'fix / decide / certain' },
+      { c: '確', on: 'カク', kun: 'たし(か)', en: 'certain / confirm' },
+      { c: '認', on: 'ニン', kun: 'みと(める)', en: 'acknowledge / recognise' },
+      { c: '評', on: 'ヒョウ', kun: '—', en: 'evaluate / comment' },
+      { c: '価', on: 'カ', kun: 'あたい', en: 'value / price' },
+      { c: '格', on: 'カク', kun: '—', en: 'rank / standard / grammatical case' },
+    ]},
+    { g: 'Business & Contracts', k: [
+      { c: '契', on: 'ケイ', kun: 'ちぎ(る)', en: 'contract / pledge' },
+      { c: '約', on: 'ヤク', kun: '—', en: 'promise / approximately' },
+      { c: '締', on: 'テイ', kun: 'し(める)', en: 'close / tighten / conclude' },
+      { c: '協', on: 'キョウ', kun: '—', en: 'cooperate / work together' },
+      { c: '担', on: 'タン', kun: 'かつ(ぐ)', en: 'carry / take charge' },
+      { c: '当', on: 'トウ', kun: 'あ(たる)', en: 'hit / be in charge / current' },
+      { c: '役', on: 'ヤク・エキ', kun: '—', en: 'role / official / service' },
+      { c: '職', on: 'ショク', kun: '—', en: 'occupation / post' },
+      { c: '務', on: 'ム', kun: 'つと(める)', en: 'duty / serve / endeavour' },
+      { c: '任', on: 'ニン', kun: 'まか(せる)', en: 'responsibility / appoint' },
+      { c: '委', on: 'イ', kun: 'ゆだ(ねる)', en: 'entrust / committee' },
+      { c: '派', on: 'ハ', kun: '—', en: 'dispatch / faction / school' },
+    ]},
+    { g: 'Cause, Effect & Proof', k: [
+      { c: '因', on: 'イン', kun: 'よ(る)', en: 'cause / reason' },
+      { c: '果', on: 'カ', kun: 'はた(す)', en: 'result / fruit / carry out' },
+      { c: '影', on: 'エイ', kun: 'かげ', en: 'shadow / influence' },
+      { c: '響', on: 'キョウ', kun: 'ひび(く)', en: 'echo / resound / influence' },
+      { c: '証', on: 'ショウ', kun: '—', en: 'proof / certificate' },
+      { c: '拠', on: 'キョ・コ', kun: 'よ(る)', en: 'basis / foothold' },
+      { c: '析', on: 'セキ', kun: '—', en: 'analyse / split' },
+      { c: '推', on: 'スイ', kun: 'お(す)', en: 'infer / recommend / push' },
+      { c: '根', on: 'コン', kun: 'ね', en: 'root / basis / patience' },
+      { c: '比', on: 'ヒ', kun: 'くら(べる)', en: 'compare / ratio' },
+      { c: '較', on: 'カク', kun: 'くら(べる)', en: 'compare / contrast' },
+    ]},
+    { g: 'Reform & Management', k: [
+      { c: '改', on: 'カイ', kun: 'あらた(める)', en: 'reform / renew / correct' },
+      { c: '善', on: 'ゼン', kun: 'よ(い)', en: 'good / improve / benevolence' },
+      { c: '設', on: 'セツ', kun: 'もう(ける)', en: 'establish / set up' },
+      { c: '置', on: 'チ', kun: 'お(く)', en: 'place / put / leave' },
+      { c: '管', on: 'カン', kun: 'くだ', en: 'manage / pipe / control' },
+      { c: '維', on: 'イ', kun: '—', en: 'maintain / preserve' },
+      { c: '支', on: 'シ', kun: 'ささ(える)', en: 'support / branch / pay' },
+      { c: '援', on: 'エン', kun: '—', en: 'aid / support / rescue' },
+      { c: '促', on: 'ソク', kun: 'うなが(す)', en: 'urge / promote / hasten' },
+      { c: '展', on: 'テン', kun: '—', en: 'unfold / exhibit / develop' },
+      { c: '導', on: 'ドウ', kun: 'みちび(く)', en: 'lead / guide / conduct' },
+      { c: '整', on: 'セイ', kun: 'ととの(える)', en: 'arrange / adjust / prepare' },
+    ]},
+    { g: 'Rights, Law & Debate', k: [
+      { c: '権', on: 'ケン', kun: '—', en: 'right / authority / power' },
+      { c: '義', on: 'ギ', kun: '—', en: 'righteousness / duty / meaning' },
+      { c: '責', on: 'セキ', kun: 'せ(める)', en: 'responsibility / blame' },
+      { c: '批', on: 'ヒ', kun: '—', en: 'criticise' },
+      { c: '判', on: 'ハン・バン', kun: '—', en: 'judge / determine' },
+      { c: '張', on: 'チョウ', kun: 'は(る)', en: 'stretch / insist / paste' },
+      { c: '反', on: 'ハン', kun: 'そ(る)', en: 'oppose / anti- / rebel' },
+      { c: '禁', on: 'キン', kun: '—', en: 'prohibit / ban / confinement' },
+      { c: '許', on: 'キョ', kun: 'ゆる(す)', en: 'permit / forgive' },
+      { c: '免', on: 'メン', kun: 'まぬが(れる)', en: 'exempt / avoid / dismiss' },
+      { c: '罰', on: 'バツ・バチ', kun: '—', en: 'punishment / penalty' },
+    ]},
+    { g: 'Science & Nature', k: [
+      { c: '温', on: 'オン', kun: 'あたた(かい)', en: 'warm / temperature' },
+      { c: '圧', on: 'アツ', kun: 'お(す)', en: 'pressure / push / overwhelm' },
+      { c: '密', on: 'ミツ', kun: 'ひそ(か)', en: 'dense / secret / close' },
+      { c: '成', on: 'セイ', kun: 'な(る)', en: 'become / achieve / accomplish' },
+      { c: '質', on: 'シツ', kun: 'たち', en: 'quality / substance / nature' },
+      { c: '応', on: 'オウ', kun: 'こた(える)', en: 'respond / correspond' },
+      { c: '溶', on: 'ヨウ', kun: 'と(ける)', en: 'dissolve / melt' },
+      { c: '燃', on: 'ネン', kun: 'も(える)', en: 'burn / combust' },
+      { c: '吸', on: 'キュウ', kun: 'す(う)', en: 'inhale / absorb / suck' },
+      { c: '射', on: 'シャ', kun: 'い(る)・さ(す)', en: 'shoot / emit / inject' },
+      { c: '磁', on: 'ジ', kun: '—', en: 'magnet / porcelain' },
+      { c: '核', on: 'カク', kun: '—', en: 'nucleus / core / kernel' },
+    ]},
+  ];
+
+  var N1 = [
+    { g: 'Character & Virtue', k: [
+      { c: '賢', on: 'ケン', kun: 'かしこ(い)', en: 'wise / clever' },
+      { c: '愚', on: 'グ', kun: 'おろ(か)', en: 'foolish / stupid' },
+      { c: '誠', on: 'セイ', kun: 'まこと', en: 'sincerity / honesty' },
+      { c: '偽', on: 'ギ', kun: 'いつわ(る)・にせ', en: 'fake / deceive / counterfeit' },
+      { c: '謙', on: 'ケン', kun: 'へりくだ(る)', en: 'humble / modest' },
+      { c: '傲', on: 'ゴウ', kun: 'おご(る)', en: 'arrogant / haughty' },
+      { c: '勇', on: 'ユウ', kun: 'いさ(む)', en: 'brave / courageous' },
+      { c: '怯', on: 'キョウ', kun: 'おび(える)', en: 'timid / cowardly' },
+      { c: '慎', on: 'シン', kun: 'つつし(む)', en: 'prudent / discreet / careful' },
+      { c: '倹', on: 'ケン', kun: 'つまし(い)', en: 'frugal / economical' },
+      { c: '剛', on: 'ゴウ', kun: 'つよ(い)', en: 'strong / firm / hard' },
+      { c: '柔', on: 'ジュウ', kun: 'やわ(らかい)', en: 'soft / flexible / gentle' },
+    ]},
+    { g: 'Governance & Power', k: [
+      { c: '憲', on: 'ケン', kun: '—', en: 'constitution / law' },
+      { c: '覇', on: 'ハ', kun: '—', en: 'supremacy / hegemony' },
+      { c: '覆', on: 'フク', kun: 'くつがえ(す)', en: 'overturn / capsize / cover' },
+      { c: '廃', on: 'ハイ', kun: 'すた(れる)', en: 'abolish / decay / discard' },
+      { c: '革', on: 'カク', kun: 'かわ', en: 'reform / leather / renovate' },
+      { c: '奪', on: 'ダツ', kun: 'うば(う)', en: 'seize / rob / take by force' },
+      { c: '抑', on: 'ヨク', kun: 'おさ(える)', en: 'suppress / hold down / restrain' },
+      { c: '擁', on: 'ヨウ', kun: 'いだ(く)', en: 'embrace / defend / hold' },
+      { c: '阻', on: 'ソ', kun: 'はば(む)', en: 'obstruct / block / hinder' },
+      { c: '妨', on: 'ボウ', kun: 'さまた(げる)', en: 'hinder / obstruct / impede' },
+      { c: '侵', on: 'シン', kun: 'おか(す)', en: 'invade / violate / encroach' },
+      { c: '搾', on: 'サク', kun: 'しぼ(る)', en: 'squeeze / exploit / press' },
+    ]},
+    { g: 'Literature & Aesthetics', k: [
+      { c: '詩', on: 'シ', kun: '—', en: 'poetry / poem' },
+      { c: '詞', on: 'シ', kun: 'ことば', en: 'word / lyrics / part of speech' },
+      { c: '謡', on: 'ヨウ', kun: 'うたい', en: 'chant / noh singing / ballad' },
+      { c: '雅', on: 'ガ', kun: 'みや(び)', en: 'elegant / graceful / refined' },
+      { c: '粋', on: 'スイ', kun: 'いき', en: 'pure / chic / essence' },
+      { c: '趣', on: 'シュ', kun: 'おもむき', en: 'taste / elegance / purport' },
+      { c: '韻', on: 'イン', kun: '—', en: 'rhyme / sound / tone' },
+      { c: '序', on: 'ジョ', kun: 'つい(で)', en: 'preface / order / beginning' },
+      { c: '奥', on: 'オウ', kun: 'おく', en: 'inner / depth / profound secret' },
+      { c: '幽', on: 'ユウ', kun: 'かす(か)', en: 'dim / quiet / secluded / faint' },
+      { c: '玄', on: 'ゲン', kun: 'くろ', en: 'dark / mysterious / profound' },
+      { c: '妙', on: 'ミョウ', kun: 'たえ(なる)', en: 'exquisite / strange / mysterious' },
+    ]},
+    { g: 'Deep Emotion & Psychology', k: [
+      { c: '憧', on: 'ドウ', kun: 'あこが(れる)', en: 'yearn for / admire / aspire' },
+      { c: '懐', on: 'カイ', kun: 'なつ(かしい)・ふところ', en: 'nostalgia / bosom / reminisce' },
+      { c: '慕', on: 'ボ', kun: 'した(う)', en: 'yearn for / love / adore' },
+      { c: '嫉', on: 'シツ', kun: 'ねた(む)', en: 'jealousy / envy' },
+      { c: '哀', on: 'アイ', kun: 'あわ(れ)', en: 'sorrow / pity / pathos' },
+      { c: '憂', on: 'ユウ', kun: 'うれ(い)', en: 'melancholy / grief / anxiety' },
+      { c: '鬱', on: 'ウツ', kun: '—', en: 'depression / dense / gloomy' },
+      { c: '恣', on: 'シ', kun: 'ほしいまま', en: 'self-indulgent / arbitrary' },
+      { c: '惚', on: 'コツ', kun: 'ほ(れる)', en: 'fall in love / dote on / senile' },
+      { c: '慈', on: 'ジ', kun: 'いつく(しむ)', en: 'compassion / love / be kind' },
+      { c: '憐', on: 'レン', kun: 'あわ(れむ)', en: 'pity / feel sorry for' },
+      { c: '忌', on: 'キ', kun: 'い(む)', en: 'mourning / taboo / avoid / detest' },
+    ]},
+    { g: 'Advanced Actions & Judgement', k: [
+      { c: '諮', on: 'シ', kun: 'はか(る)', en: 'consult / inquire' },
+      { c: '審', on: 'シン', kun: 'つまびらか', en: 'deliberate / examine / scrutinise' },
+      { c: '裁', on: 'サイ', kun: 'さば(く)', en: 'judge / cut / decide' },
+      { c: '赦', on: 'シャ', kun: 'ゆる(す)', en: 'pardon / forgive / amnesty' },
+      { c: '催', on: 'サイ', kun: 'もよお(す)', en: 'hold (event) / urge / feel' },
+      { c: '醸', on: 'ジョウ', kun: 'かも(す)', en: 'brew / ferment / bring about' },
+      { c: '嗜', on: 'シ', kun: 'たしな(む)', en: 'be fond of / refined taste' },
+      { c: '凌', on: 'リョウ', kun: 'しの(ぐ)', en: 'endure / surpass / overcome' },
+      { c: '穿', on: 'セン', kun: 'うが(つ)', en: 'pierce / bore / see through' },
+      { c: '煽', on: 'セン', kun: 'あお(る)', en: 'fan / incite / stir up' },
+      { c: '窺', on: 'キ', kun: 'うかが(う)', en: 'peek / spy / observe carefully' },
+      { c: '蔑', on: 'ベツ', kun: 'さげす(む)', en: 'despise / look down on / scorn' },
+    ]},
+    { g: 'Classical & Atmospheric', k: [
+      { c: '曖', on: 'アイ', kun: '—', en: 'vague / obscure / ambiguous' },
+      { c: '昧', on: 'マイ', kun: 'くら(い)', en: 'dark / ignorant / indistinct' },
+      { c: '朦', on: 'モウ・モン', kun: '—', en: 'dim / hazy / indistinct' },
+      { c: '朧', on: 'ロウ', kun: 'おぼろ', en: 'hazy / dim (moonlight)' },
+      { c: '霞', on: 'カ', kun: 'かすみ', en: 'haze / mist / become hazy' },
+      { c: '霜', on: 'ソウ', kun: 'しも', en: 'frost' },
+      { c: '霧', on: 'ム', kun: 'きり', en: 'fog / mist' },
+      { c: '暁', on: 'ギョウ', kun: 'あかつき', en: 'dawn / daybreak / in the event' },
+      { c: '蒼', on: 'ソウ', kun: 'あお(い)', en: 'blue-green / pale / vast' },
+      { c: '黎', on: 'レイ', kun: 'くろ(い)', en: 'dark / dawn / multitude' },
+      { c: '燦', on: 'サン', kun: 'きらめ(く)', en: 'glittering / brilliant / radiant' },
+      { c: '煌', on: 'コウ', kun: 'きら(めく)', en: 'glitter / sparkle / brilliant' },
+    ]},
+  ];
+
+  function renderKanjiLevel(id, groups) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.innerHTML = groups.map(function (g) {
+      return '<div class="kanji-group">' +
+        '<div class="kanji-group-label">' + g.g + '</div>' +
+        '<div class="kanji-grid">' +
+        g.k.map(function (k) {
+          return '<div class="kanji-card" data-sound="' + k.c + '">' +
+            '<div class="kj-char">' + k.c + '</div>' +
+            '<div class="kj-on">' + k.on + '</div>' +
+            '<div class="kj-kun">' + k.kun + '</div>' +
+            '<div class="kj-en">' + k.en + '</div>' +
+            '<div class="kj-dot"></div></div>';
+        }).join('') +
+        '</div></div>';
+    }).join('');
+  }
+
+  renderKanjiLevel('n3-grid', N3);
+  renderKanjiLevel('n2-grid', N2);
+  renderKanjiLevel('n1-grid', N1);
+})();
+</script>
+
+<script>
+(function () {
+  const sections = document.querySelectorAll('.section[id]');
+  const sideLinks = document.querySelectorAll('.sidebar-links li a');
+  const secLinks  = document.querySelectorAll('.section-nav a');
+
+  function setActive(id) {
+    sideLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    secLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  }
+
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(s => obs.observe(s));
+  }
+
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  }
+
+  document.addEventListener('click', function (e) {
+    const card = e.target.closest('.kanji-card[data-sound]');
+    if (card) {
+      speak(card.dataset.sound);
+      card.classList.add('playing');
+      setTimeout(() => card.classList.remove('playing'), 900);
+    }
+  });
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+</script>
+
+<script src="../nav.js"></script>
+</body>
+</html>

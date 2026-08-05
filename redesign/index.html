@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Unlocked — Free Japanese Learning Tools, Games & Reference</title>
+<meta name="description" content="Free Japanese learning site with interactive tools, games, JLPT guides, and vocabulary reference. Hiragana, katakana, kanji, grammar, and more — no signup needed.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<style>
+/* Masthead */
+.masthead {
+  border-bottom: 1.5px solid var(--ink);
+  padding: 32px 40px 28px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 40px;
+  position: relative; overflow: hidden;
+}
+.masthead::before {
+  content: '語';
+  font-family: var(--serif);
+  font-size: 310px; font-weight: 900; line-height: 1;
+  position: absolute;
+  right: 420px; top: 50%; transform: translateY(-50%);
+  color: var(--ink); opacity: 0.055;
+  pointer-events: none; user-select: none;
+}
+.masthead-left {
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; z-index: 1; flex: 1;
+}
+.masthead-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 54px);
+  font-weight: 700; line-height: 1; letter-spacing: -0.02em;
+}
+.masthead-title .jp { color: var(--accent); margin-left: 16px; }
+.masthead-sub {
+  font-size: 13px; color: var(--mid);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.masthead-sub .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--rule); flex-shrink: 0; }
+
+/* Email signup */
+.email-box {
+  border: 1.5px solid var(--ink);
+  padding: 20px 24px;
+  display: flex; flex-direction: column; gap: 12px;
+  flex-shrink: 0; min-width: 260px; max-width: 320px;
+  position: relative; z-index: 1;
+}
+.email-box-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--mid);
+  display: flex; align-items: center; gap: 8px;
+}
+.email-box-label::before { content: '日'; font-family: var(--serif); font-size: 16px; color: var(--accent); font-weight: 700; }
+.email-box-title {
+  font-family: var(--serif); font-size: 16px; font-weight: 700; line-height: 1.3;
+}
+.email-box-sub { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.email-form { display: flex; flex-direction: column; gap: 8px; }
+.email-input {
+  border: 1px solid var(--rule); background: var(--ground); color: var(--ink);
+  padding: 9px 12px; font-family: var(--sans); font-size: 13px;
+  outline: none; transition: border-color 0.14s; width: 100%;
+}
+.email-input:focus { border-color: var(--ink); }
+.email-input::placeholder { color: var(--mid); }
+.email-submit {
+  background: var(--ink); color: var(--ground); border: 1.5px solid var(--ink);
+  padding: 10px 16px; font-family: var(--sans); font-size: 12px;
+  font-weight: 700; letter-spacing: 0.08em; cursor: pointer;
+  transition: background 0.14s, color 0.14s; text-align: center;
+}
+.email-submit:hover { background: var(--accent); border-color: var(--accent); }
+.email-submit:disabled { opacity: 0.5; cursor: default; }
+.email-done {
+  font-family: var(--serif); font-size: 15px; color: var(--accent);
+  text-align: center; padding: 8px 0;
+}
+
+/* Sitemap */
+.sitemap {
+  border-top: 1px solid var(--rule);
+  padding: 40px 40px 36px;
+}
+.sitemap-header {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--mid);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 12px;
+}
+.sitemap-header::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+.sitemap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+}
+.sitemap-col {
+  padding: 20px 22px 24px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.sitemap-col-label {
+  display: flex; align-items: baseline; gap: 8px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+.sitemap-col-jp { font-family: var(--serif); font-size: 18px; font-weight: 700; color: var(--accent); }
+.sitemap-col-en { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+.sitemap-links { display: flex; flex-direction: column; gap: 7px; }
+.sitemap-links a {
+  font-size: 13px; color: var(--mid);
+  transition: color 0.12s;
+}
+.sitemap-links a:hover { color: var(--accent); }
+
+@media (max-width: 900px) {
+  .masthead { flex-direction: column; align-items: flex-start; }
+  .email-box { max-width: 100%; min-width: 0; width: 100%; }
+  .sitemap-grid { grid-template-columns: repeat(2, 1fr); }
+  .sitemap { padding: 28px 20px; }
+}
+@media (max-width: 580px) {
+  .sitemap-grid { grid-template-columns: 1fr; }
+}
+
+/* ── CAROUSEL ── */
+.carousel-wrap {
+  border-bottom: 1.5px solid var(--ink);
+  max-width: var(--content-max); width: 100%;
+}
+
+/* Tab bar */
+.carousel-bar {
+  display: flex; align-items: stretch;
+  border-bottom: 1px solid var(--rule);
+  overflow-x: auto; scrollbar-width: none;
+}
+.carousel-bar::-webkit-scrollbar { display: none; }
+
+.ctab {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 0 22px; height: 44px;
+  background: none; border: none; border-right: 1px solid var(--rule);
+  border-bottom: 2.5px solid transparent; margin-bottom: -1px;
+  cursor: pointer; font-family: var(--sans); white-space: nowrap;
+  transition: color 0.14s, border-bottom-color 0.14s;
+  text-align: left;
+}
+.ctab-jp { font-family: var(--serif); font-size: 11px; color: var(--mid); line-height: 1; margin-bottom: 2px; }
+.ctab-en { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+.ctab:hover .ctab-jp,
+.ctab:hover .ctab-en { color: var(--ink); }
+.ctab.active .ctab-jp { color: var(--accent); }
+.ctab.active .ctab-en { color: var(--ink); }
+.ctab.active { border-bottom-color: var(--accent); }
+
+.carousel-arrows {
+  margin-left: auto; display: flex; flex-shrink: 0;
+  border-left: 1px solid var(--rule);
+}
+.carousel-arr {
+  width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+  background: none; border: none; border-right: 1px solid var(--rule);
+  cursor: pointer; font-size: 20px; color: var(--mid);
+  transition: color 0.14s, background 0.14s;
+}
+.carousel-arr:last-child { border-right: none; }
+.carousel-arr:hover { color: var(--ink); background: var(--faint); }
+
+/* Slide container */
+.carousel-slides { position: relative; overflow: hidden; }
+.carousel-slide {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+}
+.carousel-slide.active { display: grid; }
+
+/* Shared slide columns */
+.slide-left {
+  border-right: 1px solid var(--rule);
+  padding: 36px 40px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 280px;
+}
+.slide-right {
+  padding: 36px 40px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.slide-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 18px;
+}
+.slide-big {
+  font-family: var(--serif);
+  font-size: clamp(52px, 8vw, 100px);
+  font-weight: 700; line-height: 1; letter-spacing: -0.02em;
+  margin-bottom: 14px;
+}
+.slide-reading { font-family: var(--serif); font-size: 16px; color: var(--mid); margin-bottom: 8px; }
+.slide-meaning {
+  font-size: 20px; font-weight: 700; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.slide-pill {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 3px 10px;
+}
+.slide-audio {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 10px;
+  background: none; border: 1.5px solid var(--ink); cursor: pointer;
+  padding: 10px 20px; font-family: var(--sans); font-size: 13px;
+  font-weight: 700; letter-spacing: 0.06em; color: var(--ink);
+  transition: background 0.14s, color 0.14s; align-self: flex-start;
+}
+.slide-audio:hover { background: var(--ink); color: var(--ground); }
+.slide-audio.playing { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.slide-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 12px;
+}
+.slide-ex-jp {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.2vw, 24px);
+  font-weight: 700; line-height: 1.4; margin-bottom: 8px;
+}
+.slide-ex-en { font-size: 14px; color: var(--mid); line-height: 1.65; }
+.slide-note {
+  margin-top: 24px; padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px; color: var(--mid); line-height: 1.65;
+}
+.slide-link {
+  display: inline-block; margin-top: 10px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--accent); text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* Kanji: on/kun readings */
+.kanji-readings { display: flex; gap: 24px; margin-bottom: 8px; flex-wrap: wrap; }
+.kanji-reading-group { display: flex; flex-direction: column; gap: 3px; }
+.kanji-reading-label { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); }
+.kanji-reading-val { font-family: var(--serif); font-size: 15px; color: var(--ink); }
+
+/* Grammar pattern */
+.grammar-pattern {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 700; line-height: 1.2; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 14px;
+  transition: color 0.16s;
+}
+.grammar-pattern:hover { color: var(--accent); cursor: default; }
+.grammar-pattern-en { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.grammar-examples { display: flex; flex-direction: column; gap: 14px; }
+.grammar-eg { border-left: 2px solid var(--rule); padding-left: 14px; }
+.grammar-eg-jp { font-family: var(--serif); font-size: 16px; font-weight: 600; margin-bottom: 3px; }
+.grammar-eg-en { font-size: 13px; color: var(--mid); }
+
+/* Phrase */
+.phrase-jp {
+  font-family: var(--serif);
+  font-size: clamp(22px, 3.5vw, 42px);
+  font-weight: 700; line-height: 1.25; letter-spacing: -0.01em;
+  color: var(--ink); margin-bottom: 12px;
+  transition: color 0.16s;
+}
+.phrase-jp:hover { color: var(--accent); cursor: default; }
+.phrase-situation {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 4px 12px; margin-bottom: 16px;
+}
+
+/* Right column mid section */
+.slide-mid {
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+}
+.conj-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px 20px; margin-top: 10px;
+}
+.conj-item {}
+.conj-form { font-family: var(--serif); font-size: 17px; font-weight: 600; }
+.conj-label { font-size: 11px; color: var(--mid); letter-spacing: 0.04em; margin-top: 1px; }
+.slide-hook { font-size: 14px; color: var(--mid); line-height: 1.65; margin-top: 8px; }
+.slide-hook strong { color: var(--ink); font-weight: 600; }
+
+/* Carousel date + dots */
+.carousel-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 40px;
+  border-top: 1px solid var(--rule);
+  font-size: 11px; color: var(--mid);
+}
+.carousel-dots { display: flex; gap: 6px; }
+.cdot {
+  width: 6px; height: 6px;
+  background: var(--rule); border: 1px solid var(--mid);
+  cursor: pointer; transition: background 0.14s;
+}
+.cdot.active { background: var(--accent); border-color: var(--accent); }
+
+/* Section grid */
+.section-grid-wrap { max-width: var(--content-max); width: 100%; }
+.section-grid-header {
+  padding: 22px 40px 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.section-grid-header h2 {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--mid);
+}
+.section-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1.5px solid var(--ink);
+}
+.section-card {
+  display: flex; flex-direction: column;
+  padding: 28px 32px 32px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none; color: var(--ink);
+  transition: background 0.14s;
+  position: relative; overflow: hidden;
+}
+.section-card:nth-child(3n) { border-right: none; }
+.section-card:nth-last-child(-n+3) { border-bottom: none; }
+.section-card:hover { background: var(--faint); }
+.section-card:hover .sc-arrow { opacity: 1; transform: translateX(0); }
+.sc-jp { font-family: var(--serif); font-size: 42px; font-weight: 700; line-height: 1; color: var(--accent); margin-bottom: 14px; opacity: 0.85; }
+.sc-en { font-size: 13px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 8px; }
+.sc-desc { font-size: 13px; color: var(--mid); line-height: 1.6; flex: 1; }
+.sc-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+.sc-link { font-size: 11px; font-weight: 600; color: var(--mid); border: 1px solid var(--rule); padding: 4px 10px; transition: color 0.12s, border-color 0.12s; }
+.section-card:hover .sc-link { border-color: var(--ink); color: var(--ink); }
+.sc-arrow { position: absolute; bottom: 26px; right: 28px; font-size: 18px; color: var(--accent); opacity: 0; transform: translateX(-4px); transition: opacity 0.18s, transform 0.18s; }
+.section-card--walk { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 40px; padding: 28px 32px; border-right: none; border-bottom: none; }
+.section-card--walk .sc-jp { font-size: 56px; margin-bottom: 0; }
+.section-card--walk .sc-body { flex: 1; }
+.section-card--walk .sc-body .sc-en { margin-bottom: 6px; }
+.section-card--walk .sc-links { margin-top: 14px; }
+.section-card--walk .sc-arrow { bottom: auto; top: 50%; transform: translateY(-50%) translateX(-4px); }
+.section-card--walk:hover .sc-arrow { transform: translateY(-50%) translateX(0); }
+
+@media (max-width: 900px) {
+  .carousel-slide { grid-template-columns: 1fr; }
+  .slide-left { border-right: none; border-bottom: 1px solid var(--rule); }
+  .section-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-card:nth-child(3n) { border-right: 1px solid var(--rule); }
+  .section-card:nth-child(2n) { border-right: none; }
+  .section-card--walk { grid-column: 1 / -1; }
+  .masthead { padding: 24px 20px 20px; }
+  .slide-left, .slide-right { padding: 28px 24px; }
+  .section-grid-header { padding: 18px 24px 14px; }
+  .section-card { padding: 22px 22px 26px; }
+  .carousel-footer { padding: 10px 24px; }
+  .ctab { padding: 0 16px; }
+}
+@media (max-width: 580px) {
+  .section-grid { grid-template-columns: 1fr; }
+  .section-card { border-right: none !important; border-bottom: 1px solid var(--rule) !important; }
+  .section-card--walk { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+/* ── Hover-red on bold carousel words ── */
+.slide-big, .conj-form, .grammar-eg-jp { transition: color 0.16s; }
+.slide-big:hover, .conj-form:hover, .grammar-eg-jp:hover {
+  color: var(--accent); cursor: default;
+}
+
+/* ── Furigana / romaji: hidden ruby, reveals on hover ── */
+ruby { ruby-position: over; transition: color 0.16s; }
+ruby rt {
+  font-family: var(--serif);
+  font-size: 0.38em;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.18s;
+  user-select: none;
+  color: var(--accent);
+}
+ruby:hover rt { opacity: 1; }
+ruby:hover    { color: var(--accent); }
+/* k-char is very large — fixed rt size */
+#k-char { font-size: clamp(72px,12vw,140px); }
+#k-char ruby rt { font-size: 22px; letter-spacing: 0.08em; }
+/* grammar-eg-jp and k-words are small — keep rt legible */
+.grammar-eg-jp ruby rt { font-size: 11px; }
+/* section cards: rt in ink so it reads on the accent parent */
+.sc-jp { transition: opacity 0.16s; }
+.sc-jp ruby rt { font-size: 14px; color: var(--ink); letter-spacing: 0.06em; }
+</style>
+
+<div id="ju-nav"></div>
+
+<!-- ── MASTHEAD ── -->
+<div class="masthead">
+  <div class="masthead-left">
+    <h1 class="masthead-title">
+      Japanese Unlocked
+      <span class="jp"><ruby>日本語<rt>にほんご</rt></ruby></span>
+    </h1>
+    <div class="masthead-sub">
+      <span>Free Japanese learning tools, games, and reference guides</span>
+      <span class="dot"></span>
+      <span>No signup. No paywall.</span>
+    </div>
+  </div>
+
+  <div class="email-box">
+    <div class="email-box-label">Word a Day</div>
+    <div class="email-box-title">A new Japanese word in your inbox every morning</div>
+    <div class="email-box-sub">Reading + meaning + example sentence. Free, always.</div>
+    <form class="email-form" id="wotd-email-form" method="POST"
+          action="https://f535f95e.sibforms.com/serve/MUIFAGHqdF0sblAOWkL-GDH00bmZP2NoG9xPAmZHSP9uFWhnz_k8A5Fh2HSlkjMkRW4Xf2lToOT9jk5FSWjeDwfoC8_bPMBR_pAVEzmHx1ocndWV4_xPZUyJ1mnROhumDzxmOJF3OS0z5m5G2Gl0_qKYgAm53cMBr6U0nDoPVkKyDK6Cr9zFs22R-wn7R7_AIWxLhiRD0m2nL_CkSQ=="
+          data-type="subscription" novalidate>
+      <input class="email-input" type="email" name="EMAIL"
+             placeholder="your@email.com" autocomplete="email" required>
+      <button class="email-submit" type="submit">Subscribe →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ── CAROUSEL ── -->
+<div class="carousel-wrap" id="carousel">
+
+  <!-- Tab bar -->
+  <div class="carousel-bar">
+    <button class="ctab active" data-slide="0">
+      <span class="ctab-jp">今日の一言</span>
+      <span class="ctab-en">Word</span>
+    </button>
+    <button class="ctab" data-slide="1">
+      <span class="ctab-jp">今日の漢字</span>
+      <span class="ctab-en">Kanji</span>
+    </button>
+    <button class="ctab" data-slide="2">
+      <span class="ctab-jp">今日の文法</span>
+      <span class="ctab-en">Grammar</span>
+    </button>
+    <button class="ctab" data-slide="3">
+      <span class="ctab-jp">今日のフレーズ</span>
+      <span class="ctab-en">Phrase</span>
+    </button>
+    <div class="carousel-arrows">
+      <button class="carousel-arr" id="carr-prev" aria-label="Previous">‹</button>
+      <button class="carousel-arr" id="carr-next" aria-label="Next">›</button>
+    </div>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-slides">
+
+    <!-- SLIDE 0: Word of the Day -->
+    <div class="carousel-slide active" id="slide-0">
+      <div class="slide-left">
+        <div>
+          <div class="slide-eyebrow">Word of the Day</div>
+          <div class="slide-big" id="w-jp">食べる</div>
+          <div class="slide-reading" id="w-reading">たべる</div>
+          <div class="slide-meaning">
+            <span id="w-en">to eat</span>
+            <span class="slide-pill" id="w-type">verb</span>
+            <span class="slide-pill">N5</span>
+          </div>
+        </div>
+        <button class="slide-audio" id="w-audio">▶ Hear it</button>
+      </div>
+      <div class="slide-right">
+        <div>
+          <div class="slide-label">Example sentence</div>
+          <div class="slide-ex-jp" id="w-ex-jp">食べてみた。</div>
+          <div class="slide-ex-en" id="w-ex-en">I tried eating it.</div>
+        </div>
+        <div class="slide-mid">
+          <div class="slide-label">Key forms</div>
+          <div class="conj-grid" id="w-conj"></div>
+        </div>
+        <div class="slide-note" id="w-note"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 1: Kanji of the Day -->
+    <div class="carousel-slide" id="slide-1">
+      <div class="slide-left">
+        <div>
+          <div class="slide-eyebrow">Kanji of the Day</div>
+          <div class="slide-big" id="k-char">食</div>
+          <div class="kanji-readings">
+            <div class="kanji-reading-group">
+              <span class="kanji-reading-label">On'yomi</span>
+              <span class="kanji-reading-val" id="k-on">しょく・じき</span>
+            </div>
+            <div class="kanji-reading-group">
+              <span class="kanji-reading-label">Kun'yomi</span>
+              <span class="kanji-reading-val" id="k-kun">た(べる)・く(う)</span>
+            </div>
+          </div>
+          <div class="slide-meaning">
+            <span id="k-en">eat / food</span>
+            <span class="slide-pill" id="k-strokes">9 strokes</span>
+            <span class="slide-pill">N5</span>
+          </div>
+        </div>
+        <button class="slide-audio" id="k-audio">▶ Hear it</button>
+      </div>
+      <div class="slide-right">
+        <div>
+          <div class="slide-label">Common words</div>
+          <div class="grammar-examples" id="k-words"></div>
+        </div>
+        <div class="slide-mid">
+          <div class="slide-label">Memory hook</div>
+          <div class="slide-hook" id="k-hook"></div>
+        </div>
+        <div class="slide-note" id="k-note"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2: Grammar of the Day -->
+    <div class="carousel-slide" id="slide-2">
+      <div class="slide-left">
+        <div>
+          <div class="slide-eyebrow">Grammar of the Day</div>
+          <div class="grammar-pattern" id="g-pattern">～てみる</div>
+          <div class="grammar-pattern-en" id="g-en">to try doing something</div>
+          <div class="slide-pill" id="g-level" style="margin-top:4px">N5</div>
+        </div>
+        <button class="slide-audio" id="g-audio">▶ Hear example</button>
+      </div>
+      <div class="slide-right">
+        <div>
+          <div class="slide-label">Examples</div>
+          <div class="grammar-examples" id="g-examples"></div>
+        </div>
+        <div class="slide-note" id="g-note"></div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3: Phrase of the Day -->
+    <div class="carousel-slide" id="slide-3">
+      <div class="slide-left">
+        <div>
+          <div class="slide-eyebrow">Phrase of the Day</div>
+          <div class="phrase-jp" id="p-jp">よろしくお願いします</div>
+          <div class="slide-reading" id="p-reading">よろしくおねがいします</div>
+          <span class="phrase-situation" id="p-situation">First meeting</span>
+          <div class="slide-meaning" style="font-size:17px"><span id="p-en">Nice to meet you</span></div>
+        </div>
+        <button class="slide-audio" id="p-audio">▶ Hear it</button>
+      </div>
+      <div class="slide-right">
+        <div>
+          <div class="slide-label">In context</div>
+          <div class="slide-ex-jp" id="p-usage-jp">田中です。よろしくお願いします。</div>
+          <div class="slide-ex-en" id="p-usage-en">I'm Tanaka. Nice to meet you.</div>
+        </div>
+        <div class="slide-mid">
+          <div class="slide-label">Casual version</div>
+          <div class="slide-hook" id="p-casual"></div>
+        </div>
+        <div class="slide-note" id="p-note"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer: date + dots -->
+  <div class="carousel-footer">
+    <span id="carousel-date"></span>
+    <div class="carousel-dots">
+      <div class="cdot active" data-slide="0"></div>
+      <div class="cdot" data-slide="1"></div>
+      <div class="cdot" data-slide="2"></div>
+      <div class="cdot" data-slide="3"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── SECTION GRID ── -->
+<div class="section-grid-wrap">
+  <div class="section-grid-header">
+    <h2>Everything on the site</h2>
+  </div>
+  <div class="section-grid">
+
+    <a class="section-card" href="hiragana/">
+      <div class="sc-jp"><ruby>文字<rt>もじ</rt></ruby></div>
+      <div class="sc-en">Scripts</div>
+      <div class="sc-desc">Every hiragana, katakana, and kanji you need — with audio on every character and a full reading guide.</div>
+      <div class="sc-links">
+        <span class="sc-link">Hiragana あ</span>
+        <span class="sc-link">Katakana ア</span>
+        <span class="sc-link">Kanji 漢</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card" href="vocab/">
+      <div class="sc-jp"><ruby>語彙<rt>ごい</rt></ruby></div>
+      <div class="sc-en">Vocabulary</div>
+      <div class="sc-desc">N5 core words, everyday phrases, numbers, and a full searchable dictionary. Organised by topic and JLPT level.</div>
+      <div class="sc-links">
+        <span class="sc-link">N5 words</span>
+        <span class="sc-link">Phrases</span>
+        <span class="sc-link">Numbers</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card" href="grammar/">
+      <div class="sc-jp"><ruby>文法<rt>ぶんぽう</rt></ruby></div>
+      <div class="sc-en">Grammar</div>
+      <div class="sc-desc">Particles, verb conjugations, and sentence patterns explained plainly — with examples you'd actually use.</div>
+      <div class="sc-links">
+        <span class="sc-link">Particles</span>
+        <span class="sc-link">Verbs</span>
+        <span class="sc-link">Patterns</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card" href="courses/">
+      <div class="sc-jp"><ruby>練習<rt>れんしゅう</rt></ruby></div>
+      <div class="sc-en">Practice</div>
+      <div class="sc-desc">Real situations, shadowing trainer, immersive reader, sentence builder. Tools for using Japanese, not just studying it.</div>
+      <div class="sc-links">
+        <span class="sc-link">What Would You Say?</span>
+        <span class="sc-link">Shadowing</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card" href="jlpt/">
+      <div class="sc-jp">JLPT</div>
+      <div class="sc-en">JLPT</div>
+      <div class="sc-desc">Level guides from N5 to N1, question-type breakdowns, and full mock tests timed to the real exam format.</div>
+      <div class="sc-links">
+        <span class="sc-link">N5 Guide</span>
+        <span class="sc-link">Mock Tests</span>
+        <span class="sc-link">N5→N1</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card" href="games/">
+      <div class="sc-jp"><ruby>遊<rt>あそぶ</rt></ruby></div>
+      <div class="sc-en">Games</div>
+      <div class="sc-desc">Three games — battle RPG, rhythm, and memory match — that drill vocabulary and kana under real pressure. No downloads.</div>
+      <div class="sc-links">
+        <span class="sc-link">Kanji Quest ⚔</span>
+        <span class="sc-link">Rhythm ♪</span>
+        <span class="sc-link">Memory</span>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+    <a class="section-card section-card--walk" href="walk/">
+      <div class="sc-jp"><ruby>歩<rt>あるく</rt></ruby></div>
+      <div class="sc-body">
+        <div class="sc-en">Walk Mode</div>
+        <div class="sc-desc">Audio-first Japanese for commuters and walkers. Put your phone away and listen — scenes set in stations, cafés, and streets. No screen needed.</div>
+        <div class="sc-links">
+          <span class="sc-link">Morning commute</span>
+          <span class="sc-link">At the café</span>
+          <span class="sc-link">Lost in Tokyo</span>
+        </div>
+      </div>
+      <span class="sc-arrow">→</span>
+    </a>
+
+  </div>
+</div>
+
+<!-- ── SITEMAP ── -->
+<div class="sitemap">
+  <div class="sitemap-header">Site map</div>
+  <div class="sitemap-grid">
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">文字</span>
+        <span class="sitemap-col-en">Scripts</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/hiragana/">Hiragana — あ</a>
+        <a href="/katakana/">Katakana — ア</a>
+        <a href="/kanji/">Kanji — 漢字</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">語彙</span>
+        <span class="sitemap-col-en">Vocabulary</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/vocab/">Vocabulary hub</a>
+        <a href="/vocab/n5/">N5 Word List</a>
+        <a href="/vocab/phrases/">Everyday Phrases</a>
+        <a href="/vocab/numbers/">Numbers</a>
+        <a href="/vocab/dictionary/">Dictionary</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">文法</span>
+        <span class="sitemap-col-en">Grammar</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/grammar/">Grammar hub</a>
+        <a href="/grammar/particles/">Particles</a>
+        <a href="/grammar/verbs/">Verbs</a>
+        <a href="/grammar/patterns/">Sentence Patterns</a>
+        <a href="/grammar/sentence-quiz/">Sentence Quiz</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">練習</span>
+        <span class="sitemap-col-en">Practice</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/courses/">Practice hub</a>
+        <a href="/courses/what-would-you-say/">What Would You Say?</a>
+        <a href="/courses/shadowing/">Shadowing Trainer</a>
+        <a href="/courses/immersive-reader/">Immersive Reader</a>
+        <a href="/courses/sentence-forge/">Sentence Forge</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">JLPT</span>
+        <span class="sitemap-col-en">JLPT</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/jlpt/">JLPT hub</a>
+        <a href="/jlpt/n5/">N5 Guide</a>
+        <a href="/jlpt/n4/">N4 Guide</a>
+        <a href="/jlpt/n3/">N3 Guide</a>
+        <a href="/jlpt/n2/">N2 Guide</a>
+        <a href="/jlpt/n1/">N1 Guide</a>
+        <a href="/jlpt/mock/">Mock Tests</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">遊</span>
+        <span class="sitemap-col-en">Games</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/games/">Games hub</a>
+        <a href="/games/battle/">Kanji Quest</a>
+        <a href="/games/match/">Memory Match</a>
+        <a href="/games/rhythm/">Rhythm</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">歩</span>
+        <span class="sitemap-col-en">Walk</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/walk/">Walk Mode</a>
+        <a href="/walk/morning-commute/">Morning Commute</a>
+        <a href="/walk/at-the-cafe/">At the Café</a>
+        <a href="/walk/lost-in-tokyo/">Lost in Tokyo</a>
+      </div>
+    </div>
+
+    <div class="sitemap-col">
+      <div class="sitemap-col-label">
+        <span class="sitemap-col-jp">他</span>
+        <span class="sitemap-col-en">More</span>
+      </div>
+      <div class="sitemap-links">
+        <a href="/about/">About</a>
+        <a href="/videos/">Videos</a>
+        <a href="/resources/">Resources</a>
+        <a href="/jlpt/guide/">JLPT Question Guide</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+
+/* ── DATA ── */
+
+const WORDS = [
+  { jp:'食べる', r:'たべる', en:'to eat', type:'verb', ex:'食べてみた。', exEn:'I tried eating it.', note:'The て-form 食べて is the foundation of dozens of grammar patterns.', conj:[{f:'食べます',l:'polite present'},{f:'食べた',l:'past plain'},{f:'食べない',l:'negative'},{f:'食べて',l:'te-form'}] },
+  { jp:'飲む', r:'のむ', en:'to drink', type:'verb', ex:'お茶を飲みます。', exEn:'I drink tea.', note:'のんで (te-form) appears in 飲んでいます — "I am drinking." Also used for taking medicine: 薬を飲む.', conj:[{f:'飲みます',l:'polite present'},{f:'飲んだ',l:'past plain'},{f:'飲まない',l:'negative'},{f:'飲んで',l:'te-form'}] },
+  { jp:'見る', r:'みる', en:'to see / watch', type:'verb', ex:'映画を見ました。', exEn:'I watched a movie.', note:'Also works as a helper verb: ～てみる means "to try doing" — 食べてみる, 行ってみる.', conj:[{f:'見ます',l:'polite present'},{f:'見た',l:'past plain'},{f:'見ない',l:'negative'},{f:'見て',l:'te-form'}] },
+  { jp:'聞く', r:'きく', en:'to listen / ask', type:'verb', ex:'音楽を聞きます。', exEn:'I listen to music.', note:'Two meanings: to listen (ears) and to ask (someone). Context always makes it clear which one is meant.', conj:[{f:'聞きます',l:'polite present'},{f:'聞いた',l:'past plain'},{f:'聞かない',l:'negative'},{f:'聞いて',l:'te-form'}] },
+  { jp:'行く', r:'いく', en:'to go', type:'verb', ex:'学校に行きます。', exEn:'I go to school.', note:'Direction is marked with に. The te-form 行って is irregular — the expected 行いて does not exist.', conj:[{f:'行きます',l:'polite present'},{f:'行った',l:'past plain'},{f:'行かない',l:'negative'},{f:'行って',l:'te-form (irregular)'}] },
+  { jp:'来る', r:'くる', en:'to come', type:'verb', ex:'友達が来ました。', exEn:'My friend came.', note:'One of only two irregular verbs. Every form changes: くる → きます (polite), きた (past), こない (negative).', conj:[{f:'きます',l:'polite present'},{f:'きた',l:'past plain'},{f:'こない',l:'negative'},{f:'きて',l:'te-form'}] },
+  { jp:'帰る', r:'かえる', en:'to return home', type:'verb', ex:'何時に帰りますか？', exEn:'What time are you going home?', note:'Specifically means returning somewhere you belong. Going somewhere new uses 行く.', conj:[{f:'帰ります',l:'polite present'},{f:'帰った',l:'past plain'},{f:'帰らない',l:'negative'},{f:'帰って',l:'te-form'}] },
+  { jp:'話す', r:'はなす', en:'to speak', type:'verb', ex:'日本語で話してください。', exEn:'Please speak in Japanese.', note:'話 (はなし) as a noun means "story" or "conversation". Verb and noun share the same root kanji.', conj:[{f:'話します',l:'polite present'},{f:'話した',l:'past plain'},{f:'話さない',l:'negative'},{f:'話して',l:'te-form'}] },
+  { jp:'書く', r:'かく', en:'to write', type:'verb', ex:'名前を書いてください。', exEn:'Please write your name.', note:'書いて is used in 書いてみる (try writing) and 書いてください (please write).', conj:[{f:'書きます',l:'polite present'},{f:'書いた',l:'past plain'},{f:'書かない',l:'negative'},{f:'書いて',l:'te-form'}] },
+  { jp:'読む', r:'よむ', en:'to read', type:'verb', ex:'毎日本を読みます。', exEn:'I read a book every day.', note:'読書 (どくしょ) means "reading" as a hobby. 読み方 = "how to read" — useful for kanji questions.', conj:[{f:'読みます',l:'polite present'},{f:'読んだ',l:'past plain'},{f:'読まない',l:'negative'},{f:'読んで',l:'te-form'}] },
+  { jp:'大きい', r:'おおきい', en:'big', type:'i-adj', ex:'このかばんは大きいです。', exEn:'This bag is big.', note:'i-adjectives conjugate directly — no な needed before nouns. 大きな exists but is a different form.', conj:[{f:'大きいです',l:'polite present'},{f:'大きかった',l:'past plain'},{f:'大きくない',l:'negative'},{f:'大きく',l:'adverb'}] },
+  { jp:'新しい', r:'あたらしい', en:'new', type:'i-adj', ex:'新しい携帯を買いました。', exEn:'I bought a new phone.', note:'It\'s あたらしい, not しんしい. 新 reads しん in compounds (新幹線, 新年) but あたら when standalone.', conj:[{f:'新しいです',l:'polite present'},{f:'新しかった',l:'past plain'},{f:'新しくない',l:'negative'},{f:'新しく',l:'adverb'}] },
+  { jp:'難しい', r:'むずかしい', en:'difficult', type:'i-adj', ex:'漢字は難しいです。', exEn:'Kanji is difficult.', note:'Four syllables with a づ — むずかしい. Common in everyday speech and appears often in JLPT N5.', conj:[{f:'難しいです',l:'polite present'},{f:'難しかった',l:'past plain'},{f:'難しくない',l:'negative'},{f:'難しく',l:'adverb'}] },
+  { jp:'時間', r:'じかん', en:'time', type:'noun', ex:'時間がありますか？', exEn:'Do you have time?', note:'時間 means a duration. 時 alone means a clock time. 何時 (なんじ) = what time o\'clock?', conj:[{f:'時間がある',l:'have time'},{f:'時間がない',l:'no time'},{f:'時間をかける',l:'spend time'},{f:'時間通りに',l:'on time'}] },
+  { jp:'今日', r:'きょう', en:'today', type:'noun', ex:'今日は何曜日ですか？', exEn:'What day is it today?', note:'今日 reads きょう, not こんにち. こんにちは uses the same characters but a different reading.', conj:[{f:'今日は',l:'topic marker'},{f:'今日も',l:'today too'},{f:'今日から',l:'from today'},{f:'今日まで',l:'until today'}] },
+  { jp:'友達', r:'ともだち', en:'friend', type:'noun', ex:'友達とカフェに行きました。', exEn:'I went to a café with a friend.', note:'と here means "with" — different from the と that lists two nouns (A and B).', conj:[{f:'友達と',l:'with a friend'},{f:'友達に',l:'to a friend'},{f:'友達の',l:'friend\'s'},{f:'友達を',l:'(object marker)'}] },
+  { jp:'大丈夫', r:'だいじょうぶ', en:'OK / no problem', type:'na-adj', ex:'大丈夫ですか？', exEn:'Are you OK?', note:'大丈夫です can politely mean "no thanks" — saying you\'re fine without needing something.', conj:[{f:'大丈夫です',l:'polite present'},{f:'大丈夫でした',l:'was OK'},{f:'大丈夫じゃない',l:'not OK'},{f:'大丈夫なら',l:'if it\'s OK'}] },
+  { jp:'ちょっと', r:'ちょっと', en:'a little / just a moment', type:'adv', ex:'ちょっと待ってください。', exEn:'Please wait a moment.', note:'A polite softener and dodge — ちょっと… trailing off means "that\'s a bit difficult" (i.e. no).', conj:[{f:'ちょっと待って',l:'wait a sec'},{f:'ちょっとだけ',l:'just a little'},{f:'ちょっといい？',l:'got a moment?'},{f:'ちょっと…',l:'(polite refusal)'}] },
+  { jp:'もう', r:'もう', en:'already / not anymore', type:'adv', ex:'もう食べました。', exEn:'I already ate.', note:'With positive verb: already. With negative: not anymore. もう食べない = "won\'t eat anymore."', conj:[{f:'もう＋plain verb',l:'already done'},{f:'もう＋ている',l:'already in progress'},{f:'もう～ない',l:'no longer'},{f:'もう少し',l:'a little more'}] },
+  { jp:'まだ', r:'まだ', en:'still / not yet', type:'adv', ex:'まだ終わっていません。', exEn:"I haven't finished yet.", note:'Opposite of もう in negative sense. まだ + positive = still doing it. まだ + negative = not yet.', conj:[{f:'まだ＋positive',l:'still doing'},{f:'まだ＋negative',l:'not yet'},{f:'まだまだ',l:'still a long way'},{f:'まだいい',l:'not yet / it\'s fine'}] },
+  { jp:'一緒に', r:'いっしょに', en:'together', type:'adv', ex:'一緒に行きましょう。', exEn:"Let's go together.", note:'に marks manner of action. 一緒 alone means "same" — 一緒だ = "it\'s the same."', conj:[{f:'一緒に行く',l:'go together'},{f:'一緒にいる',l:'be together'},{f:'一緒にする',l:'do together'},{f:'みんな一緒',l:'everyone together'}] },
+  { jp:'電車', r:'でんしゃ', en:'train', type:'noun', ex:'電車で行きます。', exEn:'I go by train.', note:'で after transport = "by". 電車に乗る = get on the train. 電車を降りる = get off.', conj:[{f:'電車で',l:'by train'},{f:'電車に乗る',l:'board the train'},{f:'電車を待つ',l:'wait for train'},{f:'電車の中で',l:'on the train'}] },
+  { jp:'天気', r:'てんき', en:'weather', type:'noun', ex:'今日の天気はいいですね。', exEn:"The weather is nice today, isn't it.", note:'ですね at the end softens statements and invites agreement — essential for Japanese small talk.', conj:[{f:'天気がいい',l:'good weather'},{f:'天気が悪い',l:'bad weather'},{f:'天気予報',l:'weather forecast'},{f:'いい天気ですね',l:'nice weather!'}] },
+  { jp:'仕事', r:'しごと', en:'work / job', type:'noun', ex:'仕事は何時に終わりますか？', exEn:'What time does work finish?', note:'仕事をする = to work. 仕事 = work in general; 職業 is more formal and means "occupation."', conj:[{f:'仕事をする',l:'to work'},{f:'仕事がある',l:'have work'},{f:'仕事が終わる',l:'work finishes'},{f:'仕事に行く',l:'go to work'}] },
+  { jp:'高い', r:'たかい', en:'expensive / tall', type:'i-adj', ex:'この靴は高いです。', exEn:'These shoes are expensive.', note:'Two meanings: expensive (price) or tall (height). 値段が高い vs 背が高い — context is everything.', conj:[{f:'高いです',l:'polite present'},{f:'高かった',l:'past plain'},{f:'高くない',l:'not expensive'},{f:'高く',l:'at a high price'}] },
+];
+
+const KANJI = [
+  { char:'食', on:'しょく・じき', kun:'た(べる)・く(う)', en:'eat / food', strokes:'9', words:[{jp:'食べる',r:'たべる',en:'to eat'},{jp:'食事',r:'しょくじ',en:'meal'},{jp:'食堂',r:'しょくどう',en:'dining hall'}], hook:'Picture a person bending over a bowl — the bottom strokes represent food being eaten from a vessel.', note:'食事 (meal) is used in nearly every dining context. 外食 (がいしょく) means eating out.' },
+  { char:'日', on:'にち・じつ', kun:'ひ・か', en:'sun / day', strokes:'4', words:[{jp:'今日',r:'きょう',en:'today'},{jp:'日本',r:'にほん',en:'Japan'},{jp:'休日',r:'きゅうじつ',en:'day off'}], hook:'Originally a circle with a dot inside — the sun. The circle became a rectangle, the dot became a line.', note:'日本 literally means "origin of the sun" — Japan, where the sun rises first from China\'s perspective.' },
+  { char:'月', on:'げつ・がつ', kun:'つき', en:'moon / month', strokes:'4', words:[{jp:'月曜日',r:'げつようび',en:'Monday'},{jp:'来月',r:'らいげつ',en:'next month'},{jp:'満月',r:'まんげつ',en:'full moon'}], hook:'A crescent moon with two lines inside — the original pictograph is almost identical to the modern character.', note:'Monday (月曜日) is literally "moon day" — the same logic as French lundi or English "Monday."' },
+  { char:'山', on:'さん', kun:'やま', en:'mountain', strokes:'3', words:[{jp:'富士山',r:'ふじさん',en:'Mt Fuji'},{jp:'山道',r:'やまみち',en:'mountain path'},{jp:'登山',r:'とざん',en:'mountain climbing'}], hook:'Three peaks — the tallest in the center. Draw it and you can almost feel the mountain range.', note:'富士山 is the most famous compound — the iconic mountain appears on the ¥1000 note.' },
+  { char:'水', on:'すい', kun:'みず', en:'water', strokes:'4', words:[{jp:'水曜日',r:'すいようび',en:'Wednesday'},{jp:'お水',r:'おみず',en:'water (polite)'},{jp:'水泳',r:'すいえい',en:'swimming'}], hook:'Four drops flowing around a central stream — the strokes represent water rippling outward.', note:'Wednesday (水曜日) is "water day." The five elements name the weekdays: fire, water, wood, metal, earth.' },
+  { char:'火', on:'か', kun:'ひ', en:'fire', strokes:'4', words:[{jp:'火曜日',r:'かようび',en:'Tuesday'},{jp:'花火',r:'はなび',en:'fireworks'},{jp:'火事',r:'かじ',en:'fire (disaster)'}], hook:'Flames rising from a base — the jagged upward strokes look just like fire being drawn upward.', note:'花火 (fireworks) literally means "flower fire" — one of the most poetic compounds in everyday Japanese.' },
+  { char:'木', on:'もく・ぼく', kun:'き・こ', en:'tree / wood', strokes:'4', words:[{jp:'木曜日',r:'もくようび',en:'Thursday'},{jp:'木材',r:'もくざい',en:'timber'},{jp:'木の葉',r:'このは',en:'leaf'}], hook:'A tree: the vertical line is the trunk, the top horizontal line is branches, the bottom strokes are roots.', note:'Thursday is "tree day." 木 → 林 (grove) → 森 (forest): more trees, more complex the kanji.' },
+  { char:'金', on:'きん・こん', kun:'かね・かな', en:'gold / money', strokes:'8', words:[{jp:'金曜日',r:'きんようび',en:'Friday'},{jp:'お金',r:'おかね',en:'money'},{jp:'金色',r:'きんいろ',en:'golden colour'}], hook:'A roof over two people with dots underneath — the original image of gold nuggets buried in the earth.', note:'お金 (money) almost always takes the polite お prefix in daily conversation.' },
+  { char:'人', on:'じん・にん', kun:'ひと', en:'person', strokes:'2', words:[{jp:'日本人',r:'にほんじん',en:'Japanese person'},{jp:'外国人',r:'がいこくじん',en:'foreigner'},{jp:'大人',r:'おとな',en:'adult'}], hook:'Two strokes: one person leaning slightly, supported by another — two people, or one walking figure.', note:'大人 (adult) reads おとな, not だいじん — one of the most common irregular compound readings.' },
+  { char:'大', on:'だい・たい', kun:'おお', en:'big / large', strokes:'3', words:[{jp:'大学',r:'だいがく',en:'university'},{jp:'大切',r:'たいせつ',en:'important'},{jp:'大好き',r:'だいすき',en:'love / really like'}], hook:'A person 人 with arms stretched out wide — as big as they can make themselves.', note:'大好き literally means "big like" — used freely to say you love food, hobbies, or people.' },
+  { char:'本', on:'ほん', kun:'もと', en:'book / origin', strokes:'5', words:[{jp:'日本',r:'にほん',en:'Japan'},{jp:'本当',r:'ほんとう',en:'really / truth'},{jp:'本棚',r:'ほんだな',en:'bookshelf'}], hook:'Tree 木 with a mark at the base — pointing to the root, the origin. Books hold original knowledge.', note:'本当に (really!) is one of the most-used conversational interjections in Japanese.' },
+  { char:'学', on:'がく', kun:'まな', en:'study / learn', strokes:'8', words:[{jp:'学校',r:'がっこう',en:'school'},{jp:'大学',r:'だいがく',en:'university'},{jp:'学生',r:'がくせい',en:'student'}], hook:'A child 子 under a roof with hands reaching up toward a teacher — the act of being taught.', note:'学 appears in almost every education-related word. Recognise it and a huge vocabulary chunk opens up.' },
+  { char:'車', on:'しゃ', kun:'くるま', en:'car / vehicle', strokes:'7', words:[{jp:'電車',r:'でんしゃ',en:'train'},{jp:'自転車',r:'じてんしゃ',en:'bicycle'},{jp:'自動車',r:'じどうしゃ',en:'automobile'}], hook:'A wheel seen from above — the axle runs through the middle, spokes radiate outward.', note:'電車 = electric vehicle. 自転車 = self-turning vehicle. Japanese compounds are often beautifully literal.' },
+  { char:'目', on:'もく', kun:'め', en:'eye', strokes:'5', words:[{jp:'目的',r:'もくてき',en:'purpose / goal'},{jp:'注目',r:'ちゅうもく',en:'attention'},{jp:'目薬',r:'めぐすり',en:'eye drops'}], hook:'An eye rotated 90° to vertical — the two horizontal lines inside are the pupils looking outward.', note:'目的 (purpose) literally means "eye target" — what your eye is aimed at. A memorable way to learn it.' },
+  { char:'口', on:'こう・く', kun:'くち', en:'mouth', strokes:'3', words:[{jp:'入口',r:'いりぐち',en:'entrance'},{jp:'出口',r:'でぐち',en:'exit'},{jp:'人口',r:'じんこう',en:'population'}], hook:'A simple square — the shape of an open mouth. One of the most intuitive pictographs in the set.', note:'入口 and 出口 are on every door in Japan. Learn these two and you can navigate any building.' },
+];
+
+const GRAMMAR = [
+  { pattern:'～てみる', en:'to try doing something', level:'N5', examples:[{jp:'食べてみた。',en:'I tried eating it.'},{jp:'日本語で話してみてください。',en:'Please try speaking in Japanese.'},{jp:'着てみていいですよ。',en:'Feel free to try it on.'}], note:'Attach てみる to the te-form of any verb. It suggests trying an action to see what it\'s like — experimentation, not routine.' },
+  { pattern:'～たい', en:'want to do ~', level:'N5', examples:[{jp:'日本に行きたい。',en:'I want to go to Japan.'},{jp:'寿司が食べたいです。',en:'I want to eat sushi.'},{jp:'もっと日本語が上手になりたい。',en:'I want to get better at Japanese.'}], note:'Replace the ます ending with たい. The thing you want is often marked with が rather than を — both are accepted.' },
+  { pattern:'～ている', en:'currently doing / state of being', level:'N5', examples:[{jp:'今、食べています。',en:'I\'m eating right now.'},{jp:'結婚しています。',en:'I\'m married.'},{jp:'電車が止まっています。',en:'The train has stopped (and is stopped now).'}], note:'Two uses: ongoing action and resulting state. 止まっています = stopped and still stopped — the state, not the action.' },
+  { pattern:'～てください', en:'please do ~', level:'N5', examples:[{jp:'ここに名前を書いてください。',en:'Please write your name here.'},{jp:'ゆっくり話してください。',en:'Please speak slowly.'},{jp:'もう一度言ってください。',en:'Please say it one more time.'}], note:'The standard polite request. Less formal: てくれる or just て between close friends.' },
+  { pattern:'～ましょう', en:"let's ~ / shall we ~", level:'N5', examples:[{jp:'一緒に行きましょう。',en:"Let's go together."},{jp:'休みましょうか？',en:'Shall we take a break?'},{jp:'日本語で話しましょう。',en:"Let's speak in Japanese."}], note:'Replace ます with ましょう. Adding か makes it a suggestion — often softer than a direct invitation.' },
+  { pattern:'～から', en:'because ~ / since ~', level:'N5', examples:[{jp:'眠いから、寝ます。',en:'I\'m sleepy, so I\'ll sleep.'},{jp:'雨が降っているから、傘を持って行こう。',en:"It's raining, so let's take an umbrella."},{jp:'安いから、買います。',en:"It's cheap, so I'll buy it."}], note:'Cause comes first, then から, then result — opposite to English word order for "because."' },
+  { pattern:'～けど / ～が', en:'but / although', level:'N5', examples:[{jp:'行きたいけど、時間がない。',en:'I want to go, but I have no time.'},{jp:'高いですが、おいしいです。',en:"It's expensive, but it's delicious."},{jp:'分かるけど、できない。',en:"I understand, but I can't do it."}], note:'けど is casual; が is more formal. Both soften — Japanese often ends sentences with けど, leaving room for the listener.' },
+  { pattern:'～と思う', en:'I think that ~', level:'N5', examples:[{jp:'明日は晴れると思います。',en:"I think it'll be sunny tomorrow."},{jp:'これは難しいと思う。',en:'I think this is difficult.'},{jp:'彼は来ないと思う。',en:'I think he won\'t come.'}], note:'The clause before と is always plain form. と思います is polite; と思う is casual.' },
+  { pattern:'～すぎる', en:'too much / too ~', level:'N4', examples:[{jp:'食べすぎた。',en:'I ate too much.'},{jp:'このかばんは高すぎます。',en:'This bag is too expensive.'},{jp:'辛すぎて食べられない。',en:"It's too spicy to eat."}], note:'Attach to verb stems or adjective stems. i-adj: drop い first. The second example (too adj to do) uses て + potential negative.' },
+  { pattern:'～なければならない', en:'must do / have to do', level:'N4', examples:[{jp:'勉強しなければならない。',en:'I have to study.'},{jp:'もう行かなければなりません。',en:'I have to go now.'},{jp:'宿題をしなければならない。',en:'I have to do my homework.'}], note:'Long but important. Casual spoken shortcut: なきゃ. Similar pattern: なくてはいけない — same meaning, different form.' },
+];
+
+const PHRASES = [
+  { jp:'よろしくお願いします', r:'よろしくおねがいします', en:'Nice to meet you / please take care of this', situation:'First meeting', usageJp:'田中です。よろしくお願いします。', usageEn:"I'm Tanaka. Nice to meet you.", casual:'よろしく', casualNote:'Between friends or younger colleagues — drop everything after よろしく.', note:'One of the most important phrases in Japanese. Also used when handing off a task — "I\'m counting on you."' },
+  { jp:'お疲れ様でした', r:'おつかれさまでした', en:'Good work / thanks for your effort', situation:'End of work', usageJp:'今日もお疲れ様でした！', usageEn:'Good work today!', casual:'お疲れ！', casualNote:'お疲れ alone is common between close colleagues and friends after any shared effort.', note:'Said when leaving or when someone else finishes. お先に失礼します often comes immediately before.' },
+  { jp:'いただきます', r:'いただきます', en:'I humbly receive (before eating)', situation:'Before a meal', usageJp:'さあ、いただきます！', usageEn:"Right, let's eat!", casual:'いただきまーす', casualNote:'Drawn out slightly in casual settings — the meaning and context are identical, just more relaxed in tone.', note:'No real English equivalent. It thanks the food, the cook, and everyone who made the meal possible.' },
+  { jp:'ご馳走様でした', r:'ごちそうさまでした', en:'Thank you for the meal', situation:'After eating', usageJp:'おいしかったです。ご馳走様でした。', usageEn:"It was delicious. Thank you for the meal.", casual:'ごちそうさま', casualNote:'Drop the でした for a slightly more casual finish — still polite enough for most situations.', note:'The bookend to いただきます. Said to whoever cooked or paid. Also said when leaving a restaurant.' },
+  { jp:'なるほど', r:'なるほど', en:"I see / that makes sense", situation:'During conversation', usageJp:'なるほど、そういうことか。', usageEn:"I see, so that's how it is.", casual:'なるほどね', casualNote:'Adding ね softens it slightly and invites the other person to confirm — very natural in conversation.', note:'Best used when something genuinely clicks. Overusing it sounds like you\'re not really listening.' },
+  { jp:'大変でしたね', r:'たいへんでしたね', en:'That must have been tough', situation:'Showing empathy', usageJp:'仕事が多かったんですね。大変でしたね。', usageEn:'You had a lot of work. That must have been tough.', casual:'大変だったね', casualNote:'Plain past form + ね — warmer and more natural between friends than the polite でした version.', note:'ね at the end invites agreement and softens. 大変 = "great change" — a situation that demands serious effort.' },
+  { jp:'どういたしまして', r:'どういたしまして', en:"you're welcome", situation:'Responding to thanks', usageJp:'ありがとう！　—　どういたしまして。', usageEn:"Thank you! — You're welcome.", casual:'全然 / いいよ', casualNote:'どういたしまして sounds stiff between friends. 全然 (not at all) or いいよ (it\'s fine) are more natural.', note:'Formal and correct, but rarely used casually. Most native speakers use 全然 or 大丈夫 with friends.' },
+  { jp:'お先に失礼します', r:'おさきにしつれいします', en:'excuse me for leaving first', situation:'Leaving before others', usageJp:'もう帰ります。お先に失礼します。', usageEn:"I'm heading home. Excuse me for leaving first.", casual:'お先に', casualNote:'Just お先に among colleagues of similar rank — the same meaning in three syllables.', note:'失礼します literally means "I will be rude" — a pre-emptive apology for the slight of leaving first.' },
+  { jp:'ちょっといいですか', r:'ちょっといいですか', en:'do you have a moment?', situation:'Getting attention', usageJp:'すみません、ちょっといいですか？', usageEn:"Excuse me, do you have a moment?", casual:'ちょっといい？', casualNote:'Drop ですか and it becomes a friendly, natural way to get a friend\'s attention before asking something.', note:'ちょっと softens everything — you\'re signalling before you even say what you need.' },
+  { jp:'気をつけて', r:'きをつけて', en:'take care / be careful', situation:'Saying goodbye', usageJp:'じゃあ、行ってきます。　—　気をつけてね！', usageEn:"Right, I'm off. — Take care!", casual:'気をつけてね', casualNote:'Adding ね makes it warmer and more affectionate — exactly how friends or family would say it.', note:'気 (spirit) + をつけて (pay attention to). Literally "watch your spirit." Said whenever someone heads out.' },
+];
+
+/* ── CAROUSEL ENGINE ── */
+
+const TOTAL = 4;
+let current = 0;
+const DAY = Math.floor(Date.now() / 86400000);
+
+/* Hiragana → romaji (handles combos + small-tsu doubling) */
+function toRomaji(str) {
+  const C = {
+    'きゃ':'kya','きゅ':'kyu','きょ':'kyo','しゃ':'sha','しゅ':'shu','しょ':'sho',
+    'ちゃ':'cha','ちゅ':'chu','ちょ':'cho','にゃ':'nya','にゅ':'nyu','にょ':'nyo',
+    'ひゃ':'hya','ひゅ':'hyu','ひょ':'hyo','みゃ':'mya','みゅ':'myu','みょ':'myo',
+    'りゃ':'rya','りゅ':'ryu','りょ':'ryo','ぎゃ':'gya','ぎゅ':'gyu','ぎょ':'gyo',
+    'じゃ':'ja','じゅ':'ju','じょ':'jo','びゃ':'bya','びゅ':'byu','びょ':'byo',
+    'ぴゃ':'pya','ぴゅ':'pyu','ぴょ':'pyo',
+  };
+  const S = {
+    'あ':'a','い':'i','う':'u','え':'e','お':'o',
+    'か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko',
+    'さ':'sa','し':'shi','す':'su','せ':'se','そ':'so',
+    'た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to',
+    'な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no',
+    'は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho',
+    'ま':'ma','み':'mi','む':'mu','め':'me','も':'mo',
+    'や':'ya','ゆ':'yu','よ':'yo',
+    'ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro',
+    'わ':'wa','を':'wo','ん':'n',
+    'が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go',
+    'ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo',
+    'だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do',
+    'ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo',
+    'ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po',
+    'ー':'-','・':' ','（':'(','）':')',
+  };
+  let out = '', i = 0;
+  while (i < str.length) {
+    if (str[i] === 'っ') {
+      const nxt = C[str.slice(i+1,i+3)] || S[str[i+1]] || '';
+      if (nxt) out += nxt[0];
+      i++; continue;
+    }
+    const c2 = C[str.slice(i,i+2)];
+    if (c2) { out += c2; i += 2; continue; }
+    const c1 = S[str[i]];
+    if (c1 !== undefined) { out += c1; i++; continue; }
+    out += str[i]; i++;
+  }
+  return out;
+}
+
+/* Wrap text in a ruby tag with rt annotation */
+function ruby(text, rt) {
+  return `<ruby>${text}<rt>${rt}</rt></ruby>`;
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+/* Populate slide 0 — Word */
+function initWord() {
+  const w = WORDS[DAY % WORDS.length];
+  document.getElementById('w-jp').textContent      = w.jp;
+  document.getElementById('w-reading').innerHTML   = ruby(w.r, toRomaji(w.r));
+  document.getElementById('w-en').textContent      = w.en;
+  document.getElementById('w-type').textContent    = w.type;
+  document.getElementById('w-ex-jp').textContent   = w.ex;
+  document.getElementById('w-ex-en').textContent   = w.exEn;
+  document.getElementById('w-note').innerHTML      = w.note + '<br><a class="slide-link" href="vocab/n5/">All N5 vocabulary →</a>';
+  const conjEl = document.getElementById('w-conj');
+  if (w.conj) {
+    conjEl.innerHTML = w.conj.map(c =>
+      `<div class="conj-item"><div class="conj-form">${c.f}</div><div class="conj-label">${c.l}</div></div>`
+    ).join('');
+  }
+  document.getElementById('w-audio').addEventListener('click', function () {
+    speak(w.jp + '。' + w.ex);
+    this.classList.add('playing');
+    setTimeout(() => this.classList.remove('playing'), 1500);
+  });
+}
+
+/* Populate slide 1 — Kanji */
+function initKanji() {
+  const k = KANJI[DAY % KANJI.length];
+  document.getElementById('k-char').innerHTML = ruby(k.char, k.on);
+  document.getElementById('k-on').innerHTML   = ruby(k.on,   toRomaji(k.on));
+  document.getElementById('k-kun').innerHTML  = ruby(k.kun,  toRomaji(k.kun));
+  document.getElementById('k-en').textContent      = k.en;
+  document.getElementById('k-strokes').textContent = k.strokes + ' strokes';
+  document.getElementById('k-words').innerHTML = k.words.map(w =>
+    `<div class="grammar-eg">
+      <div class="grammar-eg-jp"><ruby>${w.jp}<rt>${w.r}</rt></ruby></div>
+      <div class="grammar-eg-en">${w.en}</div>
+    </div>`
+  ).join('');
+  document.getElementById('k-hook').textContent  = k.hook;
+  document.getElementById('k-note').innerHTML    = k.note + '<br><a class="slide-link" href="kanji/">All kanji →</a>';
+  document.getElementById('k-audio').addEventListener('click', function () {
+    speak(k.char + '。' + k.words.map(w => w.jp).join('。'));
+    this.classList.add('playing');
+    setTimeout(() => this.classList.remove('playing'), 2000);
+  });
+}
+
+/* Populate slide 2 — Grammar */
+function initGrammar() {
+  const g = GRAMMAR[DAY % GRAMMAR.length];
+  document.getElementById('g-pattern').textContent = g.pattern;
+  document.getElementById('g-en').textContent      = g.en;
+  document.getElementById('g-level').textContent   = g.level;
+  document.getElementById('g-examples').innerHTML  = g.examples.map(e =>
+    `<div class="grammar-eg">
+      <div class="grammar-eg-jp">${e.jp}</div>
+      <div class="grammar-eg-en">${e.en}</div>
+    </div>`
+  ).join('');
+  document.getElementById('g-note').innerHTML = g.note + '<br><a class="slide-link" href="grammar/">All grammar →</a>';
+  document.getElementById('g-audio').addEventListener('click', function () {
+    speak(g.examples[0].jp);
+    this.classList.add('playing');
+    setTimeout(() => this.classList.remove('playing'), 1500);
+  });
+}
+
+/* Populate slide 3 — Phrase */
+function initPhrase() {
+  const p = PHRASES[DAY % PHRASES.length];
+  document.getElementById('p-jp').textContent        = p.jp;
+  document.getElementById('p-reading').innerHTML     = ruby(p.r, toRomaji(p.r));
+  document.getElementById('p-en').textContent        = p.en;
+  document.getElementById('p-situation').textContent = p.situation;
+  document.getElementById('p-usage-jp').textContent  = p.usageJp;
+  document.getElementById('p-usage-en').textContent  = p.usageEn;
+  document.getElementById('p-casual').innerHTML =
+    `<strong>${p.casual}</strong> — ${p.casualNote}`;
+  document.getElementById('p-note').innerHTML = p.note + '<br><a class="slide-link" href="vocab/phrases/">All phrases →</a>';
+  document.getElementById('p-audio').addEventListener('click', function () {
+    speak(p.jp + '。' + p.usageJp);
+    this.classList.add('playing');
+    setTimeout(() => this.classList.remove('playing'), 2000);
+  });
+}
+
+/* Show a slide */
+function goTo(n) {
+  document.querySelectorAll('.carousel-slide').forEach((s, i) => s.classList.toggle('active', i === n));
+  document.querySelectorAll('.ctab').forEach((t, i) => t.classList.toggle('active', i === n));
+  document.querySelectorAll('.cdot').forEach((d, i) => d.classList.toggle('active', i === n));
+  current = n;
+}
+
+/* Date */
+function setDate() {
+  const d = new Date();
+  document.getElementById('carousel-date').textContent =
+    d.toLocaleDateString('en-GB', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+}
+
+/* ── INIT ── */
+function init() {
+  initWord(); initKanji(); initGrammar(); initPhrase();
+  setDate();
+
+  document.querySelectorAll('.ctab').forEach((t, i) => {
+    t.addEventListener('click', () => goTo(i));
+  });
+  document.querySelectorAll('.cdot').forEach((d, i) => {
+    d.addEventListener('click', () => goTo(i));
+  });
+  document.getElementById('carr-prev').addEventListener('click', () => goTo((current + TOTAL - 1) % TOTAL));
+  document.getElementById('carr-next').addEventListener('click', () => goTo((current + 1) % TOTAL));
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}
+
+/* ── Email signup ── */
+(function () {
+  const form = document.getElementById('wotd-email-form');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const btn = form.querySelector('.email-submit');
+    btn.disabled = true;
+    btn.textContent = '…';
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      mode: 'no-cors'
+    }).then(function () {
+      form.innerHTML = '<div class="email-done">ありがとう！ You\'re subscribed.</div>';
+    }).catch(function () {
+      form.innerHTML = '<div class="email-done">ありがとう！ You\'re subscribed.</div>';
+    });
+  });
+})();
+
+})();
+</script>
+
+<script src="nav.js"></script>
+</body>
+</html>

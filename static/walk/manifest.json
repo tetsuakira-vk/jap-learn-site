@@ -1,0 +1,170 @@
+[
+  {
+    "session_id": "2026-07-26",
+    "scene_id": "language_exchange_meetup",
+    "title": "Language Exchange Meetup",
+    "scene_intro": "You're at a weekly language exchange evening at a community centre in Tokyo. You've just arrived and spotted a name badge that says Kenji. He's looking for an English conversation partner — and you're looking for Japanese practice. You head over to introduce yourself.",
+    "other_character": "Kenji, a friendly Japanese man in his twenties",
+    "unit_count": 10,
+    "beat_count": 10,
+    "duration_seconds": 202,
+    "audio_url": "audio/2026-07-26.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "le_001",
+        "start_ms": 17392,
+        "context_line": "You catch Kenji's eye. He smiles and waits.",
+        "character_japanese": "",
+        "english_cue": "Say hello.",
+        "japanese_answer": "こんにちは。",
+        "romaji": "Konnichiwa.",
+        "grammar_tag": "greeting"
+      },
+      {
+        "beat": 2,
+        "srs_id": "le_002",
+        "start_ms": 30488,
+        "context_line": "Kenji nods.",
+        "character_japanese": "",
+        "english_cue": "Say nice to meet you and give your name.",
+        "japanese_answer": "はじめまして、ロブです。",
+        "romaji": "Hajimemashite, Robu desu.",
+        "grammar_tag": "self-intro-hajimemashite"
+      },
+      {
+        "beat": 3,
+        "srs_id": "le_003",
+        "start_ms": 46435,
+        "context_line": "Kenji introduces himself.",
+        "character_japanese": "はじめまして、けんじです。よろしく！",
+        "english_cue": "Respond: pleased to meet you too.",
+        "japanese_answer": "よろしくお願いします。",
+        "romaji": "Yoroshiku onegai shimasu.",
+        "grammar_tag": "yoroshiku"
+      },
+      {
+        "beat": 4,
+        "srs_id": "le_004",
+        "start_ms": 66525,
+        "context_line": "Kenji asks where you're from.",
+        "character_japanese": "どこから来ましたか？",
+        "english_cue": "Say you're from the UK.",
+        "japanese_answer": "イギリスから来ました。",
+        "romaji": "Igirisu kara kimashita.",
+        "grammar_tag": "origin-kara-kimashita"
+      },
+      {
+        "beat": 5,
+        "srs_id": "le_005",
+        "start_ms": 82784,
+        "context_line": "Kenji says oh, England! and asks if you're studying Japanese.",
+        "character_japanese": "え、イギリスから！日本語を勉強していますか？",
+        "english_cue": "Say yes, you're studying Japanese.",
+        "japanese_answer": "はい、日本語を勉強しています。",
+        "romaji": "Hai, Nihongo wo benkyou shite imasu.",
+        "grammar_tag": "verb-te-iru-progressive"
+      },
+      {
+        "beat": 6,
+        "srs_id": "le_006",
+        "start_ms": 109694,
+        "context_line": "Kenji asks how long you've been studying.",
+        "character_japanese": "いつから勉強しましたか？",
+        "english_cue": "Say just a little — just a short time.",
+        "japanese_answer": "少しです。",
+        "romaji": "Sukoshi desu.",
+        "grammar_tag": "amount-sukoshi"
+      },
+      {
+        "beat": 7,
+        "srs_id": "le_007",
+        "start_ms": 126297,
+        "context_line": "Kenji asks if you like Japan.",
+        "character_japanese": "日本が好きですか？",
+        "english_cue": "Say yes, you like Japan very much.",
+        "japanese_answer": "はい、日本がとても好きです。",
+        "romaji": "Hai, Nihon ga totemo suki desu.",
+        "grammar_tag": "ga-suki-desu"
+      },
+      {
+        "beat": 8,
+        "srs_id": "le_008",
+        "start_ms": 147087,
+        "context_line": "Kenji asks what you like.",
+        "character_japanese": "何が好きですか？",
+        "english_cue": "Say you like Japanese food.",
+        "japanese_answer": "日本の食べ物が好きです。",
+        "romaji": "Nihon no tabemono ga suki desu.",
+        "grammar_tag": "ga-suki-desu"
+      },
+      {
+        "beat": 9,
+        "srs_id": "le_009",
+        "start_ms": 165082,
+        "context_line": "Kenji laughs and says he likes English music.",
+        "character_japanese": "いいですね！わたしは英語の音楽が好きです。",
+        "english_cue": "Say that's great.",
+        "japanese_answer": "いいですね！",
+        "romaji": "Ii desu ne!",
+        "grammar_tag": "ne-agreement"
+      },
+      {
+        "beat": 10,
+        "srs_id": "le_010",
+        "start_ms": 183342,
+        "context_line": "Kenji suggests practising together.",
+        "character_japanese": "いっしょにやりましょう！",
+        "english_cue": "Say yes please, let's do that.",
+        "japanese_answer": "はい、お願いします！",
+        "romaji": "Hai, onegai shimasu!",
+        "grammar_tag": "onegai-shimasu"
+      }
+    ]
+  },
+  {
+    "session_id": "2026-07-27",
+    "scene_id": "coffee_shop_order",
+    "title": "Coffee Shop Order",
+    "scene_intro": "You're in a cosy coffee shop on a busy Tokyo side street. It's mid-morning, and the place is warm and quietly humming. A young barista named Yuki is behind the counter, pen in hand, waiting to take your order. You'd like a coffee — hot — and something from the cake display.",
+    "unit_count": 3,
+    "beat_count": 3,
+    "duration_seconds": 66,
+    "audio_url": "audio/2026-07-27.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "cs_001",
+        "start_ms": 18424,
+        "context_line": "You walk up to the counter. Yuki looks up and smiles, ready to take your order.",
+        "character_japanese": "",
+        "english_cue": "Get her attention politely.",
+        "japanese_answer": "すみません。",
+        "romaji": "Sumimasen.",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 2,
+        "srs_id": "cs_002",
+        "start_ms": 34392,
+        "context_line": "Yuki nods and waits.",
+        "character_japanese": "",
+        "english_cue": "Order a coffee, please.",
+        "japanese_answer": "コーヒーをください。",
+        "romaji": "Koohii wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 3,
+        "srs_id": "cs_003",
+        "start_ms": 48707,
+        "context_line": "Yuki asks: hot or iced?",
+        "character_japanese": "ホットとアイス、どちらですか？",
+        "english_cue": "Say hot, please.",
+        "japanese_answer": "ホットをください。",
+        "romaji": "Hotto wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      }
+    ]
+  }
+]

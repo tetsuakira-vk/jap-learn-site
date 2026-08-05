@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JLPT N2 Study Guide — Vocabulary, Grammar & Kanji | Japanese Unlocked</title>
+<meta name="description" content="Complete JLPT N2 study guide. 6,000 vocabulary words, 300 grammar patterns, 1,000 kanji. The professional and academic gateway — free study guide and mock tests.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.level-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--ink); padding: 8px 18px; margin-bottom: 24px;
+}
+.lb-level { font-family: var(--serif); font-size: 28px; font-weight: 700; line-height: 1; }
+.lb-divider { width: 1.5px; height: 28px; background: var(--rule); }
+.lb-info { display: flex; flex-direction: column; gap: 2px; }
+.lb-name { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.lb-sub  { font-size: 11px; color: var(--mid); }
+
+.stats-row { display: flex; gap: 0; border: 1px solid var(--rule); margin-bottom: 32px; }
+.stat-item { flex: 1; padding: 18px 16px; border-right: 1px solid var(--rule); display: flex; flex-direction: column; gap: 4px; }
+.stat-item:last-child { border-right: none; }
+.stat-num  { font-family: var(--serif); font-size: 26px; font-weight: 700; line-height: 1; }
+.stat-label { font-size: 11px; color: var(--mid); font-weight: 600; letter-spacing: 0.04em; }
+
+.path-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); margin-bottom: 40px; }
+.path-card { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 24px 22px; display: flex; flex-direction: column; gap: 6px; text-decoration: none; color: inherit; transition: background 0.14s; min-height: 140px; }
+a.path-card:hover { background: var(--faint); }
+.path-card.soon { opacity: 0.6; cursor: default; }
+.pc-jp    { font-family: var(--serif); font-size: 30px; font-weight: 700; line-height: 1; }
+.pc-label { font-size: 14px; font-weight: 700; margin-top: 4px; }
+.pc-count { font-size: 12px; color: var(--mid); }
+.pc-cta   { margin-top: auto; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+.pc-soon  { margin-top: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rule); border: 1px solid var(--rule); padding: 3px 8px; align-self: flex-start; }
+
+.test-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); margin-bottom: 32px; }
+.test-table th { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); padding: 10px 16px; text-align: left; background: var(--faint); border-bottom: 1.5px solid var(--rule); }
+.test-table td { padding: 12px 16px; border-bottom: 1px solid var(--rule); font-size: 13px; vertical-align: top; }
+.test-table tr:last-child td { border-bottom: none; }
+.test-table .td-section { font-weight: 700; }
+.test-table .td-time { color: var(--accent); font-weight: 700; font-variant-numeric: tabular-nums; }
+.test-table .td-marks { color: var(--mid); }
+
+.pass-bar { border: 1px solid var(--rule); padding: 20px 22px; margin-bottom: 32px; display: flex; align-items: center; gap: 24px; }
+.pass-track { flex: 1; height: 8px; background: var(--rule); position: relative; }
+.pass-fill  { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); width: 50%; }
+.pass-info  { flex-shrink: 0; }
+.pass-score { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+.pass-label { font-size: 11px; color: var(--mid); }
+
+.grammar-table { width: 100%; border-collapse: collapse; border: 1px solid var(--rule); margin-bottom: 24px; }
+.grammar-table th { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); padding: 8px 14px; text-align: left; background: var(--faint); border-bottom: 1.5px solid var(--rule); }
+.grammar-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.grammar-table tr:last-child td { border-bottom: none; }
+.gt-jp { font-family: var(--serif); font-size: 16px; font-weight: 700; }
+.gt-en { color: var(--mid); font-size: 12px; }
+
+.callout {
+  border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+  padding: 14px 18px; margin-bottom: 24px; font-size: 13px;
+}
+.callout strong { color: var(--accent); }
+
+@media (max-width: 600px) {
+  .path-grid { grid-template-columns: 1fr; }
+  .stats-row { flex-wrap: wrap; }
+  .stat-item { min-width: 45%; border-bottom: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    JLPT
+    <span class="sep">›</span>
+    N2
+  </div>
+  <h1 class="page-h1">JLPT N2 <span class="h1-jp">日本語能力試験</span></h1>
+  <div class="page-meta">
+    <span>Upper Intermediate</span>
+    <span class="meta-pill">Study Guide</span>
+    <span class="meta-pill">Free</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#overview">Overview</a>
+  <a href="#path">Study Path</a>
+  <a href="#grammar">Grammar</a>
+  <a href="#format">Test Format</a>
+  <a href="#tips">Tips</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">N2</p>
+    <ul class="sidebar-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#path">Study path</a></li>
+      <li><a href="#grammar">Key grammar</a></li>
+      <li><a href="#format">Test format</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">N2 Resources</p>
+    <ul class="sidebar-links">
+      <li><a href="vocab/">Vocabulary <span class="side-hint">~6,000</span></a></li>
+      <li><a href="../../kanji/#n2">Kanji <span class="side-hint">1,000</span></a></li>
+      <li><a href="../../jlpt/mock/">Mock Tests</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Other Levels</p>
+    <ul class="sidebar-links">
+      <li><a href="../n5/">N5</a></li>
+      <li><a href="../n4/">N4</a></li>
+      <li><a href="../n3/">N3</a></li>
+      <li><a href="../n1/">N1</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <!-- ── OVERVIEW ── -->
+    <section class="section" id="overview">
+      <div class="section-heading">
+        <h2>What is N2?</h2>
+        <span class="sh-jp">N2とは</span>
+      </div>
+
+      <div class="level-badge">
+        <div class="lb-level">N2</div>
+        <div class="lb-divider"></div>
+        <div class="lb-info">
+          <div class="lb-name">Upper Intermediate</div>
+          <div class="lb-sub">JLPT Level 2 of 5</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num">~6,000</div>
+          <div class="stat-label">Vocabulary words</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">~300</div>
+          <div class="stat-label">Grammar patterns</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">1,000</div>
+          <div class="stat-label">Kanji</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">155<span style="font-size:16px;font-weight:400">min</span></div>
+          <div class="stat-label">Total test time</div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>N2 is the professional and academic gateway of the JLPT. It certifies that you can understand Japanese used in a wide range of everyday and near-professional situations — read newspapers, follow TV news, understand complex written material on a variety of topics, and hold detailed conversations on abstract subjects.</p>
+        <p>N2 is the level that actually opens doors in Japan. Most universities require N2 for international students. Many Japanese companies accept N2 as sufficient for office work, customer service, and graduate roles — particularly for positions where you're working in both English and Japanese. A significant number of learners spend two or more years at N3 level before being ready for N2.</p>
+        <p>The vocabulary reaches ~6,000 words and the 1,000 kanji include the full Jōyō kanji that every Japanese elementary school graduate is expected to know. Grammar becomes formally complex — business register, literary constructions, and nuanced connectives that don't exist in lower levels.</p>
+      </div>
+    </section>
+
+    <!-- ── STUDY PATH ── -->
+    <section class="section" id="path">
+      <div class="section-heading">
+        <h2>Study Path</h2>
+        <span class="sh-jp">学習の流れ</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>At N2, immersion isn't optional — it's the only way to acquire 6,000 words and 1,000 kanji. Textbook study and immersion should run in parallel the entire time, with native input making up an increasing share of your study hours as you progress.</p>
+      </div>
+      <div class="path-grid">
+        <div class="path-card soon">
+          <div class="pc-jp">語彙</div>
+          <div class="pc-label">Vocabulary</div>
+          <div class="pc-count">~6,000 words with audio</div>
+          <div class="pc-soon">Coming soon</div>
+        </div>
+        <div class="path-card soon">
+          <div class="pc-jp">文法</div>
+          <div class="pc-label">Grammar</div>
+          <div class="pc-count">~300 patterns with examples</div>
+          <div class="pc-soon">Coming soon</div>
+        </div>
+        <a class="path-card" href="../../kanji/#n2">
+          <div class="pc-jp">漢字</div>
+          <div class="pc-label">Kanji</div>
+          <div class="pc-count">1,000 characters with readings</div>
+          <div class="pc-cta">View N2 kanji →</div>
+        </a>
+        <a class="path-card" href="../../jlpt/mock/">
+          <div class="pc-jp">練習</div>
+          <div class="pc-label">Mock Tests</div>
+          <div class="pc-count">Full timed practice tests</div>
+          <div class="pc-cta">Practice →</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ── GRAMMAR ── -->
+    <section class="section" id="grammar">
+      <div class="section-heading">
+        <h2>Key Grammar Areas</h2>
+        <span class="sh-jp">文法のポイント</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>N2 grammar is characterised by formal connective expressions — the kind found in editorials, business documents, and academic writing. These are rarely heard in casual speech but appear extensively in written Japanese and formal contexts.</p>
+      </div>
+
+      <table class="grammar-table">
+        <thead><tr>
+          <th>Pattern</th><th>Meaning</th><th>Example</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="gt-jp">〜にもかかわらず</span><br><span class="gt-en">noun/plain form + にもかかわらず</span></td>
+            <td>Concession — "despite…" / "in spite of…" / "regardless of…"</td>
+            <td>雨<strong>にもかかわらず</strong>、大勢の人が集まった。<br><span style="color:var(--mid);font-size:12px">Despite the rain, a large crowd gathered.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜に基づいて</span><br><span class="gt-en">noun + に基づいて</span></td>
+            <td>Basis — "based on…" / "grounded in…"</td>
+            <td>データ<strong>に基づいて</strong>判断する。<br><span style="color:var(--mid);font-size:12px">I'll make a decision based on the data.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜ざるを得ない</span><br><span class="gt-en">nai-stem + ざるを得ない</span></td>
+            <td>Unavoidable necessity — "cannot help but…" / "have no choice but to…"</td>
+            <td>この結果は認めざる<strong>を得ない</strong>。<br><span style="color:var(--mid);font-size:12px">I have no choice but to accept this result.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜ものの</span><br><span class="gt-en">plain form + ものの</span></td>
+            <td>Concession with limitation — "although…" / "even though… (but)"</td>
+            <td>合格した<strong>ものの</strong>、自信はまだない。<br><span style="color:var(--mid);font-size:12px">Although I passed, I'm still not confident.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜に過ぎない</span><br><span class="gt-en">noun/plain form + に過ぎない</span></td>
+            <td>Minimising — "nothing more than…" / "merely…" / "only…"</td>
+            <td>これは偶然<strong>に過ぎない</strong>。<br><span style="color:var(--mid);font-size:12px">This is nothing more than coincidence.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜に加えて</span><br><span class="gt-en">noun + に加えて</span></td>
+            <td>Addition — "in addition to…" / "on top of…"</td>
+            <td>経験<strong>に加えて</strong>、資格も必要だ。<br><span style="color:var(--mid);font-size:12px">In addition to experience, qualifications are also required.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜につれて</span><br><span class="gt-en">plain form + につれて</span></td>
+            <td>Parallel change — "as… (something changes), so does…"</td>
+            <td>時間が経つ<strong>につれて</strong>、記憶が薄れる。<br><span style="color:var(--mid);font-size:12px">As time passes, the memories fade.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜をめぐって</span><br><span class="gt-en">noun + をめぐって</span></td>
+            <td>Issue at centre — "concerning…" / "surrounding…" / "over (the issue of)…"</td>
+            <td>その問題<strong>をめぐって</strong>、議論が続いている。<br><span style="color:var(--mid);font-size:12px">The debate continues surrounding that issue.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜に反して</span><br><span class="gt-en">noun + に反して</span></td>
+            <td>Contrary to expectation — "contrary to…" / "against…"</td>
+            <td>予想<strong>に反して</strong>、結果は良かった。<br><span style="color:var(--mid);font-size:12px">Contrary to expectations, the result was good.</span></td>
+          </tr>
+          <tr>
+            <td><span class="gt-jp">〜にしたがって</span><br><span class="gt-en">noun/plain form + にしたがって</span></td>
+            <td>Accordance or proportional change — "in accordance with…" / "as… increases, so does…"</td>
+            <td>ルール<strong>にしたがって</strong>、行動してください。<br><span style="color:var(--mid);font-size:12px">Please act in accordance with the rules.</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── TEST FORMAT ── -->
+    <section class="section" id="format">
+      <div class="section-heading">
+        <h2>Test Format</h2>
+        <span class="sh-jp">試験の構成</span>
+      </div>
+
+      <div class="callout">
+        <strong>Keigo is tested at N2.</strong> Formal and respectful speech forms (尊敬語 sonkeigo, 謙譲語 kenjōgo, 丁寧語 teineigo) appear in both the vocabulary and grammar sections. N2 is also where business-register grammar patterns begin appearing regularly in the test.
+      </div>
+
+      <table class="test-table">
+        <thead><tr>
+          <th>Section</th><th>What's tested</th><th>Time</th><th>Max score</th>
+        </tr></thead>
+        <tbody>
+          <tr>
+            <td class="td-section">Language Knowledge<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">言語知識（文字・語彙・文法）</span></td>
+            <td>Kanji and vocabulary in context, grammar patterns, sentence composition, grammar in reading passages</td>
+            <td class="td-time">105 min</td>
+            <td class="td-marks">120 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Reading<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">読解</span></td>
+            <td>Short, mid, long, and integrated passages — editorial texts, information articles, two-passage comparison</td>
+            <td class="td-time">105 min<br><span style="font-size:11px;color:var(--mid)">(combined with above)</span></td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td class="td-section">Listening<br><span style="font-size:11px;color:var(--mid);font-family:var(--serif)">聴解</span></td>
+            <td>Task-based, key point, overview, and quick response questions — including longer monologues and abstract topics</td>
+            <td class="td-time">50 min</td>
+            <td class="td-marks">60 pts</td>
+          </tr>
+          <tr>
+            <td colspan="2" style="font-weight:700">Total</td>
+            <td class="td-time">~155 min</td>
+            <td class="td-marks">180 pts</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="prose" style="margin-bottom:20px"><p style="font-weight:700;margin-bottom:8px">Pass marks</p></div>
+      <div class="pass-bar">
+        <div class="pass-info">
+          <div class="pass-score">90 / 180</div>
+          <div class="pass-label">Total pass threshold</div>
+        </div>
+        <div class="pass-track"><div class="pass-fill"></div></div>
+        <div class="pass-info" style="text-align:right">
+          <div class="pass-score" style="font-size:16px">38 / 120<br>19 / 60<br>19 / 60</div>
+          <div class="pass-label">Section minimums</div>
+        </div>
+      </div>
+      <div class="prose">
+        <p>You need 90 total <em>and</em> at least 38 points in Language Knowledge, 19 in Reading, and 19 in Listening. The combined language knowledge and reading session is 105 minutes — managing time across vocabulary, grammar, and long reading passages in a single sitting is one of the distinctive challenges of N2. The pass rate is around 22–30%, reflecting that N2 requires a level of Japanese that takes sustained, multi-year effort.</p>
+      </div>
+    </section>
+
+    <!-- ── TIPS ── -->
+    <section class="section" id="tips">
+      <div class="section-heading">
+        <h2>Passing Tips</h2>
+        <span class="sh-jp">合格のコツ</span>
+      </div>
+      <div class="prose">
+        <h3>Newspapers and editorials are your best reading practice</h3>
+        <p>N2 reading passages mirror editorial writing: structured arguments, formal vocabulary, long complex sentences. The best daily practice is reading Japanese newspaper opinion pieces and articles — Asahi Shimbun, Mainichi Shimbun, or NHK News Web. You don't need to understand everything; the exposure to the register and sentence structures directly prepares you for what appears in the test.</p>
+
+        <h3>Learn keigo as a system, not a list</h3>
+        <p>Respectful language (尊敬語 / 謙譲語 / 丁寧語) appears explicitly in N2 vocabulary and grammar questions. Many learners try to memorise it as isolated pairs (言う → おっしゃる, 食べる → 召し上がる) and find it doesn't stick. Instead, understand the logic: sonkeigo elevates the subject, kenjōgo lowers the speaker. Once the principle is clear, the forms make structural sense and are far easier to recall.</p>
+
+        <h3>Grammar: connective expressions in written Japanese</h3>
+        <p>N2 grammar is dominated by formal connective expressions that barely exist in casual speech — にもかかわらず, をめぐって, に基づいて, ものの, ざるを得ない. The most effective way to internalise them is reading Japanese in contexts where they actually appear: news commentary, business writing, Wikipedia articles. Encounter them repeatedly in context and they become automatic; drilled in isolation, they're brittle under test pressure.</p>
+
+        <h3>Listening: abstract topics at speed</h3>
+        <p>N2 listening includes monologues on abstract topics — opinion pieces, explanations of social phenomena, news commentary. Unlike lower levels, the answers often require inference rather than direct information retrieval. Watch NHK news broadcasts and Japanese opinion shows. TED Talks in Japanese are also excellent — structured arguments on abstract topics at natural speed, very close to the N2 listening register.</p>
+
+        <h3>Time management: the 105-minute section is the trap</h3>
+        <p>The combined language knowledge and reading section lasts 105 minutes and covers vocabulary, grammar, and long reading passages. Many N2 test-takers run out of time before finishing the reading. Target 35–40 minutes on language knowledge questions and leave 65–70 minutes for reading. If you're slow on one grammar question, mark your best guess and move — the long passages at the end carry more marks.</p>
+
+        <h3>Vocabulary: 6,000 words needs a system</h3>
+        <p>You cannot brute-force 6,000 words with flashcards in a reasonable time. Build vocabulary from multiple sources simultaneously: an Anki deck for core N2 words, intentional reading of native texts, and shadow listening. The words you encounter in multiple contexts — a podcast, then a grammar example, then a news article — are the ones that actually transfer to test performance.</p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How long does it take to reach N2 from N3?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Most learners need 18–24 months of consistent study after passing N3. The Japan Foundation estimates 600 hours total from scratch for N2. From N3, you're adding ~2,250 new vocabulary words, 350 more kanji, and a significant shift in grammar register. Learners who combine structured study with heavy immersion (reading native content daily, watching native Japanese regularly) often move faster; those who rely on textbooks alone tend to find the vocabulary acquisition too slow. Two years from N3 is a realistic, achievable timeline with 1–2 hours of study per day.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What jobs accept N2 as a Japanese qualification?<span class="faq-icon">+</span></button>
+          <div class="faq-a">N2 is widely accepted for Japanese-language roles in international companies, customer service positions in Japan, teaching English in Japanese schools, and most administrative and office roles in Japanese companies. Many Japanese companies formally list N2 as the entry requirement for non-native speakers, particularly in sectors like IT, finance, manufacturing, and retail. That said, N2 is the floor, not the ceiling — in highly language-intensive roles (law, journalism, high-level business negotiation), N1 is expected. In practice, your actual language ability matters more than the certificate, but N2 gets you past the first screening at most companies.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Is N2 actually close to fluency?<span class="faq-icon">+</span></button>
+          <div class="faq-a">It's complex. N2 certifies reading and listening comprehension at an upper-intermediate level — it doesn't test speaking or writing. Many N2 holders can read a newspaper and follow a news broadcast but struggle with spontaneous conversation or producing complex written Japanese. The test also doesn't assess accent or pronunciation. In terms of comprehension, N2 is broadly equivalent to B2 on the European CEFR scale — genuinely functional, but not effortless. Learners who supplement JLPT study with speaking practice (language partners, conversation lessons) typically find N2 level Japanese is enough to live and work in Japan comfortably.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What's different about N1 compared to N2?<span class="faq-icon">+</span></button>
+          <div class="faq-a">N1 tests comprehension of complex Japanese across virtually all domains — including academic writing, literary prose, business documents, and classical literary forms. The vocabulary expands to ~10,000 words, the kanji to 2,000, and the grammar includes patterns from classical Japanese that appear in literature, legal documents, and formal writing. The listening section includes rapid, complex speech on abstract and specialist topics. N2 tests whether you can function in Japanese; N1 tests whether your Japanese is close to a native speaker's literacy level. The jump from N2 to N1 is significant — most learners need another 1–3 years and a major increase in immersion with advanced native material.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  var sections  = document.querySelectorAll('.section[id]');
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) { item.classList.add('open'); this.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

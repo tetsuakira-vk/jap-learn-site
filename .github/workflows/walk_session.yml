@@ -1,0 +1,47 @@
+name: Generate Walk Session
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 6 AM UTC daily
+  workflow_dispatch:        # manual trigger from Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system dependencies
+        run: sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install edge-tts pydub
+
+      - name: Generate session
+        run: python tools/walk/generate_session.py
+        env:
+          WALK_TTS_PROVIDER: edge_tts
+          # Override voices here or in repo Settings → Secrets → Actions
+          # WALK_TTS_VOICE_NARRATOR:  en-GB-SoniaNeural
+          # WALK_TTS_VOICE_ANSWER:    ja-JP-NanamiNeural
+          # WALK_TTS_VOICE_CHARACTER: ja-JP-KeitaNeural
+
+      - name: Commit session files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "walk: daily session"
+          file_pattern: "static/walk/manifest.json static/walk/audio/ tools/walk/data/walk_srs.json"
+          commit_user_name: "github-actions[bot]"
+          commit_user_email: "github-actions[bot]@users.noreply.github.com"

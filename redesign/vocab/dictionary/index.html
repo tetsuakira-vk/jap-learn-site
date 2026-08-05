@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Dictionary — Search Words by English, Romaji or Japanese | Japanese Unlocked</title>
+<meta name="description" content="Free Japanese dictionary covering N5–N3 vocabulary. Search by English, romaji, or Japanese. Every word with audio, reading, and JLPT level.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+
+/* ── Search bar ── */
+.dict-search-wrap {
+  position: sticky; top: 52px; z-index: 20;
+  background: var(--ground); border-bottom: 1.5px solid var(--rule);
+  padding: 16px 0;
+  margin-bottom: 0;
+}
+.dict-search-inner {
+  display: flex; gap: 0; align-items: stretch;
+  border: 1.5px solid var(--ink);
+  max-width: 680px;
+}
+.dict-search-input {
+  flex: 1; border: none; background: none;
+  padding: 14px 18px; font-size: 18px;
+  font-family: var(--serif); color: var(--ink);
+  outline: none; min-width: 0;
+}
+.dict-search-input::placeholder { color: var(--mid); font-family: var(--sans); font-size: 15px; }
+.dict-search-clear {
+  background: none; border: none; border-left: 1.5px solid var(--rule);
+  width: 48px; cursor: pointer; color: var(--mid); font-size: 18px;
+  display: none; align-items: center; justify-content: center;
+  transition: color 0.13s;
+}
+.dict-search-clear:hover { color: var(--ink); }
+.dict-search-clear.visible { display: flex; }
+
+/* ── Filters ── */
+.dict-filters {
+  display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+  padding: 12px 0 0;
+}
+.dict-filter-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-right: 4px; }
+.dfbtn {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border: 1.5px solid var(--rule); background: none;
+  color: var(--mid); cursor: pointer; font-family: var(--sans); transition: all 0.13s;
+}
+.dfbtn:hover, .dfbtn.on { border-color: var(--ink); color: var(--ink); background: var(--faint); }
+.dfbtn.n5.on  { border-color: #7a5a7a; color: #7a5a7a; }
+.dfbtn.n4.on  { border-color: #5a7a5a; color: #5a7a5a; }
+.dfbtn.n3.on  { border-color: #7a6a3a; color: #7a6a3a; }
+
+/* ── Results count ── */
+.dict-meta {
+  font-size: 11px; color: var(--mid); padding: 12px 0 0;
+  min-height: 28px;
+}
+
+/* ── Results grid ── */
+.dict-results {
+  display: grid; gap: 0;
+  border: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+
+/* ── Word card ── */
+.word-card {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr auto;
+  align-items: center; gap: 0;
+  border-bottom: 1px solid var(--rule);
+  padding: 0; cursor: pointer; transition: background 0.12s;
+}
+.word-card:last-child { border-bottom: none; }
+.word-card:hover { background: var(--faint); }
+.word-card.playing { background: var(--faint); }
+
+.wc-jp {
+  padding: 14px 18px;
+  border-right: 1px solid var(--rule);
+  font-family: var(--serif); font-size: 26px; font-weight: 700;
+  color: var(--ink); line-height: 1; transition: color 0.12s;
+  text-align: center;
+}
+.word-card:hover .wc-jp, .word-card.playing .wc-jp { color: var(--accent); }
+
+.wc-read {
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 3px;
+  border-right: 1px solid var(--rule);
+}
+.wc-kana { font-family: var(--serif); font-size: 14px; color: var(--ink); }
+.wc-ro   { font-size: 11px; color: var(--mid); }
+
+.wc-en {
+  padding: 14px 16px;
+  font-size: 13px; font-weight: 600; color: var(--ink);
+}
+
+.wc-meta {
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px; align-items: flex-end;
+}
+.wc-pos {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 6px; border: 1px solid var(--rule); color: var(--mid); white-space: nowrap;
+}
+.wc-pos.verb { border-color: #5a8a5a; color: #5a8a5a; }
+.wc-pos.adj  { border-color: #7a6a9a; color: #7a6a9a; }
+.wc-pos.adv  { border-color: #8a6a4a; color: #8a6a4a; }
+.wc-pos.expr { border-color: var(--accent); color: var(--accent); }
+.wc-lv {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 2px 6px; white-space: nowrap;
+}
+.wc-lv.n5 { background: #7a5a7a; color: #fff; }
+.wc-lv.n4 { background: #5a7a5a; color: #fff; }
+.wc-lv.n3 { background: #7a6a3a; color: #fff; }
+
+/* ── Empty / no results ── */
+.dict-empty {
+  padding: 48px 24px; text-align: center;
+}
+.dict-empty-jp {
+  font-family: var(--serif); font-size: 48px; color: var(--rule);
+  line-height: 1; margin-bottom: 16px;
+}
+.dict-empty-head { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.dict-empty-sub  { font-size: 13px; color: var(--mid); margin-bottom: 32px; }
+.dict-examples { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.dict-ex-pill {
+  font-size: 12px; padding: 6px 14px; border: 1.5px solid var(--rule);
+  cursor: pointer; background: none; color: var(--ink); font-family: var(--sans);
+  transition: all 0.13s;
+}
+.dict-ex-pill:hover { border-color: var(--ink); background: var(--faint); }
+.dict-ex-pill .ex-jp { font-family: var(--serif); font-size: 14px; margin-right: 4px; }
+
+.dict-no-results { padding: 32px 16px; text-align: center; color: var(--mid); font-size: 13px; }
+
+/* ── Featured header ── */
+.dict-featured-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  padding: 14px 0 8px;
+}
+
+@media (max-width: 700px) {
+  .word-card { grid-template-columns: 60px 1fr auto; }
+  .wc-read   { display: none; }
+  .word-card { padding: 0; }
+  .wc-jp     { font-size: 20px; padding: 12px 12px; }
+  .wc-en     { padding: 12px 12px; }
+  .wc-meta   { padding: 12px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    <a href="/redesign/vocab/">Vocabulary</a>
+    <span class="sep">›</span>
+    Dictionary
+  </div>
+  <h1 class="page-h1">Dictionary <span class="h1-jp">辞書</span></h1>
+  <div class="page-meta">
+    <span id="word-count-meta">Loading…</span>
+    <span class="meta-pill">Audio</span>
+    <span class="meta-pill">N5–N3</span>
+  </div>
+</header>
+
+<div class="page-body" style="display:block; max-width:860px; padding: 0 24px;">
+
+  <div class="dict-search-wrap">
+    <div class="dict-search-inner">
+      <input class="dict-search-input" id="dict-search" type="search"
+        placeholder="Search in English, romaji, or Japanese…" autocomplete="off" spellcheck="false">
+      <button class="dict-search-clear" id="dict-clear" aria-label="Clear search">✕</button>
+    </div>
+    <div class="dict-filters">
+      <span class="dict-filter-label">Level</span>
+      <button class="dfbtn n5" data-lv="5">N5</button>
+      <button class="dfbtn n4" data-lv="4">N4</button>
+      <button class="dfbtn n3" data-lv="3">N3</button>
+      <span class="dict-filter-label" style="margin-left:12px">Type</span>
+      <button class="dfbtn" data-pos="noun">Nouns</button>
+      <button class="dfbtn" data-pos="verb">Verbs</button>
+      <button class="dfbtn" data-pos="adj">Adjectives</button>
+      <button class="dfbtn" data-pos="adv">Adverbs</button>
+    </div>
+    <div class="dict-meta" id="dict-meta"></div>
+  </div>
+
+  <div id="dict-output"></div>
+
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+
+/* ─────────────────────────────────────────────
+   DICTIONARY DATA
+   [word, reading, romaji, english, pos, jlpt]
+   pos: noun | verb | adj | adv | expr
+───────────────────────────────────────────── */
+var DICT = [
+  /* ── N5 People & Pronouns ── */
+  ['私','わたし','watashi','I / me','noun',5],
+  ['僕','ぼく','boku','I / me (male, casual)','noun',5],
+  ['あなた','あなた','anata','you','noun',5],
+  ['彼','かれ','kare','he / boyfriend','noun',5],
+  ['彼女','かのじょ','kanojo','she / girlfriend','noun',5],
+  ['みんな','みんな','minna','everyone','noun',5],
+  ['人','ひと','hito','person / people','noun',5],
+  ['友達','ともだち','tomodachi','friend','noun',5],
+  ['先生','せんせい','sensei','teacher','noun',5],
+  ['学生','がくせい','gakusei','student','noun',5],
+  ['子供','こども','kodomo','child','noun',5],
+  ['男の人','おとこのひと','otoko no hito','man','noun',5],
+  ['女の人','おんなのひと','onna no hito','woman','noun',5],
+  ['男の子','おとこのこ','otoko no ko','boy','noun',5],
+  ['女の子','おんなのこ','onna no ko','girl','noun',5],
+  ['家族','かぞく','kazoku','family','noun',5],
+  ['父','ちち','chichi','father (my own)','noun',5],
+  ['母','はは','haha','mother (my own)','noun',5],
+  ['お父さん','おとうさん','otōsan',"father (someone else's)",'noun',5],
+  ['お母さん','おかあさん','okāsan',"mother (someone else's)",'noun',5],
+  ['兄','あに','ani','older brother (my own)','noun',5],
+  ['姉','あね','ane','older sister (my own)','noun',5],
+  ['弟','おとうと','otōto','younger brother','noun',5],
+  ['妹','いもうと','imōto','younger sister','noun',5],
+  /* ── N5 Places ── */
+  ['学校','がっこう','gakkō','school','noun',5],
+  ['大学','だいがく','daigaku','university','noun',5],
+  ['家','いえ','ie','house / home','noun',5],
+  ['駅','えき','eki','station','noun',5],
+  ['銀行','ぎんこう','ginkō','bank','noun',5],
+  ['病院','びょういん','byōin','hospital','noun',5],
+  ['図書館','としょかん','toshokan','library','noun',5],
+  ['公園','こうえん','kōen','park','noun',5],
+  ['会社','かいしゃ','kaisha','company / office','noun',5],
+  ['空港','くうこう','kūkō','airport','noun',5],
+  ['ホテル','ホテル','hoteru','hotel','noun',5],
+  ['レストラン','レストラン','resutoran','restaurant','noun',5],
+  ['部屋','へや','heya','room','noun',5],
+  ['台所','だいどころ','daidokoro','kitchen','noun',5],
+  ['道','みち','michi','road / way / path','noun',5],
+  /* ── N5 Time ── */
+  ['今日','きょう','kyō','today','noun',5],
+  ['明日','あした','ashita','tomorrow','noun',5],
+  ['昨日','きのう','kinō','yesterday','noun',5],
+  ['今','いま','ima','now','noun',5],
+  ['朝','あさ','asa','morning','noun',5],
+  ['昼','ひる','hiru','noon / daytime','noun',5],
+  ['夜','よる','yoru','night / evening','noun',5],
+  ['今週','こんしゅう','konshū','this week','noun',5],
+  ['来週','らいしゅう','raishū','next week','noun',5],
+  ['先週','せんしゅう','senshū','last week','noun',5],
+  ['今月','こんげつ','kongetsu','this month','noun',5],
+  ['今年','ことし','kotoshi','this year','noun',5],
+  ['来年','らいねん','rainen','next year','noun',5],
+  ['去年','きょねん','kyonen','last year','noun',5],
+  ['週末','しゅうまつ','shūmatsu','weekend','noun',5],
+  /* ── N5 Objects ── */
+  ['本','ほん','hon','book','noun',5],
+  ['新聞','しんぶん','shinbun','newspaper','noun',5],
+  ['雑誌','ざっし','zasshi','magazine','noun',5],
+  ['ペン','ペン','pen','pen','noun',5],
+  ['鉛筆','えんぴつ','enpitsu','pencil','noun',5],
+  ['紙','かみ','kami','paper','noun',5],
+  ['かばん','かばん','kaban','bag','noun',5],
+  ['財布','さいふ','saifu','wallet','noun',5],
+  ['電話','でんわ','denwa','telephone','noun',5],
+  ['時計','とけい','tokei','clock / watch','noun',5],
+  ['眼鏡','めがね','megane','glasses','noun',5],
+  ['鍵','かぎ','kagi','key','noun',5],
+  ['傘','かさ','kasa','umbrella','noun',5],
+  ['写真','しゃしん','shashin','photo','noun',5],
+  ['地図','ちず','chizu','map','noun',5],
+  ['机','つくえ','tsukue','desk','noun',5],
+  ['椅子','いす','isu','chair','noun',5],
+  ['窓','まど','mado','window','noun',5],
+  ['服','ふく','fuku','clothing / clothes','noun',5],
+  ['靴','くつ','kutsu','shoes','noun',5],
+  ['帽子','ぼうし','bōshi','hat / cap','noun',5],
+  ['電車','でんしゃ','densha','train','noun',5],
+  ['バス','バス','basu','bus','noun',5],
+  ['車','くるま','kuruma','car','noun',5],
+  ['自転車','じてんしゃ','jitensha','bicycle','noun',5],
+  /* ── N5 Nature ── */
+  ['天気','てんき','tenki','weather','noun',5],
+  ['雨','あめ','ame','rain','noun',5],
+  ['雪','ゆき','yuki','snow','noun',5],
+  ['風','かぜ','kaze','wind','noun',5],
+  ['山','やま','yama','mountain','noun',5],
+  ['川','かわ','kawa','river','noun',5],
+  ['海','うみ','umi','sea / ocean','noun',5],
+  ['花','はな','hana','flower','noun',5],
+  ['木','き','ki','tree / wood','noun',5],
+  ['空','そら','sora','sky','noun',5],
+  ['猫','ねこ','neko','cat','noun',5],
+  ['犬','いぬ','inu','dog','noun',5],
+  ['魚','さかな','sakana','fish','noun',5],
+  /* ── N5 Food ── */
+  ['ご飯','ごはん','gohan','rice (cooked) / meal','noun',5],
+  ['パン','パン','pan','bread','noun',5],
+  ['肉','にく','niku','meat','noun',5],
+  ['野菜','やさい','yasai','vegetables','noun',5],
+  ['果物','くだもの','kudamono','fruit','noun',5],
+  ['卵','たまご','tamago','egg','noun',5],
+  ['牛乳','ぎゅうにゅう','gyūnyū','milk','noun',5],
+  ['水','みず','mizu','water','noun',5],
+  ['お茶','おちゃ','ocha','green tea','noun',5],
+  ['コーヒー','コーヒー','kōhī','coffee','noun',5],
+  ['ジュース','ジュース','jūsu','juice','noun',5],
+  ['お酒','おさけ','osake','alcohol / sake','noun',5],
+  ['寿司','すし','sushi','sushi','noun',5],
+  ['ラーメン','ラーメン','rāmen','ramen noodles','noun',5],
+  /* ── N5 Adjectives ── */
+  ['大きい','おおきい','ōkii','big / large','adj',5],
+  ['小さい','ちいさい','chiisai','small / little','adj',5],
+  ['高い','たかい','takai','tall / expensive','adj',5],
+  ['低い','ひくい','hikui','low / short (height)','adj',5],
+  ['長い','ながい','nagai','long','adj',5],
+  ['短い','みじかい','mijikai','short (length)','adj',5],
+  ['新しい','あたらしい','atarashii','new','adj',5],
+  ['古い','ふるい','furui','old (things)','adj',5],
+  ['良い','いい','ii','good','adj',5],
+  ['悪い','わるい','warui','bad','adj',5],
+  ['暑い','あつい','atsui','hot (weather)','adj',5],
+  ['寒い','さむい','samui','cold (weather)','adj',5],
+  ['熱い','あつい','atsui','hot (to touch)','adj',5],
+  ['冷たい','つめたい','tsumetai','cold (to touch)','adj',5],
+  ['広い','ひろい','hiroi','wide / spacious','adj',5],
+  ['狭い','せまい','semai','narrow / cramped','adj',5],
+  ['多い','おおい','ōi','many / a lot','adj',5],
+  ['少ない','すくない','sukunai','few / not many','adj',5],
+  ['難しい','むずかしい','muzukashii','difficult','adj',5],
+  ['易しい','やさしい','yasashii','easy','adj',5],
+  ['面白い','おもしろい','omoshiroi','interesting / funny','adj',5],
+  ['つまらない','つまらない','tsumaranai','boring / dull','adj',5],
+  ['きれい','きれい','kirei','pretty / clean','adj',5],
+  ['好き','すき','suki','like / fond of','adj',5],
+  ['嫌い','きらい','kirai','dislike','adj',5],
+  ['上手','じょうず','jōzu','skilled / good at','adj',5],
+  ['下手','へた','heta','unskilled / bad at','adj',5],
+  ['大丈夫','だいじょうぶ','daijōbu','OK / all right','adj',5],
+  /* ── N5 Verbs ── */
+  ['食べる','たべる','taberu','to eat','verb',5],
+  ['飲む','のむ','nomu','to drink','verb',5],
+  ['行く','いく','iku','to go','verb',5],
+  ['来る','くる','kuru','to come','verb',5],
+  ['帰る','かえる','kaeru','to return / go home','verb',5],
+  ['見る','みる','miru','to see / look / watch','verb',5],
+  ['聞く','きく','kiku','to listen / hear / ask','verb',5],
+  ['話す','はなす','hanasu','to speak / talk','verb',5],
+  ['読む','よむ','yomu','to read','verb',5],
+  ['書く','かく','kaku','to write','verb',5],
+  ['買う','かう','kau','to buy','verb',5],
+  ['使う','つかう','tsukau','to use','verb',5],
+  ['作る','つくる','tsukuru','to make / create','verb',5],
+  ['持つ','もつ','motsu','to hold / have / carry','verb',5],
+  ['待つ','まつ','matsu','to wait','verb',5],
+  ['起きる','おきる','okiru','to wake up / get up','verb',5],
+  ['寝る','ねる','neru','to sleep / go to bed','verb',5],
+  ['休む','やすむ','yasumu','to rest / take a day off','verb',5],
+  ['働く','はたらく','hataraku','to work','verb',5],
+  ['勉強する','べんきょうする','benkyō suru','to study','verb',5],
+  ['教える','おしえる','oshieru','to teach / tell','verb',5],
+  ['わかる','わかる','wakaru','to understand','verb',5],
+  ['知る','しる','shiru','to know / find out','verb',5],
+  ['入る','はいる','hairu','to enter / go in','verb',5],
+  ['出る','でる','deru','to exit / leave','verb',5],
+  ['開ける','あける','akeru','to open (something)','verb',5],
+  ['閉める','しめる','shimeru','to close (something)','verb',5],
+  ['乗る','のる','noru','to ride / get on','verb',5],
+  ['会う','あう','au','to meet','verb',5],
+  ['あげる','あげる','ageru','to give (to others)','verb',5],
+  ['もらう','もらう','morau','to receive','verb',5],
+  ['貸す','かす','kasu','to lend','verb',5],
+  ['借りる','かりる','kariru','to borrow','verb',5],
+  ['いる','いる','iru','to be / exist (animate)','verb',5],
+  ['ある','ある','aru','to be / exist (inanimate)','verb',5],
+  /* ── N5 Adverbs ── */
+  ['また','また','mata','again / also','adv',5],
+  ['もう','もう','mō','already / anymore','adv',5],
+  ['まだ','まだ','mada','still / not yet','adv',5],
+  ['もっと','もっと','motto','more','adv',5],
+  ['ちょっと','ちょっと','chotto','a little / just a moment','adv',5],
+  ['少し','すこし','sukoshi','a little / a bit','adv',5],
+  ['とても','とても','totemo','very / extremely','adv',5],
+  ['あまり','あまり','amari','not very (+ negative)','adv',5],
+  ['全然','ぜんぜん','zenzen','not at all (+ negative)','adv',5],
+  ['いつも','いつも','itsumo','always / usually','adv',5],
+  ['時々','ときどき','tokidoki','sometimes','adv',5],
+  ['よく','よく','yoku','often / well','adv',5],
+  ['すぐ','すぐ','sugu','immediately / soon','adv',5],
+  ['ゆっくり','ゆっくり','yukkuri','slowly / leisurely','adv',5],
+  ['一緒に','いっしょに','issho ni','together','adv',5],
+  ['だから','だから','dakara','therefore / so','adv',5],
+  ['でも','でも','demo','but / however','adv',5],
+  /* ── N4 words ── */
+  ['アパート','アパート','apāto','apartment','noun',4],
+  ['意味','いみ','imi','meaning','noun',4],
+  ['運動','うんどう','undō','exercise / movement','noun',4],
+  ['映画','えいが','eiga','movie / film','noun',4],
+  ['音楽','おんがく','ongaku','music','noun',4],
+  ['お礼','おれい','orei','thanks / gratitude','noun',4],
+  ['会議','かいぎ','kaigi','meeting / conference','noun',4],
+  ['科学','かがく','kagaku','science','noun',4],
+  ['考え','かんがえ','kangae','thought / idea','noun',4],
+  ['気持ち','きもち','kimochi','feeling / emotion','noun',4],
+  ['記念','きねん','kinen','commemoration / memorial','noun',4],
+  ['気温','きおん','kion','air temperature','noun',4],
+  ['牛肉','ぎゅうにく','gyūniku','beef','noun',4],
+  ['経験','けいけん','keiken','experience','noun',4],
+  ['景色','けしき','keshiki','scenery / landscape','noun',4],
+  ['言葉','ことば','kotoba','word / language','noun',4],
+  ['今度','こんど','kondo','next time / this time','noun',4],
+  ['試合','しあい','shiai','match / game / contest','noun',4],
+  ['事故','じこ','jiko','accident','noun',4],
+  ['仕事','しごと','shigoto','work / job','noun',4],
+  ['趣味','しゅみ','shumi','hobby / interest','noun',4],
+  ['準備','じゅんび','junbi','preparation / readiness','noun',4],
+  ['将来','しょうらい','shōrai','future','noun',4],
+  ['食事','しょくじ','shokuji','meal / dining','noun',4],
+  ['生活','せいかつ','seikatsu','daily life / lifestyle','noun',4],
+  ['世界','せかい','sekai','world','noun',4],
+  ['説明','せつめい','setsumei','explanation','noun',4],
+  ['卒業','そつぎょう','sotsugyō','graduation','noun',4],
+  ['大切','たいせつ','taisetsu','important / precious','adj',4],
+  ['大変','たいへん','taihen','terrible / very / tough','adj',4],
+  ['旅行','りょこう','ryokō','travel / trip','noun',4],
+  ['留学','りゅうがく','ryūgaku','study abroad','noun',4],
+  ['練習','れんしゅう','renshū','practice / drill','noun',4],
+  ['連絡','れんらく','renraku','contact / communication','noun',4],
+  ['料理','りょうり','ryōri','cooking / cuisine','noun',4],
+  ['予定','よてい','yotei','plan / schedule','noun',4],
+  ['用事','ようじ','yōji','errand / business','noun',4],
+  ['問題','もんだい','mondai','problem / question','noun',4],
+  ['文化','ぶんか','bunka','culture','noun',4],
+  ['病気','びょうき','byōki','illness / disease','noun',4],
+  ['番組','ばんぐみ','bangumi','TV / radio programme','noun',4],
+  ['場所','ばしょ','basho','place / location','noun',4],
+  ['発表','はっぴょう','happyō','announcement / presentation','noun',4],
+  ['乗り物','のりもの','norimono','vehicle / transport','noun',4],
+  ['似合う','にあう','niau','to suit / look good on','verb',4],
+  ['直す','なおす','naosu','to fix / correct / repair','verb',4],
+  ['泣く','なく','naku','to cry / weep','verb',4],
+  ['止まる','とまる','tomaru','to stop / come to a halt','verb',4],
+  ['届く','とどく','todoku','to reach / arrive / be delivered','verb',4],
+  ['続ける','つづける','tsuzukeru','to continue / keep doing','verb',4],
+  ['伝える','つたえる','tsutaeru','to convey / tell / report','verb',4],
+  ['疲れる','つかれる','tsukareru','to get tired','verb',4],
+  ['注意する','ちゅういする','chūi suru','to pay attention / warn','verb',4],
+  ['変える','かえる','kaeru','to change (something)','verb',4],
+  ['感じる','かんじる','kanjiru','to feel / sense','verb',4],
+  ['困る','こまる','komaru','to be troubled / be in difficulty','verb',4],
+  ['決める','きめる','kimeru','to decide','verb',4],
+  ['急ぐ','いそぐ','isogu','to hurry / rush','verb',4],
+  ['送る','おくる','okuru','to send / see off','verb',4],
+  ['終わる','おわる','owaru','to end / finish','verb',4],
+  ['思い出す','おもいだす','omoidasu','to recall / remember','verb',4],
+  ['落ちる','おちる','ochiru','to fall / drop / fail','verb',4],
+  ['起こる','おこる','okoru','to happen / occur','verb',4],
+  ['怒る','おこる','okoru','to get angry','verb',4],
+  ['驚く','おどろく','odoroku','to be surprised / astonished','verb',4],
+  ['別れる','わかれる','wakareru','to part / separate / break up','verb',4],
+  ['笑う','わらう','warau','to laugh / smile','verb',4],
+  ['渡す','わたす','watasu','to hand over / pass to','verb',4],
+  ['渡る','わたる','wataru','to cross / go across','verb',4],
+  ['忘れる','わすれる','wasureru','to forget','verb',4],
+  ['汚い','きたない','kitanai','dirty / messy','adj',4],
+  ['恥ずかしい','はずかしい','hazukashii','embarrassing / shy','adj',4],
+  ['珍しい','めずらしい','mezurashii','rare / unusual','adj',4],
+  ['嬉しい','うれしい','ureshii','happy / glad','adj',4],
+  ['悲しい','かなしい','kanashii','sad','adj',4],
+  ['怖い','こわい','kowai','scary / frightening','adj',4],
+  ['暖かい','あたたかい','atatakai','warm (weather / feeling)','adj',4],
+  ['涼しい','すずしい','suzushii','cool / refreshing (weather)','adj',4],
+  ['忙しい','いそがしい','isogashii','busy','adj',4],
+  ['眠い','ねむい','nemui','sleepy','adj',4],
+  ['正しい','ただしい','tadashii','correct / right','adj',4],
+  ['丁寧','ていねい','teinei','polite / careful / thorough','adj',4],
+  ['安全','あんぜん','anzen','safe / secure','adj',4],
+  ['複雑','ふくざつ','fukuzatsu','complicated / complex','adj',4],
+  ['自由','じゆう','jiyū','freedom / free','adj',4],
+  ['真剣','しんけん','shinken','serious / earnest','adj',4],
+  ['きちんと','きちんと','kichinto','properly / neatly / exactly','adv',4],
+  ['だいたい','だいたい','daitai','approximately / mostly','adv',4],
+  ['たいてい','たいてい','taitei','usually / mostly','adv',4],
+  ['なかなか','なかなか','nakanaka','quite / fairly / not easily','adv',4],
+  ['ずっと','ずっと','zutto','all the time / much more','adv',4],
+  ['やっと','やっと','yatto','finally / at last','adv',4],
+  ['特に','とくに','toku ni','especially / particularly','adv',4],
+  ['はっきり','はっきり','hakkiri','clearly / plainly','adv',4],
+  ['もちろん','もちろん','mochiron','of course / naturally','adv',4],
+  ['たぶん','たぶん','tabun','probably / perhaps','adv',4],
+  /* ── N3 words ── */
+  ['安心','あんしん','anshin','relief / peace of mind','noun',3],
+  ['意見','いけん','iken','opinion / view','noun',3],
+  ['印象','いんしょう','inshō','impression','noun',3],
+  ['影響','えいきょう','eikyō','influence / effect / impact','noun',3],
+  ['機会','きかい','kikai','opportunity / chance','noun',3],
+  ['記事','きじ','kiji','article / news story','noun',3],
+  ['議論','ぎろん','giron','argument / debate','noun',3],
+  ['共通','きょうつう','kyōtsū','common / shared','noun',3],
+  ['原因','げんいん','gen\'in','cause / reason','noun',3],
+  ['効果','こうか','kōka','effect / result / effectiveness','noun',3],
+  ['才能','さいのう','sainō','talent / ability','noun',3],
+  ['支持','しじ','shiji','support / backing','noun',3],
+  ['事情','じじょう','jijō','circumstances / situation','noun',3],
+  ['情報','じょうほう','jōhō','information / data','noun',3],
+  ['状況','じょうきょう','jōkyō','situation / circumstances','noun',3],
+  ['進歩','しんぽ','shinpo','progress / advance','noun',3],
+  ['成功','せいこう','seikō','success','noun',3],
+  ['責任','せきにん','sekinin','responsibility','noun',3],
+  ['選択','せんたく','sentaku','choice / selection','noun',3],
+  ['存在','そんざい','sonzai','existence / presence','noun',3],
+  ['態度','たいど','taido','attitude / manner','noun',3],
+  ['注目','ちゅうもく','chūmoku','attention / notice','noun',3],
+  ['努力','どりょく','doryoku','effort / endeavour','noun',3],
+  ['能力','のうりょく','nōryoku','ability / capability','noun',3],
+  ['判断','はんだん','handan','judgement / decision','noun',3],
+  ['批判','ひはん','hihan','criticism / critique','noun',3],
+  ['変化','へんか','henka','change / transformation','noun',3],
+  ['目的','もくてき','mokuteki','purpose / goal / objective','noun',3],
+  ['様子','ようす','yōsu','state / appearance / manner','noun',3],
+  ['利用','りよう','riyō','use / utilisation','noun',3],
+  ['可能','かのう','kanō','possible / potential','adj',3],
+  ['確か','たしか','tashika','certain / sure / probably','adj',3],
+  ['重要','じゅうよう','jūyō','important / significant','adj',3],
+  ['積極的','せっきょくてき','sekkyoku-teki','positive / proactive','adj',3],
+  ['素直','すなお','sunao','honest / obedient / gentle','adj',3],
+  ['丁寧','ていねい','teinei','polite / careful','adj',3],
+  ['否定的','ひていてき','hitei-teki','negative / denying','adj',3],
+  ['豊か','ゆたか','yutaka','rich / abundant / plentiful','adj',3],
+  ['与える','あたえる','ataeru','to give / to grant / to cause','verb',3],
+  ['表す','あらわす','arawasu','to express / show / represent','verb',3],
+  ['生まれる','うまれる','umareru','to be born','verb',3],
+  ['得る','える','eru','to get / to gain / to earn','verb',3],
+  ['置く','おく','oku','to put / place / leave','verb',3],
+  ['起こす','おこす','okosu','to wake / cause / start','verb',3],
+  ['行なう','おこなう','okonau','to carry out / conduct / perform','verb',3],
+  ['重なる','かさなる','kasanaru','to pile up / overlap / coincide','verb',3],
+  ['変わる','かわる','kawaru','to change / transform','verb',3],
+  ['加わる','くわわる','kuwawaru','to join / be added / participate','verb',3],
+  ['認める','みとめる','mitomeru','to recognise / acknowledge / approve','verb',3],
+  ['求める','もとめる','motomeru','to seek / demand / request','verb',3],
+  ['守る','まもる','mamoru','to protect / obey / keep','verb',3],
+  ['任せる','まかせる','makaseru','to leave (to someone) / entrust','verb',3],
+  ['含む','ふくむ','fukumu','to include / contain','verb',3],
+  ['広がる','ひろがる','hirogaru','to spread / expand / widen','verb',3],
+  ['増える','ふえる','fueru','to increase / multiply','verb',3],
+  ['減る','へる','heru','to decrease / diminish','verb',3],
+  ['必ずしも','かならずしも','kanarazu shimo','not necessarily','adv',3],
+  ['次第に','しだいに','shidai ni','gradually / by degrees','adv',3],
+  ['むしろ','むしろ','mushiro','rather / instead / on the contrary','adv',3],
+  ['一方','いっぽう','ippō','on the other hand / one direction','adv',3],
+  ['改めて','あらためて','aratamete','again / once more / formally','adv',3],
+  ['あらかじめ','あらかじめ','arakajime','in advance / beforehand','adv',3],
+  ['いわゆる','いわゆる','iwayuru','so-called / what is called','adv',3],
+  ['かえって','かえって','kaette','on the contrary / rather / instead','adv',3],
+];
+
+/* ─────────────────────────────────────────────
+   SEARCH & RENDER
+───────────────────────────────────────────── */
+var searchEl  = document.getElementById('dict-search');
+var clearBtn  = document.getElementById('dict-clear');
+var outputEl  = document.getElementById('dict-output');
+var metaEl    = document.getElementById('dict-meta');
+
+// Update word count in page meta
+document.getElementById('word-count-meta').textContent = DICT.length + ' words';
+
+var activeLevels = [];
+var activePOS    = '';
+var searchVal    = '';
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text.split('・')[0]);
+  u.lang = 'ja-JP'; u.rate = 0.85;
+  window.speechSynthesis.speak(u);
+}
+
+function posClass(pos) { return pos; }
+
+function buildCard(row) {
+  var w = row[0], r = row[1], ro = row[2], en = row[3], pos = row[4], n = row[5];
+  return '<div class="word-card" data-speak="' + w + '">' +
+    '<div class="wc-jp">' + w + '</div>' +
+    '<div class="wc-read"><span class="wc-kana">' + r + '</span><span class="wc-ro">' + ro + '</span></div>' +
+    '<div class="wc-en">' + en + '</div>' +
+    '<div class="wc-meta">' +
+      '<span class="wc-pos ' + posClass(pos) + '">' + pos + '</span>' +
+      '<span class="wc-lv n' + n + '">N' + n + '</span>' +
+    '</div>' +
+  '</div>';
+}
+
+function render() {
+  var q = searchVal.trim();
+  var qLow = q.toLowerCase();
+
+  var results;
+  if (!q && activeLevels.length === 0 && !activePOS) {
+    /* Empty state */
+    outputEl.innerHTML = buildEmptyState();
+    metaEl.textContent = '';
+    return;
+  }
+
+  results = DICT.filter(function (row) {
+    var w = row[0], r = row[1], ro = row[2], en = row[3], pos = row[4], n = row[5];
+    var lvMatch  = activeLevels.length === 0 || activeLevels.indexOf(n) > -1;
+    var posMatch = !activePOS || pos === activePOS;
+    var qMatch   = !q ||
+      w.includes(q) || r.includes(q) ||
+      ro.toLowerCase().includes(qLow) ||
+      en.toLowerCase().includes(qLow);
+    return lvMatch && posMatch && qMatch;
+  });
+
+  /* Sort: exact starts-with matches first */
+  if (q) {
+    results.sort(function (a, b) {
+      var aExact = a[0] === q || a[1] === q ? 0 : (a[0].startsWith(q) || a[1].startsWith(q) ? 1 : 2);
+      var bExact = b[0] === q || b[1] === q ? 0 : (b[0].startsWith(q) || b[1].startsWith(q) ? 1 : 2);
+      return aExact - bExact;
+    });
+  }
+
+  if (results.length === 0) {
+    outputEl.innerHTML = '<div class="dict-no-results">No words found for "' + q + '" — try romaji, kanji, or English.</div>';
+    metaEl.textContent = '0 results';
+    return;
+  }
+
+  var max = 120;
+  var shown = results.slice(0, max);
+  var html = '<div class="dict-results">' + shown.map(buildCard).join('') + '</div>';
+  if (results.length > max) {
+    html += '<div class="dict-meta" style="text-align:center;padding-bottom:16px">Showing ' + max + ' of ' + results.length + ' — refine your search to narrow down.</div>';
+  }
+  outputEl.innerHTML = html;
+
+  var label = results.length === 1 ? '1 result' : results.length + ' results';
+  if (results.length > max) label += ' (showing ' + max + ')';
+  metaEl.textContent = label;
+}
+
+var EXAMPLES = [
+  ['食べる','taberu'],['可愛い','kawaii'],['勉強','benkyō'],
+  ['友達','tomodachi'],['仕事','shigoto'],['travel',''],
+  ['感情',''],['気持ち',''],
+];
+
+function buildEmptyState() {
+  var pills = EXAMPLES.map(function (ex) {
+    var label = ex[1] ? '<span class="ex-jp">' + ex[0] + '</span>' + ex[1] : ex[0];
+    return '<button class="dict-ex-pill" data-fill="' + ex[0] + '">' + label + '</button>';
+  }).join('');
+  return '<div class="dict-empty">' +
+    '<div class="dict-empty-jp">辞書</div>' +
+    '<div class="dict-empty-head">Search ' + DICT.length + ' words</div>' +
+    '<div class="dict-empty-sub">Type in English, romaji, or Japanese (kanji or kana). Click any word to hear it.</div>' +
+    '<div class="dict-examples">' + pills + '</div>' +
+  '</div>';
+}
+
+/* ── Events ── */
+searchEl.addEventListener('input', function () {
+  searchVal = this.value;
+  clearBtn.classList.toggle('visible', searchVal.length > 0);
+  render();
+});
+
+clearBtn.addEventListener('click', function () {
+  searchEl.value = '';
+  searchVal = '';
+  clearBtn.classList.remove('visible');
+  searchEl.focus();
+  render();
+});
+
+document.addEventListener('click', function (e) {
+  /* Example pills */
+  var pill = e.target.closest('.dict-ex-pill');
+  if (pill) {
+    var fill = pill.dataset.fill;
+    searchEl.value = fill;
+    searchVal = fill;
+    clearBtn.classList.add('visible');
+    render();
+    searchEl.focus();
+    return;
+  }
+
+  /* Word card audio */
+  var card = e.target.closest('.word-card[data-speak]');
+  if (card) {
+    speak(card.dataset.speak);
+    card.classList.add('playing');
+    setTimeout(function () { card.classList.remove('playing'); }, 1200);
+    return;
+  }
+});
+
+/* ── Level filter buttons ── */
+document.querySelectorAll('.dfbtn[data-lv]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var lv = parseInt(this.dataset.lv, 10);
+    var idx = activeLevels.indexOf(lv);
+    if (idx > -1) {
+      activeLevels.splice(idx, 1);
+      this.classList.remove('on');
+    } else {
+      activeLevels.push(lv);
+      this.classList.add('on');
+    }
+    render();
+  });
+});
+
+/* ── POS filter buttons ── */
+document.querySelectorAll('.dfbtn[data-pos]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var p = this.dataset.pos;
+    if (activePOS === p) {
+      activePOS = '';
+      this.classList.remove('on');
+    } else {
+      activePOS = p;
+      document.querySelectorAll('.dfbtn[data-pos]').forEach(function (b) { b.classList.remove('on'); });
+      this.classList.add('on');
+    }
+    render();
+  });
+});
+
+/* ── Initial render ── */
+render();
+
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

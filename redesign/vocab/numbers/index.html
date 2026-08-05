@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Numbers — How to Count in Japanese 1 to 1,000,000 | Japanese Unlocked</title>
+<meta name="description" content="Complete guide to Japanese numbers: counting 1–10,000+, native vs Sino-Japanese systems, counters for objects, people, animals, and more. Free with audio.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+
+/* ── Number table ── */
+.num-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--rule);
+  margin-bottom: 32px;
+  font-variant-numeric: tabular-nums;
+}
+.num-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--mid);
+  padding: 10px 14px; text-align: left;
+  border-bottom: 1.5px solid var(--rule);
+  background: var(--faint);
+}
+.num-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 14px; vertical-align: middle;
+}
+.num-table tr:last-child td { border-bottom: none; }
+.num-table tr:hover td { background: var(--faint); }
+.num-table .num-digit  { font-weight: 700; color: var(--mid); font-size: 13px; }
+.num-table .num-kanji  { font-family: var(--serif); font-size: 22px; font-weight: 700; }
+.num-table .num-kana   { font-family: var(--serif); font-size: 14px; color: var(--accent); }
+.num-table .num-romaji { font-size: 12px; color: var(--mid); }
+.num-table .num-play   {
+  cursor: pointer; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  color: var(--mid); border: 1px solid var(--rule);
+  padding: 4px 10px; transition: all 0.14s; background: none;
+  font-family: var(--sans);
+}
+.num-table .num-play:hover  { color: var(--accent); border-color: var(--accent); }
+.num-table .num-play.playing { color: var(--accent); border-color: var(--accent); }
+
+/* ── Counter cards ── */
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  border-top: 1px solid var(--rule);
+  border-left: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.counter-card {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 16px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.cc-kanji {
+  font-family: var(--serif); font-size: 32px; font-weight: 700;
+  color: var(--ink); line-height: 1;
+}
+.cc-kana   { font-family: var(--serif); font-size: 13px; color: var(--accent); }
+.cc-en     { font-size: 12px; font-weight: 700; color: var(--ink); }
+.cc-use    { font-size: 11px; color: var(--mid); line-height: 1.5; }
+.cc-ex     { font-size: 12px; font-family: var(--serif); color: var(--ink);
+             margin-top: 4px; padding-top: 8px; border-top: 1px solid var(--rule); }
+.cc-ex-r   { font-size: 11px; color: var(--mid); }
+
+/* ── Time/date/money tables ── */
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.ref-block {}
+.ref-block-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--mid);
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.ref-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 7px 0; border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+}
+.ref-row:last-child { border-bottom: none; }
+.ref-jp  { font-family: var(--serif); font-weight: 700; color: var(--ink); }
+.ref-r   { font-size: 11px; color: var(--mid); }
+.ref-en  { font-size: 12px; color: var(--mid); text-align: right; }
+
+/* ── Irregular highlight ── */
+.irr { background: var(--faint); }
+.irr .num-kana { color: var(--mid); font-style: italic; }
+
+@media (max-width: 640px) {
+  .ref-grid { grid-template-columns: 1fr; }
+  .counter-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/redesign/">Home</a>
+    <span class="sep">›</span>
+    <a href="/redesign/vocab/phrases/">Vocabulary</a>
+    <span class="sep">›</span>
+    Numbers
+  </div>
+  <h1 class="page-h1">Numbers <span class="h1-jp">数字</span></h1>
+  <div class="page-meta">
+    <span>0 → 1,000,000+</span>
+    <span class="meta-pill">Reference</span>
+    <span class="meta-pill">Audio</span>
+    <span class="meta-pill">Counters</span>
+  </div>
+</header>
+
+<!-- ── SECTION NAV ── -->
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#basics">Basics</a>
+  <a href="#native">Native</a>
+  <a href="#large">Large</a>
+  <a href="#counters">Counters</a>
+  <a href="#time">Time</a>
+  <a href="#dates">Dates</a>
+  <a href="#money">Money</a>
+  <a href="#guide">Guide</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<!-- ── PAGE BODY ── -->
+<div class="page-body">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" aria-label="Page navigation">
+    <p class="sidebar-label">Numbers</p>
+    <ul class="sidebar-links">
+      <li><a href="#basics">0–100</a></li>
+      <li><a href="#native">Native counting</a></li>
+      <li><a href="#large">1,000–1,000,000</a></li>
+      <li><a href="#counters">Counters</a></li>
+      <li><a href="#time">Time</a></li>
+      <li><a href="#dates">Dates</a></li>
+      <li><a href="#money">Money</a></li>
+      <li><a href="#guide">Reading guide</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Vocabulary</p>
+    <ul class="sidebar-links">
+      <li><a href="../phrases/">Phrases</a></li>
+      <li><a href="../n5/">N5 Vocabulary</a></li>
+      <li><a href="../dictionary/">Dictionary</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <a class="sidebar-cta" href="/redesign/jlpt/n5/">Start N5 →</a>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content" id="main-content">
+
+    <!-- ── 0–100 ── -->
+    <section class="section" id="basics">
+      <div class="section-heading">
+        <h2>0 to 100</h2>
+        <span class="sh-jp">基本の数字</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Japanese uses Chinese-derived (Sino-Japanese) numbers for almost all counting. Press <strong>▶ Play</strong> on any row to hear the number spoken aloud. Irregular readings are shaded — these must be memorised.</p>
+      </div>
+      <table class="num-table">
+        <thead><tr>
+          <th>Number</th><th>Kanji</th><th>Reading</th><th>Romaji</th><th></th>
+        </tr></thead>
+        <tbody id="basics-body"></tbody>
+      </table>
+    </section>
+
+    <!-- ── Native counting ── -->
+    <section class="section" id="native">
+      <div class="section-heading">
+        <h2>Native Counting</h2>
+        <span class="sh-jp">ひとつ・ふたつ</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Japanese has a second, older number system derived from native Japanese words. These are used for counting objects without a specific counter (up to ten), and appear in everyday speech. Beyond ten, the Sino-Japanese system takes over completely.</p>
+      </div>
+      <table class="num-table">
+        <thead><tr>
+          <th>Number</th><th>Kanji</th><th>Reading</th><th>Romaji</th><th></th>
+        </tr></thead>
+        <tbody id="native-body"></tbody>
+      </table>
+    </section>
+
+    <!-- ── Large numbers ── -->
+    <section class="section" id="large">
+      <div class="section-heading">
+        <h2>Large Numbers</h2>
+        <span class="sh-jp">大きい数</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Japanese groups large numbers in units of <strong>ten thousand</strong> (万, まん), not thousands. This is the most common stumbling block for English speakers — 100,000 is not "one hundred thousand" but "ten man" (十万, じゅうまん).</p>
+      </div>
+      <table class="num-table">
+        <thead><tr>
+          <th>Number</th><th>Kanji</th><th>Reading</th><th>Romaji</th><th></th>
+        </tr></thead>
+        <tbody id="large-body"></tbody>
+      </table>
+    </section>
+
+    <!-- ── Counters ── -->
+    <section class="section" id="counters">
+      <div class="section-heading">
+        <h2>Counters</h2>
+        <span class="sh-jp">助数詞</span>
+        <span class="sh-count">Most common</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Japanese uses special counter words (助数詞, じょすうし) that attach to numbers depending on what you're counting. The number often changes sound too — いち+ほん becomes いっぽん. The most important ones are below.</p>
+      </div>
+      <div class="counter-grid">
+        <div class="counter-card">
+          <div class="cc-kanji">本</div>
+          <div class="cc-kana">ほん</div>
+          <div class="cc-en">Long thin objects</div>
+          <div class="cc-use">Pens, bottles, rivers, roads, phone calls</div>
+          <div class="cc-ex">一本 ・ 二本 ・ 三本<br><span class="cc-ex-r">いっぽん・にほん・さんぼん</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">枚</div>
+          <div class="cc-kana">まい</div>
+          <div class="cc-en">Flat thin objects</div>
+          <div class="cc-use">Paper, stamps, tickets, plates, shirts</div>
+          <div class="cc-ex">一枚 ・ 二枚 ・ 三枚<br><span class="cc-ex-r">いちまい・にまい・さんまい</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">冊</div>
+          <div class="cc-kana">さつ</div>
+          <div class="cc-en">Bound books</div>
+          <div class="cc-use">Books, notebooks, magazines</div>
+          <div class="cc-ex">一冊 ・ 二冊 ・ 三冊<br><span class="cc-ex-r">いっさつ・にさつ・さんさつ</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">台</div>
+          <div class="cc-kana">だい</div>
+          <div class="cc-en">Machines &amp; vehicles</div>
+          <div class="cc-use">Cars, computers, TVs, bicycles</div>
+          <div class="cc-ex">一台 ・ 二台 ・ 三台<br><span class="cc-ex-r">いちだい・にだい・さんだい</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">匹</div>
+          <div class="cc-kana">ひき</div>
+          <div class="cc-en">Small animals</div>
+          <div class="cc-use">Cats, dogs, fish, insects</div>
+          <div class="cc-ex">一匹 ・ 二匹 ・ 三匹<br><span class="cc-ex-r">いっぴき・にひき・さんびき</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">羽</div>
+          <div class="cc-kana">わ</div>
+          <div class="cc-en">Birds &amp; rabbits</div>
+          <div class="cc-use">All birds; also rabbits (historically)</div>
+          <div class="cc-ex">一羽 ・ 二羽 ・ 三羽<br><span class="cc-ex-r">いちわ・にわ・さんわ</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">頭</div>
+          <div class="cc-kana">とう</div>
+          <div class="cc-en">Large animals</div>
+          <div class="cc-use">Horses, cows, elephants, whales</div>
+          <div class="cc-ex">一頭 ・ 二頭 ・ 三頭<br><span class="cc-ex-r">いっとう・にとう・さんとう</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">人</div>
+          <div class="cc-kana">にん</div>
+          <div class="cc-en">People</div>
+          <div class="cc-use">People (1 and 2 are irregular)</div>
+          <div class="cc-ex">一人 ・ 二人 ・ 三人<br><span class="cc-ex-r">ひとり・ふたり・さんにん</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">個</div>
+          <div class="cc-kana">こ</div>
+          <div class="cc-en">Small objects</div>
+          <div class="cc-use">Apples, eggs, buttons, coins</div>
+          <div class="cc-ex">一個 ・ 二個 ・ 三個<br><span class="cc-ex-r">いっこ・にこ・さんこ</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">杯</div>
+          <div class="cc-kana">はい</div>
+          <div class="cc-en">Cups &amp; bowls</div>
+          <div class="cc-use">Drinks, bowls of rice, spoonfuls</div>
+          <div class="cc-ex">一杯 ・ 二杯 ・ 三杯<br><span class="cc-ex-r">いっぱい・にはい・さんばい</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">階</div>
+          <div class="cc-kana">かい</div>
+          <div class="cc-en">Floors</div>
+          <div class="cc-use">Storeys of a building</div>
+          <div class="cc-ex">一階 ・ 二階 ・ 三階<br><span class="cc-ex-r">いっかい・にかい・さんがい</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">回</div>
+          <div class="cc-kana">かい</div>
+          <div class="cc-en">Times / occurrences</div>
+          <div class="cc-use">Number of times something happens</div>
+          <div class="cc-ex">一回 ・ 二回 ・ 三回<br><span class="cc-ex-r">いっかい・にかい・さんかい</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">番</div>
+          <div class="cc-kana">ばん</div>
+          <div class="cc-en">Ordinal numbers</div>
+          <div class="cc-use">1st, 2nd, 3rd — ranking and order</div>
+          <div class="cc-ex">一番 ・ 二番 ・ 三番<br><span class="cc-ex-r">いちばん・にばん・さんばん</span></div>
+        </div>
+        <div class="counter-card">
+          <div class="cc-kanji">つ</div>
+          <div class="cc-kana">—</div>
+          <div class="cc-en">General objects</div>
+          <div class="cc-use">Anything when no specific counter fits (uses native numbers)</div>
+          <div class="cc-ex">一つ ・ 二つ ・ 三つ<br><span class="cc-ex-r">ひとつ・ふたつ・みっつ</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Time ── -->
+    <section class="section" id="time">
+      <div class="section-heading">
+        <h2>Telling the Time</h2>
+        <span class="sh-jp">時間</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Hours use the counter 時 (じ) and minutes use 分 (ふん/ぷん). Several hours and minutes have irregular readings — particularly 4 o'clock (よじ not よんじ), 7 o'clock (しちじ not ななじ), and 9 o'clock (くじ not きゅうじ).</p>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-block">
+          <div class="ref-block-label">Hours — 時 (じ)</div>
+          <div class="ref-row"><span class="ref-jp">一時</span><span class="ref-r">いちじ</span><span class="ref-en">1 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">二時</span><span class="ref-r">にじ</span><span class="ref-en">2 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">三時</span><span class="ref-r">さんじ</span><span class="ref-en">3 o'clock</span></div>
+          <div class="ref-row irr"><span class="ref-jp">四時</span><span class="ref-r">よじ ⚑</span><span class="ref-en">4 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">五時</span><span class="ref-r">ごじ</span><span class="ref-en">5 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">六時</span><span class="ref-r">ろくじ</span><span class="ref-en">6 o'clock</span></div>
+          <div class="ref-row irr"><span class="ref-jp">七時</span><span class="ref-r">しちじ ⚑</span><span class="ref-en">7 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">八時</span><span class="ref-r">はちじ</span><span class="ref-en">8 o'clock</span></div>
+          <div class="ref-row irr"><span class="ref-jp">九時</span><span class="ref-r">くじ ⚑</span><span class="ref-en">9 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">十時</span><span class="ref-r">じゅうじ</span><span class="ref-en">10 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">十一時</span><span class="ref-r">じゅういちじ</span><span class="ref-en">11 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">十二時</span><span class="ref-r">じゅうにじ</span><span class="ref-en">12 o'clock</span></div>
+          <div class="ref-row"><span class="ref-jp">午前 / 午後</span><span class="ref-r">ごぜん / ごご</span><span class="ref-en">AM / PM</span></div>
+          <div class="ref-row"><span class="ref-jp">半</span><span class="ref-r">はん</span><span class="ref-en">half past</span></div>
+        </div>
+        <div class="ref-block">
+          <div class="ref-block-label">Minutes — 分 (ふん/ぷん)</div>
+          <div class="ref-row irr"><span class="ref-jp">一分</span><span class="ref-r">いっぷん ⚑</span><span class="ref-en">1 minute</span></div>
+          <div class="ref-row"><span class="ref-jp">二分</span><span class="ref-r">にふん</span><span class="ref-en">2 minutes</span></div>
+          <div class="ref-row irr"><span class="ref-jp">三分</span><span class="ref-r">さんぷん ⚑</span><span class="ref-en">3 minutes</span></div>
+          <div class="ref-row irr"><span class="ref-jp">四分</span><span class="ref-r">よんぷん ⚑</span><span class="ref-en">4 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">五分</span><span class="ref-r">ごふん</span><span class="ref-en">5 minutes</span></div>
+          <div class="ref-row irr"><span class="ref-jp">六分</span><span class="ref-r">ろっぷん ⚑</span><span class="ref-en">6 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">七分</span><span class="ref-r">ななふん</span><span class="ref-en">7 minutes</span></div>
+          <div class="ref-row irr"><span class="ref-jp">八分</span><span class="ref-r">はっぷん ⚑</span><span class="ref-en">8 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">九分</span><span class="ref-r">きゅうふん</span><span class="ref-en">9 minutes</span></div>
+          <div class="ref-row irr"><span class="ref-jp">十分</span><span class="ref-r">じゅっぷん ⚑</span><span class="ref-en">10 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">十五分</span><span class="ref-r">じゅうごふん</span><span class="ref-en">15 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">三十分</span><span class="ref-r">さんじゅっぷん</span><span class="ref-en">30 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">四十五分</span><span class="ref-r">よんじゅうごふん</span><span class="ref-en">45 minutes</span></div>
+          <div class="ref-row"><span class="ref-jp">三時十五分</span><span class="ref-r">さんじ じゅうごふん</span><span class="ref-en">3:15</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Dates ── -->
+    <section class="section" id="dates">
+      <div class="section-heading">
+        <h2>Dates &amp; Calendar</h2>
+        <span class="sh-jp">日付</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Dates in Japanese go from largest to smallest: year → month → day. Days of the month have many irregular readings — the first ten days are almost all irregular. Japanese also has its own calendar era system (元号, げんごう): the current era is <strong>令和</strong> (Reiwa), which began in 2019 (令和元年).</p>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-block">
+          <div class="ref-block-label">Months — 月 (がつ)</div>
+          <div class="ref-row"><span class="ref-jp">一月</span><span class="ref-r">いちがつ</span><span class="ref-en">January</span></div>
+          <div class="ref-row"><span class="ref-jp">二月</span><span class="ref-r">にがつ</span><span class="ref-en">February</span></div>
+          <div class="ref-row"><span class="ref-jp">三月</span><span class="ref-r">さんがつ</span><span class="ref-en">March</span></div>
+          <div class="ref-row irr"><span class="ref-jp">四月</span><span class="ref-r">しがつ ⚑</span><span class="ref-en">April</span></div>
+          <div class="ref-row"><span class="ref-jp">五月</span><span class="ref-r">ごがつ</span><span class="ref-en">May</span></div>
+          <div class="ref-row"><span class="ref-jp">六月</span><span class="ref-r">ろくがつ</span><span class="ref-en">June</span></div>
+          <div class="ref-row irr"><span class="ref-jp">七月</span><span class="ref-r">しちがつ ⚑</span><span class="ref-en">July</span></div>
+          <div class="ref-row"><span class="ref-jp">八月</span><span class="ref-r">はちがつ</span><span class="ref-en">August</span></div>
+          <div class="ref-row irr"><span class="ref-jp">九月</span><span class="ref-r">くがつ ⚑</span><span class="ref-en">September</span></div>
+          <div class="ref-row irr"><span class="ref-jp">十月</span><span class="ref-r">じゅうがつ</span><span class="ref-en">October</span></div>
+          <div class="ref-row"><span class="ref-jp">十一月</span><span class="ref-r">じゅういちがつ</span><span class="ref-en">November</span></div>
+          <div class="ref-row"><span class="ref-jp">十二月</span><span class="ref-r">じゅうにがつ</span><span class="ref-en">December</span></div>
+          <div class="ref-row"><span class="ref-jp">何月</span><span class="ref-r">なんがつ</span><span class="ref-en">which month?</span></div>
+        </div>
+        <div class="ref-block">
+          <div class="ref-block-label">Days of the month — 日 (にち/か)</div>
+          <div class="ref-row irr"><span class="ref-jp">一日</span><span class="ref-r">ついたち ⚑</span><span class="ref-en">1st</span></div>
+          <div class="ref-row irr"><span class="ref-jp">二日</span><span class="ref-r">ふつか ⚑</span><span class="ref-en">2nd</span></div>
+          <div class="ref-row irr"><span class="ref-jp">三日</span><span class="ref-r">みっか ⚑</span><span class="ref-en">3rd</span></div>
+          <div class="ref-row irr"><span class="ref-jp">四日</span><span class="ref-r">よっか ⚑</span><span class="ref-en">4th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">五日</span><span class="ref-r">いつか ⚑</span><span class="ref-en">5th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">六日</span><span class="ref-r">むいか ⚑</span><span class="ref-en">6th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">七日</span><span class="ref-r">なのか ⚑</span><span class="ref-en">7th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">八日</span><span class="ref-r">ようか ⚑</span><span class="ref-en">8th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">九日</span><span class="ref-r">ここのか ⚑</span><span class="ref-en">9th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">十日</span><span class="ref-r">とおか ⚑</span><span class="ref-en">10th</span></div>
+          <div class="ref-row"><span class="ref-jp">十一日</span><span class="ref-r">じゅういちにち</span><span class="ref-en">11th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">十四日</span><span class="ref-r">じゅうよっか ⚑</span><span class="ref-en">14th</span></div>
+          <div class="ref-row irr"><span class="ref-jp">二十日</span><span class="ref-r">はつか ⚑</span><span class="ref-en">20th</span></div>
+          <div class="ref-row"><span class="ref-jp">何日</span><span class="ref-r">なんにち</span><span class="ref-en">which day?</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Money ── -->
+    <section class="section" id="money">
+      <div class="section-heading">
+        <h2>Money</h2>
+        <span class="sh-jp">お金</span>
+      </div>
+      <div class="prose" style="margin-bottom:20px">
+        <p>Japanese yen (円, えん) has no decimal — there are no coins smaller than 1 yen. Prices are written with the ¥ symbol or with 円 after the number. Because of the 万 unit, large prices are chunked differently: ¥10,000 is 一万円 (いちまんえん), not "ten thousand yen."</p>
+      </div>
+      <div class="ref-grid">
+        <div class="ref-block">
+          <div class="ref-block-label">Coins &amp; notes</div>
+          <div class="ref-row"><span class="ref-jp">一円</span><span class="ref-r">いちえん</span><span class="ref-en">¥1 (aluminium coin)</span></div>
+          <div class="ref-row"><span class="ref-jp">五円</span><span class="ref-r">ごえん</span><span class="ref-en">¥5 (brass, good luck)</span></div>
+          <div class="ref-row"><span class="ref-jp">十円</span><span class="ref-r">じゅうえん</span><span class="ref-en">¥10 (bronze)</span></div>
+          <div class="ref-row"><span class="ref-jp">五十円</span><span class="ref-r">ごじゅうえん</span><span class="ref-en">¥50 (holed coin)</span></div>
+          <div class="ref-row"><span class="ref-jp">百円</span><span class="ref-r">ひゃくえん</span><span class="ref-en">¥100 (silver coin)</span></div>
+          <div class="ref-row"><span class="ref-jp">五百円</span><span class="ref-r">ごひゃくえん</span><span class="ref-en">¥500 (large coin)</span></div>
+          <div class="ref-row"><span class="ref-jp">千円</span><span class="ref-r">せんえん</span><span class="ref-en">¥1,000 note</span></div>
+          <div class="ref-row"><span class="ref-jp">五千円</span><span class="ref-r">ごせんえん</span><span class="ref-en">¥5,000 note</span></div>
+          <div class="ref-row"><span class="ref-jp">一万円</span><span class="ref-r">いちまんえん</span><span class="ref-en">¥10,000 note</span></div>
+        </div>
+        <div class="ref-block">
+          <div class="ref-block-label">Useful price expressions</div>
+          <div class="ref-row"><span class="ref-jp">いくらですか</span><span class="ref-r">ikura desu ka</span><span class="ref-en">How much is it?</span></div>
+          <div class="ref-row"><span class="ref-jp">〜円になります</span><span class="ref-r">〜en ni narimasu</span><span class="ref-en">That will be ¥〜</span></div>
+          <div class="ref-row"><span class="ref-jp">おつりは〜円</span><span class="ref-r">otsuri wa 〜en</span><span class="ref-en">Your change is ¥〜</span></div>
+          <div class="ref-row"><span class="ref-jp">カードで払えますか</span><span class="ref-r">kādo de haraemasu ka</span><span class="ref-en">Can I pay by card?</span></div>
+          <div class="ref-row"><span class="ref-jp">現金のみ</span><span class="ref-r">genkin nomi</span><span class="ref-en">Cash only</span></div>
+          <div class="ref-row"><span class="ref-jp">税込み</span><span class="ref-r">zeikomi</span><span class="ref-en">Tax included</span></div>
+          <div class="ref-row"><span class="ref-jp">消費税</span><span class="ref-r">shōhizei</span><span class="ref-en">Consumption tax (10%)</span></div>
+          <div class="ref-row"><span class="ref-jp">割引</span><span class="ref-r">waribiki</span><span class="ref-en">Discount</span></div>
+          <div class="ref-row"><span class="ref-jp">半額</span><span class="ref-r">hangaku</span><span class="ref-en">Half price</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Guide ── -->
+    <section class="section" id="guide">
+      <div class="section-heading">
+        <h2>Reading Guide</h2>
+        <span class="sh-jp">数字のポイント</span>
+      </div>
+      <div class="prose">
+        <h3>Two systems, one language</h3>
+        <p>Japanese has two number systems. The Sino-Japanese system (いち、に、さん…) is used for almost everything: counting, prices, time, phone numbers, measurements. The native Japanese system (ひとつ、ふたつ、みっつ…) is used informally for counting objects up to ten when no specific counter applies, and appears in some fixed expressions. For everyday use, master the Sino-Japanese system first.</p>
+
+        <h3>Counters change the pronunciation</h3>
+        <p>When a number is followed by a counter, the sounds often blend and change. This is called <em>rendaku</em> (連濁) or consonant mutation. The most common pattern is that 1, 6, 8, and 10 often change the following consonant — for example:</p>
+        <ul>
+          <li>一本 → いっ<strong>ぽ</strong>ん (not いちほん) — h becomes p after っ</li>
+          <li>六本 → ろっ<strong>ぽ</strong>ん — same pattern</li>
+          <li>三本 → さん<strong>ぼ</strong>ん — h becomes b after ん</li>
+          <li>一冊 → いっ<strong>さ</strong>つ — gemination of s</li>
+        </ul>
+        <p>These patterns feel arbitrary at first but become intuitive with exposure. Learn them through vocabulary (一本のペン, 三枚の切手) rather than abstract rules.</p>
+
+        <h3>The 万 unit</h3>
+        <p>English counts in thousands: 1,000 / 10,000 / 100,000 / 1,000,000. Japanese counts in ten-thousands (万): 千 (1,000) / 一万 (10,000) / 十万 (100,000) / 百万 (1,000,000). When reading Japanese prices or figures, mentally re-chunk the digits in groups of four from the right, not three.</p>
+
+        <h3>Zero</h3>
+        <p>Zero has two readings. ゼロ (zero) is the loanword from English, used in modern contexts like phone numbers, scores, and temperatures. 零 (れい, rei) is the traditional Sino-Japanese form, used formally and in some fixed expressions. Both are correct; ゼロ is far more common in everyday speech.</p>
+
+        <h3>Reading years</h3>
+        <p>Japan uses both the Western year (西暦, せいれき) and the Japanese imperial era system (元号, げんごう). The current era is 令和 (Reiwa), which started May 1, 2019 = 令和元年 (Reiwa gannen — "first year of Reiwa"). 2026 = 令和8年. Official documents often use the Japanese era; everyday speech uses both interchangeably.</p>
+      </div>
+    </section>
+
+    <!-- ── FAQ ── -->
+    <section class="section" id="faq">
+      <div class="section-heading">
+        <h2>FAQ</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What's the difference between よん and し for 4?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Both mean 4, but context determines which to use. し (the Sino-Japanese reading) is avoided in some contexts because it sounds like 死 (death) — so in hospitals, hospitals avoid room number 4, and when counting objects you'll often hear よん instead. For the month April, however, し is standard (四月 = しがつ). For hours, 4 o'clock is よじ, never しじ. When in doubt, よん is the safe choice in everyday speech.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Why does 7 have two readings — しち and なな?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Like 4, しち can be confused with 一 (いち) over the phone or in noisy environments, so なな is often preferred for clarity. 7 o'clock is しちじ (hours use the Sino-Japanese set), but when counting items or saying phone numbers, なな is safer. July is しちがつ. You'll hear both in native speech — context and speaker preference both play a role.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How do I say "the first" (ordinal numbers)?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Add 番目 (ばんめ) after the number: 一番目 (first), 二番目 (second), 三番目 (third). This works for any ordinal position. A quicker way is just 番 alone — 一番 means "number one" and also "most" or "best" (一番好き = I like [it] the most). For rankings and positions, 第〜 is more formal: 第一 (the first / No. 1), 第二 (the second).</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Do I need to learn all the counters?<span class="faq-icon">+</span></button>
+          <div class="faq-a">Not immediately. In practice, if you don't know the correct counter you can almost always fall back to the general counter つ (ひとつ、ふたつ…) for objects up to ten, and 個 (こ) works for many small objects. Native speakers use the correct counters naturally, but they'll understand you regardless. Prioritise: 本 (long objects), 枚 (flat objects), 人 (people), 台 (machines), 匹 (small animals), 冊 (books), 杯 (drinks) — these cover the vast majority of daily situations.</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+
+  /* ── Number data ── */
+  var BASICS = [
+    { n:0,  k:'零・ゼロ', r:'れい・ゼロ', ro:'rei / zero' },
+    { n:1,  k:'一', r:'いち', ro:'ichi' },
+    { n:2,  k:'二', r:'に', ro:'ni' },
+    { n:3,  k:'三', r:'さん', ro:'san' },
+    { n:4,  k:'四', r:'し・よん', ro:'shi / yon', irr:true },
+    { n:5,  k:'五', r:'ご', ro:'go' },
+    { n:6,  k:'六', r:'ろく', ro:'roku' },
+    { n:7,  k:'七', r:'しち・なな', ro:'shichi / nana', irr:true },
+    { n:8,  k:'八', r:'はち', ro:'hachi' },
+    { n:9,  k:'九', r:'く・きゅう', ro:'ku / kyū', irr:true },
+    { n:10, k:'十', r:'じゅう', ro:'jū' },
+    { n:11, k:'十一', r:'じゅういち', ro:'jūichi' },
+    { n:12, k:'十二', r:'じゅうに', ro:'jūni' },
+    { n:13, k:'十三', r:'じゅうさん', ro:'jūsan' },
+    { n:14, k:'十四', r:'じゅうし・じゅうよん', ro:'jūshi / jūyon', irr:true },
+    { n:15, k:'十五', r:'じゅうご', ro:'jūgo' },
+    { n:16, k:'十六', r:'じゅうろく', ro:'jūroku' },
+    { n:17, k:'十七', r:'じゅうしち・じゅうなな', ro:'jūshichi / jūnana', irr:true },
+    { n:18, k:'十八', r:'じゅうはち', ro:'jūhachi' },
+    { n:19, k:'十九', r:'じゅうく・じゅうきゅう', ro:'jūku / jūkyū', irr:true },
+    { n:20, k:'二十', r:'にじゅう', ro:'nijū' },
+    { n:30, k:'三十', r:'さんじゅう', ro:'sanjū' },
+    { n:40, k:'四十', r:'よんじゅう', ro:'yonjū', irr:true },
+    { n:50, k:'五十', r:'ごじゅう', ro:'gojū' },
+    { n:60, k:'六十', r:'ろくじゅう', ro:'rokujū' },
+    { n:70, k:'七十', r:'ななじゅう・しちじゅう', ro:'nanajū / shichijū', irr:true },
+    { n:80, k:'八十', r:'はちじゅう', ro:'hachijū' },
+    { n:90, k:'九十', r:'きゅうじゅう', ro:'kyūjū', irr:true },
+    { n:100,k:'百', r:'ひゃく', ro:'hyaku' },
+  ];
+
+  var NATIVE = [
+    { n:1,  k:'一つ', r:'ひとつ', ro:'hitotsu' },
+    { n:2,  k:'二つ', r:'ふたつ', ro:'futatsu' },
+    { n:3,  k:'三つ', r:'みっつ', ro:'mittsu' },
+    { n:4,  k:'四つ', r:'よっつ', ro:'yottsu' },
+    { n:5,  k:'五つ', r:'いつつ', ro:'itsutsu' },
+    { n:6,  k:'六つ', r:'むっつ', ro:'muttsu' },
+    { n:7,  k:'七つ', r:'ななつ', ro:'nanatsu' },
+    { n:8,  k:'八つ', r:'やっつ', ro:'yattsu' },
+    { n:9,  k:'九つ', r:'ここのつ', ro:'kokonotsu' },
+    { n:10, k:'十', r:'とお', ro:'tō' },
+  ];
+
+  var LARGE = [
+    { n:'100',        k:'百',       r:'ひゃく',         ro:'hyaku' },
+    { n:'200',        k:'二百',     r:'にひゃく',        ro:'nihyaku' },
+    { n:'300',        k:'三百',     r:'さんびゃく',      ro:'sanbyaku', irr:true },
+    { n:'400',        k:'四百',     r:'よんひゃく',      ro:'yonhyaku' },
+    { n:'500',        k:'五百',     r:'ごひゃく',        ro:'gohyaku' },
+    { n:'600',        k:'六百',     r:'ろっぴゃく',      ro:'roppyaku', irr:true },
+    { n:'700',        k:'七百',     r:'ななひゃく',      ro:'nanahyaku' },
+    { n:'800',        k:'八百',     r:'はっぴゃく',      ro:'happyaku', irr:true },
+    { n:'900',        k:'九百',     r:'きゅうひゃく',    ro:'kyūhyaku' },
+    { n:'1,000',      k:'千',       r:'せん',            ro:'sen' },
+    { n:'2,000',      k:'二千',     r:'にせん',          ro:'nisen' },
+    { n:'3,000',      k:'三千',     r:'さんぜん',        ro:'sanzen', irr:true },
+    { n:'8,000',      k:'八千',     r:'はっせん',        ro:'hassen', irr:true },
+    { n:'10,000',     k:'一万',     r:'いちまん',        ro:'ichiman' },
+    { n:'100,000',    k:'十万',     r:'じゅうまん',      ro:'jūman' },
+    { n:'1,000,000',  k:'百万',     r:'ひゃくまん',      ro:'hyakuman' },
+    { n:'10,000,000', k:'千万',     r:'せんまん',        ro:'senman' },
+    { n:'100,000,000',k:'一億',     r:'いちおく',        ro:'ichioku' },
+  ];
+
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  }
+
+  function buildRow(item) {
+    var cls = item.irr ? ' class="irr"' : '';
+    return '<tr' + cls + '>' +
+      '<td class="num-digit">' + item.n + '</td>' +
+      '<td class="num-kanji">' + item.k + '</td>' +
+      '<td class="num-kana">' + item.r + '</td>' +
+      '<td class="num-romaji">' + item.ro + '</td>' +
+      '<td><button class="num-play" data-speak="' + item.k.split('・')[0] + '">▶ Play</button></td>' +
+      '</tr>';
+  }
+
+  function fillTable(id, data) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = data.map(buildRow).join('');
+  }
+
+  fillTable('basics-body', BASICS);
+  fillTable('native-body', NATIVE);
+  fillTable('large-body', LARGE);
+
+  /* ── Audio ── */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest('.num-play');
+    if (btn) {
+      speak(btn.dataset.speak);
+      btn.classList.add('playing');
+      btn.textContent = '♪';
+      setTimeout(function () {
+        btn.classList.remove('playing');
+        btn.textContent = '▶ Play';
+      }, 1200);
+    }
+  });
+
+  /* ── Sidebar scroll tracking ── */
+  var sections = document.querySelectorAll('.section[id]');
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+
+  /* ── FAQ ── */
+  document.querySelectorAll('.faq-q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function (i) {
+        i.classList.remove('open');
+        i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+})();
+</script>
+
+<script src="../../nav.js"></script>
+</body>
+</html>

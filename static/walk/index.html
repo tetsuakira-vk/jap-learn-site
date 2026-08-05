@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Walk Mode — Japanese Unlocked</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    @font-face {
+      font-family: 'Sigokae';
+      src: url('/fonts/Sigokae.otf') format('opentype'),
+           url('/fonts/Sigokae.ttf') format('truetype');
+      font-weight: normal; font-style: normal; font-display: swap;
+    }
+
+    :root {
+      --bg:        #1d1e20;
+      --entry:     #2e2e33;
+      --primary:   #dadadb;
+      --secondary: #9b9c9d;
+      --border:    #333335;
+      --accent:    #c0392b;
+      --blue:      #4a9eca;
+    }
+
+    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); color: var(--primary); min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* Masthead */
+    .site-masthead { background: var(--bg); border-bottom: 1px solid var(--border); flex-shrink: 0; }
+    .masthead-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1072px; margin: 0 auto; padding: 0.6rem 24px; }
+    .masthead-title { text-decoration: none; display: inline-flex; flex-direction: column; line-height: 1; }
+    .masthead-title:hover { opacity: 0.8; }
+    .masthead-title-en { font-family: 'Sigokae', serif; font-size: 1.55rem; font-weight: normal; color: var(--primary); }
+    .masthead-title-jp { font-size: 0.58rem; color: var(--secondary); letter-spacing: 0.2em; text-align: right; border-top: 1px solid var(--border); padding-top: 0.22rem; margin-top: 0.18rem; }
+    .masthead-breadcrumb { font-size: 0.8rem; color: var(--secondary); display: flex; align-items: center; gap: 6px; }
+    .masthead-breadcrumb a { color: var(--secondary); text-decoration: none; }
+    .masthead-breadcrumb a:hover { color: var(--primary); }
+    .breadcrumb-current { color: var(--primary); font-weight: 500; }
+    .accent-rule { height: 3px; background: var(--accent); flex-shrink: 0; }
+
+    /* Two-column player */
+    .main-layout { flex: 1; display: flex; width: 100%; max-width: 1000px; align-self: center; min-height: 480px; }
+    .player-panel { width: 360px; flex-shrink: 0; padding: 32px 24px 40px; display: flex; flex-direction: column; align-items: center; gap: 20px; border-right: 1px solid var(--border); }
+    .walk-icon { line-height: 1; }
+    .session-title { font-size: 1rem; font-weight: 700; text-align: center; color: var(--primary); line-height: 1.4; }
+    .scene-badge { display: inline-block; background: rgba(192,57,43,0.12); color: #e05a4a; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; padding: 3px 11px; border-radius: 20px; text-transform: uppercase; border: 1px solid rgba(192,57,43,0.25); }
+    .session-meta { font-size: 0.78rem; color: var(--secondary); text-align: center; line-height: 1.6; }
+    .how-it-works { background: var(--entry); border: 1px solid var(--border); border-radius: 10px; padding: 12px 15px; font-size: 0.76rem; color: var(--secondary); line-height: 1.65; width: 100%; }
+    .how-it-works strong { color: var(--primary); }
+
+    .seek-bar { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 2px; outline: none; cursor: pointer; background: var(--border); }
+    .seek-bar::-webkit-slider-thumb { -webkit-appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--blue); cursor: pointer; }
+    .seek-bar::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--blue); cursor: pointer; border: none; }
+    .progress-time { width: 100%; display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--secondary); margin-top: 5px; }
+
+    .play-btn { width: 88px; height: 88px; border-radius: 50%; background: var(--blue); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s, transform 0.1s; -webkit-tap-highlight-color: transparent; }
+    .play-btn:hover { background: #5aaede; }
+    .play-btn:active { transform: scale(0.95); }
+    .play-btn svg { fill: #fff; }
+    .play-btn.paused svg.icon-play  { display: none; }
+    .play-btn:not(.paused) svg.icon-pause { display: none; }
+
+    .download-btn { display: inline-flex; align-items: center; gap: 7px; padding: 8px 18px; background: transparent; border: 1px solid var(--border); border-radius: 8px; color: var(--secondary); text-decoration: none; font-size: 0.78rem; transition: border-color 0.15s, color 0.15s; }
+    .download-btn:hover { border-color: #555; color: var(--primary); }
+
+    .no-session { text-align: center; color: var(--secondary); font-size: 0.86rem; line-height: 1.7; }
+    .no-session code { font-size: 0.78rem; background: var(--entry); padding: 2px 7px; border-radius: 4px; color: var(--primary); }
+
+    /* Transcript */
+    .transcript-panel { flex: 1; overflow-y: auto; padding: 28px 28px 40px; max-height: calc(100vh - 74px); }
+    .t-heading { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #444; margin-bottom: 14px; }
+    .t-scene-intro { font-size: 0.79rem; color: var(--secondary); font-style: italic; line-height: 1.7; padding-bottom: 16px; margin-bottom: 6px; border-bottom: 1px solid var(--border); }
+    .beat-block { padding: 10px; border-radius: 8px; margin-bottom: 2px; opacity: 0.25; transition: opacity 0.35s, background 0.35s; }
+    .beat-block.active { opacity: 1; background: var(--entry); }
+    .t-line { font-size: 0.77rem; line-height: 1.65; margin-bottom: 4px; }
+    .t-line:last-child { margin-bottom: 0; }
+    .t-narrator { color: #505050; font-style: italic; }
+    .t-cue { color: #3a6a8a; }
+    .t-char-line, .t-answer-line { display: flex; align-items: baseline; gap: 9px; }
+    .t-speaker { font-size: 0.63rem; color: var(--secondary); min-width: 48px; flex-shrink: 0; opacity: 0.55; }
+    .t-jp { font-size: 1.02rem; color: var(--primary); font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; line-height: 1.5; }
+    .t-answer-line .t-jp { color: var(--blue); }
+    .t-romaji { font-size: 0.68rem; color: var(--secondary); opacity: 0.45; margin-left: 4px; }
+
+    /* Shared section styles */
+    .section-wrap { width: 100%; max-width: 1000px; align-self: center; padding: 32px 24px; border-top: 1px solid var(--border); }
+    .section-label { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #444; margin-bottom: 16px; }
+
+    /* Browse section */
+    .level-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .level-tab { padding: 5px 16px; border-radius: 6px; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.05em; cursor: pointer; border: 1px solid var(--border); background: transparent; color: var(--secondary); transition: all 0.15s; }
+    .level-tab:hover:not(.empty) { border-color: #555; color: var(--primary); }
+    .level-tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .level-tab.empty { opacity: 0.3; cursor: default; }
+
+    .scene-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; }
+    .scene-card { background: var(--entry); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+    .scene-card:hover { border-color: #555; }
+    .scene-card.active { border-color: var(--accent); background: rgba(192,57,43,0.08); }
+    .card-title { font-size: 0.84rem; font-weight: 600; color: var(--primary); margin-bottom: 5px; line-height: 1.3; }
+    .card-meta { font-size: 0.7rem; color: var(--secondary); }
+
+    /* Key Phrases section */
+    .phrases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+    .phrase-card { background: var(--entry); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+    .phrase-jp { font-size: 1.25rem; font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif; color: var(--primary); margin-bottom: 4px; }
+    .phrase-reading { font-size: 0.72rem; color: var(--secondary); font-style: italic; margin-bottom: 6px; }
+    .phrase-meaning { font-size: 0.82rem; color: var(--blue); font-weight: 600; margin-bottom: 9px; }
+    .phrase-note { font-size: 0.76rem; color: #6a6a6a; line-height: 1.65; }
+
+    audio { display: none; }
+
+    /* Mobile */
+    @media (max-width: 720px) {
+      .masthead-breadcrumb { display: none; }
+      .main-layout { flex-direction: column; min-height: auto; }
+      .player-panel { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px 32px; }
+      .transcript-panel { max-height: none; padding: 20px 20px 32px; }
+      .section-wrap { padding: 24px 16px; }
+      .scene-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+      .phrases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Masthead -->
+<div class="site-masthead">
+  <div class="masthead-inner">
+    <a class="masthead-title" href="/">
+      <span class="masthead-title-en">Japanese Unlocked</span>
+      <span class="masthead-title-jp">&#26085;&#26412;&#35486;&#12434;&#23398;&#12435;&#12391;&#12415;&#12424;&#12358;</span>
+    </a>
+    <nav class="masthead-breadcrumb">
+      <a href="/">Home</a>
+      <span style="opacity:0.4">&rsaquo;</span>
+      <span class="breadcrumb-current">Walk Mode</span>
+    </nav>
+  </div>
+</div>
+<div class="accent-rule"></div>
+
+<!-- Two-column player -->
+<div class="main-layout">
+
+  <div class="player-panel">
+    <div class="walk-icon">
+      <svg width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+        <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
+        <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+      </svg>
+    </div>
+
+    <div id="session-ui" style="display:none; width:100%; flex-direction:column; align-items:center; gap:20px;">
+      <div class="session-title" id="session-title"></div>
+      <div class="scene-badge"   id="scene-badge"></div>
+      <div class="session-meta"  id="session-meta"></div>
+      <div class="how-it-works">
+        <strong>How it works:</strong> The other person speaks Japanese. A cue tells you what to say &mdash; gap to speak aloud. Then hear the correct phrase to shadow. Transcript syncs on the right.
+      </div>
+      <div style="width:100%">
+        <input type="range" id="seek-bar" class="seek-bar" min="0" max="100" step="0.1" value="0">
+        <div class="progress-time"><span id="time-current">0:00</span><span id="time-total">&mdash;</span></div>
+      </div>
+      <button class="play-btn" id="play-btn" onclick="togglePlay()">
+        <svg class="icon-play"  width="34" height="34" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        <svg class="icon-pause" width="34" height="34" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+      </button>
+      <a id="download-btn" class="download-btn" download>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Download for offline
+      </a>
+    </div>
+
+    <div id="no-session" class="no-session" style="display:none">
+      <p>No scenes found.</p>
+      <p style="margin-top:10px">Run the generate script first:<br><code>python tools/walk/generate_all_scenes.py</code></p>
+    </div>
+
+    <div id="loading" class="no-session">Loading&hellip;</div>
+  </div>
+
+  <div class="transcript-panel" id="transcript-panel" style="display:none">
+    <div class="t-heading">Transcript</div>
+    <div class="t-scene-intro" id="t-scene-intro"></div>
+    <div id="t-beats"></div>
+  </div>
+
+</div>
+
+<!-- Browse section -->
+<div class="section-wrap" id="browse-section" style="display:none">
+  <div class="section-label">Browse Scenes</div>
+  <div class="level-tabs" id="level-tabs"></div>
+  <div class="scene-grid"  id="scene-grid"></div>
+</div>
+
+<!-- Key Phrases section -->
+<div class="section-wrap" id="phrases-section" style="display:none">
+  <div class="section-label">Key Phrases</div>
+  <div class="phrases-grid" id="phrases-grid"></div>
+</div>
+
+<audio id="walk-audio" preload="metadata"></audio>
+
+<script>
+  const audio       = document.getElementById('walk-audio');
+  const playBtn     = document.getElementById('play-btn');
+  const seekBar     = document.getElementById('seek-bar');
+  const timeCurrent = document.getElementById('time-current');
+  const timeTotal   = document.getElementById('time-total');
+
+  let allScenes      = [];
+  let allBeats       = [];
+  let currentBeatIdx = -1;
+  let currentSceneId = null;
+  let isSeeking      = false;
+  let activeLevel    = null;
+
+  // Seek bar
+  function updateSeekBar(pct) {
+    seekBar.style.background =
+      'linear-gradient(to right, var(--blue) ' + pct + '%, var(--border) ' + pct + '%)';
+  }
+  updateSeekBar(0);
+
+  seekBar.addEventListener('mousedown',  function() { isSeeking = true; });
+  seekBar.addEventListener('touchstart', function() { isSeeking = true; }, { passive: true });
+  seekBar.addEventListener('mouseup',    function() { isSeeking = false; });
+  seekBar.addEventListener('touchend',   function() { isSeeking = false; });
+  seekBar.addEventListener('input', function() {
+    if (audio.duration) audio.currentTime = (seekBar.value / 100) * audio.duration;
+    updateSeekBar(parseFloat(seekBar.value));
+  });
+
+  function fmt(secs) {
+    var m = Math.floor(secs / 60), s = Math.floor(secs % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function togglePlay() { audio.paused ? audio.play() : audio.pause(); }
+
+  audio.addEventListener('play',            function() { playBtn.classList.add('paused'); });
+  audio.addEventListener('pause',           function() { playBtn.classList.remove('paused'); });
+  audio.addEventListener('ended',           function() { playBtn.classList.remove('paused'); });
+  audio.addEventListener('loadedmetadata',  function() { timeTotal.textContent = fmt(audio.duration); });
+  audio.addEventListener('timeupdate', function() {
+    if (!audio.duration || isSeeking) return;
+    var pct = (audio.currentTime / audio.duration) * 100;
+    seekBar.value = pct;
+    updateSeekBar(pct);
+    timeCurrent.textContent = fmt(audio.currentTime);
+    syncTranscript(audio.currentTime * 1000);
+  });
+
+  // Transcript
+  function speakerName(str) {
+    if (!str) return 'Them';
+    var n = str.split(',')[0].trim();
+    return n.charAt(0).toUpperCase() + n.slice(1);
+  }
+
+  function buildTranscript(scene) {
+    var introEl = document.getElementById('t-scene-intro');
+    var beatsEl = document.getElementById('t-beats');
+    introEl.textContent = scene.scene_intro || '';
+    beatsEl.innerHTML   = '';
+    var charName = speakerName(scene.other_character);
+    (scene.beats || []).forEach(function(beat, i) {
+      var div = document.createElement('div');
+      div.className = 'beat-block';
+      div.dataset.beatIdx = String(i);
+      var html = '<div class="t-line t-narrator">' + beat.context_line + '</div>';
+      if (beat.character_japanese) {
+        html += '<div class="t-line t-char-line"><span class="t-speaker">' + charName + '</span><span class="t-jp">' + beat.character_japanese + '</span></div>';
+      }
+      html += '<div class="t-line t-cue">' + beat.english_cue + '</div>';
+      html += '<div class="t-line t-answer-line"><span class="t-speaker">You</span><span class="t-jp">' + beat.japanese_answer + '</span>' +
+              (beat.romaji ? '<span class="t-romaji">' + beat.romaji + '</span>' : '') + '</div>';
+      div.innerHTML = html;
+      beatsEl.appendChild(div);
+    });
+    document.getElementById('transcript-panel').style.display = '';
+  }
+
+  function syncTranscript(ms) {
+    if (!allBeats.length) return;
+    var idx = -1;
+    for (var i = 0; i < allBeats.length; i++) {
+      if (ms >= allBeats[i].start_ms) idx = i; else break;
+    }
+    if (idx === currentBeatIdx) return;
+    currentBeatIdx = idx;
+    document.querySelectorAll('.beat-block').forEach(function(el, i) {
+      el.classList.toggle('active', i === idx);
+    });
+    if (idx >= 0) {
+      var el = document.querySelector('.beat-block[data-beat-idx="' + idx + '"]');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+
+  // Key Phrases
+  function buildKeyPhrases(scene) {
+    var section = document.getElementById('phrases-section');
+    var grid    = document.getElementById('phrases-grid');
+    var phrases = scene.key_phrases || [];
+    if (!phrases.length) { section.style.display = 'none'; return; }
+    grid.innerHTML = '';
+    phrases.forEach(function(p) {
+      var card = document.createElement('div');
+      card.className = 'phrase-card';
+      card.innerHTML =
+        '<div class="phrase-jp">'      + p.phrase  + '</div>' +
+        '<div class="phrase-reading">' + p.reading + '</div>' +
+        '<div class="phrase-meaning">' + p.meaning + '</div>' +
+        '<div class="phrase-note">'    + p.note    + '</div>';
+      grid.appendChild(card);
+    });
+    section.style.display = '';
+  }
+
+  // Scene browser
+  function buildBrowser(scenes) {
+    var levels = [];
+    scenes.forEach(function(s) { if (levels.indexOf(s.level) === -1) levels.push(s.level); });
+    levels.sort().reverse();
+
+    var tabsEl = document.getElementById('level-tabs');
+    tabsEl.innerHTML = '';
+    ['N5','N4','N3','N2','N1'].forEach(function(lvl) {
+      var btn = document.createElement('button');
+      var exists = levels.indexOf(lvl) !== -1;
+      btn.className = 'level-tab' + (exists ? '' : ' empty');
+      btn.textContent = lvl;
+      if (!activeLevel && exists) activeLevel = lvl;
+      if (lvl === activeLevel) btn.classList.add('active');
+      btn.addEventListener('click', function() {
+        if (!exists) return;
+        document.querySelectorAll('.level-tab').forEach(function(t) { t.classList.remove('active'); });
+        btn.classList.add('active');
+        activeLevel = lvl;
+        renderSceneCards(scenes.filter(function(s) { return s.level === lvl; }));
+      });
+      tabsEl.appendChild(btn);
+    });
+    renderSceneCards(scenes.filter(function(s) { return s.level === activeLevel; }));
+    document.getElementById('browse-section').style.display = '';
+  }
+
+  function renderSceneCards(scenes) {
+    var grid = document.getElementById('scene-grid');
+    grid.innerHTML = '';
+    scenes.forEach(function(scene) {
+      var card = document.createElement('div');
+      card.className = 'scene-card' + (scene.scene_id === currentSceneId ? ' active' : '');
+      card.dataset.sceneId = scene.scene_id;
+      var mins = Math.round(scene.duration_seconds / 60);
+      card.innerHTML =
+        '<div class="card-title">' + scene.title + '</div>' +
+        '<div class="card-meta">'  + scene.beat_count + ' beats &middot; ~' + mins + ' min</div>';
+      card.addEventListener('click', function() {
+        audio.pause();
+        loadSession(scene);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function highlightActiveCard() {
+    document.querySelectorAll('.scene-card').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.sceneId === currentSceneId);
+    });
+  }
+
+  // Load session
+  function loadSession(scene) {
+    currentSceneId = scene.scene_id;
+    document.getElementById('loading').style.display    = 'none';
+    document.getElementById('no-session').style.display = 'none';
+    document.getElementById('session-ui').style.display = 'flex';
+
+    document.getElementById('session-title').textContent = scene.title;
+    document.getElementById('scene-badge').textContent   =
+      (scene.level || '') + (scene.topic ? ' · ' + scene.topic.replace(/_/g,' ') : '');
+    document.getElementById('session-meta').textContent  =
+      scene.beat_count + ' beats · ~' + Math.round(scene.duration_seconds / 60) +
+      ' min · pocket your phone and press play';
+
+    seekBar.value = 0; updateSeekBar(0);
+    timeCurrent.textContent = '0:00'; timeTotal.textContent = '—';
+    audio.src = scene.audio_url; audio.load();
+
+    var dlBtn = document.getElementById('download-btn');
+    dlBtn.href = scene.audio_url;
+    dlBtn.download = 'walk-' + scene.scene_id + '.mp3';
+
+    allBeats = scene.beats || []; currentBeatIdx = -1;
+    buildTranscript(scene);
+    buildKeyPhrases(scene);
+    highlightActiveCard();
+
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: scene.title, artist: 'Japanese Unlocked — Walk Mode',
+        album: scene.beat_count + ' beats'
+      });
+    }
+  }
+
+  // Boot
+  fetch('scenes.json')
+    .then(function(r) { if (!r.ok) throw new Error('no scenes.json'); return r.json(); })
+    .then(function(scenes) {
+      document.getElementById('loading').style.display = 'none';
+      if (!scenes || !scenes.length) {
+        document.getElementById('no-session').style.display = 'block'; return;
+      }
+      allScenes = scenes;
+      var pick = scenes[Math.floor(Math.random() * scenes.length)];
+      loadSession(pick);
+      buildBrowser(scenes);
+    })
+    .catch(function() {
+      // Fall back to legacy manifest.json
+      fetch('manifest.json')
+        .then(function(r) { return r.ok ? r.json() : []; })
+        .then(function(sessions) {
+          document.getElementById('loading').style.display = 'none';
+          if (!sessions || !sessions.length) {
+            document.getElementById('no-session').style.display = 'block'; return;
+          }
+          var s = sessions[0];
+          s.title = s.title || (s.scene_id || '').replace(/_/g,' ').replace(/\b\w/g, function(c){return c.toUpperCase();});
+          s.level = s.level || 'N5'; s.topic = s.topic || ''; s.key_phrases = [];
+          loadSession(s);
+        })
+        .catch(function() {
+          document.getElementById('loading').style.display    = 'none';
+          document.getElementById('no-session').style.display = 'block';
+        });
+    });
+</script>
+</body>
+</html>

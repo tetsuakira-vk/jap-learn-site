@@ -1,0 +1,350 @@
+{
+  "ad_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ad_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ad_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_004": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_005": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_006": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_007": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_008": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_009": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_010": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "ss_011": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "cs_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "cs_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "cs_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_004": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_005": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_006": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_007": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_008": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_009": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "pv_010": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_004": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_005": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_006": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_007": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_008": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_009": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "hf_010": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_004": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_005": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_006": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_007": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_008": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_009": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_010": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "rr_011": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_001": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_002": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_003": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_004": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_005": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_006": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_007": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_008": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_009": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  },
+  "le_010": {
+    "last_seen": "2026-07-26",
+    "interval_days": 3,
+    "ease": 2.6,
+    "due_date": "2026-07-29"
+  }
+}
