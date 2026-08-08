@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About Japanese Unlocked — Free Japanese for Everyone</title>
+<meta name="description" content="Japanese Unlocked is a free Japanese learning site built by a YouTuber who loves the language. No ads, no paywalls, no signup — just good content.">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    About
+  </div>
+  <h1 class="page-h1">About <span class="h1-jp">について</span></h1>
+</header>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">About</p>
+    <ul class="sidebar-links">
+      <li><a href="#mission">Mission</a></li>
+      <li><a href="#site">The site</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Quick links</p>
+    <ul class="sidebar-links">
+      <li><a href="/resources/">Resources</a></li>
+      <li><a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener">YouTube</a></li>
+      <li><a href="/jlpt/n5/">Start at N5</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <section class="section" id="mission">
+      <div class="section-heading">
+        <h2>Mission</h2>
+        <span class="sh-jp">使命</span>
+      </div>
+      <div class="prose">
+        <p>Japanese Unlocked exists for one reason: to make Japanese genuinely learnable for anyone, at no cost. No subscriptions, no ad walls between you and content, no gamified dark patterns — just the vocabulary, grammar, kanji, and practice tools that actually work.</p>
+        <p>Japanese is one of the most rewarding languages an English speaker can learn. It's also one of the most misrepresented — surrounded by apps that turn it into a casual phone game and courses that cost hundreds of pounds to deliver what a well-organised free site can do better. This is that site.</p>
+      </div>
+    </section>
+
+    <section class="section" id="site">
+      <div class="section-heading">
+        <h2>What's on the site</h2>
+        <span class="sh-jp">サイトの内容</span>
+      </div>
+      <div class="prose">
+        <p>Japanese Unlocked covers the full path from zero to JLPT N1:</p>
+        <h3>Scripts</h3>
+        <p>Complete guides to Hiragana, Katakana, and Kanji — all five JLPT levels with readings, stroke notes, and audio. Every character playable at the click of a card.</p>
+        <h3>Vocabulary</h3>
+        <p>Searchable reference tools for numbers, counters, and everyday phrases. N5-specific vocabulary with audio, organised by semantic category. The dictionary covers 500+ words searchable by Japanese, romaji, or English.</p>
+        <h3>Grammar</h3>
+        <p>Particle guides, verb conjugation tables, and pattern references for N5–N4 grammar. A sentence quiz to test your knowledge under pressure.</p>
+        <h3>JLPT</h3>
+        <p>Dedicated study guides for every level (N5–N1) with stats, test format breakdowns, key grammar areas, and study tips. Full mock tests in the format of the real exam.</p>
+        <h3>Games & Practice</h3>
+        <p>Kanji Quest, Memory Match, Rhythm — actual games, not padded learning exercises. Plus tools like shadowing, immersive reading, and sentence building.</p>
+        <h3>Walk Mode</h3>
+        <p>Audio-driven Japanese for when you're out and about. Curated N5 vocabulary played in natural scene contexts — a walk through Tokyo, a morning market, a rainy train ride.</p>
+      </div>
+    </section>
+
+    <section class="section" id="philosophy">
+      <div class="section-heading">
+        <h2>Philosophy</h2>
+        <span class="sh-jp">考え方</span>
+      </div>
+      <div class="prose">
+        <h3>Free means free</h3>
+        <p>Everything on this site is free. Not "free tier with premium features" — fully free. There is no premium version. If we build it, it's on the site for everyone.</p>
+        <h3>Audio matters</h3>
+        <p>Every word, every grammar example, every kanji is playable. Japanese is a tonal, pitch-accented language — reading it without hearing it builds bad habits from day one. We make audio the default, not an add-on.</p>
+        <h3>Honest about difficulty</h3>
+        <p>Japanese takes a long time to learn. N1 takes most people four or more years of serious study. We don't promise fluency in thirty days or ten minutes a day. What we do promise is that everything on this site is the real thing — not simplified, not sanitised, not watered down to protect engagement metrics.</p>
+        <h3>Reference over course</h3>
+        <p>This isn't a course with a locked linear path. It's a reference — open, browsable, searchable. Come for a grammar point, stay for the kanji, leave when you've got what you needed. Japanese learning should fit around your life, not demand it on a schedule.</p>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-heading">
+        <h2>Contact</h2>
+        <span class="sh-jp">連絡</span>
+      </div>
+      <div class="prose">
+        <p>Questions, corrections, or suggestions — reach out through YouTube. If something on the site is wrong, missing, or broken, let me know and it'll be fixed.</p>
+        <p>Found a mistake in a kanji reading, a vocabulary definition, or a grammar example? Even better — call it out. Accuracy matters more than saving face.</p>
+        <a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener" style="display:inline-block;margin-top:12px;font-weight:700;font-size:14px;border-bottom:1.5px solid var(--ink);padding-bottom:2px">YouTube channel →</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var sections  = document.querySelectorAll('.section[id]');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+})();
+</script>
+<script src="../nav.js"></script>
+</body>
+</html>

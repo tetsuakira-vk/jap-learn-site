@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Immersive Reader — Japanese Uncovered</title>
+<meta name="description" content="Read real Japanese paragraphs on food, culture, and daily life. Tap any kanji to see its meaning. Then write an English summary to check your understanding.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.tool-shell { max-width: 820px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Category strip ─────────────────────────────────────────── */
+.cat-strip {
+  display: flex; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--rule); background: var(--faint);
+}
+.cat-strip::-webkit-scrollbar { display: none; }
+.cat-btn {
+  flex-shrink: 0; padding: 11px 18px;
+  background: none; border: none;
+  border-right: 1px solid var(--rule);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer; font-size: 12px; font-weight: 700;
+  letter-spacing: .04em; color: var(--mid);
+  white-space: nowrap; transition: color .12s;
+}
+.cat-btn:hover { color: var(--ink); }
+.cat-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Article dot nav ────────────────────────────────────────── */
+.dot-nav {
+  display: flex; gap: 6px; padding: 12px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint2);
+}
+.art-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--rule); cursor: pointer; transition: background .2s;
+}
+.art-dot.current { background: var(--ink); }
+.art-dot.done    { background: #22c55e; }
+
+/* ── Article card ───────────────────────────────────────────── */
+.article-area { padding: 24px; }
+.art-card { border: 1.5px solid var(--ink); }
+
+.art-meta {
+  padding: 14px 22px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.art-cat-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 3px 9px;
+  border: 1px solid var(--rule); color: var(--mid); background: var(--ground);
+}
+.art-level-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 3px 9px;
+  background: var(--ink); color: var(--ground);
+}
+.art-instruction {
+  font-size: 12px; color: var(--mid); margin-left: auto;
+  font-style: italic;
+}
+
+.art-title {
+  padding: 18px 22px 8px;
+  font-family: var(--serif);
+  font-size: 1.3rem; font-weight: 700;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.4;
+}
+
+.art-body {
+  padding: 22px;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  line-height: 2.0;
+}
+
+/* ── Kanji gloss ────────────────────────────────────────────── */
+.kj {
+  cursor: pointer;
+  border-bottom: 1px dotted var(--mid);
+  position: relative;
+  transition: color .12s;
+}
+.kj:hover { color: var(--accent); }
+.kj.active { color: var(--accent); }
+
+.gloss-tip {
+  display: none;
+  position: absolute;
+  bottom: 100%; left: 50%; transform: translateX(-50%);
+  background: var(--ink); color: var(--ground);
+  font-family: var(--sans);
+  font-size: 12px;
+  padding: 4px 10px;
+  white-space: nowrap;
+  z-index: 50;
+  pointer-events: none;
+  margin-bottom: 4px;
+}
+.kj.active .gloss-tip { display: block; }
+
+/* ── Summary task ───────────────────────────────────────────── */
+.art-task {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.task-label {
+  font-size: 13px; font-weight: 700; color: var(--mid);
+  margin-bottom: 10px;
+}
+.summary-ta {
+  width: 100%; min-height: 80px; padding: 12px;
+  border: 1.5px solid var(--ink); background: var(--ground);
+  color: var(--ink); font-size: 14px; resize: vertical;
+  line-height: 1.65; transition: border-color .15s;
+}
+.summary-ta:focus { outline: none; border-color: var(--accent); }
+.summary-ta::placeholder { color: var(--mid); }
+.task-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+/* ── Results ────────────────────────────────────────────────── */
+.art-results { display: none; border-top: 1px solid var(--rule); }
+.score-header {
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+}
+.score-circle {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 2.5px solid var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: var(--serif); font-weight: 700;
+  font-size: 1.2rem; flex-shrink: 0;
+}
+.score-circle.great { border-color: #22c55e; color: #22c55e; }
+.score-circle.ok    { border-color: #f59e0b; color: #f59e0b; }
+.score-circle.low   { border-color: var(--accent); color: var(--accent); }
+.score-grade { font-size: .65rem; text-transform: uppercase; letter-spacing: .07em; color: inherit; }
+.score-text h3 { font-family: var(--serif); font-size: 1.1rem; margin-bottom: 4px; }
+.score-text p  { font-size: 13px; color: var(--mid); }
+
+.kw-row {
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.kw-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 10px;
+}
+.kw-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.kw-chip {
+  padding: 4px 10px;
+  font-size: 13px; border: 1.5px solid var(--rule);
+}
+.kw-chip.hit { border-color: #22c55e; color: #22c55e; background: #f0fdf4; }
+.kw-chip.miss { border-color: var(--rule); color: var(--mid); text-decoration: line-through; opacity: .6; }
+[data-theme="dark"] .kw-chip.hit { background: #1a3520; }
+
+.model-answer { padding: 16px 22px; border-bottom: 1px solid var(--rule); }
+.ma-label { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+.ma-text { font-size: 14px; color: var(--mid); line-height: 1.7; }
+
+.art-nav {
+  padding: 14px 22px;
+  display: flex; gap: 8px; justify-content: flex-end;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 520px) {
+  .article-area { padding: 14px; }
+  .art-body { font-size: .95rem; }
+  .art-instruction { display: none; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/courses/">Practice</a><span class="sep">›</span>
+    Immersive Reader
+  </div>
+  <h1 class="page-h1">Immersive Reader <span class="h1-jp">読解練習</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">8 Articles</span>
+    <span class="meta-pill">Tap Kanji to Gloss</span>
+    <span class="meta-pill">Summary Check</span>
+  </div>
+</header>
+
+<div class="tool-shell">
+  <div class="cat-strip" id="cat-strip"></div>
+  <div class="dot-nav" id="dot-nav"></div>
+  <div class="article-area" id="article-area"></div>
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+// Kanji → meaning dictionary
+const KD = {
+  '一':'one','二':'two','三':'three','四':'four','五':'five','六':'six','七':'seven','八':'eight','九':'nine','十':'ten',
+  '百':'hundred','千':'thousand','万':'ten thousand','円':'yen','年':'year','月':'month','日':'day',
+  '時':'time/hour','分':'minute','週':'week','朝':'morning','昼':'noon','夜':'night','今':'now',
+  '人':'person','男':'man','女':'woman','子':'child','親':'parent','友':'friend',
+  '食':'eat/food','飲':'drink','料':'fee/material','理':'reason/logic','味':'taste','魚':'fish',
+  '肉':'meat','野':'field/wild','菜':'vegetable','果':'fruit','茶':'tea','水':'water','酒':'alcohol',
+  '店':'shop','家':'house/home','国':'country','市':'city','町':'town','村':'village','道':'road/way',
+  '駅':'station','空':'sky/empty','山':'mountain','川':'river','海':'sea','花':'flower','木':'tree',
+  '大':'big','小':'small','高':'high/expensive','安':'cheap/safe','新':'new','古':'old','長':'long',
+  '多':'many','少':'few','同':'same','別':'different','他':'other','自':'self','本':'book/origin',
+  '語':'language/word','文':'writing','字':'character','名':'name','話':'speech/talk',
+  '書':'write','読':'read','聞':'listen/hear','見':'see/look','言':'say/word',
+  '思':'think','知':'know','学':'study/learn','教':'teach','習':'practice',
+  '行':'go','来':'come','帰':'return','出':'exit/leave','入':'enter','会':'meet',
+  '使':'use','作':'make','持':'hold','待':'wait','始':'begin','終':'end',
+  '好':'like/fond','楽':'enjoyable','難':'difficult','易':'easy','強':'strong','弱':'weak',
+  '体':'body','心':'heart/mind','気':'spirit/feeling','力':'power','手':'hand','目':'eye',
+  '病':'sick','薬':'medicine','運':'luck/transport','動':'move','働':'work',
+  '電':'electricity','車':'car','電車':'train','写':'copy/photo','真':'true/photo',
+  '音':'sound','楽':'music','映':'reflect','画':'picture','歌':'song/sing',
+  '東':'east','西':'west','南':'south','北':'north','右':'right','左':'left',
+  '上':'above','下':'below','中':'middle','外':'outside','前':'before/front','後':'after/back',
+  '春':'spring','夏':'summer','秋':'autumn','冬':'winter','天':'heaven/sky','気':'weather/feeling',
+};
+
+const ARTICLES = [
+  {
+    id:'ramen', cat:'food', level:'N5',
+    title:'ラーメンの話',
+    titleEn:'About Ramen',
+    japanese:`ラーメンは日本でとても人気の食べ物です。スープの種類は四つあります。しょうゆ、みそ、しお、そしてとんこつです。東京ではしょうゆラーメンがよく食べられています。北海道ではみそラーメンが有名です。ラーメン屋さんは日本全国にたくさんあります。値段もだいたい700円から1200円くらいです。`,
+    keywords:['ramen','soup','soy sauce','miso','salt','pork','Tokyo','Hokkaido','popular','price','noodle','Japan'],
+    model:'Ramen is a very popular food in Japan with four types of soup: soy sauce, miso, salt, and pork-bone. Soy sauce ramen is common in Tokyo, and miso ramen is famous in Hokkaido. Ramen shops are found all over Japan, usually costing between 700 and 1,200 yen.'
+  },
+  {
+    id:'konbini', cat:'daily life', level:'N5',
+    title:'コンビニの便利さ',
+    titleEn:'The Convenience of Convenience Stores',
+    japanese:`日本のコンビニは24時間開いています。食べ物や飲み物だけでなく、ATMや郵便サービスもあります。お弁当やおにぎり、サンドイッチなど、食事もできます。コンビニでコピーや公共料金の支払いもできます。日本には約55,000店のコンビニがあります。とても便利な場所です。`,
+    keywords:['convenience store','24 hours','ATM','post','bento','onigiri','copy','bills','55,000','convenient','Japan'],
+    model:'Japanese convenience stores are open 24 hours and offer far more than food and drinks — including ATMs, postal services, photocopying, and bill payments. They sell ready meals like bento and onigiri. There are around 55,000 convenience stores across Japan.'
+  },
+  {
+    id:'sakura', cat:'culture', level:'N5',
+    title:'桜の季節',
+    titleEn:'Cherry Blossom Season',
+    japanese:`春になると、日本では桜の花が咲きます。人々は公園や川沿いで「花見」をします。花見は友達や家族と一緒に、桜の木の下でお弁当を食べたり、お酒を飲んだりする行事です。桜の季節は約一週間から二週間です。日本人にとって、桜はとても特別な花です。`,
+    keywords:['cherry blossom','spring','hanami','park','river','picnic','food','drink','one week','special','family','friends'],
+    model:'In spring, cherry blossoms bloom across Japan and people hold "hanami" (flower-viewing) parties in parks and along rivers. Hanami involves eating bento and drinking with friends and family under the cherry trees. The season lasts about one to two weeks, and cherry blossoms hold a very special place in Japanese culture.'
+  },
+  {
+    id:'sento', cat:'culture', level:'N4',
+    title:'銭湯の文化',
+    titleEn:'The Culture of Public Baths',
+    japanese:`銭湯は日本の伝統的な公衆浴場です。昔は多くの家にお風呂がなかったため、人々は銭湯を利用していました。現在でも銭湯は各地に残っており、地域のコミュニティの場として機能しています。料金は東京では470円です。体を洗う場所と大きな湯船があります。タトゥーがある人は入れない場合もあります。`,
+    keywords:['sento','public bath','traditional','community','Tokyo','470 yen','wash','bathtub','tattoo','culture'],
+    model:'Sento are traditional Japanese public bathhouses. When most homes lacked baths, people relied on them. Today they still exist across Japan as community spaces. In Tokyo, entry costs 470 yen. They feature washing areas and large communal baths. People with tattoos are sometimes refused entry.'
+  },
+  {
+    id:'shinkansen', cat:'transport', level:'N4',
+    title:'新幹線について',
+    titleEn:'About the Shinkansen',
+    japanese:`新幹線は日本の高速鉄道です。1964年に東京と大阪を結ぶ東海道新幹線として開業しました。現在の最高速度は時速320キロメートルです。東京から大阪まで約2時間15分で行けます。新幹線は時間通りに運行することで有名で、平均遅延時間は約1分以内です。日本全国に様々な路線があります。`,
+    keywords:['shinkansen','bullet train','1964','Tokyo','Osaka','320 km/h','2 hours','punctual','delay','fast','network'],
+    model:'The Shinkansen is Japan\'s high-speed rail network. It launched in 1964 connecting Tokyo and Osaka. Today\'s top speed is 320 km/h, and the Tokyo–Osaka journey takes about 2 hours 15 minutes. Shinkansen are famous for punctuality, with average delays under one minute. Lines now span the country.'
+  },
+  {
+    id:'anime', cat:'culture', level:'N4',
+    title:'アニメと日本文化',
+    titleEn:'Anime and Japanese Culture',
+    japanese:`アニメは日本のアニメーションで、世界中で人気があります。スタジオジブリや進撃の巨人などの作品は多くの国で知られています。アニメは子供向けだけでなく、大人も楽しめる作品が多くあります。日本政府はアニメをソフトパワーの一つとして積極的に推進しています。アニメの影響で日本語を学ぶ人も増えています。`,
+    keywords:['anime','animation','world','Studio Ghibli','children','adults','government','soft power','Japanese language','learning','popular'],
+    model:'Anime is Japanese animation popular worldwide. Productions like Studio Ghibli and Attack on Titan are known globally. Anime isn\'t just for children — many series target adults. The Japanese government actively promotes anime as soft power. It\'s also driving growth in people learning Japanese.'
+  },
+  {
+    id:'bento', cat:'food', level:'N4',
+    title:'お弁当の文化',
+    titleEn:'Bento Box Culture',
+    japanese:`お弁当は日本の手作り昼食ボックスです。ご飯、おかず、野菜などが一つのボックスに入っています。学校や会社に持っていく人が多いです。駅や空港では「駅弁」と呼ばれる地方の名物を使ったお弁当が売られています。お弁当を美しく飾る「キャラ弁」という文化もあります。母親が子供のために作るケースが多いです。`,
+    keywords:['bento','lunch box','rice','side dishes','vegetables','school','work','ekiben','station','character','decoration','mother','child'],
+    model:'Bento are Japanese homemade lunch boxes containing rice, side dishes, and vegetables. Many people bring them to school or work. At stations and airports, "ekiben" feature regional specialties. There\'s also "chara-ben" culture where bento are decorated in elaborate character designs, often made by mothers for children.'
+  },
+  {
+    id:'manners', cat:'daily life', level:'N3',
+    title:'日本のマナー',
+    titleEn:'Manners in Japan',
+    japanese:`日本ではいくつかの独特のマナーがあります。電車の中で電話をするのはマナー違反です。エスカレーターでは大阪では右側に立ち、東京では左側に立つことが一般的です。飲食店ではお水が無料で提供されることがほとんどです。お店に入ると「いらっしゃいませ」と声をかけられます。チップを渡す習慣はありません。`,
+    keywords:['manners','phone','escalator','Osaka','right','Tokyo','left','water','free','greeting','irasshaimase','tip','no tip'],
+    model:'Japan has distinctive social manners. Using your phone on trains is considered rude. Escalator etiquette differs by city: stand on the right in Osaka, left in Tokyo. Restaurants usually provide free water. Staff greet customers with "irasshaimase." Tipping is not practiced in Japan.'
+  },
+];
+
+const CATS = ['all','food','culture','daily life','transport'];
+
+let currentCat = 'all';
+let articleIdx  = 0;
+let doneSet     = new Set();
+
+function getPool() {
+  return currentCat === 'all' ? ARTICLES : ARTICLES.filter(a => a.cat === currentCat);
+}
+
+function buildCats() {
+  const strip = document.getElementById('cat-strip');
+  strip.innerHTML = CATS.map(c =>
+    `<button class="cat-btn${c === 'all' ? ' active' : ''}" onclick="setCat('${c}',this)">${c === 'all' ? '⭐ All' : c.charAt(0).toUpperCase() + c.slice(1)}</button>`
+  ).join('');
+}
+
+function setCat(cat, el) {
+  currentCat = cat;
+  articleIdx = 0;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderDots();
+  renderArticle();
+}
+
+function renderDots() {
+  const pool = getPool();
+  const nav  = document.getElementById('dot-nav');
+  nav.innerHTML = pool.map((_, i) => {
+    const cls = i === articleIdx ? 'art-dot current' : doneSet.has(pool[i].id) ? 'art-dot done' : 'art-dot';
+    return `<div class="${cls}" onclick="goToArticle(${i})"></div>`;
+  }).join('');
+}
+
+function renderArticle() {
+  const pool = getPool();
+  if (!pool.length) return;
+  const art  = pool[articleIdx];
+
+  const bodyHtml = processJapanese(art.japanese);
+
+  document.getElementById('article-area').innerHTML = `
+    <div class="art-card">
+      <div class="art-meta">
+        <span class="art-cat-tag">${art.cat}</span>
+        <span class="art-level-tag">${art.level}</span>
+        <span class="art-instruction">Tap/hover any kanji to see its meaning</span>
+      </div>
+      <div class="art-title">${art.title} <span style="font-size:.8rem;font-weight:400;color:var(--mid);margin-left:8px">${art.titleEn}</span></div>
+      <div class="art-body" id="art-body">${bodyHtml}</div>
+      <div class="art-task">
+        <div class="task-label">What was this article about? Write a summary in English.</div>
+        <textarea class="summary-ta" id="summary-ta" rows="4" placeholder="In this article, …"></textarea>
+        <div class="task-row">
+          <button class="btn btn-solid" onclick="checkSummary()">Check →</button>
+          ${pool.length > 1 ? `<button class="btn btn-ghost" onclick="goToArticle(${(articleIdx + 1) % pool.length})">Skip article</button>` : ''}
+        </div>
+      </div>
+      <div class="art-results" id="art-results">
+        <div class="score-header" id="score-header"></div>
+        <div class="kw-row" id="kw-row"></div>
+        <div class="model-answer">
+          <div class="ma-label">Model Summary</div>
+          <div class="ma-text">${art.model}</div>
+        </div>
+        <div class="art-nav">
+          <button class="btn btn-ghost" id="retry-btn" onclick="retryArticle()">↩ Try Again</button>
+          ${pool.length > 1 ? `<button class="btn btn-solid" onclick="goToArticle(${(articleIdx + 1) % pool.length})">Next Article →</button>` : ''}
+        </div>
+      </div>
+    </div>`;
+
+  renderDots();
+}
+
+function processJapanese(text) {
+  let html = '';
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (KD[c]) {
+      html += `<span class="kj" onclick="toggleGloss(this)">${c}<span class="gloss-tip">${KD[c]}</span></span>`;
+    } else {
+      html += c === '\n' ? '<br>' : c;
+    }
+  }
+  return html;
+}
+
+function toggleGloss(el) {
+  const wasActive = el.classList.contains('active');
+  document.querySelectorAll('.kj.active').forEach(e => e.classList.remove('active'));
+  if (!wasActive) el.classList.add('active');
+}
+
+function checkSummary() {
+  const pool  = getPool();
+  const art   = pool[articleIdx];
+  const text  = (document.getElementById('summary-ta')?.value || '').toLowerCase();
+  if (!text.trim()) return;
+
+  doneSet.add(art.id);
+
+  let matched = [], missed = [];
+  art.keywords.forEach(kw => {
+    const kwl = kw.toLowerCase();
+    const found = text.includes(kwl) || art.model.toLowerCase().split(' ').some(w =>
+      w.replace(/[^a-z]/g,'').startsWith(kwl.replace(/[^a-z]/g,'').slice(0,4)) && text.includes(w.replace(/[^a-z]/g,'').slice(0,4))
+    );
+    if (found) matched.push(kw);
+    else missed.push(kw);
+  });
+
+  const score = Math.round((matched.length / art.keywords.length) * 100);
+  const grade = score >= 70 ? 'great' : score >= 40 ? 'ok' : 'low';
+  const title = score >= 70 ? '良い理解！ Good understanding' : score >= 40 ? 'まあまあ Not bad — check the model' : 'もう一度 Read again and try';
+  const sub   = `Matched ${matched.length} of ${art.keywords.length} key concepts`;
+
+  const header = document.getElementById('score-header');
+  header.innerHTML = `
+    <div class="score-circle ${grade}">
+      <span>${score}</span>
+      <span class="score-grade">%</span>
+    </div>
+    <div class="score-text">
+      <h3>${title}</h3>
+      <p>${sub}</p>
+    </div>`;
+
+  const kwHtml = `
+    <div class="kw-label">Key Concepts</div>
+    <div class="kw-chips">
+      ${matched.map(k => `<span class="kw-chip hit">✓ ${k}</span>`).join('')}
+      ${missed.map(k => `<span class="kw-chip miss">${k}</span>`).join('')}
+    </div>`;
+  document.getElementById('kw-row').innerHTML = kwHtml;
+
+  document.getElementById('art-results').style.display = '';
+  document.querySelector('.art-task .task-row')?.querySelectorAll('button').forEach(b => b.style.display = 'none');
+  renderDots();
+}
+
+function retryArticle() {
+  document.getElementById('summary-ta').value = '';
+  document.getElementById('art-results').style.display = 'none';
+  const taskRow = document.querySelector('.art-task .task-row');
+  if (taskRow) taskRow.querySelectorAll('button').forEach(b => b.style.display = '');
+}
+
+function goToArticle(i) {
+  articleIdx = i;
+  renderArticle();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+buildCats();
+renderDots();
+renderArticle();
+</script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Particles Guide — は が を に で へ と も | Japanese Unlocked</title>
+<meta name="description" content="Complete guide to Japanese particles. Every N5–N4 particle explained with usage rules and example sentences. Click any example to hear it spoken.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.particle-card {
+  border: 1px solid var(--rule);
+  margin-bottom: 32px;
+  scroll-margin-top: 72px;
+}
+.pc-header {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 22px; border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+}
+.pc-glyph {
+  font-family: var(--serif); font-size: 44px; font-weight: 700;
+  line-height: 1; color: var(--ink); flex-shrink: 0;
+  width: 56px; text-align: center;
+}
+.pc-meta { display: flex; flex-direction: column; gap: 3px; }
+.pc-ro   { font-size: 12px; color: var(--mid); font-style: italic; }
+.pc-name { font-size: 16px; font-weight: 700; }
+.pc-short { font-size: 12px; color: var(--mid); }
+
+.pc-body { padding: 20px 22px; }
+.pc-rule { font-size: 13px; margin-bottom: 16px; line-height: 1.7; }
+.pc-rule strong { color: var(--ink); }
+
+.pc-examples { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); }
+.pc-ex {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer; transition: background 0.12s;
+}
+.pc-ex:last-child { border-bottom: none; }
+.pc-ex:hover { background: var(--faint); }
+.pc-ex.playing { background: var(--faint); }
+.pc-ex-jp {
+  padding: 10px 14px; font-family: var(--serif); font-size: 16px;
+  border-right: 1px solid var(--rule);
+  transition: color 0.12s;
+}
+.pc-ex:hover .pc-ex-jp, .pc-ex.playing .pc-ex-jp { color: var(--accent); }
+.pc-ex-en { padding: 10px 14px; font-size: 12px; color: var(--mid); display: flex; align-items: center; }
+/* Highlight the particle in examples */
+.p { color: var(--accent); font-weight: 700; }
+
+.usage-note {
+  margin-top: 16px; padding: 12px 16px;
+  border: 1px solid var(--rule); border-left: 3px solid var(--accent);
+  font-size: 12px; color: var(--mid); line-height: 1.6;
+}
+.usage-note strong { color: var(--ink); }
+
+@media (max-width: 560px) {
+  .pc-ex { grid-template-columns: 1fr; }
+  .pc-ex-jp { border-right: none; border-bottom: 1px solid var(--rule); }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/grammar/">Grammar</a>
+    <span class="sep">›</span>
+    Particles
+  </div>
+  <h1 class="page-h1">Particles <span class="h1-jp">助詞</span></h1>
+  <div class="page-meta">
+    <span>18 particles</span>
+    <span class="meta-pill">N5–N4</span>
+    <span class="meta-pill">Audio examples</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#core">Core</a>
+  <a href="#connector">Connectors</a>
+  <a href="#range">Range</a>
+  <a href="#limit">Limiting</a>
+  <a href="#sentence-final">Sentence-final</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">Core particles</p>
+    <ul class="sidebar-links">
+      <li><a href="#wa">は — topic</a></li>
+      <li><a href="#ga">が — subject</a></li>
+      <li><a href="#wo">を — object</a></li>
+      <li><a href="#ni">に — target / time</a></li>
+      <li><a href="#de">で — place / means</a></li>
+      <li><a href="#e">へ — direction</a></li>
+      <li><a href="#no">の — possessive</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Connector particles</p>
+    <ul class="sidebar-links">
+      <li><a href="#to">と — with / and</a></li>
+      <li><a href="#ya">や — and (non-exhaustive)</a></li>
+      <li><a href="#mo">も — also / too</a></li>
+      <li><a href="#ka">か — or / question</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Range & limit</p>
+    <ul class="sidebar-links">
+      <li><a href="#kara">から — from / because</a></li>
+      <li><a href="#made">まで — until / to</a></li>
+      <li><a href="#yori">より — than</a></li>
+      <li><a href="#dake">だけ — only</a></li>
+      <li><a href="#shika">しか — only (+ neg)</a></li>
+      <li><a href="#hodo">ほど — about / extent</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Sentence-final</p>
+    <ul class="sidebar-links">
+      <li><a href="#ne">ね — seeking agreement</a></li>
+      <li><a href="#yo">よ — asserting</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <div class="prose" style="margin-bottom:28px">
+      <p>Particles are small words that attach to nouns, verbs, and adjectives to show their grammatical role. Unlike English prepositions, Japanese particles come <em>after</em> the word they mark. Click any example sentence to hear it.</p>
+    </div>
+
+    <!-- ─── CORE PARTICLES ─── -->
+    <div class="section-heading" id="core" style="scroll-margin-top:72px"><h2>Core Particles</h2><span class="sh-jp">基本助詞</span></div>
+
+    <div class="particle-card" id="wa">
+      <div class="pc-header">
+        <div class="pc-glyph">は</div>
+        <div class="pc-meta">
+          <div class="pc-ro">wa</div>
+          <div class="pc-name">Topic marker</div>
+          <div class="pc-short">Marks what the sentence is about</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">は marks the <strong>topic</strong> of a sentence — the thing you're making a statement about. The topic is often (but not always) the grammatical subject. It can also signal contrast: "as for X (but not Y)…"</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="私は学生です">
+            <div class="pc-ex-jp">私<span class="p">は</span>学生です。</div>
+            <div class="pc-ex-en">I am a student.</div>
+          </div>
+          <div class="pc-ex" data-speak="これは本です">
+            <div class="pc-ex-jp">これ<span class="p">は</span>本です。</div>
+            <div class="pc-ex-en">This is a book.</div>
+          </div>
+          <div class="pc-ex" data-speak="私は行きますが、彼は行きません">
+            <div class="pc-ex-jp">私<span class="p">は</span>行きますが、彼<span class="p">は</span>行きません。</div>
+            <div class="pc-ex-en">I'm going, but he isn't. (contrast)</div>
+          </div>
+        </div>
+        <div class="usage-note"><strong>は vs が:</strong> は marks the topic; が marks the subject. Use が to introduce new information or answer "who/what?" Use は for known information or to make a general statement about something.</div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="ga">
+      <div class="pc-header">
+        <div class="pc-glyph">が</div>
+        <div class="pc-meta">
+          <div class="pc-ro">ga</div>
+          <div class="pc-name">Subject marker</div>
+          <div class="pc-short">Marks the grammatical subject; highlights new information</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">が marks the <strong>grammatical subject</strong>. It introduces new or emphasised information, answers "who?" or "what?", and is required after certain adjectives (好き、嫌い、上手、できる) and with potential and want-to forms.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="猫が来た">
+            <div class="pc-ex-jp">猫<span class="p">が</span>来た。</div>
+            <div class="pc-ex-en">The cat came. (new information)</div>
+          </div>
+          <div class="pc-ex" data-speak="日本語が好きです">
+            <div class="pc-ex-jp">日本語<span class="p">が</span>好きです。</div>
+            <div class="pc-ex-en">I like Japanese.</div>
+          </div>
+          <div class="pc-ex" data-speak="誰が来ましたか">
+            <div class="pc-ex-jp">誰<span class="p">が</span>来ましたか？</div>
+            <div class="pc-ex-en">Who came?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="wo">
+      <div class="pc-header">
+        <div class="pc-glyph">を</div>
+        <div class="pc-meta">
+          <div class="pc-ro">o (written wo)</div>
+          <div class="pc-name">Direct object marker</div>
+          <div class="pc-short">Marks what the verb acts upon</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">を marks the <strong>direct object</strong> of a transitive verb — the thing that receives the action. It also marks the path through or along which movement occurs.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="ご飯を食べます">
+            <div class="pc-ex-jp">ご飯<span class="p">を</span>食べます。</div>
+            <div class="pc-ex-en">I eat rice.</div>
+          </div>
+          <div class="pc-ex" data-speak="日本語を勉強しています">
+            <div class="pc-ex-jp">日本語<span class="p">を</span>勉強しています。</div>
+            <div class="pc-ex-en">I am studying Japanese.</div>
+          </div>
+          <div class="pc-ex" data-speak="公園を歩きます">
+            <div class="pc-ex-jp">公園<span class="p">を</span>歩きます。</div>
+            <div class="pc-ex-en">I walk through the park. (path)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="ni">
+      <div class="pc-header">
+        <div class="pc-glyph">に</div>
+        <div class="pc-meta">
+          <div class="pc-ro">ni</div>
+          <div class="pc-name">Target / location / time</div>
+          <div class="pc-short">Direction of movement, location of existence, point in time, indirect object</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">に is one of the most versatile particles. It marks: <strong>destination</strong> of movement (going to); <strong>location of existence</strong> (where something is/exists); a <strong>specific time</strong>; and the <strong>indirect object</strong> (recipient of giving/receiving verbs).</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="学校に行きます">
+            <div class="pc-ex-jp">学校<span class="p">に</span>行きます。</div>
+            <div class="pc-ex-en">I'm going to school. (destination)</div>
+          </div>
+          <div class="pc-ex" data-speak="机の上に本があります">
+            <div class="pc-ex-jp">机の上<span class="p">に</span>本があります。</div>
+            <div class="pc-ex-en">There's a book on the desk. (existence)</div>
+          </div>
+          <div class="pc-ex" data-speak="三時に会いましょう">
+            <div class="pc-ex-jp">三時<span class="p">に</span>会いましょう。</div>
+            <div class="pc-ex-en">Let's meet at 3 o'clock. (time)</div>
+          </div>
+          <div class="pc-ex" data-speak="友達にプレゼントをあげました">
+            <div class="pc-ex-jp">友達<span class="p">に</span>プレゼントをあげました。</div>
+            <div class="pc-ex-en">I gave a present to my friend. (indirect object)</div>
+          </div>
+        </div>
+        <div class="usage-note"><strong>に vs で:</strong> に marks where something exists or the destination of movement. で marks where an action takes place. 図書館に本があります (the book exists at the library) vs 図書館で勉強します (I study at the library).</div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="de">
+      <div class="pc-header">
+        <div class="pc-glyph">で</div>
+        <div class="pc-meta">
+          <div class="pc-ro">de</div>
+          <div class="pc-name">Location of action / means</div>
+          <div class="pc-short">Where an action happens; the method or tool used</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">で marks the <strong>location where an action takes place</strong> (contrast with に which marks existence). It also marks the <strong>means, material, or method</strong> used to do something, and the <strong>cause</strong> of a state.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="図書館で勉強します">
+            <div class="pc-ex-jp">図書館<span class="p">で</span>勉強します。</div>
+            <div class="pc-ex-en">I study at the library. (location of action)</div>
+          </div>
+          <div class="pc-ex" data-speak="バスで学校に行きます">
+            <div class="pc-ex-jp">バス<span class="p">で</span>学校に行きます。</div>
+            <div class="pc-ex-en">I go to school by bus. (means)</div>
+          </div>
+          <div class="pc-ex" data-speak="日本語で話してください">
+            <div class="pc-ex-jp">日本語<span class="p">で</span>話してください。</div>
+            <div class="pc-ex-en">Please speak in Japanese. (means/language)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="e">
+      <div class="pc-header">
+        <div class="pc-glyph">へ</div>
+        <div class="pc-meta">
+          <div class="pc-ro">e (written he)</div>
+          <div class="pc-name">Direction</div>
+          <div class="pc-short">Movement toward a destination (interchangeable with に in many cases)</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">へ marks <strong>direction of movement</strong>. In most sentences it's interchangeable with に for destination, but へ emphasises the direction of travel rather than the arrival point. More formal/literary than に.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="東京へ行きます">
+            <div class="pc-ex-jp">東京<span class="p">へ</span>行きます。</div>
+            <div class="pc-ex-en">I'm going to Tokyo.</div>
+          </div>
+          <div class="pc-ex" data-speak="日本へようこそ">
+            <div class="pc-ex-jp">日本<span class="p">へ</span>ようこそ！</div>
+            <div class="pc-ex-en">Welcome to Japan!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="no">
+      <div class="pc-header">
+        <div class="pc-glyph">の</div>
+        <div class="pc-meta">
+          <div class="pc-ro">no</div>
+          <div class="pc-name">Possessive / nominaliser</div>
+          <div class="pc-short">Links two nouns; turns verbs and adjectives into noun phrases</div>
+        </div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">の connects two nouns showing <strong>possession</strong>, <strong>belonging</strong>, or <strong>description</strong> — equivalent to English "of" or 's. It also <strong>nominalises</strong> a verb or adjective phrase, turning it into a noun.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="私の本">
+            <div class="pc-ex-jp">私<span class="p">の</span>本</div>
+            <div class="pc-ex-en">My book (possession)</div>
+          </div>
+          <div class="pc-ex" data-speak="日本の文化が好きです">
+            <div class="pc-ex-jp">日本<span class="p">の</span>文化が好きです。</div>
+            <div class="pc-ex-en">I like Japanese culture. (of)</div>
+          </div>
+          <div class="pc-ex" data-speak="走るのが好きです">
+            <div class="pc-ex-jp">走る<span class="p">の</span>が好きです。</div>
+            <div class="pc-ex-en">I like running. (nominaliser)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── CONNECTOR PARTICLES ─── -->
+    <div class="section-heading" id="connector" style="scroll-margin-top:72px"><h2>Connector Particles</h2><span class="sh-jp">接続助詞</span></div>
+
+    <div class="particle-card" id="to">
+      <div class="pc-header">
+        <div class="pc-glyph">と</div>
+        <div class="pc-meta"><div class="pc-ro">to</div><div class="pc-name">With / and (exhaustive) / quotation</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">と connects nouns meaning <strong>"and"</strong> (exhaustive — lists everything) or <strong>"with"</strong> (accompanying). It also marks <strong>quotations</strong> and thoughts after verbs like 言う (say) and 思う (think).</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="猫と犬が好きです">
+            <div class="pc-ex-jp">猫<span class="p">と</span>犬が好きです。</div>
+            <div class="pc-ex-en">I like cats and dogs.</div>
+          </div>
+          <div class="pc-ex" data-speak="友達と映画を見ました">
+            <div class="pc-ex-jp">友達<span class="p">と</span>映画を見ました。</div>
+            <div class="pc-ex-en">I watched a film with a friend.</div>
+          </div>
+          <div class="pc-ex" data-speak="行きたいと思います">
+            <div class="pc-ex-jp">行きたい<span class="p">と</span>思います。</div>
+            <div class="pc-ex-en">I think I want to go. (quotation)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="ya">
+      <div class="pc-header">
+        <div class="pc-glyph">や</div>
+        <div class="pc-meta"><div class="pc-ro">ya</div><div class="pc-name">And (non-exhaustive)</div><div class="pc-short">Lists examples — implies there are others</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">や lists nouns as <strong>examples</strong>, implying the list is not complete. "A や B" means "A and B (and other things like them)." Use と when you mean to list everything; use や when giving examples.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="本や雑誌を読みます">
+            <div class="pc-ex-jp">本<span class="p">や</span>雑誌を読みます。</div>
+            <div class="pc-ex-en">I read books and magazines (and so on).</div>
+          </div>
+          <div class="pc-ex" data-speak="東京や大阪に行きたいです">
+            <div class="pc-ex-jp">東京<span class="p">や</span>大阪に行きたいです。</div>
+            <div class="pc-ex-en">I want to go to Tokyo, Osaka, and places like that.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="mo">
+      <div class="pc-header">
+        <div class="pc-glyph">も</div>
+        <div class="pc-meta"><div class="pc-ro">mo</div><div class="pc-name">Also / too / even</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">も replaces は or が to mean <strong>"also," "too,"</strong> or <strong>"even."</strong> Used with negatives it means "either" or "neither." Also used to express large/surprising quantities with numbers.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="私も行きます">
+            <div class="pc-ex-jp">私<span class="p">も</span>行きます。</div>
+            <div class="pc-ex-en">I'm going too.</div>
+          </div>
+          <div class="pc-ex" data-speak="彼女も来ませんでした">
+            <div class="pc-ex-jp">彼女<span class="p">も</span>来ませんでした。</div>
+            <div class="pc-ex-en">She didn't come either.</div>
+          </div>
+          <div class="pc-ex" data-speak="三時間も待ちました">
+            <div class="pc-ex-jp">三時間<span class="p">も</span>待ちました。</div>
+            <div class="pc-ex-en">I waited for three whole hours!</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="ka">
+      <div class="pc-header">
+        <div class="pc-glyph">か</div>
+        <div class="pc-meta"><div class="pc-ro">ka</div><div class="pc-name">Question marker / or</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">か at the end of a sentence turns it into a <strong>question</strong>. Between nouns it means <strong>"or."</strong> It also embeds questions inside statements (indirect questions).</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="日本語を勉強していますか">
+            <div class="pc-ex-jp">日本語を勉強しています<span class="p">か</span>？</div>
+            <div class="pc-ex-en">Are you studying Japanese?</div>
+          </div>
+          <div class="pc-ex" data-speak="コーヒーか紅茶はいかがですか">
+            <div class="pc-ex-jp">コーヒー<span class="p">か</span>紅茶はいかがですか？</div>
+            <div class="pc-ex-en">Would you like coffee or tea?</div>
+          </div>
+          <div class="pc-ex" data-speak="何時に来るか知りません">
+            <div class="pc-ex-jp">何時に来る<span class="p">か</span>知りません。</div>
+            <div class="pc-ex-en">I don't know what time they're coming. (indirect)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── RANGE PARTICLES ─── -->
+    <div class="section-heading" id="range" style="scroll-margin-top:72px"><h2>Range Particles</h2><span class="sh-jp">範囲助詞</span></div>
+
+    <div class="particle-card" id="kara">
+      <div class="pc-header">
+        <div class="pc-glyph">から</div>
+        <div class="pc-meta"><div class="pc-ro">kara</div><div class="pc-name">From / because</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">から marks a <strong>starting point</strong> in space or time ("from"), and also marks <strong>reason or cause</strong> ("because," "since").</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="東京から大阪まで新幹線で行きます">
+            <div class="pc-ex-jp">東京<span class="p">から</span>大阪まで新幹線で行きます。</div>
+            <div class="pc-ex-en">I'm going from Tokyo to Osaka by Shinkansen.</div>
+          </div>
+          <div class="pc-ex" data-speak="九時から始まります">
+            <div class="pc-ex-jp">九時<span class="p">から</span>始まります。</div>
+            <div class="pc-ex-en">It starts from 9 o'clock.</div>
+          </div>
+          <div class="pc-ex" data-speak="眠いから、もう寝ます">
+            <div class="pc-ex-jp">眠い<span class="p">から</span>、もう寝ます。</div>
+            <div class="pc-ex-en">I'm sleepy, so I'm going to sleep now.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="made">
+      <div class="pc-header">
+        <div class="pc-glyph">まで</div>
+        <div class="pc-meta"><div class="pc-ro">made</div><div class="pc-name">Until / to / as far as</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">まで marks an <strong>endpoint</strong> in space or time — "until," "as far as," or "to." Pairs naturally with から to give a range: 〜から〜まで (from … to …).</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="五時まで働きます">
+            <div class="pc-ex-jp">五時<span class="p">まで</span>働きます。</div>
+            <div class="pc-ex-en">I work until 5 o'clock.</div>
+          </div>
+          <div class="pc-ex" data-speak="駅まで歩きます">
+            <div class="pc-ex-jp">駅<span class="p">まで</span>歩きます。</div>
+            <div class="pc-ex-en">I walk as far as the station.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="yori">
+      <div class="pc-header">
+        <div class="pc-glyph">より</div>
+        <div class="pc-meta"><div class="pc-ro">yori</div><div class="pc-name">Than / more than</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">より marks the <strong>standard of comparison</strong> in comparative sentences — the thing being compared against. Equivalent to "than" in "X is bigger than Y."</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="東京は大阪より大きいです">
+            <div class="pc-ex-jp">東京は大阪<span class="p">より</span>大きいです。</div>
+            <div class="pc-ex-en">Tokyo is bigger than Osaka.</div>
+          </div>
+          <div class="pc-ex" data-speak="昨日より今日の方が寒いです">
+            <div class="pc-ex-jp">昨日<span class="p">より</span>今日の方が寒いです。</div>
+            <div class="pc-ex-en">Today is colder than yesterday.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── LIMITING PARTICLES ─── -->
+    <div class="section-heading" id="limit" style="scroll-margin-top:72px"><h2>Limiting Particles</h2><span class="sh-jp">限定助詞</span></div>
+
+    <div class="particle-card" id="dake">
+      <div class="pc-header">
+        <div class="pc-glyph">だけ</div>
+        <div class="pc-meta"><div class="pc-ro">dake</div><div class="pc-name">Only / just</div><div class="pc-short">Positive limitation</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">だけ limits a quantity or scope to <strong>"only" or "just."</strong> It's used with positive statements (contrast with しか which requires a negative). Relatively neutral in tone.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="一つだけ食べました">
+            <div class="pc-ex-jp">一つ<span class="p">だけ</span>食べました。</div>
+            <div class="pc-ex-en">I ate just one.</div>
+          </div>
+          <div class="pc-ex" data-speak="あなただけが知っています">
+            <div class="pc-ex-jp">あなた<span class="p">だけ</span>が知っています。</div>
+            <div class="pc-ex-en">Only you know.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="shika">
+      <div class="pc-header">
+        <div class="pc-glyph">しか</div>
+        <div class="pc-meta"><div class="pc-ro">shika</div><div class="pc-name">Only (+ negative)</div><div class="pc-short">Always used with a negative verb — implies "nothing but"</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">しか always pairs with a <strong>negative verb form</strong> and means "only" with a nuance of insufficiency or exclusivity — "nothing but X," "only X (and that's all)." More emphatic than だけ.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="百円しかありません">
+            <div class="pc-ex-jp">百円<span class="p">しか</span>ありません。</div>
+            <div class="pc-ex-en">I only have 100 yen. (implying it's not enough)</div>
+          </div>
+          <div class="pc-ex" data-speak="日本語しか話せません">
+            <div class="pc-ex-jp">日本語<span class="p">しか</span>話せません。</div>
+            <div class="pc-ex-en">I can only speak Japanese.</div>
+          </div>
+        </div>
+        <div class="usage-note"><strong>だけ vs しか:</strong> 一つだけ食べた (I ate only one — neutral) vs 一つしか食べなかった (I only ate one — implying dissatisfaction or shortage). しか always takes a negative verb.</div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="hodo">
+      <div class="pc-header">
+        <div class="pc-glyph">ほど</div>
+        <div class="pc-meta"><div class="pc-ro">hodo</div><div class="pc-name">About / to the extent that</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">ほど expresses <strong>degree, extent,</strong> or <strong>approximate quantity</strong>. It also appears in the pattern 〜ば〜ほど ("the more … the more …") and in comparisons meaning "not as … as."</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="一時間ほど待ちました">
+            <div class="pc-ex-jp">一時間<span class="p">ほど</span>待ちました。</div>
+            <div class="pc-ex-en">I waited for about an hour.</div>
+          </div>
+          <div class="pc-ex" data-speak="死ぬほど疲れた">
+            <div class="pc-ex-jp">死ぬ<span class="p">ほど</span>疲れた。</div>
+            <div class="pc-ex-en">I'm so tired I could die. (extent)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SENTENCE-FINAL ─── -->
+    <div class="section-heading" id="sentence-final" style="scroll-margin-top:72px"><h2>Sentence-final Particles</h2><span class="sh-jp">終助詞</span></div>
+
+    <div class="particle-card" id="ne">
+      <div class="pc-header">
+        <div class="pc-glyph">ね</div>
+        <div class="pc-meta"><div class="pc-ro">ne</div><div class="pc-name">Seeking agreement</div><div class="pc-short">"...right?" / "...isn't it?"</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">ね at the end of a sentence seeks the listener's <strong>agreement or confirmation</strong> — like "right?" or "isn't it?" in English. Also softens statements and shows shared understanding.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="今日は寒いですね">
+            <div class="pc-ex-jp">今日は寒いです<span class="p">ね</span>。</div>
+            <div class="pc-ex-en">It's cold today, isn't it?</div>
+          </div>
+          <div class="pc-ex" data-speak="おいしいですね">
+            <div class="pc-ex-jp">おいしいです<span class="p">ね</span>。</div>
+            <div class="pc-ex-en">It's delicious, isn't it?</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="particle-card" id="yo">
+      <div class="pc-header">
+        <div class="pc-glyph">よ</div>
+        <div class="pc-meta"><div class="pc-ro">yo</div><div class="pc-name">Asserting new information</div><div class="pc-short">Tells the listener something they don't know</div></div>
+      </div>
+      <div class="pc-body">
+        <div class="pc-rule">よ asserts information the speaker believes the listener <strong>doesn't know</strong>. It adds emphasis or conviction — "I'm telling you…," "you know." Combined as よね it seeks agreement while asserting.</div>
+        <div class="pc-examples">
+          <div class="pc-ex" data-speak="これは本当においしいですよ">
+            <div class="pc-ex-jp">これは本当においしいです<span class="p">よ</span>。</div>
+            <div class="pc-ex-en">This is really delicious, I'm telling you.</div>
+          </div>
+          <div class="pc-ex" data-speak="もう遅いですよ">
+            <div class="pc-ex-jp">もう遅いです<span class="p">よ</span>。</div>
+            <div class="pc-ex-en">It's already late, you know.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  }
+
+  document.addEventListener('click', function (e) {
+    var ex = e.target.closest('.pc-ex[data-speak]');
+    if (ex) {
+      speak(ex.dataset.speak);
+      ex.classList.add('playing');
+      setTimeout(function () { ex.classList.remove('playing'); }, 1200);
+    }
+  });
+
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+  var cards     = document.querySelectorAll('.particle-card[id]');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-10% 0px -70% 0px' });
+    cards.forEach(function (c) { obs.observe(c); });
+  }
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

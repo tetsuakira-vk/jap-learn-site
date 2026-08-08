@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rhythm — Japanese Uncovered</title>
+<meta name="description" content="Speed recognition game. Kanji flash on screen — pick the correct reading before the timer runs out. Three difficulties. Speed increases each level.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.game-shell {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+.game-screen { display: none; }
+.game-screen.active { display: block; }
+
+/* ── Start ─────────────────────────────────────────────────── */
+.start-wrap { padding: 32px 24px; }
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink);
+  margin-bottom: 24px;
+}
+.diff-opt {
+  padding: 20px 16px;
+  border: none;
+  border-right: 1px solid var(--rule);
+  background: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background .12s;
+}
+.diff-opt:last-child { border-right: none; }
+.diff-opt:hover { background: var(--faint); }
+.diff-opt.active { background: var(--ink); color: var(--ground); }
+.diff-opt.active .do-speed { opacity: .6; }
+.diff-opt.active .do-desc  { opacity: .7; }
+.do-name  { font-family: var(--serif); font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+.do-speed { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: var(--mid); margin-bottom: 8px; font-weight: 700; }
+.do-desc  { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.diff-opt.active .do-speed,
+.diff-opt.active .do-desc { color: inherit; }
+
+/* ── Game HUD ─────────────────────────────────────────────── */
+.game-hud {
+  display: flex;
+  gap: 8px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.hud-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  background: var(--ground);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--mid);
+  font-variant-numeric: tabular-nums;
+}
+.hud-chip strong { color: var(--ink); }
+.hud-lv {
+  margin-left: auto;
+  padding: 6px 14px;
+  background: var(--ink);
+  color: var(--ground);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Lives ─────────────────────────────────────────────────── */
+.lives-row { display: flex; gap: 5px; align-items: center; }
+.life-pip {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: background .2s, transform .15s;
+}
+.life-pip.lost { background: var(--rule); transform: scale(.65); }
+
+/* ── Timer bar ─────────────────────────────────────────────── */
+.timer-wrap {
+  height: 5px;
+  background: var(--faint);
+  border-bottom: 1px solid var(--rule);
+}
+.timer-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: background .3s;
+}
+
+/* ── Question card ─────────────────────────────────────────── */
+.q-wrap { padding: 20px 24px 0; }
+
+.q-card { border: 1.5px solid var(--ink); }
+
+.q-display {
+  padding: 36px 24px;
+  text-align: center;
+  background: var(--faint);
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  min-height: 170px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.q-display::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+.q-word {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 10vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ink);
+  transition: transform .1s;
+}
+.q-word.pop { animation: pop .25s; }
+@keyframes pop { 0%{transform:scale(.9)} 60%{transform:scale(1.08)} 100%{transform:scale(1)} }
+.q-en { font-size: 13px; color: var(--mid); margin-top: 10px; }
+.q-lv {
+  position: absolute; top: 10px; left: 12px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 2px 7px;
+  background: var(--ground);
+}
+.streak-pill {
+  position: absolute; top: 10px; right: 12px;
+  padding: 3px 10px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  display: none;
+}
+.streak-pill.show { display: block; }
+
+.q-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.q-opt {
+  padding: 18px 24px;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-family: var(--serif);
+  text-align: center;
+  color: var(--ink);
+  transition: background .1s, color .1s;
+}
+.q-opt:nth-child(2n) { border-right: none; }
+.q-opt:nth-child(3), .q-opt:nth-child(4) { border-bottom: none; }
+.q-opt:hover:not(:disabled) { background: var(--faint); color: var(--accent); }
+.q-opt:disabled { cursor: default; }
+.q-opt.correct { background: #e8f5e9; color: #2e7d32; }
+.q-opt.wrong   { background: #ffebee; color: #b71c1c; }
+[data-theme="dark"] .q-opt.correct { background: #1a3520; color: #81c784; }
+[data-theme="dark"] .q-opt.wrong   { background: #3e1a1a; color: #ef9a9a; }
+
+/* ── Feedback ─────────────────────────────────────────────── */
+.feedback-strip {
+  margin: 10px 24px 0;
+  padding: 10px 14px;
+  font-size: 13px;
+  min-height: 40px;
+  border: 1px solid var(--rule);
+  background: var(--faint2);
+  color: var(--mid);
+  display: flex;
+  align-items: center;
+}
+.feedback-strip.good { border-color: #4caf50; background: #f1f8f1; color: #2e7d32; }
+.feedback-strip.bad  { border-color: var(--accent); background: #fff5f5; color: #b71c1c; }
+[data-theme="dark"] .feedback-strip.good { background: #1a3520; color: #81c784; border-color: #388e3c; }
+[data-theme="dark"] .feedback-strip.bad  { background: #3e1a1a; color: #ef9a9a; border-color: var(--accent); }
+
+/* ── Level flash ─────────────────────────────────────────────── */
+.lv-flash {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 99;
+}
+.lv-flash-inner {
+  background: var(--ink);
+  color: var(--ground);
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  padding: 16px 32px;
+  animation: lvPop .7s ease-out forwards;
+}
+@keyframes lvPop {
+  0%   { opacity: 0; transform: scale(.8); }
+  20%  { opacity: 1; transform: scale(1.05); }
+  70%  { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+/* ── Result ─────────────────────────────────────────────────── */
+.result-wrap { padding: 32px 24px; }
+.result-panel { border: 1.5px solid var(--ink); text-align: center; }
+.result-top {
+  padding: 40px 32px 24px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--faint);
+}
+.result-icon  { font-size: 3.5rem; margin-bottom: 10px; }
+.result-title { font-family: var(--serif); font-size: 1.9rem; font-weight: 700; margin-bottom: 6px; }
+.result-sub   { color: var(--mid); font-size: 14px; }
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1.5px solid var(--ink);
+}
+.rs { padding: 20px; border-right: 1px solid var(--rule); text-align: left; }
+.rs:last-child { border-right: none; }
+.rs-num   { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+.rs-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+.result-actions { padding: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .diff-grid { grid-template-columns: 1fr; border-right: 1.5px solid var(--ink); }
+  .diff-opt  { border-right: none; border-bottom: 1px solid var(--rule); }
+  .diff-opt:last-child { border-bottom: none; }
+  .q-word    { font-size: 3rem; }
+  .game-hud, .q-wrap, .start-wrap, .result-wrap, .feedback-strip { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/games/">Games</a>
+    <span class="sep">›</span>
+    Rhythm
+  </div>
+  <h1 class="page-h1">Rhythm <span class="h1-jp">リズム</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">Speed Recognition</span>
+    <span class="meta-pill">N5 → N3</span>
+    <span class="meta-pill">3 Difficulties</span>
+  </div>
+</header>
+
+<div class="game-shell">
+
+  <!-- START -->
+  <section class="game-screen active" id="screen-start">
+    <div class="start-wrap">
+      <p style="color:var(--mid);font-size:14px;margin-bottom:24px;line-height:1.7;">
+        A kanji appears on screen. Pick the correct reading before the countdown bar empties. Wrong answers and timeouts cost a life. Speed up each level.
+      </p>
+      <div class="diff-grid" id="diff-grid">
+        <button class="diff-opt active" onclick="setDiff('easy', this)">
+          <div class="do-name">らくらく</div>
+          <div class="do-speed">Easy · 5s</div>
+          <div class="do-desc">N5 only. Generous timer. 5 lives.</div>
+        </button>
+        <button class="diff-opt" onclick="setDiff('normal', this)">
+          <div class="do-name">ふつう</div>
+          <div class="do-speed">Normal · 3.5s</div>
+          <div class="do-desc">N5–N4. Timer shrinks per level. 3 lives.</div>
+        </button>
+        <button class="diff-opt" onclick="setDiff('hard', this)">
+          <div class="do-name">むずかしい</div>
+          <div class="do-speed">Hard · 2s</div>
+          <div class="do-desc">N5–N3. Fast from the start. 3 lives.</div>
+        </button>
+      </div>
+      <button class="btn btn-solid" onclick="startGame()">Start</button>
+    </div>
+  </section>
+
+  <!-- GAME -->
+  <section class="game-screen" id="screen-game">
+    <div class="game-hud">
+      <div class="hud-chip">Score <strong id="hud-score">0</strong></div>
+      <div class="hud-chip">
+        <div class="lives-row" id="lives-row"></div>
+      </div>
+      <div class="hud-chip">Streak <strong id="hud-streak">0</strong></div>
+      <div class="hud-lv">LV <span id="hud-lv">1</span></div>
+    </div>
+
+    <div class="timer-wrap">
+      <div class="timer-fill" id="timer-fill" style="width:100%"></div>
+    </div>
+
+    <div class="q-wrap">
+      <div class="q-card" id="q-card">
+        <div class="q-display">
+          <div class="q-lv" id="q-lv">N5</div>
+          <div class="q-word" id="q-word">日</div>
+          <div class="q-en" id="q-en">sun / day</div>
+          <div class="streak-pill" id="streak-pill">×5</div>
+        </div>
+        <div class="q-opts" id="q-opts">
+          <button class="q-opt" onclick="pick(0)">にち</button>
+          <button class="q-opt" onclick="pick(1)">つき</button>
+          <button class="q-opt" onclick="pick(2)">やま</button>
+          <button class="q-opt" onclick="pick(3)">かわ</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="feedback-strip" id="feedback"></div>
+
+  </section>
+
+  <!-- RESULT -->
+  <section class="game-screen" id="screen-result">
+    <div class="result-wrap">
+      <div class="result-panel">
+        <div class="result-top">
+          <div class="result-icon" id="r-icon"></div>
+          <div class="result-title" id="r-title">Game Over</div>
+          <div class="result-sub" id="r-sub"></div>
+        </div>
+        <div class="result-stats">
+          <div class="rs"><div class="rs-num" id="r-score">0</div><div class="rs-label">Score</div></div>
+          <div class="rs"><div class="rs-num" id="r-lv">1</div><div class="rs-label">Level Reached</div></div>
+          <div class="rs"><div class="rs-num" id="r-acc">—</div><div class="rs-label">Accuracy</div></div>
+        </div>
+        <div class="result-actions">
+          <button class="btn btn-solid" onclick="startGame()">Play Again</button>
+          <button class="btn btn-ghost" onclick="showScreen('screen-start')">Change Difficulty</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+const QS = [
+  ['日','にち','sun / day','N5'],['月','つき','moon / month','N5'],['火','ひ','fire','N5'],
+  ['水','みず','water','N5'],['木','き','tree','N5'],['金','きん','gold','N5'],
+  ['土','つち','earth','N5'],['山','やま','mountain','N5'],['川','かわ','river','N5'],
+  ['人','ひと','person','N5'],['口','くち','mouth','N5'],['手','て','hand','N5'],
+  ['目','め','eye','N5'],['耳','みみ','ear','N5'],['足','あし','foot / leg','N5'],
+  ['本','ほん','book','N5'],['大','おお','big','N5'],['小','ちい','small','N5'],
+  ['中','なか','inside','N5'],['上','うえ','above','N5'],['下','した','below','N5'],
+  ['年','とし','year','N5'],['時','とき','time','N5'],['花','はな','flower','N5'],
+  ['空','そら','sky','N5'],['雨','あめ','rain','N5'],['車','くるま','car','N5'],
+  ['白','しろ','white','N5'],['黒','くろ','black','N5'],['赤','あか','red','N5'],
+  ['食','た','eat','N4'],['行','い','go','N4'],['来','く','come','N4'],
+  ['見','み','see','N4'],['聞','き','listen','N4'],['話','はな','speak','N4'],
+  ['読','よ','read','N4'],['書','か','write','N4'],['知','し','know','N4'],
+  ['帰','かえ','return','N4'],['使','つか','use','N4'],['作','つく','make','N4'],
+  ['持','も','hold','N4'],['待','ま','wait','N4'],['急','いそ','hurry','N4'],
+  ['感','かん','feel','N3'],['決','き','decide','N3'],['続','つづ','continue','N3'],
+  ['終','お','end','N3'],['変','か','change','N3'],['考','かんが','think','N3'],
+  ['選','えら','choose','N3'],['意','い','meaning','N3'],
+];
+
+const DIFFS = {
+  easy:   { startMs: 5000, minMs: 3000, step: 150, lvEvery: 5, lives: 5, pool: ['N5'] },
+  normal: { startMs: 3500, minMs: 1800, step: 120, lvEvery: 5, lives: 3, pool: ['N5','N4'] },
+  hard:   { startMs: 2000, minMs: 1200, step: 80,  lvEvery: 5, lives: 3, pool: ['N5','N4','N3'] },
+};
+
+let diff = 'easy';
+let gs   = {};
+
+function setDiff(d, el) {
+  diff = d;
+  document.querySelectorAll('#diff-grid .diff-opt').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function startGame() {
+  const cfg = DIFFS[diff];
+  gs = {
+    cfg, score: 0, streak: 0, level: 1,
+    lives: cfg.lives, maxLives: cfg.lives,
+    ms: cfg.startMs, lvCount: 0,
+    answered: 0, correct: 0,
+    correctIdx: 0, currentQ: null,
+    used: new Set(), locked: false, done: false,
+    raf: null, timerStart: 0,
+  };
+  renderLives();
+  document.getElementById('hud-score').textContent  = '0';
+  document.getElementById('hud-streak').textContent = '0';
+  document.getElementById('hud-lv').textContent     = '1';
+  document.getElementById('feedback').textContent   = '';
+  document.getElementById('feedback').className     = 'feedback-strip';
+  showScreen('screen-game');
+  nextQ();
+}
+
+function nextQ() {
+  if (gs.done) return;
+  gs.locked = false;
+
+  const pool   = QS.filter(q => gs.cfg.pool.includes(q[3]) && !gs.used.has(q[0]));
+  const src    = pool.length > 4 ? pool : QS.filter(q => gs.cfg.pool.includes(q[3]));
+  const correct = src[Math.floor(Math.random() * src.length)];
+  gs.used.add(correct[0]);
+  gs.currentQ = correct;
+
+  const wrongs = shuffle(QS.filter(q => q[0] !== correct[0] && gs.cfg.pool.includes(q[3]))).slice(0, 3);
+  const opts   = shuffle([correct, ...wrongs]);
+  gs.correctIdx = opts.indexOf(correct);
+
+  document.getElementById('q-word').textContent = correct[0];
+  document.getElementById('q-en').textContent   = correct[2];
+  document.getElementById('q-lv').textContent   = correct[3];
+  const qw = document.getElementById('q-word');
+  qw.classList.remove('pop');
+  void qw.offsetWidth;
+  qw.classList.add('pop');
+
+  const sp = document.getElementById('streak-pill');
+  if (gs.streak >= 3) { sp.textContent = `×${gs.streak}`; sp.classList.add('show'); }
+  else sp.classList.remove('show');
+
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach((b, i) => {
+    b.textContent = opts[i][1];
+    b.className   = 'q-opt';
+    b.disabled    = false;
+    b.onclick     = () => pick(i);
+  });
+
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').className   = 'feedback-strip';
+
+  startTimer();
+}
+
+function startTimer() {
+  cancelAnimationFrame(gs.raf);
+  gs.timerStart = performance.now();
+  const dur = gs.ms;
+  const fill = document.getElementById('timer-fill');
+
+  function frame(now) {
+    if (gs.done || gs.locked) return;
+    const pct = Math.max(0, 1 - (now - gs.timerStart) / dur);
+    fill.style.width = (pct * 100) + '%';
+    fill.style.background = pct > .5 ? 'var(--accent)' : pct > .25 ? '#ff9800' : '#f44336';
+    if (pct > 0) gs.raf = requestAnimationFrame(frame);
+    else onTimeout();
+  }
+  gs.raf = requestAnimationFrame(frame);
+}
+
+function pick(idx) {
+  if (gs.locked || gs.done) return;
+  gs.locked = true;
+  cancelAnimationFrame(gs.raf);
+  gs.answered++;
+
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach(b => b.disabled = true);
+
+  if (idx === gs.correctIdx) {
+    gs.correct++;
+    gs.streak++;
+    gs.lvCount++;
+    const bonus = gs.streak > 1 ? Math.floor(gs.streak * 1.5) : 1;
+    gs.score += 10 * gs.level * bonus;
+    btns[idx].classList.add('correct');
+    setFb(`✓ ${gs.currentQ[1]}${gs.streak > 1 ? ` ×${gs.streak}` : ""}`, 'good');
+    speak(gs.currentQ[0]);
+    document.getElementById('hud-score').textContent  = gs.score;
+    document.getElementById('hud-streak').textContent = gs.streak;
+
+    if (gs.lvCount >= gs.cfg.lvEvery) {
+      gs.lvCount = 0;
+      gs.level++;
+      gs.ms = Math.max(gs.cfg.minMs, gs.ms - gs.cfg.step);
+      document.getElementById('hud-lv').textContent = gs.level;
+      flashLevel();
+    }
+    setTimeout(nextQ, 650);
+  } else {
+    btns[idx].classList.add('wrong');
+    btns[gs.correctIdx].classList.add('correct');
+    loseLife(idx);
+  }
+}
+
+function onTimeout() {
+  if (gs.done || gs.locked) return;
+  gs.locked = true;
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach(b => b.disabled = true);
+  btns[gs.correctIdx].classList.add('correct');
+  loseLife(-1, true);
+}
+
+function loseLife(wrongIdx, timeout) {
+  gs.streak = 0;
+  gs.lives--;
+  document.getElementById('hud-streak').textContent = '0';
+  renderLives();
+
+  const msg = timeout
+    ? `⏱ Time! Reading: ${gs.currentQ[1]}`
+    : `✗ Wrong — reading was: ${gs.currentQ[1]}`;
+  setFb(msg, 'bad');
+
+  if (gs.lives <= 0) { gs.done = true; setTimeout(endGame, 1000); return; }
+  gs.answered++;
+  setTimeout(nextQ, 1200);
+}
+
+function renderLives() {
+  const row = document.getElementById('lives-row');
+  row.innerHTML = '';
+  for (let i = 0; i < gs.maxLives; i++) {
+    const d = document.createElement('div');
+    d.className = 'life-pip' + (i >= gs.lives ? ' lost' : '');
+    row.appendChild(d);
+  }
+}
+
+function setFb(msg, cls) {
+  const el = document.getElementById('feedback');
+  el.textContent = msg;
+  el.className = 'feedback-strip ' + cls;
+}
+
+function flashLevel() {
+  const wrap  = document.createElement('div');
+  const inner = document.createElement('div');
+  wrap.className  = 'lv-flash';
+  inner.className = 'lv-flash-inner';
+  inner.textContent = `Level ${gs.level}!`;
+  wrap.appendChild(inner);
+  document.body.appendChild(wrap);
+  setTimeout(() => wrap.remove(), 800);
+}
+
+function endGame() {
+  cancelAnimationFrame(gs.raf);
+  const acc = gs.answered > 0 ? Math.round((gs.correct / gs.answered) * 100) : 0;
+  const grade = acc >= 90 ? '完璧！' : acc >= 75 ? '素晴らしい！' : acc >= 60 ? '良い' : acc >= 40 ? '要練習' : 'もう一度';
+  document.getElementById('r-icon').textContent  = acc >= 80 ? '' : acc >= 60 ? '' : '';
+  document.getElementById('r-title').textContent = grade;
+  document.getElementById('r-sub').textContent   = `${acc}% accuracy — reached Level ${gs.level}`;
+  document.getElementById('r-score').textContent = gs.score.toLocaleString();
+  document.getElementById('r-lv').textContent    = gs.level;
+  document.getElementById('r-acc').textContent   = acc + '%';
+  showScreen('screen-result');
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+</script>
+</body>
+</html>

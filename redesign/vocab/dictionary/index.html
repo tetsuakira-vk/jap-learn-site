@@ -51,6 +51,9 @@
 .dfbtn.n5.on  { border-color: #7a5a7a; color: #7a5a7a; }
 .dfbtn.n4.on  { border-color: #5a7a5a; color: #5a7a5a; }
 .dfbtn.n3.on  { border-color: #7a6a3a; color: #7a6a3a; }
+[data-theme="dark"] .dfbtn.n5.on { border-color: #c47acf; color: #c47acf; }
+[data-theme="dark"] .dfbtn.n4.on { border-color: #6abf6a; color: #6abf6a; }
+[data-theme="dark"] .dfbtn.n3.on { border-color: #d4a550; color: #d4a550; }
 
 /* ── Results count ── */
 .dict-meta {
@@ -110,6 +113,9 @@
 .wc-pos.verb { border-color: #5a8a5a; color: #5a8a5a; }
 .wc-pos.adj  { border-color: #7a6a9a; color: #7a6a9a; }
 .wc-pos.adv  { border-color: #8a6a4a; color: #8a6a4a; }
+[data-theme="dark"] .wc-pos.verb { border-color: #6abf6a; color: #6abf6a; }
+[data-theme="dark"] .wc-pos.adj  { border-color: #a08acf; color: #a08acf; }
+[data-theme="dark"] .wc-pos.adv  { border-color: #c49a6a; color: #c49a6a; }
 .wc-pos.expr { border-color: var(--accent); color: var(--accent); }
 .wc-lv {
   font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
@@ -163,9 +169,9 @@
 
 <header class="page-header">
   <div class="breadcrumb">
-    <a href="/redesign/">Home</a>
+    <a href="/">Home</a>
     <span class="sep">›</span>
-    <a href="/redesign/vocab/">Vocabulary</a>
+    <a href="/vocab/">Vocabulary</a>
     <span class="sep">›</span>
     Dictionary
   </div>
@@ -183,7 +189,7 @@
     <div class="dict-search-inner">
       <input class="dict-search-input" id="dict-search" type="search"
         placeholder="Search in English, romaji, or Japanese…" autocomplete="off" spellcheck="false">
-      <button class="dict-search-clear" id="dict-clear" aria-label="Clear search">✕</button>
+      <button class="dict-search-clear" id="dict-clear" aria-label="Clear search">×</button>
     </div>
     <div class="dict-filters">
       <span class="dict-filter-label">Level</span>

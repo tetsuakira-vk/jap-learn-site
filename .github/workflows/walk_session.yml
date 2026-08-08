@@ -1,9 +1,26 @@
-name: Generate Walk Session
+name: Generate Echo Audio
+
+# Runs manually from the Actions tab, or automatically when new scenarios are
+# added to walk_scenarios.json. No daily schedule — Echo audio is static content
+# that only needs regenerating when scenarios change.
+#
+# To generate everything fresh:   Actions → Generate Echo Audio → Run workflow
+# To regenerate one scene:        set scene_id input below before running
 
 on:
-  schedule:
-    - cron: '0 6 * * *'   # 6 AM UTC daily
-  workflow_dispatch:        # manual trigger from Actions tab
+  workflow_dispatch:
+    inputs:
+      scene_id:
+        description: 'Specific scene_id to regenerate (leave blank for all)'
+        required: false
+        default: ''
+      force:
+        description: 'Force regenerate even if MP3 already exists'
+        type: boolean
+        default: false
+  push:
+    paths:
+      - 'tools/walk/data/walk_scenarios.json'
 
 permissions:
   contents: write
@@ -27,21 +44,25 @@ jobs:
         run: sudo apt-get install -y ffmpeg
 
       - name: Install Python dependencies
-        run: pip install edge-tts pydub
+        run: pip install edge-tts pydub numpy
 
-      - name: Generate session
-        run: python tools/walk/generate_session.py
+      - name: Generate Echo audio
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.scene_id }}" ]; then
+            ARGS="--scene ${{ github.event.inputs.scene_id }}"
+          fi
+          if [ "${{ github.event.inputs.force }}" = "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          python tools/walk/generate_echo.py $ARGS
         env:
           WALK_TTS_PROVIDER: edge_tts
-          # Override voices here or in repo Settings → Secrets → Actions
-          # WALK_TTS_VOICE_NARRATOR:  en-GB-SoniaNeural
-          # WALK_TTS_VOICE_ANSWER:    ja-JP-NanamiNeural
-          # WALK_TTS_VOICE_CHARACTER: ja-JP-KeitaNeural
 
-      - name: Commit session files
+      - name: Commit generated files
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "walk: daily session"
-          file_pattern: "static/walk/manifest.json static/walk/audio/ tools/walk/data/walk_srs.json"
+          commit_message: "echo: regenerate audio"
+          file_pattern: "redesign/echo/scenes.json redesign/echo/audio/"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"

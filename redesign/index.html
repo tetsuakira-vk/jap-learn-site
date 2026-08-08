@@ -101,6 +101,9 @@
   border-top: 1px solid var(--rule);
   border-left: 1px solid var(--rule);
 }
+@media (min-width: 900px) {
+  .sitemap-grid { grid-template-columns: repeat(7, 1fr); }
+}
 .sitemap-col {
   padding: 20px 22px 24px;
   border-right: 1px solid var(--rule);
@@ -608,7 +611,7 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="vocab/">
+    <a class="section-card" href="vocab/dictionary/">
       <div class="sc-jp"><ruby>語彙<rt>ごい</rt></ruby></div>
       <div class="sc-en">Vocabulary</div>
       <div class="sc-desc">N5 core words, everyday phrases, numbers, and a full searchable dictionary. Organised by topic and JLPT level.</div>
@@ -620,7 +623,7 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="grammar/">
+    <a class="section-card" href="grammar/particles/">
       <div class="sc-jp"><ruby>文法<rt>ぶんぽう</rt></ruby></div>
       <div class="sc-en">Grammar</div>
       <div class="sc-desc">Particles, verb conjugations, and sentence patterns explained plainly — with examples you'd actually use.</div>
@@ -632,7 +635,7 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="courses/">
+    <a class="section-card" href="courses/what-would-you-say/">
       <div class="sc-jp"><ruby>練習<rt>れんしゅう</rt></ruby></div>
       <div class="sc-en">Practice</div>
       <div class="sc-desc">Real situations, shadowing trainer, immersive reader, sentence builder. Tools for using Japanese, not just studying it.</div>
@@ -655,22 +658,22 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="games/">
+    <a class="section-card" href="games/battle/">
       <div class="sc-jp"><ruby>遊<rt>あそぶ</rt></ruby></div>
       <div class="sc-en">Games</div>
       <div class="sc-desc">Three games — battle RPG, rhythm, and memory match — that drill vocabulary and kana under real pressure. No downloads.</div>
       <div class="sc-links">
-        <span class="sc-link">Kanji Quest ⚔</span>
-        <span class="sc-link">Rhythm ♪</span>
+        <span class="sc-link">Kanji Quest</span>
+        <span class="sc-link">Rhythm</span>
         <span class="sc-link">Memory</span>
       </div>
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card section-card--walk" href="walk/">
+    <div class="section-card section-card--walk" style="opacity:0.55;cursor:default;">
       <div class="sc-jp"><ruby>歩<rt>あるく</rt></ruby></div>
       <div class="sc-body">
-        <div class="sc-en">Walk Mode</div>
+        <div class="sc-en">Walk Mode <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:2px 7px;vertical-align:middle;margin-left:8px;opacity:.7">Coming soon</span></div>
         <div class="sc-desc">Audio-first Japanese for commuters and walkers. Put your phone away and listen — scenes set in stations, cafés, and streets. No screen needed.</div>
         <div class="sc-links">
           <span class="sc-link">Morning commute</span>
@@ -678,8 +681,7 @@ ruby:hover    { color: var(--accent); }
           <span class="sc-link">Lost in Tokyo</span>
         </div>
       </div>
-      <span class="sc-arrow">→</span>
-    </a>
+    </div>
 
   </div>
 </div>
@@ -707,8 +709,6 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Vocabulary</span>
       </div>
       <div class="sitemap-links">
-        <a href="/vocab/">Vocabulary hub</a>
-        <a href="/vocab/n5/">N5 Word List</a>
         <a href="/vocab/phrases/">Everyday Phrases</a>
         <a href="/vocab/numbers/">Numbers</a>
         <a href="/vocab/dictionary/">Dictionary</a>
@@ -721,7 +721,6 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Grammar</span>
       </div>
       <div class="sitemap-links">
-        <a href="/grammar/">Grammar hub</a>
         <a href="/grammar/particles/">Particles</a>
         <a href="/grammar/verbs/">Verbs</a>
         <a href="/grammar/patterns/">Sentence Patterns</a>
@@ -735,11 +734,12 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Practice</span>
       </div>
       <div class="sitemap-links">
-        <a href="/courses/">Practice hub</a>
         <a href="/courses/what-would-you-say/">What Would You Say?</a>
         <a href="/courses/shadowing/">Shadowing Trainer</a>
         <a href="/courses/immersive-reader/">Immersive Reader</a>
         <a href="/courses/sentence-forge/">Sentence Forge</a>
+        <a href="/courses/conversation/">Conversation Practice</a>
+        <a href="/echo/">Echo — Immersive Scenes</a>
       </div>
     </div>
 
@@ -765,23 +765,9 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Games</span>
       </div>
       <div class="sitemap-links">
-        <a href="/games/">Games hub</a>
         <a href="/games/battle/">Kanji Quest</a>
         <a href="/games/match/">Memory Match</a>
         <a href="/games/rhythm/">Rhythm</a>
-      </div>
-    </div>
-
-    <div class="sitemap-col">
-      <div class="sitemap-col-label">
-        <span class="sitemap-col-jp">歩</span>
-        <span class="sitemap-col-en">Walk</span>
-      </div>
-      <div class="sitemap-links">
-        <a href="/walk/">Walk Mode</a>
-        <a href="/walk/morning-commute/">Morning Commute</a>
-        <a href="/walk/at-the-cafe/">At the Café</a>
-        <a href="/walk/lost-in-tokyo/">Lost in Tokyo</a>
       </div>
     </div>
 
@@ -792,9 +778,7 @@ ruby:hover    { color: var(--accent); }
       </div>
       <div class="sitemap-links">
         <a href="/about/">About</a>
-        <a href="/videos/">Videos</a>
         <a href="/resources/">Resources</a>
-        <a href="/jlpt/guide/">JLPT Question Guide</a>
       </div>
     </div>
 

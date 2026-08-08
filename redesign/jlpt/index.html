@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT Study Guide — N5 to N1 Vocabulary, Quizzes & Mock Tests | Japanese Uncovered</title>
+<meta name="description" content="Free JLPT study guide for every level — N5 through N1. Vocabulary references, interactive quizzes, and full mock tests for all five levels of the Japanese Language Proficiency Test.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.jlpt-shell { max-width: 820px; margin: 0 auto; padding: 0 0 60px; }
+
+/* Level cards */
+.jlpt-level-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1.5px solid var(--ink);
+  gap: 0;
+}
+@media (max-width: 600px) { .jlpt-level-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 380px) { .jlpt-level-grid { grid-template-columns: 1fr 1fr; } }
+
+.jlpt-lc {
+  padding: 20px 16px 18px;
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  border-right: 1px solid var(--rule);
+  background: var(--ground);
+  transition: background .12s;
+}
+.jlpt-lc:last-child { border-right: none; }
+.jlpt-lc:hover { background: var(--faint); }
+.jlpt-lc-badge {
+  font-family: var(--serif);
+  font-size: 1.6rem; font-weight: 700;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.jlpt-lc-badge.n5 { color: #22c55e; }
+.jlpt-lc-badge.n4 { color: #06b6d4; }
+.jlpt-lc-badge.n3 { color: #f59e0b; }
+.jlpt-lc-badge.n2 { color: #ef4444; }
+.jlpt-lc-badge.n1 { color: #8b5cf6; }
+.jlpt-lc-words { font-size: 11px; color: var(--mid); margin-bottom: 4px; }
+.jlpt-lc-label { font-size: 11px; font-weight: 700; color: var(--mid); text-transform: uppercase; letter-spacing: .06em; }
+
+/* Resources per level */
+.jlpt-res-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: 1.5px solid var(--ink);
+  border-top: none;
+  gap: 0;
+}
+@media (max-width: 600px) { .jlpt-res-grid { grid-template-columns: 1fr; } }
+
+.jlpt-res-col {
+  padding: 16px;
+  border-right: 1px solid var(--rule);
+}
+.jlpt-res-col:last-child { border-right: none; }
+.jlpt-res-head {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid);
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+.jlpt-res-link {
+  display: block; font-size: 12px; color: var(--ink);
+  text-decoration: none; padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color .1s;
+}
+.jlpt-res-link:hover { border-bottom-color: var(--mid); }
+.jlpt-res-link.new-badge::after {
+  content: 'NEW';
+  font-size: 9px; font-weight: 700; color: #8b5cf6;
+  margin-left: 5px; letter-spacing: .06em;
+}
+
+/* Section header */
+.sect-head {
+  padding: 12px 0 10px;
+  border-bottom: 1.5px solid var(--ink);
+  margin: 32px 0 0;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.sect-head h2 { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin: 0; }
+.sect-head-jp { font-family: var(--serif); font-size: .9rem; color: var(--mid); }
+
+/* Comparison table */
+.jlpt-table-wrap { overflow-x: auto; }
+.jlpt-table {
+  width: 100%; border-collapse: collapse;
+  border: 1.5px solid var(--ink);
+  font-size: 13px;
+}
+.jlpt-table th {
+  background: var(--ink); color: var(--ground);
+  padding: 8px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.jlpt-table td { padding: 10px 14px; border-bottom: 1px solid var(--rule); }
+.jlpt-table tr:last-child td { border-bottom: none; }
+.jlpt-table tr:hover td { background: var(--faint); }
+.lv-badge {
+  display: inline-block; font-weight: 700; font-size: 12px;
+  padding: 1px 8px; border: 1.5px solid currentColor;
+}
+.lv-n5 { color: #22c55e; } .lv-n4 { color: #06b6d4; }
+.lv-n3 { color: #f59e0b; } .lv-n2 { color: #ef4444; }
+.lv-n1 { color: #8b5cf6; }
+
+/* Exam format */
+.format-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink); gap: 0;
+}
+@media (max-width: 560px) { .format-grid { grid-template-columns: 1fr; } }
+.format-cell {
+  padding: 18px 18px 20px;
+  border-right: 1px solid var(--rule);
+}
+.format-cell:last-child { border-right: none; }
+.format-num { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+.format-jp { font-family: var(--serif); font-size: 1rem; font-weight: 700; margin-bottom: 2px; }
+.format-en { font-size: 12px; color: var(--mid); margin-bottom: 10px; }
+.format-desc { font-size: 13px; line-height: 1.65; color: var(--ink); }
+
+/* Mock grid */
+.mock-link-grid {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  border: 1.5px solid var(--ink); gap: 0;
+}
+@media (max-width: 560px) { .mock-link-grid { grid-template-columns: repeat(3, 1fr); } }
+.mock-link-cell {
+  display: block; text-decoration: none; color: var(--ink);
+  padding: 16px 14px; border-right: 1px solid var(--rule);
+  background: var(--ground); transition: background .12s;
+}
+.mock-link-cell:last-child { border-right: none; }
+.mock-link-cell:hover { background: var(--faint); }
+.mock-link-cell.n5 .mlc-n { color: #22c55e; } .mock-link-cell.n4 .mlc-n { color: #06b6d4; }
+.mock-link-cell.n3 .mlc-n { color: #f59e0b; } .mock-link-cell.n2 .mlc-n { color: #ef4444; }
+.mock-link-cell.n1 .mlc-n { color: #8b5cf6; }
+.mlc-n { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 4px; }
+.mlc-q { font-size: 11px; color: var(--mid); }
+.mlc-go { font-size: 11px; font-weight: 700; margin-top: 10px; display: block; }
+
+/* FAQ */
+.faq-item { border-bottom: 1px solid var(--rule); }
+.faq-item:first-child { border-top: 1.5px solid var(--ink); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none;
+  padding: 14px 4px; cursor: pointer;
+  font-size: 14px; font-weight: 700; color: var(--ink);
+  display: flex; justify-content: space-between; gap: 12px;
+}
+.faq-q::after { content: '+'; font-size: 1.2rem; color: var(--mid); flex-shrink: 0; }
+.faq-item.open .faq-q::after { content: '−'; }
+.faq-a { display: none; padding: 2px 4px 16px; font-size: 14px; line-height: 1.7; color: var(--ink); }
+.faq-item.open .faq-a { display: block; }
+
+/* Tip box */
+.tip-box {
+  padding: 14px 18px; border: 1.5px solid var(--rule);
+  background: var(--faint); font-size: 13px;
+  color: var(--mid); line-height: 1.65; margin-top: 20px;
+}
+.tip-box strong { color: var(--ink); }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    JLPT
+  </div>
+  <h1 class="page-h1">JLPT <span class="h1-jp">日本語能力試験</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">N5 → N1</span>
+    <span class="meta-pill">Vocab · Quizzes · Mock Tests</span>
+    <span class="meta-pill">All Five Levels</span>
+  </div>
+</header>
+
+<div class="jlpt-shell">
+
+  <p style="font-size:15px;line-height:1.75;margin:0 0 24px;color:var(--ink)">The JLPT (日本語能力試験) is the world's most recognised Japanese qualification — taken by over 1.4 million people a year in more than 80 countries. Five levels: N5 for complete beginners through to N1 for near-native proficiency. Each level has a vocabulary reference, quiz, and a full mock test.</p>
+
+  <!-- Level cards -->
+  <div class="jlpt-level-grid">
+    <a class="jlpt-lc" href="n5/">
+      <div class="jlpt-lc-badge n5">N5</div>
+      <div class="jlpt-lc-words">~800 words</div>
+      <div class="jlpt-lc-label">Beginner</div>
+    </a>
+    <a class="jlpt-lc" href="n4/">
+      <div class="jlpt-lc-badge n4">N4</div>
+      <div class="jlpt-lc-words">~1,500 words</div>
+      <div class="jlpt-lc-label">Elementary</div>
+    </a>
+    <a class="jlpt-lc" href="n3/">
+      <div class="jlpt-lc-badge n3">N3</div>
+      <div class="jlpt-lc-words">~3,750 words</div>
+      <div class="jlpt-lc-label">Intermediate</div>
+    </a>
+    <a class="jlpt-lc" href="n2/">
+      <div class="jlpt-lc-badge n2">N2</div>
+      <div class="jlpt-lc-words">~6,000 words</div>
+      <div class="jlpt-lc-label">Upper Int.</div>
+    </a>
+    <a class="jlpt-lc" href="n1/">
+      <div class="jlpt-lc-badge n1">N1</div>
+      <div class="jlpt-lc-words">~10,000+ words</div>
+      <div class="jlpt-lc-label">Advanced</div>
+    </a>
+  </div>
+
+  <!-- Resources per level -->
+  <div class="jlpt-res-grid">
+    <div class="jlpt-res-col">
+      <div class="jlpt-res-head" style="color:#22c55e">N5</div>
+      <a class="jlpt-res-link" href="n5/">Vocab + Audio</a>
+      <a class="jlpt-res-link" href="n5/vocab/">Vocab Quiz</a>
+      <a class="jlpt-res-link" href="mock/n5/">Mock Test</a>
+    </div>
+    <div class="jlpt-res-col">
+      <div class="jlpt-res-head" style="color:#06b6d4">N4</div>
+      <a class="jlpt-res-link" href="n4/">Vocab + Audio</a>
+      <a class="jlpt-res-link" href="n4/">Vocab Quiz</a>
+      <a class="jlpt-res-link" href="mock/n4/">Mock Test</a>
+    </div>
+    <div class="jlpt-res-col">
+      <div class="jlpt-res-head" style="color:#f59e0b">N3</div>
+      <a class="jlpt-res-link" href="n3/">Vocab + Audio</a>
+      <a class="jlpt-res-link" href="n3/">Vocab Quiz</a>
+      <a class="jlpt-res-link" href="mock/n3/">Mock Test</a>
+    </div>
+    <div class="jlpt-res-col">
+      <div class="jlpt-res-head" style="color:#ef4444">N2</div>
+      <a class="jlpt-res-link" href="n2/">Vocab + Audio</a>
+      <a class="jlpt-res-link" href="n2/">Vocab Quiz</a>
+      <a class="jlpt-res-link new-badge" href="mock/n2/">Mock Test</a>
+    </div>
+    <div class="jlpt-res-col">
+      <div class="jlpt-res-head" style="color:#8b5cf6">N1</div>
+      <a class="jlpt-res-link" href="n1/">Vocab + Audio</a>
+      <a class="jlpt-res-link" href="n1/">Vocab Quiz</a>
+      <a class="jlpt-res-link new-badge" href="mock/n1/">Mock Test</a>
+    </div>
+  </div>
+
+  <!-- Level comparison -->
+  <div class="sect-head">
+    <h2>Which level should I aim for?</h2>
+    <span class="sect-head-jp">レベル選択</span>
+  </div>
+  <div class="jlpt-table-wrap">
+    <table class="jlpt-table">
+      <thead>
+        <tr>
+          <th>Level</th>
+          <th>What you can do</th>
+          <th>Study time from zero</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="lv-badge lv-n5">N5</span></td>
+          <td>Read hiragana &amp; katakana, understand basic greetings and simple sentences</td>
+          <td>3–6 months</td>
+        </tr>
+        <tr>
+          <td><span class="lv-badge lv-n4">N4</span></td>
+          <td>Handle everyday situations, read simple texts with furigana</td>
+          <td>6–12 months</td>
+        </tr>
+        <tr>
+          <td><span class="lv-badge lv-n3">N3</span></td>
+          <td>Understand most daily conversation, read straightforward articles</td>
+          <td>1–2 years</td>
+        </tr>
+        <tr>
+          <td><span class="lv-badge lv-n2">N2</span></td>
+          <td>Read newspapers, follow complex conversation, work in Japanese</td>
+          <td>2–4 years</td>
+        </tr>
+        <tr>
+          <td><span class="lv-badge lv-n1">N1</span></td>
+          <td>Near-native reading and listening across all contexts</td>
+          <td>4–6+ years</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tip-box">
+    <strong>Start with N5.</strong> Even if you feel confident, the vocabulary builds on itself — skipping levels means gaps you'll hit later. Most learners find N3 the hardest jump; the vocabulary load roughly doubles from N4. N2 is the practical threshold for working in Japanese.
+  </div>
+
+  <!-- Exam format -->
+  <div class="sect-head">
+    <h2>Exam format</h2>
+    <span class="sect-head-jp">試験の構成</span>
+  </div>
+  <p style="font-size:14px;line-height:1.7;margin:0 0 16px;color:var(--mid)">The JLPT has three sections at every level. You must hit the overall pass mark <em>and</em> meet the minimum per section — you can't compensate for a weak section with a strong one.</p>
+  <div class="format-grid">
+    <div class="format-cell">
+      <div class="format-num">Section 1</div>
+      <div class="format-jp">言語知識</div>
+      <div class="format-en">Vocabulary &amp; Characters</div>
+      <div class="format-desc">Kanji readings, vocabulary in context, word formation, synonym selection. Tests whether you recognise and understand words — not just recall them.</div>
+    </div>
+    <div class="format-cell">
+      <div class="format-num">Section 2</div>
+      <div class="format-jp">文法・読解</div>
+      <div class="format-en">Grammar &amp; Reading</div>
+      <div class="format-desc">Sentence grammar, sentence ordering, text-based grammar, and reading comprehension passages. Gets significantly longer at N2 and N1.</div>
+    </div>
+    <div class="format-cell">
+      <div class="format-num">Section 3</div>
+      <div class="format-jp">聴解</div>
+      <div class="format-en">Listening</div>
+      <div class="format-desc">Short dialogues and longer passages played once. Select the correct answer from images or written options. The official 公式問題集 workbooks include audio.</div>
+    </div>
+  </div>
+
+  <!-- Pass marks -->
+  <div class="sect-head" style="margin-top:24px">
+    <h2>Pass marks</h2>
+    <span class="sect-head-jp">合格基準点</span>
+  </div>
+  <div class="jlpt-table-wrap">
+    <table class="jlpt-table">
+      <thead>
+        <tr><th>Level</th><th>Total score</th><th>Overall pass</th><th>Min. per section</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="lv-badge lv-n5">N5</span></td><td>180 pts</td><td>80 pts (44%)</td><td>19 pts</td></tr>
+        <tr><td><span class="lv-badge lv-n4">N4</span></td><td>180 pts</td><td>90 pts (50%)</td><td>19 pts</td></tr>
+        <tr><td><span class="lv-badge lv-n3">N3</span></td><td>180 pts</td><td>95 pts (53%)</td><td>19 pts</td></tr>
+        <tr><td><span class="lv-badge lv-n2">N2</span></td><td>180 pts</td><td>90 pts (50%)</td><td>19 pts</td></tr>
+        <tr><td><span class="lv-badge lv-n1">N1</span></td><td>180 pts</td><td>100 pts (56%)</td><td>19 pts</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Exam dates -->
+  <div class="sect-head">
+    <h2>Exam dates</h2>
+    <span class="sect-head-jp">試験日程</span>
+  </div>
+  <p style="font-size:14px;line-height:1.7;margin:0 0 16px">The JLPT runs <strong>twice a year</strong>: first Sunday of <strong>July</strong> and first Sunday of <strong>December</strong>. Registration opens 3–4 months before each sitting.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--ink);gap:0">
+    <div style="padding:16px 18px;border-right:1px solid var(--rule)">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:6px">In Japan</div>
+      <div style="font-size:14px">Register directly at <strong>jlpt.jp</strong></div>
+    </div>
+    <div style="padding:16px 18px">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mid);margin-bottom:6px">Outside Japan</div>
+      <div style="font-size:14px">Via your country's local administration — Japan Foundation site lists every country</div>
+    </div>
+  </div>
+  <div class="tip-box">
+    <strong>Register early.</strong> Spots fill fast in popular cities — London, New York, Sydney. Set a reminder for when registration opens or you risk missing a convenient venue.
+  </div>
+
+  <!-- Mock tests -->
+  <div class="sect-head">
+    <h2>Full mock tests</h2>
+    <span class="sect-head-jp">模擬試験</span>
+  </div>
+  <p style="font-size:14px;line-height:1.7;margin:0 0 16px;color:var(--mid)">Original questions in the official format — same question types, same section structure. Instant scoring. All five levels now available.</p>
+  <div class="mock-link-grid">
+    <a class="mock-link-cell n5" href="mock/n5/">
+      <div class="mlc-n">N5</div>
+      <div class="mlc-q">53 questions</div>
+      <span class="mlc-go">Start →</span>
+    </a>
+    <a class="mock-link-cell n4" href="mock/n4/">
+      <div class="mlc-n">N4</div>
+      <div class="mlc-q">54 questions</div>
+      <span class="mlc-go">Start →</span>
+    </a>
+    <a class="mock-link-cell n3" href="mock/n3/">
+      <div class="mlc-n">N3</div>
+      <div class="mlc-q">55 questions</div>
+      <span class="mlc-go">Start →</span>
+    </a>
+    <a class="mock-link-cell n2" href="mock/n2/">
+      <div class="mlc-n">N2</div>
+      <div class="mlc-q">54 questions</div>
+      <span class="mlc-go">Start →</span>
+    </a>
+    <a class="mock-link-cell n1" href="mock/n1/">
+      <div class="mlc-n">N1</div>
+      <div class="mlc-q">55 questions</div>
+      <span class="mlc-go">Start →</span>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sect-head">
+    <h2>Frequently asked questions</h2>
+    <span class="sect-head-jp">よくある質問</span>
+  </div>
+  <div id="faq">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">What is the JLPT?</button>
+      <div class="faq-a">The JLPT (Japanese Language Proficiency Test / 日本語能力試験) is the world's most recognised Japanese language qualification, administered by the Japan Foundation and Japan Educational Exchanges and Services. Over 1.4 million candidates sit it annually across more than 80 countries. Five levels — N5 (beginner) through N1 (near-native) — testing vocabulary, kanji, grammar, reading, and listening.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Which level should I start with?</button>
+      <div class="faq-a">Start with N5 if you've been studying for less than six months. N5 tests hiragana, katakana, around 800 vocabulary items, and basic sentence structure. If you've been studying for a year and can handle simple conversations, N4 may be a better target.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How long does it take to pass N5?</button>
+      <div class="faq-a">Most learners reach N5 readiness within 3–6 months studying 20–30 minutes a day. The total study hours typically quoted is 150–300 hours for someone with no prior Japanese. This varies depending on prior experience with Asian languages and how much natural exposure you get.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Does JLPT certification expire?</button>
+      <div class="faq-a">No. JLPT certificates have no expiry date and remain valid indefinitely — which distinguishes the JLPT from many other language qualifications that require periodic renewal.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Is N3 enough to work in Japan?</button>
+      <div class="faq-a">N3 is a solid intermediate milestone, but most Japanese employers require N2 as the minimum for roles conducted in Japanese. N2 is the practical threshold for employment; N1 is expected at senior or specialist level.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can I take the JLPT online?</button>
+      <div class="faq-a">No — the JLPT is a paper-based exam at official test centres only. There is no online or remote sitting option. Test centres are available in Japan and in major cities worldwide; the Japan Foundation website lists all registered venues.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Why take the JLPT at all?</button>
+      <div class="faq-a">N2 is the most widely cited requirement for working in a Japanese company overseas. N4 is listed as a language requirement for the Specified Skilled Worker visa. Many learners find having an exam date on the calendar is the single most effective thing they can do for study consistency. Beyond practical utility, the certificate doesn't expire — a pass is a permanent record of your level.</div>
+    </div>
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+function toggleFaq(btn) {
+  var item = btn.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is the JLPT?","acceptedAnswer":{"@type":"Answer","text":"The JLPT (Japanese Language Proficiency Test) is the world's most recognised Japanese language qualification, taken by over 1.4 million candidates annually in 80+ countries. Five levels — N5 through N1 — testing vocabulary, kanji, grammar, reading, and listening."}},
+    {"@type":"Question","name":"Which JLPT level should I start with?","acceptedAnswer":{"@type":"Answer","text":"Start with N5 if you've been studying for less than six months. If you've been studying for a year and can handle simple conversations, N4 may be a better target."}},
+    {"@type":"Question","name":"Does JLPT certification expire?","acceptedAnswer":{"@type":"Answer","text":"No. JLPT certificates have no expiry date and remain valid indefinitely."}},
+    {"@type":"Question","name":"Can I take the JLPT online?","acceptedAnswer":{"@type":"Answer","text":"No — the JLPT is paper-based at official test centres only. There is no online or remote option."}}
+  ]
+}
+</script>
+</body>
+</html>

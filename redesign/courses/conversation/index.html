@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversation Practice — Japanese Uncovered</title>
+<meta name="description" content="Practice real Japanese conversations in four everyday scenarios: convenience store, izakaya, asking directions, and checking into a hotel. Type your Japanese and get instant feedback.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.tool-shell { max-width: 800px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Scenario selector ──────────────────────────────────────── */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+}
+@media (max-width: 520px) { .scenario-grid { grid-template-columns: 1fr; } }
+.scen-card {
+  padding: 22px 24px;
+  border: none;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground);
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+  transition: background .14s;
+}
+.scen-card:nth-child(even) { border-right: none; }
+.scen-card:nth-last-child(-n+2) { border-bottom: none; }
+.scen-card:hover, .scen-card:focus { background: var(--faint); outline: none; }
+.scen-title { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.scen-jp { font-size: .95rem; color: var(--mid); font-family: var(--serif); margin-bottom: 10px; }
+.scen-desc { font-size: 13px; color: var(--mid); line-height: 1.55; }
+.scen-turns { font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--mid); margin-top: 10px; }
+
+/* ── Conversation area ──────────────────────────────────────── */
+.conv-wrap { display: none; }
+.conv-header {
+  padding: 14px 22px;
+  border: 1.5px solid var(--ink);
+  border-bottom: none;
+  background: var(--faint);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.conv-emoji-big { font-size: 1.6rem; }
+.conv-heading { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; }
+.conv-sub { font-size: 12px; color: var(--mid); }
+.back-btn {
+  margin-left: auto;
+  font-size: 12px; font-weight: 700;
+  border: 1px solid var(--rule); padding: 5px 12px;
+  background: none; cursor: pointer; color: var(--mid);
+}
+.back-btn:hover { color: var(--ink); }
+
+.conv-progress-bar {
+  height: 3px; background: var(--rule);
+  border-left: 1.5px solid var(--ink);
+  border-right: 1.5px solid var(--ink);
+}
+.conv-progress-fill { height: 100%; background: var(--ink); transition: width .3s ease; width: 0%; }
+
+/* ── Dialogue feed ──────────────────────────────────────────── */
+.conv-feed {
+  border: 1.5px solid var(--ink);
+  border-top: none;
+  border-bottom: none;
+  min-height: 320px;
+  max-height: 420px;
+  overflow-y: auto;
+  padding: 0;
+}
+
+.msg {
+  display: flex;
+  gap: 12px;
+  padding: 16px 22px;
+  border-bottom: 1px solid var(--rule);
+}
+.msg:last-child { border-bottom: none; }
+.msg.npc { background: var(--faint); }
+.msg.user { background: var(--ground); }
+.msg.sys { background: var(--faint2); border-left: 3px solid var(--accent); padding-left: 19px; }
+.msg.success-msg { background: #f0fdf4; border-left: 3px solid #22c55e; padding-left: 19px; }
+.msg.fail-msg { background: #fff7f5; border-left: 3px solid var(--accent); padding-left: 19px; }
+[data-theme="dark"] .msg.success-msg { background: #1a3520; }
+[data-theme="dark"] .msg.fail-msg { background: #2a1510; }
+
+.msg-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1.5px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; flex-shrink: 0; background: var(--faint2);
+}
+.msg-body { flex: 1; }
+.msg-sender { font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.msg-jp { font-family: var(--serif); font-size: 1.05rem; line-height: 1.65; }
+.msg-en { font-size: 12px; color: var(--mid); margin-top: 3px; }
+.msg-tip { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+.speak-btn {
+  font-size: 13px; margin-top: 6px;
+  padding: 3px 9px; border: 1px solid var(--rule);
+  background: none; cursor: pointer; color: var(--mid);
+}
+.speak-btn:hover { color: var(--ink); }
+
+/* ── Input area ─────────────────────────────────────────────── */
+.conv-input-box {
+  border: 1.5px solid var(--ink);
+  border-top: 1px solid var(--rule);
+  padding: 18px 22px;
+}
+.conv-task { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
+.conv-hint { font-size: 12px; color: var(--mid); margin-bottom: 10px; line-height: 1.55; }
+.conv-kw-hint {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;
+}
+.kw-hint-chip {
+  font-size: 12px; padding: 3px 8px;
+  border: 1px solid var(--rule); color: var(--mid);
+  cursor: pointer; transition: border-color .12s, color .12s;
+  font-family: var(--serif);
+}
+.kw-hint-chip:hover { border-color: var(--ink); color: var(--ink); }
+.kw-hint-chip.used { text-decoration: line-through; opacity: .45; }
+.conv-ta {
+  width: 100%; min-height: 60px; padding: 10px;
+  border: 1.5px solid var(--ink); background: var(--ground);
+  color: var(--ink); font-size: 14px; resize: vertical;
+  line-height: 1.65; font-family: var(--serif); transition: border-color .15s;
+}
+.conv-ta:focus { outline: none; border-color: var(--accent); }
+.conv-ta::placeholder { color: var(--mid); }
+.conv-btn-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; }
+
+/* ── Tip reveal ─────────────────────────────────────────────── */
+.tip-row { margin-top: 8px; }
+.tip-toggle {
+  font-size: 12px; color: var(--mid); cursor: pointer;
+  background: none; border: none; padding: 0; text-decoration: underline;
+}
+.tip-box { display: none; margin-top: 8px; padding: 10px 12px; background: var(--faint); border-left: 2px solid var(--mid); font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+/* ── Done screen ────────────────────────────────────────────── */
+.done-screen {
+  display: none;
+  border: 1.5px solid var(--ink);
+  padding: 40px 32px;
+  text-align: center;
+}
+.done-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+.done-sub { font-size: 14px; color: var(--mid); margin-bottom: 24px; }
+.done-stats { display: flex; justify-content: center; gap: 32px; margin-bottom: 28px; }
+.done-stat span { display: block; }
+.done-stat .n { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+.done-stat .l { font-size: 11px; color: var(--mid); text-transform: uppercase; letter-spacing: .08em; }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/courses/">Practice</a><span class="sep">›</span>
+    Conversation Practice
+  </div>
+  <h1 class="page-h1">Conversation Practice <span class="h1-jp">会話練習</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">4 Scenarios</span>
+    <span class="meta-pill">Type in Japanese</span>
+    <span class="meta-pill">Keyword Matching</span>
+  </div>
+</header>
+
+<div class="tool-shell">
+  <!-- Scenario picker -->
+  <div id="scen-picker">
+    <div class="scenario-grid" id="scen-grid"></div>
+  </div>
+
+  <!-- Conversation UI -->
+  <div class="conv-wrap" id="conv-wrap">
+    <div class="conv-header" id="conv-header"></div>
+    <div class="conv-progress-bar"><div class="conv-progress-fill" id="conv-progress"></div></div>
+    <div class="conv-feed" id="conv-feed"></div>
+    <div class="conv-input-box" id="conv-input-box"></div>
+    <div class="done-screen" id="done-screen"></div>
+  </div>
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+const SCENARIOS = [
+  {
+    id: 'konbini',
+    title: 'Convenience Store',
+    titleJp: 'コンビニで',
+    desc: 'Buy snacks, ask about prices, and use the ATM.',
+    turns: [
+      {
+        npc: 'いらっしゃいませ！',
+        npcEn: 'Welcome!',
+        userTask: 'Greet the staff and say you\'re just looking around.',
+        keywords: ['見て','ちょっと','すみません','こんにちは'],
+        successNpc: 'どうぞごゆっくり！',
+        successNpcEn: 'Please take your time!',
+        failNpc: 'えっと、どうぞ！お気軽に！',
+        failNpcEn: 'Um, please feel free!',
+        tip: 'Try: ちょっと見てもいいですか？ (May I just have a look?)'
+      },
+      {
+        npc: 'このおにぎりはおすすめですよ。今日できたてです。',
+        npcEn: 'This onigiri is recommended. It was made today.',
+        userTask: 'Ask how much it costs.',
+        keywords: ['いくら','値段','円','お値段'],
+        successNpc: '百三十円です。お買い得ですよ！',
+        successNpcEn: 'It\'s 130 yen. It\'s a bargain!',
+        failNpc: 'えっと…百三十円ですよ。',
+        failNpcEn: 'Um… it\'s 130 yen.',
+        tip: 'Try: これはいくらですか？ (How much is this?)'
+      },
+      {
+        npc: 'こちらでよろしかったですか？',
+        npcEn: 'Will that be all?',
+        userTask: 'Say you\'d also like a coffee and ask if they have a bag.',
+        keywords: ['コーヒー','袋','ください','も','ほしい'],
+        successNpc: 'はい、袋はございます。コーヒーはどのサイズですか？',
+        successNpcEn: 'Yes, we have bags. What size coffee?',
+        failNpc: 'コーヒーと袋ですね。少々お待ちください。',
+        failNpcEn: 'Coffee and a bag. Just a moment, please.',
+        tip: 'Try: コーヒーもください。袋はありますか？'
+      },
+      {
+        npc: 'お会計は合わせて四百五十円になります。',
+        npcEn: 'Your total comes to 450 yen.',
+        userTask: 'Pay and thank the staff.',
+        keywords: ['ありがとう','どうも','はい','お願い','カード','ください'],
+        successNpc: 'ありがとうございました！またどうぞ！',
+        successNpcEn: 'Thank you very much! Please come again!',
+        failNpc: 'ありがとうございました！',
+        failNpcEn: 'Thank you!',
+        tip: 'Try: はい、どうぞ。ありがとうございます。'
+      },
+    ]
+  },
+  {
+    id: 'izakaya',
+    title: 'Izakaya',
+    titleJp: '居酒屋で',
+    desc: 'Order food and drinks at a Japanese pub.',
+    turns: [
+      {
+        npc: 'いらっしゃいませ！何名様ですか？',
+        npcEn: 'Welcome! How many in your party?',
+        userTask: 'Say there are two people.',
+        keywords: ['二人','ふたり','二名','2人'],
+        successNpc: 'かしこまりました！こちらへどうぞ。',
+        successNpcEn: 'Certainly! This way please.',
+        failNpc: 'はい、二名様ですね。こちらへどうぞ。',
+        failNpcEn: 'Yes, two people. This way please.',
+        tip: 'Try: 二人です。 or 二名です。'
+      },
+      {
+        npc: 'ご注文はお決まりですか？',
+        npcEn: 'Have you decided on your order?',
+        userTask: 'Order two beers and the edamame.',
+        keywords: ['ビール','二つ','枝豆','ください','お願い'],
+        successNpc: 'かしこまりました！ビール二つと枝豆ですね。少々お待ちください。',
+        successNpcEn: 'Certainly! Two beers and edamame. Just a moment.',
+        failNpc: 'ビールと枝豆ですね。すぐにお持ちします！',
+        failNpcEn: 'Beer and edamame. I\'ll bring it right away!',
+        tip: 'Try: ビールを二つと枝豆をください。'
+      },
+      {
+        npc: 'こちらのおすすめは唐揚げです。いかがですか？',
+        npcEn: 'Our recommendation is karaage. How about it?',
+        userTask: 'Say it sounds good and ask if it\'s spicy.',
+        keywords: ['いいですね','辛い','からい','辛くない','好きです','ください'],
+        successNpc: 'いいえ、辛くないですよ！とても人気です。',
+        successNpcEn: 'No, it\'s not spicy! It\'s very popular.',
+        failNpc: 'あ、辛くないですよ。お口に合うと思います！',
+        failNpcEn: 'Ah, it\'s not spicy. I think you\'ll like it!',
+        tip: 'Try: いいですね！辛いですか？'
+      },
+      {
+        npc: 'お楽しみいただけましたか？お会計はよろしいですか？',
+        npcEn: 'Did you enjoy it? Are you ready for the bill?',
+        userTask: 'Ask for the bill and say the food was delicious.',
+        keywords: ['おいしかった','美味しかった','お会計','ありがとう','ください','おねがい'],
+        successNpc: 'ありがとうございます！合計三千二百円になります。',
+        successNpcEn: 'Thank you! That\'s 3,200 yen total.',
+        failNpc: 'ありがとうございます！少々お待ちください。',
+        failNpcEn: 'Thank you! Just a moment please.',
+        tip: 'Try: 美味しかったです！お会計をお願いします。'
+      },
+    ]
+  },
+  {
+    id: 'directions',
+    title: 'Asking Directions',
+    titleJp: '道を聞く',
+    desc: 'Find your way around the city using Japanese.',
+    turns: [
+      {
+        npc: 'こんにちは！何かお探しですか？',
+        npcEn: 'Hello! Are you looking for something?',
+        userTask: 'Excuse yourself and ask where the train station is.',
+        keywords: ['すみません','駅','どこ','教えて','ありますか'],
+        successNpc: 'あ、駅ですね！まっすぐ行って、信号を左に曲がってください。',
+        successNpcEn: 'The station! Go straight, then turn left at the traffic light.',
+        failNpc: 'えっと…駅はあちらです！まっすぐ行ってください。',
+        failNpcEn: 'Um… the station is that way! Go straight.',
+        tip: 'Try: すみません、駅はどこですか？'
+      },
+      {
+        npc: 'まっすぐ行って、信号を左に曲がってください。歩いて五分くらいです。',
+        npcEn: 'Go straight and turn left at the traffic light. It\'s about a 5-minute walk.',
+        userTask: 'Confirm you understand and ask if there is a convenience store on the way.',
+        keywords: ['わかりました','コンビニ','ありますか','途中','ありがとう'],
+        successNpc: 'はい！途中にセブンイレブンがありますよ！',
+        successNpcEn: 'Yes! There\'s a 7-Eleven on the way!',
+        failNpc: 'はい、コンビニがありますよ！',
+        failNpcEn: 'Yes, there\'s a convenience store!',
+        tip: 'Try: わかりました。途中にコンビニはありますか？'
+      },
+      {
+        npc: 'あ、でも今日は工事中で、少し遠回りが必要かもしれません。',
+        npcEn: 'Ah, but there\'s construction today, so you might need to detour.',
+        userTask: 'Thank them and ask how far it is in total.',
+        keywords: ['ありがとう','どのくらい','何分','どれくらい','遠い'],
+        successNpc: '全部で十分くらいかと思います。お気をつけて！',
+        successNpcEn: 'I think about 10 minutes in total. Take care!',
+        failNpc: '十分くらいですよ。頑張ってください！',
+        failNpcEn: 'About 10 minutes. Good luck!',
+        tip: 'Try: ありがとうございます！全部でどのくらいかかりますか？'
+      },
+    ]
+  },
+  {
+    id: 'hotel',
+    title: 'Hotel Check-in',
+    titleJp: 'ホテルでチェックイン',
+    desc: 'Check into a Japanese hotel and handle requests.',
+    turns: [
+      {
+        npc: 'いらっしゃいませ。チェックインでしょうか？',
+        npcEn: 'Welcome. Will you be checking in?',
+        userTask: 'Confirm you have a reservation and give your name.',
+        keywords: ['予約','名前','はい','チェックイン','です'],
+        successNpc: 'お名前を確認いたします。少々お待ちください。',
+        successNpcEn: 'Let me confirm your name. One moment please.',
+        failNpc: 'ありがとうございます。お名前を確認いたします。',
+        failNpcEn: 'Thank you. Let me check your name.',
+        tip: 'Try: はい、予約しています。名前は[your name]です。'
+      },
+      {
+        npc: '確認できました。禁煙のシングルルームでございます。朝食はご利用になりますか？',
+        npcEn: 'Confirmed. That\'s a non-smoking single room. Will you have breakfast?',
+        userTask: 'Say yes to breakfast and ask what time it starts.',
+        keywords: ['朝食','はい','何時','時間','お願い','ください'],
+        successNpc: '朝食は七時から十時までです。レストランは二階にございます。',
+        successNpcEn: 'Breakfast is from 7am to 10am. The restaurant is on the second floor.',
+        failNpc: 'はい、朝食は七時からです。',
+        failNpcEn: 'Yes, breakfast is from 7am.',
+        tip: 'Try: はい、お願いします。何時から始まりますか？'
+      },
+      {
+        npc: 'こちらがお部屋の鍵でございます。エレベーターは右側にございます。',
+        npcEn: 'Here is your room key. The elevator is on the right.',
+        userTask: 'Thank them and ask for an extra towel.',
+        keywords: ['ありがとう','タオル','もう一枚','いただけ','お願い','できますか'],
+        successNpc: 'かしこまりました。すぐにお持ちいたします。',
+        successNpcEn: 'Certainly. I\'ll bring it right away.',
+        failNpc: 'はい！タオルをお持ちします。少々お待ちください。',
+        failNpcEn: 'Yes! I\'ll bring you a towel. Just a moment.',
+        tip: 'Try: ありがとうございます。タオルをもう一枚いただけますか？'
+      },
+      {
+        npc: 'チェックアウトは何時にされますか？レイトチェックアウトも可能でございます。',
+        npcEn: 'What time will you check out? Late check-out is also available.',
+        userTask: 'Ask if you can check out at noon, and what the extra charge is.',
+        keywords: ['正午','十二時','12時','料金','チェックアウト','できますか','いくら'],
+        successNpc: 'はい、十二時までのレイトチェックアウトで二千円の追加料金でございます。',
+        successNpcEn: 'Yes, late check-out until noon is an extra 2,000 yen.',
+        failNpc: '十二時のチェックアウトは可能です。追加料金は二千円です。',
+        failNpcEn: '12pm check-out is possible. The extra fee is 2,000 yen.',
+        tip: 'Try: 十二時にチェックアウトできますか？料金はいくらですか？'
+      },
+    ]
+  },
+];
+
+let currentScen = null;
+let turnIdx     = 0;
+let correct     = 0;
+let total       = 0;
+
+function speak(text, rate = 0.82) {
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = rate;
+  window.speechSynthesis.speak(u);
+}
+
+function buildScenGrid() {
+  const grid = document.getElementById('scen-grid');
+  grid.innerHTML = SCENARIOS.map((s, i) =>
+    `<button class="scen-card" onclick="startScen(${i})">
+      <div class="scen-title">${s.title}</div>
+      <div class="scen-jp">${s.titleJp}</div>
+      <div class="scen-desc">${s.desc}</div>
+      <div class="scen-turns">${s.turns.length} exchanges</div>
+    </button>`
+  ).join('');
+}
+
+function startScen(idx) {
+  currentScen = SCENARIOS[idx];
+  turnIdx = 0; correct = 0; total = 0;
+
+  document.getElementById('scen-picker').style.display = 'none';
+  const wrap = document.getElementById('conv-wrap');
+  wrap.style.display = 'block';
+  document.getElementById('done-screen').style.display = 'none';
+  document.getElementById('conv-feed').style.display = '';
+  document.getElementById('conv-input-box').style.display = '';
+
+  document.getElementById('conv-header').innerHTML = `
+    <div>
+      <div class="conv-heading">${currentScen.title} — ${currentScen.titleJp}</div>
+      <div class="conv-sub">${currentScen.turns.length} exchanges to complete</div>
+    </div>
+    <button class="back-btn" onclick="backToMenu()">← Scenarios</button>`;
+
+  document.getElementById('conv-feed').innerHTML = '';
+  renderTurn();
+}
+
+function backToMenu() {
+  window.speechSynthesis.cancel();
+  document.getElementById('scen-picker').style.display = '';
+  document.getElementById('conv-wrap').style.display = 'none';
+}
+
+function renderTurn() {
+  if (turnIdx >= currentScen.turns.length) {
+    showDone(); return;
+  }
+  const t = currentScen.turns[turnIdx];
+  updateProgress();
+  appendMsg('npc', currentScen.emoji, 'Staff', t.npc, t.npcEn, true);
+  renderInputBox(t);
+  scrollFeed();
+}
+
+function appendMsg(type, avatar, sender, jp, en, speakIt) {
+  const feed = document.getElementById('conv-feed');
+  const div  = document.createElement('div');
+  div.className = `msg ${type}`;
+  div.innerHTML = `
+    <div class="msg-body">
+      <div class="msg-sender">${sender}</div>
+      <div class="msg-jp">${jp}</div>
+      ${en ? `<div class="msg-en">${en}</div>` : ''}
+      ${speakIt ? `<button class="speak-btn" onclick="speak('${jp.replace(/'/g,"\\'")}')">▶ Listen</button>` : ''}
+    </div>`;
+  feed.appendChild(div);
+  if (speakIt) speak(jp);
+}
+
+function appendSysMsg(type, text) {
+  const feed = document.getElementById('conv-feed');
+  const div  = document.createElement('div');
+  div.className = `msg ${type}`;
+  div.innerHTML = `<div class="msg-body"><div class="msg-tip">${text}</div></div>`;
+  feed.appendChild(div);
+}
+
+function renderInputBox(t) {
+  const box = document.getElementById('conv-input-box');
+  const kws = t.keywords;
+  box.innerHTML = `
+    <div class="conv-task">${t.userTask}</div>
+    <div class="conv-hint">Hint vocabulary (click to insert):</div>
+    <div class="conv-kw-hint" id="kw-hint-row">
+      ${kws.map(k => `<span class="kw-hint-chip" onclick="insertKw(this,'${k.replace(/'/g,"\\'")}',true)">${k}</span>`).join('')}
+    </div>
+    <textarea class="conv-ta" id="conv-ta" rows="2" placeholder="Type your Japanese here…"></textarea>
+    <div class="tip-row">
+      <button class="tip-toggle" onclick="toggleTip(this)">Show example phrase</button>
+      <div class="tip-box">${t.tip}</div>
+    </div>
+    <div class="conv-btn-row">
+      <button class="btn btn-solid" onclick="submitTurn()">Send →</button>
+      <button class="btn btn-ghost" onclick="skipTurn()">Skip</button>
+    </div>`;
+}
+
+function insertKw(el, kw, markUsed) {
+  const ta = document.getElementById('conv-ta');
+  if (!ta) return;
+  const start = ta.selectionStart; const end = ta.selectionEnd;
+  const text = ta.value;
+  ta.value = text.slice(0, start) + kw + text.slice(end);
+  ta.selectionStart = ta.selectionEnd = start + kw.length;
+  ta.focus();
+  if (markUsed) el.classList.add('used');
+}
+
+function toggleTip(btn) {
+  const box = btn.nextElementSibling;
+  const open = box.style.display === 'block';
+  box.style.display = open ? 'none' : 'block';
+  btn.textContent = open ? 'Show example phrase' : 'Hide example';
+}
+
+function submitTurn() {
+  const ta   = document.getElementById('conv-ta');
+  const text = (ta?.value || '').trim();
+  if (!text) return;
+
+  const t   = currentScen.turns[turnIdx];
+  const hit = t.keywords.some(k => text.includes(k));
+
+  total++;
+  appendMsg('user', '', 'You', text, '', false);
+  speak(text);
+
+  if (hit) {
+    correct++;
+    appendMsg('npc success-msg', currentScen.emoji, 'Staff', t.successNpc, t.successNpcEn, true);
+    appendSysMsg('success-msg', '✓ Good match on key vocabulary!');
+  } else {
+    appendMsg('npc fail-msg', currentScen.emoji, 'Staff', t.failNpc, t.failNpcEn, true);
+    appendSysMsg('fail-msg', `✗ Missing key words — try: <strong>${t.keywords.slice(0,3).join('、')}</strong>`);
+  }
+
+  turnIdx++;
+  updateProgress();
+  scrollFeed();
+
+  if (turnIdx >= currentScen.turns.length) {
+    document.getElementById('conv-input-box').innerHTML = `<div style="padding:8px 0;text-align:center"><button class="btn btn-solid" onclick="showDone()">See Results →</button></div>`;
+  } else {
+    setTimeout(() => { renderTurn(); }, 900);
+  }
+}
+
+function skipTurn() {
+  const t = currentScen.turns[turnIdx];
+  total++;
+  appendSysMsg('sys', `⏭ Skipped — example: <em>${t.tip}</em>`);
+  turnIdx++;
+  updateProgress();
+  scrollFeed();
+  if (turnIdx >= currentScen.turns.length) {
+    showDone();
+  } else {
+    setTimeout(() => { renderTurn(); }, 400);
+  }
+}
+
+function updateProgress() {
+  const pct = currentScen ? (turnIdx / currentScen.turns.length * 100) : 0;
+  document.getElementById('conv-progress').style.width = pct + '%';
+}
+
+function scrollFeed() {
+  const feed = document.getElementById('conv-feed');
+  setTimeout(() => { feed.scrollTop = feed.scrollHeight; }, 50);
+}
+
+function showDone() {
+  document.getElementById('conv-feed').style.display = 'none';
+  document.getElementById('conv-input-box').style.display = 'none';
+  document.getElementById('conv-progress').style.width = '100%';
+
+  const pct = total ? Math.round(correct / total * 100) : 0;
+  
+  const msg   = pct >= 70 ? '素晴らしい！ Great conversation!' : pct >= 40 ? 'まあまあ — keep practicing' : 'Keep studying — try again!';
+
+  document.getElementById('done-screen').style.display = '';
+  document.getElementById('done-screen').innerHTML = `
+    <div class="done-title">${msg}</div>
+    <div class="done-sub">${currentScen.title} — ${currentScen.titleJp}</div>
+    <div class="done-stats">
+      <div class="done-stat"><span class="n" style="color:#22c55e">${correct}</span><span class="l">Correct</span></div>
+      <div class="done-stat"><span class="n">${total}</span><span class="l">Exchanges</span></div>
+      <div class="done-stat"><span class="n">${pct}%</span><span class="l">Score</span></div>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-solid" onclick="startScen(${SCENARIOS.indexOf(currentScen)})">Try Again</button>
+      <button class="btn btn-ghost" onclick="backToMenu()">All Scenarios</button>
+    </div>`;
+}
+
+buildScenGrid();
+</script>
+</body>
+</html>

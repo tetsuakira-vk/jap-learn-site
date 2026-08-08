@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadowing Trainer — Japanese Uncovered</title>
+<meta name="description" content="Train your mouth to move at Japanese speed. Listen to native-paced phrases, repeat them out loud, then mark how you did. 25 phrases across 5 categories.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.tool-shell { max-width: 740px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Category strip ─────────────────────────────────────────── */
+.cat-strip {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+}
+.cat-strip::-webkit-scrollbar { display: none; }
+.cat-btn {
+  flex-shrink: 0;
+  padding: 11px 18px;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--rule);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  color: var(--mid);
+  white-space: nowrap;
+  transition: color .12s;
+}
+.cat-btn:hover { color: var(--ink); }
+.cat-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ── Progress ───────────────────────────────────────────────── */
+.prog-bar-wrap { height: 4px; background: var(--faint); }
+.prog-bar-fill { height: 100%; background: var(--accent); transition: width .4s; }
+
+/* ── Card ───────────────────────────────────────────────────── */
+.card-area { padding: 24px; }
+
+.sh-card {
+  border: 1.5px solid var(--ink);
+  background: var(--ground);
+}
+.sh-card-top {
+  padding: 32px 28px;
+  text-align: center;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+  position: relative;
+}
+.sh-num {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 16px;
+}
+.sh-jp {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.sh-en {
+  font-size: 14px;
+  color: var(--mid);
+}
+.sh-cat-tag {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 10px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--mid);
+  border: 1px solid var(--rule); padding: 2px 8px;
+  background: var(--ground);
+}
+
+.sh-controls {
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.sh-listen-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: var(--ink);
+  color: var(--ground);
+  border: 1.5px solid var(--ink);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  transition: background .12s, border-color .12s;
+}
+.sh-listen-btn:hover { background: var(--accent); border-color: var(--accent); }
+.sh-listen-btn.playing { background: var(--accent); border-color: var(--accent); }
+.sh-listen-btn .btn-icon { font-size: 1rem; }
+
+.sh-speed-wrap { display: flex; border: 1.5px solid var(--ink); margin-left: auto; }
+.sh-speed-btn {
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--rule);
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mid);
+  transition: background .12s, color .12s;
+}
+.sh-speed-btn:last-child { border-right: none; }
+.sh-speed-btn.active { background: var(--ink); color: var(--ground); }
+
+.sh-instruction {
+  padding: 12px 28px;
+  font-size: 13px;
+  color: var(--mid);
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint2);
+  font-style: italic;
+}
+
+/* ── Self-rate ───────────────────────────────────────────────── */
+.sh-rate {
+  padding: 18px 28px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sh-rate-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--mid); margin-right: 4px; }
+.sh-rate-btn {
+  padding: 8px 16px;
+  border: 1.5px solid var(--ink);
+  background: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  transition: background .12s, color .12s, border-color .12s;
+  letter-spacing: .03em;
+}
+.sh-rate-btn:hover { background: var(--faint); }
+.sh-rate-btn.r-good  { border-color: #22c55e; }
+.sh-rate-btn.r-ok    { border-color: #f59e0b; }
+.sh-rate-btn.r-miss  { border-color: var(--accent); }
+.sh-rate-btn.chosen.r-good  { background: #22c55e; color: #fff; }
+.sh-rate-btn.chosen.r-ok    { background: #f59e0b; color: #fff; }
+.sh-rate-btn.chosen.r-miss  { background: var(--accent); color: #fff; }
+
+/* ── Nav ─────────────────────────────────────────────────────── */
+.sh-nav {
+  padding: 16px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+}
+.sh-dots { display: flex; gap: 4px; flex-wrap: wrap; max-width: 280px; }
+.sh-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--rule);
+  cursor: pointer;
+  transition: background .2s;
+}
+.sh-dot.current { background: var(--ink); }
+.sh-dot.good    { background: #22c55e; }
+.sh-dot.ok      { background: #f59e0b; }
+.sh-dot.miss    { background: var(--accent); }
+
+/* ── Summary ─────────────────────────────────────────────────── */
+.summary-panel {
+  border: 1.5px solid var(--ink);
+  margin: 24px;
+  text-align: center;
+}
+.summary-top {
+  padding: 36px 28px 24px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--faint);
+}
+.summary-icon  { font-size: 3rem; margin-bottom: 10px; }
+.summary-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+.summary-sub   { color: var(--mid); font-size: 14px; }
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1.5px solid var(--ink);
+}
+.ss { padding: 18px; border-right: 1px solid var(--rule); text-align: left; }
+.ss:last-child { border-right: none; }
+.ss-num   { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; }
+.ss-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+.summary-actions { padding: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .sh-controls { gap: 8px; }
+  .sh-speed-wrap { margin-left: 0; }
+  .card-area { padding: 16px; }
+  .sh-card-top, .sh-controls, .sh-rate, .sh-nav { padding-left: 16px; padding-right: 16px; }
+  .summary-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/courses/">Practice</a><span class="sep">›</span>
+    Shadowing
+  </div>
+  <h1 class="page-h1">Shadowing Trainer <span class="h1-jp">シャドーイング</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">25 Phrases</span>
+    <span class="meta-pill">5 Categories</span>
+    <span class="meta-pill">TTS Audio</span>
+  </div>
+</header>
+
+<div class="tool-shell">
+
+  <div class="cat-strip" id="cat-strip"></div>
+  <div class="prog-bar-wrap"><div class="prog-bar-fill" id="prog-fill" style="width:0%"></div></div>
+
+  <div class="card-area" id="card-area">
+    <!-- injected by JS -->
+  </div>
+
+  <div class="summary-panel" id="summary-panel" style="display:none">
+    <div class="summary-top">
+      <div class="summary-icon" id="s-icon"></div>
+      <div class="summary-title" id="s-title">Session Complete</div>
+      <div class="summary-sub" id="s-sub"></div>
+    </div>
+    <div class="summary-stats">
+      <div class="ss"><div class="ss-num" id="s-good">0</div><div class="ss-label">Nailed it</div></div>
+      <div class="ss"><div class="ss-num" id="s-ok">0</div><div class="ss-label">Almost</div></div>
+      <div class="ss"><div class="ss-num" id="s-miss">0</div><div class="ss-label">Missed</div></div>
+    </div>
+    <div class="summary-actions">
+      <button class="btn btn-solid" onclick="restart()">Go Again</button>
+      <button class="btn btn-ghost" onclick="setCat('all', document.querySelector('.cat-btn'))">Change Category</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+const SENTENCES = [
+  {jp:'えっ、本当に？',           en:'What, really?',                    cat:'reactions'},
+  {jp:'マジで！',                  en:'Seriously! / No way!',             cat:'reactions'},
+  {jp:'すごいね！',                en:"That's amazing!",                  cat:'reactions'},
+  {jp:'やばい！',                  en:'Wow! / That\'s crazy!',            cat:'reactions'},
+  {jp:'なるほどね。',              en:'I see. / That makes sense.',        cat:'reactions'},
+  {jp:'ちょっと待って。',          en:'Wait a sec.',                       cat:'texting'},
+  {jp:'今どこ？',                  en:'Where are you?',                    cat:'texting'},
+  {jp:'あとで連絡するね。',        en:"I'll text you later.",              cat:'texting'},
+  {jp:'了解！',                    en:'Got it!',                           cat:'texting'},
+  {jp:'また今度ね。',              en:'Maybe next time.',                  cat:'texting'},
+  {jp:'これをください。',          en:"I'll have this, please.",           cat:'restaurant'},
+  {jp:'おすすめは何ですか？',      en:'What do you recommend?',            cat:'restaurant'},
+  {jp:'おいしい！',                en:'Delicious!',                        cat:'restaurant'},
+  {jp:'お会計をお願いします。',    en:'The check, please.',                cat:'restaurant'},
+  {jp:'一つお願いします。',        en:'One, please.',                      cat:'restaurant'},
+  {jp:'よろしくお願いします。',    en:'Nice to meet you / Best regards.',  cat:'polite'},
+  {jp:'お疲れ様でした。',          en:'Good work today.',                  cat:'polite'},
+  {jp:'ありがとうございます。',    en:'Thank you very much.',              cat:'polite'},
+  {jp:'すみません。',              en:'Excuse me.',                        cat:'polite'},
+  {jp:'ちょっと待ってください。',  en:'Please wait a moment.',             cat:'polite'},
+  {jp:'駅はどこですか？',          en:'Where is the station?',             cat:'around'},
+  {jp:'ここで降ります。',          en:"I'll get off here.",                cat:'around'},
+  {jp:'右に曲がってください。',    en:'Please turn right.',                cat:'around'},
+  {jp:'どのくらいかかりますか？',  en:'How long will it take?',            cat:'around'},
+  {jp:'次は何駅ですか？',          en:"What's the next station?",          cat:'around'},
+];
+
+const CATS = {
+  all:        {label:'All'},
+  reactions:  {label:'Reactions'},
+  texting:    {label:'Texting'},
+  restaurant: {label:'Restaurant'},
+  polite:     {label:'Polite'},
+  around:     {label:'Getting Around'},
+};
+
+let currentCat = 'all';
+let currentIdx = 0;
+let speed      = 0.82;
+let ratings    = {};
+let hasListened = false;
+
+function getFiltered() {
+  return currentCat === 'all' ? SENTENCES : SENTENCES.filter(s => s.cat === currentCat);
+}
+
+function buildCats() {
+  const strip = document.getElementById('cat-strip');
+  strip.innerHTML = Object.entries(CATS).map(([k, v]) =>
+    `<button class="cat-btn${k === 'all' ? ' active' : ''}" onclick="setCat('${k}', this)">${v.label}</button>`
+  ).join('');
+}
+
+function setCat(cat, el) {
+  currentCat = cat;
+  currentIdx = 0;
+  ratings = {};
+  hasListened = false;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.getElementById('summary-panel').style.display = 'none';
+  document.getElementById('card-area').style.display = '';
+  render();
+}
+
+function render() {
+  const list = getFiltered();
+  if (currentIdx >= list.length) { showSummary(list); return; }
+  const s = list[currentIdx];
+  updateProgress(list);
+
+  document.getElementById('card-area').innerHTML = `
+    <div class="sh-card">
+      <div class="sh-card-top">
+        <div class="sh-cat-tag">${CATS[s.cat]?.label || s.cat}</div>
+        <div class="sh-num">${currentIdx + 1} of ${list.length}</div>
+        <div class="sh-jp" id="sh-jp">${s.jp}</div>
+        <div class="sh-en">${s.en}</div>
+      </div>
+      <div class="sh-controls">
+        <button class="sh-listen-btn" id="listen-btn" onclick="listen()">
+          <span class="btn-icon">▶</span> Listen
+        </button>
+        <div class="sh-speed-wrap">
+          <button class="sh-speed-btn${speed===0.6?' active':''}" onclick="setSpeed(0.6,this)">Slow</button>
+          <button class="sh-speed-btn${speed===0.82?' active':''}" onclick="setSpeed(0.82,this)">Normal</button>
+          <button class="sh-speed-btn${speed===1?' active':''}" onclick="setSpeed(1,this)">Fast</button>
+        </div>
+      </div>
+      <div class="sh-instruction" id="sh-instruction">
+        Press Listen, then repeat the phrase out loud right after it finishes.
+      </div>
+      <div class="sh-rate" id="sh-rate" style="opacity:.4;pointer-events:none">
+        <span class="sh-rate-label">How did it go?</span>
+        <button class="sh-rate-btn r-miss" onclick="rate('miss',this)">✗ Missed it</button>
+        <button class="sh-rate-btn r-ok"   onclick="rate('ok',this)">〜 Almost</button>
+        <button class="sh-rate-btn r-good" onclick="rate('good',this)">✓ Nailed it</button>
+      </div>
+      <div class="sh-nav">
+        <div class="sh-dots" id="sh-dots"></div>
+        <div style="display:flex;gap:8px">
+          ${currentIdx > 0 ? '<button class="btn btn-ghost" style="padding:8px 16px;font-size:12px" onclick="go(-1)">← Prev</button>' : ''}
+          <button class="btn btn-ghost" style="padding:8px 16px;font-size:12px" onclick="go(1)">Skip →</button>
+        </div>
+      </div>
+    </div>`;
+
+  buildDots(list);
+}
+
+function buildDots(list) {
+  const el = document.getElementById('sh-dots');
+  if (!el) return;
+  el.innerHTML = list.map((_, i) => {
+    const r = ratings[i] || '';
+    const cls = i === currentIdx ? 'sh-dot current' : r ? `sh-dot ${r}` : 'sh-dot';
+    return `<div class="${cls}" onclick="jumpTo(${i})"></div>`;
+  }).join('');
+}
+
+function listen() {
+  if (!window.speechSynthesis) return;
+  const list = getFiltered();
+  const s = list[currentIdx];
+  const btn = document.getElementById('listen-btn');
+  btn.classList.add('playing');
+  btn.textContent = '… Playing';
+
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(s.jp);
+  u.lang = 'ja-JP';
+  u.rate = speed;
+  u.onend = () => {
+    btn.innerHTML = '<span class="btn-icon">▶</span> Listen again';
+    btn.classList.remove('playing');
+    if (!hasListened) {
+      hasListened = true;
+      const rateEl = document.getElementById('sh-rate');
+      const instEl = document.getElementById('sh-instruction');
+      if (rateEl) { rateEl.style.opacity = '1'; rateEl.style.pointerEvents = ''; }
+      if (instEl) instEl.textContent = 'Now repeat it out loud, then mark how you did below.';
+    }
+  };
+  speechSynthesis.speak(u);
+}
+
+function setSpeed(s, el) {
+  speed = s;
+  document.querySelectorAll('.sh-speed-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+}
+
+function rate(r, el) {
+  const list = getFiltered();
+  ratings[currentIdx] = r;
+  document.querySelectorAll('.sh-rate-btn').forEach(b => b.classList.remove('chosen'));
+  el.classList.add('chosen');
+  buildDots(list);
+  setTimeout(() => go(1), 600);
+}
+
+function go(dir) {
+  const list = getFiltered();
+  currentIdx = Math.max(0, Math.min(list.length, currentIdx + dir));
+  hasListened = false;
+  if (currentIdx >= list.length) { showSummary(list); return; }
+  render();
+}
+
+function jumpTo(i) {
+  currentIdx = i;
+  hasListened = false;
+  render();
+}
+
+function updateProgress(list) {
+  const pct = list.length > 0 ? (currentIdx / list.length) * 100 : 0;
+  document.getElementById('prog-fill').style.width = pct + '%';
+}
+
+function showSummary(list) {
+  let good = 0, ok = 0, miss = 0;
+  list.forEach((_, i) => {
+    const r = ratings[i];
+    if (r === 'good') good++;
+    else if (r === 'ok') ok++;
+    else if (r === 'miss') miss++;
+  });
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('card-area').style.display = 'none';
+  const panel = document.getElementById('summary-panel');
+  panel.style.display = '';
+
+  const pct = list.length > 0 ? Math.round((good / list.length) * 100) : 0;
+  
+  document.getElementById('s-title').textContent = pct >= 80 ? '素晴らしい！ Great session' : pct >= 50 ? '良い Good work' : 'Keep practising!';
+  document.getElementById('s-sub').textContent   = `${good} nailed, ${ok} almost, ${miss} missed — ${list.length} phrases total`;
+  document.getElementById('s-good').textContent  = good;
+  document.getElementById('s-ok').textContent    = ok;
+  document.getElementById('s-miss').textContent  = miss;
+}
+
+function restart() {
+  currentIdx = 0;
+  ratings = {};
+  hasListened = false;
+  document.getElementById('summary-panel').style.display = 'none';
+  document.getElementById('card-area').style.display = '';
+  render();
+}
+
+buildCats();
+render();
+</script>
+</body>
+</html>

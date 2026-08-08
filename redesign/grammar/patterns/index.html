@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Grammar Patterns — N5 and N4 Reference | Japanese Unlocked</title>
+<meta name="description" content="Complete N5 and N4 Japanese grammar pattern reference. Every pattern with structure, meaning, and example sentence. Click to hear audio.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+/* ── Filter bar ── */
+.pat-filter {
+  display: flex; gap: 8px; align-items: center;
+  flex-wrap: wrap; margin-bottom: 24px;
+}
+.pat-filter-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-right: 4px; }
+.pfbtn {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border: 1.5px solid var(--rule); background: none;
+  color: var(--mid); cursor: pointer; font-family: var(--sans); transition: all 0.13s;
+}
+.pfbtn:hover, .pfbtn.on { border-color: var(--ink); color: var(--ink); background: var(--faint); }
+
+/* ── Pattern cards ── */
+.pattern-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--rule); margin-bottom: 32px;
+}
+.pattern-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); padding: 8px 14px; text-align: left;
+  background: var(--faint); border-bottom: 1.5px solid var(--rule);
+}
+.pattern-table td {
+  padding: 12px 14px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; vertical-align: top;
+}
+.pattern-table tr:last-child td { border-bottom: none; }
+.pattern-table tr:hover td { background: var(--faint); }
+.pt-pattern { font-family: var(--serif); font-size: 17px; font-weight: 700; cursor: pointer; transition: color 0.12s; }
+.pattern-table tr:hover .pt-pattern { color: var(--accent); }
+.pattern-table tr.playing .pt-pattern { color: var(--accent); }
+.pt-struct  { font-size: 11px; color: var(--mid); margin-top: 2px; }
+.pt-mean    { font-weight: 600; }
+.pt-ex-jp   { font-family: var(--serif); font-size: 15px; }
+.pt-ex-en   { font-size: 11px; color: var(--mid); margin-top: 2px; }
+.pt-lv {
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  padding: 2px 6px; white-space: nowrap;
+}
+.pt-lv.n5 { background: #7a5a7a; color: #fff; }
+.pt-lv.n4 { background: #5a7a5a; color: #fff; }
+
+.no-results { padding: 28px; text-align: center; color: var(--mid); font-size: 13px; border: 1px solid var(--rule); }
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/grammar/">Grammar</a>
+    <span class="sep">›</span>
+    Patterns
+  </div>
+  <h1 class="page-h1">Grammar Patterns <span class="h1-jp">文型</span></h1>
+  <div class="page-meta">
+    <span id="pat-count-meta">Loading…</span>
+    <span class="meta-pill">N5–N4</span>
+    <span class="meta-pill">Audio</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#existence">Existence</a>
+  <a href="#description">Description</a>
+  <a href="#action">Action</a>
+  <a href="#desire">Desire</a>
+  <a href="#ability">Ability</a>
+  <a href="#permission">Permission</a>
+  <a href="#obligation">Obligation</a>
+  <a href="#condition">Condition</a>
+  <a href="#nuance">Nuance</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">Categories</p>
+    <ul class="sidebar-links">
+      <li><a href="#existence">Existence</a></li>
+      <li><a href="#description">Description</a></li>
+      <li><a href="#action">Action state</a></li>
+      <li><a href="#desire">Desire &amp; want</a></li>
+      <li><a href="#ability">Ability</a></li>
+      <li><a href="#permission">Permission</a></li>
+      <li><a href="#obligation">Obligation</a></li>
+      <li><a href="#condition">Condition &amp; reason</a></li>
+      <li><a href="#nuance">Nuance &amp; attitude</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Related</p>
+    <ul class="sidebar-links">
+      <li><a href="/grammar/particles/">Particles</a></li>
+      <li><a href="/grammar/verbs/">Verb forms</a></li>
+      <li><a href="/grammar/sentence-quiz/">Sentence Quiz</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <div class="pat-filter">
+      <span class="pat-filter-label">Level</span>
+      <button class="pfbtn" data-lv="5">N5</button>
+      <button class="pfbtn" data-lv="4">N4</button>
+    </div>
+    <div id="no-pat-results" class="no-results" hidden>No patterns match — try a different filter.</div>
+
+    <div id="patterns-output"></div>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+
+/* ─── PATTERN DATA ───
+   [pattern, structure, meaning, example_jp, example_en, jlpt, category]
+─────────────────────── */
+var CATS = [
+  {
+    id: 'existence', label: 'Existence & Location', jp: '存在・場所',
+    patterns: [
+      ['〜があります／います', 'noun + が + あります／います', 'there is / exists (inanimate: あります; animate: います)', '机の上に本があります。', 'There is a book on the desk.', 5],
+      ['〜はどこですか', 'noun + は + どこ + ですか', 'where is…?', 'トイレはどこですか？', 'Where is the toilet?', 5],
+      ['〜にあります／います', 'location + に + あります／います', 'is located at / is in (location marker)', '猫は部屋にいます。', 'The cat is in the room.', 5],
+    ]
+  },
+  {
+    id: 'description', label: 'Description & Identity', jp: '描写・同一',
+    patterns: [
+      ['〜は〜です', 'noun + は + noun／adj + です', 'X is Y (basic copula)', '私は学生です。', 'I am a student.', 5],
+      ['〜じゃありません', 'noun + じゃ／ではありません', 'X is not Y (negative copula)', 'これは本じゃありません。', 'This is not a book.', 5],
+      ['〜でした／じゃありませんでした', 'noun + でした／じゃありませんでした', 'X was Y / X was not Y (past copula)', '昨日は雨でした。', 'It was raining yesterday.', 5],
+      ['〜い adj + です', 'i-adjective + です', 'X is [adjective] (polite)', '今日は寒いです。', 'It is cold today.', 5],
+      ['〜な adj + です', 'na-adjective + です', 'X is [adjective] (polite)', 'この町は静かです。', 'This town is quiet.', 5],
+      ['〜より〜の方が', 'A + より + B + の方が + adjective', 'B is more [adj] than A', '東京より大阪の方が好きです。', 'I like Osaka more than Tokyo.', 5],
+      ['〜の中で一番', 'group + の中で + 一番 + adjective', 'most [adj] of all / within a group', 'クラスの中で一番背が高い。', 'The tallest in the class.', 5],
+    ]
+  },
+  {
+    id: 'action', label: 'Action & State', jp: '動作・状態',
+    patterns: [
+      ['〜ています', 'te-form + います', 'is doing (ongoing action); has done (resulting state)', '今、ご飯を食べています。', 'I am eating right now.', 5],
+      ['〜てから', 'te-form + から', 'after doing…', '宿題をしてから、ゲームをします。', 'I play games after doing homework.', 5],
+      ['〜たあとで', 'ta-form + あとで', 'after doing… (completed action)', '食べたあとで、散歩しました。', 'I took a walk after eating.', 5],
+      ['〜まえに', 'dictionary form + まえに', 'before doing…', '寝るまえに、歯を磨きます。', 'I brush my teeth before going to sleep.', 5],
+      ['〜ながら', 'masu-stem + ながら', 'while doing… (simultaneous actions by same subject)', '音楽を聴きながら、勉強します。', 'I study while listening to music.', 4],
+      ['〜てしまう', 'te-form + しまう', 'end up doing / do completely (often with regret)', '財布を忘れてしまった。', 'I ended up forgetting my wallet.', 4],
+      ['〜ておく', 'te-form + おく', 'do in advance / do and leave as-is', '旅行の前に予約をしておきます。', 'I\'ll make a reservation in advance of the trip.', 4],
+    ]
+  },
+  {
+    id: 'desire', label: 'Desire & Want', jp: '欲求・願望',
+    patterns: [
+      ['〜たい', 'masu-stem + たい', 'want to do…', '日本に行きたいです。', 'I want to go to Japan.', 5],
+      ['〜たくない', 'masu-stem + たくない', 'don\'t want to do…', '今日は出かけたくないです。', 'I don\'t want to go out today.', 5],
+      ['〜てほしい', 'te-form + ほしい', 'want someone to do… / want it done', 'もっとゆっくり話してほしい。', 'I want you to speak more slowly.', 4],
+      ['〜ようにする', 'potential form + ようにする', 'make an effort to do / try to ensure that', '毎日運動するようにしています。', 'I try to make sure I exercise every day.', 4],
+    ]
+  },
+  {
+    id: 'ability', label: 'Ability & Possibility', jp: '能力・可能',
+    patterns: [
+      ['〜ことができる', 'dictionary form + ことができる', 'can do / be able to do', '日本語を話すことができます。', 'I can speak Japanese.', 5],
+      ['〜れる／られる (potential)', 'potential form of verb', 'can do (same meaning, more natural speech)', '漢字が読めます。', 'I can read kanji.', 5],
+      ['〜かもしれない', 'plain form + かもしれない', 'might / may / possibly', '明日は雨が降るかもしれない。', 'It might rain tomorrow.', 4],
+      ['〜はずだ', 'plain form + はずだ', 'should be / supposed to / expected to', '彼はもう着いているはずだ。', 'He should have arrived by now.', 4],
+    ]
+  },
+  {
+    id: 'permission', label: 'Permission & Prohibition', jp: '許可・禁止',
+    patterns: [
+      ['〜てもいい', 'te-form + もいい', 'it\'s OK to / you may / is it alright to…?', 'ここに座ってもいいですか。', 'May I sit here?', 5],
+      ['〜てはいけない', 'te-form + はいけない', 'must not / not allowed to', 'ここで写真を撮ってはいけません。', 'You must not take photos here.', 5],
+      ['〜なくてもいい', 'nai-stem + なくてもいい', 'don\'t have to / it\'s OK not to', '明日は来なくてもいいですよ。', 'You don\'t have to come tomorrow.', 5],
+    ]
+  },
+  {
+    id: 'obligation', label: 'Obligation & Necessity', jp: '義務・必要',
+    patterns: [
+      ['〜なければならない', 'nai-stem + なければならない', 'must / have to (strong obligation)', 'もっと練習しなければならない。', 'I have to practise more.', 4],
+      ['〜なきゃ (casual)', 'nai-stem + なきゃ', 'gotta / have to (casual spoken form)', '早く行かなきゃ。', 'I\'ve gotta go soon.', 4],
+      ['〜ないといけない', 'nai-form + といけない', 'must / have to (softer than なければならない)', '薬を飲まないといけません。', 'I have to take my medicine.', 4],
+    ]
+  },
+  {
+    id: 'condition', label: 'Condition & Reason', jp: '条件・理由',
+    patterns: [
+      ['〜から (reason)', 'plain form + から', 'because / since (gives reason)', '眠いから、もう寝ます。', 'I\'m sleepy, so I\'m going to sleep.', 5],
+      ['〜ので (reason)', 'plain form + ので', 'because / since (softer, more objective)', '風邪なので、学校を休みます。', 'I\'m taking a day off school because I have a cold.', 5],
+      ['〜たら (conditional)', 'ta-form + ら', 'if / when (completed action as trigger)', '雨が降ったら、行きません。', 'If it rains, I won\'t go.', 4],
+      ['〜ば (conditional)', 'ba-form', 'if / as long as (general / hypothetical)', 'お金があれば、買います。', 'If I have money, I\'ll buy it.', 4],
+      ['〜と (conditional)', 'dictionary form + と', 'if / when (natural consequence)', 'このボタンを押すと、ドアが開きます。', 'If you press this button, the door opens.', 4],
+      ['〜ても (concession)', 'te-form + も', 'even if / even though', '雨が降っても、行きます。', 'I\'ll go even if it rains.', 4],
+    ]
+  },
+  {
+    id: 'nuance', label: 'Nuance & Attitude', jp: 'ニュアンス・態度',
+    patterns: [
+      ['〜んです／のです', 'plain form + んです／のです', 'explains reason or invites explanation — "the thing is…"', 'どうして遅れたんですか？', 'Why were you late? (tell me what happened)', 5],
+      ['〜と思います', 'plain form + と思います', 'I think / I believe', '明日は晴れると思います。', 'I think it will be sunny tomorrow.', 5],
+      ['〜そうです (appearance)', 'masu-stem / adj-stem + そうです', 'looks like / seems about to (based on appearance)', '雨が降りそうです。', 'It looks like it\'s going to rain.', 4],
+      ['〜ようです', 'plain form + ようです', 'it seems that / appears to be (based on evidence)', '彼は疲れたようです。', 'He seems tired.', 4],
+      ['〜らしい', 'plain form + らしい', 'I heard that / apparently (hearsay)', '田中さんは結婚したらしい。', 'I heard that Tanaka-san got married.', 4],
+      ['〜という', 'plain form + という', 'called / meaning / the fact that', '「侍」という言葉を知っていますか。', 'Do you know the word called "samurai"?', 4],
+      ['〜によって', 'noun + によって', 'by / depending on / due to', '人によって意見が違う。', 'Opinions differ depending on the person.', 4],
+      ['〜ために', 'plain form + ために', 'in order to / for the purpose of', '健康のために、毎日運動します。', 'I exercise every day for my health.', 4],
+      ['〜のに (regret)', 'plain form + のに', 'even though / despite (unexpected / disappointing result)', '練習したのに、試験に落ちた。', 'Even though I studied, I failed the exam.', 4],
+    ]
+  },
+];
+
+/* ─── RENDER ─── */
+var outputEl  = document.getElementById('patterns-output');
+var activeLv  = 0;
+
+function buildRow(p, cat) {
+  var pattern = p[0], struct = p[1], mean = p[2], jp = p[3], en = p[4], lv = p[5];
+  return '<tr data-speak="' + jp + '" data-lv="' + lv + '" data-cat="' + cat + '">' +
+    '<td><div class="pt-pattern">' + pattern + '</div><div class="pt-struct">' + struct + '</div></td>' +
+    '<td class="pt-mean">' + mean + '</td>' +
+    '<td><div class="pt-ex-jp">' + jp + '</div><div class="pt-ex-en">' + en + '</div></td>' +
+    '<td><span class="pt-lv n' + lv + '">N' + lv + '</span></td>' +
+    '</tr>';
+}
+
+function render() {
+  var html = '';
+  var total = 0;
+  CATS.forEach(function (cat) {
+    var rows = cat.patterns.filter(function (p) {
+      return activeLv === 0 || p[5] === activeLv;
+    });
+    if (rows.length === 0) return;
+    total += rows.length;
+    html += '<section class="section" id="' + cat.id + '">' +
+      '<div class="section-heading"><h2>' + cat.label + '</h2><span class="sh-jp">' + cat.jp + '</span></div>' +
+      '<table class="pattern-table"><thead><tr>' +
+      '<th>Pattern</th><th>Meaning</th><th>Example</th><th></th>' +
+      '</tr></thead><tbody>' +
+      rows.map(function (p) { return buildRow(p, cat.id); }).join('') +
+      '</tbody></table></section>';
+  });
+  outputEl.innerHTML = html;
+  document.getElementById('no-pat-results').hidden = total > 0;
+  document.getElementById('pat-count-meta').textContent = total + ' patterns';
+}
+
+render();
+
+/* ─── AUDIO ─── */
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.82;
+  window.speechSynthesis.speak(u);
+}
+
+document.addEventListener('click', function (e) {
+  var row = e.target.closest('tr[data-speak]');
+  if (row) {
+    speak(row.dataset.speak);
+    row.classList.add('playing');
+    setTimeout(function () { row.classList.remove('playing'); }, 1400);
+  }
+});
+
+/* ─── FILTERS ─── */
+document.querySelectorAll('.pfbtn[data-lv]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var lv = parseInt(this.dataset.lv, 10);
+    if (activeLv === lv) {
+      activeLv = 0;
+      this.classList.remove('on');
+    } else {
+      activeLv = lv;
+      document.querySelectorAll('.pfbtn[data-lv]').forEach(function (b) { b.classList.remove('on'); });
+      this.classList.add('on');
+    }
+    render();
+  });
+});
+
+/* ─── SCROLL SPY ─── */
+var sideLinks = document.querySelectorAll('.sidebar-links li a[href^="#"]');
+var secLinks  = document.querySelectorAll('.section-nav a');
+
+function setActive(id) {
+  sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+}
+
+if ('IntersectionObserver' in window) {
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  // Re-observe on re-render
+  function observeSections() {
+    document.querySelectorAll('.section[id]').forEach(function (s) { obs.observe(s); });
+  }
+  observeSections();
+  // Patch render to re-observe after each render
+  var origRender = render;
+  render = function () { origRender(); observeSections(); };
+}
+
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

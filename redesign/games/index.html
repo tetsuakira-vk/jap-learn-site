@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Games — Japanese Unlocked</title>
+<meta name="description" content="Three Japanese learning games — an RPG battle game, memory match, and speed recognition. Drill kanji readings and vocabulary under real pressure. Free, no download.">
+<link rel="stylesheet" href="../style.css">
+<style>
+.games-shell { max-width: 860px; margin: 0 auto; padding: 0 0 60px; }
+
+.games-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--ink);
+  gap: 0;
+}
+@media (max-width: 600px) { .games-grid { grid-template-columns: 1fr; } }
+
+.game-card {
+  display: flex; flex-direction: column;
+  text-decoration: none; color: var(--ink);
+  border-right: 1px solid var(--rule);
+  transition: background .14s;
+  overflow: hidden;
+}
+.game-card:last-child { border-right: none; }
+.game-card:hover { background: var(--faint); }
+
+.game-card-preview {
+  height: 140px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: center;
+  background: var(--faint2);
+  position: relative; overflow: hidden;
+  transition: background .14s;
+}
+.game-card:hover .game-card-preview { background: var(--faint); }
+
+.game-card-body { padding: 22px 24px 26px; flex: 1; display: flex; flex-direction: column; }
+.game-card-label { font-size: 10px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mid); margin-bottom: 8px; }
+.game-card-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+.game-card-jp { color: var(--accent); }
+.game-card-desc { font-size: 13px; color: var(--mid); line-height: 1.65; margin-bottom: 18px; flex: 1; }
+.game-card-stats { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.game-stat { font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 9px; border: 1px solid var(--rule); color: var(--mid); }
+.game-play {
+  display: inline-block; align-self: flex-start;
+  font-size: 12px; font-weight: 700; letter-spacing: .06em;
+  border-bottom: 1.5px solid var(--ink); padding-bottom: 2px;
+}
+
+/* ── Battle preview ── */
+.prev-battle {
+  display: flex; gap: 10px; align-items: center;
+}
+.prev-enemy {
+  font-size: 3.2rem; line-height: 1;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.15));
+}
+.prev-bar-wrap { display: flex; flex-direction: column; gap: 5px; }
+.prev-bar {
+  height: 6px; border-radius: 1px;
+  background: var(--rule);
+}
+.prev-bar-fill { height: 100%; border-radius: 1px; }
+.prev-bar-label { font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--mid); }
+
+/* ── Match preview ── */
+.prev-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 5px; padding: 0 16px; }
+.prev-card {
+  height: 32px; border: 1.5px solid var(--ink);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 14px; font-weight: 700;
+  background: var(--ground);
+}
+.prev-card.flipped { background: var(--ink); color: var(--ground); }
+.prev-card.matched { border-color: #22c55e; color: #22c55e; background: var(--ground); }
+
+/* ── Rhythm preview ── */
+.prev-rhythm { text-align: center; padding: 0 12px; width: 100%; }
+.prev-kanji-big {
+  font-family: var(--serif); font-size: 2.6rem; font-weight: 700;
+  line-height: 1; margin-bottom: 8px;
+}
+.prev-timer { height: 4px; background: var(--rule); border-radius: 2px; margin-bottom: 8px; overflow: hidden; }
+.prev-timer-fill {
+  height: 100%; width: 60%; background: #ef4444;
+  border-radius: 2px;
+  animation: timerShrink 2s ease-in-out infinite alternate;
+}
+@keyframes timerShrink { from { width: 80%; background: #22c55e; } to { width: 20%; background: #ef4444; } }
+.prev-opts { display: flex; gap: 5px; justify-content: center; }
+.prev-opt { font-size: 11px; padding: 4px 8px; border: 1px solid var(--rule); color: var(--mid); font-family: var(--serif); }
+.prev-opt.correct { border-color: #22c55e; color: #22c55e; background: var(--ground); }
+
+/* ── Battle span full width ── */
+.game-card--battle {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  border-bottom: 1px solid var(--rule);
+  border-right: none;
+}
+.game-card--battle .game-card-preview { width: 280px; height: auto; flex-shrink: 0; border-bottom: none; border-right: 1px solid var(--rule); }
+.game-card--battle .game-card-body { padding: 28px 32px; }
+@media (max-width: 600px) {
+  .game-card--battle { flex-direction: column; }
+  .game-card--battle .game-card-preview { width: 100%; height: 130px; border-right: none; border-bottom: 1px solid var(--rule); }
+}
+
+.intro-strip {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px; color: var(--mid); line-height: 1.65;
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    Games
+  </div>
+  <h1 class="page-h1">Games <span class="h1-jp">ゲーム</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">3 Games</span>
+    <span class="meta-pill">Kanji · Vocab · Speed</span>
+    <span class="meta-pill">No Download</span>
+  </div>
+</header>
+
+<div class="games-shell">
+
+  <div class="intro-strip">
+    Three games that drill Japanese under real pressure — no padded lessons, no XP bars. Each one tests something different: recognition, memory, or speed. Pick one and play.
+  </div>
+
+  <div class="games-grid">
+
+    <!-- BATTLE — full width, top -->
+    <a class="game-card game-card--battle" href="/games/battle/">
+      <div class="game-card-preview">
+        <div class="prev-battle">
+          
+          <div class="prev-bar-wrap">
+            <div class="prev-bar-label">Enemy HP</div>
+            <div class="prev-bar" style="width:120px"><div class="prev-bar-fill" style="width:60%;background:#ef4444"></div></div>
+            <div class="prev-bar-label" style="margin-top:6px">Player HP</div>
+            <div class="prev-bar" style="width:120px"><div class="prev-bar-fill" style="width:80%;background:#22c55e"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="game-card-body">
+        <div class="game-card-label">RPG Battle</div>
+        <div class="game-card-title">Kanji Quest <span class="game-card-jp">漢字クエスト</span></div>
+        <div class="game-card-desc">Answer kanji readings to deal damage. Get it wrong and the enemy hits back. Ten waves of escalating difficulty — slime to dragon. Can you reach the boss?</div>
+        <div class="game-card-stats">
+          <span class="game-stat">10 Waves</span>
+          <span class="game-stat">N5 → N3</span>
+          <span class="game-stat">Streak Bonus</span>
+          <span class="game-stat">Boss Fight</span>
+        </div>
+        <span class="game-play">Start Quest →</span>
+      </div>
+    </a>
+
+    <!-- MATCH -->
+    <a class="game-card" href="/games/match/">
+      <div class="game-card-preview">
+        <div class="prev-cards">
+          <div class="prev-card flipped">日</div>
+          <div class="prev-card">?</div>
+          <div class="prev-card matched">にち</div>
+          <div class="prev-card matched">day</div>
+          <div class="prev-card">?</div>
+          <div class="prev-card flipped">山</div>
+          <div class="prev-card">?</div>
+          <div class="prev-card">?</div>
+        </div>
+      </div>
+      <div class="game-card-body">
+        <div class="game-card-label">Memory</div>
+        <div class="game-card-title">Memory Match <span class="game-card-jp">神経衰弱</span></div>
+        <div class="game-card-desc">Flip cards to match kanji with their readings or meanings. Three grid sizes. Best-time tracking. Builds pure recognition — no guessing.</div>
+        <div class="game-card-stats">
+          <span class="game-stat">8 / 16 / 24 Cards</span>
+          <span class="game-stat">Reading or Meaning</span>
+          <span class="game-stat">Timed</span>
+        </div>
+        <span class="game-play">Play →</span>
+      </div>
+    </a>
+
+    <!-- RHYTHM -->
+    <a class="game-card" href="/games/rhythm/">
+      <div class="game-card-preview">
+        <div class="prev-rhythm">
+          <div class="prev-kanji-big">火</div>
+          <div class="prev-timer"><div class="prev-timer-fill"></div></div>
+          <div class="prev-opts">
+            <span class="prev-opt correct">ひ</span>
+            <span class="prev-opt">み</span>
+            <span class="prev-opt">て</span>
+            <span class="prev-opt">き</span>
+          </div>
+        </div>
+      </div>
+      <div class="game-card-body">
+        <div class="game-card-label">Speed</div>
+        <div class="game-card-title">Rhythm <span class="game-card-jp">リズム</span></div>
+        <div class="game-card-desc">Kanji flash on screen — pick the correct reading before the timer runs out. Speed increases each level. Three difficulties. Tests pure reading speed under pressure.</div>
+        <div class="game-card-stats">
+          <span class="game-stat">Beginner / Intermediate / Expert</span>
+          <span class="game-stat">Speed Scaling</span>
+        </div>
+        <span class="game-play">Play →</span>
+      </div>
+    </a>
+
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../nav.js"></script>
+</body>
+</html>

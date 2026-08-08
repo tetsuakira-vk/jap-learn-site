@@ -109,24 +109,6 @@ img { max-width: 100%; }
 .nav-links > li > a:hover { color: var(--accent); }
 .nav-links > li.active > a { color: var(--accent); }
 
-/* Dropdown */
-.nav-drop {
-  position: absolute; top: 100%; left: 0;
-  background: var(--ground);
-  border: 1.5px solid var(--ink); border-top: none;
-  min-width: 190px; list-style: none;
-  display: none; z-index: 300;
-}
-.nav-links > li:hover .nav-drop,
-.nav-links > li:focus-within .nav-drop { display: block; }
-.nav-drop li a {
-  display: block; padding: 10px 16px;
-  font-size: 13px; font-weight: 500;
-  border-bottom: 1px solid var(--rule);
-  transition: color 0.12s, background 0.12s;
-}
-.nav-drop li:last-child a { border-bottom: none; }
-.nav-drop li a:hover { color: var(--accent); background: var(--faint); }
 
 /* Theme picker */
 .nav-theme {

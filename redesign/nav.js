@@ -2,62 +2,59 @@
 (function () {
   const NAV_ITEMS = [
     {
-      jp: '文字', en: 'Scripts',
+      jp: '文字', en: 'Scripts', href: '/hiragana/',
       children: [
-        { href: '/redesign/hiragana/', label: 'Hiragana', hint: 'あ' },
-        { href: '/redesign/katakana/', label: 'Katakana', hint: 'ア' },
-        { href: '/redesign/kanji/', label: 'Kanji', hint: '漢' },
+        { href: '/hiragana/', label: 'Hiragana', hint: 'あ' },
+        { href: '/katakana/', label: 'Katakana', hint: 'ア' },
+        { href: '/kanji/', label: 'Kanji', hint: '漢' },
       ]
     },
     {
-      jp: '語彙', en: 'Vocabulary',
+      jp: '語彙', en: 'Vocabulary', href: '/vocab/',
       children: [
-        { href: '/redesign/vocab/phrases/', label: 'Phrases' },
-        { href: '/redesign/vocab/numbers/', label: 'Numbers' },
-        { href: '/redesign/vocab/dictionary/', label: 'Dictionary' },
+        { href: '/vocab/phrases/', label: 'Phrases' },
+        { href: '/vocab/numbers/', label: 'Numbers' },
+        { href: '/vocab/dictionary/', label: 'Dictionary' },
       ]
     },
     {
-      jp: '文法', en: 'Grammar',
+      jp: '文法', en: 'Grammar', href: '/grammar/',
       children: [
-        { href: '/redesign/grammar/particles/', label: 'Particles' },
-        { href: '/redesign/grammar/verbs/', label: 'Verbs' },
-        { href: '/redesign/grammar/patterns/', label: 'Patterns' },
-        { href: '/redesign/grammar/sentence-quiz/', label: 'Sentence Quiz' },
+        { href: '/grammar/particles/', label: 'Particles' },
+        { href: '/grammar/verbs/', label: 'Verbs' },
+        { href: '/grammar/patterns/', label: 'Patterns' },
+        { href: '/grammar/sentence-quiz/', label: 'Sentence Quiz' },
       ]
     },
     {
-      jp: '練習', en: 'Practice',
+      jp: '練習', en: 'Practice', href: '/courses/',
       children: [
-        { href: '/redesign/courses/what-would-you-say/', label: 'What Would You Say?' },
-        { href: '/redesign/courses/shadowing/', label: 'Shadowing' },
-        { href: '/redesign/courses/immersive-reader/', label: 'Immersive Reader' },
-        { href: '/redesign/courses/sentence-forge/', label: 'Sentence Forge' },
-        { href: '/redesign/courses/conversation/', label: 'Conversation' },
+        { href: '/courses/what-would-you-say/', label: 'What Would You Say?' },
+        { href: '/courses/shadowing/', label: 'Shadowing' },
+        { href: '/courses/immersive-reader/', label: 'Immersive Reader' },
+        { href: '/courses/sentence-forge/', label: 'Sentence Forge' },
+        { href: '/courses/conversation/', label: 'Conversation' },
+        { href: '/echo/', label: 'Echo' },
       ]
     },
     {
-      jp: 'JLPT', en: 'JLPT',
+      jp: 'JLPT', en: 'JLPT', href: '/jlpt/',
       children: [
-        { href: '/redesign/jlpt/n5/', label: 'N5' },
-        { href: '/redesign/jlpt/n4/', label: 'N4' },
-        { href: '/redesign/jlpt/n3/', label: 'N3' },
-        { href: '/redesign/jlpt/n2/', label: 'N2' },
-        { href: '/redesign/jlpt/n1/', label: 'N1' },
-        { href: '/redesign/jlpt/mock/', label: 'Mock Tests' },
+        { href: '/jlpt/n5/', label: 'N5' },
+        { href: '/jlpt/n4/', label: 'N4' },
+        { href: '/jlpt/n3/', label: 'N3' },
+        { href: '/jlpt/n2/', label: 'N2' },
+        { href: '/jlpt/n1/', label: 'N1' },
+        { href: '/jlpt/mock/', label: 'Mock Tests' },
       ]
     },
     {
-      jp: '遊', en: 'Games',
+      jp: '遊', en: 'Games', href: '/games/',
       children: [
-        { href: '/redesign/games/battle/', label: 'Kanji Quest' },
-        { href: '/redesign/games/match/', label: 'Memory Match' },
-        { href: '/redesign/games/rhythm/', label: 'Rhythm' },
+        { href: '/games/battle/', label: 'Kanji Quest' },
+        { href: '/games/match/', label: 'Memory Match' },
+        { href: '/games/rhythm/', label: 'Rhythm' },
       ]
-    },
-    {
-      jp: '歩', en: 'Walk',
-      href: '/redesign/walk/'
     },
   ];
 
@@ -82,16 +79,12 @@
         : isActive(item.href)) ? ' active' : '';
 
       if (hasDrop) {
-        const dropItems = item.children.map(c =>
-          `<li><a href="${c.href}"${isActive(c.href) ? ' aria-current="page"' : ''}>${c.label}${c.hint ? `<span style="font-family:var(--serif);color:var(--accent);opacity:.7;margin-left:6px">${c.hint}</span>` : ''}</a></li>`
-        ).join('');
         return `
           <li class="${activeClass ? 'active' : ''}">
-            <a href="#" onclick="return false" aria-haspopup="true">
+            <a href="${item.href}">
               <span>${item.jp}</span>
               <span class="nav-sub">${item.en}</span>
             </a>
-            <ul class="nav-drop" role="menu">${dropItems}</ul>
           </li>`;
       }
       return `
@@ -112,7 +105,7 @@
 
     return `
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
-        <a class="nav-brand" href="/redesign/">
+        <a class="nav-brand" href="/">
           <span class="nav-jp">日</span>
           Japanese Unlocked
         </a>
@@ -121,7 +114,7 @@
           <button class="nav-theme-btn" aria-label="Change theme" title="Change theme">◐</button>
           <div class="theme-picker" role="menu">${themeOptsHTML}</div>
         </div>
-        <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">☰</button>
+        <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">Menu</button>
       </nav>`;
   }
 
@@ -154,7 +147,7 @@
       <div class="nav-drawer" id="ju-drawer" aria-modal="true" role="dialog">
         <div class="nav-drawer-overlay"></div>
         <div class="nav-drawer-panel">
-          <button class="nav-drawer-close" aria-label="Close menu">✕</button>
+          <button class="nav-drawer-close" aria-label="Close menu">×</button>
           ${sectionsHTML}
           <div class="nav-drawer-section" style="padding:14px 14px 0">
             <span class="nav-drawer-label">Theme</span>
@@ -170,9 +163,9 @@
         <span class="footer-jp">日本語アンロック</span>
         <span>© ${new Date().getFullYear()} Japanese Unlocked — all content free, always</span>
         <nav style="display:flex;gap:20px;font-size:12px">
-          <a href="/redesign/about/" style="color:var(--mid)">About</a>
-          <a href="/redesign/resources/" style="color:var(--mid)">Resources</a>
-          <a href="/videos/" style="color:var(--mid)">Videos</a>
+          <a href="/about/" style="color:var(--mid)">About</a>
+          <a href="/resources/" style="color:var(--mid)">Resources</a>
+          <a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener" style="color:var(--mid)">YouTube</a>
         </nav>
       </footer>`;
   }

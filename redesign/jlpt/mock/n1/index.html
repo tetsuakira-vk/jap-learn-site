@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JLPT N1 Mock Test — Full Practice Exam | Japanese Uncovered</title>
+<meta name="description" content="Full JLPT N1 practice mock test with 55 original questions covering advanced vocabulary, complex grammar, and demanding reading comprehension. Scored and formatted to match the official advanced exam.">
+<link rel="stylesheet" href="../../../style.css">
+<style>
+.mock-shell { max-width: 820px; margin: 0 auto; padding: 0 0 60px; }
+.mock-header-bar { display:flex;align-items:center;gap:16px;padding:14px 20px;border:1.5px solid var(--ink);border-bottom:1px solid var(--rule);background:var(--faint); }
+.mock-badge { font-family:var(--serif);font-size:1.4rem;font-weight:700;width:52px;height:52px;border:2.5px solid #8b5cf6;color:#8b5cf6;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
+.mock-header-info strong { font-size:1rem; }
+.mock-header-info span { font-size:12px;color:var(--mid); }
+.mock-tip-box { padding:12px 18px;border:1.5px solid var(--ink);border-top:none;border-bottom:none;background:var(--faint2);font-size:13px;color:var(--mid);line-height:1.6; }
+.mock-tab-bar { display:flex;border:1.5px solid var(--ink);border-top:none;background:var(--faint); }
+.mock-tab { flex:1;padding:12px 16px;border:none;border-right:1px solid var(--rule);border-bottom:2px solid transparent;background:none;cursor:pointer;font-size:13px;font-weight:700;color:var(--mid);transition:color .12s; }
+.mock-tab:last-child { border-right:none; }
+.mock-tab.active { color:var(--ink);border-bottom-color:var(--ink);background:var(--ground); }
+.mock-sect { border:1.5px solid var(--ink);border-top:none;padding:0; }
+.mock-sect-title { padding:12px 20px;background:var(--ink);color:var(--ground);font-size:13px;font-weight:700; }
+.mock-subsect-title { padding:10px 20px;background:var(--faint);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-size:12px;font-weight:700;color:var(--mid);font-family:var(--serif); }
+.mq { padding:14px 20px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px; }
+.mq:last-of-type { border-bottom:none; }
+.mq-num { font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);background:var(--faint);border:1px solid var(--rule);padding:1px 7px;width:fit-content; }
+.mq-text { font-family:var(--serif);font-size:1rem;line-height:1.7; }
+.mq-text u { text-decoration-color:var(--accent);text-decoration-thickness:1.5px;font-weight:700; }
+.mq-opts { display:flex;flex-direction:column;gap:5px; }
+.mq-opts label { display:flex;align-items:flex-start;gap:8px;font-size:14px;cursor:pointer;padding:5px 8px;border:1px solid transparent;transition:border-color .1s,background .1s;font-family:var(--serif); }
+.mq-opts label:hover { border-color:var(--rule);background:var(--faint); }
+.mq-opts input[type="radio"] { flex-shrink:0;margin-top:3px;accent-color:var(--ink); }
+.mq.mq-right { background:#f0fdf4;border-left:3px solid #22c55e; }
+.mq.mq-wrong { background:#fff7f5;border-left:3px solid var(--accent); }
+[data-theme="dark"] .mq.mq-right { background:#1a3520; }
+[data-theme="dark"] .mq.mq-wrong { background:#2a1510; }
+.mq-correct-lbl { color:#22c55e !important;font-weight:700 !important; }
+.mq-wrong-lbl { color:var(--accent) !important;text-decoration:line-through; }
+.mq-ordering-stem { font-family:var(--serif);font-size:1rem;background:var(--faint);padding:8px 12px;border-left:3px solid var(--mid); }
+.mq-chunks { font-family:var(--serif);font-size:.95rem;color:var(--mid); }
+.mq-ordering-q { font-size:12px;font-weight:700;color:var(--mid); }
+.mock-passage { margin:0;padding:16px 20px;background:var(--faint);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);font-family:var(--serif);font-size:.98rem;line-height:1.9; }
+.mock-notice { border-left:3px solid var(--mid);background:var(--faint2); }
+.mock-score { margin:0;padding:14px 20px;border-top:1px solid var(--rule);font-size:14px;font-weight:600; }
+.mock-score-pass { background:#f0fdf4;color:#166534;border-left:3px solid #22c55e; }
+.mock-score-fail { background:#fff7f5;color:#9b1c1c;border-left:3px solid var(--accent); }
+[data-theme="dark"] .mock-score-pass { background:#1a3520;color:#86efac; }
+[data-theme="dark"] .mock-score-fail { background:#2a1510;color:#fca5a5; }
+.mock-btn-row { padding:14px 20px;display:flex;gap:10px;border-top:1px solid var(--rule); }
+.mock-next { display:none; }
+.mock-total { display:none;padding:20px 24px;background:var(--ink);color:var(--ground);font-size:15px;border:1.5px solid var(--ink);border-top:none;text-align:center; }
+.mock-total strong { font-size:1.4rem; }
+.total-pass { color:#86efac;font-weight:700; }
+.total-fail { color:#fca5a5;font-weight:700; }
+@media (max-width:520px) { .mock-tab{font-size:11px;padding:10px 8px;} .mq{padding:12px 14px;} .mock-passage{padding:12px 14px;} .mock-badge{width:42px;height:42px;font-size:1.1rem;} }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/jlpt/">JLPT</a><span class="sep">›</span>
+    <a href="/jlpt/mock/">Mock Tests</a><span class="sep">›</span>
+    N1
+  </div>
+  <h1 class="page-h1">N1 Mock Test <span class="h1-jp">模擬試験</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">55 Questions</span>
+    <span class="meta-pill">Advanced</span>
+    <span class="meta-pill">Vocab + Grammar</span>
+  </div>
+</header>
+
+<div class="mock-shell">
+  <div class="mock-header-bar">
+    <div class="mock-badge">N1</div>
+    <div class="mock-header-info">
+      <strong>JLPT N1 Mock Test</strong><br>
+      <span>語彙 25問 ・ 文法・読解 30問 ・ 全55問</span>
+    </div>
+  </div>
+  <div class="mock-tip-box">
+    N1 is the highest JLPT level, requiring mastery of formal, literary, and abstract Japanese. Grammar patterns include ～を踏まえて、～をよそに、～とあれば、～かたわら、～ずにはおかない. Reading passages are longer and more nuanced. Aim for 60%+ to be within the pass range.
+  </div>
+  <div class="mock-tab-bar">
+    <button class="mock-tab active" id="tab-vocab" onclick="showSection('vocab')">語彙 Vocabulary</button>
+    <button class="mock-tab" id="tab-grammar" onclick="showSection('grammar')">文法・読解 Grammar &amp; Reading</button>
+  </div>
+
+  <div id="sect-vocab" class="mock-sect">
+    <!-- populated by renderSection() -->
+    <div id="score-vocab" class="mock-score" style="display:none"></div>
+    <div class="mock-btn-row">
+      <button class="btn mock-submit" onclick="submitSection('vocab')">採点 Check Answers</button>
+      <button class="btn mock-next" onclick="showSection('grammar')">文法・読解へ → Grammar &amp; Reading</button>
+    </div>
+  </div>
+
+  <div id="sect-grammar" class="mock-sect" style="display:none">
+    <!-- populated by renderSection() -->
+    <div id="score-grammar" class="mock-score" style="display:none"></div>
+    <div class="mock-btn-row">
+      <button class="btn mock-submit" onclick="submitSection('grammar')">採点 Check Answers</button>
+    </div>
+  </div>
+
+  <div id="mock-total" class="mock-total"></div>
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../../nav.js"></script>
+<script src="../mock-engine.js"></script>
+<script>
+// ── VOCABULARY SECTION (25 questions) ─────────────────────────────────────
+
+var VOCAB = [
+
+  // 問題1 — 漢字読み (kanji reading) 6 questions
+  {type:'sub', text:'問題1　　の言葉の読み方として最もよいものを、①②③④から一つ選びなさい。'},
+
+  {n:1, t:'彼の<u>洞察</u>力は、この業界でも際立っていると言われている。',
+   o:['どうさつ','どうざつ','とうさつ','とうざつ'], a:0},
+
+  {n:2, t:'その決断は多くの<u>懸念</u>を社会に引き起こした。',
+   o:['けねん','けんねん','げねん','げんねん'], a:0},
+
+  {n:3, t:'両者の意見に<u>乖離</u>があることが次第に明らかになった。',
+   o:['かいり','かいろ','がいり','こうり'], a:0},
+
+  {n:4, t:'国民の意識<u>喚起</u>が政策の重要な柱となっている。',
+   o:['きんき','かんき','こんき','けんき'], a:1},
+
+  {n:5, t:'彼女の<u>抑制</u>された演技が、観客を静かに魅了した。',
+   o:['よせい','よくせい','おくせい','いくせい'], a:1},
+
+  {n:6, t:'この地域のインフラの<u>脆弱</u>さが大きな問題となっている。',
+   o:['ぜいじゃく','せいじゃく','ぜいよわ','せいよわ'], a:0},
+
+  // 問題2 — 漢字書き (kanji writing) 5 questions
+  {type:'sub', text:'問題2　　の言葉を漢字で書くとき、最もよいものを①②③④から一つ選びなさい。'},
+
+  {n:7, t:'社会全体を<u>ふかん</u>する視点を持つことが重要だ。',
+   o:['俯瞰','俯観','府瞰','浮観'], a:0},
+
+  {n:8, t:'制度の不備を<u>ぜせい</u>するための議論が行われた。',
+   o:['是制','是正','是清','是成'], a:1},
+
+  {n:9, t:'政策の方向性への<u>けいはつ</u>活動が求められている。',
+   o:['啓発','刑罰','警発','経発'], a:0},
+
+  {n:10, t:'その発言が社会に<u>はもん</u>を呼んだ。',
+   o:['波紋','破問','波問','破紋'], a:0},
+
+  {n:11, t:'組織の<u>さいへん</u>が急務とされている。',
+   o:['再変','再偏','再編','最編'], a:2},
+
+  // 問題3 — 文脈規定 (vocabulary in context) 7 questions
+  {type:'sub', text:'問題3　（　）に入れるのに最もよいものを、①②③④から一つ選びなさい。'},
+
+  {n:12, t:'この分野での解決策はまだ（　）の段階にあり、確立した手法はない。',
+   o:['模索','完成','確立','展開'], a:0},
+
+  {n:13, t:'政府の方針が現場の実態と（　）していることが指摘されている。',
+   o:['乖離','一致','連携','普及'], a:0},
+
+  {n:14, t:'この発見は、従来の学説を（　）覆すものだった。',
+   o:['根本的に','部分的に','一時的に','間接的に'], a:0},
+
+  {n:15, t:'近年、この分野における技術の進歩は（　）で、世界から注目されている。',
+   o:['顕著','穏やか','段階的','計画的'], a:0},
+
+  {n:16, t:'議論が加熱する中、司会者は参加者の感情を（　）しながら進行した。',
+   o:['抑制','解放','強化','爆発'], a:0},
+
+  {n:17, t:'その作家は長年の経験を（　）、後進の育成に力を注いでいる。',
+   o:['活かし','無駄に','省略し','削減し'], a:0},
+
+  {n:18, t:'社会的な課題の（　）には、官民の連携が欠かせない。',
+   o:['解消','拡大','悪化','無視'], a:0},
+
+  // 問題4 — 言い換え類義 (near meaning) 4 questions
+  {type:'sub', text:'問題4　　の言葉に意味が最も近いものを、①②③④から一つ選びなさい。'},
+
+  {n:19, t:'このプロジェクトは、業界の前例を打ち破るものだ。',
+   o:['業界でかつて行われた手法を踏襲するものだ','業界でこれまでにない革新的なものだ','業界で失敗した取り組みを繰り返すものだ','業界の規定の範囲内でのものだ'], a:1},
+
+  {n:20, t:'彼の洞察は鋭い。',
+   o:['彼は物事の本質を見抜く能力が高い','彼は記憶力が非常に優れている','彼は議論において常に相手を言い負かす','彼は細かなミスを発見するのが得意だ'], a:0},
+
+  {n:21, t:'事態が急を要する。',
+   o:['状況は深刻ではないため、様子を見るべきだ','すぐに対応しなければならない緊急の状況だ','ゆっくりと議論を重ねてから行動すべき状況だ','専門家の判断を待ってから動くべき状況だ'], a:1},
+
+  {n:22, t:'この決断には様々な思惑が絡んでいる。',
+   o:['この決断は多くの感情的な反応を伴っている','この決断には様々な意図や計算が複雑に関係している','この決断は誰も理解できない特殊なものだ','この決断は外部からの強制によるものだ'], a:1},
+
+  // 問題5 — 用法 (word usage) 3 questions
+  {type:'sub', text:'問題5　次の言葉の使い方として最もよいものを、①②③④から一つ選びなさい。'},
+
+  {n:23, t:'顕著',
+   o:['努力の成果が顕著に現れてきた','彼女の顕著な笑顔が印象的だった','問題を顕著に解決することができた','彼は顕著に歩くのが速い'], a:0},
+
+  {n:24, t:'抑制',
+   o:['感情を抑制して冷静に対応した','新しい技術を抑制して社会に普及させた','彼は友人を抑制して助けてもらった','成績が抑制されて、親に褒められた'], a:0},
+
+  {n:25, t:'懸念',
+   o:['安全性に関する懸念が各方面から示された','彼の懸念な態度が周囲から評価された','試験対策の懸念を学んで成績が上がった','部長から懸念されて、やる気が出た'], a:0},
+
+];
+
+// ── GRAMMAR & READING SECTION (30 questions) ──────────────────────────────
+
+var GRAMMAR = [
+
+  // 問題1 — 文の文法1 (grammar fill-in) 15 questions
+  {type:'sub', text:'問題1　次の文の（　）に入れるのに最もよいものを、①②③④から一つ選びなさい。'},
+
+  {n:26, t:'過去の失敗事例（　）、今後の対応策を慎重に検討することが重要です。',
+   o:['を踏まえて','をもとに','に際して','に則って'], a:0},
+
+  {n:27, t:'現行の法律（　）判断すれば、この行動は明らかに問題がある。',
+   o:['に照らして','をもとに','に際して','を通じて'], a:0},
+
+  {n:28, t:'周囲の反対（　）、彼は自分の信念に従って計画を強行した。',
+   o:['をよそに','にもかかわらず','に反して','をめぐって'], a:0},
+
+  {n:29, t:'この地域の料理はここ（　）の深い味わいがある。',
+   o:['ならでは','だけ','のみ','こそ'], a:0},
+
+  {n:30, t:'家族のため（　）、どんな困難にも立ち向かえる自信がある。',
+   o:['とあれば','ために','ように','ならば'], a:0},
+
+  {n:31, t:'彼は第一線で研究を続ける（　）、若手研究者の育成にも力を入れている。',
+   o:['かたわら','ながら','つつ','に加えて'], a:0},
+
+  {n:32, t:'現場の実態（　）対策を立てることが、問題解決への第一歩だ。',
+   o:['に即して','をもとに','に基づいて','を踏まえて'], a:0},
+
+  {n:33, t:'彼女のこれまでの実績（　）、今回の試みが成功しないはずがない。',
+   o:['をもってすれば','をもとに','に照らして','を踏まえて'], a:0},
+
+  {n:34, t:'周囲の期待（　）、彼の実力は年々衰えていった。',
+   o:['とは裏腹に','に反して','をよそに','にもかかわらず'], a:0},
+
+  {n:35, t:'この作品は読む者を深く感動させ（　）内容だ。',
+   o:['ずにはおかない','ないではいられない','ずにはいられない','ないわけにはいかない'], a:0},
+
+  {n:36, t:'役員（　）もなれば、経営全体への責任が伴ってくる。',
+   o:['ともなると','になると','ともなれば','だと'], a:0},
+
+  {n:37, t:'一度あの習慣を身につけ（　）、なかなか元には戻れない。',
+   o:['たが最後','てから','たら','ても'], a:0},
+
+  {n:38, t:'目標を達成せ（　）、彼女は日々の練習を欠かさなかった。',
+   o:['んがために','るために','ようとして','ざるを得ず'], a:0},
+
+  {n:39, t:'その事実を知って（　）、彼は長い間沈黙を守り続けた。',
+   o:['もなお','にもかかわらず','というのに','もさることながら'], a:0},
+
+  {n:40, t:'彼の失礼な態度には、（　）を禁じ得ない。',
+   o:['憤り','感謝','喜び','安心'], a:0},
+
+  // 問題2 — 文の文法2 (passage fill-in) 5 questions
+  {type:'sub', text:'問題2　次の文章を読んで、文章全体の内容を考えて、（41）から（45）の中に入る最もよいものを、①②③④から一つ選びなさい。'},
+
+  {type:'passage', text:'　人工知能の急速な発展により、様々な業務の自動化が（41）いる。これにより、労働の効率化が進む一方で、多くの職種が将来的に消滅する（42）があるとも言われている。専門家の中には、こうした変化に（43）して新しいスキルを習得することの重要性を指摘する声もある。社会全体がこの問題を（44）に受け止め、適切な教育制度を（45）していく必要があるだろう。'},
+
+  {n:41, o:['進んで','遅れて','止まって','終わって'], a:0},
+  {n:42, o:['感情','可能性','理由','必要性'], a:1},
+  {n:43, o:['対応','反対','依存','批判'], a:0},
+  {n:44, o:['真剣','楽観的','軽く','無関係に'], a:0},
+  {n:45, o:['整備','廃止','批判','削減'], a:0},
+
+  // 問題3 — 読解 long passage (3 questions)
+  {type:'sub', text:'問題3　次の文章を読んで、後の問いに対する答えとして最もよいものを、①②③④から一つ選びなさい。'},
+
+  {type:'passage', text:'　近年の研究によれば、人間の意思決定は、合理的な判断というよりも、感情や経験に基づく直感に大きく依存していることが明らかになっている。「ノイズ」と呼ばれる予測不可能な変動が、法的判断や医学的診断など、専門家が下す決定にも影響を与えていることが指摘されている。この知見は、組織における意思決定プロセスの見直しを促すとともに、AIを活用した客観的な判断支援システムの開発への期待を高めている。しかし一方では、人間の直感や感情を完全に排除することの是非についても、活発な議論が行われている。'},
+
+  {n:46, t:'この文章が主に述べていることはどれですか。',
+   o:['人間の意思決定の特性と、それを取り巻く社会的な議論','AIが人間の意思決定を完全に代替できる可能性','法的判断において感情が重要な役割を果たすこと','専門家の判断は常に合理的であること'], a:0},
+
+  {n:47, t:'文中の「ノイズ」とはどのようなものですか。',
+   o:['騒音によって生じる集中力の低下','感情や直感による合理的判断の向上','意思決定の過程に生じる予測不可能な変動','AIが引き起こす技術的なエラー'], a:2},
+
+  {n:48, t:'この文章の内容と合っているものはどれですか。',
+   o:['人間の感情は意思決定にまったく影響しない','AI活用による判断支援への期待がある一方、懸念も示されている','専門家の判断はノイズの影響を受けないことが証明された','全ての意思決定をAIに委ねるべきという結論が出た'], a:1},
+
+  // 問題4 — 情報検索 (notice reading) 2 questions
+  {type:'sub', text:'問題4　右のページを見て、下の問いに対する答えとして最もよいものを、①②③④から一つ選びなさい。'},
+
+  {type:'notice', text:'<strong>令和7年度　職場環境改善研修　参加者募集</strong><br><br>実施日：9月15日（月）・16日（火）両日参加必須<br>時間：午前9時〜午後5時（昼休憩1時間）<br>場所：中央研修センター　第3会議室（最寄り：市役所前駅 徒歩5分）<br>対象：管理職（課長職以上）<br>定員：30名（先着順）<br>受講料：無料（ただし交通費は各自負担）<br>申込締め切り：8月31日（日）<br>問い合わせ先：人材開発部（nendo@example.co.jp）<br><br>※昼食は各自でご用意ください。<br>※参加が確定した方には、9月5日までに確認メールをお送りします。<br>※業務上やむを得ず欠席の場合は、5日前までにご連絡ください。'},
+
+  {n:49, t:'この研修について正しいものはどれですか。',
+   o:['受講料は受講者が負担する','2日間の参加が必要だ','対象は全社員だ','研修会場に昼食が用意されている'], a:1},
+
+  {n:50, t:'申し込みをした参加者が9月5日までに受け取るものは何ですか。',
+   o:['研修の資料','昼食の引換券','参加確認のメール','受講料の請求書'], a:2},
+
+  // 問題5 — 文の並べ替え (sentence ordering) 5 questions
+  {type:'sub', text:'問題5　次の文の ＿ ＿ ★ ＿ に入る言葉の組み合わせとして最もよいものを、①②③④から一つ選びなさい。'},
+
+  {type:'ordering', n:51,
+   stem:'成功の ＿ ＿ ★ ＿ 努力だ。',
+   chunks:'① を踏まえた　　② 継続的な　　③ 失敗　　④ 背景には',
+   o:['を踏まえた','継続的な','失敗','背景には'], a:0},
+
+  {type:'ordering', n:52,
+   stem:'状況の深刻さを ＿ ＿ ★ ＿ 判断を下した。',
+   chunks:'① もとに　　② した　　③ 徹底的な調査　　④ を',
+   o:['もとに','した','徹底的な調査','を'], a:0},
+
+  {type:'ordering', n:53,
+   stem:'社会の ＿ ＿ ★ ＿ 解明された。',
+   chunks:'① が徐々に　　② 実態　　③ 調査に　　④ よって',
+   o:['が徐々に','実態','調査に','よって'], a:2},
+
+  {type:'ordering', n:54,
+   stem:'彼の ＿ ＿ ★ ＿ 重要だ。',
+   chunks:'① に基づく　　② 洞察　　③ こそが　　④ 経験',
+   o:['に基づく','洞察','こそが','経験'], a:1},
+
+  {type:'ordering', n:55,
+   stem:'困難な ＿ ＿ ★ ＿ させた。',
+   chunks:'① 乗り越えて　　② 状況を　　③ 彼女を　　④ 成長',
+   o:['乗り越えて','状況を','彼女を','成長'], a:2},
+
+];
+
+// ── ENGINE OVERRIDES ───────────────────────────────────────────────────────
+
+function showSection(id) {
+  document.querySelectorAll('.mock-sect').forEach(function(s){ s.style.display='none'; });
+  document.getElementById('sect-'+id).style.display='block';
+  document.querySelectorAll('.mock-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('tab-'+id).classList.add('active');
+  var bar=document.querySelector('.mock-tab-bar');
+  if(bar) window.scrollTo({top:bar.getBoundingClientRect().top+window.scrollY-60,behavior:'smooth'});
+}
+
+function submitSection(sectId) {
+  var sect=document.getElementById('sect-'+sectId);
+  var qs=sect.querySelectorAll('.mq');
+  var correct=0;
+  qs.forEach(function(q){
+    var ans=parseInt(q.dataset.answer);
+    var chosen=q.querySelector('input:checked');
+    var val=chosen?parseInt(chosen.value):-1;
+    if(val===ans){correct++;q.classList.add('mq-right');}
+    else{q.classList.add('mq-wrong');}
+    q.querySelectorAll('.mq-opts label').forEach(function(lbl,i){
+      if(i===ans)lbl.classList.add('mq-correct-lbl');
+      else if(chosen&&i===val)lbl.classList.add('mq-wrong-lbl');
+    });
+    q.querySelectorAll('input').forEach(function(inp){inp.disabled=true;});
+  });
+  var total=qs.length;
+  var pct=Math.round(correct/total*100);
+  var scoreEl=document.getElementById('score-'+sectId);
+  scoreEl.innerHTML='得点 / Score: <strong>'+correct+' / '+total+'</strong> ('+pct+'%)'+(pct>=60?' ✓ 合格圏内':' — keep practising!');
+  scoreEl.className='mock-score '+(pct>=60?'mock-score-pass':'mock-score-fail');
+  scoreEl.style.display='block';
+  sect.querySelector('.mock-submit').disabled=true;
+  var nxt=sect.querySelector('.mock-next');
+  if(nxt)nxt.style.display='inline-block';
+  checkBothDone();
+}
+
+function checkBothDone() {
+  var v=document.getElementById('score-vocab');
+  var g=document.getElementById('score-grammar');
+  if(!v||v.style.display==='none'||!g||g.style.display==='none') return;
+  var allRight=document.querySelectorAll('.mq-right').length;
+  var allQ=document.querySelectorAll('.mq').length;
+  var pct=Math.round(allRight/allQ*100);
+  var totalEl=document.getElementById('mock-total');
+  totalEl.innerHTML='総合得点 Total Score: <strong>'+allRight+' / '+allQ+'</strong> ('+pct+'%)'+(pct>=60?'<br><span class="total-pass">合格圏内 Pass range — well done!</span>':'<br><span class="total-fail">合格基準以下 Below pass mark — keep studying!</span>');
+  totalEl.style.display='block';
+  totalEl.scrollIntoView({behavior:'smooth',block:'center'});
+}
+
+// ── RENDER ─────────────────────────────────────────────────────────────────
+renderSection('sect-vocab', VOCAB, 'v');
+renderSection('sect-grammar', GRAMMAR, 'g');
+</script>
+</body>
+</html>

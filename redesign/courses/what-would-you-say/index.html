@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Would You Say? — Japanese Uncovered</title>
+<meta name="description" content="Ten everyday situations. Type what you'd actually say in Japanese — casual, natural, the way people really talk. Vocabulary chips help, model answers show three levels of formality.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.tool-shell { max-width: 780px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Progress ───────────────────────────────────────────────── */
+.prog-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+}
+.prog-track { flex: 1; height: 4px; background: var(--rule); }
+.prog-fill  { height: 100%; background: var(--accent); transition: width .4s; }
+.prog-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--mid); white-space: nowrap; }
+.dot-nav { display: flex; gap: 5px; }
+.prog-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--rule); cursor: pointer; transition: background .2s;
+}
+.prog-dot.done  { background: #22c55e; }
+.prog-dot.almost { background: #f59e0b; }
+.prog-dot.practice { background: var(--accent); }
+.prog-dot.current { background: var(--ink); }
+
+/* ── Situation card ─────────────────────────────────────────── */
+.card-area { padding: 24px; }
+
+.wwys-card { border: 1.5px solid var(--ink); }
+
+.wc-top {
+  padding: 24px 26px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.wc-num {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 6px;
+}
+.wc-situation { font-size: 15px; line-height: 1.65; }
+.wc-situation em { font-style: italic; color: var(--mid); }
+
+/* ── Chips ──────────────────────────────────────────────────── */
+.wc-chips {
+  padding: 14px 26px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.chip {
+  padding: 5px 11px;
+  border: 1.5px solid var(--ink);
+  cursor: pointer;
+  background: none;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.2;
+  transition: background .1s, color .1s;
+  text-align: left;
+}
+.chip:hover { background: var(--ink); color: var(--ground); }
+.chip .ce { font-size: 10px; color: var(--mid); font-family: var(--sans); display: block; margin-top: 1px; }
+.chip:hover .ce { color: rgba(255,255,255,.65); }
+
+/* ── Hints ──────────────────────────────────────────────────── */
+.wc-hints {
+  padding: 0 26px;
+  border-bottom: 1px solid var(--rule);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .3s ease, padding .3s;
+}
+.wc-hints.open { max-height: 300px; padding: 14px 26px; }
+.hint-item {
+  font-size: 13px; color: var(--mid); padding: 6px 0;
+  border-bottom: 1px solid var(--rule); line-height: 1.6;
+}
+.hint-item:last-child { border-bottom: none; }
+.hint-item::before { content: '→ '; }
+
+/* ── Input ──────────────────────────────────────────────────── */
+.wc-input {
+  padding: 16px 26px;
+  border-bottom: 1px solid var(--rule);
+}
+.wws-ta {
+  width: 100%;
+  min-height: 72px;
+  padding: 12px;
+  border: 1.5px solid var(--ink);
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  resize: vertical;
+  line-height: 1.6;
+  transition: border-color .15s;
+}
+.wws-ta:focus { outline: none; border-color: var(--accent); }
+.wws-ta::placeholder { color: var(--mid); font-family: var(--sans); font-size: .9rem; }
+.wc-input-row { display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.hint-toggle {
+  background: none; border: none; cursor: pointer; font-size: 12px;
+  color: var(--mid); text-decoration: underline; text-underline-offset: 3px;
+  padding: 0; margin-left: auto;
+}
+.hint-toggle:hover { color: var(--ink); }
+
+/* ── Answers ────────────────────────────────────────────────── */
+.wc-answers {
+  display: none;
+  border-top: 1px solid var(--rule);
+}
+.wc-answers-head {
+  padding: 14px 26px;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid);
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint2);
+}
+.answer-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.answer-row:last-child { border-bottom: none; }
+.answer-tag {
+  padding: 14px 0 14px 26px;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--mid);
+}
+.answer-content { padding: 14px 26px 14px 0; }
+.answer-jp {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color .12s;
+}
+.answer-jp:hover { color: var(--accent); }
+.answer-jp::after { content: '▶'; font-size: .6rem; opacity: .5; }
+.answer-ro { font-size: 11px; color: var(--mid); margin-top: 3px; font-style: italic; }
+.answer-en { font-size: 12px; color: var(--mid); margin-top: 4px; }
+
+/* ── Grammar notes ──────────────────────────────────────────── */
+.wc-grammar {
+  border-top: 1px solid var(--rule);
+  display: none;
+}
+.wc-grammar-head {
+  padding: 12px 26px;
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid); border-bottom: 1px solid var(--rule);
+  background: var(--faint2);
+}
+.gram-row { padding: 12px 26px; border-bottom: 1px solid var(--rule); }
+.gram-row:last-child { border-bottom: none; }
+.gram-term { font-family: var(--serif); font-weight: 700; font-size: 1rem; margin-bottom: 4px; }
+.gram-note { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+/* ── Self-assess ────────────────────────────────────────────── */
+.wc-assess {
+  padding: 14px 26px;
+  border-top: 1px solid var(--rule);
+  display: none;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.assess-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; color: var(--mid); margin-right: 4px; }
+.assess-btn {
+  padding: 8px 16px;
+  border: 1.5px solid var(--ink);
+  background: none;
+  cursor: pointer;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: .03em; color: var(--ink);
+  transition: background .12s, color .12s;
+}
+.assess-btn:hover { background: var(--faint); }
+.assess-btn.chosen.got-it   { background: #22c55e; border-color: #22c55e; color: #fff; }
+.assess-btn.chosen.almost   { background: #f59e0b; border-color: #f59e0b; color: #fff; }
+.assess-btn.chosen.practice { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.wc-nav {
+  padding: 14px 26px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid var(--rule);
+  flex-wrap: wrap;
+}
+
+/* ── Complete ───────────────────────────────────────────────── */
+.complete-panel {
+  border: 1.5px solid var(--ink);
+  margin: 24px;
+  text-align: center;
+  display: none;
+}
+.cp-top { padding: 40px 28px 24px; border-bottom: 1.5px solid var(--ink); background: var(--faint); }
+.cp-icon  { font-size: 3.5rem; margin-bottom: 10px; }
+.cp-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+.cp-sub   { color: var(--mid); font-size: 14px; }
+.cp-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--ink); }
+.cst { padding: 20px; border-right: 1px solid var(--rule); text-align: left; }
+.cst:last-child { border-right: none; }
+.cst-num   { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+.cst-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+.cp-actions { padding: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 540px) {
+  .card-area { padding: 14px; }
+  .wc-top, .wc-chips, .wc-input, .wc-answers-head, .answer-tag { padding-left: 16px; padding-right: 16px; }
+  .answer-content { padding-right: 16px; }
+  .answer-row { grid-template-columns: 80px 1fr; }
+  .cp-stats { grid-template-columns: 1fr 1fr; }
+  .wc-nav { padding-left: 16px; padding-right: 16px; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/courses/">Practice</a><span class="sep">›</span>
+    What Would You Say?
+  </div>
+  <h1 class="page-h1">What Would You Say? <span class="h1-jp">何と言いますか</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">10 Situations</span>
+    <span class="meta-pill">Vocab Chips</span>
+    <span class="meta-pill">Model Answers</span>
+  </div>
+</header>
+
+<div class="tool-shell">
+
+  <div class="prog-row">
+    <div class="dot-nav" id="dot-nav"></div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-label" id="prog-label">1 / 10</div>
+  </div>
+
+  <div class="card-area" id="card-area"></div>
+
+  <div class="complete-panel" id="complete-panel">
+    <div class="cp-top">
+            <div class="cp-title">All 10 done!</div>
+      <div class="cp-sub" id="cp-sub">Keep practising — the more natural it feels, the better.</div>
+    </div>
+    <div class="cp-stats">
+      <div class="cst"><div class="cst-num" id="cp-got">0</div><div class="cst-label">Got it</div></div>
+      <div class="cst"><div class="cst-num" id="cp-almost">0</div><div class="cst-label">Almost</div></div>
+      <div class="cst"><div class="cst-num" id="cp-practice">0</div><div class="cst-label">Need practice</div></div>
+    </div>
+    <div class="cp-actions">
+      <button class="btn btn-solid" onclick="restart()">Start Again</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+const SCENARIOS = [
+  {
+    situation:"Your friend texts: <em>\"Want to hang out tonight?\"</em> You're exhausted after a long day. Decline nicely.",
+    chips:[{jp:'ごめん',en:'sorry'},{jp:'無理',en:'no way/can\'t'},{jp:'疲れた',en:'I\'m tired'},{jp:'今日は',en:'today'},{jp:'また今度',en:'next time'},{jp:'きつい',en:'tough'},{jp:'ちょっと',en:'a little'}],
+    hints:["ごめん (gomen) is the most natural opener for a casual decline.","無理 literally means 'impossible' — in casual Japanese it's the standard way to say 'I can't.'","Try: ごめん + your reason (疲れた) + a soft close (また今度ね)."],
+    answers:[{tag:'Very casual',jp:'ごめん、今日無理〜 疲れた',ro:'Gomen, kyou muri~ tsukareta',en:'Sorry, can\'t tonight~ I\'m tired'},{tag:'Casual',jp:'ごめんね、今日はちょっと疲れてて…',ro:'Gomen ne, kyou wa chotto tsukarete...',en:'Sorry, I\'m a bit tired today…'},{tag:'Softer',jp:'ごめんなさい、今日はちょっと都合が悪くて',ro:'Gomen nasai, kyou wa chotto tsugou ga warukute',en:'I\'m sorry, today is a bit inconvenient'}],
+    grammar:[{term:'無理',note:'"Impossible / no way" — direct and very common in casual speech. More natural for declining than 行けない.'},{term:'〜てて',note:'て-form + て signals an ongoing state. 疲れてて = "I\'m tired (and so…)" — trailing off is polite.'},{term:'また今度',note:'"Next time." The standard soft way to imply rescheduling.'}]
+  },
+  {
+    situation:"You're running 15 minutes late to meet a friend at a café. Send them a quick text.",
+    chips:[{jp:'ごめん',en:'sorry'},{jp:'遅れる',en:'running late'},{jp:'あと',en:'more/remaining'},{jp:'分',en:'minutes'},{jp:'今向かってる',en:'heading there now'},{jp:'もうすぐ',en:'almost there'},{jp:'着く',en:'to arrive'}],
+    hints:["あと + number + 分 = 'in X more minutes.' あと15分で着く = 'I'll be there in 15 minutes.'","今向かってる (ima mukatteru) = 'heading there now' — essential phrase for late texts.","Japanese texts tend to be short. ごめん、あと15分！ on its own is perfectly natural."],
+    answers:[{tag:'Very casual',jp:'ごめん！あと15分で着く！',ro:'Gomen! Ato juugo-fun de tsuku!',en:'Sorry! Be there in 15!'},{tag:'Casual',jp:'ごめんね、今向かってるけどあと15分くらいかかりそう',ro:'Gomen ne, ima mukatteru kedo ato juugo-fun kurai kakarisou',en:'Sorry, heading there now but might take ~15 min'},{tag:'Softer',jp:'すみません、少し遅れそうです。あと15分ほどで着きます',ro:'Sumimasen, sukoshi okure sou desu. Ato juugo-fun hodo de tsukimasu',en:'I\'m sorry, it looks like I\'ll be a bit late.'}],
+    grammar:[{term:'あと〜分',note:'あと (remaining) + time = time left. あと15分 = "15 more minutes."'},{term:'〜そう',note:'Looks/seems like. 遅れそう = "looks like I\'ll be late" — expresses uncertainty politely.'},{term:'今向かってる',note:'向かう (to head toward) + ている (ongoing). Essential for "I\'m on my way."'}]
+  },
+  {
+    situation:"A friend recommends a café they love. You want to say it sounds great and suggest going together this weekend.",
+    chips:[{jp:'いいね！',en:'sounds good!'},{jp:'行こう',en:'let\'s go'},{jp:'週末',en:'weekend'},{jp:'一緒に',en:'together'},{jp:'絶対',en:'definitely'},{jp:'楽しそう',en:'sounds fun'},{jp:'どこ',en:'where'}],
+    hints:["いいね！ is incredibly natural for expressing enthusiasm. Much warmer than 'いいです'.","行こう is the volitional form of 行く — 'let\'s go!' Very common for casual invitations.","週末 (shuumatsu) = weekend. 今週末 = this weekend."],
+    answers:[{tag:'Very casual',jp:'いいね！今週末一緒に行こう！',ro:'Ii ne! Konshuu-matsu issho ni ikou!',en:'Sounds good! Let\'s go together this weekend!'},{tag:'Casual',jp:'楽しそう！週末時間ある？一緒に行きたい',ro:'Tanoshi sou! Shuumatsu jikan aru? Issho ni ikitai',en:'Sounds fun! Free this weekend? I wanna go together'},{tag:'Softer',jp:'素敵ですね。今週末、一緒にどうですか？',ro:'Suteki desu ne. Konshuu-matsu, issho ni dou desu ka?',en:'That sounds lovely. How about this weekend, together?'}],
+    grammar:[{term:'〜そう',note:'楽しそう = "looks/sounds fun." Adds enthusiasm naturally.'},{term:'volitional 〜よう/〜おう',note:'行こう = "let\'s go." The casual volitional for invitations and suggestions.'},{term:'どうですか',note:'"How about…?" — polite way to make a suggestion or invite someone.'}]
+  },
+  {
+    situation:"You just got home and you're venting to your partner. Work was terrible — a long meeting, a difficult colleague, and you didn't get lunch.",
+    chips:[{jp:'最悪',en:'the worst'},{jp:'疲れた',en:'exhausted'},{jp:'会議',en:'meeting'},{jp:'ずっと',en:'the whole time'},{jp:'昼ごはん',en:'lunch'},{jp:'食べられなかった',en:'couldn\'t eat'},{jp:'もう',en:'already/enough'}],
+    hints:["最悪 (saiaku) = 'the worst' — the go-to word for venting in Japanese.","ずっと = 'the whole time / all along.' ずっと会議 = 'meetings all day.'","もう + て-form or negative expresses exasperation. もう無理 = 'I can't take it anymore.'"],
+    answers:[{tag:'Very casual',jp:'今日最悪だった。ずっと会議で昼も食べられなかった',ro:'Kyou saiaku datta. Zutto kaigi de hiru mo taberarenakatta',en:'Today was the worst. Meetings all day and I couldn\'t even eat lunch'},{tag:'Casual',jp:'もう疲れた…今日ずっと会議でさ、昼ごはんも食べてないんだよ',ro:'Mou tsukareta... kyou zutto kaigi de sa, hiru gohan mo tabetenaindayo',en:'I\'m done… meetings all day, and I haven\'t even eaten lunch'},{tag:'Softer',jp:'今日は本当に大変でした。長い会議があって、昼食も取れませんでした',ro:'Kyou wa hontou ni taihen deshita.',en:'Today was really tough. I had long meetings and couldn\'t take a lunch break.'}],
+    grammar:[{term:'〜んだ',note:'Adds explanatory or emotional weight. 食べてないんだ = "the thing is, I haven\'t eaten" — invites empathy.'},{term:'てさ',note:'Casual sentence connector, like saying "and you know…" Sets up a complaint naturally.'},{term:'ずっと',note:'Entire duration. ずっと会議 = "it was meetings the whole time."'}]
+  },
+  {
+    situation:"A friend asks if you've been listening to anything good lately. Tell them you've been really into a Japanese artist or genre.",
+    chips:[{jp:'最近',en:'recently'},{jp:'ハマってる',en:'really into it'},{jp:'特に',en:'especially'},{jp:'めっちゃ',en:'really/super'},{jp:'いい',en:'good'},{jp:'聴いてる',en:'listening to'},{jp:'おすすめ',en:'recommend'}],
+    hints:["ハマってる = 'I've been really into it' — the most natural casual phrase for obsessions.","最近 (saikin) = recently. 最近ハマってる = 'I've been really into it lately.'","おすすめする = to recommend. おすすめがあれば = 'if you have any recommendations.'"],
+    answers:[{tag:'Very casual',jp:'最近めっちゃ米津玄師にハマってる！',ro:'Saikin meccha Kenshi Yonezu ni hamatteru!',en:'I\'ve been super into Kenshi Yonezu lately!'},{tag:'Casual',jp:'最近、J-POPをよく聴いてる。特に米津玄師がいい',ro:'Saikin, J-POP wo yoku kitteru. Toku ni Kenshi Yonezu ga ii',en:'I\'ve been listening to J-POP a lot lately. Kenshi Yonezu especially.'},{tag:'Softer',jp:'最近、米津玄師という歌手にはまっています。聴いたことありますか？',ro:'Saikin, Kenshi Yonezu to iu kashu ni hamatte imasu.',en:'Recently I\'ve been really into a singer called Kenshi Yonezu. Have you heard of them?'}],
+    grammar:[{term:'〜にはまる',note:'To be hooked on / into something. 〜にはまってる = ongoing obsession. Very natural.'},{term:'めっちゃ',note:'Kansai-origin intensifier, now used everywhere. ≈ "super / really." Very casual.'},{term:'〜という',note:'Used to name or define something. 〜という歌手 = "a singer called…"'}]
+  },
+  {
+    situation:"You accidentally knocked someone's drink over at a café. Apologise properly.",
+    chips:[{jp:'ごめんなさい',en:'I\'m sorry'},{jp:'すみません',en:'excuse me'},{jp:'大丈夫ですか',en:'are you ok?'},{jp:'拭きます',en:'I\'ll wipe it'},{jp:'本当に',en:'truly'},{jp:'申し訳ない',en:'I\'m so sorry'},{jp:'気をつけます',en:'I\'ll be careful'}],
+    hints:["すみません works for accidents to strangers. ごめんなさい feels slightly more personal.","申し訳ございません (moushiwake gozaimasen) is very formal — for serious situations.","大丈夫ですか shows concern for the other person — use it after apologising."],
+    answers:[{tag:'Very casual',jp:'あっ、ごめん！大丈夫？拭くね！',ro:'A, gomen! Daijoubu? Fuku ne!',en:'Oh, sorry! Are you ok? I\'ll wipe it!'},{tag:'Casual',jp:'ごめんなさい！大丈夫ですか？すぐ拭きます',ro:'Gomen nasai! Daijoubu desu ka? Sugu fukimasu',en:'I\'m so sorry! Are you alright? I\'ll wipe it right away.'},{tag:'Formal',jp:'申し訳ございません。大丈夫でしょうか？すぐに対応いたします。',ro:'Moushiwake gozaimasen. Daijoubu deshou ka?',en:'I sincerely apologise. Are you alright? I\'ll take care of it right away.'}],
+    grammar:[{term:'申し訳ない',note:'Literally "there\'s no excuse (for what I did)." The weight of full accountability.'},{term:'〜ね (confirmation)',note:'Adds warmth and softness. 拭くね = "I\'ll wipe it, OK?" Implies care.'},{term:'すぐに',note:'"Right away / immediately." Signals urgency and genuine concern.'}]
+  },
+  {
+    situation:"You're lost in Tokyo. Stop a friendly-looking stranger and ask where the nearest station is.",
+    chips:[{jp:'すみません',en:'excuse me'},{jp:'駅',en:'station'},{jp:'近く',en:'nearby'},{jp:'どこ',en:'where'},{jp:'ですか',en:'is it?'},{jp:'教えてください',en:'please tell me'},{jp:'一番近い',en:'nearest'}],
+    hints:["すみません (sumimasen) is the standard opener when addressing a stranger.","一番近い駅 = 'the nearest station.' 一番 = number one = most.","〜はどこですか？ is the basic 'where is…?' pattern. Learn this cold."],
+    answers:[{tag:'Simple',jp:'すみません、駅はどこですか？',ro:'Sumimasen, eki wa doko desu ka?',en:'Excuse me, where is the station?'},{tag:'Natural',jp:'すみません、一番近い駅を教えてください。',ro:'Sumimasen, ichiban chikai eki wo oshiete kudasai.',en:'Excuse me, could you tell me where the nearest station is?'},{tag:'Extended',jp:'すみません、この近くに地下鉄の駅はありますか？',ro:'Sumimasen, kono chikaku ni chikatetsu no eki wa arimasu ka?',en:'Excuse me, is there a subway station near here?'}],
+    grammar:[{term:'〜はどこですか',note:'The core "where is…?" pattern. Memorise: [place/thing] + はどこですか？'},{term:'〜を教えてください',note:'"Please tell me…" More natural than a direct question when asking strangers for directions.'},{term:'〜はありますか',note:'"Is there a…?" Useful for checking if something exists nearby.'}]
+  },
+  {
+    situation:"At the supermarket checkout. The cashier asks if you have a rewards card. You don't. Pay and say thank you.",
+    chips:[{jp:'ポイントカード',en:'rewards card'},{jp:'ありません',en:'I don\'t have it'},{jp:'大丈夫です',en:'I\'m fine / no thanks'},{jp:'ありがとう',en:'thank you'},{jp:'カード払い',en:'card payment'},{jp:'現金',en:'cash'},{jp:'お願いします',en:'please'}],
+    hints:["持っていません (motte imasen) = 'I don't have it.' ありません also works.", "大丈夫です as a response to an offer politely means 'No thank you, I'm fine.'", "After paying, ありがとうございました (past tense) is more final and natural than ありがとうございます."],
+    answers:[{tag:'Simple',jp:'いいえ、持っていません。',ro:'Iie, motte imasen.',en:'No, I don\'t have one.'},{tag:'Natural',jp:'ポイントカードはないです。カードで払えますか？',ro:'Pointo kaado wa nai desu. Kaado de haraemasu ka?',en:'I don\'t have one. Can I pay by card?'},{tag:'Extended',jp:'ポイントカードは持っていません。現金でお願いします。ありがとうございました！',ro:'Pointo kaado wa motte imasen. Genkin de onegaishimasu. Arigatou gozaimashita!',en:'I don\'t have a rewards card. Cash please. Thank you!'}],
+    grammar:[{term:'持っていません',note:'"I don\'t have it." 持つ (to hold/have) + ていません (ongoing negative state).'},{term:'〜で払う',note:'〜で = by means of. カードで払う = "pay by card." 現金で = "with cash."'},{term:'ありがとうございました',note:'Past-tense ました = the transaction is complete. Warmer and more final than ます form.'}]
+  },
+  {
+    situation:"Your Japanese colleague says they worked all weekend on a project. Express sympathy and acknowledge their hard work.",
+    chips:[{jp:'お疲れ様です',en:'you\'ve worked hard'},{jp:'大変でしたね',en:'that must\'ve been tough'},{jp:'本当に',en:'really / truly'},{jp:'ゆっくり休んで',en:'please get some rest'},{jp:'頑張ったね',en:'you worked hard'},{jp:'すごい',en:'impressive'}],
+    hints:["お疲れ様です is the essential workplace phrase — acknowledges someone's effort without being too personal.","大変でしたね = 'That must have been tough' — shows you recognise their struggle.","頑張ったね (casual) or 頑張りましたね (polite) = 'You really worked hard.'"],
+    answers:[{tag:'Casual',jp:'お疲れ！週末も働いたの？大変だったね。ゆっくり休んで',ro:'Otsukare! Shuumatsu mo hataraita no? Taihen datta ne. Yukkuri yasunde',en:'Good work! You worked the weekend too? That must\'ve been tough. Get some rest.'},{tag:'Polite',jp:'お疲れ様です。週末もお仕事されたんですね。大変でしたね。',ro:'Otsukare sama desu. Shuumatsu mo oshigoto sareta n desu ne. Taihen deshita ne.',en:'Good work. You worked over the weekend? That must have been hard.'},{tag:'Warm',jp:'本当にお疲れ様でした。今週はゆっくり休んでくださいね。',ro:'Hontou ni otsukare sama deshita. Konshuu wa yukkuri yasunde kudasai ne.',en:'You\'ve truly worked so hard. Please make sure to rest well this week.'}],
+    grammar:[{term:'お疲れ様です',note:'The core acknowledgement of someone\'s work or effort. Use it constantly in Japanese workplaces.'},{term:'〜んですね',note:'Adds nuance of discovery/confirmation. 〜たんですね = "So you did [X], I see." Shows you\'re listening.'},{term:'ゆっくり休んで',note:'"Take it easy / get some rest." ゆっくり (slowly/leisurely) + 休む (rest). Very caring phrase.'}]
+  },
+  {
+    situation:"It's your Japanese friend's birthday. Write them a birthday message — casual but warm.",
+    chips:[{jp:'誕生日',en:'birthday'},{jp:'おめでとう',en:'congratulations'},{jp:'今年も',en:'this year too'},{jp:'楽しい',en:'fun/happy'},{jp:'いい年',en:'great year'},{jp:'ありがとう',en:'thank you'},{jp:'大好き',en:'love you/adore you'}],
+    hints:["誕生日おめでとう is the standard 'Happy Birthday.' Adding ございます makes it more formal.","今年もよろしくね = 'Looking forward to this year together too' — great for close friends.", "大好き (daisuki) = 'I love/adore you' — for very close friends. More casual than 愛してる."],
+    answers:[{tag:'Very casual',jp:'誕生日おめでとう！今年も一緒にたくさん遊ぼうね！大好き！',ro:'Tanjoubi omedetou! Kotoshi mo issho ni takusan asobou ne! Daisuki!',en:'Happy birthday! Let\'s hang out lots this year too! Love ya!'},{tag:'Warm',jp:'お誕生日おめでとうございます！素敵な一年になりますように。',ro:'Otanjoubi omedetou gozaimasu! Suteki na ichinen ni narimasu you ni.',en:'Happy birthday! Wishing you a wonderful year.'},{tag:'Extended',jp:'誕生日おめでとう！いつも一緒にいてくれてありがとうね。今年もよろしく！',ro:'Tanjoubi omedetou! Itsumo issho ni ite kurete arigatou ne. Kotoshi mo yoroshiku!',en:'Happy birthday! Thanks for always being there. Looking forward to this year together too!'}],
+    grammar:[{term:'〜ますように',note:'A wish or prayer. 〜になりますように = "I hope it becomes [X]." Very warm for birthday messages.'},{term:'〜てくれてありがとう',note:'"Thank you for doing [X] for me." The くれて emphasises the gift to you.'},{term:'今年もよろしく',note:'"Looking forward to this year together too." よろしく = please treat me well / looking forward to working with you.'}]
+  },
+];
+
+let idx = 0;
+let assessments = {};
+let hintsOpen = false;
+let answersShown = false;
+
+function render() {
+  const s = SCENARIOS[idx];
+  const pct = (idx / SCENARIOS.length) * 100;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = `${idx + 1} / ${SCENARIOS.length}`;
+  hintsOpen = false;
+  answersShown = false;
+  buildDots();
+
+  const chipsHtml = s.chips.map(c =>
+    `<button class="chip" onclick="insertChip(${JSON.stringify(c.jp)})">${c.jp}<span class="ce">${c.en}</span></button>`
+  ).join('');
+
+  const answersHtml = s.answers.map((a, i) =>
+    `<div class="answer-row">
+      <div class="answer-tag">${a.tag}</div>
+      <div class="answer-content">
+        <div class="answer-jp" onclick="speak(${JSON.stringify(a.jp)})">${a.jp}</div>
+        <div class="answer-ro">${a.ro}</div>
+        <div class="answer-en">${a.en}</div>
+      </div>
+    </div>`
+  ).join('');
+
+  const grammarHtml = s.grammar.map(g =>
+    `<div class="gram-row">
+      <div class="gram-term">${g.term}</div>
+      <div class="gram-note">${g.note}</div>
+    </div>`
+  ).join('');
+
+  const hintItems = s.hints.map(h => `<div class="hint-item">${h}</div>`).join('');
+
+  document.getElementById('card-area').innerHTML = `
+    <div class="wwys-card">
+      <div class="wc-top">
+        <div>
+          <div class="wc-num">Situation ${idx + 1} of ${SCENARIOS.length}</div>
+          <div class="wc-situation">${s.situation}</div>
+        </div>
+      </div>
+      <div class="wc-chips">${chipsHtml}</div>
+      <div class="wc-hints" id="wc-hints">${hintItems}</div>
+      <div class="wc-input">
+        <textarea class="wws-ta" id="wws-ta" placeholder="日本語で書いてください…" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+        <div class="wc-input-row">
+          <button class="btn btn-solid" onclick="showAnswers()">See answers →</button>
+          <button class="hint-toggle" onclick="toggleHints()">Hints</button>
+        </div>
+      </div>
+      <div class="wc-answers" id="wc-answers">
+        <div class="wc-answers-head">Model Answers — click any to hear it spoken</div>
+        ${answersHtml}
+        <div class="wc-grammar-head" style="padding:12px 26px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);border-bottom:1px solid var(--rule);border-top:1px solid var(--rule);background:var(--faint2)">Grammar Notes</div>
+        ${grammarHtml}
+      </div>
+      <div class="wc-assess" id="wc-assess">
+        <span class="assess-label">How did it go?</span>
+        <button class="assess-btn practice" onclick="assess('practice',this)">✗ Need practice</button>
+        <button class="assess-btn almost" onclick="assess('almost',this)">〜 Almost</button>
+        <button class="assess-btn got-it" onclick="assess('got-it',this)">✓ Got it</button>
+      </div>
+      <div class="wc-nav">
+        ${idx > 0 ? '<button class="btn btn-ghost" style="padding:8px 16px;font-size:12px" onclick="go(-1)">← Prev</button>' : ''}
+        <button class="btn btn-ghost" style="padding:8px 16px;font-size:12px" onclick="go(1)">Skip →</button>
+      </div>
+    </div>`;
+}
+
+function buildDots() {
+  const nav = document.getElementById('dot-nav');
+  nav.innerHTML = SCENARIOS.map((_, i) => {
+    const a = assessments[i];
+    const cls = i === idx ? 'prog-dot current' : a ? `prog-dot ${a}` : 'prog-dot';
+    return `<div class="${cls}" onclick="jumpTo(${i})"></div>`;
+  }).join('');
+}
+
+function toggleHints() {
+  hintsOpen = !hintsOpen;
+  const el = document.getElementById('wc-hints');
+  if (el) el.classList.toggle('open', hintsOpen);
+}
+
+function showAnswers() {
+  const ans = document.getElementById('wc-answers');
+  const assess = document.getElementById('wc-assess');
+  if (ans) ans.style.display = '';
+  if (assess) assess.style.display = 'flex';
+  answersShown = true;
+}
+
+function assess(val, el) {
+  assessments[idx] = val;
+  document.querySelectorAll('.assess-btn').forEach(b => b.classList.remove('chosen'));
+  el.classList.add('chosen');
+  buildDots();
+  if (idx < SCENARIOS.length - 1) {
+    setTimeout(() => go(1), 500);
+  } else {
+    setTimeout(() => showComplete(), 500);
+  }
+}
+
+function go(dir) {
+  idx = Math.max(0, Math.min(SCENARIOS.length - 1, idx + dir));
+  if (idx === SCENARIOS.length - 1 && dir > 0 && Object.keys(assessments).length === SCENARIOS.length) {
+    showComplete(); return;
+  }
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function jumpTo(i) { idx = i; render(); }
+
+function showComplete() {
+  let got = 0, almost = 0, practice = 0;
+  Object.values(assessments).forEach(v => {
+    if (v === 'got-it') got++;
+    else if (v === 'almost') almost++;
+    else practice++;
+  });
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('card-area').style.display = 'none';
+  const panel = document.getElementById('complete-panel');
+  panel.style.display = '';
+  document.getElementById('cp-got').textContent = got;
+  document.getElementById('cp-almost').textContent = almost;
+  document.getElementById('cp-practice').textContent = practice;
+}
+
+function restart() {
+  idx = 0; assessments = {};
+  document.getElementById('complete-panel').style.display = 'none';
+  document.getElementById('card-area').style.display = '';
+  render();
+}
+
+function insertChip(jp) {
+  const ta = document.getElementById('wws-ta');
+  if (!ta) return;
+  const pos = ta.selectionStart;
+  ta.value = ta.value.slice(0, pos) + jp + ta.value.slice(ta.selectionEnd);
+  ta.selectionStart = ta.selectionEnd = pos + jp.length;
+  ta.focus();
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.82;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+render();
+</script>
+</body>
+</html>

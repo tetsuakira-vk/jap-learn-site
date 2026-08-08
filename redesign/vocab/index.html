@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Vocabulary — Dictionary, Phrases & Numbers | Japanese Unlocked</title>
+<meta name="description" content="Free Japanese vocabulary reference — a searchable dictionary, everyday phrases, numbers and counters. Organised by JLPT level and topic.">
+<link rel="stylesheet" href="../style.css">
+<style>
+.hub-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink); gap: 0;
+  max-width: 820px; margin: 0 auto;
+}
+@media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
+.hub-card {
+  display: block; text-decoration: none; color: var(--ink);
+  padding: 28px 28px 32px;
+  border-right: 1px solid var(--rule);
+  transition: background .14s;
+}
+.hub-card:last-child { border-right: none; }
+.hub-card:hover { background: var(--faint); }
+.hc-jp { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; line-height: 1; }
+.hc-en { font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 8px; }
+.hc-desc { font-size: 13px; color: var(--mid); line-height: 1.65; }
+.hc-go { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 700; border-bottom: 1.5px solid var(--ink); padding-bottom: 1px; }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">›</span>Vocabulary</div>
+  <h1 class="page-h1">Vocabulary <span class="h1-jp">語彙</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">Dictionary</span>
+    <span class="meta-pill">Phrases</span>
+    <span class="meta-pill">Numbers</span>
+  </div>
+</header>
+<div style="max-width:820px;margin:0 auto;padding:0 0 60px">
+  <div class="hub-grid">
+    <a class="hub-card" href="/vocab/dictionary/">
+      <div class="hc-jp">辞書</div>
+      <div class="hc-en">Dictionary</div>
+      <div class="hc-desc">Search 500+ words by Japanese, romaji, or English. Readings, meanings, JLPT level, and part of speech.</div>
+      <span class="hc-go">Open dictionary →</span>
+    </a>
+    <a class="hub-card" href="/vocab/phrases/">
+      <div class="hc-jp">言葉</div>
+      <div class="hc-en">Everyday Phrases</div>
+      <div class="hc-desc">The phrases that actually come up in daily Japanese — greetings, politeness, situations, and more.</div>
+      <span class="hc-go">Browse phrases →</span>
+    </a>
+    <a class="hub-card" href="/vocab/numbers/">
+      <div class="hc-jp">数字</div>
+      <div class="hc-en">Numbers</div>
+      <div class="hc-desc">Cardinal numbers, ordinals, counters, dates, and times — with audio on every entry.</div>
+      <span class="hc-go">Study numbers →</span>
+    </a>
+  </div>
+</div>
+<div id="ju-footer"></div>
+<script src="../nav.js"></script>
+</body>
+</html>

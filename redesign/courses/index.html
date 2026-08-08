@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Practice Tools — Shadowing, Sentence Builder & More | Japanese Unlocked</title>
+<meta name="description" content="Free Japanese practice tools — shadowing trainer, immersive reader, sentence forge, and situational conversation practice. Tools for using Japanese, not just studying it.">
+<link rel="stylesheet" href="../style.css">
+<style>
+.hub-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border: 1.5px solid var(--ink); gap: 0;
+  max-width: 820px; margin: 0 auto;
+}
+@media (max-width: 560px) { .hub-grid { grid-template-columns: 1fr; } }
+.hub-card {
+  display: block; text-decoration: none; color: var(--ink);
+  padding: 28px 30px 32px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transition: background .14s;
+}
+.hub-card:nth-child(even) { border-right: none; }
+.hub-card:nth-last-child(-n+2):nth-child(odd),
+.hub-card:last-child { border-bottom: none; }
+.hub-card:nth-last-child(-n+2):nth-child(even) { border-bottom: none; }
+.hub-card:hover { background: var(--faint); }
+.hc-jp { font-family: var(--serif); font-size: 2.2rem; font-weight: 700; color: var(--accent); margin-bottom: 12px; line-height: 1; }
+.hc-en { font-size: 13px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; margin-bottom: 8px; }
+.hc-desc { font-size: 13px; color: var(--mid); line-height: 1.65; }
+.hc-go { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 700; border-bottom: 1.5px solid var(--ink); padding-bottom: 1px; }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+<header class="page-header">
+  <div class="breadcrumb"><a href="/">Home</a><span class="sep">›</span>Practice</div>
+  <h1 class="page-h1">Practice <span class="h1-jp">練習</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">Shadowing</span>
+    <span class="meta-pill">Reading</span>
+    <span class="meta-pill">Speaking</span>
+    <span class="meta-pill">Writing</span>
+  </div>
+</header>
+<div style="max-width:820px;margin:0 auto;padding:0 0 60px">
+  <div class="hub-grid">
+    <a class="hub-card" href="/courses/what-would-you-say/">
+      <div class="hc-jp">何と言う？</div>
+      <div class="hc-en">What Would You Say?</div>
+      <div class="hc-desc">Real situations, multiple ways to respond. Choose your answer and see why each option is right, wrong, or rude.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+    <a class="hub-card" href="/courses/shadowing/">
+      <div class="hc-jp">シャドウイング</div>
+      <div class="hc-en">Shadowing Trainer</div>
+      <div class="hc-desc">Listen and repeat — the fastest way to build natural rhythm and pronunciation. Native-speed audio with slowed playback.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+    <a class="hub-card" href="/courses/immersive-reader/">
+      <div class="hc-jp">読む</div>
+      <div class="hc-en">Immersive Reader</div>
+      <div class="hc-desc">Read Japanese text with on-demand furigana and translation. Tap any word to look it up without leaving the page.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+    <a class="hub-card" href="/courses/sentence-forge/">
+      <div class="hc-jp">文を作る</div>
+      <div class="hc-en">Sentence Forge</div>
+      <div class="hc-desc">Build sentences from components. Drag particles, verbs, and nouns into the right order — instant feedback on structure.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+    <a class="hub-card" href="/courses/conversation/">
+      <div class="hc-jp">会話</div>
+      <div class="hc-en">Conversation Practice</div>
+      <div class="hc-desc">Real Japanese conversations in four everyday situations — convenience store, izakaya, asking directions, hotel check-in. Type your answer and get instant feedback.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+    <a class="hub-card" href="/echo/">
+      <div class="hc-jp">影</div>
+      <div class="hc-en">Echo — Immersive Scenes</div>
+      <div class="hc-desc">Step into a scene. A character speaks, you work out what to say, then hear the answer. Thirty-seven everyday situations — cafes, stations, shrines, bars. Audio throughout.</div>
+      <span class="hc-go">Start →</span>
+    </a>
+  </div>
+</div>
+<div id="ju-footer"></div>
+<script src="../nav.js"></script>
+</body>
+</html>

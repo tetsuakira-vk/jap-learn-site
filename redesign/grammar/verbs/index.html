@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Verb Conjugation Guide — All Forms with Audio | Japanese Unlocked</title>
+<meta name="description" content="Complete Japanese verb conjugation guide. Group 1, 2, and irregular verbs — all N5 and N4 conjugation forms in one reference table with audio examples.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+/* ── Group badge ── */
+.group-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--ink); padding: 6px 14px; margin-bottom: 20px;
+}
+.gb-num  { font-family: var(--serif); font-size: 22px; font-weight: 700; line-height: 1; }
+.gb-divider { width: 1.5px; height: 20px; background: var(--rule); }
+.gb-info { font-size: 12px; }
+.gb-name { font-weight: 700; }
+.gb-sub  { color: var(--mid); font-size: 11px; }
+
+/* ── Conjugation table ── */
+.conj-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--rule); margin-bottom: 28px;
+  overflow-x: auto; display: block;
+}
+.conj-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); padding: 8px 12px; text-align: left;
+  background: var(--faint); border-bottom: 1.5px solid var(--rule);
+  white-space: nowrap;
+}
+.conj-table td {
+  padding: 10px 12px; border-bottom: 1px solid var(--rule); font-size: 13px;
+  vertical-align: top;
+}
+.conj-table tr:last-child td { border-bottom: none; }
+.conj-table .ct-form { font-weight: 700; white-space: nowrap; }
+.conj-table .ct-use  { color: var(--mid); font-size: 12px; }
+.conj-table .ct-jp   { font-family: var(--serif); font-size: 16px; cursor: pointer; transition: color 0.12s; }
+.conj-table .ct-jp:hover { color: var(--accent); }
+.conj-table .ct-neg  { color: var(--mid); font-size: 12px; font-family: var(--serif); }
+.conj-table tr.playing .ct-jp { color: var(--accent); }
+
+/* ── Rule box ── */
+.rule-box {
+  border: 1px solid var(--rule); padding: 16px 20px; margin-bottom: 20px;
+}
+.rule-box h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 10px; }
+.rule-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.rule-list li { font-size: 13px; display: flex; gap: 12px; align-items: baseline; }
+.rule-kana { font-family: var(--serif); font-size: 15px; font-weight: 700; width: 80px; flex-shrink: 0; }
+.rule-arrow { color: var(--accent); font-weight: 700; }
+
+/* ── Irregular table ── */
+.irreg-table {
+  width: 100%; border-collapse: collapse;
+  border: 1px solid var(--rule); margin-bottom: 28px;
+}
+.irreg-table th {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); padding: 8px 12px; text-align: left;
+  background: var(--faint); border-bottom: 1.5px solid var(--rule);
+}
+.irreg-table td {
+  padding: 10px 12px; border-bottom: 1px solid var(--rule);
+  font-size: 13px; font-family: var(--serif);
+}
+.irreg-table tr:last-child td { border-bottom: none; }
+.irreg-table .it-dict { font-size: 18px; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/grammar/">Grammar</a>
+    <span class="sep">›</span>
+    Verbs
+  </div>
+  <h1 class="page-h1">Verb Conjugation <span class="h1-jp">動詞活用</span></h1>
+  <div class="page-meta">
+    <span>Groups 1, 2 &amp; 3</span>
+    <span class="meta-pill">N5–N4</span>
+    <span class="meta-pill">All forms</span>
+  </div>
+</header>
+
+<nav class="section-nav" aria-label="Page sections">
+  <a href="#groups">Groups</a>
+  <a href="#group2">Group 2</a>
+  <a href="#group1">Group 1</a>
+  <a href="#irregular">Irregular</a>
+  <a href="#forms">All forms</a>
+</nav>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">Verb groups</p>
+    <ul class="sidebar-links">
+      <li><a href="#groups">Overview</a></li>
+      <li><a href="#group2">Group 2 — Ichidan</a></li>
+      <li><a href="#group1">Group 1 — Godan</a></li>
+      <li><a href="#irregular">Irregular (する/くる)</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Conjugation forms</p>
+    <ul class="sidebar-links">
+      <li><a href="#forms">All forms table</a></li>
+      <li><a href="#te-form">て-form rules</a></li>
+      <li><a href="#negative">Negative forms</a></li>
+      <li><a href="#potential">Potential form</a></li>
+      <li><a href="#passive">Passive form</a></li>
+      <li><a href="#causative">Causative form</a></li>
+      <li><a href="#volitional">Volitional form</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Related</p>
+    <ul class="sidebar-links">
+      <li><a href="/grammar/particles/">Particles</a></li>
+      <li><a href="/grammar/patterns/">Patterns</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <!-- ── GROUPS OVERVIEW ── -->
+    <section class="section" id="groups">
+      <div class="section-heading"><h2>The Three Verb Groups</h2><span class="sh-jp">動詞のグループ</span></div>
+      <div class="prose">
+        <p>Japanese verbs fall into three groups based on how they conjugate. Identifying the group is the first step to forming any conjugation correctly.</p>
+      </div>
+
+      <div class="rule-box" style="margin-bottom:16px">
+        <h4>Quick identification</h4>
+        <ul class="rule-list">
+          <li><span class="rule-kana">〜る (E/I sound)</span><span>→ Almost certainly Group 2 (ichidan): 食べ<strong>る</strong>、見<strong>る</strong>、起き<strong>る</strong></span></li>
+          <li><span class="rule-kana">〜う sound</span><span>→ Group 1 (godan): 書<strong>く</strong>、飲<strong>む</strong>、話<strong>す</strong>、待<strong>つ</strong>、買<strong>う</strong></span></li>
+          <li><span class="rule-kana">する / くる</span><span>→ Group 3 (irregular): する (to do), くる (to come)</span></li>
+        </ul>
+      </div>
+      <div class="prose">
+        <p><strong>Exceptions:</strong> Some verbs end in る but are Group 1 — 帰る (kaeru, to return), 走る (hashiru, to run), 知る (shiru, to know), 切る (kiru, to cut). These must be memorised individually.</p>
+      </div>
+    </section>
+
+    <!-- ── GROUP 2 ── -->
+    <section class="section" id="group2">
+      <div class="section-heading"><h2>Group 2 — Ichidan Verbs</h2><span class="sh-jp">一段動詞</span></div>
+
+      <div class="group-badge">
+        <div class="gb-num">G2</div>
+        <div class="gb-divider"></div>
+        <div class="gb-info"><div class="gb-name">Ichidan (一段)</div><div class="gb-sub">Drop る, add ending</div></div>
+      </div>
+
+      <div class="prose" style="margin-bottom:16px">
+        <p>Group 2 verbs all end in る, with the vowel before る being an e or i sound. To conjugate: <strong>drop the る, add the new ending.</strong> That's it — no stem changes.</p>
+      </div>
+
+      <div class="rule-box" style="margin-bottom:20px">
+        <h4>Pattern: drop る + add ending</h4>
+        <ul class="rule-list">
+          <li><span class="rule-kana">食べ<strong>る</strong></span><span>stem = <strong>食べ</strong> → 食べ<strong>ます</strong>、食べ<strong>て</strong>、食べ<strong>た</strong>、食べ<strong>ない</strong></span></li>
+          <li><span class="rule-kana">見<strong>る</strong></span><span>stem = <strong>見</strong> → 見<strong>ます</strong>、見<strong>て</strong>、見<strong>た</strong>、見<strong>ない</strong></span></li>
+          <li><span class="rule-kana">起き<strong>る</strong></span><span>stem = <strong>起き</strong> → 起き<strong>ます</strong>、起き<strong>て</strong>、起き<strong>た</strong>、起き<strong>ない</strong></span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── GROUP 1 ── -->
+    <section class="section" id="group1">
+      <div class="section-heading"><h2>Group 1 — Godan Verbs</h2><span class="sh-jp">五段動詞</span></div>
+
+      <div class="group-badge">
+        <div class="gb-num">G1</div>
+        <div class="gb-divider"></div>
+        <div class="gb-info"><div class="gb-name">Godan (五段)</div><div class="gb-sub">Final kana changes across the five vowel rows</div></div>
+      </div>
+
+      <div class="prose" style="margin-bottom:16px">
+        <p>Group 1 verbs conjugate by changing the <strong>final kana</strong> across different vowel rows (あ/い/う/え/お). The pattern differs by the verb's ending consonant — the table below shows each ending type.</p>
+      </div>
+
+      <div class="rule-box" style="margin-bottom:20px">
+        <h4>Stem changes by ending type</h4>
+        <ul class="rule-list">
+          <li><span class="rule-kana">〜く (書く)</span><span>か行: か・き・く・け・こ → 書か/書き/書く/書け/書こ</span></li>
+          <li><span class="rule-kana">〜ぐ (泳ぐ)</span><span>が行: が・ぎ・ぐ・げ・ご → 泳が/泳ぎ/泳ぐ/泳げ/泳ご</span></li>
+          <li><span class="rule-kana">〜す (話す)</span><span>さ行: さ・し・す・せ・そ → 話さ/話し/話す/話せ/話そ</span></li>
+          <li><span class="rule-kana">〜つ (待つ)</span><span>た行: た・ち・つ・て・と → 待た/待ち/待つ/待て/待と</span></li>
+          <li><span class="rule-kana">〜ぬ (死ぬ)</span><span>な行: な・に・ぬ・ね・の → 死な/死に/死ぬ/死ね/死の</span></li>
+          <li><span class="rule-kana">〜ぶ (遊ぶ)</span><span>ば行: ば・び・ぶ・べ・ぼ → 遊ば/遊び/遊ぶ/遊べ/遊ぼ</span></li>
+          <li><span class="rule-kana">〜む (飲む)</span><span>ま行: ま・み・む・め・も → 飲ま/飲み/飲む/飲め/飲も</span></li>
+          <li><span class="rule-kana">〜る (帰る)</span><span>ら行: ら・り・る・れ・ろ → 帰ら/帰り/帰る/帰れ/帰ろ</span></li>
+          <li><span class="rule-kana">〜う (買う)</span><span>わ行: わ・い・う・え・お → 買わ/買い/買う/買え/買お</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── IRREGULAR ── -->
+    <section class="section" id="irregular">
+      <div class="section-heading"><h2>Irregular Verbs</h2><span class="sh-jp">不規則動詞</span></div>
+      <div class="prose" style="margin-bottom:16px">
+        <p>Only two fully irregular verbs in Japanese: する (to do) and くる (to come). These must be memorised — they follow no predictable pattern. Many compound verbs use する (勉強する、運動する、結婚する).</p>
+      </div>
+
+      <table class="irreg-table">
+        <thead><tr>
+          <th>Form</th><th>する (to do)</th><th>くる (to come)</th>
+        </tr></thead>
+        <tbody>
+          <tr><td>Dictionary</td><td class="it-dict">する</td><td class="it-dict">くる</td></tr>
+          <tr><td>Masu (polite)</td><td>します</td><td>きます</td></tr>
+          <tr><td>Te-form</td><td>して</td><td>きて</td></tr>
+          <tr><td>Ta-form (past)</td><td>した</td><td>きた</td></tr>
+          <tr><td>Nai-form (neg)</td><td>しない</td><td>こない</td></tr>
+          <tr><td>Potential</td><td>できる</td><td>こられる</td></tr>
+          <tr><td>Passive</td><td>される</td><td>こられる</td></tr>
+          <tr><td>Causative</td><td>させる</td><td>こさせる</td></tr>
+          <tr><td>Volitional</td><td>しよう</td><td>こよう</td></tr>
+          <tr><td>Imperative</td><td>しろ / せよ</td><td>こい</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ── ALL FORMS ── -->
+    <section class="section" id="forms">
+      <div class="section-heading"><h2>All Conjugation Forms</h2><span class="sh-jp">全活用形</span></div>
+      <div class="prose" style="margin-bottom:16px">
+        <p>The table below shows all core forms for three example verbs — one from each group. Click any Japanese cell to hear it spoken.</p>
+      </div>
+
+      <div style="overflow-x:auto">
+        <table class="conj-table" id="conj-main">
+          <thead>
+            <tr>
+              <th>Form</th><th>Usage</th>
+              <th>食べる (G2)<br><span style="font-weight:400;font-style:italic">taberu — to eat</span></th>
+              <th>書く (G1)<br><span style="font-weight:400;font-style:italic">kaku — to write</span></th>
+              <th>する (G3)<br><span style="font-weight:400;font-style:italic">suru — to do</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="ct-form">Dictionary</td><td class="ct-use">Plain present / infinitive</td>
+              <td class="ct-jp" data-speak="食べる">食べる</td>
+              <td class="ct-jp" data-speak="書く">書く</td>
+              <td class="ct-jp" data-speak="する">する</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜ます</td><td class="ct-use">Polite present / future</td>
+              <td class="ct-jp" data-speak="食べます">食べます</td>
+              <td class="ct-jp" data-speak="書きます">書きます</td>
+              <td class="ct-jp" data-speak="します">します</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜ません</td><td class="ct-use">Polite negative</td>
+              <td class="ct-jp ct-neg" data-speak="食べません">食べません</td>
+              <td class="ct-jp ct-neg" data-speak="書きません">書きません</td>
+              <td class="ct-jp ct-neg" data-speak="しません">しません</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜ました</td><td class="ct-use">Polite past</td>
+              <td class="ct-jp" data-speak="食べました">食べました</td>
+              <td class="ct-jp" data-speak="書きました">書きました</td>
+              <td class="ct-jp" data-speak="しました">しました</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜ませんでした</td><td class="ct-use">Polite past negative</td>
+              <td class="ct-jp ct-neg" data-speak="食べませんでした">食べませんでした</td>
+              <td class="ct-jp ct-neg" data-speak="書きませんでした">書きませんでした</td>
+              <td class="ct-jp ct-neg" data-speak="しませんでした">しませんでした</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜て (te-form)</td><td class="ct-use">Connecting actions; requests; progressive</td>
+              <td class="ct-jp" data-speak="食べて">食べて</td>
+              <td class="ct-jp" data-speak="書いて">書いて</td>
+              <td class="ct-jp" data-speak="して">して</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜た (ta-form)</td><td class="ct-use">Plain past</td>
+              <td class="ct-jp" data-speak="食べた">食べた</td>
+              <td class="ct-jp" data-speak="書いた">書いた</td>
+              <td class="ct-jp" data-speak="した">した</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜ない</td><td class="ct-use">Plain negative</td>
+              <td class="ct-jp ct-neg" data-speak="食べない">食べない</td>
+              <td class="ct-jp ct-neg" data-speak="書かない">書かない</td>
+              <td class="ct-jp ct-neg" data-speak="しない">しない</td>
+            </tr>
+            <tr>
+              <td class="ct-form">〜なかった</td><td class="ct-use">Plain past negative</td>
+              <td class="ct-jp ct-neg" data-speak="食べなかった">食べなかった</td>
+              <td class="ct-jp ct-neg" data-speak="書かなかった">書かなかった</td>
+              <td class="ct-jp ct-neg" data-speak="しなかった">しなかった</td>
+            </tr>
+            <tr>
+              <td class="ct-form" id="potential">〜られる / 〜える</td><td class="ct-use">Potential — "can do"</td>
+              <td class="ct-jp" data-speak="食べられる">食べられる</td>
+              <td class="ct-jp" data-speak="書ける">書ける</td>
+              <td class="ct-jp" data-speak="できる">できる</td>
+            </tr>
+            <tr>
+              <td class="ct-form" id="passive">〜られる / 〜あれる</td><td class="ct-use">Passive — "is done to"</td>
+              <td class="ct-jp" data-speak="食べられる">食べられる</td>
+              <td class="ct-jp" data-speak="書かれる">書かれる</td>
+              <td class="ct-jp" data-speak="される">される</td>
+            </tr>
+            <tr>
+              <td class="ct-form" id="causative">〜させる / 〜あせる</td><td class="ct-use">Causative — "make/let someone do"</td>
+              <td class="ct-jp" data-speak="食べさせる">食べさせる</td>
+              <td class="ct-jp" data-speak="書かせる">書かせる</td>
+              <td class="ct-jp" data-speak="させる">させる</td>
+            </tr>
+            <tr>
+              <td class="ct-form" id="volitional">〜よう / 〜おう</td><td class="ct-use">Volitional — "let's…" / "shall we…"</td>
+              <td class="ct-jp" data-speak="食べよう">食べよう</td>
+              <td class="ct-jp" data-speak="書こう">書こう</td>
+              <td class="ct-jp" data-speak="しよう">しよう</td>
+            </tr>
+            <tr>
+              <td class="ct-form" id="te-form">〜ている</td><td class="ct-use">Progressive / state</td>
+              <td class="ct-jp" data-speak="食べている">食べている</td>
+              <td class="ct-jp" data-speak="書いている">書いている</td>
+              <td class="ct-jp" data-speak="している">している</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose">
+        <h3 id="te-form" style="scroll-margin-top:80px">て-form rules for Group 1</h3>
+        <p>The て-form of Group 1 verbs follows sound-change patterns (音便 onbin):</p>
+        <ul>
+          <li>〜く → いて (書く → 書いて) — exception: 行く → 行って</li>
+          <li>〜ぐ → いで (泳ぐ → 泳いで)</li>
+          <li>〜す → して (話す → 話して)</li>
+          <li>〜つ・る・う → って (待つ → 待って、帰る → 帰って、買う → 買って)</li>
+          <li>〜ぬ・ぶ・む → んで (死ぬ → 死んで、遊ぶ → 遊んで、飲む → 飲んで)</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+  function speak(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP'; u.rate = 0.85;
+    window.speechSynthesis.speak(u);
+  }
+
+  document.addEventListener('click', function (e) {
+    var cell = e.target.closest('.ct-jp[data-speak]');
+    if (cell) {
+      speak(cell.dataset.speak);
+      var row = cell.closest('tr');
+      if (row) {
+        row.classList.add('playing');
+        setTimeout(function () { row.classList.remove('playing'); }, 1200);
+      }
+    }
+  });
+
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var secLinks  = document.querySelectorAll('.section-nav a');
+  var sections  = document.querySelectorAll('.section[id]');
+
+  function setActive(id) {
+    sideLinks.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+    secLinks.forEach(function (a)  { a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+  }
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

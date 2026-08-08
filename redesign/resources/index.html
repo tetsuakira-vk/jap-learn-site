@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Learning Resources — Books, Tools, Widgets & the Japanese Unlocked Course | Japanese Uncovered</title>
+<meta name="description" content="The best Japanese learning resources in one place — the Japanese Unlocked beginner course, recommended textbooks, free tools, Scriptable iPhone widgets, and more.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.res-shell { max-width: 860px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Book hero ─────────────────────────────────────── */
+.book-hero {
+  border: 1.5px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+@media (max-width: 600px) { .book-hero { grid-template-columns: 1fr; } }
+
+.book-hero-left {
+  padding: 32px 32px 28px;
+  border-right: 1px solid var(--rule);
+  background: var(--ink);
+  color: var(--ground);
+}
+[data-theme="dark"] .book-hero-left { background: var(--faint); color: var(--ink); }
+
+.book-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 12px;
+}
+.book-title {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 700;
+  line-height: 1.25; margin-bottom: 10px;
+  color: var(--ground);
+}
+[data-theme="dark"] .book-title { color: var(--ink); }
+.book-subtitle {
+  font-size: 13px; opacity: .7; margin-bottom: 22px; line-height: 1.65;
+}
+.book-prices {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px;
+}
+.book-price-pill {
+  font-size: 12px; font-weight: 700; padding: 4px 12px;
+  border: 1.5px solid rgba(255,255,255,.3);
+  color: var(--ground);
+}
+[data-theme="dark"] .book-price-pill { border-color: var(--rule); color: var(--ink); }
+.book-formats {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.book-fmt {
+  display: inline-block; text-decoration: none;
+  padding: 9px 16px; font-size: 12px; font-weight: 700; letter-spacing: .04em;
+  transition: opacity .12s; border: 1.5px solid rgba(255,255,255,.4); color: rgba(255,255,255,.9);
+}
+.book-fmt:hover { opacity: .8; }
+.book-fmt.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+[data-theme="dark"] .book-fmt { border-color: var(--rule); color: var(--mid); }
+[data-theme="dark"] .book-fmt.primary { color: #fff; border-color: var(--accent); }
+
+.book-hero-right {
+  padding: 28px 28px 24px;
+  background: var(--faint);
+}
+.book-desc {
+  font-size: 14px; line-height: 1.75; color: var(--ink);
+  margin-bottom: 18px;
+}
+.book-feature-list {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.book-feature-list li {
+  font-size: 13px; padding-left: 20px; position: relative; color: var(--ink);
+}
+.book-feature-list li::before {
+  content: '✓'; position: absolute; left: 0;
+  color: #22c55e; font-weight: 700;
+}
+
+/* Downloads */
+.dl-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border: 1.5px solid var(--ink); border-top: none; gap: 0;
+}
+@media (max-width: 480px) { .dl-grid { grid-template-columns: 1fr; } }
+.dl-card {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 18px 20px; border-right: 1px solid var(--rule);
+  text-decoration: none; color: var(--ink);
+  background: var(--ground); transition: background .12s;
+}
+.dl-card:last-child { border-right: none; }
+.dl-card:hover { background: var(--faint); }
+.dl-icon { font-size: 1.5rem; flex-shrink: 0; line-height: 1.2; }
+.dl-title { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.dl-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.dl-meta { font-size: 11px; font-weight: 700; color: var(--mid); margin-top: 4px; letter-spacing: .04em; }
+
+/* ── Section header ───────────────────────────────── */
+.sect-head {
+  padding: 12px 0 10px;
+  border-bottom: 1.5px solid var(--ink);
+  margin: 36px 0 0;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.sect-head h2 { font-family: var(--serif); font-size: 1.1rem; font-weight: 700; margin: 0; }
+.sect-head-sub { font-size: 12px; color: var(--mid); }
+.sect-disclaimer {
+  font-size: 11px; color: var(--mid); margin: 10px 0 16px;
+  padding: 8px 12px; border-left: 3px solid var(--rule);
+}
+
+/* ── Shop cards ───────────────────────────────────── */
+.shop-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border: 1.5px solid var(--ink); gap: 0;
+}
+@media (max-width: 560px) { .shop-grid { grid-template-columns: 1fr; } }
+.shop-card {
+  display: block; text-decoration: none; color: var(--ink);
+  padding: 18px 20px 20px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground); transition: background .12s;
+}
+.shop-card:nth-child(even) { border-right: none; }
+.shop-card:hover { background: var(--faint); }
+.shop-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 8px; }
+.shop-tag {
+  font-size: 9px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; padding: 2px 7px;
+  border: 1px solid var(--rule); color: var(--mid);
+}
+.shop-tag--best { border-color: #f59e0b; color: #b45309; }
+.shop-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; line-height: 1.35; }
+.shop-desc { font-size: 12px; line-height: 1.6; color: var(--mid); margin-bottom: 12px; }
+.shop-buy {
+  display: inline-block; font-size: 11px; font-weight: 700;
+  color: var(--ink); border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 1px; letter-spacing: .04em;
+}
+
+/* ── Resource grid (free tools) ───────────────────── */
+.res-sub-head {
+  padding: 10px 0 8px;
+  border-bottom: 1px solid var(--rule);
+  margin: 20px 0 0;
+  font-size: 11px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--mid);
+}
+.res-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  border: 1.5px solid var(--ink); border-top: none; gap: 0;
+}
+@media (max-width: 500px) { .res-grid { grid-template-columns: 1fr; } }
+.res-card {
+  display: block; text-decoration: none; color: var(--ink);
+  padding: 14px 18px; border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  background: var(--ground); transition: background .12s;
+}
+.res-card:nth-child(even) { border-right: none; }
+.res-card:last-child, .res-card:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+.res-card:hover { background: var(--faint); }
+.res-card-name { font-size: 13px; font-weight: 700; margin-bottom: 3px; }
+.res-card-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+/* ── Widgets ─────────────────────────────────────── */
+.widget-demo-bar {
+  padding: 10px 18px;
+  background: var(--ink); color: var(--ground);
+  font-size: 11px; font-weight: 700; letter-spacing: .08em;
+  text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--ink); border-bottom: none;
+}
+.widget-demo-date { color: rgba(255,255,255,.45); font-weight: 400; }
+.widget-screen {
+  border: 1.5px solid var(--ink);
+  background: var(--faint); padding: 20px;
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+.wd-widget {
+  background: #0e0e10; color: #fff;
+  padding: 14px 16px 12px;
+  display: flex; flex-direction: column;
+  font-family: var(--sans);
+}
+.wd-small { width: 148px; min-height: 148px; }
+.wd-medium { width: 308px; min-height: 148px; }
+.wd-lbl { font-size: 7px; font-weight: 700; color: #c0392b; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 8px; }
+.wd-jp-big { font-size: 44px; font-weight: 700; line-height: 1; }
+.wd-rd { font-size: 12px; color: rgba(255,255,255,.45); }
+.wd-en { font-size: 14px; font-weight: 500; margin-top: 6px; }
+.wd-jp-phrase { font-size: 19px; font-weight: 700; line-height: 1.3; }
+.wd-rd-italic { font-style: italic; font-size: 12px; color: rgba(255,255,255,.4); margin-top: 3px; }
+.wd-en-phrase { font-size: 13px; color: rgba(255,255,255,.8); margin-top: 5px; }
+.wd-k { font-size: 52px; font-weight: 700; line-height: 1; }
+.wd-readings { font-size: 10px; color: rgba(255,255,255,.5); }
+.wd-foot { font-size: 7px; color: rgba(255,255,255,.2); margin-top: auto; padding-top: 6px; }
+.widget-cap { font-size: 12px; color: var(--mid); padding: 8px 0 0; font-style: italic; }
+
+.script-block { border: 1.5px solid var(--ink); border-top: none; }
+.script-head {
+  padding: 11px 18px;
+  background: var(--faint); border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+}
+.script-name { font-size: 13px; font-weight: 700; }
+.script-size { font-size: 11px; color: var(--mid); margin-right: auto; }
+.copy-btn {
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  padding: 5px 12px; cursor: pointer;
+  background: none; border: 1.5px solid var(--ink); color: var(--ink);
+  font-family: var(--sans); transition: background .12s, color .12s;
+  white-space: nowrap;
+}
+.copy-btn:hover { background: var(--ink); color: var(--ground); }
+.copy-btn.copied { background: #22c55e; border-color: #22c55e; color: #fff; }
+.script-body pre {
+  margin: 0; padding: 16px 18px;
+  font-size: 11px; line-height: 1.6;
+  overflow-x: auto;
+  background: var(--ground); color: var(--ink);
+}
+
+.setup-steps {
+  border: 1.5px solid var(--ink); border-top: none;
+  padding: 20px 22px;
+  background: var(--faint);
+}
+.setup-steps ol { margin: 0; padding-left: 22px; }
+.setup-steps li { font-size: 14px; line-height: 1.8; }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    Resources
+  </div>
+  <h1 class="page-h1">Resources <span class="h1-jp">学習リソース</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">Books &amp; Course</span>
+    <span class="meta-pill">Free Tools</span>
+    <span class="meta-pill">iPhone Widgets</span>
+  </div>
+</header>
+
+<div class="res-shell">
+
+  <!-- ── BOOK HERO ─────────────────────────────────── -->
+  <div class="book-hero">
+    <div class="book-hero-left">
+      <div class="book-eyebrow">Japanese Unlocked</div>
+      <div class="book-title">The Beginner Course That Gets You to N5 — Fast</div>
+      <div class="book-subtitle">Six structured modules covering hiragana, katakana, core vocabulary, grammar, and the ~100 most important kanji. Written for absolute beginners.</div>
+      <div class="book-prices">
+        <span class="book-price-pill">PDF from £1.99</span>
+        <span class="book-price-pill">Kindle from £3.72</span>
+        <span class="book-price-pill">Paperback £18.63</span>
+      </div>
+      <div class="book-formats">
+        <a class="book-fmt primary" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/67c16a2c-0233-4b0c-9b5f-c07418dae924" target="_blank" rel="noopener">PDF from £1.99 →</a>
+        <a class="book-fmt" href="https://www.amazon.co.uk/dp/B0GX2XWK43" target="_blank" rel="noopener">Kindle eBook →</a>
+        <a class="book-fmt" href="https://www.amazon.co.uk/dp/B0H65CPT1Y/ref=tmm_pap_swatch_0" target="_blank" rel="noopener">Paperback →</a>
+      </div>
+    </div>
+    <div class="book-hero-right">
+      <p class="book-desc">If you're at the very beginning — no hiragana, no vocabulary — this is the starting point. Everything in the N5 vocab lists and mock tests on this site maps directly to what's covered in the six modules.</p>
+      <ul class="book-feature-list">
+        <li>Hiragana &amp; katakana from scratch</li>
+        <li>~800 N5 vocabulary items in context</li>
+        <li>Core grammar patterns with examples</li>
+        <li>~100 essential kanji with mnemonics</li>
+        <li>Six self-paced modules, no account needed</li>
+        <li>Free Anki deck &amp; reference PDF included</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Free downloads sit directly under the book hero -->
+  <div class="dl-grid">
+    <a class="dl-card" href="/downloads/japanese-unlocked-flashcards.csv" download>
+      <div>
+        <div class="dl-title">Free Anki Flashcard Deck</div>
+        <div class="dl-desc">200+ cards — hiragana, katakana, core vocabulary, particles and kanji. Import into Anki: File → Import → select CSV.</div>
+        <div class="dl-meta">CSV · Free · No sign-up</div>
+      </div>
+    </a>
+    <a class="dl-card" href="/downloads/japanese-unlocked-reference-pack.pdf" download>
+      <div>
+        <div class="dl-title">Free Reference Pack PDF</div>
+        <div class="dl-desc">Grammar tables, verb conjugations, particle cheat sheets, and the most common kanji at a glance. Referenced across all six modules.</div>
+        <div class="dl-meta">PDF · Free · No sign-up</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- ── RECOMMENDED BOOKS ──────────────────────────── -->
+  <div class="sect-head">
+    <h2>Recommended books &amp; textbooks</h2>
+    <span class="sect-head-sub">Affiliate links — costs you nothing extra, supports the site</span>
+  </div>
+  <div class="sect-disclaimer">Links marked "View on Amazon" are affiliate links. Only books genuinely worth buying are listed here.</div>
+
+  <div class="shop-grid">
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=genki+1+elementary+japanese+textbook&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag shop-tag--best">Bestseller</span><span class="shop-tag">N5</span></div>
+      <div class="shop-title">Genki I — Elementary Japanese</div>
+      <div class="shop-desc">The gold standard beginner textbook, used in universities worldwide. Hiragana, katakana, N5 grammar and vocabulary with clear explanations and exercises.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=genki+2+elementary+japanese+textbook&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag shop-tag--best">Bestseller</span><span class="shop-tag">N4</span></div>
+      <div class="shop-title">Genki II — Elementary Japanese</div>
+      <div class="shop-desc">Picks up where Genki I ends — N4 grammar, reading passages, and conversational patterns. Essential if you're working through the series.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=dictionary+of+basic+japanese+grammar+makino&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag">Reference</span><span class="shop-tag">N5–N4</span></div>
+      <div class="shop-title">Dictionary of Basic Japanese Grammar</div>
+      <div class="shop-desc">The grammar reference every serious learner ends up owning. ~200 grammar points with clear explanations, natural examples, and notes on common mistakes.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=tobira+intermediate+japanese&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag">Textbook</span><span class="shop-tag">N3–N2</span></div>
+      <div class="shop-title">Tobira — Gateway to Advanced Japanese</div>
+      <div class="shop-desc">The standard bridge from intermediate to advanced. Real cultural topics, complex grammar, and authentic reading practice. Pick up after Genki II.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=nihongo+so-matome+n5+jlpt&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag">JLPT Prep</span><span class="shop-tag">N5</span></div>
+      <div class="shop-title">Nihongo Sōmatome N5</div>
+      <div class="shop-desc">Six-week JLPT N5 prep covering grammar, vocabulary, kanji, reading, and listening. Short daily lessons — great alongside self-study.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+    <a class="shop-card" href="https://www.amazon.co.uk/s?k=remembering+the+kanji+heisig&tag=tetsuakira-21" target="_blank" rel="noopener">
+      <div class="shop-tags"><span class="shop-tag">Kanji</span></div>
+      <div class="shop-title">Remembering the Kanji — Heisig</div>
+      <div class="shop-desc">Mnemonic-based method for all 2000+ joyo kanji. Controversial but highly effective — teaches meanings fast, readings separately later.</div>
+      <span class="shop-buy">View on Amazon →</span>
+    </a>
+  </div>
+
+  <!-- ── FREE TOOLS ──────────────────────────────────── -->
+  <div class="sect-head">
+    <h2>Free tools &amp; sites</h2>
+  </div>
+
+  <div class="res-sub-head">Dictionaries</div>
+  <div class="res-grid">
+    <a class="res-card" href="/vocab/dictionary/">
+      <div class="res-card-name">Japanese Uncovered Dictionary</div>
+      <div class="res-card-desc">Search any word, kanji, or romaji — readings, meanings, JLPT level, part of speech. Free, no login.</div>
+    </a>
+    <a class="res-card" href="https://jisho.org" target="_blank" rel="noopener">
+      <div class="res-card-name">Jisho.org</div>
+      <div class="res-card-desc">The best free Japanese–English dictionary online. Search by kanji, kana, romaji, or English. Includes stroke order and JLPT tags.</div>
+    </a>
+  </div>
+
+  <div class="res-sub-head">Grammar</div>
+  <div class="res-grid">
+    <a class="res-card" href="https://guidetojapanese.org" target="_blank" rel="noopener">
+      <div class="res-card-name">Tae Kim's Guide to Japanese</div>
+      <div class="res-card-desc">The definitive free grammar reference. Covers everything from particles to complex verb forms. Read this before paying for a grammar textbook.</div>
+    </a>
+    <a class="res-card" href="/grammar/patterns/">
+      <div class="res-card-name">Grammar Patterns on this site</div>
+      <div class="res-card-desc">N5–N3 grammar patterns with explanations and examples, organised by level.</div>
+    </a>
+  </div>
+
+  <div class="res-sub-head">Flashcards &amp; vocabulary</div>
+  <div class="res-grid">
+    <a class="res-card" href="https://apps.ankiweb.net" target="_blank" rel="noopener">
+      <div class="res-card-name">Anki</div>
+      <div class="res-card-desc">The best spaced-repetition flashcard app. Free on desktop, paid on iOS. Import the deck above to get started immediately.</div>
+    </a>
+    <a class="res-card" href="https://www.wanikani.com" target="_blank" rel="noopener">
+      <div class="res-card-name">WaniKani</div>
+      <div class="res-card-desc">Structured kanji and vocabulary SRS using mnemonics. Free to level 3, then subscription. Highly regarded for kanji retention.</div>
+    </a>
+  </div>
+
+  <div class="res-sub-head">Reading &amp; listening</div>
+  <div class="res-grid">
+    <a class="res-card" href="https://www3.nhk.or.jp/news/easy/" target="_blank" rel="noopener">
+      <div class="res-card-name">NHK Web Easy</div>
+      <div class="res-card-desc">Real Japanese news at a simplified level — furigana on all kanji, shorter sentences. Best free reading practice for N4–N3 learners.</div>
+    </a>
+    <a class="res-card" href="https://www.youtube.com/@comprehensiblejapanese" target="_blank" rel="noopener">
+      <div class="res-card-name">Comprehensible Japanese</div>
+      <div class="res-card-desc">High-quality immersion videos levelled from absolute beginner to advanced. Slow, clear speech with on-screen Japanese. Free on YouTube.</div>
+    </a>
+  </div>
+
+  <!-- ── WIDGETS ─────────────────────────────────────── -->
+  <div class="sect-head">
+    <h2>iPhone home screen widgets</h2>
+    <span class="sect-head-sub">Scriptable · Free · iOS</span>
+  </div>
+  <p style="font-size:14px;line-height:1.75;margin:12px 0 20px;color:var(--mid)">Put Japanese on your home screen. A new word, phrase, or kanji every morning — glance at your phone, absorb a little Japanese, build a habit without thinking about it. Powered by <a href="https://scriptable.app" target="_blank" rel="noopener" style="color:var(--ink);font-weight:600">Scriptable</a>, a free iOS app that runs JavaScript as a widget.</p>
+
+  <div class="widget-demo-bar">
+    Live preview — <span class="widget-demo-date" id="wd-date"></span>
+  </div>
+  <div class="widget-screen">
+    <div class="wd-widget wd-small">
+      <div class="wd-lbl">WORD OF THE DAY</div>
+      <div class="wd-jp-big" id="wd-word-jp"></div>
+      <div class="wd-rd" id="wd-word-rd"></div>
+      <div class="wd-en" id="wd-word-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+    <div class="wd-widget wd-medium">
+      <div class="wd-lbl">PHRASE OF THE DAY</div>
+      <div class="wd-jp-phrase" id="wd-phrase-jp"></div>
+      <div class="wd-rd-italic" id="wd-phrase-rd"></div>
+      <div class="wd-en-phrase" id="wd-phrase-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+    <div class="wd-widget wd-small">
+      <div class="wd-lbl">KANJI</div>
+      <div class="wd-k" id="wd-kanji-k"></div>
+      <div class="wd-readings" id="wd-kanji-readings"></div>
+      <div class="wd-en" id="wd-kanji-en"></div>
+      <div class="wd-foot">japaneseunlocked.com</div>
+    </div>
+  </div>
+  <p class="widget-cap">↑ Same date-seeded logic as the scripts below — this is exactly what today's widgets show.</p>
+
+  <div class="sect-head" style="margin-top:28px"><h2>Setup — do this once</h2></div>
+  <div class="setup-steps">
+    <ol>
+      <li>Download <strong><a href="https://apps.apple.com/gb/app/scriptable/id1405459188" target="_blank" rel="noopener">Scriptable</a></strong> from the App Store — it's free</li>
+      <li>Open Scriptable, tap <strong>+</strong> top right → paste the script you want → rename it → tap <strong>Done</strong></li>
+      <li>Long-press your home screen → tap <strong>+</strong> → search <strong>Scriptable</strong> → choose a size</li>
+      <li>Long-press the widget → <strong>Edit Widget</strong> → set Script to the one you saved → set <strong>When Interacting</strong> to <strong>Run Script</strong></li>
+    </ol>
+  </div>
+
+  <!-- Script 1 -->
+  <div class="sect-head" style="margin-top:28px"><h2>Script 1 — Word of the Day</h2></div>
+  <div class="script-block">
+    <div class="script-head">
+      <span class="script-name">WordOfTheDay.js</span>
+      <span class="script-size">Small widget</span>
+      <button class="copy-btn" onclick="copyScript(this)">Copy</button>
+    </div>
+    <div class="script-body"><pre>// Japanese Word of the Day — japaneseunlocked.com
+const WORDS = [
+  {jp:"水",rd:"みず",en:"water"},{jp:"火",rd:"ひ",en:"fire"},
+  {jp:"山",rd:"やま",en:"mountain"},{jp:"川",rd:"かわ",en:"river"},
+  {jp:"空",rd:"そら",en:"sky"},{jp:"海",rd:"うみ",en:"sea"},
+  {jp:"風",rd:"かぜ",en:"wind"},{jp:"花",rd:"はな",en:"flower"},
+  {jp:"食べる",rd:"たべる",en:"to eat"},{jp:"飲む",rd:"のむ",en:"to drink"},
+  {jp:"見る",rd:"みる",en:"to see"},{jp:"話す",rd:"はなす",en:"to speak"},
+  {jp:"行く",rd:"いく",en:"to go"},{jp:"来る",rd:"くる",en:"to come"},
+  {jp:"大きい",rd:"おおきい",en:"big"},{jp:"小さい",rd:"ちいさい",en:"small"},
+  {jp:"楽しい",rd:"たのしい",en:"fun"},{jp:"新しい",rd:"あたらしい",en:"new"},
+  {jp:"学校",rd:"がっこう",en:"school"},{jp:"友達",rd:"ともだち",en:"friend"},
+  {jp:"先生",rd:"せんせい",en:"teacher"},{jp:"電車",rd:"でんしゃ",en:"train"},
+  {jp:"日本語",rd:"にほんご",en:"Japanese"},{jp:"勉強",rd:"べんきょう",en:"study"},
+  {jp:"心",rd:"こころ",en:"heart"},{jp:"夢",rd:"ゆめ",en:"dream"},
+];
+const d = new Date();
+const seed = d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+const word = WORDS[seed % WORDS.length];
+const w = new ListWidget();
+w.backgroundColor = new Color("#0e0e10");
+w.setPadding(14,16,12,16);
+const lbl = w.addText("WORD OF THE DAY");
+lbl.font = Font.boldSystemFont(7); lbl.textColor = new Color("#c0392b"); lbl.leftAlignText();
+w.addSpacer(8);
+const jp = w.addText(word.jp);
+jp.font = Font.boldSystemFont(42); jp.textColor = Color.white();
+jp.leftAlignText(); jp.minimumScaleFactor = 0.4;
+const rd = w.addText(word.rd);
+rd.font = Font.systemFont(13); rd.textColor = new Color("#ffffff80"); rd.leftAlignText();
+w.addSpacer(6);
+const en = w.addText(word.en);
+en.font = Font.mediumSystemFont(15); en.textColor = Color.white(); en.leftAlignText();
+w.addSpacer();
+const foot = w.addText("japaneseunlocked.com");
+foot.font = Font.systemFont(7); foot.textColor = new Color("#ffffff30"); foot.leftAlignText();
+Script.setWidget(w); Script.complete();
+if(config.runsInApp) w.presentSmall();</pre></div>
+  </div>
+
+  <!-- Script 2 -->
+  <div class="sect-head" style="margin-top:28px"><h2>Script 2 — Phrase of the Day</h2></div>
+  <div class="script-block">
+    <div class="script-head">
+      <span class="script-name">PhraseOfTheDay.js</span>
+      <span class="script-size">Medium widget recommended</span>
+      <button class="copy-btn" onclick="copyScript(this)">Copy</button>
+    </div>
+    <div class="script-body"><pre>// Japanese Phrase of the Day — japaneseunlocked.com
+const PHRASES = [
+  {jp:"ありがとうございます",rd:"arigatou gozaimasu",en:"Thank you very much"},
+  {jp:"すみません",rd:"sumimasen",en:"Excuse me / Sorry"},
+  {jp:"おはようございます",rd:"ohayou gozaimasu",en:"Good morning"},
+  {jp:"こんにちは",rd:"konnichiwa",en:"Hello / Good afternoon"},
+  {jp:"はじめまして",rd:"hajimemashite",en:"Nice to meet you"},
+  {jp:"よろしくお願いします",rd:"yoroshiku onegaishimasu",en:"Please look after me"},
+  {jp:"いただきます",rd:"itadakimasu",en:"(said before eating)"},
+  {jp:"大丈夫ですか？",rd:"daijoubu desu ka?",en:"Are you okay?"},
+  {jp:"わかりません",rd:"wakarimasen",en:"I don't understand"},
+  {jp:"もう一度お願いします",rd:"mou ichido onegaishimasu",en:"Please say that again"},
+  {jp:"いくらですか？",rd:"ikura desu ka?",en:"How much is it?"},
+  {jp:"日本語を勉強しています",rd:"nihongo wo benkyou shite imasu",en:"I'm studying Japanese"},
+  {jp:"頑張ってください",rd:"ganbatte kudasai",en:"Good luck / Do your best"},
+  {jp:"また明日",rd:"mata ashita",en:"See you tomorrow"},
+  {jp:"ちょっと待ってください",rd:"chotto matte kudasai",en:"Please wait a moment"},
+];
+const d = new Date();
+const seed = d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+const phrase = PHRASES[seed % PHRASES.length];
+const w = new ListWidget();
+w.backgroundColor = new Color("#0e0e10"); w.setPadding(14,16,12,16);
+const lbl = w.addText("PHRASE OF THE DAY");
+lbl.font = Font.boldSystemFont(7); lbl.textColor = new Color("#c0392b"); lbl.leftAlignText();
+w.addSpacer(10);
+const jp = w.addText(phrase.jp);
+jp.font = Font.boldSystemFont(20); jp.textColor = Color.white();
+jp.leftAlignText(); jp.minimumScaleFactor = 0.5;
+w.addSpacer(4);
+const rd = w.addText(phrase.rd);
+rd.font = Font.italicSystemFont(12); rd.textColor = new Color("#ffffff55"); rd.leftAlignText();
+w.addSpacer(6);
+const en = w.addText(phrase.en);
+en.font = Font.mediumSystemFont(14); en.textColor = new Color("#ffffffcc"); en.leftAlignText();
+w.addSpacer();
+const foot = w.addText("japaneseunlocked.com");
+foot.font = Font.systemFont(7); foot.textColor = new Color("#ffffff30"); foot.leftAlignText();
+Script.setWidget(w); Script.complete();
+if(config.runsInApp) w.presentMedium();</pre></div>
+  </div>
+
+  <!-- Script 3 -->
+  <div class="sect-head" style="margin-top:28px"><h2>Script 3 — Kanji of the Day</h2></div>
+  <div class="script-block">
+    <div class="script-head">
+      <span class="script-name">KanjiOfTheDay.js</span>
+      <span class="script-size">Small widget</span>
+      <button class="copy-btn" onclick="copyScript(this)">Copy</button>
+    </div>
+    <div class="script-body"><pre>// Japanese Kanji of the Day — japaneseunlocked.com
+const KANJI = [
+  {k:"日",on:"ニチ",kun:"ひ",en:"sun / day"},{k:"月",on:"ゲツ",kun:"つき",en:"moon / month"},
+  {k:"火",on:"カ",kun:"ひ",en:"fire"},{k:"水",on:"スイ",kun:"みず",en:"water"},
+  {k:"木",on:"モク",kun:"き",en:"tree"},{k:"山",on:"サン",kun:"やま",en:"mountain"},
+  {k:"川",on:"セン",kun:"かわ",en:"river"},{k:"人",on:"ジン",kun:"ひと",en:"person"},
+  {k:"手",on:"シュ",kun:"て",en:"hand"},{k:"目",on:"モク",kun:"め",en:"eye"},
+  {k:"大",on:"ダイ",kun:"おお",en:"big"},{k:"小",on:"ショウ",kun:"ちい",en:"small"},
+  {k:"上",on:"ジョウ",kun:"うえ",en:"above"},{k:"下",on:"カ",kun:"した",en:"below"},
+  {k:"本",on:"ホン",kun:"もと",en:"book"},{k:"国",on:"コク",kun:"くに",en:"country"},
+  {k:"年",on:"ネン",kun:"とし",en:"year"},{k:"学",on:"ガク",kun:"まな",en:"study"},
+  {k:"生",on:"セイ",kun:"いき",en:"life"},{k:"力",on:"リョク",kun:"ちから",en:"power"},
+];
+const d = new Date();
+const seed = d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+const kanji = KANJI[seed % KANJI.length];
+const w = new ListWidget();
+w.backgroundColor = new Color("#0e0e10"); w.setPadding(12,14,10,14);
+const lbl = w.addText("KANJI");
+lbl.font = Font.boldSystemFont(7); lbl.textColor = new Color("#c0392b"); lbl.leftAlignText();
+w.addSpacer(4);
+const k = w.addText(kanji.k);
+k.font = Font.boldSystemFont(52); k.textColor = Color.white();
+k.leftAlignText(); k.minimumScaleFactor = 0.4;
+const readings = w.addText(kanji.on+" · "+kanji.kun);
+readings.font = Font.systemFont(10); readings.textColor = new Color("#ffffff60"); readings.leftAlignText();
+w.addSpacer(3);
+const en = w.addText(kanji.en);
+en.font = Font.mediumSystemFont(13); en.textColor = Color.white(); en.leftAlignText();
+w.addSpacer();
+const foot = w.addText("japaneseunlocked.com");
+foot.font = Font.systemFont(7); foot.textColor = new Color("#ffffff30"); foot.leftAlignText();
+Script.setWidget(w); Script.complete();
+if(config.runsInApp) w.presentSmall();</pre></div>
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+function copyScript(btn) {
+  var pre = btn.closest('.script-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(function() {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(function() { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+</script>
+<script>
+(function(){
+  var WORDS=[
+    {jp:"水",rd:"みず",en:"water"},{jp:"火",rd:"ひ",en:"fire"},
+    {jp:"山",rd:"やま",en:"mountain"},{jp:"川",rd:"かわ",en:"river"},
+    {jp:"空",rd:"そら",en:"sky"},{jp:"海",rd:"うみ",en:"sea"},
+    {jp:"風",rd:"かぜ",en:"wind"},{jp:"花",rd:"はな",en:"flower"},
+    {jp:"食べる",rd:"たべる",en:"to eat"},{jp:"飲む",rd:"のむ",en:"to drink"},
+    {jp:"見る",rd:"みる",en:"to see"},{jp:"話す",rd:"はなす",en:"to speak"},
+    {jp:"行く",rd:"いく",en:"to go"},{jp:"来る",rd:"くる",en:"to come"},
+    {jp:"大きい",rd:"おおきい",en:"big"},{jp:"小さい",rd:"ちいさい",en:"small"},
+    {jp:"楽しい",rd:"たのしい",en:"fun"},{jp:"新しい",rd:"あたらしい",en:"new"},
+    {jp:"学校",rd:"がっこう",en:"school"},{jp:"友達",rd:"ともだち",en:"friend"},
+    {jp:"先生",rd:"せんせい",en:"teacher"},{jp:"電車",rd:"でんしゃ",en:"train"},
+    {jp:"日本語",rd:"にほんご",en:"Japanese"},{jp:"勉強",rd:"べんきょう",en:"study"},
+    {jp:"心",rd:"こころ",en:"heart"},{jp:"夢",rd:"ゆめ",en:"dream"},
+  ];
+  var PHRASES=[
+    {jp:"ありがとうございます",rd:"arigatou gozaimasu",en:"Thank you very much"},
+    {jp:"すみません",rd:"sumimasen",en:"Excuse me / Sorry"},
+    {jp:"おはようございます",rd:"ohayou gozaimasu",en:"Good morning"},
+    {jp:"こんにちは",rd:"konnichiwa",en:"Hello / Good afternoon"},
+    {jp:"はじめまして",rd:"hajimemashite",en:"Nice to meet you"},
+    {jp:"よろしくお願いします",rd:"yoroshiku onegaishimasu",en:"Please look after me"},
+    {jp:"いただきます",rd:"itadakimasu",en:"(said before eating)"},
+    {jp:"大丈夫ですか？",rd:"daijoubu desu ka?",en:"Are you okay?"},
+    {jp:"わかりません",rd:"wakarimasen",en:"I don't understand"},
+    {jp:"もう一度お願いします",rd:"mou ichido onegaishimasu",en:"Please say that again"},
+    {jp:"いくらですか？",rd:"ikura desu ka?",en:"How much is it?"},
+    {jp:"日本語を勉強しています",rd:"nihongo wo benkyou shite imasu",en:"I'm studying Japanese"},
+    {jp:"頑張ってください",rd:"ganbatte kudasai",en:"Good luck / Do your best"},
+    {jp:"また明日",rd:"mata ashita",en:"See you tomorrow"},
+    {jp:"ちょっと待ってください",rd:"chotto matte kudasai",en:"Please wait a moment"},
+  ];
+  var KANJI=[
+    {k:"日",on:"ニチ",kun:"ひ",en:"sun / day"},{k:"月",on:"ゲツ",kun:"つき",en:"moon / month"},
+    {k:"火",on:"カ",kun:"ひ",en:"fire"},{k:"水",on:"スイ",kun:"みず",en:"water"},
+    {k:"木",on:"モク",kun:"き",en:"tree"},{k:"山",on:"サン",kun:"やま",en:"mountain"},
+    {k:"川",on:"セン",kun:"かわ",en:"river"},{k:"人",on:"ジン",kun:"ひと",en:"person"},
+    {k:"手",on:"シュ",kun:"て",en:"hand"},{k:"目",on:"MOK",kun:"め",en:"eye"},
+    {k:"大",on:"ダイ",kun:"おお",en:"big"},{k:"小",on:"ショウ",kun:"ちい",en:"small"},
+    {k:"上",on:"ジョウ",kun:"うえ",en:"above"},{k:"下",on:"カ",kun:"した",en:"below"},
+    {k:"本",on:"ホン",kun:"もと",en:"book"},{k:"国",on:"コク",kun:"くに",en:"country"},
+    {k:"年",on:"ネン",kun:"とし",en:"year"},{k:"学",on:"ガク",kun:"まな",en:"study"},
+    {k:"生",on:"セイ",kun:"いき",en:"life"},{k:"力",on:"リョク",kun:"ちから",en:"power"},
+  ];
+  var d=new Date();
+  var seed=d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate();
+  var word=WORDS[seed%WORDS.length];
+  var phrase=PHRASES[seed%PHRASES.length];
+  var kanji=KANJI[seed%KANJI.length];
+  document.getElementById('wd-word-jp').textContent=word.jp;
+  document.getElementById('wd-word-rd').textContent=word.rd;
+  document.getElementById('wd-word-en').textContent=word.en;
+  document.getElementById('wd-phrase-jp').textContent=phrase.jp;
+  document.getElementById('wd-phrase-rd').textContent=phrase.rd;
+  document.getElementById('wd-phrase-en').textContent=phrase.en;
+  document.getElementById('wd-kanji-k').textContent=kanji.k;
+  document.getElementById('wd-kanji-readings').textContent=kanji.on+' · '+kanji.kun;
+  document.getElementById('wd-kanji-en').textContent=kanji.en;
+  document.getElementById('wd-date').textContent=d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+})();
+</script>
+</body>
+</html>

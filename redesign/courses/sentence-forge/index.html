@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sentence Forge — Japanese Uncovered</title>
+<meta name="description" content="Build Japanese sentences from scratch. You get a grammar pattern or vocabulary word — write a sentence using it, then compare against natural model answers.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.tool-shell { max-width: 780px; margin: 0 auto; padding: 0 0 60px; }
+
+/* ── Progress ───────────────────────────────────────────────── */
+.prog-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+}
+.prog-track { flex: 1; height: 4px; background: var(--rule); }
+.prog-fill  { height: 100%; background: var(--accent); transition: width .4s; }
+.prog-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; color: var(--mid); white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ── Prompt card ────────────────────────────────────────────── */
+.card-area { padding: 24px; }
+
+.forge-card { border: 1.5px solid var(--ink); }
+
+.fc-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint);
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.fc-badge {
+  padding: 4px 10px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; flex-shrink: 0;
+  margin-top: 2px;
+}
+.fc-badge.grammar { background: var(--ink); color: var(--ground); }
+.fc-badge.vocab   { border: 1.5px solid var(--ink); color: var(--ink); }
+.fc-badge.lv { border: 1px solid var(--rule); color: var(--mid); margin-left: 4px; background: var(--ground); }
+
+.fc-focus {
+  font-family: var(--serif);
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.fc-hint {
+  font-size: 13px;
+  color: var(--mid);
+  margin-top: 4px;
+}
+
+/* ── Chips ──────────────────────────────────────────────────── */
+.fc-chips {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.chip {
+  padding: 5px 12px;
+  border: 1.5px solid var(--ink);
+  font-family: var(--serif);
+  font-size: 14px;
+  cursor: pointer;
+  background: none;
+  color: var(--ink);
+  transition: background .1s, color .1s;
+  line-height: 1.2;
+}
+.chip:hover { background: var(--ink); color: var(--ground); }
+.chip .chip-en { font-size: 10px; color: var(--mid); font-family: var(--sans); display: block; margin-top: 2px; }
+.chip:hover .chip-en { color: rgba(255,255,255,.7); }
+
+/* ── Input ──────────────────────────────────────────────────── */
+.fc-input-wrap {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--rule);
+}
+.sf-textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: 12px;
+  border: 1.5px solid var(--ink);
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  resize: vertical;
+  line-height: 1.6;
+  transition: border-color .15s;
+}
+.sf-textarea:focus { outline: none; border-color: var(--accent); }
+.sf-textarea::placeholder { color: var(--mid); font-family: var(--sans); font-size: .9rem; }
+
+.fc-submit-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Result ─────────────────────────────────────────────────── */
+.fc-result { border-top: 1px solid var(--rule); display: none; }
+
+.fc-grade-bar {
+  padding: 14px 24px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.fc-grade-bar.a { background: #e8f5e9; color: #2e7d32; border-left: 4px solid #22c55e; }
+.fc-grade-bar.b { background: #fff8e1; color: #7b5800; border-left: 4px solid #f59e0b; }
+.fc-grade-bar.c { background: #fff3f3; color: #7f1d1d; border-left: 4px solid var(--accent); }
+[data-theme="dark"] .fc-grade-bar.a { background: #1a3520; color: #81c784; }
+[data-theme="dark"] .fc-grade-bar.b { background: #2a2000; color: #fbbf24; }
+[data-theme="dark"] .fc-grade-bar.c { background: #3e1a1a; color: #ef9a9a; }
+
+.fc-grade-score {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.fc-models { padding: 20px 24px; }
+.fc-models-label {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 12px;
+}
+.model-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.model-row:last-child { border-bottom: none; }
+.model-tag {
+  font-size: 10px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+  color: var(--mid); border: 1px solid var(--rule); padding: 2px 7px; white-space: nowrap;
+  margin-top: 2px;
+}
+.model-jp { font-family: var(--serif); font-size: 1.1rem; }
+.model-en { font-size: 12px; color: var(--mid); margin-top: 3px; }
+
+.fc-nav {
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Level filter ───────────────────────────────────────────── */
+.lv-filter {
+  display: flex;
+  border: 1.5px solid var(--ink);
+  margin-right: auto;
+}
+.lv-btn {
+  padding: 6px 14px;
+  border: none;
+  border-right: 1px solid var(--rule);
+  background: none;
+  cursor: pointer;
+  font-size: 11px; font-weight: 700; letter-spacing: .06em;
+  color: var(--mid);
+  transition: background .12s, color .12s;
+}
+.lv-btn:last-child { border-right: none; }
+.lv-btn.active { background: var(--ink); color: var(--ground); }
+
+/* ── Done screen ────────────────────────────────────────────── */
+.done-panel {
+  border: 1.5px solid var(--ink);
+  margin: 24px;
+  text-align: center;
+  display: none;
+}
+.done-top { padding: 36px 28px 24px; border-bottom: 1.5px solid var(--ink); background: var(--faint); }
+.done-icon  { font-size: 3rem; margin-bottom: 10px; }
+.done-title { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 6px; }
+.done-sub   { color: var(--mid); font-size: 14px; }
+.done-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 1.5px solid var(--ink); }
+.dst { padding: 18px; border-right: 1px solid var(--rule); text-align: left; }
+.dst:last-child { border-right: none; }
+.dst-num   { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; }
+.dst-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+.done-actions { padding: 24px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 480px) {
+  .card-area { padding: 16px; }
+  .fc-header, .fc-chips, .fc-input-wrap, .fc-grade-bar, .fc-models, .fc-nav, .fc-submit-row { padding-left: 16px; padding-right: 16px; }
+  .done-stats { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    <a href="/courses/">Practice</a><span class="sep">›</span>
+    Sentence Forge
+  </div>
+  <h1 class="page-h1">Sentence Forge <span class="h1-jp">文章を作る</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">20 Prompts</span>
+    <span class="meta-pill">N5 + N4</span>
+    <span class="meta-pill">Pattern Grading</span>
+  </div>
+</header>
+
+<div class="tool-shell">
+
+  <div class="prog-row">
+    <div class="lv-filter" id="lv-filter">
+      <button class="lv-btn active" onclick="setLv('all',this)">All</button>
+      <button class="lv-btn" onclick="setLv('N5',this)">N5</button>
+      <button class="lv-btn" onclick="setLv('N4',this)">N4</button>
+    </div>
+    <div class="prog-track"><div class="prog-fill" id="prog-fill" style="width:0%"></div></div>
+    <div class="prog-label" id="prog-label">1 / 20</div>
+  </div>
+
+  <div class="card-area" id="card-area"></div>
+
+  <div class="done-panel" id="done-panel">
+    <div class="done-top">
+            <div class="done-title">Forge Complete!</div>
+      <div class="done-sub" id="done-sub"></div>
+    </div>
+    <div class="done-stats">
+      <div class="dst"><div class="dst-num" id="d-a">0</div><div class="dst-label">Strong (A/B)</div></div>
+      <div class="dst"><div class="dst-num" id="d-c">0</div><div class="dst-label">Needs work (C)</div></div>
+      <div class="dst"><div class="dst-num" id="d-skip">0</div><div class="dst-label">Skipped</div></div>
+    </div>
+    <div class="done-actions">
+      <button class="btn btn-solid" onclick="restart()">Start Again</button>
+      <button class="btn btn-ghost" onclick="setLv('N5', document.querySelectorAll('.lv-btn')[1])">N5 Only</button>
+    </div>
+  </div>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+// [id, type, level, focus, hint, pat(regex str), chips, models]
+const PROMPTS = [
+  {id:'g01',type:'grammar',lv:'N5',focus:'〜は〜です',hint:'Identify something with は and です',pat:'は.+です',
+   chips:[{jp:'私',en:'I'},{jp:'学生',en:'student'},{jp:'先生',en:'teacher'},{jp:'日本人',en:'Japanese'},{jp:'猫',en:'cat'}],
+   models:[{tag:'Basic',jp:'私は学生です。',en:'I am a student.'},{tag:'Natural',jp:'彼女は日本人です。',en:'She is Japanese.'},{tag:'Extended',jp:'あの人は先生ではありません。',en:'That person is not a teacher.'}]},
+  {id:'g02',type:'grammar',lv:'N5',focus:'〜が好きです',hint:'Say what you like using が好き',pat:'が好き',
+   chips:[{jp:'私',en:'I'},{jp:'音楽',en:'music'},{jp:'猫',en:'cats'},{jp:'日本語',en:'Japanese'},{jp:'サッカー',en:'football'}],
+   models:[{tag:'Simple',jp:'私は音楽が好きです。',en:'I like music.'},{tag:'Natural',jp:'猫が好きです。',en:'I like cats.'},{tag:'Extended',jp:'日本語を勉強するのが好きです。',en:'I like studying Japanese.'}]},
+  {id:'g03',type:'grammar',lv:'N5',focus:'〜があります / います',hint:'Use あります (things) or います (people/animals)',pat:'あります|います',
+   chips:[{jp:'猫',en:'cat'},{jp:'本',en:'book'},{jp:'駅',en:'station'},{jp:'友達',en:'friend'},{jp:'に',en:'at/in'}],
+   models:[{tag:'Thing',jp:'テーブルの上に本があります。',en:'There is a book on the table.'},{tag:'Living',jp:'庭に猫がいます。',en:'There is a cat in the garden.'},{tag:'Natural',jp:'近くに駅がありますか？',en:'Is there a station nearby?'}]},
+  {id:'g04',type:'grammar',lv:'N5',focus:'〜たいです',hint:'Express what you want to do with 〜たい',pat:'たい',
+   chips:[{jp:'食べ',en:'eat (stem)'},{jp:'行き',en:'go (stem)'},{jp:'見',en:'see (stem)'},{jp:'飲み',en:'drink (stem)'},{jp:'日本',en:'Japan'}],
+   models:[{tag:'Simple',jp:'日本に行きたいです。',en:'I want to go to Japan.'},{tag:'Natural',jp:'ラーメンが食べたい。',en:'I want to eat ramen.'},{tag:'Extended',jp:'もう一度会いたかったです。',en:'I wanted to meet again.'}]},
+  {id:'g05',type:'grammar',lv:'N5',focus:'〜てください',hint:'Make a polite request with 〜てください',pat:'てください|でください',
+   chips:[{jp:'待っ',en:'wait (te-stem)'},{jp:'来',en:'come (stem)'},{jp:'見',en:'look (stem)'},{jp:'ここ',en:'here'},{jp:'ゆっくり',en:'slowly'}],
+   models:[{tag:'Simple',jp:'ちょっと待ってください。',en:'Please wait a moment.'},{tag:'Natural',jp:'ゆっくり話してください。',en:'Please speak slowly.'},{tag:'Extended',jp:'ここに名前を書いてください。',en:'Please write your name here.'}]},
+  {id:'g06',type:'grammar',lv:'N5',focus:'〜ている',hint:'Describe an ongoing action or state',pat:'ている|てる',
+   chips:[{jp:'食べ',en:'eat'},{jp:'勉強し',en:'study'},{jp:'住ん',en:'live'},{jp:'今',en:'now'},{jp:'東京',en:'Tokyo'}],
+   models:[{tag:'Action',jp:'今、ご飯を食べています。',en:'I am eating now.'},{tag:'State',jp:'東京に住んでいます。',en:'I live in Tokyo.'},{tag:'Natural',jp:'日本語を勉強してる。',en:'I\'m studying Japanese.'}]},
+  {id:'g07',type:'grammar',lv:'N5',focus:'〜から (because)',hint:'Give a reason using 〜から',pat:'から',
+   chips:[{jp:'疲れた',en:'tired'},{jp:'眠い',en:'sleepy'},{jp:'忙しい',en:'busy'},{jp:'だから',en:'therefore'},{jp:'雨',en:'rain'}],
+   models:[{tag:'Simple',jp:'疲れたから、寝ます。',en:'Because I\'m tired, I\'ll sleep.'},{tag:'Natural',jp:'雨だから、家にいます。',en:'Because it\'s raining, I\'m home.'},{tag:'Extended',jp:'明日早いから、もう帰ります。',en:'I\'m leaving already because I have an early start tomorrow.'}]},
+  {id:'g08',type:'grammar',lv:'N5',focus:'〜ない (negative)',hint:'Negate a verb — plain negative form',pat:'ない|ません',
+   chips:[{jp:'食べ',en:'eat'},{jp:'行か',en:'go'},{jp:'わから',en:'understand'},{jp:'まだ',en:'not yet'},{jp:'全然',en:'at all'}],
+   models:[{tag:'Simple',jp:'わかりません。',en:'I don\'t understand.'},{tag:'Casual',jp:'まだ食べてない。',en:'Haven\'t eaten yet.'},{tag:'Extended',jp:'全然わからない！',en:'I don\'t understand at all!'}]},
+  {id:'g09',type:'grammar',lv:'N4',focus:'〜てもいいですか',hint:'Ask permission with 〜てもいいですか',pat:'てもいい|でもいい',
+   chips:[{jp:'入っ',en:'enter'},{jp:'見',en:'look'},{jp:'使っ',en:'use'},{jp:'聞い',en:'ask'},{jp:'ここ',en:'here'}],
+   models:[{tag:'Polite',jp:'ここに座ってもいいですか？',en:'May I sit here?'},{tag:'Natural',jp:'写真を撮ってもいい？',en:'Can I take a photo?'},{tag:'Extended',jp:'少し早く帰ってもいいでしょうか？',en:'Would it be alright if I left a bit early?'}]},
+  {id:'g10',type:'grammar',lv:'N4',focus:'〜なければならない',hint:'Express obligation — must do something',pat:'なければ|なきゃ|なくては',
+   chips:[{jp:'行か',en:'go'},{jp:'勉強し',en:'study'},{jp:'早く',en:'early'},{jp:'今日',en:'today'},{jp:'起き',en:'wake up'}],
+   models:[{tag:'Formal',jp:'今日中に提出しなければなりません。',en:'I must submit it by today.'},{tag:'Natural',jp:'早く起きなきゃ。',en:'I\'ve gotta wake up early.'},{tag:'Extended',jp:'毎日勉強しなくてはいけません。',en:'I have to study every day.'}]},
+  {id:'g11',type:'grammar',lv:'N4',focus:'〜たら',hint:'Use たら for "when/if [X] happens, [Y]"',pat:'たら',
+   chips:[{jp:'着い',en:'arrive'},{jp:'帰っ',en:'return'},{jp:'終わっ',en:'finish'},{jp:'連絡し',en:'contact'},{jp:'て',en:'(te-form)'}],
+   models:[{tag:'Conditional',jp:'着いたら連絡してね。',en:'Text me when you arrive.'},{tag:'Natural',jp:'帰ったらすぐ寝た。',en:'I went straight to sleep when I got home.'},{tag:'Extended',jp:'宿題が終わったら、遊びに行ってもいいよ。',en:'You can go play when you\'re done with your homework.'}]},
+  {id:'g12',type:'grammar',lv:'N4',focus:'〜ながら',hint:'Do two things at the same time with 〜ながら',pat:'ながら',
+   chips:[{jp:'聞き',en:'listen (stem)'},{jp:'食べ',en:'eat (stem)'},{jp:'歩き',en:'walk (stem)'},{jp:'音楽',en:'music'},{jp:'テレビ',en:'TV'}],
+   models:[{tag:'Simple',jp:'音楽を聴きながら勉強する。',en:'I study while listening to music.'},{tag:'Natural',jp:'歩きながら電話した。',en:'I called while walking.'},{tag:'Extended',jp:'テレビを見ながらご飯を食べるのが好きです。',en:'I like eating while watching TV.'}]},
+  {id:'v01',type:'vocab',lv:'N5',focus:'ちょっと',hint:'Use ちょっと naturally — "a little / kind of / just a moment"',pat:'ちょっと',
+   chips:[{jp:'待っ',en:'wait'},{jp:'難しい',en:'difficult'},{jp:'疲れた',en:'tired'},{jp:'今',en:'now'},{jp:'ね',en:'(softener)'}],
+   models:[{tag:'Casual',jp:'ちょっと待って！',en:'Wait a sec!'},{tag:'Softening',jp:'今日はちょっと疲れてて…',en:'I\'m a little tired today…'},{tag:'Declining',jp:'それはちょっと…',en:'That\'s a bit… (declining politely)'}]},
+  {id:'v02',type:'vocab',lv:'N5',focus:'大丈夫',hint:'Use 大丈夫 — "OK / fine / no problem / are you alright?"',pat:'大丈夫',
+   chips:[{jp:'ですか',en:'is it OK?'},{jp:'です',en:'it\'s fine'},{jp:'じゃない',en:'not OK'},{jp:'一人で',en:'alone'},{jp:'もう',en:'already'}],
+   models:[{tag:'Checking',jp:'大丈夫ですか？',en:'Are you alright?'},{tag:'Affirming',jp:'大丈夫です！',en:'I\'m fine!'},{tag:'Declining',jp:'いいえ、大丈夫です。',en:'No, I\'m fine (= no thanks)'}]},
+  {id:'v03',type:'vocab',lv:'N5',focus:'でも',hint:'Use でも as "but" to add contrast or exception',pat:'でも',
+   chips:[{jp:'好き',en:'like'},{jp:'高い',en:'expensive'},{jp:'日本語',en:'Japanese'},{jp:'難しい',en:'difficult'},{jp:'楽しい',en:'fun'}],
+   models:[{tag:'Simple',jp:'日本語は難しい。でも楽しい。',en:'Japanese is hard. But it\'s fun.'},{tag:'Natural',jp:'行きたい、でも時間がない。',en:'I want to go, but I have no time.'},{tag:'Extended',jp:'高いけど、でもほしい！',en:'It\'s expensive, but I still want it!'}]},
+  {id:'v04',type:'vocab',lv:'N5',focus:'もう',hint:'Use もう — "already" or "not any more"',pat:'もう',
+   chips:[{jp:'食べた',en:'ate'},{jp:'ない',en:'no more'},{jp:'行った',en:'went'},{jp:'帰る',en:'going home'},{jp:'十時',en:'10 o\'clock'}],
+   models:[{tag:'Already',jp:'もう食べました。',en:'I\'ve already eaten.'},{tag:'No more',jp:'もうお金がない。',en:'I have no money left.'},{tag:'Natural',jp:'もう帰らなきゃ。',en:'I\'ve gotta head home now.'}]},
+  {id:'v05',type:'vocab',lv:'N4',focus:'〜そうだ',hint:'Use 〜そうだ to say something looks/seems like X',pat:'そうだ|そうです|そう',
+   chips:[{jp:'美味し',en:'delicious'},{jp:'楽し',en:'fun'},{jp:'難し',en:'difficult'},{jp:'雨',en:'rain'},{jp:'疲れ',en:'tired'}],
+   models:[{tag:'Appearance',jp:'美味しそう！',en:'That looks delicious!'},{tag:'Seems like',jp:'楽しそうですね。',en:'That sounds fun.'},{tag:'Extended',jp:'今日は雨が降りそうです。',en:'It looks like it\'s going to rain today.'}]},
+  {id:'v06',type:'vocab',lv:'N4',focus:'はずだ',hint:'Use はずだ — "should be / expected to be"',pat:'はずだ|はずです',
+   chips:[{jp:'来る',en:'come'},{jp:'知っている',en:'should know'},{jp:'ここ',en:'here'},{jp:'もう',en:'already'},{jp:'今頃',en:'by now'}],
+   models:[{tag:'Expectation',jp:'彼は来るはずです。',en:'He should be coming.'},{tag:'Natural',jp:'今頃着いてるはずだけど…',en:'He should have arrived by now, but…'},{tag:'Extended',jp:'それは知っているはずです。',en:'You should know that.'}]},
+  {id:'v07',type:'vocab',lv:'N4',focus:'〜ようだ',hint:'Use ようだ — "it seems / it appears that"',pat:'ようだ|ようです|みたい',
+   chips:[{jp:'疲れ',en:'tired'},{jp:'知っている',en:'know'},{jp:'雨',en:'rain'},{jp:'怒っ',en:'angry'},{jp:'楽し',en:'fun'}],
+   models:[{tag:'Observation',jp:'疲れているようですね。',en:'You seem tired.'},{tag:'Natural',jp:'楽しいみたい！',en:'Looks like fun!'},{tag:'Extended',jp:'彼女は怒っているようです。',en:'She appears to be angry.'}]},
+  {id:'v08',type:'vocab',lv:'N4',focus:'〜かもしれない',hint:'Express uncertainty — "might / maybe"',pat:'かもしれない|かも',
+   chips:[{jp:'雨',en:'rain'},{jp:'来ない',en:'not come'},{jp:'間に合う',en:'make it in time'},{jp:'難しい',en:'difficult'},{jp:'もしかしたら',en:'maybe'}],
+   models:[{tag:'Simple',jp:'雨が降るかもしれません。',en:'It might rain.'},{tag:'Casual',jp:'来ないかも。',en:'They might not come.'},{tag:'Extended',jp:'もしかしたら間に合わないかもしれない。',en:'Maybe I won\'t make it in time.'}]},
+];
+
+let lvFilter = 'all';
+let idx = 0;
+let grades = {};
+
+function getPool() {
+  return lvFilter === 'all' ? PROMPTS : PROMPTS.filter(p => p.lv === lvFilter);
+}
+
+function setLv(lv, el) {
+  lvFilter = lv;
+  idx = 0;
+  grades = {};
+  document.querySelectorAll('.lv-btn').forEach(b => b.classList.remove('active'));
+  if (el) el.classList.add('active');
+  document.getElementById('done-panel').style.display = 'none';
+  document.getElementById('card-area').style.display = '';
+  render();
+}
+
+function render() {
+  const pool = getPool();
+  if (idx >= pool.length) { showDone(pool); return; }
+  const p = pool[idx];
+  const pct = pool.length > 0 ? ((idx / pool.length) * 100) : 0;
+  document.getElementById('prog-fill').style.width = pct + '%';
+  document.getElementById('prog-label').textContent = `${idx + 1} / ${pool.length}`;
+
+  const chipsHtml = p.chips.map(c =>
+    `<button class="chip" onclick="insertChip(${JSON.stringify(c.jp)})">${c.jp}<span class="chip-en">${c.en}</span></button>`
+  ).join('');
+
+  const modelsHtml = p.models.map(m =>
+    `<div class="model-row">
+      <div class="model-tag">${m.tag}</div>
+      <div><div class="model-jp">${m.jp}</div><div class="model-en">${m.en}</div></div>
+    </div>`
+  ).join('');
+
+  document.getElementById('card-area').innerHTML = `
+    <div class="forge-card">
+      <div class="fc-header">
+        <span class="fc-badge ${p.type}">${p.type === 'grammar' ? 'Grammar' : 'Vocab'}</span>
+        <span class="fc-badge lv">${p.lv}</span>
+        <div style="flex:1">
+          <div class="fc-focus">${p.focus}</div>
+          <div class="fc-hint">${p.hint}</div>
+        </div>
+      </div>
+      <div class="fc-chips">${chipsHtml}</div>
+      <div class="fc-input-wrap">
+        <textarea class="sf-textarea" id="sf-ta" placeholder="日本語で書いてください…" autocomplete="off" autocorrect="off" spellcheck="false"></textarea>
+        <div class="fc-submit-row">
+          <button class="btn btn-solid" onclick="checkAnswer()">Check →</button>
+          <button class="btn btn-ghost" onclick="go(1)">Skip</button>
+          ${idx > 0 ? '<button class="btn btn-ghost" onclick="go(-1)">← Back</button>' : ''}
+        </div>
+      </div>
+      <div class="fc-result" id="fc-result">
+        <div class="fc-grade-bar" id="fc-grade-bar"></div>
+        <div class="fc-models">
+          <div class="fc-models-label">Model Answers</div>
+          ${modelsHtml}
+        </div>
+        <div style="padding:16px 24px;border-top:1px solid var(--rule);display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn btn-solid" onclick="go(1)">Next →</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function insertChip(jp) {
+  const ta = document.getElementById('sf-ta');
+  if (!ta) return;
+  const pos = ta.selectionStart;
+  ta.value = ta.value.slice(0, pos) + jp + ta.value.slice(ta.selectionEnd);
+  ta.selectionStart = ta.selectionEnd = pos + jp.length;
+  ta.focus();
+}
+
+function checkAnswer() {
+  const pool = getPool();
+  const p = pool[idx];
+  const text = (document.getElementById('sf-ta')?.value || '').trim();
+  if (!text) return;
+
+  const pat = new RegExp(p.pat);
+  const hit = pat.test(text);
+  const len = text.length;
+
+  let grade, msg;
+  if (hit && len >= 6) {
+    grade = 'A'; grades[idx] = 'a';
+    msg = '✓ Great — the pattern is there and the sentence looks solid.';
+  } else if (hit || len >= 4) {
+    grade = 'B'; grades[idx] = 'a';
+    msg = hit ? 'Pattern found — compare with the models to build it out further.' : 'Close, but try to include ' + p.focus + ' in your sentence.';
+  } else {
+    grade = 'C'; grades[idx] = 'c';
+    msg = `Try to include <strong>${p.focus}</strong> in your sentence. Check the models below.`;
+  }
+
+  const bar = document.getElementById('fc-grade-bar');
+  const result = document.getElementById('fc-result');
+  if (!bar || !result) return;
+  bar.className = `fc-grade-bar ${grade.toLowerCase()}`;
+  bar.innerHTML = `<span class="fc-grade-score">${grade}</span> ${msg}`;
+  result.style.display = '';
+
+  speak(text);
+  document.querySelector('.fc-input-wrap .fc-submit-row')?.querySelectorAll('button').forEach(b => b.style.display = 'none');
+}
+
+function go(dir) {
+  const pool = getPool();
+  idx = Math.max(0, Math.min(pool.length, idx + dir));
+  if (idx >= pool.length) { showDone(pool); return; }
+  render();
+}
+
+function showDone(pool) {
+  document.getElementById('card-area').style.display = 'none';
+  const panel = document.getElementById('done-panel');
+  panel.style.display = '';
+  let strong = 0, weak = 0, skipped = 0;
+  pool.forEach((_, i) => {
+    const g = grades[i];
+    if (g === 'a') strong++;
+    else if (g === 'c') weak++;
+    else skipped++;
+  });
+  document.getElementById('done-sub').textContent  = `${strong} strong, ${weak} need work, ${skipped} skipped`;
+  document.getElementById('d-a').textContent        = strong;
+  document.getElementById('d-c').textContent        = weak;
+  document.getElementById('d-skip').textContent     = skipped;
+  document.getElementById('prog-fill').style.width  = '100%';
+}
+
+function restart() {
+  idx = 0; grades = {};
+  document.getElementById('done-panel').style.display = 'none';
+  document.getElementById('card-area').style.display = '';
+  render();
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Japanese Sentence Quiz — Grammar Practice N5 & N4 | Japanese Unlocked</title>
+<meta name="description" content="Test your Japanese grammar with fill-in-the-blank and sentence ordering questions. Covers N5 and N4 particles, verb forms, and grammar patterns. Free, no signup.">
+<link rel="stylesheet" href="../../style.css">
+<style>
+
+/* ── Quiz shell ── */
+.quiz-wrap {
+  max-width: 720px; margin: 0 auto;
+  padding: 0 0 64px;
+}
+
+/* ── Progress ── */
+.quiz-progress {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 28px;
+}
+.qp-bar-wrap {
+  flex: 1; height: 4px; background: var(--rule);
+}
+.qp-bar {
+  height: 100%; background: var(--ink); transition: width 0.3s;
+}
+.qp-label { font-size: 11px; color: var(--mid); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.qp-score { font-size: 11px; font-weight: 700; white-space: nowrap; }
+
+/* ── Filter bar ── */
+.quiz-filters {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; align-items: center;
+}
+.qf-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+.qfbtn {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 12px; border: 1.5px solid var(--rule); background: none;
+  color: var(--mid); cursor: pointer; font-family: var(--sans); transition: all 0.13s;
+}
+.qfbtn:hover, .qfbtn.on { border-color: var(--ink); color: var(--ink); background: var(--faint); }
+
+/* ── Start screen ── */
+.quiz-start {
+  border: 1.5px solid var(--ink); padding: 40px 36px; text-align: center;
+}
+.qs-jp { font-family: var(--serif); font-size: 56px; color: var(--rule); line-height: 1; margin-bottom: 16px; }
+.qs-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+.qs-sub { font-size: 13px; color: var(--mid); margin-bottom: 28px; line-height: 1.6; }
+.qs-stats { display: flex; gap: 0; border: 1px solid var(--rule); margin-bottom: 28px; }
+.qs-stat { flex: 1; padding: 14px; border-right: 1px solid var(--rule); }
+.qs-stat:last-child { border-right: none; }
+.qs-num { font-family: var(--serif); font-size: 24px; font-weight: 700; line-height: 1; }
+.qs-lbl { font-size: 11px; color: var(--mid); margin-top: 3px; }
+
+/* ── Question card ── */
+.question-card {
+  border: 1.5px solid var(--ink); padding: 32px 32px 28px; margin-bottom: 20px;
+}
+.qc-meta {
+  display: flex; gap: 8px; align-items: center; margin-bottom: 20px;
+}
+.qc-num { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); }
+.qc-type { font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border: 1px solid var(--rule); color: var(--mid); }
+.qc-lv { font-size: 9px; font-weight: 700; padding: 2px 7px; }
+.qc-lv.n5 { background: #7a5a7a; color: #fff; }
+.qc-lv.n4 { background: #5a7a5a; color: #fff; }
+
+.qc-sentence {
+  font-family: var(--serif); font-size: 26px; line-height: 1.6;
+  margin-bottom: 10px; word-break: break-all;
+}
+.qc-blank {
+  display: inline-block; min-width: 60px; border-bottom: 2.5px solid var(--accent);
+  margin: 0 2px; vertical-align: middle; text-align: center;
+  font-size: 22px; color: var(--accent); font-weight: 700;
+  transition: all 0.2s;
+}
+.qc-en { font-size: 13px; color: var(--mid); margin-bottom: 0; }
+
+/* ── Answer buttons ── */
+.answer-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-top: 24px;
+}
+.ans-btn {
+  padding: 14px 16px; border: 1.5px solid var(--rule); background: none;
+  font-family: var(--serif); font-size: 18px; color: var(--ink);
+  cursor: pointer; text-align: left; transition: all 0.13s;
+  display: flex; align-items: center; gap: 10px;
+}
+.ans-btn:hover:not(:disabled) { border-color: var(--ink); background: var(--faint); }
+.ans-btn .ans-letter {
+  font-family: var(--sans); font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--mid); flex-shrink: 0; width: 16px;
+}
+.ans-btn.correct { border-color: #5a8a5a; background: rgba(90,138,90,0.08); color: #3a6a3a; }
+.ans-btn.wrong   { border-color: var(--accent); background: rgba(160,60,40,0.06); color: var(--accent); }
+.ans-btn.reveal  { border-color: #5a8a5a; color: #3a6a3a; opacity: 0.6; }
+[data-theme="dark"] .ans-btn.correct,
+[data-theme="dark"] .ans-btn.reveal { color: #6abf6a; border-color: #6abf6a; }
+.ans-btn:disabled { cursor: default; }
+
+/* ── Ordering ── */
+.order-zone {
+  min-height: 52px; border: 1.5px dashed var(--rule);
+  padding: 10px 12px; margin-top: 20px; margin-bottom: 16px;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.order-zone.has-tiles { border-style: solid; border-color: var(--ink); }
+.order-tiles {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px;
+}
+.tile {
+  font-family: var(--serif); font-size: 18px; font-weight: 600;
+  padding: 8px 14px; border: 1.5px solid var(--rule);
+  cursor: pointer; background: var(--ground); transition: all 0.13s;
+  user-select: none;
+}
+.tile:hover { border-color: var(--ink); background: var(--faint); }
+.tile.used { opacity: 0.3; cursor: default; pointer-events: none; }
+.tile.answer-tile { border-color: var(--ink); background: var(--faint); }
+.tile.answer-tile:hover { border-color: var(--accent); color: var(--accent); }
+.tile.correct-tile { border-color: #5a8a5a; color: #3a6a3a; background: rgba(90,138,90,0.08); }
+[data-theme="dark"] .tile.correct-tile { color: #6abf6a; border-color: #6abf6a; }
+.tile.wrong-tile   { border-color: var(--accent); color: var(--accent); }
+.order-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 4px; }
+.order-placeholder { font-size: 12px; color: var(--rule); }
+
+.check-btn {
+  margin-top: 4px; padding: 10px 24px;
+  border: 1.5px solid var(--ink); background: none;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--sans); color: var(--ink); cursor: pointer; transition: all 0.13s;
+}
+.check-btn:hover:not(:disabled) { background: var(--ink); color: var(--ground); }
+.check-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ── Feedback ── */
+.feedback-panel {
+  padding: 16px 20px; margin-bottom: 20px;
+  border: 1px solid var(--rule); border-left-width: 3px;
+}
+.feedback-panel.correct { border-left-color: #5a8a5a; }
+.feedback-panel.wrong   { border-left-color: var(--accent); }
+.fb-verdict { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6px; }
+.fb-verdict.correct { color: #3a6a3a; }
+.fb-verdict.wrong   { color: var(--accent); }
+[data-theme="dark"] .fb-verdict.correct { color: #6abf6a; }
+.fb-full { font-family: var(--serif); font-size: 19px; margin-bottom: 6px; cursor: pointer; transition: color 0.12s; }
+.fb-full:hover { color: var(--accent); }
+.fb-explain { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+/* ── Navigation buttons ── */
+.quiz-nav { display: flex; gap: 12px; margin-top: 4px; }
+.quiz-btn {
+  padding: 12px 28px; border: 1.5px solid var(--ink); background: none;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: var(--sans); color: var(--ink); cursor: pointer; transition: all 0.13s;
+}
+.quiz-btn:hover { background: var(--ink); color: var(--ground); }
+.quiz-btn.secondary { border-color: var(--rule); color: var(--mid); }
+.quiz-btn.secondary:hover { border-color: var(--ink); color: var(--ink); background: none; }
+
+/* ── Results ── */
+.results-card { border: 1.5px solid var(--ink); padding: 40px 36px; text-align: center; }
+.rc-score { font-family: var(--serif); font-size: 64px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.rc-label { font-size: 12px; color: var(--mid); margin-bottom: 24px; }
+.rc-grade { font-size: 20px; font-weight: 700; margin-bottom: 24px; }
+.rc-breakdown {
+  border: 1px solid var(--rule); margin-bottom: 28px; text-align: left;
+}
+.rc-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 16px; border-bottom: 1px solid var(--rule); font-size: 13px;
+}
+.rc-row:last-child { border-bottom: none; }
+.rc-row-label { color: var(--mid); }
+.rc-row-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.rc-bar-wrap { flex: 1; height: 4px; background: var(--rule); margin: 0 12px; }
+.rc-bar-fill { height: 100%; background: var(--ink); }
+
+@media (max-width: 560px) {
+  .answer-grid { grid-template-columns: 1fr; }
+  .question-card { padding: 24px 20px 20px; }
+  .quiz-start { padding: 28px 20px; }
+  .qc-sentence { font-size: 21px; }
+}
+</style>
+</head>
+<body>
+
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/grammar/">Grammar</a>
+    <span class="sep">›</span>
+    Sentence Quiz
+  </div>
+  <h1 class="page-h1">Sentence Quiz <span class="h1-jp">文章クイズ</span></h1>
+  <div class="page-meta">
+    <span>40 questions</span>
+    <span class="meta-pill">N5 &amp; N4</span>
+    <span class="meta-pill">Fill-in &amp; Ordering</span>
+  </div>
+</header>
+
+<div class="page-body" style="display:block; max-width:760px; padding: 0 24px;">
+  <div class="quiz-wrap" id="quiz-wrap"></div>
+</div>
+
+<div id="ju-footer"></div>
+
+<script>
+(function () {
+
+/* ═══════════════════════════════════════
+   QUESTION DATA
+   fill: { type, lv, cat, pre, post, opts, ans, en, why }
+   order: { type, lv, cat, tiles (shuffled), correct, en, why }
+═══════════════════════════════════════ */
+var ALL_QUESTIONS = [
+
+  /* ── Particles N5 ── */
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'私', post:'学生です。', opts:['は','が','を','に'], ans:0,
+    en:'I am a student.',
+    why:'は marks the <em>topic</em> of the sentence — what you\'re making a statement about.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'猫', post:'います。', opts:['は','が','を','で'], ans:1,
+    en:'There is a cat. / The cat is here.',
+    why:'が marks the <em>subject</em> with existence verbs (いる／ある). は would make it a topic statement rather than introducing the cat.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'ご飯', post:'食べます。', opts:['が','は','を','に'], ans:2,
+    en:'I eat rice.',
+    why:'を marks the <em>direct object</em> — the thing the verb acts upon. 食べる is transitive and requires を.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'学校', post:'行きます。', opts:['を','で','に','から'], ans:2,
+    en:'I go to school.',
+    why:'に marks the <em>destination</em> of movement. 行く、来る、帰る all take に for their destination.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'図書館', post:'勉強します。', opts:['に','を','が','で'], ans:3,
+    en:'I study at the library.',
+    why:'で marks the <em>location where an action takes place</em>. に would mean the library is where something exists, not where the studying happens.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'友達', post:'映画を見ました。', opts:['が','を','と','に'], ans:2,
+    en:'I watched a film with my friend.',
+    why:'と means <em>"with"</em> — together with another person. に would indicate a recipient (giving something to the friend), not accompaniment.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'日本語', post:'好きです。', opts:['は','を','に','が'], ans:3,
+    en:'I like Japanese.',
+    why:'好き (like) and 嫌い (dislike) always take が to mark what is liked/disliked. This is one of the most important が patterns.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'東京', post:'大阪まで新幹線で行きます。', opts:['まで','から','より','だけ'], ans:1,
+    en:'I\'m going from Tokyo to Osaka by Shinkansen.',
+    why:'から marks the <em>starting point</em>. It pairs with まで (until/to) to give a range: から〜まで = from〜to.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'バス', post:'学校に来ました。', opts:['に','を','が','で'], ans:3,
+    en:'I came to school by bus.',
+    why:'で marks the <em>means or method</em> of an action — the vehicle, tool, or language used. バスで = by bus.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'三時', post:'会いましょう。', opts:['に','が','で','を'], ans:0,
+    en:'Let\'s meet at 3 o\'clock.',
+    why:'に marks a <em>specific point in time</em>. It\'s used with clock times, days of the week, and dates but NOT with relative time words (今日、明日、etc.).' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'東京は大阪', post:'大きいです。', opts:['で','が','より','まで'], ans:2,
+    en:'Tokyo is bigger than Osaka.',
+    why:'より marks the <em>standard of comparison</em> — the thing you\'re comparing against. AはBより〜 = A is more [adjective] than B.' },
+
+  { type:'fill', lv:5, cat:'Particles',
+    pre:'猫', post:'犬が好きです。', opts:['と','や','も','か'], ans:1,
+    en:'I like cats and dogs (and other animals).',
+    why:'や lists nouns as <em>non-exhaustive examples</em> — implying there are others. と would mean only cats and dogs, nothing else.' },
+
+  /* ── Verb forms N5 ── */
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'今、ご飯を食べ', post:'います。', opts:['に','て','が','を'], ans:1,
+    en:'I am eating rice right now.',
+    why:'〜ている uses the <em>te-form</em>. 食べる → 食べて → 食べています (ongoing action). The te-form is formed by dropping る and adding て for Group 2 verbs.' },
+
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'宿題をし', post:'から、ゲームをします。', opts:['た','に','て','で'], ans:2,
+    en:'I\'ll play games after doing homework.',
+    why:'〜てから means <em>"after doing…"</em> The te-form connects the first action (doing homework) to what comes after.' },
+
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'窓を開け', post:'ください。', opts:['に','が','て','で'], ans:2,
+    en:'Please open the window.',
+    why:'〜てください is the polite request form. Te-form + ください = "please do [verb]".' },
+
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'日本語を話す', post:'ができます。', opts:['の','が','こと','もの'], ans:2,
+    en:'I can speak Japanese.',
+    why:'〜ことができる = can do / be able to. こと nominalises the verb phrase, making it a noun that ができる can attach to.' },
+
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'寝る', post:'に、歯を磨きます。', opts:['から','あと','まえ','ため'], ans:2,
+    en:'I brush my teeth before going to sleep.',
+    why:'〜まえに = before doing. Uses the dictionary form of the verb (寝る), never the past form.' },
+
+  { type:'fill', lv:5, cat:'Verb forms',
+    pre:'ご飯を食べ', post:'あとで、散歩します。', opts:['て','た','る','に'], ans:1,
+    en:'I\'ll take a walk after eating.',
+    why:'〜たあとで = after doing. Uses the <em>ta-form</em> (past plain form) because the first action is completed before the second starts.' },
+
+  /* ── Grammar patterns N5 ── */
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'ここに座っ', post:'もいいですか？', opts:['に','が','て','で'], ans:2,
+    en:'May I sit here?',
+    why:'〜てもいい = it\'s OK to / may I…? Te-form + もいい. The て is the te-form of 座る → 座って.' },
+
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'ここで写真を撮っ', post:'はいけません。', opts:['に','て','が','を'], ans:1,
+    en:'You must not take photos here.',
+    why:'〜てはいけない = must not / prohibited. Te-form + はいけない. 撮る → 撮って + はいけません.' },
+
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'日本に行き', post:'です。', opts:['ます','たい','てい','なく'], ans:1,
+    en:'I want to go to Japan.',
+    why:'〜たい expresses desire — "want to do". Attach to the masu-stem: 行き + たい = 行きたい.' },
+
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'眠い', post:'、もう寝ます。', opts:['のに','ので','から','ても'], ans:2,
+    en:'I\'m sleepy, so I\'m going to sleep.',
+    why:'から gives the <em>reason</em> for the following statement. More subjective/casual than ので. Both mean "because" but から is more direct about the speaker\'s reasoning.' },
+
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'明日は晴れる', post:'思います。', opts:['が','と','を','に'], ans:1,
+    en:'I think it will be sunny tomorrow.',
+    why:'〜と思います = I think that. と is the quotation particle, quoting the thought: [content] + と + 思う.' },
+
+  { type:'fill', lv:5, cat:'Grammar patterns',
+    pre:'これは本', post:'ありません。', opts:['が','で','は','に'], ans:1,
+    en:'This is not a book.',
+    why:'The negative copula is じゃ／では + ありません. じゃ is casual; では is more formal. で is part of the copula structure, not a standalone particle here.' },
+
+  /* ── Grammar patterns N4 ── */
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'もっと練習し', post:'ならない。', opts:['ないと','なければ','なくて','ために'], ans:1,
+    en:'I have to practise more.',
+    why:'〜なければならない = must / have to. The full pattern: nai-stem + なければならない. 練習する → 練習しなければ + ならない.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'音楽を聴き', post:'、勉強します。', opts:['から','ながら','ために','ように'], ans:1,
+    en:'I study while listening to music.',
+    why:'〜ながら = while doing (two actions by the same person simultaneously). Attach to the masu-stem: 聴き + ながら.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'雨が降っ', post:'、行きます。', opts:['たら','ても','のに','ながら'], ans:1,
+    en:'I\'ll go even if it rains.',
+    why:'〜ても = even if / even though. Te-form + も. The action (going) happens regardless of the condition (rain).' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'雨が降っ', post:'、行きません。', opts:['ても','ながら','たら','のに'], ans:2,
+    en:'If it rains, I won\'t go.',
+    why:'〜たら = if / when (conditional). Ta-form + ら. The action depends on the condition being met. Compare: 降っても (even if it rains) vs 降ったら (if it rains).' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'財布を忘れ', post:'しまいました。', opts:['に','が','て','で'], ans:2,
+    en:'I accidentally forgot my wallet.',
+    why:'〜てしまう = end up doing / do completely (often with regret). Te-form + しまう. 忘れる → 忘れて + しまう.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'出発の前に荷物を準備し', post:'おきます。', opts:['に','が','て','を'], ans:2,
+    en:'I\'ll prepare my luggage in advance of departure.',
+    why:'〜ておく = do in advance / do and leave ready. Te-form + おく. 準備する → 準備して + おく.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'明日は雨が降る', post:'しれない。', opts:['なら','かも','ほど','だけ'], ans:1,
+    en:'It might rain tomorrow.',
+    why:'〜かもしれない = might / may / possibly. Plain form + かもしれない. Expresses uncertainty about something you can\'t be sure of.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'彼はもう来ている', post:'だ。', opts:['こと','はず','もの','ため'], ans:1,
+    en:'He should have arrived by now.',
+    why:'〜はずだ = should be / expected to be. Based on logical reasoning or prior knowledge. はず is a noun meaning "expectation".' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'練習した', post:'、試験に落ちた。', opts:['から','ので','のに','たら'], ans:2,
+    en:'Even though I practised, I failed the exam.',
+    why:'〜のに = even though (contrary expectation, often with disappointment). The speaker expected a different result. から would give a reason, not express contrast.' },
+
+  { type:'fill', lv:4, cat:'Grammar patterns',
+    pre:'毎日運動する', post:'しています。', opts:['ために','ように','ながら','ほど'], ans:1,
+    en:'I try to make sure I exercise every day.',
+    why:'〜ようにする = make an effort to / try to ensure that. Different from ために (purpose) — ように describes a goal state you\'re working toward.' },
+
+  { type:'fill', lv:4, cat:'Verb forms',
+    pre:'先生に褒め', post:'た。', opts:['て','られ','させ','もし'], ans:1,
+    en:'I was praised by the teacher.',
+    why:'〜られる is the <em>passive form</em>. Group 2: drop る + られる. 褒める → 褒められる. The sentence shows the speaker receiving an action from the teacher.' },
+
+  { type:'fill', lv:4, cat:'Verb forms',
+    pre:'子供に野菜を食べ', post:'た。', opts:['られ','させ','もらっ','あげ'], ans:1,
+    en:'I made the child eat vegetables.',
+    why:'〜させる is the <em>causative form</em> — make or let someone do something. Group 2: drop る + させる. 食べる → 食べさせる.' },
+
+  /* ── Sentence ordering N5 ── */
+  { type:'order', lv:5, cat:'Sentence structure',
+    tiles:['で','私は','勉強します','日本語を','図書館'],
+    correct:['私は','図書館','で','日本語を','勉強します'],
+    en:'I study Japanese at the library.',
+    why:'Topic は → location で → object を → verb. Japanese sentence order keeps the verb last.' },
+
+  { type:'order', lv:5, cat:'Sentence structure',
+    tiles:['を','昨日','見ました','友達と','映画'],
+    correct:['昨日','友達と','映画を','見ました'],
+    en:'I watched a film with my friend yesterday.',
+    why:'Time expressions typically come early. と (with) attaches to the companion noun. Object を comes before the verb.' },
+
+  { type:'order', lv:5, cat:'Sentence structure',
+    tiles:['は','東京','より','大きい','大阪','です'],
+    correct:['東京は','大阪より','大きいです'],
+    en:'Tokyo is bigger than Osaka.',
+    why:'Comparative structure: A は B より [adjective]. Tokyo (topic) is being compared against Osaka (標準 yardstick).' },
+
+  { type:'order', lv:5, cat:'Sentence structure',
+    tiles:['歯を磨きます','に','寝る','まえ'],
+    correct:['寝るまえに','歯を磨きます'],
+    en:'I brush my teeth before going to sleep.',
+    why:'〜まえに comes after the verb in dictionary form. The subordinate clause (寝るまえに) comes before the main clause.' },
+
+  { type:'order', lv:4, cat:'Sentence structure',
+    tiles:['ながら','を','聴き','音楽','勉強します'],
+    correct:['音楽を','聴きながら','勉強します'],
+    en:'I study while listening to music.',
+    why:'ながら attaches to the masu-stem of the first verb. Object を comes before its verb (聴く).' },
+
+  { type:'order', lv:4, cat:'Sentence structure',
+    tiles:['日本語が','ように','話せる','練習しています'],
+    correct:['日本語が','話せるように','練習しています'],
+    en:'I\'m practising so that I can speak Japanese.',
+    why:'〜ように sets a goal state. The potential form (話せる) describes what you want to achieve. が marks the subject of the ability.' },
+];
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+var state = {
+  phase: 'start',   // start | question | feedback | done
+  questions: [],
+  idx: 0,
+  score: 0,
+  answered: false,
+  orderAnswer: [],  // for ordering questions
+  catScores: {},    // { catName: { correct, total } }
+  filterLv: 0,      // 0 = all
+};
+
+var wrap = document.getElementById('quiz-wrap');
+
+/* ═══════════════════════════════════════
+   AUDIO
+═══════════════════════════════════════ */
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.82;
+  window.speechSynthesis.speak(u);
+}
+
+/* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+
+function gradeLabel(pct) {
+  if (pct >= 90) return '優秀 — Excellent';
+  if (pct >= 75) return '良い — Good';
+  if (pct >= 60) return '合格 — Pass';
+  if (pct >= 40) return '要練習 — Keep practising';
+  return 'もう一度 — Try again';
+}
+
+function startQuiz() {
+  var pool = ALL_QUESTIONS.filter(function (q) {
+    return state.filterLv === 0 || q.lv === state.filterLv;
+  });
+  state.questions = shuffle(pool);
+  state.idx = 0; state.score = 0; state.catScores = {};
+  state.phase = 'question';
+  render();
+}
+
+function currentQ() { return state.questions[state.idx]; }
+
+/* ═══════════════════════════════════════
+   RENDER SWITCH
+═══════════════════════════════════════ */
+function render() {
+  if (state.phase === 'start')    return renderStart();
+  if (state.phase === 'question') return renderQuestion();
+  if (state.phase === 'feedback') return renderFeedback();
+  if (state.phase === 'done')     return renderDone();
+}
+
+/* ── Start screen ── */
+function renderStart() {
+  var n5 = ALL_QUESTIONS.filter(function (q) { return q.lv === 5; }).length;
+  var n4 = ALL_QUESTIONS.filter(function (q) { return q.lv === 4; }).length;
+  var pool = state.filterLv === 0 ? ALL_QUESTIONS.length :
+    ALL_QUESTIONS.filter(function (q) { return q.lv === state.filterLv; }).length;
+
+  wrap.innerHTML =
+    '<div class="quiz-filters">' +
+      '<span class="qf-label">Level</span>' +
+      '<button class="qfbtn' + (state.filterLv === 0 ? ' on' : '') + '" data-lv="0">All</button>' +
+      '<button class="qfbtn' + (state.filterLv === 5 ? ' on' : '') + '" data-lv="5">N5 only</button>' +
+      '<button class="qfbtn' + (state.filterLv === 4 ? ' on' : '') + '" data-lv="4">N4 only</button>' +
+    '</div>' +
+    '<div class="quiz-start">' +
+      '<div class="qs-jp">文</div>' +
+      '<div class="qs-title">Sentence Quiz</div>' +
+      '<div class="qs-sub">Fill in the blank and put sentences in the correct order. Every answer includes an explanation — this is practice, not a test.</div>' +
+      '<div class="qs-stats">' +
+        '<div class="qs-stat"><div class="qs-num">' + pool + '</div><div class="qs-lbl">Questions</div></div>' +
+        '<div class="qs-stat"><div class="qs-num">N5+N4</div><div class="qs-lbl">Levels covered</div></div>' +
+        '<div class="qs-stat"><div class="qs-num">2</div><div class="qs-lbl">Question types</div></div>' +
+      '</div>' +
+      '<button class="quiz-btn" id="start-btn">Start Quiz →</button>' +
+    '</div>';
+
+  document.getElementById('start-btn').addEventListener('click', startQuiz);
+  wrap.querySelectorAll('.qfbtn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      state.filterLv = parseInt(this.dataset.lv, 10);
+      renderStart();
+    });
+  });
+}
+
+/* ── Question ── */
+function renderQuestion() {
+  var q = currentQ();
+  var total = state.questions.length;
+  var pct = Math.round((state.idx / total) * 100);
+
+  var metaHtml =
+    '<div class="qc-meta">' +
+      '<span class="qc-num">Q' + (state.idx + 1) + ' of ' + total + '</span>' +
+      '<span class="qc-type">' + (q.type === 'fill' ? 'Fill in blank' : 'Sentence order') + '</span>' +
+      '<span class="qc-lv n' + q.lv + '">N' + q.lv + '</span>' +
+      '<span style="font-size:11px;color:var(--mid);margin-left:auto">' + q.cat + '</span>' +
+    '</div>';
+
+  var progressHtml =
+    '<div class="quiz-progress">' +
+      '<div class="qp-bar-wrap"><div class="qp-bar" style="width:' + pct + '%"></div></div>' +
+      '<span class="qp-label">' + state.idx + '/' + total + '</span>' +
+      '<span class="qp-score">✓ ' + state.score + '</span>' +
+    '</div>';
+
+  var cardHtml, bodyHtml;
+
+  if (q.type === 'fill') {
+    cardHtml =
+      '<div class="question-card">' +
+        metaHtml +
+        '<div class="qc-sentence">' + q.pre + '<span class="qc-blank" id="the-blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>' + q.post + '</div>' +
+        '<div class="qc-en">' + q.en + '</div>' +
+        '<div class="answer-grid" id="answer-grid">' +
+          ['A','B','C','D'].map(function (letter, i) {
+            return '<button class="ans-btn" data-idx="' + i + '">' +
+              '<span class="ans-letter">' + letter + '</span>' +
+              '<span style="font-size:20px">' + q.opts[i] + '</span>' +
+            '</button>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+    bodyHtml = progressHtml + cardHtml;
+
+  } else {
+    /* Ordering question */
+    var shuffledTiles = shuffle(q.tiles);
+    state.orderAnswer = [];
+    state._shuffledTiles = shuffledTiles;
+    cardHtml =
+      '<div class="question-card">' +
+        metaHtml +
+        '<div class="qc-en" style="margin-bottom:16px;font-size:14px;font-weight:600">' + q.en + '</div>' +
+        '<div class="order-label">Your answer — click tiles to build the sentence:</div>' +
+        '<div class="order-zone" id="order-zone"><span class="order-placeholder">Click the tiles below to add them here…</span></div>' +
+        '<div class="order-label" style="margin-top:4px">Available tiles:</div>' +
+        '<div class="order-tiles" id="order-tiles">' +
+          shuffledTiles.map(function (t, i) {
+            return '<span class="tile" data-tile-idx="' + i + '" data-val="' + t + '">' + t + '</span>';
+          }).join('') +
+        '</div>' +
+        '<button class="check-btn" id="check-btn" disabled style="margin-top:16px">Check →</button>' +
+      '</div>';
+    bodyHtml = progressHtml + cardHtml;
+  }
+
+  wrap.innerHTML = bodyHtml;
+
+  if (q.type === 'fill') {
+    wrap.querySelectorAll('.ans-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        submitFill(parseInt(this.dataset.idx, 10));
+      });
+    });
+  } else {
+    setupOrderListeners();
+  }
+}
+
+function setupOrderListeners() {
+  var q = currentQ();
+  wrap.addEventListener('click', function handler(e) {
+    var tile = e.target.closest('.tile[data-tile-idx]');
+    if (!tile) return;
+
+    /* Tile from source pool → add to answer */
+    if (!tile.classList.contains('answer-tile') && !tile.classList.contains('used')) {
+      var val = tile.dataset.val;
+      var idx = tile.dataset.tileIdx;
+      state.orderAnswer.push({ val: val, srcIdx: idx });
+      tile.classList.add('used');
+      refreshOrderZone();
+    }
+  });
+
+  document.getElementById('check-btn').addEventListener('click', function () {
+    submitOrder();
+  });
+}
+
+function refreshOrderZone() {
+  var q = currentQ();
+  var zone = document.getElementById('order-zone');
+  var checkBtn = document.getElementById('check-btn');
+  if (!zone) return;
+
+  if (state.orderAnswer.length === 0) {
+    zone.innerHTML = '<span class="order-placeholder">Click the tiles below to add them here…</span>';
+    zone.classList.remove('has-tiles');
+  } else {
+    zone.classList.add('has-tiles');
+    zone.innerHTML = state.orderAnswer.map(function (item, i) {
+      return '<span class="tile answer-tile" data-ans-idx="' + i + '">' + item.val + '</span>';
+    }).join('');
+
+    /* Allow clicking answer tiles to remove them */
+    zone.querySelectorAll('.answer-tile').forEach(function (t) {
+      t.addEventListener('click', function () {
+        var i = parseInt(this.dataset.ansIdx, 10);
+        var removed = state.orderAnswer.splice(i, 1)[0];
+        /* Un-use the source tile */
+        var src = wrap.querySelector('.tile[data-tile-idx="' + removed.srcIdx + '"]');
+        if (src) src.classList.remove('used');
+        refreshOrderZone();
+      });
+    });
+  }
+
+  /* Enable check button only when all tiles are placed */
+  if (checkBtn) checkBtn.disabled = state.orderAnswer.length !== q.correct.length;
+}
+
+/* ── Submit fill ── */
+function submitFill(chosen) {
+  var q = currentQ();
+  var correct = chosen === q.ans;
+
+  /* Update cat scores */
+  if (!state.catScores[q.cat]) state.catScores[q.cat] = { correct: 0, total: 0 };
+  state.catScores[q.cat].total++;
+  if (correct) { state.score++; state.catScores[q.cat].correct++; }
+
+  /* Style buttons */
+  wrap.querySelectorAll('.ans-btn').forEach(function (btn, i) {
+    btn.disabled = true;
+    if (i === q.ans) btn.classList.add(correct ? 'correct' : 'reveal');
+    else if (i === chosen && !correct) btn.classList.add('wrong');
+  });
+
+  /* Fill the blank */
+  var blank = document.getElementById('the-blank');
+  if (blank) blank.textContent = q.opts[chosen];
+
+  state.phase = 'feedback';
+  state._lastCorrect = correct;
+  state._feedbackQ = q;
+  addFeedback(correct, q);
+}
+
+/* ── Submit order ── */
+function submitOrder() {
+  var q = currentQ();
+  var attempt = state.orderAnswer.map(function (a) { return a.val; });
+  var correct = attempt.join('') === q.correct.join('');
+
+  if (!state.catScores[q.cat]) state.catScores[q.cat] = { correct: 0, total: 0 };
+  state.catScores[q.cat].total++;
+  if (correct) { state.score++; state.catScores[q.cat].correct++; }
+
+  /* Style answer tiles */
+  var zone = document.getElementById('order-zone');
+  if (zone) {
+    zone.querySelectorAll('.answer-tile').forEach(function (t, i) {
+      t.classList.remove('answer-tile');
+      t.classList.add(attempt[i] === q.correct[i] ? 'correct-tile' : 'wrong-tile');
+    });
+  }
+
+  /* Disable check button */
+  var checkBtn = document.getElementById('check-btn');
+  if (checkBtn) checkBtn.disabled = true;
+
+  state.phase = 'feedback';
+  state._lastCorrect = correct;
+  state._feedbackQ = q;
+  addFeedback(correct, q);
+}
+
+/* ── Add feedback panel ── */
+function addFeedback(correct, q) {
+  var fullSentence = q.type === 'fill'
+    ? q.pre + q.opts[q.ans] + q.post
+    : q.correct.join('');
+
+  var feedbackHtml =
+    '<div class="feedback-panel ' + (correct ? 'correct' : 'wrong') + '">' +
+      '<div class="fb-verdict ' + (correct ? 'correct' : 'wrong') + '">' +
+        (correct ? '✓ Correct' : '✗ Incorrect') +
+      '</div>' +
+      '<div class="fb-full" id="fb-full" title="Click to hear">' + fullSentence + '</div>' +
+      '<div class="fb-explain">' + q.why + '</div>' +
+    '</div>' +
+    '<div class="quiz-nav">' +
+      (state.idx < state.questions.length - 1
+        ? '<button class="quiz-btn" id="next-btn">Next question →</button>'
+        : '<button class="quiz-btn" id="next-btn">See results →</button>') +
+    '</div>';
+
+  wrap.insertAdjacentHTML('beforeend', feedbackHtml);
+
+  document.getElementById('fb-full').addEventListener('click', function () {
+    speak(fullSentence);
+  });
+
+  document.getElementById('next-btn').addEventListener('click', function () {
+    state.idx++;
+    state.phase = 'question';
+    if (state.idx >= state.questions.length) { state.phase = 'done'; }
+    render();
+  });
+
+  /* Speak the correct sentence */
+  setTimeout(function () { speak(fullSentence); }, 400);
+}
+
+/* ── Results ── */
+function renderDone() {
+  var total = state.questions.length;
+  var pct = Math.round((state.score / total) * 100);
+
+  var breakdownHtml = Object.keys(state.catScores).map(function (cat) {
+    var cs = state.catScores[cat];
+    var cp = Math.round((cs.correct / cs.total) * 100);
+    return '<div class="rc-row">' +
+      '<span class="rc-row-label">' + cat + '</span>' +
+      '<div class="rc-bar-wrap"><div class="rc-bar-fill" style="width:' + cp + '%"></div></div>' +
+      '<span class="rc-row-val">' + cs.correct + '/' + cs.total + '</span>' +
+    '</div>';
+  }).join('');
+
+  wrap.innerHTML =
+    '<div class="results-card">' +
+      '<div class="rc-score">' + state.score + '<span style="font-size:32px;color:var(--mid)">/' + total + '</span></div>' +
+      '<div class="rc-label">Questions correct</div>' +
+      '<div class="rc-grade">' + gradeLabel(pct) + '</div>' +
+      '<div class="rc-breakdown">' + breakdownHtml + '</div>' +
+      '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">' +
+        '<button class="quiz-btn" id="retry-btn">Try again</button>' +
+        '<button class="quiz-btn secondary" id="back-btn">Change level</button>' +
+      '</div>' +
+    '</div>';
+
+  document.getElementById('retry-btn').addEventListener('click', startQuiz);
+  document.getElementById('back-btn').addEventListener('click', function () {
+    state.phase = 'start';
+    render();
+  });
+}
+
+/* ── Boot ── */
+render();
+
+})();
+</script>
+<script src="../../nav.js"></script>
+</body>
+</html>

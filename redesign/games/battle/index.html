@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanji Quest — Japanese Uncovered</title>
+<meta name="description" content="Fight enemies by answering kanji reading questions. 10 waves, increasing difficulty from N5 to N3. How far can you get?">
+<link rel="stylesheet" href="../../style.css">
+<style>
+.game-shell {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 0 60px;
+}
+
+/* ── Screens ──────────────────────────────────────────────── */
+.game-screen { display: none; }
+.game-screen.active { display: block; }
+
+/* ── Start screen ─────────────────────────────────────────── */
+.start-panel {
+  border: 1.5px solid var(--ink);
+  padding: 48px 40px;
+  text-align: center;
+  margin: 32px 24px;
+}
+.start-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.start-title .jp-accent { color: var(--accent); }
+.start-sub { color: var(--mid); font-size: 15px; margin-bottom: 32px; }
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink);
+  margin: 0 0 32px;
+  text-align: left;
+}
+.info-cell {
+  padding: 18px 20px;
+  border-right: 1px solid var(--rule);
+}
+.info-cell:last-child { border-right: none; }
+.info-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+.info-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+.info-desc { font-size: 12px; color: var(--mid); margin-top: 8px; line-height: 1.5; }
+
+/* ── Battle HUD ─────────────────────────────────────────────── */
+.battle-wrap { padding: 24px; }
+
+.hud-bar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.hud-chip {
+  padding: 6px 12px;
+  border: 1px solid var(--rule);
+  background: var(--faint);
+  color: var(--mid);
+  font-variant-numeric: tabular-nums;
+}
+.hud-chip strong { color: var(--ink); }
+.hud-chip.hud-wave { background: var(--ink); color: var(--ground); border-color: var(--ink); }
+
+/* ── Arena ────────────────────────────────────────────────── */
+.arena-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.hp-panel {
+  border: 1.5px solid var(--ink);
+  padding: 14px 16px;
+  background: var(--faint);
+}
+.hp-who {
+  font-size: 10px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--mid); margin-bottom: 6px;
+}
+.hp-name { font-family: var(--serif); font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.hp-track { height: 8px; background: var(--rule); margin-bottom: 6px; }
+.hp-fill { height: 100%; transition: width .4s, background .4s; }
+.hp-fill.p-fill { background: #4caf50; }
+.hp-fill.e-fill { background: var(--accent); }
+.hp-nums { font-size: 11px; color: var(--mid); font-variant-numeric: tabular-nums; }
+
+/* ── Enemy stage ──────────────────────────────────────────── */
+.enemy-stage {
+  border: 2.5px solid var(--ink);
+  background: var(--faint);
+  text-align: center;
+  padding: 32px 20px 24px;
+  margin-bottom: 12px;
+  position: relative;
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .4s, box-shadow .4s, background .4s;
+}
+.enemy-glow-strip {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  transition: background .4s;
+}
+.enemy-sprite {
+  width: 108px; height: 108px;
+  transition: transform .3s ease;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,.22));
+  display: flex; align-items: center; justify-content: center;
+}
+.enemy-sprite svg { width: 100%; height: 100%; }
+@keyframes spriteHit {
+  0%,100% { transform: translateX(0) scale(1); }
+  20%  { transform: translateX(-9px) scale(.93); }
+  45%  { transform: translateX(8px)  scale(1.04); }
+  70%  { transform: translateX(-5px) scale(.97); }
+}
+.enemy-sprite.hit { animation: spriteHit .42s ease; }
+.enemy-jp { font-family: var(--serif); font-size: 19px; font-weight: 700; margin-top: 12px; }
+.enemy-en { font-size: 12px; color: var(--mid); margin-top: 2px; }
+.enemy-diff-tag {
+  position: absolute;
+  bottom: 10px; right: 12px;
+  font-size: 10px; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid currentColor;
+  opacity: .55;
+}
+
+.dmg-pop {
+  position: absolute;
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 1.8rem;
+  pointer-events: none;
+  z-index: 10;
+  animation: floatUp .9s ease-out forwards;
+}
+.dmg-pop.hit  { color: var(--accent); top: 28%; left: 45%; }
+.dmg-pop.heal { color: #4caf50;       top: 48%; left: 42%; }
+@keyframes floatUp {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-8px) scale(1.15); }
+  100% { opacity: 0; transform: translateY(-44px) scale(0.9); }
+}
+
+/* ── Question ─────────────────────────────────────────────── */
+.q-panel { border: 1.5px solid var(--ink); margin-bottom: 10px; }
+
+.q-prompt {
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--faint2);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.q-type { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-bottom: 6px; font-weight: 700; }
+.q-kanji { font-family: var(--serif); font-size: 4rem; line-height: 1; font-weight: 700; }
+.q-en { font-size: 13px; color: var(--mid); margin-top: 6px; }
+
+.q-opts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.q-opt {
+  padding: 16px 22px;
+  background: none;
+  border: none;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-family: var(--serif);
+  text-align: left;
+  color: var(--ink);
+  transition: background .12s, color .12s;
+  letter-spacing: .02em;
+}
+.q-opt:nth-child(2n) { border-right: none; }
+.q-opt:nth-child(3), .q-opt:nth-child(4) { border-bottom: none; }
+.q-opt:hover:not(:disabled) { background: var(--faint); color: var(--accent); }
+.q-opt:disabled { cursor: default; }
+.q-opt.correct { background: #e8f5e9; color: #2e7d32; }
+.q-opt.wrong   { background: #ffebee; color: #b71c1c; }
+[data-theme="dark"] .q-opt.correct { background: #1a3520; color: #81c784; }
+[data-theme="dark"] .q-opt.wrong   { background: #3e1a1a; color: #ef9a9a; }
+
+/* ── Feedback ─────────────────────────────────────────────── */
+.feedback {
+  border: 1.5px solid var(--rule);
+  padding: 12px 18px;
+  font-size: 13px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  color: var(--mid);
+  margin-bottom: 0;
+  background: var(--faint2);
+}
+.feedback.good { border-color: #4caf50; background: #f1f8f1; color: #2e7d32; }
+.feedback.bad  { border-color: var(--accent); background: #fff5f5; color: #b71c1c; }
+[data-theme="dark"] .feedback.good { background: #1a3520; color: #81c784; border-color: #388e3c; }
+[data-theme="dark"] .feedback.bad  { background: #3e1a1a; color: #ef9a9a; border-color: var(--accent); }
+
+/* ── Result ───────────────────────────────────────────────── */
+.result-panel {
+  border: 1.5px solid var(--ink);
+  margin: 32px 24px;
+  text-align: center;
+}
+.result-top {
+  padding: 40px 32px 28px;
+  border-bottom: 1.5px solid var(--ink);
+  background: var(--faint);
+}
+.result-icon  { font-size: 4rem; margin-bottom: 12px; }
+.result-title { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
+.result-sub   { color: var(--mid); font-size: 14px; }
+
+.result-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-bottom: 1.5px solid var(--ink);
+}
+.rs {
+  padding: 20px;
+  border-right: 1px solid var(--rule);
+  text-align: left;
+}
+.rs:last-child { border-right: none; }
+.rs-num { font-family: var(--serif); font-size: 2rem; font-weight: 700; }
+.rs-label { font-size: 10px; text-transform: uppercase; letter-spacing: .12em; color: var(--mid); margin-top: 4px; }
+
+.result-actions { padding: 24px 32px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 580px) {
+  .arena-grid { grid-template-columns: 1fr; }
+  .info-grid  { grid-template-columns: 1fr 1fr; }
+  .result-stats { grid-template-columns: 1fr 1fr; }
+  .q-kanji   { font-size: 2.8rem; }
+  .start-panel, .result-panel { margin: 16px; }
+}
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a>
+    <span class="sep">›</span>
+    <a href="/games/">Games</a>
+    <span class="sep">›</span>
+    Kanji Quest
+  </div>
+  <h1 class="page-h1">Kanji Quest <span class="h1-jp">漢字クエスト</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">10 Waves</span>
+    <span class="meta-pill">N5 → N3</span>
+    <span class="meta-pill">RPG Battle</span>
+  </div>
+</header>
+
+<div class="game-shell">
+
+  <!-- START -->
+  <section class="game-screen active" id="screen-start">
+    <div class="start-panel">
+      <p class="start-sub">Answer kanji readings to deal damage. Take hits when you're wrong. Can you defeat the Dragon?</p>
+      <div class="info-grid">
+        <div class="info-cell">
+          <div class="info-num">10</div>
+          <div class="info-label">Waves</div>
+          <div class="info-desc">Each wave is a new enemy with more HP and a harder attack.</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-num">N5→N3</div>
+          <div class="info-label">Difficulty</div>
+          <div class="info-desc">Kanji get harder as waves progress. Wave 7+ introduces N3.</div>
+        </div>
+        <div class="info-cell">
+          <div class="info-num">100</div>
+          <div class="info-label">Player HP</div>
+          <div class="info-desc">Wrong answers let the enemy attack. Don't let HP reach zero.</div>
+        </div>
+      </div>
+      <button class="btn btn-solid" onclick="startGame()">Start Quest</button>
+    </div>
+  </section>
+
+  <!-- BATTLE -->
+  <section class="game-screen" id="screen-battle">
+    <div class="battle-wrap">
+
+      <div class="hud-bar">
+        <div class="hud-chip hud-wave">Wave <strong id="hud-wave">1/10</strong></div>
+        <div class="hud-chip">Score <strong id="hud-score">0</strong></div>
+        <div class="hud-chip">Streak <strong id="hud-streak">0</strong></div>
+      </div>
+
+      <div class="arena-grid">
+        <div class="hp-panel">
+          <div class="hp-who">Player</div>
+          <div class="hp-name">冒険者</div>
+          <div class="hp-track"><div class="hp-fill p-fill" id="player-fill" style="width:100%"></div></div>
+          <div class="hp-nums" id="player-nums">100 / 100</div>
+        </div>
+        <div class="hp-panel">
+          <div class="hp-who">Enemy</div>
+          <div class="hp-name" id="e-name">スライム</div>
+          <div class="hp-track"><div class="hp-fill e-fill" id="enemy-fill" style="width:100%"></div></div>
+          <div class="hp-nums" id="enemy-nums">30 / 30</div>
+        </div>
+      </div>
+
+      <div class="enemy-stage" id="enemy-stage">
+        <div class="enemy-glow-strip" id="e-glow-strip"></div>
+        <div class="enemy-sprite" id="e-sprite"></div>
+        <div class="enemy-jp" id="e-jp">スライム</div>
+        <div class="enemy-en" id="e-en">Slime</div>
+        <div class="enemy-diff-tag" id="e-diff-tag" style="color:#22c55e">N5</div>
+      </div>
+
+      <div class="q-panel">
+        <div class="q-prompt">
+          <div>
+            <div class="q-type">What is the reading?</div>
+            <div class="q-kanji" id="q-kanji">日</div>
+            <div class="q-en" id="q-en">sun / day</div>
+          </div>
+        </div>
+        <div class="q-opts" id="q-opts">
+          <button class="q-opt" onclick="answer(0)">にち</button>
+          <button class="q-opt" onclick="answer(1)">つき</button>
+          <button class="q-opt" onclick="answer(2)">やま</button>
+          <button class="q-opt" onclick="answer(3)">かわ</button>
+        </div>
+      </div>
+
+      <div class="feedback" id="feedback"></div>
+
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="game-screen" id="screen-result">
+    <div class="result-panel">
+      <div class="result-top">
+        <div class="result-icon" id="r-icon"></div>
+        <div class="result-title" id="r-title">Victory!</div>
+        <div class="result-sub" id="r-sub">You defeated all enemies.</div>
+      </div>
+      <div class="result-stats">
+        <div class="rs"><div class="rs-num" id="r-score">0</div><div class="rs-label">Score</div></div>
+        <div class="rs"><div class="rs-num" id="r-wave">10</div><div class="rs-label">Wave Reached</div></div>
+        <div class="rs"><div class="rs-num" id="r-acc">0%</div><div class="rs-label">Accuracy</div></div>
+      </div>
+      <div class="result-actions">
+        <button class="btn btn-solid" onclick="startGame()">Play Again</button>
+        <button class="btn btn-ghost" onclick="showScreen('screen-start')">Main Menu</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="ju-footer"></div>
+<script src="../../nav.js"></script>
+<script>
+const ENEMIES = [
+  { name:'スライム', en:'Slime', maxHp:30, atk:8, glow:'#22c55e', diff:'N5',
+    svg:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="38" rx="22" ry="16" fill="#4ade80"/><ellipse cx="30" cy="27" rx="18" ry="17" fill="#4ade80"/><ellipse cx="21" cy="21" rx="6" ry="4" fill="#bbf7d0" opacity=".7"/><ellipse cx="30" cy="50" rx="16" ry="5" fill="#16a34a" opacity=".6"/><circle cx="24" cy="32" r="3.5" fill="#14532d"/><circle cx="36" cy="32" r="3.5" fill="#14532d"/><circle cx="25.2" cy="30.5" r="1.3" fill="white"/><circle cx="37.2" cy="30.5" r="1.3" fill="white"/></svg>`
+  },
+  { name:'コウモリ', en:'Bat', maxHp:45, atk:11, glow:'#8b5cf6', diff:'N5',
+    svg:`<svg viewBox="0 0 60 60"><path d="M30,30 L6,18 Q3,28 8,35 L22,32 Z" fill="#7c3aed"/><path d="M30,30 L54,18 Q57,28 52,35 L38,32 Z" fill="#7c3aed"/><line x1="12" y1="20" x2="10" y2="32" stroke="#6d28d9" stroke-width="1.2" opacity=".5"/><line x1="48" y1="20" x2="50" y2="32" stroke="#6d28d9" stroke-width="1.2" opacity=".5"/><ellipse cx="30" cy="33" rx="10" ry="12" fill="#8b5cf6"/><polygon points="23,22 20,11 28,20" fill="#7c3aed"/><polygon points="37,22 40,11 32,20" fill="#7c3aed"/><polygon points="23,21 21.5,15 27,20" fill="#c4b5fd" opacity=".6"/><polygon points="37,21 38.5,15 33,20" fill="#c4b5fd" opacity=".6"/><circle cx="26" cy="30" r="3.5" fill="#ede9fe"/><circle cx="34" cy="30" r="3.5" fill="#ede9fe"/><circle cx="26" cy="30.5" r="1.8" fill="#1e1b4b"/><circle cx="34" cy="30.5" r="1.8" fill="#1e1b4b"/><circle cx="26.8" cy="29.3" r=".7" fill="white"/><circle cx="34.8" cy="29.3" r=".7" fill="white"/><polygon points="27,43 25,50 29,43" fill="white"/><polygon points="33,43 31,50 35,43" fill="white"/></svg>`
+  },
+  { name:'オオカミ', en:'Wolf', maxHp:60, atk:14, glow:'#64748b', diff:'N5',
+    svg:`<svg viewBox="0 0 60 60"><polygon points="18,18 12,3 24,16" fill="#475569"/><polygon points="42,18 48,3 36,16" fill="#475569"/><polygon points="19,17 14.5,7 23,16" fill="#e2e8f0" opacity=".8"/><polygon points="41,17 45.5,7 37,16" fill="#e2e8f0" opacity=".8"/><ellipse cx="30" cy="30" rx="18" ry="17" fill="#94a3b8"/><ellipse cx="30" cy="39" rx="12" ry="9" fill="#cbd5e1"/><circle cx="22" cy="26" r="5" fill="#0f172a"/><circle cx="38" cy="26" r="5" fill="#0f172a"/><circle cx="22" cy="26" r="2.8" fill="#f59e0b"/><circle cx="38" cy="26" r="2.8" fill="#f59e0b"/><ellipse cx="22" cy="26" rx="1.1" ry="2.2" fill="#020617"/><ellipse cx="38" cy="26" rx="1.1" ry="2.2" fill="#020617"/><circle cx="23.2" cy="24.5" r=".9" fill="white"/><circle cx="39.2" cy="24.5" r=".9" fill="white"/><ellipse cx="30" cy="35" rx="3" ry="2.2" fill="#0f172a"/><path d="M27,38 Q30,42 33,38" stroke="#0f172a" stroke-width="1.5" fill="none"/></svg>`
+  },
+  { name:'クモ', en:'Spider', maxHp:75, atk:17, glow:'#7c3aed', diff:'N4',
+    svg:`<svg viewBox="0 0 60 60"><line x1="26" y1="28" x2="5" y2="17" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="25" y1="30" x2="3" y2="30" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="26" y1="32" x2="5" y2="43" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="28" y1="35" x2="10" y2="53" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="28" x2="55" y2="17" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="35" y1="30" x2="57" y2="30" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="34" y1="32" x2="55" y2="43" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><line x1="32" y1="35" x2="50" y2="53" stroke="#5b21b6" stroke-width="3" stroke-linecap="round"/><ellipse cx="30" cy="38" rx="14" ry="12" fill="#7c3aed"/><ellipse cx="30" cy="22" rx="10" ry="9" fill="#6d28d9"/><circle cx="25" cy="20" r="2.2" fill="#ede9fe"/><circle cx="30" cy="19" r="2.2" fill="#ede9fe"/><circle cx="35" cy="20" r="2.2" fill="#ede9fe"/><circle cx="25.6" cy="20.6" r="1" fill="#1e1b4b"/><circle cx="30.6" cy="19.6" r="1" fill="#1e1b4b"/><circle cx="35.6" cy="20.6" r="1" fill="#1e1b4b"/><path d="M24,34 L30,40 L36,34 L30,37.5 Z" fill="#c4b5fd" opacity=".35"/></svg>`
+  },
+  { name:'ゴーレム', en:'Golem', maxHp:90, atk:20, glow:'#78716c', diff:'N4',
+    svg:`<svg viewBox="0 0 60 60"><rect x="14" y="30" width="32" height="24" rx="2" fill="#78716c"/><rect x="3" y="30" width="13" height="19" rx="3" fill="#92918d"/><rect x="44" y="30" width="13" height="19" rx="3" fill="#92918d"/><rect x="2" y="45" width="15" height="10" rx="3" fill="#78716c"/><rect x="43" y="45" width="15" height="10" rx="3" fill="#78716c"/><rect x="14" y="10" width="32" height="24" rx="4" fill="#a8a29e"/><path d="M28,13 L26,26" stroke="#57534e" stroke-width="1.5" fill="none"/><rect x="17" y="17" width="9" height="7" rx="1" fill="#44403c"/><rect x="34" y="17" width="9" height="7" rx="1" fill="#44403c"/><rect x="18" y="18" width="7" height="5" rx="1" fill="#cbd5e1"/><rect x="35" y="18" width="7" height="5" rx="1" fill="#cbd5e1"/><rect x="20" y="30" width="20" height="3" rx="1" fill="#292524"/><polygon points="30,38 26,42 30,46 34,42" fill="#94a3b8"/><polygon points="30,39.5 27,42 30,44.5 33,42" fill="#e2e8f0"/></svg>`
+  },
+  { name:'サソリ', en:'Scorpion', maxHp:105, atk:22, glow:'#f59e0b', diff:'N4',
+    svg:`<svg viewBox="0 0 60 60"><circle cx="44" cy="38" r="5" fill="#d97706"/><circle cx="50" cy="30" r="4.5" fill="#d97706"/><circle cx="53" cy="22" r="4" fill="#b45309"/><path d="M54,16 Q58,11 53,9 Q51,15 49,17" fill="#92400e"/><ellipse cx="28" cy="37" rx="14" ry="10" fill="#f59e0b"/><ellipse cx="16" cy="37" rx="9" ry="8" fill="#d97706"/><path d="M9,34 L3,27 M3,27 L1,31" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" fill="none"/><path d="M9,40 L3,47 M3,47 L1,43" stroke="#f59e0b" stroke-width="3.5" stroke-linecap="round" fill="none"/><line x1="22" y1="46" x2="20" y2="56" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/><line x1="28" y1="47" x2="28" y2="57" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/><line x1="34" y1="46" x2="36" y2="56" stroke="#d97706" stroke-width="2.5" stroke-linecap="round"/><circle cx="13" cy="34" r="2.5" fill="#0c0a09"/><circle cx="19" cy="34" r="2.5" fill="#0c0a09"/><circle cx="13.7" cy="33.2" r=".8" fill="#fef3c7"/><circle cx="19.7" cy="33.2" r=".8" fill="#fef3c7"/></svg>`
+  },
+  { name:'サメ', en:'Shark', maxHp:115, atk:25, glow:'#06b6d4', diff:'N3',
+    svg:`<svg viewBox="0 0 60 60"><path d="M6,30 L0,17 L0,43 Z" fill="#0891b2"/><ellipse cx="32" cy="30" rx="26" ry="14" fill="#06b6d4"/><ellipse cx="34" cy="35" rx="20" ry="7" fill="#e0f7fa"/><path d="M26,16 L32,3 L38,16" fill="#0891b2"/><path d="M22,36 L15,49 L29,37" fill="#0891b2"/><ellipse cx="56" cy="28" rx="5" ry="6" fill="#0891b2"/><circle cx="46" cy="24" r="4" fill="#0c4a6e"/><circle cx="47.2" cy="22.8" r="1.4" fill="white"/><path d="M38,22 Q40,28 38,34" stroke="#0891b2" stroke-width="1.5" fill="none"/><path d="M34,21 Q36,27 34,33" stroke="#0891b2" stroke-width="1.5" fill="none"/><polygon points="50,34 48,34 49,39 51,34" fill="white"/><polygon points="54,31 52,31 53,36 55,31" fill="white"/></svg>`
+  },
+  { name:'トラ', en:'Tiger', maxHp:130, atk:27, glow:'#f97316', diff:'N3',
+    svg:`<svg viewBox="0 0 60 60"><polygon points="16,16 12,2 22,14" fill="#f97316"/><polygon points="44,16 48,2 38,14" fill="#f97316"/><polygon points="17,15 14,6 21,14" fill="#fde68a"/><polygon points="43,15 46,6 39,14" fill="#fde68a"/><circle cx="30" cy="32" r="20" fill="#f97316"/><path d="M14,20 L12,30" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/><path d="M46,20 L48,30" stroke="#c2410c" stroke-width="3" stroke-linecap="round"/><path d="M18,13 L16,22" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round"/><path d="M42,13 L44,22" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round"/><path d="M28,11 L30,19 L32,11" stroke="#c2410c" stroke-width="2" fill="none"/><ellipse cx="30" cy="39" rx="12" ry="9" fill="#fed7aa"/><circle cx="22" cy="28" r="5.5" fill="#fef08a"/><circle cx="38" cy="28" r="5.5" fill="#fef08a"/><ellipse cx="22" cy="28" rx="2" ry="4.2" fill="#1c1917"/><ellipse cx="38" cy="28" rx="2" ry="4.2" fill="#1c1917"/><circle cx="23.5" cy="26.2" r="1" fill="white"/><circle cx="39.5" cy="26.2" r="1" fill="white"/><ellipse cx="30" cy="36" rx="2.5" ry="2" fill="#9a3412"/><line x1="18" y1="39" x2="5" y2="36" stroke="#7c2d12" stroke-width="1.2"/><line x1="18" y1="41" x2="5" y2="41" stroke="#7c2d12" stroke-width="1.2"/><line x1="42" y1="39" x2="55" y2="36" stroke="#7c2d12" stroke-width="1.2"/><line x1="42" y1="41" x2="55" y2="41" stroke="#7c2d12" stroke-width="1.2"/><path d="M26,43 Q30,47 34,43" stroke="#9a3412" stroke-width="1.5" fill="none"/></svg>`
+  },
+  { name:'オニ', en:'Oni', maxHp:150, atk:30, glow:'#ef4444', diff:'N3',
+    svg:`<svg viewBox="0 0 60 60"><ellipse cx="30" cy="16" rx="21" ry="13" fill="#7c2d12"/><path d="M18,18 L14,3 L22,16" fill="#fb923c"/><path d="M42,18 L46,3 L38,16" fill="#fb923c"/><ellipse cx="30" cy="34" rx="21" ry="19" fill="#ef4444"/><path d="M16,24 L24,29" stroke="#b91c1c" stroke-width="3.5" stroke-linecap="round"/><path d="M44,24 L36,29" stroke="#b91c1c" stroke-width="3.5" stroke-linecap="round"/><circle cx="22" cy="31" r="6" fill="#fef08a"/><circle cx="38" cy="31" r="6" fill="#fef08a"/><circle cx="22" cy="32" r="3" fill="#1c1917"/><circle cx="38" cy="32" r="3" fill="#1c1917"/><circle cx="23.2" cy="30.2" r="1.1" fill="white"/><circle cx="39.2" cy="30.2" r="1.1" fill="white"/><ellipse cx="30" cy="39" rx="5.5" ry="4.5" fill="#dc2626"/><circle cx="27.5" cy="39" r="1.8" fill="#b91c1c"/><circle cx="32.5" cy="39" r="1.8" fill="#b91c1c"/><path d="M15,46 Q30,55 45,46" stroke="#1c1917" stroke-width="2" fill="none"/><polygon points="22,46 20,54 24,46" fill="white"/><polygon points="30,48 28,56 32,48" fill="white"/><polygon points="38,46 36,54 40,46" fill="white"/></svg>`
+  },
+  { name:'ドラゴン', en:'Dragon', maxHp:180, atk:38, glow:'#eab308', diff:'BOSS', boss:true,
+    svg:`<svg viewBox="0 0 60 60"><path d="M10,54 Q5,42 11,33 Q17,24 13,14" stroke="#eab308" stroke-width="14" fill="none" stroke-linecap="round"/><path d="M10,54 Q5,42 11,33 Q17,24 13,14" stroke="#fde68a" stroke-width="7" fill="none" stroke-linecap="round" opacity=".35"/><path d="M11,42 Q15,40 13,36" stroke="#ca8a04" stroke-width="1.5" fill="none"/><path d="M9,36 Q13,34 11,30" stroke="#ca8a04" stroke-width="1.5" fill="none"/><ellipse cx="24" cy="13" rx="16" ry="12" fill="#eab308"/><ellipse cx="38" cy="15" rx="10" ry="7" fill="#ca8a04"/><path d="M17,5 Q13,1 11,5" stroke="#ca8a04" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24,4 Q28,0 30,4" stroke="#ca8a04" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M14,10 Q8,8 6,13" stroke="#fde68a" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M14,15 Q6,17 4,22" stroke="#fde68a" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M14,22 Q5,16 2,22 Q6,32 15,29 Z" fill="#ca8a04" opacity=".85"/><circle cx="28" cy="11" r="5.5" fill="#fef08a"/><circle cx="28" cy="11.5" r="3" fill="#0c0a09"/><circle cx="29.4" cy="10" r="1.3" fill="white"/><circle cx="44" cy="11" r="2" fill="#57534e" opacity=".5"/><circle cx="46" cy="8" r="1.3" fill="#57534e" opacity=".3"/><polygon points="39,19 37,26 41,19" fill="white"/><polygon points="43,17 41,24 45,17" fill="white"/><path d="M11,50 L7,56 M11,50 L9,57 M11,50 L13,57" stroke="#ca8a04" stroke-width="2" stroke-linecap="round"/></svg>`
+  },
+];
+
+const QUESTIONS = [
+  ['日','にち・ひ','day / sun','N5'],['月','つき・げつ','moon / month','N5'],
+  ['火','ひ・か','fire','N5'],['水','みず・すい','water','N5'],
+  ['木','き・もく','tree / wood','N5'],['金','きん・かね','gold / money','N5'],
+  ['土','つち・ど','earth','N5'],['山','やま・さん','mountain','N5'],
+  ['川','かわ・せん','river','N5'],['田','た・でん','rice field','N5'],
+  ['人','ひと・じん','person','N5'],['口','くち・こう','mouth','N5'],
+  ['手','て・しゅ','hand','N5'],['目','め・もく','eye','N5'],
+  ['耳','みみ・じ','ear','N5'],['足','あし・そく','foot / leg','N5'],
+  ['本','ほん・もと','book','N5'],['大','おお・だい','big','N5'],
+  ['小','ちい・しょう','small','N5'],['中','なか・ちゅう','middle','N5'],
+  ['上','うえ・じょう','above','N5'],['下','した・か','below','N5'],
+  ['右','みぎ・う','right','N5'],['左','ひだり・さ','left','N5'],
+  ['年','とし・ねん','year','N5'],['時','とき・じ','time','N5'],
+  ['花','はな・か','flower','N5'],['空','そら・くう','sky','N5'],
+  ['雨','あめ・う','rain','N5'],['車','くるま・しゃ','car','N5'],
+  ['食','た・しょく','eat / food','N4'],['行','い・こう','go','N4'],
+  ['来','く・らい','come','N4'],['見','み・けん','see','N4'],
+  ['聞','き・もん','listen','N4'],['話','はな・わ','talk','N4'],
+  ['読','よ・どく','read','N4'],['書','か・しょ','write','N4'],
+  ['知','し・ち','know','N4'],['帰','かえ・き','return home','N4'],
+  ['使','つか・し','use','N4'],['作','つく・さく','make','N4'],
+  ['持','も・じ','hold / carry','N4'],['待','ま・たい','wait','N4'],
+  ['急','いそ・きゅう','hurry','N4'],['買','か・ばい','buy','N4'],
+  ['感','かん','feeling / sense','N3'],['決','き・けつ','decide','N3'],
+  ['続','つづ・ぞく','continue','N3'],['終','お・しゅう','end','N3'],
+  ['変','か・へん','change','N3'],['考','かんが・こう','think','N3'],
+  ['選','えら・せん','choose','N3'],['意','い','meaning / will','N3'],
+];
+
+let gs = {};
+
+function startGame() {
+  gs = {
+    wave:0, playerHp:100, playerMax:100, score:0, streak:0,
+    total:0, correct:0, answered:false, used:new Set(),
+    enemy:null, currentQ:null, correctIdx:0,
+  };
+  showScreen('screen-battle');
+  nextWave();
+}
+
+function nextWave() {
+  gs.wave++;
+  if (gs.wave > 10) { endGame(true); return; }
+
+  const e = { ...ENEMIES[gs.wave - 1] };
+  e.hp = e.maxHp;
+  gs.enemy = e;
+
+  setEl('hud-wave', gs.wave + '/10');
+  setEl('e-name', e.name);
+  setEl('e-jp',   e.name);
+  setEl('e-en',   e.en);
+  document.getElementById('e-sprite').innerHTML = e.svg;
+  setEl('e-diff-tag', e.diff);
+  document.getElementById('e-sprite').style.transform = '';
+
+  // Apply enemy glow colour to stage
+  const stage = document.getElementById('enemy-stage');
+  stage.style.borderColor = e.glow;
+  stage.style.boxShadow   = `0 0 32px ${e.glow}33, 0 0 8px ${e.glow}22`;
+  stage.style.background  = `${e.glow}0d`;
+  document.getElementById('e-glow-strip').style.background = e.glow;
+  document.getElementById('e-diff-tag').style.color = e.glow;
+
+  updateBars();
+  clearFb();
+
+  if (e.boss) {
+    fb('BOSS! The Dragon appears — steel yourself!', 'bad');
+    setTimeout(nextQ, 1100);
+  } else {
+    nextQ();
+  }
+}
+
+function diffPool(wave) {
+  if (wave <= 3) return ['N5'];
+  if (wave <= 6) return ['N5','N4'];
+  return ['N5','N4','N3'];
+}
+
+function nextQ() {
+  const diffs = diffPool(gs.wave);
+  const pool  = QUESTIONS.filter(q => diffs.includes(q[3]) && !gs.used.has(q[0]));
+  const src   = pool.length > 4 ? pool : QUESTIONS.filter(q => diffs.includes(q[3]));
+  const correct = src[Math.floor(Math.random() * src.length)];
+  gs.used.add(correct[0]);
+  gs.currentQ = correct;
+
+  const wrongs = shuffle(QUESTIONS.filter(q => q[0] !== correct[0])).slice(0, 3);
+  const opts   = shuffle([correct, ...wrongs]);
+  gs.correctIdx = opts.indexOf(correct);
+
+  setEl('q-kanji', correct[0]);
+  setEl('q-en',    correct[2]);
+
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach((b, i) => {
+    b.textContent = opts[i][1];
+    b.className = 'q-opt';
+    b.disabled  = false;
+    b.onclick   = () => answer(i);
+  });
+
+  gs.answered = false;
+  clearFb();
+}
+
+function answer(idx) {
+  if (gs.answered) return;
+  gs.answered = true;
+  gs.total++;
+
+  const btns = document.querySelectorAll('.q-opt');
+  btns.forEach(b => b.disabled = true);
+
+  if (idx === gs.correctIdx) {
+    gs.correct++;
+    gs.streak++;
+    const dmg   = 20 + Math.floor(Math.random() * 12) + gs.streak * 2;
+    const bonus = gs.streak > 2 ? ` ×${gs.streak} streak!` : '';
+    gs.score += 10 + gs.streak * 5;
+    btns[idx].classList.add('correct');
+    fb(`✓ Correct!${bonus} You deal ${dmg} damage.`, 'good');
+    popDmg(`-${dmg}`, 'hit');
+    speak(gs.currentQ[0]);
+    gs.enemy.hp = Math.max(0, gs.enemy.hp - dmg);
+    updateBars();
+
+    const spr = document.getElementById('e-sprite');
+    spr.classList.remove('hit');
+    void spr.offsetWidth;
+    spr.classList.add('hit');
+    setTimeout(() => spr.classList.remove('hit'), 450);
+
+    setEl('hud-score',  gs.score);
+    setEl('hud-streak', gs.streak);
+
+    if (gs.enemy.hp <= 0) {
+      const wBonus = 50 * gs.wave;
+      gs.score += wBonus;
+      fb(`⭐ ${gs.enemy.name} defeated! +${wBonus} bonus. Next wave!`, 'good');
+      document.getElementById('e-sprite').style.transform = 'scale(0) rotate(20deg)';
+      setTimeout(() => nextWave(), 1500);
+    } else {
+      setTimeout(nextQ, 800);
+    }
+  } else {
+    gs.streak = 0;
+    const dmg = gs.enemy.atk + Math.floor(Math.random() * 7);
+    btns[idx].classList.add('wrong');
+    btns[gs.correctIdx].classList.add('correct');
+    fb(`✗ Wrong. Reading: ${gs.currentQ[1]}. ${gs.enemy.name} attacks for ${dmg} damage!`, 'bad');
+    gs.playerHp = Math.max(0, gs.playerHp - dmg);
+    updateBars();
+    setEl('hud-streak', 0);
+    if (gs.playerHp <= 0) { setTimeout(() => endGame(false), 1200); return; }
+    setTimeout(nextQ, 1400);
+  }
+}
+
+function updateBars() {
+  const pp = (gs.playerHp / gs.playerMax) * 100;
+  const ep = (gs.enemy.hp / gs.enemy.maxHp) * 100;
+  const pf = document.getElementById('player-fill');
+  pf.style.width = pp + '%';
+  pf.style.background = pp > 50 ? '#4caf50' : pp > 25 ? '#ff9800' : '#f44336';
+  document.getElementById('enemy-fill').style.width = ep + '%';
+  document.getElementById('player-nums').textContent = `${gs.playerHp} / ${gs.playerMax}`;
+  document.getElementById('enemy-nums').textContent  = `${gs.enemy.hp} / ${gs.enemy.maxHp}`;
+}
+
+function popDmg(text, cls) {
+  const stage = document.getElementById('enemy-stage');
+  const el = document.createElement('div');
+  el.className = `dmg-pop ${cls}`;
+  el.textContent = text;
+  stage.appendChild(el);
+  setTimeout(() => el.remove(), 1000);
+}
+
+function fb(msg, cls) {
+  const el = document.getElementById('feedback');
+  el.textContent = msg;
+  el.className = `feedback ${cls}`;
+}
+function clearFb() {
+  const el = document.getElementById('feedback');
+  el.textContent = '';
+  el.className = 'feedback';
+}
+
+function endGame(won) {
+  const acc = gs.total > 0 ? Math.round((gs.correct / gs.total) * 100) : 0;
+  setEl('r-icon',  '');
+  setEl('r-title', won ? '勝利！ Victory!' : '敗北… Defeated');
+  setEl('r-sub',   won ? 'All 10 enemies defeated. Excellent!' : `Fell at Wave ${gs.wave}. Train and try again.`);
+  setEl('r-score', gs.score.toLocaleString());
+  setEl('r-wave',  gs.wave);
+  setEl('r-acc',   acc + '%');
+  showScreen('screen-result');
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.game-screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function setEl(id, val) { document.getElementById(id).textContent = val; }
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'ja-JP'; u.rate = 0.85;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+</script>
+</body>
+</html>
