@@ -1,0 +1,4392 @@
+[
+  {
+    "scene_id": "coffee_shop_order",
+    "title": "Coffee Shop Order",
+    "level": "N5",
+    "topic": "food_and_drink",
+    "scene_intro": "You're in a cosy coffee shop on a busy Tokyo side street. It's mid-morning, and the place is warm and quietly humming. A young barista named Yuki is behind the counter, pen in hand, waiting to take your order. You'd like a coffee — hot — and something from the cake display.",
+    "other_character": "Yuki, a friendly young barista",
+    "goal": "order a hot coffee and a slice of cake",
+    "grammar_focus": "ください requests (x4), も, それだけです, ありがとうございます",
+    "setting": "a cosy coffee shop in Tokyo",
+    "beat_count": 12,
+    "duration_seconds": 281,
+    "audio_url": "/echo/audio/coffee_shop_order.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "cs_001",
+        "start_ms": 22194,
+        "context_line": "You walk up to the counter. Yuki looks up and smiles, ready to take your order.",
+        "character_japanese": "",
+        "english_cue": "Get her attention politely.",
+        "japanese_answer": "すみません。",
+        "romaji": "Sumimasen.",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 2,
+        "srs_id": "cs_002",
+        "start_ms": 41193,
+        "context_line": "Yuki nods and waits.",
+        "character_japanese": "",
+        "english_cue": "Order a coffee.",
+        "japanese_answer": "コーヒーをください。",
+        "romaji": "Koohii wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 3,
+        "srs_id": "cs_003",
+        "start_ms": 57788,
+        "context_line": "Yuki asks: hot or iced?",
+        "character_japanese": "ホットとアイス、どちらですか？",
+        "english_cue": "Say you want it hot.",
+        "japanese_answer": "ホットをください。",
+        "romaji": "Hotto wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "cs_004",
+        "start_ms": 77858,
+        "context_line": "Yuki asks if you'd like anything else.",
+        "character_japanese": "ほかに何かありますか？",
+        "english_cue": "Say you'd like a slice of cake as well.",
+        "japanese_answer": "ケーキもください。",
+        "romaji": "Keeki mo kudasai.",
+        "grammar_tag": "request-kudasai-mo"
+      },
+      {
+        "beat": 5,
+        "srs_id": "cs_005",
+        "start_ms": 98311,
+        "context_line": "Yuki points to the display case. There's a chocolate cake and a cheesecake.",
+        "character_japanese": "",
+        "english_cue": "Point to the front one and say you'll take that.",
+        "japanese_answer": "あれをください。",
+        "romaji": "Are wo kudasai.",
+        "grammar_tag": "request-kudasai-demonstrative"
+      },
+      {
+        "beat": 6,
+        "srs_id": "cs_006",
+        "start_ms": 118257,
+        "context_line": "Yuki keys in your order and asks if that's everything.",
+        "character_japanese": "これだけですか？",
+        "english_cue": "Say yes, that's all.",
+        "japanese_answer": "はい、それだけです。",
+        "romaji": "Hai, sore dake desu.",
+        "grammar_tag": "confirmation"
+      },
+      {
+        "beat": 7,
+        "srs_id": "cs_007",
+        "start_ms": 141196,
+        "context_line": "Yuki tells you the total is eight hundred and fifty yen.",
+        "character_japanese": "はっぴゃくごじゅうえんです。",
+        "english_cue": "Say here you go as you hand over the money.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 8,
+        "srs_id": "cs_008",
+        "start_ms": 163425,
+        "context_line": "Yuki counts out your change and thanks you.",
+        "character_japanese": "ありがとうございます。",
+        "english_cue": "Thank her back.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 9,
+        "srs_id": "cs_009",
+        "start_ms": 184421,
+        "context_line": "Yuki says your order will be ready in a moment and asks you to wait.",
+        "character_japanese": "すぐできますよ。待ってください。",
+        "english_cue": "Say understood.",
+        "japanese_answer": "わかりました。",
+        "romaji": "Wakarimashita.",
+        "grammar_tag": "acknowledgement"
+      },
+      {
+        "beat": 10,
+        "srs_id": "cs_010",
+        "start_ms": 205968,
+        "context_line": "A few minutes later, Yuki sets your coffee and cake on the counter.",
+        "character_japanese": "どうぞ！",
+        "english_cue": "Confirm it's you — say yes, that's right.",
+        "japanese_answer": "はい、そうです。",
+        "romaji": "Hai, sou desu.",
+        "grammar_tag": "confirmation"
+      },
+      {
+        "beat": 11,
+        "srs_id": "cs_011",
+        "start_ms": 229830,
+        "context_line": "You take a sip of the coffee. It's really good.",
+        "character_japanese": "",
+        "english_cue": "Tell Yuki it's delicious.",
+        "japanese_answer": "とてもおいしいです！",
+        "romaji": "Totemo oishii desu!",
+        "grammar_tag": "adjective-totemo"
+      },
+      {
+        "beat": 12,
+        "srs_id": "cs_012",
+        "start_ms": 248503,
+        "context_line": "You've finished and you're heading for the door. Yuki gives you a wave.",
+        "character_japanese": "ありがとうございました！",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございました。また来ます。",
+        "romaji": "Arigatou gozaimashita. Mata kimasu.",
+        "grammar_tag": "farewell-mata-kimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "すみません",
+        "reading": "sumimasen",
+        "meaning": "Excuse me / Sorry",
+        "note": "The Swiss Army knife of Japanese. Use it to get attention, apologise mildly, or even express gratitude. In a cafe, stepping up to the counter and saying すみません is all you need to invite someone to take your order."
+      },
+      {
+        "phrase": "ほかに何かありますか",
+        "reading": "hoka ni nanika arimasu ka",
+        "meaning": "Anything else?",
+        "note": "ほかに means 'in addition / besides that'. You'll hear this at every counter in Japan. Reply with もう一つ〜ください (one more X please) or はい、それだけです (yes, that's all)."
+      },
+      {
+        "phrase": "それだけです",
+        "reading": "sore dake desu",
+        "meaning": "That's all / Just that",
+        "note": "だけ means 'only' or 'just'. それだけ = 'just that'. Paired with はい it becomes the complete, polite answer to 'anything else?' — cleaner than trying to say 'no thank you'."
+      }
+    ]
+  },
+  {
+    "scene_id": "language_exchange_meetup",
+    "title": "Language Exchange Meetup",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "You're at a weekly language exchange evening at a community centre in Tokyo. You've just arrived and spotted a name badge that says Keiko. She's looking for an English conversation partner — and you're looking for Japanese practice. You head over to introduce yourself.",
+    "other_character": "Keiko, a friendly Japanese woman in her twenties",
+    "goal": "introduce yourself and start a conversation",
+    "grammar_focus": "はじめまして introduction sequence, から来ました, 〜が好きです (x2), よろしくお願いします",
+    "setting": "a community centre in Tokyo, language exchange evening",
+    "beat_count": 10,
+    "duration_seconds": 251,
+    "audio_url": "/echo/audio/language_exchange_meetup.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "le_001",
+        "start_ms": 21282,
+        "context_line": "You catch Keiko's eye. She smiles and waits.",
+        "character_japanese": "",
+        "english_cue": "Say hello.",
+        "japanese_answer": "こんにちは。",
+        "romaji": "Konnichiwa.",
+        "grammar_tag": "greeting"
+      },
+      {
+        "beat": 2,
+        "srs_id": "le_002",
+        "start_ms": 38193,
+        "context_line": "Keiko nods.",
+        "character_japanese": "",
+        "english_cue": "Say nice to meet you and give your name.",
+        "japanese_answer": "はじめまして、ロブです。",
+        "romaji": "Hajimemashite, Robu desu.",
+        "grammar_tag": "self-intro-hajimemashite"
+      },
+      {
+        "beat": 3,
+        "srs_id": "le_003",
+        "start_ms": 59204,
+        "context_line": "Keiko introduces herself.",
+        "character_japanese": "はじめまして、けいこです。よろしく！",
+        "english_cue": "Respond: pleased to meet you too.",
+        "japanese_answer": "よろしくお願いします。",
+        "romaji": "Yoroshiku onegai shimasu.",
+        "grammar_tag": "yoroshiku"
+      },
+      {
+        "beat": 4,
+        "srs_id": "le_004",
+        "start_ms": 83494,
+        "context_line": "Keiko asks where you're from.",
+        "character_japanese": "どこから来ましたか？",
+        "english_cue": "Say you're from the UK.",
+        "japanese_answer": "イギリスから来ました。",
+        "romaji": "Igirisu kara kimashita.",
+        "grammar_tag": "origin-kara-kimashita"
+      },
+      {
+        "beat": 5,
+        "srs_id": "le_005",
+        "start_ms": 103689,
+        "context_line": "Keiko says oh, England! and asks if you're studying Japanese.",
+        "character_japanese": "え、イギリスから！日本語を勉強していますか？",
+        "english_cue": "Say yes, you're studying Japanese.",
+        "japanese_answer": "はい、日本語を勉強しています。",
+        "romaji": "Hai, Nihongo wo benkyou shite imasu.",
+        "grammar_tag": "verb-te-iru-progressive"
+      },
+      {
+        "beat": 6,
+        "srs_id": "le_006",
+        "start_ms": 136238,
+        "context_line": "Keiko asks how long you've been studying.",
+        "character_japanese": "いつから勉強しましたか？",
+        "english_cue": "Say just a little — just a short time.",
+        "japanese_answer": "少しです。",
+        "romaji": "Sukoshi desu.",
+        "grammar_tag": "amount-sukoshi"
+      },
+      {
+        "beat": 7,
+        "srs_id": "le_007",
+        "start_ms": 156178,
+        "context_line": "Keiko asks if you like Japan.",
+        "character_japanese": "日本が好きですか？",
+        "english_cue": "Say yes, you like Japan very much.",
+        "japanese_answer": "はい、日本がとても好きです。",
+        "romaji": "Hai, Nihon ga totemo suki desu.",
+        "grammar_tag": "ga-suki-desu"
+      },
+      {
+        "beat": 8,
+        "srs_id": "le_008",
+        "start_ms": 182271,
+        "context_line": "Keiko asks what you like.",
+        "character_japanese": "何が好きですか？",
+        "english_cue": "Say you like Japanese food.",
+        "japanese_answer": "日本の食べ物が好きです。",
+        "romaji": "Nihon no tabemono ga suki desu.",
+        "grammar_tag": "ga-suki-desu"
+      },
+      {
+        "beat": 9,
+        "srs_id": "le_009",
+        "start_ms": 204874,
+        "context_line": "Keiko laughs and says she likes English music.",
+        "character_japanese": "いいですね！わたしは英語の音楽が好きです。",
+        "english_cue": "Say that's great.",
+        "japanese_answer": "いいですね！",
+        "romaji": "Ii desu ne!",
+        "grammar_tag": "ne-agreement"
+      },
+      {
+        "beat": 10,
+        "srs_id": "le_010",
+        "start_ms": 226350,
+        "context_line": "Keiko suggests practising together.",
+        "character_japanese": "いっしょにやりましょう！",
+        "english_cue": "Say yes, let's do that.",
+        "japanese_answer": "はい、お願いします！",
+        "romaji": "Hai, onegai shimasu!",
+        "grammar_tag": "onegai-shimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "はじめまして",
+        "reading": "hajimemashite",
+        "meaning": "Nice to meet you (first time only)",
+        "note": "Literally 'it is the first time'. Only used on a true first meeting — never again with the same person. Always paired with your name + です and closed with よろしくお願いします to form the standard self-introduction."
+      },
+      {
+        "phrase": "よろしくお願いします",
+        "reading": "yoroshiku onegaishimasu",
+        "meaning": "Pleased to meet you / I look forward to it",
+        "note": "Untranslatable but essential. It signals goodwill and openness to a relationship. At a first meeting it closes the introduction sequence. In other contexts it can mean 'I'm counting on you' or 'please take care of this'."
+      },
+      {
+        "phrase": "〜が好きです",
+        "reading": "~ ga suki desu",
+        "meaning": "I like ~",
+        "note": "好き (suki) is a な-adjective. The thing you like takes が, not を — a common mistake. 日本の食べ物が好きです (I like Japanese food). To express love: 大好き (daisuki)."
+      }
+    ]
+  },
+  {
+    "scene_id": "asking_directions",
+    "title": "Asking Directions",
+    "level": "N5",
+    "topic": "navigation",
+    "scene_intro": "You're on a side street in Shibuya and you can't find the convenience store you spotted on the map. A local woman is standing nearby looking at a notice board. She seems local and approachable.",
+    "other_character": "a local woman, helpful and patient",
+    "goal": "find a convenience store and ask about the station",
+    "grammar_focus": "すみません (x2), 〜はありますか (x2), 〜ですか confirmation, ゆっくり話してください",
+    "setting": "a side street in Shibuya",
+    "beat_count": 10,
+    "duration_seconds": 245,
+    "audio_url": "/echo/audio/asking_directions.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "ad_001",
+        "start_ms": 16626,
+        "context_line": "The woman is standing nearby, looking at a notice board.",
+        "character_japanese": "",
+        "english_cue": "Get her attention politely.",
+        "japanese_answer": "すみません。",
+        "romaji": "Sumimasen.",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 2,
+        "srs_id": "ad_002",
+        "start_ms": 33897,
+        "context_line": "She turns around and waits.",
+        "character_japanese": "",
+        "english_cue": "Ask if there's a convenience store nearby.",
+        "japanese_answer": "近くにコンビニはありますか？",
+        "romaji": "Chikaku ni konbini wa arimasu ka?",
+        "grammar_tag": "existence-arimasu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "ad_003",
+        "start_ms": 54908,
+        "context_line": "She says yes and starts explaining the way — but she's speaking fast.",
+        "character_japanese": "はい、ありますよ。あそこを右に行って、まっすぐです。",
+        "english_cue": "Ask her to speak slowly.",
+        "japanese_answer": "ゆっくり話してください。",
+        "romaji": "Yukkuri hanashite kudasai.",
+        "grammar_tag": "request-te-kudasai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "ad_004",
+        "start_ms": 81530,
+        "context_line": "She slows down and repeats: turn right there, then go straight.",
+        "character_japanese": "右に行って、まっすぐです。",
+        "english_cue": "Confirm: turn right?",
+        "japanese_answer": "右ですか？",
+        "romaji": "Migi desu ka?",
+        "grammar_tag": "confirmation-question"
+      },
+      {
+        "beat": 5,
+        "srs_id": "ad_005",
+        "start_ms": 102669,
+        "context_line": "She nods and says yes, it's very close.",
+        "character_japanese": "はい、すぐそこですよ。",
+        "english_cue": "Say you understand.",
+        "japanese_answer": "わかりました。",
+        "romaji": "Wakarimashita.",
+        "grammar_tag": "acknowledgement"
+      },
+      {
+        "beat": 6,
+        "srs_id": "ad_006",
+        "start_ms": 121840,
+        "context_line": "She asks if you understood.",
+        "character_japanese": "わかりましたか？",
+        "english_cue": "Say yes, understood — thank you.",
+        "japanese_answer": "はい、わかりました。ありがとうございます。",
+        "romaji": "Hai, wakarimashita. Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 7,
+        "srs_id": "ad_007",
+        "start_ms": 154866,
+        "context_line": "She starts to turn away. One more thing.",
+        "character_japanese": "",
+        "english_cue": "Get her attention again.",
+        "japanese_answer": "すみません。",
+        "romaji": "Sumimasen.",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 8,
+        "srs_id": "ad_008",
+        "start_ms": 171513,
+        "context_line": "She turns back, waiting.",
+        "character_japanese": "",
+        "english_cue": "Ask if there's a station nearby too.",
+        "japanese_answer": "駅もありますか？",
+        "romaji": "Eki mo arimasu ka?",
+        "grammar_tag": "existence-arimasu-ka-mo"
+      },
+      {
+        "beat": 9,
+        "srs_id": "ad_009",
+        "start_ms": 188935,
+        "context_line": "She points and says the station is over there, about ten minutes on foot.",
+        "character_japanese": "駅はあそこです。じゅっぷんくらいですよ。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 10,
+        "srs_id": "ad_010",
+        "start_ms": 213938,
+        "context_line": "She smiles and wishes you good luck.",
+        "character_japanese": "がんばってください！",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございました。さようなら。",
+        "romaji": "Arigatou gozaimashita. Sayounara.",
+        "grammar_tag": "farewell-formal"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "近くに〜はありますか",
+        "reading": "chikaku ni ~ wa arimasu ka",
+        "meaning": "Is there a ~ nearby?",
+        "note": "近く (chikaku) = nearby. ありますか asks whether something exists. Slot in コンビニ, 駅, トイレ, ATM — this frame works for all of them. One of the most useful sentence patterns for travellers."
+      },
+      {
+        "phrase": "ゆっくり話してください",
+        "reading": "yukkuri hanashite kudasai",
+        "meaning": "Please speak slowly",
+        "note": "ゆっくり = slowly. 話して is the て-form of 話す (to speak). 〜てください = please do ~. Memorise this before you go. Japanese people will always try to accommodate — most have never been asked by a foreigner."
+      },
+      {
+        "phrase": "まっすぐ",
+        "reading": "massugu",
+        "meaning": "Straight ahead",
+        "note": "Key direction vocabulary alongside 右 (migi – right), 左 (hidari – left), and すぐそこ (sugu soko – right there/very close). まっすぐ行ってください means 'please go straight ahead'."
+      }
+    ]
+  },
+  {
+    "scene_id": "ramen_restaurant",
+    "title": "Ramen Restaurant",
+    "level": "N5",
+    "topic": "food_and_drink",
+    "scene_intro": "You've ducked into a small ramen restaurant near the station for lunch. It's warm and smells incredible. A cheerful server named Hana greets you at the door. You want a shoyu ramen and some water.",
+    "other_character": "Hana, a cheerful server",
+    "goal": "order shoyu ramen and water, pay, and leave",
+    "grammar_focus": "ください (x3), も, それだけです, いただきます, すみません, ありがとうございます",
+    "setting": "a small noodle restaurant near a train station",
+    "beat_count": 11,
+    "duration_seconds": 261,
+    "audio_url": "/echo/audio/ramen_restaurant.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "rr_001",
+        "start_ms": 17682,
+        "context_line": "Hana greets you warmly as you step in.",
+        "character_japanese": "いらっしゃいませ！",
+        "english_cue": "Say it's just you — a table for one.",
+        "japanese_answer": "一人です。",
+        "romaji": "Hitori desu.",
+        "grammar_tag": "counter-hitori"
+      },
+      {
+        "beat": 2,
+        "srs_id": "rr_002",
+        "start_ms": 36493,
+        "context_line": "She shows you to a small table and brings the menu.",
+        "character_japanese": "どうぞ。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 3,
+        "srs_id": "rr_003",
+        "start_ms": 57488,
+        "context_line": "Hana comes back and asks what you'd like.",
+        "character_japanese": "何にしますか？",
+        "english_cue": "Order the ramen.",
+        "japanese_answer": "ラーメンをください。",
+        "romaji": "Raamen wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "rr_004",
+        "start_ms": 77180,
+        "context_line": "She asks: soy sauce flavour or miso?",
+        "character_japanese": "しょうゆかみそ、どちらですか？",
+        "english_cue": "Say you'd like the soy sauce flavour.",
+        "japanese_answer": "しょうゆをください。",
+        "romaji": "Shouyu wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "rr_005",
+        "start_ms": 98733,
+        "context_line": "She asks if you'd like a drink.",
+        "character_japanese": "のみものはいりますか？",
+        "english_cue": "Ask for water too.",
+        "japanese_answer": "お水もください。",
+        "romaji": "Omizu mo kudasai.",
+        "grammar_tag": "request-kudasai-mo"
+      },
+      {
+        "beat": 6,
+        "srs_id": "rr_006",
+        "start_ms": 117862,
+        "context_line": "She asks if that's everything.",
+        "character_japanese": "ほかに何かありますか？",
+        "english_cue": "Say yes, that's all.",
+        "japanese_answer": "はい、それだけです。",
+        "romaji": "Hai, sore dake desu.",
+        "grammar_tag": "confirmation"
+      },
+      {
+        "beat": 7,
+        "srs_id": "rr_007",
+        "start_ms": 139986,
+        "context_line": "The bowl arrives. Hana sets it in front of you.",
+        "character_japanese": "どうぞ！",
+        "english_cue": "Say the traditional phrase before starting your meal.",
+        "japanese_answer": "いただきます！",
+        "romaji": "Itadakimasu!",
+        "grammar_tag": "set-phrase-itadakimasu"
+      },
+      {
+        "beat": 8,
+        "srs_id": "rr_008",
+        "start_ms": 160597,
+        "context_line": "You take a bite. It's incredible.",
+        "character_japanese": "",
+        "english_cue": "Tell Hana it's delicious.",
+        "japanese_answer": "とてもおいしいです！",
+        "romaji": "Totemo oishii desu!",
+        "grammar_tag": "adjective-totemo"
+      },
+      {
+        "beat": 9,
+        "srs_id": "rr_009",
+        "start_ms": 178767,
+        "context_line": "You've finished your bowl. Hana is passing by.",
+        "character_japanese": "",
+        "english_cue": "Get her attention and ask for the bill.",
+        "japanese_answer": "すみません、お会計をお願いします。",
+        "romaji": "Sumimasen, okaikei wo onegai shimasu.",
+        "grammar_tag": "request-onegaishimasu"
+      },
+      {
+        "beat": 10,
+        "srs_id": "rr_010",
+        "start_ms": 205888,
+        "context_line": "She brings the bill. It's a thousand yen.",
+        "character_japanese": "ありがとうございます。せんえんです。",
+        "english_cue": "Say here you go.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 11,
+        "srs_id": "rr_011",
+        "start_ms": 228285,
+        "context_line": "She thanks you and says come again.",
+        "character_japanese": "ありがとうございました！またどうぞ！",
+        "english_cue": "Thank her and say you'll come back.",
+        "japanese_answer": "ありがとうございました。また来ます。",
+        "romaji": "Arigatou gozaimashita. Mata kimasu.",
+        "grammar_tag": "farewell-mata-kimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "何にしますか",
+        "reading": "nani ni shimasu ka",
+        "meaning": "What will you have? / What'll it be?",
+        "note": "〜にする means 'to decide on / to go with'. More casual than ご注文はお決まりですか. Reply with 〜にします (I'll have the ~) or 〜をください (~ please). Both are correct."
+      },
+      {
+        "phrase": "いただきます",
+        "reading": "itadakimasu",
+        "meaning": "Said before eating — 'I humbly receive'",
+        "note": "One of the most culturally significant phrases in Japanese. Said before every meal, it acknowledges the effort of everyone who prepared the food. No direct English equivalent — just say it and mean it."
+      },
+      {
+        "phrase": "また来ます",
+        "reading": "mata kimasu",
+        "meaning": "I'll come again",
+        "note": "A genuine compliment to any restaurant or shop. 来ます is the polite form of 来る (to come). Saying this as you leave will make the staff's day — most foreign visitors never say it."
+      }
+    ]
+  },
+  {
+    "scene_id": "souvenir_shopping",
+    "title": "Souvenir Shopping",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "You're in a souvenir shop in Asakusa, looking for a gift to take home for a friend. A helpful shop assistant named Miyamoto approaches you. You have a rough budget in mind and you'd like something traditional.",
+    "other_character": "Miyamoto, a helpful shop assistant",
+    "goal": "buy a traditional fan within budget as a gift",
+    "grammar_focus": "〜はありますか (x2), これはいくらですか, もっと安い〜, これをください, きれい",
+    "setting": "a souvenir shop in Asakusa",
+    "beat_count": 11,
+    "duration_seconds": 255,
+    "audio_url": "/echo/audio/souvenir_shopping.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "ss_001",
+        "start_ms": 17610,
+        "context_line": "Miyamoto approaches and asks if you're looking for something.",
+        "character_japanese": "何かさがしていますか？",
+        "english_cue": "Say yes — ask if they have round fans.",
+        "japanese_answer": "はい、うちわはありますか？",
+        "romaji": "Hai, uchiwa wa arimasu ka?",
+        "grammar_tag": "existence-arimasu-ka"
+      },
+      {
+        "beat": 2,
+        "srs_id": "ss_002",
+        "start_ms": 43405,
+        "context_line": "She smiles and leads you to a display.",
+        "character_japanese": "",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 3,
+        "srs_id": "ss_003",
+        "start_ms": 61900,
+        "context_line": "She shows you several fans in different styles.",
+        "character_japanese": "",
+        "english_cue": "Ask how much this one is.",
+        "japanese_answer": "これはいくらですか？",
+        "romaji": "Kore wa ikura desu ka?",
+        "grammar_tag": "price-question"
+      },
+      {
+        "beat": 4,
+        "srs_id": "ss_004",
+        "start_ms": 80128,
+        "context_line": "She says one thousand five hundred yen. A bit over your budget.",
+        "character_japanese": "せんごひゃくえんです。",
+        "english_cue": "Ask if there's something cheaper.",
+        "japanese_answer": "もっと安いのはありますか？",
+        "romaji": "Motto yasui no wa arimasu ka?",
+        "grammar_tag": "comparative-motto"
+      },
+      {
+        "beat": 5,
+        "srs_id": "ss_005",
+        "start_ms": 104493,
+        "context_line": "She shows you another one for eight hundred yen. It's nice.",
+        "character_japanese": "これは八百円です。",
+        "english_cue": "Say you'll take this one.",
+        "japanese_answer": "これをください。",
+        "romaji": "Kore wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "ss_006",
+        "start_ms": 124768,
+        "context_line": "She asks if it's a gift.",
+        "character_japanese": "プレゼントですか？",
+        "english_cue": "Say yes, it's a present.",
+        "japanese_answer": "はい、プレゼントです。",
+        "romaji": "Hai, purezento desu.",
+        "grammar_tag": "noun-desu"
+      },
+      {
+        "beat": 7,
+        "srs_id": "ss_007",
+        "start_ms": 147204,
+        "context_line": "She says she'll wrap it nicely.",
+        "character_japanese": "きれいにしますよ。",
+        "english_cue": "Say thank you.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 8,
+        "srs_id": "ss_008",
+        "start_ms": 167359,
+        "context_line": "She shows you the wrapped gift. It looks lovely.",
+        "character_japanese": "どうぞ！",
+        "english_cue": "Say it's beautiful.",
+        "japanese_answer": "きれいです！",
+        "romaji": "Kirei desu!",
+        "grammar_tag": "na-adjective"
+      },
+      {
+        "beat": 9,
+        "srs_id": "ss_009",
+        "start_ms": 185931,
+        "context_line": "She says the total is eight hundred yen.",
+        "character_japanese": "八百円です。",
+        "english_cue": "Hand over the money: here you go.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 10,
+        "srs_id": "ss_010",
+        "start_ms": 206696,
+        "context_line": "She thanks you and hands over the bag.",
+        "character_japanese": "ありがとうございます。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございました。",
+        "romaji": "Arigatou gozaimashita.",
+        "grammar_tag": "thanks-formal-past"
+      },
+      {
+        "beat": 11,
+        "srs_id": "ss_011",
+        "start_ms": 227289,
+        "context_line": "She says come again.",
+        "character_japanese": "またきてください！",
+        "english_cue": "Say goodbye and that you'll be back.",
+        "japanese_answer": "さようなら。また来ます。",
+        "romaji": "Sayounara. Mata kimasu.",
+        "grammar_tag": "farewell-mata-kimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "これはいくらですか",
+        "reading": "kore wa ikura desu ka",
+        "meaning": "How much is this?",
+        "note": "The most practical retail sentence in Japanese. いくら = how much. Swap これ (this) for それ (that near you) or あれ (that over there). Even simpler: hold it up and say いくらですか — context does the rest."
+      },
+      {
+        "phrase": "もっと安いのはありますか",
+        "reading": "motto yasui no wa arimasu ka",
+        "meaning": "Is there a cheaper one?",
+        "note": "もっと = more / even more. 安い (yasui) = inexpensive. の here nominalises the adjective phrase into 'a cheap one'. The frame works for any adjective: もっと大きいの, もっと小さいの, もっと新しいの."
+      },
+      {
+        "phrase": "プレゼントです",
+        "reading": "purezento desu",
+        "meaning": "It's a gift",
+        "note": "Saying this often prompts the staff to ask about gift wrapping (プレゼント包装 – purezento hosou). High-end shops do this beautifully, often at no charge. It's a small phrase with a big effect."
+      }
+    ]
+  },
+  {
+    "scene_id": "host_family_evening",
+    "title": "Host Family Evening",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "You're staying with a Japanese host family for the week. You've just come back from a day out and the host mother is in the kitchen. She's warm and patient with your Japanese. Dinner will be ready soon.",
+    "other_character": "the host mother, warm and patient",
+    "goal": "chat about your day, share what you want for dinner, make plans for tomorrow",
+    "grammar_focus": "ただいま, 〜かったです (x2), 〜が食べたいです, 〜たいです, ください, いただきます",
+    "setting": "at home with a Japanese host family",
+    "beat_count": 10,
+    "duration_seconds": 223,
+    "audio_url": "/echo/audio/host_family_evening.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "hf_001",
+        "start_ms": 17058,
+        "context_line": "You open the front door. The host mother calls out from the kitchen.",
+        "character_japanese": "おかえり！",
+        "english_cue": "Say I'm home!",
+        "japanese_answer": "ただいま！",
+        "romaji": "Tadaima!",
+        "grammar_tag": "set-phrase-tadaima"
+      },
+      {
+        "beat": 2,
+        "srs_id": "hf_002",
+        "start_ms": 36445,
+        "context_line": "She pops her head out and asks how your day was.",
+        "character_japanese": "どうでしたか？",
+        "english_cue": "Say it was fun.",
+        "japanese_answer": "たのしかったです。",
+        "romaji": "Tanoshikatta desu.",
+        "grammar_tag": "adjective-past"
+      },
+      {
+        "beat": 3,
+        "srs_id": "hf_003",
+        "start_ms": 55842,
+        "context_line": "She asks if you're hungry.",
+        "character_japanese": "おなかがすきましたか？",
+        "english_cue": "Say yes, very hungry.",
+        "japanese_answer": "はい、おなかがすきました。",
+        "romaji": "Hai, onaka ga sukimashita.",
+        "grammar_tag": "set-phrase-hungry"
+      },
+      {
+        "beat": 4,
+        "srs_id": "hf_004",
+        "start_ms": 78980,
+        "context_line": "She says dinner will be ready in thirty minutes.",
+        "character_japanese": "ごはんはさんじゅっぷんくらいですよ。",
+        "english_cue": "Say thank you.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 5,
+        "srs_id": "hf_005",
+        "start_ms": 101079,
+        "context_line": "She asks what you want to eat.",
+        "character_japanese": "何が食べたいですか？",
+        "english_cue": "Say you want to eat sushi.",
+        "japanese_answer": "すしが食べたいです。",
+        "romaji": "Sushi ga tabetai desu.",
+        "grammar_tag": "tai-desu-want-to"
+      },
+      {
+        "beat": 6,
+        "srs_id": "hf_006",
+        "start_ms": 121299,
+        "context_line": "She laughs and says tonight is curry.",
+        "character_japanese": "今日はカレーですよ！",
+        "english_cue": "Say curry is good too!",
+        "japanese_answer": "カレーもいいです！",
+        "romaji": "Karee mo ii desu!",
+        "grammar_tag": "mo-also"
+      },
+      {
+        "beat": 7,
+        "srs_id": "hf_007",
+        "start_ms": 140648,
+        "context_line": "She asks how Japanese class was today.",
+        "character_japanese": "今日の日本語のクラスはどうでしたか？",
+        "english_cue": "Say it was difficult.",
+        "japanese_answer": "むずかしかったです。",
+        "romaji": "Muzukashikatta desu.",
+        "grammar_tag": "adjective-past"
+      },
+      {
+        "beat": 8,
+        "srs_id": "hf_008",
+        "start_ms": 161941,
+        "context_line": "She asks what time you're going tomorrow.",
+        "character_japanese": "あした何時に行きますか？",
+        "english_cue": "Say you're going at nine o'clock.",
+        "japanese_answer": "九時に行きます。",
+        "romaji": "Kuji ni ikimasu.",
+        "grammar_tag": "time-ni-verb"
+      },
+      {
+        "beat": 9,
+        "srs_id": "hf_009",
+        "start_ms": 181575,
+        "context_line": "She asks if you need anything for your room.",
+        "character_japanese": "部屋に何かいりますか？",
+        "english_cue": "Ask for a towel.",
+        "japanese_answer": "タオルをください。",
+        "romaji": "Taoru wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 10,
+        "srs_id": "hf_010",
+        "start_ms": 200958,
+        "context_line": "She sets dinner on the table and calls you over.",
+        "character_japanese": "ごはんができましたよ！",
+        "english_cue": "Say the phrase you use before starting a meal.",
+        "japanese_answer": "いただきます！",
+        "romaji": "Itadakimasu!",
+        "grammar_tag": "set-phrase-itadakimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "ただいま",
+        "reading": "tadaima",
+        "meaning": "I'm home / I'm back",
+        "note": "Said every time you return home. The host responds おかえり or おかえりなさい. These are deeply ingrained set phrases — saying ただいま when you open the door signals that the house is a shared, safe space. Skipping it would feel genuinely strange."
+      },
+      {
+        "phrase": "〜が食べたいです",
+        "reading": "~ ga tabetai desu",
+        "meaning": "I want to eat ~",
+        "note": "たい is the 'want to' suffix, attached to the verb stem. 食べる (taberu) → 食べたい (want to eat). The thing you want takes が. Same pattern: 飲みたい (want to drink), 行きたい (want to go), 見たい (want to see)."
+      },
+      {
+        "phrase": "むずかしかったです",
+        "reading": "muzukashikatta desu",
+        "meaning": "It was difficult",
+        "note": "い-adjective past tense: drop い, add かった. むずかしい → むずかしかった. Same pattern: たのしかった (was fun), おいしかった (was delicious), よかった (was good). One of the most useful grammar patterns at N5."
+      }
+    ]
+  },
+  {
+    "scene_id": "pharmacy_visit",
+    "title": "Pharmacy Visit",
+    "level": "N5",
+    "topic": "health",
+    "scene_intro": "You woke up this morning with a headache and a sore throat. You've found a pharmacy in the shopping mall nearby. The pharmacist is behind the counter and looks approachable. You need some medicine.",
+    "other_character": "the pharmacist, calm and helpful",
+    "goal": "explain your symptoms and buy medicine",
+    "grammar_focus": "〜が痛いです (x2), ゆっくり話してください, わかりません/わかりました, これをください, おだいじに",
+    "setting": "a pharmacy in a shopping mall",
+    "beat_count": 10,
+    "duration_seconds": 233,
+    "audio_url": "/echo/audio/pharmacy_visit.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "pv_001",
+        "start_ms": 16866,
+        "context_line": "The pharmacist looks up as you approach the counter.",
+        "character_japanese": "",
+        "english_cue": "Get her attention.",
+        "japanese_answer": "すみません。",
+        "romaji": "Sumimasen.",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 2,
+        "srs_id": "pv_002",
+        "start_ms": 33225,
+        "context_line": "She waits.",
+        "character_japanese": "",
+        "english_cue": "Say you have a headache.",
+        "japanese_answer": "頭が痛いです。",
+        "romaji": "Atama ga itai desu.",
+        "grammar_tag": "body-pain-ga-itai"
+      },
+      {
+        "beat": 3,
+        "srs_id": "pv_003",
+        "start_ms": 49902,
+        "context_line": "She nods and asks a question — but she's speaking too fast.",
+        "character_japanese": "はい、いつからですか？",
+        "english_cue": "Ask her to speak slowly.",
+        "japanese_answer": "ゆっくり話してください。",
+        "romaji": "Yukkuri hanashite kudasai.",
+        "grammar_tag": "request-te-kudasai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "pv_004",
+        "start_ms": 72900,
+        "context_line": "She slows down and asks: do you have a cold too?",
+        "character_japanese": "かぜもひいていますか？",
+        "english_cue": "Say yes, you have a cold too.",
+        "japanese_answer": "はい、かぜもひいています。",
+        "romaji": "Hai, kaze mo hiite imasu.",
+        "grammar_tag": "verb-te-iru-state"
+      },
+      {
+        "beat": 5,
+        "srs_id": "pv_005",
+        "start_ms": 98695,
+        "context_line": "She asks another question you don't catch.",
+        "character_japanese": "ほかに何かありますか？",
+        "english_cue": "Say you don't understand.",
+        "japanese_answer": "わかりません。",
+        "romaji": "Wakarimasen.",
+        "grammar_tag": "comprehension-negative"
+      },
+      {
+        "beat": 6,
+        "srs_id": "pv_006",
+        "start_ms": 117651,
+        "context_line": "She points to your throat and mimes pain.",
+        "character_japanese": "のども痛いですか？",
+        "english_cue": "Say yes, your throat hurts too.",
+        "japanese_answer": "はい、のどが痛いです。",
+        "romaji": "Hai, nodo ga itai desu.",
+        "grammar_tag": "body-pain-ga-itai"
+      },
+      {
+        "beat": 7,
+        "srs_id": "pv_007",
+        "start_ms": 141800,
+        "context_line": "She shows you two medicines and explains them.",
+        "character_japanese": "これとこれがあります。",
+        "english_cue": "Ask how much this one is.",
+        "japanese_answer": "これはいくらですか？",
+        "romaji": "Kore wa ikura desu ka?",
+        "grammar_tag": "price-question"
+      },
+      {
+        "beat": 8,
+        "srs_id": "pv_008",
+        "start_ms": 162311,
+        "context_line": "She says six hundred yen.",
+        "character_japanese": "ろっぴゃくえんです。",
+        "english_cue": "Say you'll take this one.",
+        "japanese_answer": "これをください。",
+        "romaji": "Kore wo kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 9,
+        "srs_id": "pv_009",
+        "start_ms": 180115,
+        "context_line": "She explains: take one tablet three times a day.",
+        "character_japanese": "いちにちさんかい、ひとつずつのんでください。",
+        "english_cue": "Say you understand.",
+        "japanese_answer": "わかりました。",
+        "romaji": "Wakarimashita.",
+        "grammar_tag": "acknowledgement"
+      },
+      {
+        "beat": 10,
+        "srs_id": "pv_010",
+        "start_ms": 201086,
+        "context_line": "She hands over the medicine and wishes you well.",
+        "character_japanese": "どうぞ。おだいじに。",
+        "english_cue": "Thank her and wish her well too.",
+        "japanese_answer": "ありがとうございます。おだいじに。",
+        "romaji": "Arigatou gozaimasu. Odaiji ni.",
+        "grammar_tag": "set-phrase-odaijini"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "〜が痛いです",
+        "reading": "~ ga itai desu",
+        "meaning": "My ~ hurts / ~ is painful",
+        "note": "痛い (itai) = painful. The body part takes が. 頭が痛い (headache), のどが痛い (sore throat), お腹が痛い (stomach ache), 歯が痛い (toothache). Essential vocabulary for any trip. Works in casual speech too: 頭、痛い。"
+      },
+      {
+        "phrase": "わかりません",
+        "reading": "wakarimasen",
+        "meaning": "I don't understand",
+        "note": "分かる (wakaru) = to understand. Negative: 分かりません. Don't confuse with 知りません (shirimasen – I don't know a fact). When you've missed something: もう一度お願いします (one more time, please) is the polite follow-up."
+      },
+      {
+        "phrase": "おだいじに",
+        "reading": "odaiji ni",
+        "meaning": "Take care / Get well soon",
+        "note": "大事 (daiji) = precious/important. Prefixed with お and used as a farewell when someone is unwell. The pharmacist will say it to you; you can say it right back. Also used when leaving a sick friend: おだいじにしてください."
+      }
+    ]
+  },
+  {
+    "scene_id": "konbini_visit",
+    "title": "Konbini Visit",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "You stop into a Family Mart near your station on the way home. You grab an onigiri and a canned coffee, then head to the register. The clerk is efficient but friendly.",
+    "other_character": "Aoi, a polite konbini clerk",
+    "goal": "pay for your items, decline a bag, and get your nikuman warmed up",
+    "grammar_focus": "〜で大丈夫ですか, 持っていません, 〜は結構です, お願いします, 〜つください",
+    "setting": "a convenience store near a station",
+    "beat_count": 6,
+    "duration_seconds": 153,
+    "audio_url": "/echo/audio/konbini_visit.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "kb_001",
+        "start_ms": 15570,
+        "context_line": "Aoi scans your items and tells you the total.",
+        "character_japanese": "合計で、六百五十円になります。",
+        "english_cue": "Ask if you can pay by IC card.",
+        "japanese_answer": "Suicaで大丈夫ですか？",
+        "romaji": "Suica de daijoubu desu ka?",
+        "grammar_tag": "confirmation-daijoubu"
+      },
+      {
+        "beat": 2,
+        "srs_id": "kb_002",
+        "start_ms": 40397,
+        "context_line": "Aoi asks if you have a point card.",
+        "character_japanese": "ポイントカードはお持ちですか？",
+        "english_cue": "Say you don't have one.",
+        "japanese_answer": "持っていません。",
+        "romaji": "Motte imasen.",
+        "grammar_tag": "verb-te-iru-negative"
+      },
+      {
+        "beat": 3,
+        "srs_id": "kb_003",
+        "start_ms": 59376,
+        "context_line": "Aoi asks if you need a bag.",
+        "character_japanese": "袋はご利用ですか？",
+        "english_cue": "Say you don't need a bag.",
+        "japanese_answer": "袋は結構です。",
+        "romaji": "Fukuro wa kekkou desu.",
+        "grammar_tag": "polite-refusal-kekkou"
+      },
+      {
+        "beat": 4,
+        "srs_id": "kb_004",
+        "start_ms": 80296,
+        "context_line": "You also grabbed a steamed nikuman from the hot cabinet. Aoi asks if you'd like it warmed up.",
+        "character_japanese": "温めますか？",
+        "english_cue": "Say yes, go ahead.",
+        "japanese_answer": "はい、お願いします。",
+        "romaji": "Hai, onegaishimasu.",
+        "grammar_tag": "onegaishimasu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "kb_005",
+        "start_ms": 106557,
+        "context_line": "Aoi asks if you need chopsticks.",
+        "character_japanese": "お箸はいりますか？",
+        "english_cue": "Ask for one pair.",
+        "japanese_answer": "一つください。",
+        "romaji": "Hitotsu kudasai.",
+        "grammar_tag": "counter-kudasai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "kb_006",
+        "start_ms": 124816,
+        "context_line": "Your IC card payment goes through. Aoi bags everything and hands it over.",
+        "character_japanese": "ありがとうございました。またお越しください。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "袋は結構です",
+        "reading": "fukuro wa kekko desu",
+        "meaning": "I don't need a bag / No bag, thank you",
+        "note": "結構 (kekko) is a versatile polite refusal — 'that will do fine / no thank you'. 袋は結構です is the standard konbini reply when offered a bag. You can use the same pattern for anything you're offered: 大丈夫です also works but 結構です feels more deliberate."
+      },
+      {
+        "phrase": "温めますか",
+        "reading": "atatamemasu ka",
+        "meaning": "Shall I warm it up?",
+        "note": "温める (atatameru) = to warm up. You'll hear this for hot-cabinet items like nikuman (steamed pork bun) or oden. Reply はい、お願いします or 結構です. The microwave is behind the counter — they'll hand it back in a paper bag."
+      },
+      {
+        "phrase": "ポイントカード",
+        "reading": "pointo kado",
+        "meaning": "Loyalty / points card",
+        "note": "Every major konbini chain has a points system. Lawson: Ponta. FamilyMart: T-Point. 7-Eleven: nanaco. You will be asked every single time, even if you said 持っていません thirty seconds ago. It's not personal — it's the script."
+      }
+    ]
+  },
+  {
+    "scene_id": "izakaya_evening",
+    "title": "Izakaya Evening",
+    "level": "N4",
+    "topic": "food_and_drink",
+    "scene_intro": "It's Friday evening and you've met up with your Japanese friend Takako at a lively izakaya in Shinjuku. The place is packed and buzzing. A server named Yuki comes to your table to welcome you.",
+    "other_character": "Yuki, a cheerful izakaya server",
+    "goal": "order drinks and food, get recommendations, ask for the bill, and split it",
+    "grammar_focus": "何名様, とりあえず〜ください, おすすめは何ですか, 同じものをもう〜, お会計をお願いします, 別々で",
+    "setting": "a busy izakaya in Shinjuku",
+    "beat_count": 7,
+    "duration_seconds": 198,
+    "audio_url": "/echo/audio/izakaya_evening.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "iz_001",
+        "start_ms": 16914,
+        "context_line": "Yuki leads you to a low table and asks how many are in your group.",
+        "character_japanese": "何名様ですか？",
+        "english_cue": "Say there are two of you.",
+        "japanese_answer": "二人です。",
+        "romaji": "Futari desu.",
+        "grammar_tag": "counter-people"
+      },
+      {
+        "beat": 2,
+        "srs_id": "iz_002",
+        "start_ms": 36493,
+        "context_line": "You're settled in. Yuki asks what you'd like to drink.",
+        "character_japanese": "お飲み物はいかがですか？",
+        "english_cue": "Order two beers to start — use 'toriaezu' to mean 'for now'.",
+        "japanese_answer": "とりあえずビールを二つください。",
+        "romaji": "Toriaezu biiru o futatsu kudasai.",
+        "grammar_tag": "toriaezu"
+      },
+      {
+        "beat": 3,
+        "srs_id": "iz_003",
+        "start_ms": 63758,
+        "context_line": "Yuki returns with the beers and asks if you're ready to order food.",
+        "character_japanese": "ご注文はお決まりですか？",
+        "english_cue": "Ask what tonight's recommendation is.",
+        "japanese_answer": "今日のおすすめは何ですか？",
+        "romaji": "Kyou no osusume wa nan desu ka?",
+        "grammar_tag": "osusume"
+      },
+      {
+        "beat": 4,
+        "srs_id": "iz_004",
+        "start_ms": 88888,
+        "context_line": "Yuki says the karaage and edamame are tonight's specials.",
+        "character_japanese": "唐揚げと枝豆がおすすめですよ。",
+        "english_cue": "Order the karaage and edamame.",
+        "japanese_answer": "じゃあ、唐揚げと枝豆をください。",
+        "romaji": "Jaa, karaage to edamame o kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "iz_005",
+        "start_ms": 118307,
+        "context_line": "Your beers are nearly empty. Yuki stops by to check on you.",
+        "character_japanese": "お飲み物はいかがですか？",
+        "english_cue": "Ask for two more of the same.",
+        "japanese_answer": "同じものをもう二つください。",
+        "romaji": "Onaji mono o mou futatsu kudasai.",
+        "grammar_tag": "mou-one-more"
+      },
+      {
+        "beat": 6,
+        "srs_id": "iz_006",
+        "start_ms": 143900,
+        "context_line": "You've had a great night and want to head home. You catch Yuki's eye.",
+        "character_japanese": "",
+        "english_cue": "Ask for the bill.",
+        "japanese_answer": "すみません、お会計をお願いします。",
+        "romaji": "Sumimasen, o-kaikei o onegaishimasu.",
+        "grammar_tag": "okaikei"
+      },
+      {
+        "beat": 7,
+        "srs_id": "iz_007",
+        "start_ms": 170878,
+        "context_line": "Yuki asks if you'll be paying together or separately.",
+        "character_japanese": "ご一緒にお支払いですか、それとも別々ですか？",
+        "english_cue": "Say you'll pay separately.",
+        "japanese_answer": "別々でお願いします。",
+        "romaji": "Betsu-betsu de onegaishimasu.",
+        "grammar_tag": "betsu-betsu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "とりあえずビール",
+        "reading": "toriaezu biiru",
+        "meaning": "Beer for now / Beer to start",
+        "note": "とりあえず means 'for now / for the time being'. Ordering 'toriaezu biru' the moment you sit down — before even opening the menu — is a beloved izakaya ritual. It signals you know how things work. Non-drinkers say とりあえずウーロン茶 (oolong tea to start)."
+      },
+      {
+        "phrase": "ご注文はお決まりですか",
+        "reading": "go-chuumon wa o-kimari desu ka",
+        "meaning": "Have you decided on your order?",
+        "note": "Standard polite restaurant phrasing. ご注文 = your order (honorific ご). お決まり = decided (honorific お + 決まる). This level of teineigo is used in all restaurants and shops. Reply はい or もう少し待ってください (one moment please)."
+      },
+      {
+        "phrase": "別々でお願いします",
+        "reading": "betsu-betsu de onegaishimasu",
+        "meaning": "Separately please — splitting the bill",
+        "note": "別々 (betsu-betsu) = separately. Opposite is 一緒に (issho ni — together). Neither sounds rude — just state it clearly. In a group the server will usually process each card individually at the table."
+      }
+    ]
+  },
+  {
+    "scene_id": "ramen_shop_experience",
+    "title": "Ramen Shop Experience",
+    "level": "N4",
+    "topic": "food_and_drink",
+    "scene_intro": "You're at a proper tonkotsu ramen shop in Fukuoka. Counter seats only, and the place smells incredible. A server named Saki takes your order. You've heard you can customise everything — and you've been looking forward to this all day.",
+    "other_character": "Saki, an efficient ramen shop server",
+    "goal": "customise and order your ramen, ask for kaedama, and pay",
+    "grammar_focus": "〜でお願いします, 〜にしてください, 〜くしてください, 〜を追加してください, 替え玉をください",
+    "setting": "a tonkotsu ramen shop in Fukuoka",
+    "beat_count": 9,
+    "duration_seconds": 256,
+    "audio_url": "/echo/audio/ramen_shop_experience.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "rs_001",
+        "start_ms": 19578,
+        "context_line": "You slide onto a counter seat. Saki asks what you want.",
+        "character_japanese": "いらっしゃいませ。ご注文はお決まりですか？",
+        "english_cue": "Order tonkotsu ramen.",
+        "japanese_answer": "とんこつラーメンをください。",
+        "romaji": "Tonkotsu raamen o kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 2,
+        "srs_id": "rs_002",
+        "start_ms": 46061,
+        "context_line": "Saki asks how firm you'd like your noodles — firm, regular, or soft.",
+        "character_japanese": "麺の硬さはどうしますか？かた、ふつう、やわ、があります。",
+        "english_cue": "Ask for regular firmness.",
+        "japanese_answer": "ふつうでお願いします。",
+        "romaji": "Futsuu de onegaishimasu.",
+        "grammar_tag": "de-onegaishimasu"
+      },
+      {
+        "beat": 3,
+        "srs_id": "rs_003",
+        "start_ms": 74358,
+        "context_line": "She asks how rich you'd like the broth — light or heavy.",
+        "character_japanese": "スープの濃さはいかがですか？",
+        "english_cue": "Say you'd like it rich.",
+        "japanese_answer": "こってりにしてください。",
+        "romaji": "Kotteri ni shite kudasai.",
+        "grammar_tag": "ni-shite-kudasai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "rs_004",
+        "start_ms": 96162,
+        "context_line": "She asks about spice level.",
+        "character_japanese": "辛さはどうしますか？",
+        "english_cue": "Say you'd like it a little spicy.",
+        "japanese_answer": "少し辛くしてください。",
+        "romaji": "Sukoshi karaku shite kudasai.",
+        "grammar_tag": "ku-shite-kudasai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "rs_005",
+        "start_ms": 118137,
+        "context_line": "She asks if you'd like extra toppings — a soft-boiled egg or extra chashu pork.",
+        "character_japanese": "トッピングはいかがですか？煮卵やチャーシューが追加できます。",
+        "english_cue": "Ask to add a soft-boiled egg.",
+        "japanese_answer": "煮卵を一つ追加してください。",
+        "romaji": "Nitamago o hitotsu tsuika shite kudasai.",
+        "grammar_tag": "tsuika-shite-kudasai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "rs_006",
+        "start_ms": 148739,
+        "context_line": "Your bowl arrives. The broth is a deep golden colour and smells incredible.",
+        "character_japanese": "お待たせしました。どうぞ。",
+        "english_cue": "Say the phrase before starting your meal.",
+        "japanese_answer": "いただきます！",
+        "romaji": "Itadakimasu!",
+        "grammar_tag": "set-phrase-itadakimasu"
+      },
+      {
+        "beat": 7,
+        "srs_id": "rs_007",
+        "start_ms": 172254,
+        "context_line": "You've finished the noodles but the broth is too good to leave. You remember you can ask for kaedama — extra noodles dropped straight into the remaining broth.",
+        "character_japanese": "",
+        "english_cue": "Ask for kaedama.",
+        "japanese_answer": "替え玉をください。",
+        "romaji": "Kaedama o kudasai.",
+        "grammar_tag": "request-kudasai"
+      },
+      {
+        "beat": 8,
+        "srs_id": "rs_008",
+        "start_ms": 195877,
+        "context_line": "Bowl completely clean. You catch Saki's eye.",
+        "character_japanese": "",
+        "english_cue": "Ask for the bill.",
+        "japanese_answer": "すみません、お会計をお願いします。",
+        "romaji": "Sumimasen, o-kaikei o onegaishimasu.",
+        "grammar_tag": "okaikei"
+      },
+      {
+        "beat": 9,
+        "srs_id": "rs_009",
+        "start_ms": 222135,
+        "context_line": "As you pay, Saki asks how the ramen was.",
+        "character_japanese": "ラーメンはいかがでしたか？",
+        "english_cue": "Say it was delicious and you'll definitely come back.",
+        "japanese_answer": "とてもおいしかったです。また来ます。",
+        "romaji": "Totemo oishikatta desu. Mata kimasu.",
+        "grammar_tag": "adjective-past"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "替え玉",
+        "reading": "kaedama",
+        "meaning": "Extra noodles — dropped into your remaining broth",
+        "note": "Unique to Hakata/Fukuoka-style tonkotsu ramen. When your noodles are gone but the broth is too good to waste, order 替え玉 — a fresh serving of noodles for around ¥100–150. You can customise them too: 替え玉かため (firm kaedama). A must-try ritual."
+      },
+      {
+        "phrase": "こってり",
+        "reading": "kotteri",
+        "meaning": "Rich / Heavy / Full-bodied broth",
+        "note": "こってり describes a thick, fatty, intense flavour — opposite of あっさり (light and clean). You'll see both on ramen menus for broth intensity. Telling a ramen chef こってりが好きです is perfectly natural and they will respect the order."
+      },
+      {
+        "phrase": "麺の硬さ",
+        "reading": "men no katasa",
+        "meaning": "Noodle firmness",
+        "note": "A vocabulary unique to ramen shops. Options: 超かた (very firm) → かた (firm) → ふつう (regular) → やわ (soft) → 超やわ (very soft). Hakata-style tonkotsu is famous for thin, firm noodles — locals often order かた. For your first time, ふつう is safe."
+      }
+    ]
+  },
+  {
+    "scene_id": "hotel_checkin",
+    "title": "Hotel Checkin",
+    "level": "N5",
+    "topic": "travel",
+    "scene_intro": "You've just arrived at a business hotel in central Tokyo after a long journey. It's early evening and the lobby is quiet. A receptionist named Yui is behind the front desk. You have a reservation for two nights and you're ready to collapse — but first, check in.",
+    "other_character": "Yui, a polite hotel receptionist",
+    "goal": "check in, get your room key, and find out about breakfast and wifi",
+    "grammar_focus": "お願いします (x3), 〜しています reservation state, 〜は何時からですか, 教えてください, どうぞ",
+    "setting": "a business hotel in central Tokyo",
+    "beat_count": 8,
+    "duration_seconds": 232,
+    "audio_url": "/echo/audio/hotel_checkin.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "hc_001",
+        "start_ms": 21546,
+        "context_line": "You reach the front desk. Yui looks up with a warm smile.",
+        "character_japanese": "",
+        "english_cue": "Say you'd like to check in.",
+        "japanese_answer": "チェックインをお願いします。",
+        "romaji": "Chekku-in wo onegai shimasu.",
+        "grammar_tag": "request-onegaishimasu"
+      },
+      {
+        "beat": 2,
+        "srs_id": "hc_002",
+        "start_ms": 43089,
+        "context_line": "She asks your name.",
+        "character_japanese": "お名前をお願いします。",
+        "english_cue": "Give your name and say you have a reservation.",
+        "japanese_answer": "ロブです。予約しています。",
+        "romaji": "Robu desu. Yoyaku shite imasu.",
+        "grammar_tag": "te-iru-state"
+      },
+      {
+        "beat": 3,
+        "srs_id": "hc_003",
+        "start_ms": 70478,
+        "context_line": "She finds the booking and asks to see your passport.",
+        "character_japanese": "パスポートをお願いできますか？",
+        "english_cue": "Hand it over — here you go.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 4,
+        "srs_id": "hc_004",
+        "start_ms": 92180,
+        "context_line": "She processes the check-in and asks about breakfast — Japanese set or buffet.",
+        "character_japanese": "朝食はいかがですか？和食かバイキングがあります。",
+        "english_cue": "Say Japanese style.",
+        "japanese_answer": "和食をお願いします。",
+        "romaji": "Washoku wo onegai shimasu.",
+        "grammar_tag": "request-onegaishimasu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "hc_005",
+        "start_ms": 119223,
+        "context_line": "She confirms it and mentions the restaurant is on the second floor. You want to know what time breakfast starts.",
+        "character_japanese": "レストランは二階です。",
+        "english_cue": "Ask what time breakfast starts.",
+        "japanese_answer": "朝食は何時からですか？",
+        "romaji": "Choushoku wa nanji kara desu ka?",
+        "grammar_tag": "time-kara-question"
+      },
+      {
+        "beat": 6,
+        "srs_id": "hc_006",
+        "start_ms": 146527,
+        "context_line": "She says 7am to 9am. You need the wifi password.",
+        "character_japanese": "朝七時から九時までです。",
+        "english_cue": "Ask for the wifi password.",
+        "japanese_answer": "ワイファイのパスワードを教えてください。",
+        "romaji": "Waifai no pasuwaado wo oshiete kudasai.",
+        "grammar_tag": "request-oshiete-kudasai"
+      },
+      {
+        "beat": 7,
+        "srs_id": "hc_007",
+        "start_ms": 175390,
+        "context_line": "She writes it on a card and slides it across with your room key.",
+        "character_japanese": "こちらです。ルームキーもどうぞ。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 8,
+        "srs_id": "hc_008",
+        "start_ms": 199097,
+        "context_line": "One more thing — you have a big suitcase and would like to leave it at reception after checkout tomorrow.",
+        "character_japanese": "",
+        "english_cue": "Ask if you can leave your luggage here after checkout.",
+        "japanese_answer": "チェックアウトのあと、荷物を預けられますか？",
+        "romaji": "Chekku-auto no ato, nimotsu wo azukeraremasu ka?",
+        "grammar_tag": "potential-form"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "チェックインをお願いします",
+        "reading": "chekku-in wo onegai shimasu",
+        "meaning": "I'd like to check in",
+        "note": "The same pattern works for almost any hotel request: チェックアウト, 荷物の預かり, 部屋の掃除 — swap in the service and お願いします does the rest. Staff will often open with ご予約はございますか (do you have a reservation?) before you need to say anything."
+      },
+      {
+        "phrase": "予約しています",
+        "reading": "yoyaku shite imasu",
+        "meaning": "I have a reservation",
+        "note": "予約 (yoyaku) = reservation. 〜しています is the ongoing-state form — 'I am in a state of having reserved'. Most hotels search by name first: 〜という名前で予約しています (I have a reservation under the name ~). Have a booking reference ready in case of any confusion."
+      },
+      {
+        "phrase": "ワイファイのパスワード",
+        "reading": "waifai no pasuwaado",
+        "meaning": "The wifi password",
+        "note": "You'll almost always need to ask. Some hotels print it on a card in your room, others have it on the check-in desk. A reliable follow-up if you can't connect: 繋がらないんですが (it's not connecting) — staff will walk you through it. Business hotels in Japan almost universally have fast, free wifi."
+      }
+    ]
+  },
+  {
+    "scene_id": "shinkansen_ticket",
+    "title": "Shinkansen Ticket",
+    "level": "N5",
+    "topic": "transport",
+    "scene_intro": "You're at the JR Ticket Office — the みどりの窓口 — in Tokyo Station. You want to take the Shinkansen to Kyoto this afternoon and you'd like a reserved seat by the window. The queue has been moving quickly and it's your turn.",
+    "other_character": "a JR ticket office attendant",
+    "goal": "buy a reserved window seat on this afternoon's Shinkansen to Kyoto",
+    "grammar_focus": "〜まで一枚, 指定席でお願いします, 〜ごろでお願いします, 窓側, クレジットカードで",
+    "setting": "JR Ticket Office, Tokyo Station",
+    "beat_count": 8,
+    "duration_seconds": 220,
+    "audio_url": "/echo/audio/shinkansen_ticket.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "sk_001",
+        "start_ms": 17562,
+        "context_line": "You reach the counter. The attendant greets you and waits.",
+        "character_japanese": "いらっしゃいませ。",
+        "english_cue": "Ask for one ticket to Kyoto.",
+        "japanese_answer": "京都まで一枚お願いします。",
+        "romaji": "Kyouto made ichimai onegai shimasu.",
+        "grammar_tag": "destination-made"
+      },
+      {
+        "beat": 2,
+        "srs_id": "sk_002",
+        "start_ms": 43435,
+        "context_line": "She asks: for today?",
+        "character_japanese": "本日でよろしいですか？",
+        "english_cue": "Confirm yes, today.",
+        "japanese_answer": "はい、今日です。",
+        "romaji": "Hai, kyou desu.",
+        "grammar_tag": "confirmation"
+      },
+      {
+        "beat": 3,
+        "srs_id": "sk_003",
+        "start_ms": 64570,
+        "context_line": "She asks: reserved or unreserved seat?",
+        "character_japanese": "指定席と自由席、どちらにしますか？",
+        "english_cue": "Say reserved.",
+        "japanese_answer": "指定席でお願いします。",
+        "romaji": "Shiteiseki de onegai shimasu.",
+        "grammar_tag": "de-onegaishimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "sk_004",
+        "start_ms": 89302,
+        "context_line": "She asks what time you'd like to travel.",
+        "character_japanese": "何時ごろがよろしいですか？",
+        "english_cue": "Say around two o'clock.",
+        "japanese_answer": "二時ごろでお願いします。",
+        "romaji": "Niji goro de onegai shimasu.",
+        "grammar_tag": "time-goro"
+      },
+      {
+        "beat": 5,
+        "srs_id": "sk_005",
+        "start_ms": 111939,
+        "context_line": "She finds a train — the 14:03 Hikari — and asks if that works.",
+        "character_japanese": "14時3分のひかりはいかがですか？",
+        "english_cue": "Say that's fine.",
+        "japanese_answer": "はい、大丈夫です。",
+        "romaji": "Hai, daijoubu desu.",
+        "grammar_tag": "daijoubu"
+      },
+      {
+        "beat": 6,
+        "srs_id": "sk_006",
+        "start_ms": 137836,
+        "context_line": "She asks: window or aisle?",
+        "character_japanese": "窓側と通路側、どちらがよろしいですか？",
+        "english_cue": "Ask for a window seat.",
+        "japanese_answer": "窓側をお願いします。",
+        "romaji": "Madogawa wo onegai shimasu.",
+        "grammar_tag": "request-onegaishimasu"
+      },
+      {
+        "beat": 7,
+        "srs_id": "sk_007",
+        "start_ms": 161958,
+        "context_line": "She confirms the seat. The total is thirteen thousand six hundred yen. She asks how you'll pay.",
+        "character_japanese": "13,600円になります。お支払いはいかがですか？",
+        "english_cue": "Say you'll pay by credit card.",
+        "japanese_answer": "クレジットカードでお願いします。",
+        "romaji": "Kurejitto kaado de onegai shimasu.",
+        "grammar_tag": "de-payment"
+      },
+      {
+        "beat": 8,
+        "srs_id": "sk_008",
+        "start_ms": 194531,
+        "context_line": "She prints the ticket and hands it over with a bow.",
+        "character_japanese": "こちらが乗車券です。お気をつけて。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "指定席",
+        "reading": "shiteiseki",
+        "meaning": "Reserved seat",
+        "note": "Opposite is 自由席 (jiyuuseki — unreserved, sit anywhere). On busy routes like Tokyo–Kyoto, a reserved seat is strongly recommended. On the Nozomi, seats are numbered — you specify window (窓側 — madogawa) or aisle (通路側 — tsuurogawa) when you buy."
+      },
+      {
+        "phrase": "窓側をお願いします",
+        "reading": "madogawa wo onegaishimasu",
+        "meaning": "A window seat, please",
+        "note": "On Shinkansen heading south from Tokyo, the right-side seats (A seats) give the most famous view in Japan — Mount Fuji appears between Shin-Fuji and Shizuoka stations on a clear day, roughly 40–45 minutes into the journey. Ask for an A seat and set a timer."
+      },
+      {
+        "phrase": "往復",
+        "reading": "oufuku",
+        "meaning": "Round trip",
+        "note": "Single is 片道 (katamichi). Booking 往復 at the same time saves queuing on the return and can occasionally be fractionally cheaper on certain passes. You'll also hear 行きと帰り in casual conversation for the same concept."
+      }
+    ]
+  },
+  {
+    "scene_id": "casual_chat_friend",
+    "title": "Casual Chat Friend",
+    "level": "N4",
+    "topic": "social",
+    "scene_intro": "You've spotted your friend Hana at your usual café in Shimokitazawa. She waves you over. You haven't seen each other in a few weeks. This conversation is casual — the Japanese you use with a close friend sounds completely different from anything in a shop or restaurant. No です、no ます。",
+    "other_character": "Hana, your close Japanese friend",
+    "goal": "catch up with Hana, talk about what you've been up to, and make plans for the weekend",
+    "grammar_focus": "casual speech: だよ/だね/だった, 〜てる (ている contraction), 全然〜ない, じゃん, 〜かな, volitional よう",
+    "setting": "a casual café in Shimokitazawa, Tokyo",
+    "beat_count": 8,
+    "duration_seconds": 255,
+    "audio_url": "/echo/audio/casual_chat_friend.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "cf_001",
+        "start_ms": 22674,
+        "context_line": "Hana waves from her table. You sit down across from her.",
+        "character_japanese": "あ、久しぶり！元気だった？",
+        "english_cue": "Say you've been fine — and it's been a while.",
+        "japanese_answer": "うん、元気だよ。久しぶりだね！",
+        "romaji": "Un, genki da yo. Hisashiburi da ne!",
+        "grammar_tag": "casual-da-yo-ne"
+      },
+      {
+        "beat": 2,
+        "srs_id": "cf_002",
+        "start_ms": 57537,
+        "context_line": "She asks what you've been up to lately.",
+        "character_japanese": "最近どうしてた？",
+        "english_cue": "Say you've been busy with Japanese study.",
+        "japanese_answer": "日本語の勉強で忙しかったよ。",
+        "romaji": "Nihongo no benkyou de isogashikatta yo.",
+        "grammar_tag": "casual-adjective-past"
+      },
+      {
+        "beat": 3,
+        "srs_id": "cf_003",
+        "start_ms": 83602,
+        "context_line": "She laughs and asks if you've been watching any Japanese dramas.",
+        "character_japanese": "いいじゃん！ドラマとか見てる？",
+        "english_cue": "Say yes, you've been watching a little.",
+        "japanese_answer": "うん、ちょっと見てるよ。",
+        "romaji": "Un, chotto miteru yo.",
+        "grammar_tag": "casual-te-iru-contraction"
+      },
+      {
+        "beat": 4,
+        "srs_id": "cf_004",
+        "start_ms": 109918,
+        "context_line": "She asks which one.",
+        "character_japanese": "どれ見てるの？",
+        "english_cue": "Say you don't know the title — you forget.",
+        "japanese_answer": "タイトル、全然わからない。忘れた。",
+        "romaji": "Taitoru, zenzen wakaranai. Wasureta.",
+        "grammar_tag": "casual-zenzen-nai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "cf_005",
+        "start_ms": 141661,
+        "context_line": "She laughs and says her favourite drama just finished — it was really good.",
+        "character_japanese": "あ、そうなんだ。私が好きなドラマが終わったんだけど、すごく良かったよ。",
+        "english_cue": "Say that sounds good — what was it about?",
+        "japanese_answer": "いいじゃん。どんな話なの？",
+        "romaji": "Ii jan. Donna hanashi na no?",
+        "grammar_tag": "casual-no-question"
+      },
+      {
+        "beat": 6,
+        "srs_id": "cf_006",
+        "start_ms": 175972,
+        "context_line": "She summarises the plot enthusiastically and suggests watching it together.",
+        "character_japanese": "今度いっしょに見ようよ！",
+        "english_cue": "Say yes, definitely.",
+        "japanese_answer": "うん、絶対見たい！",
+        "romaji": "Un, zettai mitai!",
+        "grammar_tag": "casual-zettai"
+      },
+      {
+        "beat": 7,
+        "srs_id": "cf_007",
+        "start_ms": 200856,
+        "context_line": "She asks what you're doing this weekend.",
+        "character_japanese": "週末、何してる？",
+        "english_cue": "Say you don't have any plans yet.",
+        "japanese_answer": "まだ何も決まってない。",
+        "romaji": "Mada nani mo kimattenai.",
+        "grammar_tag": "casual-negative-te-iru"
+      },
+      {
+        "beat": 8,
+        "srs_id": "cf_008",
+        "start_ms": 222831,
+        "context_line": "She suggests a new ramen place near the station that just opened.",
+        "character_japanese": "じゃあ、一緒にラーメン食べに行かない？駅の近くに新しい店できたんだよ。",
+        "english_cue": "Say yes, let's go.",
+        "japanese_answer": "行きたい！行こう！",
+        "romaji": "Ikitai! Ikou!",
+        "grammar_tag": "casual-volitional"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "どうしてた？",
+        "reading": "dou shiteta?",
+        "meaning": "What have you been up to?",
+        "note": "Casual contraction of どうしていた. The ていた → てた contraction is everywhere in casual speech: 食べていた → 食べてた, 行っていた → 行ってた, 見ていた → 見てた. In formal speech you'd open with ご無沙汰しています or 最近いかがですか. Between friends, どうしてた gets straight to the point."
+      },
+      {
+        "phrase": "全然わからない",
+        "reading": "zenzen wakaranai",
+        "meaning": "I have no idea / Don't understand at all",
+        "note": "全然 (zenzen) + negative = not at all. 全然大丈夫じゃない (not fine at all), 全然来ない (not coming at all). In very casual modern speech you'll also hear 全然いい (totally fine) with a positive — common among younger speakers but technically non-standard. The classical negative pattern is always safe."
+      },
+      {
+        "phrase": "〜じゃん",
+        "reading": "~ jan",
+        "meaning": "Isn't it? / That's great, right? (casual)",
+        "note": "A Tokyo/Yokohama particle now standard in casual Japanese everywhere. それ、いいじゃん！= That's great, isn't it! — mild surprise and approval. More assertive than ね. If your Japanese friends start using じゃん back at you naturally, your casual register is probably landing well."
+      }
+    ]
+  },
+  {
+    "scene_id": "sushi_counter",
+    "title": "Sushi Counter",
+    "level": "N4",
+    "topic": "food_and_drink",
+    "scene_intro": "You've scored a counter seat at a proper sushi restaurant in Ginza. The itamae — the sushi chef — is in front of you working quietly. There is no printed menu. You'll order a few pieces directly, and you've decided to put yourself in her hands.",
+    "other_character": "the itamae, a focused but friendly sushi chef",
+    "goal": "order sushi directly from the chef, ask for recommendations, and pay",
+    "grammar_focus": "おまかせで, 〜をいただけますか (polite alternative to ください), ぜひ, 今日のおすすめ, もう一つ, おいくらですか",
+    "setting": "a counter-seat sushi restaurant in Ginza",
+    "beat_count": 8,
+    "duration_seconds": 246,
+    "audio_url": "/echo/audio/sushi_counter.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "su_001",
+        "start_ms": 20250,
+        "context_line": "You're settled at the counter. The itamae nods and waits. No menu in sight.",
+        "character_japanese": "今日はいかがでしょうか。",
+        "english_cue": "Ask what today's recommendation is.",
+        "japanese_answer": "今日のおすすめは何ですか？",
+        "romaji": "Kyou no osusume wa nan desu ka?",
+        "grammar_tag": "osusume"
+      },
+      {
+        "beat": 2,
+        "srs_id": "su_002",
+        "start_ms": 46507,
+        "context_line": "She says the tuna and sea bream are exceptional today.",
+        "character_japanese": "本日はマグロと鯛が特におすすめです。",
+        "english_cue": "Say you'll leave it to the chef.",
+        "japanese_answer": "じゃあ、おまかせでお願いします。",
+        "romaji": "Jaa, omakase de onegaishimasu.",
+        "grammar_tag": "omakase"
+      },
+      {
+        "beat": 3,
+        "srs_id": "su_003",
+        "start_ms": 75336,
+        "context_line": "She nods and begins. The first piece — tuna — is placed in front of you.",
+        "character_japanese": "まずはマグロからどうぞ。",
+        "english_cue": "Thank her and eat.",
+        "japanese_answer": "ありがとうございます。いただきます。",
+        "romaji": "Arigatou gozaimasu. Itadakimasu.",
+        "grammar_tag": "set-phrase-itadakimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "su_004",
+        "start_ms": 107814,
+        "context_line": "It's extraordinary. She watches your reaction.",
+        "character_japanese": "",
+        "english_cue": "Tell her it's delicious.",
+        "japanese_answer": "とてもおいしいです！",
+        "romaji": "Totemo oishii desu!",
+        "grammar_tag": "adjective-totemo"
+      },
+      {
+        "beat": 5,
+        "srs_id": "su_005",
+        "start_ms": 126391,
+        "context_line": "A few pieces in, she asks if you'd like to try sea urchin — it arrived from Hokkaido this morning.",
+        "character_japanese": "ウニはいかがですか？今朝、北海道から届きました。",
+        "english_cue": "Say yes, you'd love to try it.",
+        "japanese_answer": "ぜひ、いただきます。",
+        "romaji": "Zehi, itadakimasu.",
+        "grammar_tag": "zehi-itadakimasu"
+      },
+      {
+        "beat": 6,
+        "srs_id": "su_006",
+        "start_ms": 156465,
+        "context_line": "It's the best thing you've ever tasted. You'd like one more piece of tuna.",
+        "character_japanese": "",
+        "english_cue": "Ask for one more piece of tuna.",
+        "japanese_answer": "マグロをもう一つ、いただけますか？",
+        "romaji": "Maguro wo mou hitotsu, itadakemasu ka?",
+        "grammar_tag": "itadakemasu-ka-polite"
+      },
+      {
+        "beat": 7,
+        "srs_id": "su_007",
+        "start_ms": 182848,
+        "context_line": "She smiles and prepares it. As you finish she asks if you'd like anything else.",
+        "character_japanese": "ほかに何かご注文はありますか？",
+        "english_cue": "Say that's all — it was wonderful.",
+        "japanese_answer": "いいえ、それだけです。とてもおいしかったです。",
+        "romaji": "Iie, sore dake desu. Totemo oishikatta desu.",
+        "grammar_tag": "adjective-past"
+      },
+      {
+        "beat": 8,
+        "srs_id": "su_008",
+        "start_ms": 221513,
+        "context_line": "She thanks you warmly. Time to settle up.",
+        "character_japanese": "ありがとうございます。お会計はこちらでお願いします。",
+        "english_cue": "Ask how much it is.",
+        "japanese_answer": "おいくらですか？",
+        "romaji": "Oikura desu ka?",
+        "grammar_tag": "price-polite"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "おまかせで",
+        "reading": "omakase de",
+        "meaning": "I'll leave it to you / Chef's choice",
+        "note": "任せる (makaseru) = to entrust. Saying おまかせで at a sushi counter invites the chef to serve whatever is freshest that day in their preferred order. Expect to pay more — this is usually the best way to eat at a serious restaurant. The chef will read your pace and reactions and adjust accordingly."
+      },
+      {
+        "phrase": "〜をいただけますか",
+        "reading": "~ wo itadakemasu ka",
+        "meaning": "Could I have ~, please? (polite)",
+        "note": "More formal than 〜をください. いただく is the humble form of もらう. The potential form いただけますか softens the request further — 'could I be allowed to receive'. Use this at counter-seat restaurants where you're speaking directly to the chef — ください can feel slightly abrupt in this setting."
+      },
+      {
+        "phrase": "今日のおすすめ",
+        "reading": "kyou no osusume",
+        "meaning": "Today's recommendation / What's fresh",
+        "note": "At a serious sushi restaurant, the menu changes daily based on what arrived from the market that morning. Asking 今日のおすすめは何ですか signals to the chef that you understand how sushi restaurants work. They'll appreciate it — and may offer something exceptional that isn't formally on offer."
+      }
+    ]
+  },
+  {
+    "scene_id": "standing_bar",
+    "title": "Standing Bar",
+    "level": "N4",
+    "topic": "social",
+    "scene_intro": "It's late evening and you've ducked into a small standing bar near Shinjuku station. Just a handful of locals, dim lighting, and shelves lined with Japanese whisky. Mina is behind the bar — sharp, welcoming, in her thirties. This is a place to slow down.",
+    "other_character": "Mina, a knowledgeable and welcoming bartender",
+    "goal": "order a drink, have a brief chat with Mina, and wind down for the evening",
+    "grammar_focus": "おすすめは何ですか, 〜にします (decision), 気に入っています, 同じものをお願いします, お会計",
+    "setting": "a small standing bar near Shinjuku station",
+    "beat_count": 7,
+    "duration_seconds": 224,
+    "audio_url": "/echo/audio/standing_bar.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "br_001",
+        "start_ms": 21330,
+        "context_line": "You step in and find a spot at the bar. Mina nods a welcome.",
+        "character_japanese": "いらっしゃい！何にしますか？",
+        "english_cue": "Ask what she recommends.",
+        "japanese_answer": "おすすめは何ですか？",
+        "romaji": "Osusume wa nan desu ka?",
+        "grammar_tag": "osusume"
+      },
+      {
+        "beat": 2,
+        "srs_id": "br_002",
+        "start_ms": 45451,
+        "context_line": "She gestures to the whisky shelf and recommends the house highball — made with Yamazaki.",
+        "character_japanese": "今日はハイボールがおすすめですよ。山崎を使ってるんです。",
+        "english_cue": "Say that sounds good — you'll have that.",
+        "japanese_answer": "じゃあ、それにします。",
+        "romaji": "Jaa, sore ni shimasu.",
+        "grammar_tag": "ni-shimasu-decision"
+      },
+      {
+        "beat": 3,
+        "srs_id": "br_003",
+        "start_ms": 75044,
+        "context_line": "She makes the drink and sets it in front of you. You take a sip. It's excellent.",
+        "character_japanese": "どうぞ。",
+        "english_cue": "Tell her it's delicious.",
+        "japanese_answer": "おいしいです！",
+        "romaji": "Oishii desu!",
+        "grammar_tag": "adjective"
+      },
+      {
+        "beat": 4,
+        "srs_id": "br_004",
+        "start_ms": 96256,
+        "context_line": "She smiles and asks if you're visiting or living in Tokyo.",
+        "character_japanese": "東京は旅行ですか？それとも住んでるんですか？",
+        "english_cue": "Say you're visiting — first time in Japan.",
+        "japanese_answer": "旅行です。日本は初めてです。",
+        "romaji": "Ryokou desu. Nihon wa hajimete desu.",
+        "grammar_tag": "hajimete"
+      },
+      {
+        "beat": 5,
+        "srs_id": "br_005",
+        "start_ms": 131291,
+        "context_line": "She says welcome to Japan and asks how you're finding it.",
+        "character_japanese": "ようこそ！日本はどうですか？",
+        "english_cue": "Say it's great — you're really enjoying it.",
+        "japanese_answer": "とても楽しいです。気に入っています。",
+        "romaji": "Totemo tanoshii desu. Ki ni itte imasu.",
+        "grammar_tag": "ki-ni-iru"
+      },
+      {
+        "beat": 6,
+        "srs_id": "br_006",
+        "start_ms": 164930,
+        "context_line": "Your glass is nearly empty. She notices and asks if you'd like another.",
+        "character_japanese": "よかったら、もう一杯どうですか？",
+        "english_cue": "Say yes, the same again.",
+        "japanese_answer": "はい、同じものをお願いします。",
+        "romaji": "Hai, onaji mono wo onegaishimasu.",
+        "grammar_tag": "onaji-mono"
+      },
+      {
+        "beat": 7,
+        "srs_id": "br_007",
+        "start_ms": 194883,
+        "context_line": "A good evening. Time to head back. You catch Mina's eye.",
+        "character_japanese": "",
+        "english_cue": "Ask for the bill.",
+        "japanese_answer": "すみません、お会計をお願いします。",
+        "romaji": "Sumimasen, okaikei wo onegaishimasu.",
+        "grammar_tag": "okaikei"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "ハイボール",
+        "reading": "haiboru",
+        "meaning": "Highball — whisky and soda",
+        "note": "Japan's most popular bar order. A good ハイボール uses a quality Japanese whisky, plenty of ice, cold soda water, and often a squeeze of lemon. Lighter than neat whisky, perfect for a long evening. Ordering a ハイボール at a Japanese bar is an easy way to look like you know what you're doing."
+      },
+      {
+        "phrase": "よかったら",
+        "reading": "yokattara",
+        "meaning": "If you'd like / If you don't mind",
+        "note": "A gentle, non-imposing way to make an offer or invitation. The conditional form of 良い. よかったらまた来てください — please come again if you'd like to. Softens anything: よかったらこちらに座ってください (feel free to sit here if you'd like). Polite without being formal."
+      },
+      {
+        "phrase": "気に入っています",
+        "reading": "ki ni itte imasu",
+        "meaning": "I'm really enjoying it / I love it here",
+        "note": "気に入る (ki ni iru) = to take a liking to something. 気に入っています = I have come to like it and still do. Slightly warmer than 好きです — it implies you discovered something and it won it over. Great for expressing how you feel about Japan, a neighbourhood, or a bar."
+      }
+    ]
+  },
+  {
+    "scene_id": "karaoke_booking",
+    "title": "Karaoke Booking",
+    "level": "N4",
+    "topic": "entertainment",
+    "scene_intro": "You and two friends have decided on karaoke after dinner in Shibuya. It's Friday night and the venue is busy. A receptionist named Sae is behind the counter. You'll need to book a room, pick a package, and get set up. One hour in, the room phone rings with a time warning.",
+    "other_character": "Sae, the karaoke venue receptionist",
+    "goal": "book a room for three, pick the unlimited time package, and extend when time runs out",
+    "grammar_focus": "何名様, フリータイム, 〜でよろしいですか, 部屋から〜できますか, あと〜時間お願いします",
+    "setting": "a karaoke venue in Shibuya, Friday evening",
+    "beat_count": 6,
+    "duration_seconds": 190,
+    "audio_url": "/echo/audio/karaoke_booking.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "kr_001",
+        "start_ms": 23274,
+        "context_line": "You reach the reception counter. Sae smiles and asks how many.",
+        "character_japanese": "いらっしゃいませ。何名様ですか？",
+        "english_cue": "Say three people.",
+        "japanese_answer": "三人です。",
+        "romaji": "Sannin desu.",
+        "grammar_tag": "counter-people"
+      },
+      {
+        "beat": 2,
+        "srs_id": "kr_002",
+        "start_ms": 45893,
+        "context_line": "She asks how long you'd like the room.",
+        "character_japanese": "お時間はどうなさいますか？",
+        "english_cue": "Ask if they have an unlimited time option.",
+        "japanese_answer": "フリータイムはありますか？",
+        "romaji": "Furii taimu wa arimasu ka?",
+        "grammar_tag": "existence-arimasu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "kr_003",
+        "start_ms": 68602,
+        "context_line": "She says yes — two thousand four hundred yen per person including a drink bar.",
+        "character_japanese": "はい、フリータイムはお一人様2,400円で、ドリンクバー付きです。",
+        "english_cue": "Say you'll go with that.",
+        "japanese_answer": "じゃあ、それでお願いします。",
+        "romaji": "Jaa, sore de onegaishimasu.",
+        "grammar_tag": "de-onegaishimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "kr_004",
+        "start_ms": 99910,
+        "context_line": "She asks if you'd like to add food or alcoholic drinks.",
+        "character_japanese": "フードメニューやアルコールはいかがですか？",
+        "english_cue": "Ask if you can order from inside the room.",
+        "japanese_answer": "部屋から注文できますか？",
+        "romaji": "Heya kara chuumon dekimasu ka?",
+        "grammar_tag": "potential-dekimasu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "kr_005",
+        "start_ms": 125721,
+        "context_line": "She confirms you can call reception from the in-room phone anytime. She hands you the key.",
+        "character_japanese": "はい、部屋の電話からいつでもどうぞ。こちらのカギです。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 6,
+        "srs_id": "kr_006",
+        "start_ms": 153197,
+        "context_line": "An hour later the in-room phone rings. It's Sae — time is nearly up. She asks if you'd like to extend.",
+        "character_japanese": "そろそろお時間ですが、延長なさいますか？",
+        "english_cue": "Say yes, please extend by one more hour.",
+        "japanese_answer": "はい、あと一時間お願いします。",
+        "romaji": "Hai, ato ichijikan onegaishimasu.",
+        "grammar_tag": "ato-time"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "フリータイム",
+        "reading": "furii taimu",
+        "meaning": "Unlimited time package",
+        "note": "Pay a flat rate and sing for as long as the room is available. Cheaper per hour than booking a set slot, especially late at night. Usually comes with a ドリンクバー (unlimited soft drinks) included. Ask: フリータイムはいくらですか？ — then compare with an hourly rate to decide which is better value."
+      },
+      {
+        "phrase": "ドリンクバー",
+        "reading": "dorinku baa",
+        "meaning": "Self-serve drink station (unlimited soft drinks)",
+        "note": "Standard at karaoke venues — a self-service station with soft drinks, juice, and hot drinks. Usually included or a low add-on cost. Alcoholic drinks are ordered separately from staff. Worth getting even if you're not thirsty — it includes unlimited ice, which you'll need."
+      },
+      {
+        "phrase": "延長をお願いします",
+        "reading": "enchou wo onegaishimasu",
+        "meaning": "I'd like to extend the time",
+        "note": "When your time is nearly up, a staff member will call the in-room phone with a 5-minute warning. Reply 延長をお願いします or あと一時間お願いします. If it's フリータイム, they'll check if the room is free. On busy Friday and Saturday nights, you may not be able to extend — it's worth asking early."
+      }
+    ]
+  },
+  {
+    "scene_id": "restaurant_reservation",
+    "title": "Restaurant Reservation",
+    "level": "N4",
+    "topic": "food_and_drink",
+    "scene_intro": "You've been recommended a small restaurant in Daikanyama and you want to book a table for two this Saturday evening. You're calling ahead. Phone Japanese is harder than face-to-face — there's no body language and you have to listen carefully. A staff member picks up.",
+    "other_character": "a restaurant staff member taking the reservation",
+    "goal": "make a dinner reservation for two people on Saturday evening and request a window seat",
+    "grammar_focus": "もしもし, 予約をしたいんですが (〜んですが softener), 今週の〜日, 〜という名前で, 確認 read-back, 窓側の席はありますか",
+    "setting": "on the phone to a restaurant in Daikanyama",
+    "beat_count": 8,
+    "duration_seconds": 230,
+    "audio_url": "/echo/audio/restaurant_reservation.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "rp_001",
+        "start_ms": 20298,
+        "context_line": "The phone rings twice and someone answers.",
+        "character_japanese": "はい、レストランベッラでございます。",
+        "english_cue": "Say hello and that you'd like to make a reservation.",
+        "japanese_answer": "もしもし、予約をしたいんですが。",
+        "romaji": "Moshi moshi, yoyaku wo shitain desu ga.",
+        "grammar_tag": "n-desu-ga"
+      },
+      {
+        "beat": 2,
+        "srs_id": "rp_002",
+        "start_ms": 49229,
+        "context_line": "She says of course and asks which date.",
+        "character_japanese": "はい、ありがとうございます。何日のご予定ですか？",
+        "english_cue": "Say this Saturday.",
+        "japanese_answer": "今週の土曜日です。",
+        "romaji": "Konshuu no doyoubi desu.",
+        "grammar_tag": "date"
+      },
+      {
+        "beat": 3,
+        "srs_id": "rp_003",
+        "start_ms": 73714,
+        "context_line": "She asks what time.",
+        "character_japanese": "お時間はいかがですか？",
+        "english_cue": "Say seven in the evening.",
+        "japanese_answer": "夜の七時でお願いします。",
+        "romaji": "Yoru no shichiji de onegaishimasu.",
+        "grammar_tag": "de-onegaishimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "rp_004",
+        "start_ms": 96170,
+        "context_line": "She asks how many people.",
+        "character_japanese": "何名様でしょうか？",
+        "english_cue": "Say two people.",
+        "japanese_answer": "二人です。",
+        "romaji": "Futari desu.",
+        "grammar_tag": "counter-people"
+      },
+      {
+        "beat": 5,
+        "srs_id": "rp_005",
+        "start_ms": 113781,
+        "context_line": "She asks for the name for the reservation.",
+        "character_japanese": "お名前をお願いします。",
+        "english_cue": "Give your name for the reservation.",
+        "japanese_answer": "ロブという名前でお願いします。",
+        "romaji": "Robu to iu namae de onegaishimasu.",
+        "grammar_tag": "to-iu-namae-de"
+      },
+      {
+        "beat": 6,
+        "srs_id": "rp_006",
+        "start_ms": 138712,
+        "context_line": "She reads the details back to confirm.",
+        "character_japanese": "確認させてください。土曜日、夜七時、二名、ロブ様ですね。",
+        "english_cue": "Confirm that's correct.",
+        "japanese_answer": "はい、そうです。",
+        "romaji": "Hai, sou desu.",
+        "grammar_tag": "confirmation"
+      },
+      {
+        "beat": 7,
+        "srs_id": "rp_007",
+        "start_ms": 164734,
+        "context_line": "Reservation confirmed. She asks if there's anything else.",
+        "character_japanese": "かしこまりました。他にご要望はございますか？",
+        "english_cue": "Ask if there's a window seat available.",
+        "japanese_answer": "窓側の席はありますか？",
+        "romaji": "Madogawa no seki wa arimasu ka?",
+        "grammar_tag": "existence-arimasu-ka"
+      },
+      {
+        "beat": 8,
+        "srs_id": "rp_008",
+        "start_ms": 192277,
+        "context_line": "She says she'll note the request and looks forward to seeing you.",
+        "character_japanese": "承りました。お待ちしております。",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございます。よろしくお願いします。",
+        "romaji": "Arigatou gozaimasu. Yoroshiku onegaishimasu.",
+        "grammar_tag": "yoroshiku"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "予約をしたいんですが",
+        "reading": "yoyaku wo shitain desu ga",
+        "meaning": "I'd like to make a reservation",
+        "note": "The 〜んですが ending softens a statement into a polite request — literally 'the situation is that I want to, and...' — trailing off and implying 'can you help?' This is more natural than the direct 予約をしたいです. You'll use this constantly: 聞きたいんですが (I wanted to ask...), 変えたいんですが (I'd like to change...)."
+      },
+      {
+        "phrase": "〜という名前で",
+        "reading": "~ to iu namae de",
+        "meaning": "Under the name of ~",
+        "note": "という means 'called / named'. ロブという名前で予約をお願いします — 'a reservation under the name Rob'. On the phone, speak your name slowly and clearly. If the staff member struggles, try spelling it out: ロ、ブ。 Staff in Tokyo are generally very patient with foreign names."
+      },
+      {
+        "phrase": "確認させてください",
+        "reading": "kakunin sasete kudasai",
+        "meaning": "Let me confirm that / Please let me check",
+        "note": "Staff will use this to read your reservation details back to you — date, time, party size, name. This is your chance to spot any mistakes before they're in the system. If something is wrong, say すみません、〜ではなくて〜です (sorry, it's not ~, it's ~). Always wait for the full read-back before saying はい、そうです."
+      }
+    ]
+  },
+  {
+    "scene_id": "clothes_shopping",
+    "title": "Clothes Shopping",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "You're in a clothes shop in Harajuku. The rails are packed and the shop smells faintly of cedar. A young shop assistant named Hana spots you looking at a rack of shirts and drifts over. You've found one you like — now you just need to know if they have your size.",
+    "other_character": "Hana, a friendly shop assistant",
+    "goal": "ask about sizes, try a shirt on, and buy it",
+    "grammar_focus": "～はありますか, 試着してもいいですか, いくらですか, これをください",
+    "setting": "a clothes shop in Harajuku, Tokyo",
+    "beat_count": 8,
+    "duration_seconds": 213,
+    "audio_url": "/echo/audio/clothes_shopping.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "cls_001",
+        "start_ms": 20370,
+        "context_line": "Hana approaches with a smile.",
+        "character_japanese": "いらっしゃいませ！何かお探しですか？",
+        "english_cue": "Say you're just looking for now.",
+        "japanese_answer": "ちょっと見ています。",
+        "romaji": "Chotto mite imasu.",
+        "grammar_tag": "browsing"
+      },
+      {
+        "beat": 2,
+        "srs_id": "cls_002",
+        "start_ms": 41621,
+        "context_line": "You pick up a shirt you like and hold it up. Hana comes back over.",
+        "character_japanese": "",
+        "english_cue": "Ask if they have this in a medium.",
+        "japanese_answer": "これ、Mサイズはありますか？",
+        "romaji": "Kore, emu saizu wa arimasu ka?",
+        "grammar_tag": "availability-arimasu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "cls_003",
+        "start_ms": 66266,
+        "context_line": "Hana checks the rail and finds a medium for you.",
+        "character_japanese": "はい、こちらにございます。どうぞ。",
+        "english_cue": "Thank her and ask if you can try it on.",
+        "japanese_answer": "ありがとうございます。試着してもいいですか？",
+        "romaji": "Arigatou gozaimasu. Shichaku shite mo ii desu ka?",
+        "grammar_tag": "permission-te-mo-ii"
+      },
+      {
+        "beat": 4,
+        "srs_id": "cls_004",
+        "start_ms": 102142,
+        "context_line": "Hana shows you to the fitting room. You try on the shirt and come out.",
+        "character_japanese": "いかがですか？",
+        "english_cue": "Say it fits perfectly.",
+        "japanese_answer": "ちょうどいいです。",
+        "romaji": "Choudo ii desu.",
+        "grammar_tag": "fit-choudo-ii"
+      },
+      {
+        "beat": 5,
+        "srs_id": "cls_005",
+        "start_ms": 122759,
+        "context_line": "You decide you want it. But you haven't seen the price tag.",
+        "character_japanese": "",
+        "english_cue": "Ask how much it is.",
+        "japanese_answer": "これはいくらですか？",
+        "romaji": "Kore wa ikura desu ka?",
+        "grammar_tag": "price-ikura"
+      },
+      {
+        "beat": 6,
+        "srs_id": "cls_006",
+        "start_ms": 141562,
+        "context_line": "Hana says it's three thousand eight hundred yen.",
+        "character_japanese": "さんぜんはっぴゃくえんです。",
+        "english_cue": "Say you'll take it.",
+        "japanese_answer": "じゃあ、これをください。",
+        "romaji": "Jaa, kore wo kudasai.",
+        "grammar_tag": "purchase-kudasai"
+      },
+      {
+        "beat": 7,
+        "srs_id": "cls_007",
+        "start_ms": 164830,
+        "context_line": "Hana takes the shirt to the till and asks if you'd like it gift-wrapped.",
+        "character_japanese": "袋はいりますか？",
+        "english_cue": "Say yes please.",
+        "japanese_answer": "はい、お願いします。",
+        "romaji": "Hai, onegai shimasu.",
+        "grammar_tag": "request-onegaishimasu"
+      },
+      {
+        "beat": 8,
+        "srs_id": "cls_008",
+        "start_ms": 188691,
+        "context_line": "Hana hands you your purchase.",
+        "character_japanese": "ありがとうございました。またお越しください。",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございました。",
+        "romaji": "Arigatou gozaimashita.",
+        "grammar_tag": "thanks-formal-past"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "試着してもいいですか",
+        "reading": "shichaku shite mo ii desu ka",
+        "meaning": "May I try this on?",
+        "note": "試着 means 'trying on clothes'. The pattern ～てもいいですか is your go-to for asking permission to do something. You'll use it everywhere — in shops, at restaurants, asking to sit somewhere."
+      },
+      {
+        "phrase": "Mサイズはありますか",
+        "reading": "emu saizu wa arimasu ka",
+        "meaning": "Do you have a medium?",
+        "note": "Japanese shops use S/M/L (エス/エム/エル) just like English. ～はありますか (is there a ~?) is the standard way to ask if something is in stock or available."
+      },
+      {
+        "phrase": "ちょうどいいです",
+        "reading": "choudo ii desu",
+        "meaning": "It fits perfectly / Just right",
+        "note": "ちょうど means 'exactly' or 'just'. ちょうどいい is the natural thing to say when something fits well — size, taste, temperature. Very versatile phrase."
+      }
+    ]
+  },
+  {
+    "scene_id": "shrine_visit",
+    "title": "Shrine Visit",
+    "level": "N5",
+    "topic": "culture",
+    "scene_intro": "It's a quiet weekday morning and you've wandered into a small Shinto shrine tucked behind a row of shops. Stone lanterns line the path, and the air smells of incense. An elderly woman named Keiko — a regular volunteer here — notices you looking a bit lost near the ema boards and ambles over.",
+    "other_character": "Keiko, an elderly shrine volunteer",
+    "goal": "buy an omamori, ask about the shrine customs",
+    "grammar_focus": "これは何ですか, ～のために, ～はどこですか, どうやって",
+    "setting": "a small Shinto shrine in a residential Tokyo neighbourhood",
+    "beat_count": 7,
+    "duration_seconds": 203,
+    "audio_url": "/echo/audio/shrine_visit.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "shr_001",
+        "start_ms": 22434,
+        "context_line": "Keiko smiles warmly as you look around.",
+        "character_japanese": "いらっしゃいませ。はじめてですか？",
+        "english_cue": "Say yes, it's your first time.",
+        "japanese_answer": "はい、はじめてです。",
+        "romaji": "Hai, hajimete desu.",
+        "grammar_tag": "first-time-hajimete"
+      },
+      {
+        "beat": 2,
+        "srs_id": "shr_002",
+        "start_ms": 47663,
+        "context_line": "You point to the wooden ema boards covered in wishes.",
+        "character_japanese": "",
+        "english_cue": "Ask what those are.",
+        "japanese_answer": "これは何ですか？",
+        "romaji": "Kore wa nan desu ka?",
+        "grammar_tag": "question-nan-desu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "shr_003",
+        "start_ms": 65118,
+        "context_line": "Keiko explains they're ema — wooden boards people write wishes on. She then points to a display of lucky charms.",
+        "character_japanese": "おまもりもありますよ。",
+        "english_cue": "Ask where you can buy an omamori.",
+        "japanese_answer": "おまもりはどこで買えますか？",
+        "romaji": "Omamori wa doko de kaemasu ka?",
+        "grammar_tag": "potential-kaemasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "shr_004",
+        "start_ms": 93104,
+        "context_line": "Keiko leads you to the small stall and shows you a selection. You pick one up.",
+        "character_japanese": "",
+        "english_cue": "Ask what this one is for.",
+        "japanese_answer": "これは何のためですか？",
+        "romaji": "Kore wa nan no tame desu ka?",
+        "grammar_tag": "purpose-no-tame"
+      },
+      {
+        "beat": 5,
+        "srs_id": "shr_005",
+        "start_ms": 114451,
+        "context_line": "Keiko says it's for health. She asks which one you'd like.",
+        "character_japanese": "健康のためですよ。どれにしますか？",
+        "english_cue": "Say you'll take that one.",
+        "japanese_answer": "じゃあ、これにします。",
+        "romaji": "Jaa, kore ni shimasu.",
+        "grammar_tag": "decision-ni-shimasu"
+      },
+      {
+        "beat": 6,
+        "srs_id": "shr_006",
+        "start_ms": 140434,
+        "context_line": "Keiko wraps it for you. She mentions you can pray at the main shrine too. You want to do it properly.",
+        "character_japanese": "",
+        "english_cue": "Ask how you pray — what do you do?",
+        "japanese_answer": "どうやってお参りしますか？",
+        "romaji": "Dou yatte omairi shimasu ka?",
+        "grammar_tag": "how-to-dou-yatte"
+      },
+      {
+        "beat": 7,
+        "srs_id": "shr_007",
+        "start_ms": 165128,
+        "context_line": "Keiko explains: two bows, two claps, one bow. You nod and head to the shrine.",
+        "character_japanese": "にれい、にはくしゅ、いちれいですよ。",
+        "english_cue": "Say you understand, and thank her very much.",
+        "japanese_answer": "わかりました。ありがとうございます。",
+        "romaji": "Wakarimashita. Arigatou gozaimasu.",
+        "grammar_tag": "acknowledgement-thanks"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "おまもりはどこで買えますか",
+        "reading": "omamori wa doko de kaemasu ka",
+        "meaning": "Where can I buy an omamori?",
+        "note": "おまもり are lucky charms sold at shrines and temples. 買えますか uses the potential form of 買う (to buy) — meaning 'can I buy'. It's slightly more natural than 買いますか here."
+      },
+      {
+        "phrase": "これは何のためですか",
+        "reading": "kore wa nan no tame desu ka",
+        "meaning": "What is this for?",
+        "note": "〜のため means 'for the purpose of'. This is how you ask what something is used for or meant to do. Keiko will tell you whether the charm is for health, safe travel, love, or exam success."
+      },
+      {
+        "phrase": "二回拍手します",
+        "reading": "nikai hakushu shimasu",
+        "meaning": "Clap twice",
+        "note": "At a Shinto shrine you bow twice, clap twice (二礼二拍手一礼 — ni-rei ni-hakushu ichi-rei), then bow once more. Keiko might explain this. 拍手 is the word for a single clap or round of applause."
+      }
+    ]
+  },
+  {
+    "scene_id": "udon_restaurant",
+    "title": "Udon Restaurant",
+    "level": "N5",
+    "topic": "food_and_drink",
+    "scene_intro": "It's a weekday lunch and you've ducked into a busy udon chain near Shinjuku station. There are trays, a ticket machine, and the smell of dashi broth in the air. A cheerful young worker named Ken points you toward the counter. The menu is simple — but you want to make sure you order exactly what you want.",
+    "other_character": "Ken, an energetic restaurant worker",
+    "goal": "order udon, choose hot or cold, add a side dish",
+    "grammar_focus": "あたたかい/つめたい, 大盛り/普通, ～をください, ～はいりますか",
+    "setting": "a casual udon restaurant near Shinjuku station",
+    "beat_count": 7,
+    "duration_seconds": 189,
+    "audio_url": "/echo/audio/udon_restaurant.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "udn_001",
+        "start_ms": 23082,
+        "context_line": "Ken greets you at the counter.",
+        "character_japanese": "いらっしゃいませ！ご注文はお決まりですか？",
+        "english_cue": "Ask what he recommends.",
+        "japanese_answer": "おすすめは何ですか？",
+        "romaji": "Osusume wa nan desu ka?",
+        "grammar_tag": "recommendation-osusume"
+      },
+      {
+        "beat": 2,
+        "srs_id": "udn_002",
+        "start_ms": 45859,
+        "context_line": "Ken says the kake udon is popular. You decide on that.",
+        "character_japanese": "かけうどんが人気ですよ！",
+        "english_cue": "Order the kake udon.",
+        "japanese_answer": "じゃあ、かけうどんをください。",
+        "romaji": "Jaa, kake udon wo kudasai.",
+        "grammar_tag": "order-kudasai"
+      },
+      {
+        "beat": 3,
+        "srs_id": "udn_003",
+        "start_ms": 72240,
+        "context_line": "Ken asks: hot or cold?",
+        "character_japanese": "あたたかいのと、つめたいのどちらにしますか？",
+        "english_cue": "Say you'd like the hot one.",
+        "japanese_answer": "あたたかいのをください。",
+        "romaji": "Atatakai no wo kudasai.",
+        "grammar_tag": "adjective-nominaliser"
+      },
+      {
+        "beat": 4,
+        "srs_id": "udn_004",
+        "start_ms": 94676,
+        "context_line": "Ken asks what size — regular or large.",
+        "character_japanese": "サイズは普通ですか？大盛りですか？",
+        "english_cue": "Say large please.",
+        "japanese_answer": "大盛りをください。",
+        "romaji": "Oomori wo kudasai.",
+        "grammar_tag": "size-oomori"
+      },
+      {
+        "beat": 5,
+        "srs_id": "udn_005",
+        "start_ms": 116747,
+        "context_line": "Ken gestures to a small display of tempura on the counter.",
+        "character_japanese": "天ぷらはいかがですか？",
+        "english_cue": "Say you'll have the prawn tempura too.",
+        "japanese_answer": "えびの天ぷらもください。",
+        "romaji": "Ebi no tenpura mo kudasai.",
+        "grammar_tag": "addition-mo"
+      },
+      {
+        "beat": 6,
+        "srs_id": "udn_006",
+        "start_ms": 140667,
+        "context_line": "Ken rings up your order and tells you the total.",
+        "character_japanese": "ごうけいはちゃくはっぴゃくえんです。",
+        "english_cue": "Say here you go as you hand over a thousand yen note.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 7,
+        "srs_id": "udn_007",
+        "start_ms": 163616,
+        "context_line": "Ken hands you your tray and points to the condiments.",
+        "character_japanese": "どうぞ！ネギとしょうがは自由にどうぞ。",
+        "english_cue": "Thank him.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "あたたかいのをください",
+        "reading": "atatakai no wo kudasai",
+        "meaning": "The hot one please",
+        "note": "あたたかい (warm/hot) and つめたい (cold) are the choices for udon. The の here turns the adjective into a noun — 'the hot one'. This pattern (adj + の + を) comes up constantly when pointing to or specifying things."
+      },
+      {
+        "phrase": "おすすめは何ですか",
+        "reading": "osusume wa nan desu ka",
+        "meaning": "What do you recommend?",
+        "note": "おすすめ means 'recommendation'. This three-word question will get you good food everywhere in Japan. Staff will always have an answer and usually appreciate you asking."
+      },
+      {
+        "phrase": "大盛りをください",
+        "reading": "oomori wo kudasai",
+        "meaning": "Large portion please",
+        "note": "大盛り (oomori) is a large portion — much bigger than 普通 (futsuu, regular). Many udon and ramen shops offer it for the same price or a small premium. Worth knowing if you're hungry."
+      }
+    ]
+  },
+  {
+    "scene_id": "festival_food_stall",
+    "title": "Festival Food Stall",
+    "level": "N5",
+    "topic": "food_and_drink",
+    "scene_intro": "It's a warm summer evening and you've stumbled into a local neighbourhood matsuri. Paper lanterns hang between the trees and the drumming from a taiko group echoes across the park. You join the queue at a takoyaki stall run by a loud, friendly man named Hiroshi. The smell is incredible.",
+    "other_character": "Hiroshi, a boisterous takoyaki vendor",
+    "goal": "order takoyaki and a drink from the stall",
+    "grammar_focus": "～つください, ソースとマヨネーズ, ～はいりますか, いくらですか",
+    "setting": "a summer festival (matsuri) in a local park",
+    "beat_count": 7,
+    "duration_seconds": 182,
+    "audio_url": "/echo/audio/festival_food_stall.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "fst_001",
+        "start_ms": 22890,
+        "context_line": "You reach the front of the queue. Hiroshi grins at you.",
+        "character_japanese": "いらっしゃい！たこやき、食べていく？",
+        "english_cue": "Say yes, you'd like some takoyaki.",
+        "japanese_answer": "はい、たこやきをください。",
+        "romaji": "Hai, takoyaki wo kudasai.",
+        "grammar_tag": "order-kudasai"
+      },
+      {
+        "beat": 2,
+        "srs_id": "fst_002",
+        "start_ms": 51153,
+        "context_line": "Hiroshi holds up his fingers — six or eight?",
+        "character_japanese": "ろっこ？はっこ？",
+        "english_cue": "Say six please.",
+        "japanese_answer": "ろっつください。",
+        "romaji": "Roku-tsu kudasai.",
+        "grammar_tag": "counter-general-tsu"
+      },
+      {
+        "beat": 3,
+        "srs_id": "fst_003",
+        "start_ms": 70948,
+        "context_line": "Hiroshi starts cooking and asks about the toppings.",
+        "character_japanese": "ソースとマヨネーズ、どうしますか？",
+        "english_cue": "Say both please.",
+        "japanese_answer": "両方ください。",
+        "romaji": "Ryouhou kudasai.",
+        "grammar_tag": "both-ryouhou"
+      },
+      {
+        "beat": 4,
+        "srs_id": "fst_004",
+        "start_ms": 91984,
+        "context_line": "Hiroshi hands you the box. You notice drinks in an ice tub nearby.",
+        "character_japanese": "",
+        "english_cue": "Ask if they also have drinks.",
+        "japanese_answer": "のみものもありますか？",
+        "romaji": "Nomimono mo arimasu ka?",
+        "grammar_tag": "availability-mo-arimasu-ka"
+      },
+      {
+        "beat": 5,
+        "srs_id": "fst_005",
+        "start_ms": 113293,
+        "context_line": "Hiroshi points to the tub. Beer, ramune, green tea.",
+        "character_japanese": "ビール、ラムネ、お茶がありますよ！",
+        "english_cue": "Order a ramune.",
+        "japanese_answer": "ラムネをください。",
+        "romaji": "Ramune wo kudasai.",
+        "grammar_tag": "order-kudasai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "fst_006",
+        "start_ms": 135643,
+        "context_line": "Hiroshi tells you the total — six hundred yen.",
+        "character_japanese": "たこやきとラムネで、ろっぴゃくえんです！",
+        "english_cue": "Hand over the money and say here you go.",
+        "japanese_answer": "はい、どうぞ。",
+        "romaji": "Hai, douzo.",
+        "grammar_tag": "giving-douzo"
+      },
+      {
+        "beat": 7,
+        "srs_id": "fst_007",
+        "start_ms": 158496,
+        "context_line": "You eat the first takoyaki ball. It's perfect. Hiroshi grins at you.",
+        "character_japanese": "どう？おいしい？",
+        "english_cue": "Say it's delicious.",
+        "japanese_answer": "おいしいです！",
+        "romaji": "Oishii desu!",
+        "grammar_tag": "exclamation-oishii"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "たこやきをろっつください",
+        "reading": "takoyaki wo roku-tsu kudasai",
+        "meaning": "Six takoyaki please",
+        "note": "Japanese has a general counter for small objects: ひとつ、ふたつ、みっつ… up to とお (10). For takoyaki you just count the balls. Six is ろくつ but in natural speech it becomes ろっつ. The same counter works for apples, cups, and most everyday objects."
+      },
+      {
+        "phrase": "ソースとマヨネーズ、両方ください",
+        "reading": "soosu to mayoneezu, ryouhou kudasai",
+        "meaning": "Sauce and mayo, both please",
+        "note": "両方 (ryouhou) means 'both'. Extremely useful. You'll use it whenever someone offers you two options and you want both. ～も～も is also fine: ソースもマヨネーズもください."
+      },
+      {
+        "phrase": "おいしい！",
+        "reading": "oishii",
+        "meaning": "Delicious!",
+        "note": "The single most important food word in Japanese. Say it freely and say it meaning it — Japanese people will be genuinely delighted. おいしい！ with good timing and genuine feeling goes a long way."
+      }
+    ]
+  },
+  {
+    "scene_id": "catching_up_with_friend",
+    "title": "Catching Up With Friend",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "You're meeting Maki — a Japanese friend you first met at a language exchange a few months ago — at a café in Shimokitazawa. She's already there when you arrive, waving from a corner table. The place is warm and unhurried. You've both been busy and have a lot to catch up on.",
+    "other_character": "Maki, a friendly Japanese woman in her late twenties",
+    "goal": "catch up with your friend, order together, share what you've been up to",
+    "grammar_focus": "最近どう, ～てる, ～んです, ～が好きです, ～にはまってる",
+    "setting": "a cosy café in Shimokitazawa, Tokyo",
+    "beat_count": 7,
+    "duration_seconds": 207,
+    "audio_url": "/echo/audio/catching_up_with_friend.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "cuf_001",
+        "start_ms": 22074,
+        "context_line": "You spot Maki and walk over. She stands up to greet you.",
+        "character_japanese": "久しぶり！元気だった？",
+        "english_cue": "Say it's been a while and you're good, thank you.",
+        "japanese_answer": "久しぶり！元気だよ。ありがとう。",
+        "romaji": "Hisashiburi! Genki da yo. Arigatou.",
+        "grammar_tag": "greeting-hisashiburi"
+      },
+      {
+        "beat": 2,
+        "srs_id": "cuf_002",
+        "start_ms": 60407,
+        "context_line": "You both sit down. Maki leans forward.",
+        "character_japanese": "",
+        "english_cue": "Ask how she's been lately.",
+        "japanese_answer": "最近どう？",
+        "romaji": "Saikin dou?",
+        "grammar_tag": "checking-in-saikin"
+      },
+      {
+        "beat": 3,
+        "srs_id": "cuf_003",
+        "start_ms": 77502,
+        "context_line": "Maki says she's been busy with work. A waiter passes.",
+        "character_japanese": "仕事がずっと忙しくて…。あ、注文しようか。",
+        "english_cue": "Get the waiter's attention.",
+        "japanese_answer": "すみません！",
+        "romaji": "Sumimasen!",
+        "grammar_tag": "attention-sumimasen"
+      },
+      {
+        "beat": 4,
+        "srs_id": "cuf_004",
+        "start_ms": 100634,
+        "context_line": "The waiter comes over. Maki has already decided — coffee. He looks at you.",
+        "character_japanese": "",
+        "english_cue": "Order a green tea.",
+        "japanese_answer": "わたしはお茶をください。",
+        "romaji": "Watashi wa ocha wo kudasai.",
+        "grammar_tag": "order-watashi-wa"
+      },
+      {
+        "beat": 5,
+        "srs_id": "cuf_005",
+        "start_ms": 122787,
+        "context_line": "The drinks arrive. Maki asks what you've been up to recently.",
+        "character_japanese": "あなたは最近何してる？",
+        "english_cue": "Say you've been studying Japanese every day.",
+        "japanese_answer": "毎日日本語を勉強してる。",
+        "romaji": "Mainichi Nihongo wo benkyou shiteru.",
+        "grammar_tag": "ongoing-action-teiru"
+      },
+      {
+        "beat": 6,
+        "srs_id": "cuf_006",
+        "start_ms": 150197,
+        "context_line": "Maki says that's impressive. She asks if you like Japanese food.",
+        "character_japanese": "すごい！日本食は好き？",
+        "english_cue": "Say yes, you're really into ramen lately.",
+        "japanese_answer": "うん、最近ラーメンにはまってる。",
+        "romaji": "Un, saikin raamen ni hamatteru.",
+        "grammar_tag": "into-something-hamatteru"
+      },
+      {
+        "beat": 7,
+        "srs_id": "cuf_007",
+        "start_ms": 181176,
+        "context_line": "Maki laughs and says she knows a great ramen place. She says they should go together.",
+        "character_japanese": "おいしいラーメン屋、知ってるよ！一緒に行こう！",
+        "english_cue": "Say that sounds great.",
+        "japanese_answer": "いいね！",
+        "romaji": "Ii ne!",
+        "grammar_tag": "enthusiasm-ii-ne"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "最近どう？",
+        "reading": "saikin dou?",
+        "meaning": "How have you been lately?",
+        "note": "最近 (saikin) means 'recently / lately'. 最近どう？ is casual, warm, and the natural opener when catching up with a friend. In polite speech it becomes 最近はいかがですか."
+      },
+      {
+        "phrase": "ずっと忙しかった",
+        "reading": "zutto isogashikatta",
+        "meaning": "I've been really busy",
+        "note": "ずっと means 'all along / the whole time / continuously'. 忙しかった is the past tense of 忙しい (busy). Together they capture 'I've been flat out'. Very natural for catching up."
+      },
+      {
+        "phrase": "～にはまってる",
+        "reading": "～ni hamatteru",
+        "meaning": "I'm really into ~",
+        "note": "はまる means to fall into / get hooked on something. ～にはまってる (the ている form, contracted) means you're currently obsessed with something. It works for food, music, TV shows, games — anything."
+      }
+    ]
+  },
+  {
+    "scene_id": "supermarket_trip",
+    "title": "Supermarket Trip",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "It's a Sunday afternoon and you've walked to the local supermarket in your Tokyo neighbourhood. You need soy sauce, rice, and something for dinner. The supermarket is calm, the lights are warm, and the vegetable section smells of earth and cucumber. You need to find a few things — and you're not quite sure where they all are.",
+    "other_character": "Taro, a friendly supermarket worker stacking shelves",
+    "goal": "find what you need and get through checkout",
+    "grammar_focus": "～はどこですか, ～売り場, ～はいりますか, ポイントカードはありますか",
+    "setting": "a neighbourhood supermarket in Tokyo",
+    "beat_count": 6,
+    "duration_seconds": 169,
+    "audio_url": "/echo/audio/supermarket_trip.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "spm_001",
+        "start_ms": 23802,
+        "context_line": "You find Taro near the condiments aisle.",
+        "character_japanese": "",
+        "english_cue": "Excuse him and ask where the soy sauce is.",
+        "japanese_answer": "すみません、しょうゆはどこですか？",
+        "romaji": "Sumimasen, shouyu wa doko desu ka?",
+        "grammar_tag": "location-doko-desu-ka"
+      },
+      {
+        "beat": 2,
+        "srs_id": "spm_002",
+        "start_ms": 48993,
+        "context_line": "Taro points you to the next aisle along.",
+        "character_japanese": "あのたなにありますよ。",
+        "english_cue": "Thank him.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      },
+      {
+        "beat": 3,
+        "srs_id": "spm_003",
+        "start_ms": 69964,
+        "context_line": "You get your items and head to the checkout. The cashier looks up.",
+        "character_japanese": "いらっしゃいませ！ポイントカードはありますか？",
+        "english_cue": "Say no, you don't have one.",
+        "japanese_answer": "いいえ、ありません。",
+        "romaji": "Iie, arimasen.",
+        "grammar_tag": "negation-arimasen"
+      },
+      {
+        "beat": 4,
+        "srs_id": "spm_004",
+        "start_ms": 96288,
+        "context_line": "The cashier scans your items and asks about a bag.",
+        "character_japanese": "袋はいりますか？",
+        "english_cue": "Say yes, one bag please.",
+        "japanese_answer": "はい、ひとつください。",
+        "romaji": "Hai, hitotsu kudasai.",
+        "grammar_tag": "counter-hitotsu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "spm_005",
+        "start_ms": 120135,
+        "context_line": "The cashier tells you the total — twelve hundred and forty yen.",
+        "character_japanese": "ごうけい、せんにひゃくよんじゅうえんです。",
+        "english_cue": "Hand over two thousand yen and say here you go.",
+        "japanese_answer": "はい、にせんえんで。",
+        "romaji": "Hai, nisen en de.",
+        "grammar_tag": "payment-de"
+      },
+      {
+        "beat": 6,
+        "srs_id": "spm_006",
+        "start_ms": 145577,
+        "context_line": "The cashier hands you your change and receipt.",
+        "character_japanese": "ありがとうございました！",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございました。",
+        "romaji": "Arigatou gozaimashita.",
+        "grammar_tag": "thanks-formal-past"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "しょうゆはどこですか",
+        "reading": "shouyu wa doko desu ka",
+        "meaning": "Where is the soy sauce?",
+        "note": "～はどこですか is the pattern for asking where anything is. Swap in 野菜 (yasai/vegetables), 牛乳 (gyuunyuu/milk), パン (pan/bread) and you can navigate any supermarket. Taro will point you in the right direction."
+      },
+      {
+        "phrase": "ポイントカードはありますか",
+        "reading": "pointo kaado wa arimasu ka",
+        "meaning": "Do you have a points card?",
+        "note": "Every supermarket in Japan has a points card. You will be asked this every single time. The natural reply if you don't have one: いいえ、ありません. Or 持っていません (motte imasen) — I don't have one."
+      },
+      {
+        "phrase": "袋はいりますか",
+        "reading": "fukuro wa irimasu ka",
+        "meaning": "Do you need a bag?",
+        "note": "Japan charges for carrier bags. 袋 (fukuro) is a bag. いりますか comes from いる — to need. If you have your own bag: 袋はいりません (I don't need one). If you need one: はい、一枚ください (yes, one please)."
+      }
+    ]
+  },
+  {
+    "scene_id": "flower_shop",
+    "title": "Flower Shop",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "Your Japanese friend's birthday is coming up and you've decided to get her flowers. There's a small flower shop just outside the station — buckets of hydrangeas and roses spill out onto the pavement. A woman named Sakura (yes, really) looks up from her arrangement as you step in.",
+    "other_character": "Sakura, the warm and talkative florist",
+    "goal": "buy a birthday bouquet and ask for it to be wrapped as a gift",
+    "grammar_focus": "プレゼント, ～のために, どれがいいですか, きれいに包んでください",
+    "setting": "a small flower shop outside a Tokyo station",
+    "beat_count": 6,
+    "duration_seconds": 180,
+    "audio_url": "/echo/audio/flower_shop.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "flo_001",
+        "start_ms": 21810,
+        "context_line": "Sakura looks up from her arrangement.",
+        "character_japanese": "いらっしゃいませ！何かお探しですか？",
+        "english_cue": "Say you're looking for a birthday gift.",
+        "japanese_answer": "誕生日のプレゼントを探しています。",
+        "romaji": "Tanjoubi no purezento wo sagashite imasu.",
+        "grammar_tag": "shopping-sagashiteimasu"
+      },
+      {
+        "beat": 2,
+        "srs_id": "flo_002",
+        "start_ms": 50423,
+        "context_line": "Sakura asks who it's for.",
+        "character_japanese": "どなたへのプレゼントですか？",
+        "english_cue": "Say it's for a friend.",
+        "japanese_answer": "友だちへのプレゼントです。",
+        "romaji": "Tomodachi e no purezento desu.",
+        "grammar_tag": "recipient-e-no"
+      },
+      {
+        "beat": 3,
+        "srs_id": "flo_003",
+        "start_ms": 72778,
+        "context_line": "Sakura shows you a range of flowers. There are roses, sunflowers, and tulips.",
+        "character_japanese": "",
+        "english_cue": "Ask which one she recommends.",
+        "japanese_answer": "どれがおすすめですか？",
+        "romaji": "Dore ga osusume desu ka?",
+        "grammar_tag": "recommendation-dore"
+      },
+      {
+        "beat": 4,
+        "srs_id": "flo_004",
+        "start_ms": 94774,
+        "context_line": "Sakura suggests the pink roses — very popular for birthdays. They're lovely.",
+        "character_japanese": "ピンクのバラはいかがですか？誕生日に人気ですよ。",
+        "english_cue": "Say you'll go with those.",
+        "japanese_answer": "じゃあ、それにします。",
+        "romaji": "Jaa, sore ni shimasu.",
+        "grammar_tag": "decision-ni-shimasu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "flo_005",
+        "start_ms": 123383,
+        "context_line": "Sakura starts making up the bouquet.",
+        "character_japanese": "",
+        "english_cue": "Ask if she can wrap it nicely as a gift.",
+        "japanese_answer": "きれいに包んでもらえますか？",
+        "romaji": "Kirei ni tsutsunde moraemasu ka?",
+        "grammar_tag": "request-te-moraemasu-ka"
+      },
+      {
+        "beat": 6,
+        "srs_id": "flo_006",
+        "start_ms": 144813,
+        "context_line": "Sakura wraps it beautifully and tells you the price — two thousand five hundred yen.",
+        "character_japanese": "にせんごひゃくえんです。",
+        "english_cue": "Pay and say thank you.",
+        "japanese_answer": "はい、どうぞ。ありがとうございます。",
+        "romaji": "Hai, douzo. Arigatou gozaimasu.",
+        "grammar_tag": "payment-thanks"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "友だちへのプレゼントです",
+        "reading": "tomodachi e no purezento desu",
+        "meaning": "It's a gift for a friend",
+        "note": "へ marks the recipient or direction — 'to / toward'. 友だちへのプレゼント = 'a present to/for a friend'. This is slightly warmer than 友だちのために. You'll use this pattern anytime you're buying something for someone else."
+      },
+      {
+        "phrase": "きれいに包んでもらえますか",
+        "reading": "kirei ni tsutsunde moraemasu ka",
+        "meaning": "Could you wrap it nicely?",
+        "note": "包む (tsutsumu) means to wrap. きれいに means 'nicely / prettily'. ～てもらえますか is a polite way to ask someone to do something for you — more of a request than a command. Sakura will be happy to oblige."
+      },
+      {
+        "phrase": "どれがおすすめですか",
+        "reading": "dore ga osusume desu ka",
+        "meaning": "Which one do you recommend?",
+        "note": "どれ (which one, of three or more) rather than どちら (which one, of two). For flowers in a full shop, どれ is more natural. Letting the florist choose is very Japanese — trust the expert."
+      }
+    ]
+  },
+  {
+    "scene_id": "park_conversation",
+    "title": "Park Conversation",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "You're sitting on a bench in a quiet neighbourhood park, eating a convenience store onigiri and enjoying the afternoon. A man named Yosuke wanders over — his dog, a small shiba inu, has already decided you're interesting and is sniffing your shoes. Yosuke apologises and the two of you get talking.",
+    "other_character": "Yosuke, a friendly local man in his fifties walking his dog",
+    "goal": "have a relaxed conversation with a stranger about the dog, the area, and yourself",
+    "grammar_focus": "～ですね, 名前は何ですか, ～に住んでいます, 日本語を勉強しています",
+    "setting": "a quiet local park on a sunny afternoon",
+    "beat_count": 7,
+    "duration_seconds": 230,
+    "audio_url": "/echo/audio/park_conversation.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "prk_001",
+        "start_ms": 23274,
+        "context_line": "The shiba inu runs over and starts sniffing you. Yosuke jogs over.",
+        "character_japanese": "あ、すみません！大丈夫ですか？",
+        "english_cue": "Say it's fine — the dog is very cute.",
+        "japanese_answer": "大丈夫です。かわいいですね！",
+        "romaji": "Daijoubu desu. Kawaii desu ne!",
+        "grammar_tag": "reassurance-kawaii-ne"
+      },
+      {
+        "beat": 2,
+        "srs_id": "prk_002",
+        "start_ms": 56937,
+        "context_line": "Yosuke looks pleased. He sits on the other end of the bench.",
+        "character_japanese": "ありがとうございます。",
+        "english_cue": "Ask the dog's name.",
+        "japanese_answer": "この子の名前は何ですか？",
+        "romaji": "Kono ko no namae wa nan desu ka?",
+        "grammar_tag": "name-nan-desu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "prk_003",
+        "start_ms": 80904,
+        "context_line": "Yosuke says his name is Kumo — 'cloud'. He asks if you live nearby.",
+        "character_japanese": "クモっていいます。このへんに住んでるんですか？",
+        "english_cue": "Say yes, you live nearby.",
+        "japanese_answer": "はい、このへんに住んでいます。",
+        "romaji": "Hai, kono hen ni sunde imasu.",
+        "grammar_tag": "living-location-sundeimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "prk_004",
+        "start_ms": 111612,
+        "context_line": "Yosuke says the park is nice in the morning too. He asks where you're from.",
+        "character_japanese": "出身はどちらですか？",
+        "english_cue": "Tell him where you're from.",
+        "japanese_answer": "イギリスから来ました。",
+        "romaji": "Igirisu kara kimashita.",
+        "grammar_tag": "origin-kara-kimashita"
+      },
+      {
+        "beat": 5,
+        "srs_id": "prk_005",
+        "start_ms": 134759,
+        "context_line": "Yosuke nods and says your Japanese is good.",
+        "character_japanese": "日本語、上手ですね！",
+        "english_cue": "Thank him but say you're still not very good.",
+        "japanese_answer": "ありがとうございます。まだ上手じゃないです。",
+        "romaji": "Arigatou gozaimasu. Mada jouzu ja nai desu.",
+        "grammar_tag": "modesty-mada-jouzu-ja-nai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "prk_006",
+        "start_ms": 169482,
+        "context_line": "Yosuke waves his hand as if to say 'nonsense'. He asks how long you've been studying.",
+        "character_japanese": "どのくらい日本語を勉強していますか？",
+        "english_cue": "Say you've been studying for about six months.",
+        "japanese_answer": "もうすぐ六ヶ月です。",
+        "romaji": "Mousugu roku-kagetsu desu.",
+        "grammar_tag": "duration-kagetsu"
+      },
+      {
+        "beat": 7,
+        "srs_id": "prk_007",
+        "start_ms": 196738,
+        "context_line": "Yosuke says that's impressive — six months is short. Kumo starts pulling at the lead.",
+        "character_japanese": "あ、クモ、行こう行こう！また話しましょう！",
+        "english_cue": "Say nice to meet you and goodbye.",
+        "japanese_answer": "はじめまして。またね！",
+        "romaji": "Hajimemashite. Mata ne!",
+        "grammar_tag": "farewell-mata-ne"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "かわいいですね！",
+        "reading": "kawaii desu ne!",
+        "meaning": "It's so cute, isn't it!",
+        "note": "ね (ne) at the end of a sentence invites agreement — 'isn't it?' / 'don't you think?'. かわいいですね is the universal opener with dogs, babies, and anything adorable. The longer you draw out the い (かわいいいいい), the more enthusiastic you sound."
+      },
+      {
+        "phrase": "日本語を勉強しています",
+        "reading": "Nihongo wo benkyou shite imasu",
+        "meaning": "I'm studying Japanese",
+        "note": "This is one of the most useful sentences you can say. Locals will immediately warm to you, speak a little more slowly, and often go out of their way to help. Say it early in a conversation."
+      },
+      {
+        "phrase": "まだ上手じゃないです",
+        "reading": "mada jouzu ja nai desu",
+        "meaning": "I'm not very good yet",
+        "note": "まだ (mada) means 'still / not yet'. 上手 (jouzu) means skilled. This is the humble response when someone compliments your Japanese — which they will. Japanese culture appreciates modesty. They'll tell you you're better than you think."
+      }
+    ]
+  },
+  {
+    "scene_id": "train_chat",
+    "title": "Train Chat",
+    "level": "N5",
+    "topic": "transport",
+    "scene_intro": "You're on a local train — the kind that stops at every little station. It's a quiet afternoon and the carriage is half-empty. A woman named Naomi is sitting next to you, reading a magazine. You need to check you're on the right train. You get talking, and she turns out to be a patient and enthusiastic conversation partner.",
+    "other_character": "Naomi, a friendly woman in her thirties",
+    "goal": "confirm you're on the right train and have a brief friendly conversation",
+    "grammar_focus": "この電車は～に行きますか, ～駅に止まりますか, あと何駅ですか, ～が好きです",
+    "setting": "a local train on the Chuo line, afternoon",
+    "beat_count": 6,
+    "duration_seconds": 219,
+    "audio_url": "/echo/audio/train_chat.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "trn_001",
+        "start_ms": 24618,
+        "context_line": "The train pulls out of the station. You realize you're not sure this is the right one.",
+        "character_japanese": "",
+        "english_cue": "Ask Naomi if this train goes to Shinjuku.",
+        "japanese_answer": "すみません、この電車は新宿に行きますか？",
+        "romaji": "Sumimasen, kono densha wa Shinjuku ni ikimasu ka?",
+        "grammar_tag": "destination-ni-ikimasu-ka"
+      },
+      {
+        "beat": 2,
+        "srs_id": "trn_002",
+        "start_ms": 56035,
+        "context_line": "Naomi looks up from her magazine and nods.",
+        "character_japanese": "はい、行きますよ。",
+        "english_cue": "Ask how many stops it is from here.",
+        "japanese_answer": "あと何駅ですか？",
+        "romaji": "Ato nan-eki desu ka?",
+        "grammar_tag": "counting-stops-ato"
+      },
+      {
+        "beat": 3,
+        "srs_id": "trn_003",
+        "start_ms": 77074,
+        "context_line": "Naomi says three more stops. She asks if you're visiting Tokyo.",
+        "character_japanese": "あと三駅ですよ。東京、観光ですか？",
+        "english_cue": "Say no, you live here — you're studying Japanese.",
+        "japanese_answer": "いいえ、住んでいます。日本語を勉強しています。",
+        "romaji": "Iie, sunde imasu. Nihongo wo benkyou shite imasu.",
+        "grammar_tag": "living-studying"
+      },
+      {
+        "beat": 4,
+        "srs_id": "trn_004",
+        "start_ms": 119896,
+        "context_line": "Naomi looks impressed. She says your Japanese is very good.",
+        "character_japanese": "えー！日本語、とても上手ですね！",
+        "english_cue": "Thank her and say you still have a lot to learn.",
+        "japanese_answer": "ありがとうございます。まだまだです。",
+        "romaji": "Arigatou gozaimasu. Mada mada desu.",
+        "grammar_tag": "modesty-mada-mada"
+      },
+      {
+        "beat": 5,
+        "srs_id": "trn_005",
+        "start_ms": 155147,
+        "context_line": "She asks if you like Japan.",
+        "character_japanese": "日本は好きですか？",
+        "english_cue": "Say you love it — especially the food.",
+        "japanese_answer": "大好きです！特に食べ物が好きです。",
+        "romaji": "Daisuki desu! Toku ni tabemono ga suki desu.",
+        "grammar_tag": "like-daisuki-tokuni"
+      },
+      {
+        "beat": 6,
+        "srs_id": "trn_006",
+        "start_ms": 186472,
+        "context_line": "The train pulls in to Shinjuku. Naomi points to the door.",
+        "character_japanese": "あ、新宿ですよ！",
+        "english_cue": "Thank her warmly and say goodbye.",
+        "japanese_answer": "ありがとうございました！またね！",
+        "romaji": "Arigatou gozaimashita! Mata ne!",
+        "grammar_tag": "farewell-thanks"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "この電車は新宿に行きますか",
+        "reading": "kono densha wa Shinjuku ni ikimasu ka",
+        "meaning": "Does this train go to Shinjuku?",
+        "note": "The most essential train question. Swap in any destination. に marks the destination. The structure is [this train] + [destination] + に行きますか. Ask this before you sit down if you're unsure — station staff and other passengers will always help."
+      },
+      {
+        "phrase": "あと何駅ですか",
+        "reading": "ato nan-eki desu ka",
+        "meaning": "How many stops from here?",
+        "note": "あと means 'more / remaining'. 何駅 = how many stations. A single clean question for counting down the stops. Useful on any train, anywhere. The answer will be あと〇駅です."
+      },
+      {
+        "phrase": "日本は好きですか",
+        "reading": "Nihon wa suki desu ka",
+        "meaning": "Do you like Japan?",
+        "note": "～が好きです / ～が好きですか is the standard way to express or ask about liking something. When something becomes the topic of conversation, が can shift to は: 日本は好きですか. The answer is 大好きです (I love it) or はい、とても (yes, very much)."
+      }
+    ]
+  },
+  {
+    "scene_id": "yakitori_bar",
+    "title": "Yakitori Bar",
+    "level": "N5",
+    "topic": "food_and_drink",
+    "scene_intro": "It's an evening in late autumn. You've ducked under the noren curtain of a tiny yakitori bar near Shinjuku station. There are eight counter seats, a haze of charcoal smoke, and the sound of skewers sizzling. Dai — the cook — looks up from the grill and gives you a nod. Take a stool.",
+    "other_character": "Dai, the laconic but friendly yakitori cook",
+    "goal": "order beer, skewers, and enjoy the counter bar atmosphere",
+    "grammar_focus": "おすすめ, 塩/タレ, ～本, もう一本, お会計",
+    "setting": "a small yakitori counter bar near Shinjuku station",
+    "beat_count": 7,
+    "duration_seconds": 198,
+    "audio_url": "/echo/audio/yakitori_bar.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "yak_001",
+        "start_ms": 22530,
+        "context_line": "You sit at the counter. Dai nods at you.",
+        "character_japanese": "いらっしゃい。のみものは？",
+        "english_cue": "Order a beer.",
+        "japanese_answer": "ビールをください。",
+        "romaji": "Biiru wo kudasai.",
+        "grammar_tag": "order-kudasai"
+      },
+      {
+        "beat": 2,
+        "srs_id": "yak_002",
+        "start_ms": 43559,
+        "context_line": "Dai sets a cold beer in front of you. He gestures at the menu board on the wall.",
+        "character_japanese": "",
+        "english_cue": "Ask what he recommends.",
+        "japanese_answer": "おすすめは何ですか？",
+        "romaji": "Osusume wa nan desu ka?",
+        "grammar_tag": "recommendation-osusume"
+      },
+      {
+        "beat": 3,
+        "srs_id": "yak_003",
+        "start_ms": 64940,
+        "context_line": "Dai says the chicken thigh (もも) and the meatballs (つくね) are good tonight.",
+        "character_japanese": "今日はもも肉とつくねがいいよ。",
+        "english_cue": "Order two of each.",
+        "japanese_answer": "じゃあ、もも肉ふたつとつくねふたつをください。",
+        "romaji": "Jaa, momoni ku futatsu to tsukune futatsu wo kudasai.",
+        "grammar_tag": "ordering-quantities"
+      },
+      {
+        "beat": 4,
+        "srs_id": "yak_004",
+        "start_ms": 96742,
+        "context_line": "Dai asks: salt or sauce?",
+        "character_japanese": "塩？タレ？",
+        "english_cue": "Say salt for the thigh and sauce for the meatballs.",
+        "japanese_answer": "ももは塩で、つくねはタレでお願いします。",
+        "romaji": "Momo wa shio de, tsukune wa tare de onegai shimasu.",
+        "grammar_tag": "method-de-contrast-wa"
+      },
+      {
+        "beat": 5,
+        "srs_id": "yak_005",
+        "start_ms": 128441,
+        "context_line": "The skewers arrive. They're perfect. You finish your beer.",
+        "character_japanese": "",
+        "english_cue": "Ask for one more beer.",
+        "japanese_answer": "もう一本ください。",
+        "romaji": "Mou ippon kudasai.",
+        "grammar_tag": "counter-hon-more"
+      },
+      {
+        "beat": 6,
+        "srs_id": "yak_006",
+        "start_ms": 148349,
+        "context_line": "Dai brings the beer and notices you've finished your skewers.",
+        "character_japanese": "もう一本どう？",
+        "english_cue": "Say yes, another momo please.",
+        "japanese_answer": "はい、もも肉をもう一本ください。",
+        "romaji": "Hai, momoniku wo mou ippon kudasai.",
+        "grammar_tag": "counter-more-hon"
+      },
+      {
+        "beat": 7,
+        "srs_id": "yak_007",
+        "start_ms": 176828,
+        "context_line": "You're done. Time to pay.",
+        "character_japanese": "",
+        "english_cue": "Ask for the bill.",
+        "japanese_answer": "お会計をお願いします。",
+        "romaji": "Okaikei wo onegai shimasu.",
+        "grammar_tag": "bill-okaikei"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "おすすめは何ですか",
+        "reading": "osusume wa nan desu ka",
+        "meaning": "What do you recommend?",
+        "note": "At a small yakitori bar, the cook's recommendations are usually the best thing on the menu — the freshest cuts, the house specialty. Dai will tell you without hesitation. Trust him."
+      },
+      {
+        "phrase": "塩で",
+        "reading": "shio de",
+        "meaning": "With salt",
+        "note": "Yakitori comes in two basic styles: 塩 (shio/salt) or タレ (tare/sweet soy sauce glaze). で here marks the method or manner — 'by means of salt'. A simple but important choice. Delicate cuts like tsukune (meatball) often work best with shio."
+      },
+      {
+        "phrase": "もう一本ください",
+        "reading": "mou ippon kudasai",
+        "meaning": "One more stick please",
+        "note": "本 (hon) is the counter for long thin things — skewers, pens, bottles. 一本 (ippon) = one. もう一本 = one more. You will use this phrase a lot at a yakitori bar. The same counter works for ordering another beer (もう一本ビールをください)."
+      }
+    ]
+  },
+  {
+    "scene_id": "hair_salon",
+    "title": "Hair Salon",
+    "level": "N5",
+    "topic": "everyday_life",
+    "scene_intro": "You've been putting off getting a haircut for weeks and finally found a local barber with a sign in the window that says no reservation needed. You push open the door. Jun, the hairdresser, looks up from sweeping and gestures to the empty chair. The place smells of hair product and there's quiet jazz playing.",
+    "other_character": "Jun, a relaxed and friendly hairdresser",
+    "goal": "get a trim — shorter sides, keep the top, and pay",
+    "grammar_focus": "～をください, 短く, そのままで, どうですか, いくらですか",
+    "setting": "a quiet local barbershop in a Tokyo residential area",
+    "beat_count": 7,
+    "duration_seconds": 223,
+    "audio_url": "/echo/audio/hair_salon.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "hsl_001",
+        "start_ms": 22866,
+        "context_line": "Jun finishes sweeping and gestures to the chair.",
+        "character_japanese": "いらっしゃいませ。予約はされていましたか？",
+        "english_cue": "Say you don't have a reservation — is that okay?",
+        "japanese_answer": "予約はしていないんですが、大丈夫ですか？",
+        "romaji": "Yoyaku wa shite inai n desu ga, daijoubu desu ka?",
+        "grammar_tag": "no-reservation-daijoubu"
+      },
+      {
+        "beat": 2,
+        "srs_id": "hsl_002",
+        "start_ms": 55713,
+        "context_line": "Jun says no problem and sits you in the chair. He puts the gown on you.",
+        "character_japanese": "大丈夫ですよ。今日はどうしますか？",
+        "english_cue": "Say you'd like it a little shorter — sides especially.",
+        "japanese_answer": "少し短くしてください。特にサイドを。",
+        "romaji": "Sukoshi mijikaku shite kudasai. Toku ni saido wo.",
+        "grammar_tag": "adjustment-sukoshi-mijikaku"
+      },
+      {
+        "beat": 3,
+        "srs_id": "hsl_003",
+        "start_ms": 93038,
+        "context_line": "Jun asks what to do with the top.",
+        "character_japanese": "上はどうしますか？",
+        "english_cue": "Say leave the top as it is.",
+        "japanese_answer": "上はそのままで。",
+        "romaji": "Ue wa sono mama de.",
+        "grammar_tag": "unchanged-sono-mama"
+      },
+      {
+        "beat": 4,
+        "srs_id": "hsl_004",
+        "start_ms": 112600,
+        "context_line": "Jun starts cutting. He asks how short on the sides — about 2cm?",
+        "character_japanese": "サイドは2センチくらいでいいですか？",
+        "english_cue": "Say yes, that's fine.",
+        "japanese_answer": "はい、それでいいです。",
+        "romaji": "Hai, sore de ii desu.",
+        "grammar_tag": "agreement-sore-de-ii"
+      },
+      {
+        "beat": 5,
+        "srs_id": "hsl_005",
+        "start_ms": 139313,
+        "context_line": "Jun finishes and holds up a mirror. He asks how it looks.",
+        "character_japanese": "いかがですか？",
+        "english_cue": "Say it looks great, thank you.",
+        "japanese_answer": "いいですね。ありがとうございます。",
+        "romaji": "Ii desu ne. Arigatou gozaimasu.",
+        "grammar_tag": "satisfaction-ii-desu-ne"
+      },
+      {
+        "beat": 6,
+        "srs_id": "hsl_006",
+        "start_ms": 170164,
+        "context_line": "Jun removes the gown. You stand up and ask the price.",
+        "character_japanese": "",
+        "english_cue": "Ask how much it is.",
+        "japanese_answer": "おいくらですか？",
+        "romaji": "Oikura desu ka?",
+        "grammar_tag": "price-oikura"
+      },
+      {
+        "beat": 7,
+        "srs_id": "hsl_007",
+        "start_ms": 187878,
+        "context_line": "Jun says fourteen hundred yen. You pay and get ready to leave.",
+        "character_japanese": "せんよんひゃくえんです。ありがとうございました。",
+        "english_cue": "Thank him and say goodbye.",
+        "japanese_answer": "ありがとうございました。またきます。",
+        "romaji": "Arigatou gozaimashita. Mata kimasu.",
+        "grammar_tag": "farewell-mata-kimasu"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "少し短くしてください",
+        "reading": "sukoshi mijikaku shite kudasai",
+        "meaning": "Please make it a little shorter",
+        "note": "少し (sukoshi) = a little. 短く (mijikaku) is the adverb form of 短い (short). ～くしてください is how you ask someone to make a quality change — shorter, lighter, hotter. Swap in 長く (nagaku/longer), 薄く (usuku/thinner) for other variations."
+      },
+      {
+        "phrase": "上はそのままで",
+        "reading": "ue wa sono mama de",
+        "meaning": "Leave the top as it is",
+        "note": "そのまま means 'as is / unchanged'. ～はそのままで is the natural way to say 'keep that part the same'. Essential in a hair salon but equally useful anywhere you want one thing left alone while another is changed."
+      },
+      {
+        "phrase": "いかがですか",
+        "reading": "ikaga desu ka",
+        "meaning": "How does that look? / How is it?",
+        "note": "いかがですか is a more formal and warm version of どうですか. Hairdressers, waiters, and shop staff use it when checking satisfaction. Your answer: いいです (good), いいですね (great), もう少し短く (a bit shorter please)."
+      }
+    ]
+  },
+  {
+    "scene_id": "post_office",
+    "title": "Post Office",
+    "level": "N5",
+    "topic": "everyday_life",
+    "scene_intro": "You've written a postcard to your family back home — a view of Senso-ji temple on the front, a few lines of news on the back. Now you just need to send it. The local post office is a small one, almost always quiet, with that particular stillness of official places. Yuki is behind the counter, sorting letters.",
+    "other_character": "Yuki, a neat and helpful post office worker",
+    "goal": "send a postcard overseas to the UK",
+    "grammar_focus": "～に送りたい, 外国, いくらですか, どのくらいかかりますか",
+    "setting": "a small neighbourhood post office in Tokyo",
+    "beat_count": 5,
+    "duration_seconds": 163,
+    "audio_url": "/echo/audio/post_office.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "pst_001",
+        "start_ms": 24450,
+        "context_line": "You approach the counter with your postcard.",
+        "character_japanese": "いらっしゃいませ。",
+        "english_cue": "Say you'd like to send this postcard overseas.",
+        "japanese_answer": "このはがきを海外に送りたいんですが。",
+        "romaji": "Kono hagaki wo kaigai ni okuritai n desu ga.",
+        "grammar_tag": "want-to-tai-n-desu-ga"
+      },
+      {
+        "beat": 2,
+        "srs_id": "pst_002",
+        "start_ms": 51221,
+        "context_line": "Yuki takes the postcard and asks which country.",
+        "character_japanese": "どちらの国ですか？",
+        "english_cue": "Say to the UK.",
+        "japanese_answer": "イギリスです。",
+        "romaji": "Igirisu desu.",
+        "grammar_tag": "destination-country"
+      },
+      {
+        "beat": 3,
+        "srs_id": "pst_003",
+        "start_ms": 70570,
+        "context_line": "Yuki checks the rate chart. She tells you it'll be ninety yen.",
+        "character_japanese": "はがきは九十円です。",
+        "english_cue": "Ask how long it will take to arrive.",
+        "japanese_answer": "どのくらいかかりますか？",
+        "romaji": "Dono kurai kakarimasu ka?",
+        "grammar_tag": "duration-dono-kurai"
+      },
+      {
+        "beat": 4,
+        "srs_id": "pst_004",
+        "start_ms": 94398,
+        "context_line": "Yuki says about five to ten business days.",
+        "character_japanese": "五日から十日ほどかかります。",
+        "english_cue": "Say you understand, and ask for a stamp.",
+        "japanese_answer": "わかりました。切手をください。",
+        "romaji": "Wakarimashita. Kitte wo kudasai.",
+        "grammar_tag": "stamp-kitte-kudasai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "pst_005",
+        "start_ms": 124783,
+        "context_line": "Yuki puts the stamp on and asks if there's anything else.",
+        "character_japanese": "ほかにご用件はありますか？",
+        "english_cue": "Say no thank you, that's all.",
+        "japanese_answer": "いいえ、それだけです。ありがとうございます。",
+        "romaji": "Iie, sore dake desu. Arigatou gozaimasu.",
+        "grammar_tag": "nothing-else-sore-dake"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "このはがきを海外に送りたいんですが",
+        "reading": "kono hagaki wo kaigai ni okuritai n desu ga",
+        "meaning": "I'd like to send this postcard overseas",
+        "note": "～たいんですが is a softened version of ～たいです (I want to ~). The んですが adds a sense of 'the situation is that...' and trails off slightly, which invites the other person to respond helpfully. It's warmer and more natural than the direct form. Use it when making requests at counters."
+      },
+      {
+        "phrase": "どのくらいかかりますか",
+        "reading": "dono kurai kakarimasu ka",
+        "meaning": "How long does it take?",
+        "note": "かかる means both 'to take (time)' and 'to cost (money)'. どのくらい = 'about how much / how long'. Same question works for time (日にちはどのくらいかかりますか — how many days will it take?) and for price (in context). Enormously versatile."
+      },
+      {
+        "phrase": "イギリスに",
+        "reading": "Igirisu ni",
+        "meaning": "To the UK / to England",
+        "note": "に marks the destination. Japan calls England/the UK イギリス (from Portuguese 'Inglês'). Other useful ones: アメリカ (America), オーストラリア (Australia), カナダ (Canada), フランス (France). These are all loanwords — just say them."
+      }
+    ]
+  },
+  {
+    "scene_id": "public_bath",
+    "title": "Public Bath",
+    "level": "N5",
+    "topic": "everyday_life",
+    "scene_intro": "There's a neighbourhood sento — a public bath house — three minutes from your apartment. You've been meaning to try it. Tonight you finally do. An older woman named Noriko sits behind the wooden reception desk, a small television on in the corner. The warm air already smells of cypress.",
+    "other_character": "Noriko, the elderly woman who runs the sento",
+    "goal": "pay, understand the rules, and head in without embarrassing yourself",
+    "grammar_focus": "～はいくらですか, タオルはありますか, ～はどこですか, ～してもいいですか",
+    "setting": "a neighbourhood sento (public bathhouse) in a Tokyo residential area",
+    "beat_count": 6,
+    "duration_seconds": 175,
+    "audio_url": "/echo/audio/public_bath.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "snt_001",
+        "start_ms": 22818,
+        "context_line": "You step in and approach the desk.",
+        "character_japanese": "いらっしゃい。",
+        "english_cue": "Say it's your first time here.",
+        "japanese_answer": "はじめてなんですが。",
+        "romaji": "Hajimete na n desu ga.",
+        "grammar_tag": "first-time-n-desu-ga"
+      },
+      {
+        "beat": 2,
+        "srs_id": "snt_002",
+        "start_ms": 42317,
+        "context_line": "Noriko nods kindly and asks if you have a towel.",
+        "character_japanese": "タオルはお持ちですか？",
+        "english_cue": "Say you don't have one — can you buy one here?",
+        "japanese_answer": "ないんですが、ここで買えますか？",
+        "romaji": "Nai n desu ga, koko de kaemasu ka?",
+        "grammar_tag": "buying-kaemasu-ka"
+      },
+      {
+        "beat": 3,
+        "srs_id": "snt_003",
+        "start_ms": 69538,
+        "context_line": "Noriko passes you a small towel and tells you the price — five hundred yen entry plus a hundred for the towel.",
+        "character_japanese": "入浴料は五百円で、タオルは百円です。",
+        "english_cue": "Pay and ask if you can bring your own shampoo.",
+        "japanese_answer": "はい。シャンプーは持ち込めますか？",
+        "romaji": "Hai. Shanpuu wa mochikome masu ka?",
+        "grammar_tag": "permission-mochikomu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "snt_004",
+        "start_ms": 105386,
+        "context_line": "Noriko says yes, that's fine. She reminds you of the one rule.",
+        "character_japanese": "いいですよ。体を洗ってから入ってくださいね。",
+        "english_cue": "Say you understand.",
+        "japanese_answer": "わかりました。",
+        "romaji": "Wakarimashita.",
+        "grammar_tag": "acknowledgement-wakarimashita"
+      },
+      {
+        "beat": 5,
+        "srs_id": "snt_005",
+        "start_ms": 128877,
+        "context_line": "You're not sure which changing room is which.",
+        "character_japanese": "",
+        "english_cue": "Ask where the men's changing room is.",
+        "japanese_answer": "だんせいのほうはどこですか？",
+        "romaji": "Dansei no hou wa doko desu ka?",
+        "grammar_tag": "location-doko-desu-ka"
+      },
+      {
+        "beat": 6,
+        "srs_id": "snt_006",
+        "start_ms": 149741,
+        "context_line": "Noriko points to the left door. You bow and head in.",
+        "character_japanese": "こちらですよ。ゆっくりどうぞ。",
+        "english_cue": "Thank her.",
+        "japanese_answer": "ありがとうございます。",
+        "romaji": "Arigatou gozaimasu.",
+        "grammar_tag": "thanks-formal"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "はじめてなんですが",
+        "reading": "hajimete na n desu ga",
+        "meaning": "It's my first time...",
+        "note": "はじめて (hajimete) means 'for the first time'. Adding んですが at the end (explained situation + trailing softener) is the polite way to flag that you're a newcomer and might need guidance. It's like saying 'the thing is, this is my first time...' — it invites help without asking directly."
+      },
+      {
+        "phrase": "シャンプーは持ち込めますか",
+        "reading": "shanpuu wa mochikome masu ka",
+        "meaning": "Can I bring my own shampoo?",
+        "note": "持ち込む (mochikomu) means to bring something in from outside. 持ち込めますか uses the potential form — 'is it possible to bring in?' Most sento provide soap but not shampoo, and many sell it at the counter. Bringing your own is usually fine."
+      },
+      {
+        "phrase": "体を洗ってから入ってください",
+        "reading": "karada wo aratte kara haitte kudasai",
+        "meaning": "Please wash your body before getting in",
+        "note": "This is the core rule of any Japanese bath — you wash yourself at a shower station first, then soak in the communal tub. ～てから means 'after doing ~'. Noriko may say this to any first-timer, foreign or Japanese."
+      }
+    ]
+  },
+  {
+    "scene_id": "temple_morning",
+    "title": "Temple Morning",
+    "level": "N5",
+    "topic": "culture",
+    "scene_intro": "You're up early and the streets are still quiet. A Buddhist temple sits behind a low stone wall, half-hidden by ginkgo trees. A young monk named Ryusei is sweeping the courtyard path with a wide bamboo broom. He looks up with a calm, open expression as you pass the gate and hesitate.",
+    "other_character": "Ryusei, a young monk in his twenties",
+    "goal": "light incense and draw an omikuji fortune slip",
+    "grammar_focus": "～てもいいですか, これは何ですか, どういう意味ですか, ～といいます",
+    "setting": "a Buddhist temple, early morning",
+    "beat_count": 6,
+    "duration_seconds": 208,
+    "audio_url": "/echo/audio/temple_morning.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "tpl_001",
+        "start_ms": 22962,
+        "context_line": "Ryusei looks up from sweeping as you approach.",
+        "character_japanese": "おはようございます。",
+        "english_cue": "Return the greeting warmly.",
+        "japanese_answer": "おはようございます。",
+        "romaji": "Ohayou gozaimasu.",
+        "grammar_tag": "greeting-morning"
+      },
+      {
+        "beat": 2,
+        "srs_id": "tpl_002",
+        "start_ms": 43957,
+        "context_line": "You see the incense urn near the main hall. Smoke drifts upward.",
+        "character_japanese": "",
+        "english_cue": "Ask if you may offer some incense.",
+        "japanese_answer": "お線香をあげてもいいですか？",
+        "romaji": "Osenko wo agete mo ii desu ka?",
+        "grammar_tag": "permission-te-mo-ii"
+      },
+      {
+        "beat": 3,
+        "srs_id": "tpl_003",
+        "start_ms": 67362,
+        "context_line": "Ryusei says of course. He shows you the incense sticks and explains how to light them and fan out the flame.",
+        "character_japanese": "もちろんです。火をつけて、手でけして、けむりをあびてください。",
+        "english_cue": "Thank him and ask what you should pray for — or can you pray for anything?",
+        "japanese_answer": "ありがとうございます。何でも祈っていいですか？",
+        "romaji": "Arigatou gozaimasu. Nandemo inotte ii desu ka?",
+        "grammar_tag": "anything-nandemo"
+      },
+      {
+        "beat": 4,
+        "srs_id": "tpl_004",
+        "start_ms": 111558,
+        "context_line": "Ryusei says yes, anything you like. You offer the incense and bow. Afterward, you notice the omikuji box.",
+        "character_japanese": "",
+        "english_cue": "Ask if you may draw a fortune slip.",
+        "japanese_answer": "おみくじをひいてもいいですか？",
+        "romaji": "Omikuji wo hiite mo ii desu ka?",
+        "grammar_tag": "permission-omikuji"
+      },
+      {
+        "beat": 5,
+        "srs_id": "tpl_005",
+        "start_ms": 138707,
+        "context_line": "Ryusei nods and guides you. You draw a slip. It says 大吉 at the top.",
+        "character_japanese": "大吉ですね！いい運勢です。",
+        "english_cue": "Ask what 大吉 means.",
+        "japanese_answer": "大吉はどういう意味ですか？",
+        "romaji": "Daikichi wa dou iu imi desu ka?",
+        "grammar_tag": "meaning-dou-iu-imi"
+      },
+      {
+        "beat": 6,
+        "srs_id": "tpl_006",
+        "start_ms": 165972,
+        "context_line": "Ryusei says it's the best fortune — great luck. He says you can take it with you or tie it to the rack.",
+        "character_japanese": "一番いい運勢です。持って帰ってもいいし、あそこに結んでもいいですよ。",
+        "english_cue": "Say you'll take it home. Thank him.",
+        "japanese_answer": "持って帰ります。ありがとうございました。",
+        "romaji": "Motte kaerimasu. Arigatou gozaimashita.",
+        "grammar_tag": "taking-home-thanks"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "お線香をあげてもいいですか",
+        "reading": "osenko wo agete mo ii desu ka",
+        "meaning": "May I offer some incense?",
+        "note": "お線香 (osenko) is the word for incense sticks at a temple or shrine. あげる here means 'to offer (to the Buddha)'. ～てもいいですか is asking permission — 'is it okay if I do this?' Ryusei will say yes and tell you how."
+      },
+      {
+        "phrase": "おみくじをひいてもいいですか",
+        "reading": "omikuji wo hiite mo ii desu ka",
+        "meaning": "May I draw a fortune slip?",
+        "note": "おみくじ are paper fortune slips drawn by shaking a container of numbered sticks. You draw a stick, get a number, find the matching slip. Results range from 大吉 (great luck) to 凶 (bad luck). ひく (to draw/pull) is the verb used for this."
+      },
+      {
+        "phrase": "どういう意味ですか",
+        "reading": "dou iu imi desu ka",
+        "meaning": "What does this mean?",
+        "note": "意味 (imi) means meaning. どういう is 'what kind of / what sort of'. This question unlocks explanations everywhere — not just temples. When you see a word or sign you don't understand: これはどういう意味ですか? is polite and natural."
+      }
+    ]
+  },
+  {
+    "scene_id": "local_bus",
+    "title": "Local Bus",
+    "level": "N5",
+    "topic": "transport",
+    "scene_intro": "You need to get to the station but the trains don't run this way. There's a local bus. You get on at a stop you found on Google Maps — but the payment machine is unfamiliar and you're not sure where to get off. An older woman named Fumiko is sitting in the seat across the aisle, reading a newspaper.",
+    "other_character": "Fumiko, a friendly older woman",
+    "goal": "figure out how to pay and find out where to get off for the station",
+    "grammar_focus": "～に行きますか, どこで降りますか, 教えてもらえますか, あと何分ですか",
+    "setting": "a local community bus, mid-morning",
+    "beat_count": 6,
+    "duration_seconds": 190,
+    "audio_url": "/echo/audio/local_bus.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "bus_001",
+        "start_ms": 22362,
+        "context_line": "You get on the bus. The machine by the driver looks unfamiliar.",
+        "character_japanese": "",
+        "english_cue": "Ask the driver how to pay.",
+        "japanese_answer": "すみません、どうやって払いますか？",
+        "romaji": "Sumimasen, dou yatte haraimasu ka?",
+        "grammar_tag": "how-to-dou-yatte"
+      },
+      {
+        "beat": 2,
+        "srs_id": "bus_002",
+        "start_ms": 48413,
+        "context_line": "The driver explains you pay when you get off, or use Suica. You find a seat next to Fumiko.",
+        "character_japanese": "おりるときに払ってください。",
+        "english_cue": "Thank the driver.",
+        "japanese_answer": "わかりました。ありがとうございます。",
+        "romaji": "Wakarimashita. Arigatou gozaimasu.",
+        "grammar_tag": "acknowledgement-thanks"
+      },
+      {
+        "beat": 3,
+        "srs_id": "bus_003",
+        "start_ms": 82076,
+        "context_line": "You turn to Fumiko. You need to get to the station.",
+        "character_japanese": "",
+        "english_cue": "Ask where you should get off for the station.",
+        "japanese_answer": "えきにはどこで降りればいいですか？",
+        "romaji": "Eki ni wa doko de orireba ii desu ka?",
+        "grammar_tag": "get-off-orireba-ii"
+      },
+      {
+        "beat": 4,
+        "srs_id": "bus_004",
+        "start_ms": 105526,
+        "context_line": "Fumiko says get off at the third stop — 'Ekimae'.",
+        "character_japanese": "三つ目のバス停、駅前で降りてください。",
+        "english_cue": "Ask about how many minutes it is.",
+        "japanese_answer": "あと何分くらいですか？",
+        "romaji": "Ato nan-pun kurai desu ka?",
+        "grammar_tag": "time-remaining-ato"
+      },
+      {
+        "beat": 5,
+        "srs_id": "bus_005",
+        "start_ms": 130405,
+        "context_line": "She says about seven or eight minutes.",
+        "character_japanese": "七、八分くらいですよ。",
+        "english_cue": "Ask if she can let you know when you get there.",
+        "japanese_answer": "着いたら教えてもらえますか？",
+        "romaji": "Tsuitara oshiete moraemasu ka?",
+        "grammar_tag": "when-arrive-tell-me"
+      },
+      {
+        "beat": 6,
+        "srs_id": "bus_006",
+        "start_ms": 154507,
+        "context_line": "Fumiko says of course. A few minutes later she taps your arm — this is your stop.",
+        "character_japanese": "はい、もちろん。…あ、ここですよ！",
+        "english_cue": "Thank her and say goodbye.",
+        "japanese_answer": "ありがとうございます！さようなら。",
+        "romaji": "Arigatou gozaimasu! Sayounara.",
+        "grammar_tag": "thanks-farewell"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "どこで降りればいいですか",
+        "reading": "doko de orireba ii desu ka",
+        "meaning": "Where should I get off?",
+        "note": "降りる (oriru) means to get off (a bus, train). ～れば～いいですか is a very useful pattern — 'what should I do to achieve X?' It's asking for advice on the best action. ～ればいいですか literally: 'if I do ~, will that be okay?'"
+      },
+      {
+        "phrase": "教えてもらえますか",
+        "reading": "oshiete moraemasu ka",
+        "meaning": "Could you let me know? / Could you tell me?",
+        "note": "教える (oshieru) means to tell/teach. ～てもらえますか is a wonderfully polite way to ask someone to do something — more of a favour than a command. 着いたら教えてもらえますか? = 'could you let me know when we arrive?' Always works."
+      },
+      {
+        "phrase": "あと何分くらいですか",
+        "reading": "ato nan-pun kurai desu ka",
+        "meaning": "About how many minutes from here?",
+        "note": "あと = remaining. 何分 (nan-pun) = how many minutes. くらい = approximately. Together: 'about how many minutes left?' The same formula works for stops (あと何駅) or any remaining quantity."
+      }
+    ]
+  },
+  {
+    "scene_id": "taxi_ride",
+    "title": "Taxi Ride",
+    "level": "N5",
+    "topic": "transport",
+    "scene_intro": "It's late. You've missed the last train and you need to get back to your neighbourhood. You find a taxi at the rank outside the station — a white cab with a green light glowing in the window. The driver, Tanaka, is a man in his sixties with a relaxed manner and white gloves. He presses a button and the door swings open automatically.",
+    "other_character": "Tanaka, a calm and experienced taxi driver",
+    "goal": "give your destination and have a short conversation on the way",
+    "grammar_focus": "～までおねがいします, ～のほうに, おまかせします, どのくらいかかりますか",
+    "setting": "a taxi, late at night in Tokyo",
+    "beat_count": 6,
+    "duration_seconds": 197,
+    "audio_url": "/echo/audio/taxi_ride.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "tax_001",
+        "start_ms": 25098,
+        "context_line": "You get in. Tanaka turns around slightly.",
+        "character_japanese": "どちらまで？",
+        "english_cue": "Say you'd like to go to Sangenjaya.",
+        "japanese_answer": "三軒茶屋までお願いします。",
+        "romaji": "Sangenjaya made onegai shimasu.",
+        "grammar_tag": "destination-made-onegaishimasu"
+      },
+      {
+        "beat": 2,
+        "srs_id": "tax_002",
+        "start_ms": 49875,
+        "context_line": "Tanaka sets off. He asks which route you'd prefer — via the expressway or the normal road.",
+        "character_japanese": "高速道路と下道、どちらがよろしいですか？",
+        "english_cue": "Say you'll leave it to him.",
+        "japanese_answer": "おまかせします。",
+        "romaji": "Omakase shimasu.",
+        "grammar_tag": "deference-omakase"
+      },
+      {
+        "beat": 3,
+        "srs_id": "tax_003",
+        "start_ms": 74894,
+        "context_line": "Tanaka nods and takes the expressway. He asks how long you've been in Japan.",
+        "character_japanese": "日本は長いんですか？",
+        "english_cue": "Say about three months.",
+        "japanese_answer": "三ヶ月くらいです。",
+        "romaji": "San-kagetsu kurai desu.",
+        "grammar_tag": "duration-kagetsu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "tax_004",
+        "start_ms": 97570,
+        "context_line": "Tanaka says that's still early days. He asks how you find Japan.",
+        "character_japanese": "日本はどうですか？",
+        "english_cue": "Say you love it — everyone is very kind.",
+        "japanese_answer": "大好きです。みんなとても親切ですね。",
+        "romaji": "Daisuki desu. Minna totemo shinsetsu desu ne.",
+        "grammar_tag": "opinion-daisuki-shinsetsu"
+      },
+      {
+        "beat": 5,
+        "srs_id": "tax_005",
+        "start_ms": 132357,
+        "context_line": "Tanaka smiles at that. You're pulling up to Sangenjaya.",
+        "character_japanese": "着きましたよ。",
+        "english_cue": "Ask how much it is.",
+        "japanese_answer": "おいくらですか？",
+        "romaji": "Oikura desu ka?",
+        "grammar_tag": "price-oikura"
+      },
+      {
+        "beat": 6,
+        "srs_id": "tax_006",
+        "start_ms": 152162,
+        "context_line": "Tanaka says two thousand two hundred yen. You hand over the money.",
+        "character_japanese": "にせんにひゃくえんです。",
+        "english_cue": "Pay and say thank you and good night.",
+        "japanese_answer": "はい、どうぞ。ありがとうございました。おやすみなさい。",
+        "romaji": "Hai, douzo. Arigatou gozaimashita. Oyasuminasai.",
+        "grammar_tag": "payment-thanks-goodnight"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "～までお願いします",
+        "reading": "～made onegai shimasu",
+        "meaning": "To ~ please",
+        "note": "まで marks a destination or endpoint — 'as far as / up to'. ～までお願いします is THE phrase for getting a taxi anywhere. 渋谷までお願いします (to Shibuya please), ホテルまでお願いします (to the hotel please). Clean, polite, works every time."
+      },
+      {
+        "phrase": "おまかせします",
+        "reading": "omakase shimasu",
+        "meaning": "I'll leave it to you / Your choice",
+        "note": "まかせる means to leave something in someone else's hands. おまかせ is a respectful/humble version. In a taxi: 'take the route you prefer'. In a restaurant: the chef's choice. Saying おまかせします is often received as an expression of trust — it's a very Japanese move."
+      },
+      {
+        "phrase": "日本はどうですか",
+        "reading": "Nihon wa dou desu ka",
+        "meaning": "How are you finding Japan?",
+        "note": "Taxi drivers are notorious for friendly small talk. どうですか is one of the most versatile questions in Japanese — 'how is it? / what do you think of it?' A warm, open-ended opener they'll appreciate you asking back."
+      }
+    ]
+  },
+  {
+    "scene_id": "bookshop",
+    "title": "Bookshop",
+    "level": "N5",
+    "topic": "shopping",
+    "scene_intro": "You're in a multi-floor bookshop in Shibuya. The ground floor is magazines and stationery; somewhere up above is the manga section — you think. You need to find it, and ideally get a recommendation for something you can actually read with your current Japanese. A young member of staff named Eri is reorganising a display near the lift.",
+    "other_character": "Eri, a bookseller in her mid-twenties",
+    "goal": "find the manga section, get a beginner recommendation, and buy it",
+    "grammar_focus": "～はどこですか, 初心者, ふりがながついている, おすすめ",
+    "setting": "a large bookshop in Shibuya",
+    "beat_count": 6,
+    "duration_seconds": 219,
+    "audio_url": "/echo/audio/bookshop.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "bks_001",
+        "start_ms": 25026,
+        "context_line": "You approach Eri near the lift.",
+        "character_japanese": "",
+        "english_cue": "Excuse her and ask where the manga section is.",
+        "japanese_answer": "すみません、マンガのコーナーはどこですか？",
+        "romaji": "Sumimasen, manga no koona wa doko desu ka?",
+        "grammar_tag": "location-corner-doko"
+      },
+      {
+        "beat": 2,
+        "srs_id": "bks_002",
+        "start_ms": 52123,
+        "context_line": "Eri says it's on the fourth floor. She offers to show you.",
+        "character_japanese": "四階です。ご案内しますよ。",
+        "english_cue": "Say thank you, that would be great.",
+        "japanese_answer": "ありがとうございます。お願いします。",
+        "romaji": "Arigatou gozaimasu. Onegai shimasu.",
+        "grammar_tag": "acceptance-onegaishimasu"
+      },
+      {
+        "beat": 3,
+        "srs_id": "bks_003",
+        "start_ms": 86352,
+        "context_line": "You're in the manga section. It's enormous. Eri asks what you're looking for.",
+        "character_japanese": "どんなマンガをお探しですか？",
+        "english_cue": "Say you're a beginner in Japanese and want something with furigana.",
+        "japanese_answer": "日本語は初心者なので、ふりがながついているものがいいです。",
+        "romaji": "Nihongo wa shoshinsha na node, furigana ga tsuite iru mono ga ii desu.",
+        "grammar_tag": "beginner-furigana-request"
+      },
+      {
+        "beat": 4,
+        "srs_id": "bks_004",
+        "start_ms": 126636,
+        "context_line": "Eri walks you to a shelf and pulls out a volume. She says this one is good for beginners.",
+        "character_japanese": "これはいかがですか？初心者の方に人気ですよ。",
+        "english_cue": "Ask if it will help with studying Japanese.",
+        "japanese_answer": "日本語の勉強になりますか？",
+        "romaji": "Nihongo no benkyou ni narimasu ka?",
+        "grammar_tag": "educational-benkyou-ni-naru"
+      },
+      {
+        "beat": 5,
+        "srs_id": "bks_005",
+        "start_ms": 157327,
+        "context_line": "Eri says yes — the dialogue is simple and the furigana is thorough.",
+        "character_japanese": "はい、セリフがかんたんで、ふりがなもしっかりついていますよ。",
+        "english_cue": "Say you'll take it.",
+        "japanese_answer": "じゃあ、これをください。",
+        "romaji": "Jaa, kore wo kudasai.",
+        "grammar_tag": "purchase-kore-wo-kudasai"
+      },
+      {
+        "beat": 6,
+        "srs_id": "bks_006",
+        "start_ms": 184435,
+        "context_line": "Eri takes you to the register. She tells you the price — eight hundred yen.",
+        "character_japanese": "はっぴゃくえんです。",
+        "english_cue": "Pay and thank her.",
+        "japanese_answer": "はい、どうぞ。ありがとうございました。",
+        "romaji": "Hai, douzo. Arigatou gozaimashita.",
+        "grammar_tag": "payment-thanks"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "マンガのコーナーはどこですか",
+        "reading": "manga no koona wa doko desu ka",
+        "meaning": "Where is the manga section?",
+        "note": "コーナー (koona) from English 'corner' is used in Japanese shops to mean a dedicated section or zone. You'll see it on signs: 文房具コーナー (stationery), 料理コーナー (cookery). Using the English word in Japanese is completely natural here."
+      },
+      {
+        "phrase": "ふりがながついているものがいいです",
+        "reading": "furigana ga tsuite iru mono ga ii desu",
+        "meaning": "Something with furigana would be good",
+        "note": "ふりがな are the small hiragana readings printed above or beside kanji. For learners they're gold — you can read the kanji even when you don't know the reading. Many manga aimed at children have them. Asking for furigana-equipped manga is a very sensible move."
+      },
+      {
+        "phrase": "日本語の勉強になりますか",
+        "reading": "Nihongo no benkyou ni narimasu ka",
+        "meaning": "Will it help with studying Japanese?",
+        "note": "勉強になる literally means 'it becomes studying' — i.e., it's educational / a learning experience. This is a natural, often-used expression for saying something is informative or instructive. You can say it when you learn something from anyone: 勉強になりました (that was educational, thank you)."
+      }
+    ]
+  },
+  {
+    "scene_id": "neighbour_chat",
+    "title": "Neighbour Chat",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "You're heading out on a Tuesday morning, keys in hand, when your next-door neighbour opens his door at the same moment. It's Yamada-san — you've seen him a few times in the hallway but never really spoken. He's a man in his late fifties, neatly dressed, carrying an empty bottle bag for recycling. He smiles.",
+    "other_character": "Yamada-san, your friendly next-door neighbour",
+    "goal": "have a warm first proper conversation with your neighbour",
+    "grammar_focus": "はじめまして, ～に住んでいます, 慣れてきました, なにかあれば",
+    "setting": "the corridor outside your apartment, a Tuesday morning",
+    "beat_count": 6,
+    "duration_seconds": 222,
+    "audio_url": "/echo/audio/neighbour_chat.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "nbr_001",
+        "start_ms": 23754,
+        "context_line": "Yamada-san's door opens at the same moment as yours.",
+        "character_japanese": "あ、おはようございます！",
+        "english_cue": "Return the good morning greeting.",
+        "japanese_answer": "おはようございます！",
+        "romaji": "Ohayou gozaimasu!",
+        "grammar_tag": "greeting-morning"
+      },
+      {
+        "beat": 2,
+        "srs_id": "nbr_002",
+        "start_ms": 45805,
+        "context_line": "Yamada-san smiles. It seems you haven't properly introduced yourselves yet.",
+        "character_japanese": "いつもお世話になっています。山田です。",
+        "english_cue": "Say likewise and introduce yourself.",
+        "japanese_answer": "こちらこそ。（名前）です。よろしくお願いします。",
+        "romaji": "Kochira koso. (namae) desu. Yoroshiku onegai shimasu.",
+        "grammar_tag": "introduction-yoroshiku"
+      },
+      {
+        "beat": 3,
+        "srs_id": "nbr_003",
+        "start_ms": 89912,
+        "context_line": "Yamada-san asks how long you've been in the building.",
+        "character_japanese": "こちらに越してきて、どのくらいになりますか？",
+        "english_cue": "Say about two months.",
+        "japanese_answer": "二ヶ月くらいになります。",
+        "romaji": "Ni-kagetsu kurai ni narimasu.",
+        "grammar_tag": "duration-narimasu"
+      },
+      {
+        "beat": 4,
+        "srs_id": "nbr_004",
+        "start_ms": 113996,
+        "context_line": "He asks if you've gotten used to the area.",
+        "character_japanese": "このへんには慣れましたか？",
+        "english_cue": "Say yes, you've gotten quite used to it.",
+        "japanese_answer": "はい、だいぶ慣れてきました。",
+        "romaji": "Hai, daibu narete kimashita.",
+        "grammar_tag": "getting-used-to-narete-kita"
+      },
+      {
+        "beat": 5,
+        "srs_id": "nbr_005",
+        "start_ms": 139581,
+        "context_line": "Yamada-san nods and mentions there's a good supermarket nearby.",
+        "character_japanese": "近くにいいスーパーがありますよ。",
+        "english_cue": "Say you know it — you go there every week.",
+        "japanese_answer": "ええ、知っています。毎週行っています。",
+        "romaji": "Ee, shitte imasu. Maishuu itte imasu.",
+        "grammar_tag": "knowledge-shitteimasu"
+      },
+      {
+        "beat": 6,
+        "srs_id": "nbr_006",
+        "start_ms": 175912,
+        "context_line": "Yamada-san wraps up warmly. He's heading to the recycling station.",
+        "character_japanese": "なにかあればいつでも。よろしくお願いします。",
+        "english_cue": "Thank him and say likewise — nice to meet you.",
+        "japanese_answer": "ありがとうございます。こちらこそ、よろしくお願いします。",
+        "romaji": "Arigatou gozaimasu. Kochira koso, yoroshiku onegai shimasu.",
+        "grammar_tag": "mutual-yoroshiku"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "いつもお世話になっています",
+        "reading": "itsumo osewa ni natte imasu",
+        "meaning": "Thank you for everything / I'm always in your care",
+        "note": "This is a ritual phrase in Japan — you say it to neighbours, colleagues, business contacts, even people you've barely met. It literally means 'I am always receiving your care', but it functions as a warm social lubricant. Yamada-san will say it too. Saying it back is the expected and appreciated move."
+      },
+      {
+        "phrase": "だいぶ慣れてきました",
+        "reading": "daibu narete kimashita",
+        "meaning": "I'm getting used to it / I've settled in quite a bit",
+        "note": "慣れる (nareru) means to get used to / become accustomed to. ～てきました shows a process that's been happening over time and is approaching the present — 'I've gradually been getting used to it'. だいぶ means 'quite a bit / considerably'."
+      },
+      {
+        "phrase": "なにかあればいつでも",
+        "reading": "nani ka areba itsu demo",
+        "meaning": "Any time if you need anything",
+        "note": "なにかあれば = 'if there's anything (you need)'. いつでも = 'any time'. Together: 'any time you need anything (I'm here)'. This is the Japanese neighbourly offer — Yamada-san will likely say this to you. You can reply: ありがとうございます、よろしくお願いします."
+      }
+    ]
+  },
+  {
+    "scene_id": "lost_umbrella",
+    "title": "Lost Umbrella",
+    "level": "N5",
+    "topic": "everyday_life",
+    "scene_intro": "You left your umbrella on the train. A black folding one — nothing special, but it's raining right now and you need it. You find the lost property window at the station. A young station worker named Kenji slides open the frosted glass panel and looks at you expectantly.",
+    "other_character": "Kenji, a polite young station worker",
+    "goal": "report your lost umbrella and hopefully get it back",
+    "grammar_focus": "落とし物, 電車の中に忘れました, どんな～ですか, こちらですか",
+    "setting": "the lost property window at a Tokyo train station",
+    "beat_count": 6,
+    "duration_seconds": 182,
+    "audio_url": "/echo/audio/lost_umbrella.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "lum_001",
+        "start_ms": 21570,
+        "context_line": "Kenji slides open the window.",
+        "character_japanese": "はい、どうぞ。",
+        "english_cue": "Say you left something on the train.",
+        "japanese_answer": "電車の中に忘れてしまいました。",
+        "romaji": "Densha no naka ni wasurete shimaimashita.",
+        "grammar_tag": "left-behind-te-shimaimashita"
+      },
+      {
+        "beat": 2,
+        "srs_id": "lum_002",
+        "start_ms": 46261,
+        "context_line": "Kenji takes out a form. He asks what you left.",
+        "character_japanese": "何を忘れましたか？",
+        "english_cue": "Say it's an umbrella.",
+        "japanese_answer": "傘です。",
+        "romaji": "Kasa desu.",
+        "grammar_tag": "lost-item-kasa"
+      },
+      {
+        "beat": 3,
+        "srs_id": "lum_003",
+        "start_ms": 65672,
+        "context_line": "Kenji asks what kind of umbrella.",
+        "character_japanese": "どんな傘ですか？",
+        "english_cue": "Say it's a black folding umbrella.",
+        "japanese_answer": "黒いおりたたみ傘です。",
+        "romaji": "Kuroi oritatami kasa desu.",
+        "grammar_tag": "description-item"
+      },
+      {
+        "beat": 4,
+        "srs_id": "lum_004",
+        "start_ms": 87720,
+        "context_line": "Kenji asks which line you were on.",
+        "character_japanese": "どちらの路線でしたか？",
+        "english_cue": "Say the Chuo line.",
+        "japanese_answer": "中央線です。",
+        "romaji": "Chuuou-sen desu.",
+        "grammar_tag": "train-line"
+      },
+      {
+        "beat": 5,
+        "srs_id": "lum_005",
+        "start_ms": 107419,
+        "context_line": "Kenji disappears for a moment and comes back with a black folding umbrella.",
+        "character_japanese": "こちらですか？",
+        "english_cue": "Say yes, that's it!",
+        "japanese_answer": "はい、そうです！ありがとうございます。",
+        "romaji": "Hai, sou desu! Arigatou gozaimasu.",
+        "grammar_tag": "confirmation-sou-desu"
+      },
+      {
+        "beat": 6,
+        "srs_id": "lum_006",
+        "start_ms": 141356,
+        "context_line": "Kenji asks you to sign a form to confirm you've collected it.",
+        "character_japanese": "こちらにサインをお願いします。",
+        "english_cue": "Say of course, and thank him sincerely.",
+        "japanese_answer": "はい、わかりました。本当にありがとうございます。",
+        "romaji": "Hai, wakarimashita. Hontou ni arigatou gozaimasu.",
+        "grammar_tag": "sincere-thanks-hontou-ni"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "電車の中に忘れてしまいました",
+        "reading": "densha no naka ni wasurete shimaimashita",
+        "meaning": "I left it behind on the train",
+        "note": "忘れる (wasureru) means to forget or leave behind. ～てしまいました adds a sense of regret — something happened that you didn't intend. It's the natural thing to say for accidental mishaps. 電車の中に = on / inside the train. に marks the location where the leaving happened."
+      },
+      {
+        "phrase": "黒いおりたたみ傘です",
+        "reading": "kuroi oritatami kasa desu",
+        "meaning": "It's a black folding umbrella",
+        "note": "折りたたみ (oritatami) means folding — from 折る (to fold) + たたむ (to fold flat). 傘 (kasa) is umbrella. When describing a lost item, you'll need colour + type + any distinguishing features. Kenji will ask you exactly this."
+      },
+      {
+        "phrase": "これですか",
+        "reading": "kore desu ka",
+        "meaning": "Is this the one?",
+        "note": "Short and essential. When someone shows you something to confirm it's yours, this is what they ask. Your answer: はい、そうです (yes, that's it) or ちがいます (that's not it). Simple confirming and denying questions like this are high-frequency in real interactions."
+      }
+    ]
+  },
+  {
+    "scene_id": "hanami_picnic",
+    "title": "Hanami Picnic",
+    "level": "N5",
+    "topic": "social",
+    "scene_intro": "It's late March and the sakura are out. Every bench and blue tarp in the park is taken. You're walking along the riverbank with a can of coffee when two students, Akira and Misa, sitting on a tarp nearby call out to you. They've got food, drinks, and more space than they need.",
+    "other_character": "Akira and Misa, two friendly Japanese university students",
+    "goal": "join their hanami picnic, share food, make a toast, and chat",
+    "grammar_focus": "きれいですね, ～はじめてですか, よかったら, かんぱい",
+    "setting": "a riverside park in Tokyo, late March, sakura in full bloom",
+    "beat_count": 7,
+    "duration_seconds": 214,
+    "audio_url": "/echo/audio/hanami_picnic.mp3",
+    "beats": [
+      {
+        "beat": 1,
+        "srs_id": "hmn_001",
+        "start_ms": 22074,
+        "context_line": "Akira waves at you from the tarp.",
+        "character_japanese": "ねえ！よかったら一緒にどうですか？",
+        "english_cue": "Accept enthusiastically — say you'd love to.",
+        "japanese_answer": "ありがとうございます！ぜひ。",
+        "romaji": "Arigatou gozaimasu! Zehi.",
+        "grammar_tag": "acceptance-zehi"
+      },
+      {
+        "beat": 2,
+        "srs_id": "hmn_002",
+        "start_ms": 52641,
+        "context_line": "You sit down. Misa hands you a can of beer. You look up at the blossoms.",
+        "character_japanese": "",
+        "english_cue": "Say how beautiful the cherry blossoms are.",
+        "japanese_answer": "桜、きれいですね！",
+        "romaji": "Sakura, kirei desu ne!",
+        "grammar_tag": "exclamation-kirei-desu-ne"
+      },
+      {
+        "beat": 3,
+        "srs_id": "hmn_003",
+        "start_ms": 76138,
+        "context_line": "Akira asks if it's your first time at a hanami.",
+        "character_japanese": "花見ははじめてですか？",
+        "english_cue": "Say yes, it's your very first one.",
+        "japanese_answer": "はい、はじめてのお花見です。",
+        "romaji": "Hai, hajimete no ohanami desu.",
+        "grammar_tag": "first-experience-hajimete-no"
+      },
+      {
+        "beat": 4,
+        "srs_id": "hmn_004",
+        "start_ms": 103356,
+        "context_line": "Misa smiles and says welcome to Japan. She holds up her can.",
+        "character_japanese": "じゃあ、かんぱいしましょう！",
+        "english_cue": "Raise your drink and say cheers!",
+        "japanese_answer": "かんぱい！",
+        "romaji": "Kanpai!",
+        "grammar_tag": "toast-kanpai"
+      },
+      {
+        "beat": 5,
+        "srs_id": "hmn_005",
+        "start_ms": 124279,
+        "context_line": "Akira offers you some onigiri from a box.",
+        "character_japanese": "おにぎり、どうぞ。",
+        "english_cue": "Accept gratefully and say it looks delicious.",
+        "japanese_answer": "ありがとうございます。おいしそうですね！",
+        "romaji": "Arigatou gozaimasu. Oishisou desu ne!",
+        "grammar_tag": "looks-delicious-sou"
+      },
+      {
+        "beat": 6,
+        "srs_id": "hmn_006",
+        "start_ms": 157030,
+        "context_line": "Misa asks if you like Japan in spring.",
+        "character_japanese": "春の日本、どうですか？",
+        "english_cue": "Say it's the best — especially the sakura.",
+        "japanese_answer": "最高です。特に桜が好きです。",
+        "romaji": "Saikou desu. Toku ni sakura ga suki desu.",
+        "grammar_tag": "superlative-saikou"
+      },
+      {
+        "beat": 7,
+        "srs_id": "hmn_007",
+        "start_ms": 189450,
+        "context_line": "They both laugh and say they're glad you like it. Akira raises his can again.",
+        "character_japanese": "また来年もどうぞ！かんぱい！",
+        "english_cue": "Raise your drink and say cheers again.",
+        "japanese_answer": "かんぱい！",
+        "romaji": "Kanpai!",
+        "grammar_tag": "repeat-toast"
+      }
+    ],
+    "key_phrases": [
+      {
+        "phrase": "よかったら一緒にどうですか",
+        "reading": "yokattara issho ni dou desu ka",
+        "meaning": "If you'd like, how about joining us?",
+        "note": "よかったら is a beautiful soft invitation — 'if it's alright with you / if you'd like to'. It's tentative and non-pressuring, which is very Japanese. One of the most useful social phrases you can have. よかったら食べてください (please eat if you'd like), よかったら来てください (come if you'd like)."
+      },
+      {
+        "phrase": "はじめてのお花見です",
+        "reading": "hajimete no ohanami desu",
+        "meaning": "It's my first hanami",
+        "note": "お花見 (ohanami) — flower viewing — is one of Japan's most beloved seasonal traditions. Sitting under the cherry blossoms with food and drinks, often in a group. Saying it's your first will be received with genuine warmth and probably some pride from your hosts."
+      },
+      {
+        "phrase": "かんぱい！",
+        "reading": "kanpai!",
+        "meaning": "Cheers!",
+        "note": "かんぱい (kanpai) comes from 乾杯 — literally 'dry cup'. It's a toast, used the same way as 'cheers' in English. You clink drinks (or just raise them) and say it together. Drink whatever you're holding — no one cares if it's sparkling water or beer."
+      }
+    ]
+  }
+]
