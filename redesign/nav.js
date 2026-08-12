@@ -29,12 +29,9 @@
     {
       jp: '練習', en: 'Practice', href: '/courses/',
       children: [
-        { href: '/courses/what-would-you-say/', label: 'What Would You Say?' },
-        { href: '/courses/shadowing/', label: 'Shadowing' },
-        { href: '/courses/immersive-reader/', label: 'Immersive Reader' },
+        { href: '/echo/', label: 'Echo 影' },
         { href: '/courses/sentence-forge/', label: 'Sentence Forge' },
-        { href: '/courses/conversation/', label: 'Conversation' },
-        { href: '/echo/', label: 'Echo' },
+        { href: '/courses/immersive-reader/', label: 'Immersive Reader' },
       ]
     },
     {
