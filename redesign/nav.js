@@ -48,11 +48,13 @@
     {
       jp: '遊', en: 'Games', href: '/games/',
       children: [
+        { href: '/games/kanadle/', label: 'KANADLE' },
         { href: '/games/battle/', label: 'Kanji Quest' },
         { href: '/games/match/', label: 'Memory Match' },
         { href: '/games/rhythm/', label: 'Rhythm' },
       ]
     },
+    { jp: 'リソース', en: 'Resources', href: '/resources/' },
   ];
 
   const THEMES = [
