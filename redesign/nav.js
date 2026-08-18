@@ -160,6 +160,7 @@
         <span class="footer-jp">日本語アンロック</span>
         <span>© ${new Date().getFullYear()} Japanese Unlocked — all content free, always</span>
         <nav style="display:flex;gap:20px;font-size:12px">
+          <a href="/start/" style="color:var(--mid)">Start Here</a>
           <a href="/about/" style="color:var(--mid)">About</a>
           <a href="/resources/" style="color:var(--mid)">Resources</a>
           <a href="https://www.youtube.com/@JapaneseLearning-z2x" target="_blank" rel="noopener" style="color:var(--mid)">YouTube</a>

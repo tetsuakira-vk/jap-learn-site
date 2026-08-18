@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Start Here — Japanese for Complete Beginners | Japanese Unlocked</title>
+<meta name="description" content="Your first steps into learning Japanese. What to learn, in what order, and why — a clear path from zero to reading real Japanese.">
+<link rel="stylesheet" href="../style.css">
+<style>
+/* ── Writing system cards ───────────────────────────────────── */
+.script-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  margin: 24px 0;
+}
+@media (max-width: 580px) { .script-grid { grid-template-columns: 1fr; } }
+
+.script-card {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 24px 22px 28px;
+  border-right: 1px solid var(--rule);
+  transition: background .13s;
+}
+.script-card:last-child { border-right: none; }
+.script-card:hover { background: var(--faint); }
+
+.sc-char {
+  font-family: var(--serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 12px;
+  color: var(--accent);
+}
+.sc-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.sc-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+.sc-time {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  margin-top: auto;
+}
+
+/* ── Roadmap ────────────────────────────────────────────────── */
+.roadmap {
+  border: 1.5px solid var(--ink);
+  margin: 24px 0;
+}
+.rm-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+.rm-row:last-child { border-bottom: none; }
+.rm-phase {
+  padding: 18px 16px;
+  border-right: 1px solid var(--rule);
+  background: var(--faint);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  line-height: 1.4;
+}
+.rm-body {
+  padding: 18px 20px;
+}
+.rm-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.rm-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+.rm-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 1px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.rm-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Tool grid ──────────────────────────────────────────────── */
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+  margin: 24px 0;
+}
+@media (max-width: 500px) { .tool-grid { grid-template-columns: 1fr; } }
+.tool-cell {
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  padding: 18px 20px;
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  transition: background .13s;
+}
+.tool-cell:nth-child(even) { border-right: none; }
+.tool-cell:nth-last-child(-n+2) { border-bottom: none; }
+.tool-cell:hover { background: var(--faint); }
+.tc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 5px;
+}
+.tc-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.tc-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+/* ── First task box ─────────────────────────────────────────── */
+.first-task {
+  border: 2px solid var(--ink);
+  padding: 28px 26px;
+  margin: 24px 0;
+  background: var(--faint);
+}
+.ft-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 10px;
+}
+.ft-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.ft-body { font-size: 14px; color: var(--mid); line-height: 1.65; margin-bottom: 18px; }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<header class="page-header">
+  <div class="breadcrumb">
+    <a href="/">Home</a><span class="sep">›</span>
+    Start Here
+  </div>
+  <h1 class="page-h1">Start Here <span class="h1-jp">はじめに</span></h1>
+  <div class="page-meta">
+    <span class="meta-pill">Complete Beginners</span>
+    <span class="meta-pill">Study Roadmap</span>
+    <span class="meta-pill">Free</span>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <aside class="sidebar">
+    <p class="sidebar-label">On this page</p>
+    <ul class="sidebar-links">
+      <li><a href="#scripts">The three scripts</a></li>
+      <li><a href="#order">Recommended order</a></li>
+      <li><a href="#tools">Tools to use</a></li>
+      <li><a href="#first">Your first task</a></li>
+    </ul>
+    <div class="sidebar-divider"></div>
+    <p class="sidebar-label">Jump in</p>
+    <ul class="sidebar-links">
+      <li><a href="/hiragana/">Hiragana →</a></li>
+      <li><a href="/katakana/">Katakana →</a></li>
+      <li><a href="/kanji/">Kanji →</a></li>
+      <li><a href="/vocab/phrases/">Phrases →</a></li>
+    </ul>
+  </aside>
+
+  <main class="content" id="main-content">
+
+    <section class="section" id="scripts">
+      <div class="section-heading">
+        <h2>The three writing systems</h2>
+        <span class="sh-jp">三つの文字</span>
+      </div>
+      <div class="prose">
+        <p>Most people hear "Japanese" and picture thousands of kanji and think it's impossible. The reality: the basic building blocks — hiragana and katakana — can be learned in a couple of weeks with daily practice. Kanji is a longer game, but you start picking them up from day one.</p>
+        <p>Japanese uses three scripts. You'll eventually need all three, but you tackle them in order.</p>
+      </div>
+
+      <div class="script-grid">
+        <a class="script-card" href="/hiragana/">
+          <div class="sc-char">あ</div>
+          <div class="sc-name">Hiragana</div>
+          <div class="sc-desc">The first script. 46 core characters, each a syllable sound. Once you know these you can read children's books, furigana on kanji, and follow most textbooks.</div>
+          <div class="sc-time">Start here — 1 to 3 weeks</div>
+        </a>
+        <a class="script-card" href="/katakana/">
+          <div class="sc-char">ア</div>
+          <div class="sc-name">Katakana</div>
+          <div class="sc-desc">Same 46 sounds as hiragana, different shapes. Used for foreign loan words — コーヒー (kōhī) = coffee. Learn this right after hiragana since you already know the sounds.</div>
+          <div class="sc-time">After hiragana — 1 to 2 weeks</div>
+        </a>
+        <a class="script-card" href="/kanji/">
+          <div class="sc-char">漢</div>
+          <div class="sc-name">Kanji</div>
+          <div class="sc-desc">Chinese-origin characters, each with meaning and multiple readings. Thousands exist but you only need ~2,000 for daily life. Start learning five or ten a week from month two.</div>
+          <div class="sc-time">Ongoing — start in month 2</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="section-heading">
+        <h2>Recommended order</h2>
+        <span class="sh-jp">学習の順序</span>
+      </div>
+      <div class="prose">
+        <p>Don't wait until you've mastered one thing before starting the next — overlap is normal. The order below is a guide, not a lockstep sequence.</p>
+      </div>
+
+      <div class="roadmap">
+        <div class="rm-row">
+          <div class="rm-phase">Weeks<br>1 – 3</div>
+          <div class="rm-body">
+            <div class="rm-title">Hiragana</div>
+            <div class="rm-desc">Learn the chart, then quiz yourself daily. Alongside this, start picking up common phrases — hearing real Japanese from week one builds your ear faster than you'd expect.</div>
+            <a class="rm-link" href="/hiragana/">Hiragana chart + quiz →</a>
+          </div>
+        </div>
+        <div class="rm-row">
+          <div class="rm-phase">Weeks<br>3 – 5</div>
+          <div class="rm-body">
+            <div class="rm-title">Katakana</div>
+            <div class="rm-desc">Same approach as hiragana. Because you already know the sounds, katakana usually clicks faster. Recognising loan words is a quick win that keeps motivation up.</div>
+            <a class="rm-link" href="/katakana/">Katakana chart + quiz →</a>
+          </div>
+        </div>
+        <div class="rm-row">
+          <div class="rm-phase">Month<br>2 +</div>
+          <div class="rm-body">
+            <div class="rm-title">Kanji + Grammar</div>
+            <div class="rm-desc">Start with the 50 most essential beginner kanji — 5 to 10 per week is sustainable. At the same time, begin working through N5 grammar patterns. The two reinforce each other.</div>
+            <a class="rm-link" href="/kanji/">Essential kanji →</a>
+            <a class="rm-link" style="margin-left:14px" href="/grammar/">N5 grammar →</a>
+          </div>
+        </div>
+        <div class="rm-row">
+          <div class="rm-phase">Month<br>3 +</div>
+          <div class="rm-body">
+            <div class="rm-title">JLPT N5 — set a target</div>
+            <div class="rm-desc">The N5 is the entry-level JLPT. Having a real exam to aim for changes how you study. Read the N5 guide, take the mock test, and see where you actually stand.</div>
+            <a class="rm-link" href="/jlpt/n5/">N5 study guide →</a>
+            <a class="rm-link" style="margin-left:14px" href="/jlpt/mock/n5/">N5 mock test →</a>
+          </div>
+        </div>
+        <div class="rm-row">
+          <div class="rm-phase">Ongoing</div>
+          <div class="rm-body">
+            <div class="rm-title">Use the language</div>
+            <div class="rm-desc">Echo 影 puts you in real conversations — a ramen shop, a shrine, a bar — with native voices. Sentence Forge builds your grammar production. Games keep the vocabulary alive. These are tools for using Japanese, not just studying it.</div>
+            <a class="rm-link" href="/echo/">Echo 影 →</a>
+            <a class="rm-link" style="margin-left:14px" href="/courses/">Practice tools →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <div class="section-heading">
+        <h2>Tools on this site</h2>
+        <span class="sh-jp">ツール</span>
+      </div>
+      <div class="prose">
+        <p>Everything here is free and works in the browser — no app, no account, no download.</p>
+      </div>
+
+      <div class="tool-grid">
+        <a class="tool-cell" href="/hiragana/">
+          <div class="tc-label">Scripts</div>
+          <div class="tc-name">Hiragana / Katakana / Kanji</div>
+          <div class="tc-desc">Reference charts with audio on every character. Click to hear, quiz yourself to retain.</div>
+        </a>
+        <a class="tool-cell" href="/vocab/phrases/">
+          <div class="tc-label">Vocabulary</div>
+          <div class="tc-name">Phrases, Numbers, Dictionary</div>
+          <div class="tc-desc">500+ words searchable by Japanese, romaji, or English. Everyday phrases with audio.</div>
+        </a>
+        <a class="tool-cell" href="/grammar/">
+          <div class="tc-label">Grammar</div>
+          <div class="tc-name">Particles, Verbs, Patterns</div>
+          <div class="tc-desc">N5–N4 grammar references and a sentence quiz to test what you know under pressure.</div>
+        </a>
+        <a class="tool-cell" href="/echo/">
+          <div class="tc-label">Practice</div>
+          <div class="tc-name">Echo 影 — Immersive Scenes</div>
+          <div class="tc-desc">37 real conversations with native audio. Step in, listen, respond, hear the answer.</div>
+        </a>
+        <a class="tool-cell" href="/jlpt/">
+          <div class="tc-label">JLPT</div>
+          <div class="tc-name">N5 → N1 Guides + Mock Tests</div>
+          <div class="tc-desc">Full study guides for every level with mock exams in the format of the real test.</div>
+        </a>
+        <a class="tool-cell" href="/games/">
+          <div class="tc-label">Games</div>
+          <div class="tc-name">Kanji Quest, Memory Match, Rhythm</div>
+          <div class="tc-desc">Actual games. Vocabulary and kanji practice that doesn't feel like practice.</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="first">
+      <div class="section-heading">
+        <h2>Your first task right now</h2>
+        <span class="sh-jp">最初の課題</span>
+      </div>
+
+      <div class="first-task">
+        <div class="ft-eyebrow">Do this now</div>
+        <div class="ft-title">Go to Hiragana and read the chart from top to bottom.</div>
+        <div class="ft-body">Click every character to hear it pronounced. Then take the quiz — don't stress about the score, just get familiar with the shapes. That's it. Come back to this page when you're done and move to the next stage.</div>
+        <a class="btn btn-solid" href="/hiragana/">Go to Hiragana →</a>
+      </div>
+
+      <div class="prose">
+        <p style="margin-top:24px">See you on the other side. <strong>がんばって！</strong> <em>(Ganbatte — do your best!)</em></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<div id="ju-footer"></div>
+<script>
+(function () {
+  var sideLinks = document.querySelectorAll('.sidebar-links li a');
+  var sections  = document.querySelectorAll('.section[id]');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          sideLinks.forEach(function (a) {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(function (s) { obs.observe(s); });
+  }
+})();
+</script>
+<script src="../nav.js"></script>
+</body>
+</html>
