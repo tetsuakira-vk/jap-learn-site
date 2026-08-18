@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Japanese Unlocked — The Complete Beginner Course | PDF, Kindle & Paperback</title>
+<meta name="description" content="Six structured modules taking you from zero to reading, writing and speaking basic Japanese. PDF from £1.99 per module — or grab the full bundle for £10.99.">
+<link rel="stylesheet" href="../style.css">
+<style>
+
+/* ── Hero ───────────────────────────────────────────────────── */
+.book-hero {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 48px 24px 0;
+  text-align: center;
+}
+.book-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 16px;
+}
+.book-h1 {
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 5vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 18px;
+}
+.book-h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+.book-lead {
+  font-size: 1.05rem;
+  color: var(--mid);
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 32px;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+/* ── Pitch strip ────────────────────────────────────────────── */
+.pitch-strip {
+  border-top: 1.5px solid var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 860px;
+  margin: 0 auto 56px;
+}
+@media (max-width: 600px) { .pitch-strip { grid-template-columns: repeat(2, 1fr); } }
+.pitch-item {
+  padding: 20px 18px;
+  border-right: 1px solid var(--rule);
+  text-align: center;
+}
+.pitch-item:last-child { border-right: none; }
+.pitch-num {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.pitch-label {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.4;
+}
+
+/* ── Section titles ─────────────────────────────────────────── */
+.book-section {
+  max-width: 860px;
+  margin: 0 auto 56px;
+  padding: 0 24px;
+}
+.book-section-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--ink);
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+.bst-jp {
+  font-size: .85rem;
+  color: var(--mid);
+  font-weight: 400;
+}
+
+/* ── Format cards ───────────────────────────────────────────── */
+.format-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid var(--ink);
+  gap: 0;
+}
+@media (max-width: 640px) { .format-grid { grid-template-columns: 1fr; } }
+
+.format-card {
+  padding: 28px 24px 32px;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+}
+.format-card:last-child { border-right: none; }
+.format-card.featured {
+  background: var(--ink);
+  color: var(--ground);
+}
+[data-theme="dark"] .format-card.featured {
+  background: var(--faint);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+}
+
+.format-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  opacity: .6;
+}
+.format-name {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.format-price {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.format-price-sub {
+  font-size: 12px;
+  opacity: .6;
+  margin-bottom: 16px;
+}
+.format-desc {
+  font-size: 13px;
+  line-height: 1.65;
+  opacity: .75;
+  margin-bottom: 24px;
+  flex: 1;
+}
+.format-btn {
+  display: block;
+  text-align: center;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity .15s;
+}
+.format-btn:hover { opacity: .8; }
+.format-btn.primary {
+  background: #fff;
+  color: #111;
+}
+[data-theme="dark"] .format-btn.primary {
+  background: var(--ink);
+  color: var(--ground);
+}
+.format-btn.ghost {
+  border: 1.5px solid var(--rule);
+  color: var(--ink);
+}
+.format-card.featured .format-btn.ghost {
+  border-color: rgba(255,255,255,.35);
+  color: #fff;
+}
+
+/* ── Module list ────────────────────────────────────────────── */
+.module-list {
+  border: 1.5px solid var(--ink);
+}
+.module-row {
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
+  align-items: start;
+  border-bottom: 1px solid var(--rule);
+  gap: 0;
+}
+.module-row:last-child { border-bottom: none; }
+.module-num {
+  padding: 22px 0 22px 20px;
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--mid);
+  line-height: 1;
+}
+.module-body {
+  padding: 20px 20px;
+  border-left: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+}
+.module-name {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.module-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.55;
+}
+.module-links {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-end;
+  justify-content: center;
+}
+.module-link {
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity .12s;
+}
+.module-link:hover { opacity: .75; }
+.module-link.pdf {
+  background: var(--ink);
+  color: var(--ground);
+}
+.module-link.epub {
+  border: 1.5px solid var(--rule);
+  color: var(--ink);
+}
+@media (max-width: 560px) {
+  .module-row { grid-template-columns: 40px 1fr; }
+  .module-links { grid-column: 1 / -1; flex-direction: row; padding: 0 20px 18px; justify-content: flex-start; border-left: none; }
+  .module-body { border-right: none; }
+}
+
+/* ── Extras ─────────────────────────────────────────────────── */
+.extras-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--ink);
+}
+@media (max-width: 560px) { .extras-grid { grid-template-columns: 1fr; } }
+.extra-card {
+  padding: 28px 26px;
+  border-right: 1px solid var(--rule);
+}
+.extra-card:last-child { border-right: none; }
+.extra-icon {
+  font-size: 1.8rem;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.extra-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.extra-desc {
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.extra-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 1px;
+  text-decoration: none;
+}
+.extra-link:hover { color: var(--accent); border-color: var(--accent); }
+
+/* ── Bottom CTA ─────────────────────────────────────────────── */
+.book-cta-bar {
+  max-width: 860px;
+  margin: 0 auto 60px;
+  padding: 0 24px;
+  border: 1.5px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 24px;
+}
+@media (max-width: 560px) {
+  .book-cta-bar { grid-template-columns: 1fr; padding: 24px; }
+}
+.cta-bar-body { padding: 28px 28px 28px 28px; }
+@media (max-width: 560px) { .cta-bar-body { padding: 0; } }
+.cta-bar-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.cta-bar-sub { font-size: 13px; color: var(--mid); }
+.cta-bar-btn {
+  padding: 28px;
+  border-left: 1px solid var(--rule);
+}
+@media (max-width: 560px) { .cta-bar-btn { border-left: none; padding: 0; } }
+</style>
+</head>
+<body>
+<div id="ju-nav"></div>
+
+<!-- Hero -->
+<div class="book-hero">
+  <div class="book-eyebrow">Japanese Unlocked — The Complete Beginner Course</div>
+  <h1 class="book-h1">Zero to reading and speaking<br><em>basic Japanese</em> — six modules.</h1>
+  <p class="book-lead">A structured path built around the same approach as the free site and the YouTube channel. Six focused modules covering scripts, vocabulary, grammar, sentences, conversations, and kanji — in the order that actually works.</p>
+  <div class="hero-cta-row">
+    <a class="btn btn-solid" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/67c16a2c-0233-4b0c-9b5f-c07418dae924" target="_blank" rel="noopener">Get PDF bundle — £10.99 →</a>
+    <a class="btn btn-ghost" href="#modules">See all six modules ↓</a>
+  </div>
+</div>
+
+<!-- Pitch strip -->
+<div class="pitch-strip">
+  <div class="pitch-item">
+    <div class="pitch-num">6</div>
+    <div class="pitch-label">structured<br>modules</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-num">£1.99</div>
+    <div class="pitch-label">per module<br>PDF</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-num">200+</div>
+    <div class="pitch-label">free flashcards<br>included</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-num">3</div>
+    <div class="pitch-label">formats: PDF<br>Kindle · Print</div>
+  </div>
+</div>
+
+<!-- Formats -->
+<div class="book-section">
+  <div class="book-section-title">Choose your format <span class="bst-jp">フォーマット</span></div>
+  <div class="format-grid">
+
+    <div class="format-card featured">
+      <div class="format-tag">Best value · Instant download</div>
+      <div class="format-name">PDF Download</div>
+      <div class="format-price">£1.99</div>
+      <div class="format-price-sub">per module &nbsp;·&nbsp; full bundle £10.99</div>
+      <div class="format-desc">Read on any device — phone, tablet, laptop. Print-friendly. Buy one module or grab all six at a discount. Instant download, no DRM.</div>
+      <a class="format-btn primary" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/67c16a2c-0233-4b0c-9b5f-c07418dae924" target="_blank" rel="noopener">Buy PDF bundle £10.99 →</a>
+    </div>
+
+    <div class="format-card">
+      <div class="format-tag">Kindle · All devices</div>
+      <div class="format-name">Kindle eBook</div>
+      <div class="format-price">£3.72</div>
+      <div class="format-price-sub">per module &nbsp;·&nbsp; full bundle £14.16</div>
+      <div class="format-desc">Syncs across all your Kindle devices and the free Kindle app. Buy individual modules or the complete six-module bundle in one go.</div>
+      <a class="format-btn ghost" href="https://www.amazon.co.uk/dp/B0GX2XWK43" target="_blank" rel="noopener">Buy on Amazon →</a>
+    </div>
+
+    <div class="format-card">
+      <div class="format-tag">Print · Full course</div>
+      <div class="format-name">Paperback</div>
+      <div class="format-price">£18.63</div>
+      <div class="format-price-sub">complete six-module set</div>
+      <div class="format-desc">The full course in a single printed book. Ideal if you prefer working with pen and paper — great for writing practice and study notes in the margins.</div>
+      <a class="format-btn ghost" href="https://www.amazon.co.uk/dp/B0H65CPT1Y/ref=tmm_pap_swatch_0" target="_blank" rel="noopener">Buy on Amazon →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modules -->
+<div class="book-section" id="modules">
+  <div class="book-section-title">The six modules <span class="bst-jp">六つのモジュール</span></div>
+  <div class="module-list">
+
+    <div class="module-row">
+      <div class="module-num">01</div>
+      <div class="module-body">
+        <div class="module-name">Hiragana — Your First Alphabet</div>
+        <div class="module-desc">All 46 characters with mnemonics, stroke order, and reading practice. The foundation everything else builds on.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/b32b5968-0206-49ad-bb21-91892c56ddaa" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Step-Step-Characters-ebook/dp/B0H5KPZKFQ" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+    <div class="module-row">
+      <div class="module-num">02</div>
+      <div class="module-body">
+        <div class="module-name">Katakana — Loanwords &amp; The Second Alphabet</div>
+        <div class="module-desc">The alphabet for foreign words, brand names and emphasis. Complete character set with real vocabulary examples.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/6739edd6-ba06-4b58-893a-703f8047db38" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Katakana-Loanwords-Alphabet-ebook/dp/B0H5L3ML4F" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+    <div class="module-row">
+      <div class="module-num">03</div>
+      <div class="module-body">
+        <div class="module-name">Vocabulary — High-Frequency Words &amp; Expressions</div>
+        <div class="module-desc">The most useful everyday words grouped by theme, with pronunciation guides and example sentences.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/4400eca1-6558-42c9-8274-b6745d2f2c97" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Vocabulary-High-Frequency-Expressions-ebook/dp/B0H5KY2JXM" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+    <div class="module-row">
+      <div class="module-num">04</div>
+      <div class="module-body">
+        <div class="module-name">Sentences — Particles &amp; Grammar</div>
+        <div class="module-desc">How Japanese sentences actually work. Particles, verb conjugation and grammar patterns explained clearly without jargon.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/7a98ad83-ac9e-47bd-bb25-9c837b76e60c" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Sentences-Particles-Grammar-ebook/dp/B0H5KY152W" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+    <div class="module-row">
+      <div class="module-num">05</div>
+      <div class="module-body">
+        <div class="module-name">Conversations — Real Dialogue &amp; Everyday Situations</div>
+        <div class="module-desc">Annotated real-world dialogues — greetings, directions, restaurants, shopping. Read and understand natural Japanese as it's actually spoken.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/bf051f04-eb4a-4fcc-8d30-c0308b1c0299" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Conversations-Annotated-Directions-ebook/dp/B0GX47NK85" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+    <div class="module-row">
+      <div class="module-num">06</div>
+      <div class="module-body">
+        <div class="module-name">Kanji Starter — Everyday Characters</div>
+        <div class="module-desc">The most common kanji with readings, meanings and example sentences. The foundation for reading Japanese in the wild.</div>
+      </div>
+      <div class="module-links">
+        <a class="module-link pdf" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/89923b39-a27b-43cc-8249-694594b09e34" target="_blank" rel="noopener">PDF £1.99</a>
+        <a class="module-link epub" href="https://www.amazon.co.uk/Japanese-Unlocked-Starter-Everyday-Characters-ebook/dp/B0H5KTN3MW" target="_blank" rel="noopener">Kindle £3.72</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Free extras -->
+<div class="book-section">
+  <div class="book-section-title">Free with every module <span class="bst-jp">おまけ</span></div>
+  <div class="extras-grid">
+
+    <div class="extra-card">
+      <div class="extra-icon">🃏</div>
+      <div class="extra-title">200+ Anki Flashcards</div>
+      <div class="extra-desc">The full flashcard deck from all six modules as a free CSV. Import into Anki (free on desktop, Android and iPhone) in seconds: File → Import → select the CSV → done. Covers all hiragana, katakana, core vocabulary, particles and the kanji from Module 6.</div>
+      <a class="extra-link" href="/downloads/japanese-unlocked-flashcards.csv">Download CSV →</a>
+    </div>
+
+    <div class="extra-card">
+      <div class="extra-icon">📄</div>
+      <div class="extra-title">Free Reference Pack PDF</div>
+      <div class="extra-desc">A companion PDF covering grammar tables, verb conjugations, particle cheat sheets and the most common kanji at a glance. Referenced throughout the modules — free for anyone, whether you buy the course or not.</div>
+      <a class="extra-link" href="/downloads/japanese-unlocked-reference-pack.pdf">Download PDF →</a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Bottom CTA -->
+<div class="book-cta-bar">
+  <div class="cta-bar-body">
+    <div class="cta-bar-title">All six modules for £10.99</div>
+    <div class="cta-bar-sub">Or try Module 1 — Hiragana — for £1.99. No subscription, no upsell, just the course.</div>
+  </div>
+  <div class="cta-bar-btn">
+    <a class="btn btn-solid" href="https://japaneseunlocked.lemonsqueezy.com/checkout/buy/67c16a2c-0233-4b0c-9b5f-c07418dae924" target="_blank" rel="noopener">Get the bundle →</a>
+  </div>
+</div>
+
+<div id="ju-footer"></div>
+<script src="../nav.js"></script>
+</body>
+</html>
