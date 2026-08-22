@@ -7,6 +7,7 @@
         { href: '/hiragana/', label: 'Hiragana', hint: 'あ' },
         { href: '/katakana/', label: 'Katakana', hint: 'ア' },
         { href: '/kanji/', label: 'Kanji', hint: '漢' },
+        { href: '/quiz/', label: 'Script Quiz' },
       ]
     },
     {
@@ -51,7 +52,7 @@
         { href: '/games/kanadle/', label: 'KANADLE' },
         { href: '/games/battle/', label: 'Kanji Quest' },
         { href: '/games/match/', label: 'Memory Match' },
-        { href: '/games/rhythm/', label: 'Rhythm' },
+        { href: '/games/rhythm/', label: 'RAPID' },
       ]
     },
     { jp: 'リソース', en: 'Resources', href: '/resources/' },

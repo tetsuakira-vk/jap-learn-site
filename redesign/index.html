@@ -134,6 +134,119 @@
   .sitemap-grid { grid-template-columns: 1fr; }
 }
 
+/* ── PARTNER STRIP ── */
+.partner-strip {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 28px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1.5px solid var(--ink);
+  max-width: var(--content-max);
+  width: 100%;
+}
+.partner-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border: 1px solid var(--rule);
+  padding: 2px 7px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.partner-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--mid);
+  line-height: 1.45;
+}
+.partner-text strong { color: var(--ink); font-weight: 700; }
+.partner-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color .12s, border-color .12s;
+}
+.partner-link:hover { color: var(--accent); border-color: var(--accent); }
+@media (max-width: 620px) {
+  .partner-strip { flex-wrap: wrap; gap: 10px; padding: 14px 20px; }
+}
+
+/* ── WHAT'S NEW STRIP ── */
+.whats-new {
+  border-bottom: 1.5px solid var(--ink);
+  max-width: var(--content-max);
+  width: 100%;
+}
+.wn-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 28px;
+  border-bottom: 1px solid var(--rule);
+}
+.wn-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--mid);
+  white-space: nowrap;
+}
+.wn-rule { flex: 1; height: 1px; background: var(--rule); }
+.wn-items { display: flex; }
+.wn-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 28px;
+  border-right: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: background .13s;
+  position: relative;
+}
+.wn-item:last-child { border-right: none; }
+a.wn-item:hover { background: var(--faint); }
+.wn-item--soon { opacity: .5; cursor: default; }
+.wn-badge {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 3px;
+}
+.wn-badge--new  { background: var(--ink); color: var(--ground); }
+.wn-badge--soon { border: 1px solid var(--mid); color: var(--mid); }
+.wn-body { flex: 1; min-width: 0; }
+.wn-title { font-family: var(--serif); font-size: .95rem; font-weight: 700; margin-bottom: 2px; }
+.wn-desc  { font-size: 12px; color: var(--mid); line-height: 1.5; }
+.wn-cta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  color: var(--accent);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .wn-items { flex-direction: column; }
+  .wn-item { border-right: none; border-bottom: 1px solid var(--rule); padding: 14px 20px; }
+  .wn-item:last-child { border-bottom: none; }
+  .wn-bar { padding: 9px 20px; }
+}
+
 /* ── CAROUSEL ── */
 .carousel-wrap {
   border-bottom: 1.5px solid var(--ink);
@@ -592,6 +705,34 @@ ruby:hover    { color: var(--accent); }
 
 </div>
 
+<!-- ── WHAT'S NEW ── -->
+<div class="whats-new">
+  <div class="wn-bar">
+    <span class="wn-label">What's new</span>
+    <span class="wn-rule"></span>
+  </div>
+  <div class="wn-items">
+
+    <a class="wn-item" href="/games/kanadle/">
+      <span class="wn-badge wn-badge--new">New</span>
+      <div class="wn-body">
+        <div class="wn-title">KANADLE — Daily Kana Wordle</div>
+        <div class="wn-desc">Guess the 5-kana Japanese word in 6 tries. New word every day. Streak tracking, share your result.</div>
+      </div>
+      <span class="wn-cta">Play →</span>
+    </a>
+
+    <div class="wn-item wn-item--soon">
+      <span class="wn-badge wn-badge--soon">Coming soon</span>
+      <div class="wn-body">
+        <div class="wn-title">Echo 影 — Immersive Audio Scenes</div>
+        <div class="wn-desc">Step into real Japanese conversations with native audio. A ramen shop, a shrine, a late-night bar. No flashcards — just Japanese.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- ── SECTION GRID ── -->
 <div class="section-grid-wrap">
   <div class="section-grid-header">
@@ -635,13 +776,13 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="courses/what-would-you-say/">
+    <a class="section-card" href="courses/">
       <div class="sc-jp"><ruby>練習<rt>れんしゅう</rt></ruby></div>
       <div class="sc-en">Practice</div>
-      <div class="sc-desc">Real situations, shadowing trainer, immersive reader, sentence builder. Tools for using Japanese, not just studying it.</div>
+      <div class="sc-desc">Sentence Forge builds grammar production. Immersive Reader builds reading speed. Tools for using Japanese, not just studying it.</div>
       <div class="sc-links">
-        <span class="sc-link">What Would You Say?</span>
-        <span class="sc-link">Shadowing</span>
+        <span class="sc-link">Sentence Forge</span>
+        <span class="sc-link">Immersive Reader</span>
       </div>
       <span class="sc-arrow">→</span>
     </a>
@@ -658,32 +799,41 @@ ruby:hover    { color: var(--accent); }
       <span class="sc-arrow">→</span>
     </a>
 
-    <a class="section-card" href="games/battle/">
+    <a class="section-card" href="games/">
       <div class="sc-jp"><ruby>遊<rt>あそぶ</rt></ruby></div>
       <div class="sc-en">Games</div>
-      <div class="sc-desc">Three games — battle RPG, rhythm, and memory match — that drill vocabulary and kana under real pressure. No downloads.</div>
+      <div class="sc-desc">Four games — KANADLE daily word puzzle, battle RPG, speed recognition, and memory match — that drill vocabulary and kana under real pressure. No downloads.</div>
       <div class="sc-links">
+        <span class="sc-link">KANADLE ✦ New</span>
         <span class="sc-link">Kanji Quest</span>
-        <span class="sc-link">Rhythm</span>
-        <span class="sc-link">Memory</span>
+        <span class="sc-link">RAPID</span>
       </div>
       <span class="sc-arrow">→</span>
     </a>
 
-    <div class="section-card section-card--walk" style="opacity:0.55;cursor:default;">
-      <div class="sc-jp"><ruby>歩<rt>あるく</rt></ruby></div>
+    <div class="section-card section-card--walk" style="opacity:0.45;cursor:default;">
+      <div class="sc-jp">影</div>
       <div class="sc-body">
-        <div class="sc-en">Walk Mode <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:2px 7px;vertical-align:middle;margin-left:8px;opacity:.7">Coming soon</span></div>
-        <div class="sc-desc">Audio-first Japanese for commuters and walkers. Put your phone away and listen — scenes set in stations, cafés, and streets. No screen needed.</div>
+        <div class="sc-en">Echo 影 <span style="font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor;padding:2px 7px;vertical-align:middle;margin-left:8px;opacity:.7">Coming soon</span></div>
+        <div class="sc-desc">Immersive audio scenes with native voices. A ramen shop, a shrine, a late-night bar — listen, respond, hear the answer. No flashcards.</div>
         <div class="sc-links">
-          <span class="sc-link">Morning commute</span>
-          <span class="sc-link">At the café</span>
-          <span class="sc-link">Lost in Tokyo</span>
+          <span class="sc-link">Native audio</span>
+          <span class="sc-link">Real scenarios</span>
+          <span class="sc-link">No screen needed</span>
         </div>
       </div>
     </div>
 
   </div>
+</div>
+
+<!-- ── PARTNER ── -->
+<div class="partner-strip">
+  <span class="partner-label">Partner</span>
+  <div class="partner-text">
+    <strong>JapanesePod101</strong> — audio-led lessons from complete beginner to advanced, built around real conversations. Free access available. A great complement for building listening comprehension alongside these tools.
+  </div>
+  <a class="partner-link" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">Start free →</a>
 </div>
 
 <!-- ── SITEMAP ── -->
@@ -734,12 +884,9 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Practice</span>
       </div>
       <div class="sitemap-links">
-        <a href="/courses/what-would-you-say/">What Would You Say?</a>
-        <a href="/courses/shadowing/">Shadowing Trainer</a>
-        <a href="/courses/immersive-reader/">Immersive Reader</a>
         <a href="/courses/sentence-forge/">Sentence Forge</a>
-        <a href="/courses/conversation/">Conversation Practice</a>
-        <a href="/echo/">Echo — Immersive Scenes</a>
+        <a href="/courses/immersive-reader/">Immersive Reader</a>
+        <span style="color:var(--mid);font-size:13px;opacity:.5">Echo 影 (coming soon)</span>
       </div>
     </div>
 
@@ -765,9 +912,10 @@ ruby:hover    { color: var(--accent); }
         <span class="sitemap-col-en">Games</span>
       </div>
       <div class="sitemap-links">
+        <a href="/games/kanadle/">KANADLE</a>
         <a href="/games/battle/">Kanji Quest</a>
         <a href="/games/match/">Memory Match</a>
-        <a href="/games/rhythm/">Rhythm</a>
+        <a href="/games/rhythm/">RAPID</a>
       </div>
     </div>
 
@@ -936,7 +1084,7 @@ function initWord() {
   document.getElementById('w-type').textContent    = w.type;
   document.getElementById('w-ex-jp').textContent   = w.ex;
   document.getElementById('w-ex-en').textContent   = w.exEn;
-  document.getElementById('w-note').innerHTML      = w.note + '<br><a class="slide-link" href="vocab/n5/">All N5 vocabulary →</a>';
+  document.getElementById('w-note').innerHTML      = w.note + '<br><a class="slide-link" href="/jlpt/n5/vocab/">All N5 vocabulary →</a>';
   const conjEl = document.getElementById('w-conj');
   if (w.conj) {
     conjEl.innerHTML = w.conj.map(c =>
