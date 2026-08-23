@@ -62,6 +62,7 @@
     { id: 'light', label: 'Clean',  swatch: '#FAFAF8' },
     { id: 'warm',  label: 'Warm',   swatch: '#F0EBE2' },
     { id: 'dark',  label: 'Night',  swatch: '#111110' },
+    { id: 'navy',  label: 'Navy',   swatch: '#0A1930' },
   ];
 
   const path = window.location.pathname;

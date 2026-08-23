@@ -50,6 +50,11 @@
   --faint:#1B1A18;  --faint2:#171614; --accent:#E03828;
   --rule:rgba(230,226,218,0.10);
 }
+:root[data-theme="navy"] {
+  --ground:#0A1930; --ink:#E4E9F2; --mid:#8FA0BE;
+  --faint:#142A4C;  --faint2:#102243; --accent:#E8432A;
+  --rule:rgba(228,233,242,0.12);
+}
 
 /* ── BASE ── */
 html { scroll-behavior: smooth; }
