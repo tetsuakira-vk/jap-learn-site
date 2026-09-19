@@ -207,7 +207,7 @@ These are games built specifically for learning Japanese — not just games set 
     <div class="rc-top"><span class="rc-name">Pimsleur Japanese</span><span class="rc-badge paid">Paid</span></div>
     <div class="rc-desc">Audio-first Japanese learning — great for commutes and people who struggle to sit at a desk. Builds listening and speaking instincts through spaced repetition over 30-minute daily lessons.</div>
   </a>
-  <a class="resource-card" href="https://www.japanesepod101.com/member-benefits/" target="_blank" rel="noopener">
+  <a class="resource-card" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">
     <div class="rc-top"><span class="rc-name">JapanesePod101 Premium</span><span class="rc-badge paid">Paid</span></div>
     <div class="rc-desc">Unlocks the full lesson library — thousands of audio and video lessons from complete beginner to advanced, plus PDF lesson notes, flashcard tools, and a personal learning path.</div>
   </a>

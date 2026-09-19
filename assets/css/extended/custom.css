@@ -949,6 +949,72 @@
 .rc-badge.paid     { background: rgba(128,90,213,0.18); color: #6b46c1; }
 .rc-desc { font-size: 0.82rem; color: var(--secondary); line-height: 1.45; }
 
+/* ── Partner callout (affiliate placements) ── */
+.partner-callout {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.3rem;
+  margin: 1.6rem 0;
+}
+.partner-callout-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2px 9px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.partner-callout-text {
+  flex: 1;
+  min-width: 200px;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  line-height: 1.5;
+}
+.partner-callout-text strong { color: var(--primary); }
+.partner-callout-cta {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1.5px solid #c0392b;
+  padding-bottom: 1px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.partner-callout-cta:hover { color: #c0392b; }
+
+/* Homepage variant — slightly larger, centered label/CTA stack */
+.partner-callout--home {
+  flex-direction: column;
+  text-align: center;
+  padding: 1.4rem 1.6rem;
+}
+.partner-callout--home .partner-callout-text { text-align: center; }
+
+/* Affiliate banner image (e.g. Resources page) */
+.partner-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.4rem 0 1.2rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin: 0.2rem 0 1.6rem;
+}
+.partner-banner img { display: block; max-width: 100%; height: auto; border-radius: 6px; }
+.partner-banner-note { font-size: 0.72rem; color: var(--secondary); }
+
 /* ── Brevo signup form ── */
 .brevo-signup-wrap {
   position: relative;

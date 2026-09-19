@@ -229,10 +229,18 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
     <div class="rc-top"><span class="rc-name">iTalki</span><span class="rc-badge paid">Paid</span></div>
     <div class="rc-desc">Book 1-on-1 lessons with Japanese tutors. Community tutors are affordable and often the fastest way to improve speaking and listening.</div>
   </a>
-  <a class="resource-card" href="https://www.japanesepod101.com" target="_blank" rel="noopener">
+  <a class="resource-card" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">
     <div class="rc-top"><span class="rc-name">JapanesePod101</span><span class="rc-badge freemium">Freemium</span></div>
     <div class="rc-desc">Audio and video lessons from beginner to advanced. Large library — some content is free, premium unlocks everything.</div>
   </a>
+</div>
+
+<div class="partner-banner">
+  <span class="partner-callout-label">Partner</span>
+  <a href="https://www.japanesepod101.com/member/go.php?r=4787971&i=b37" target="_blank" rel="noopener sponsored">
+    <img src="https://cdn.innovativelanguage.com/sns/em/2025/affiliate/jap_leaderboard-mobile_lp.png" alt="Learn Japanese Free at JapanesePod101">
+  </a>
+  <span class="partner-banner-note">Affiliate link — costs you nothing extra, helps keep this site free</span>
 </div>
 
 ## Apps

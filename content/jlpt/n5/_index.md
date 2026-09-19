@@ -8,6 +8,12 @@ N5 is the entry-level JLPT exam — roughly 800 words total. These 100 are the o
 
 **[→ Take the N5 Quiz](quiz/)**
 
+<div class="partner-callout">
+  <span class="partner-callout-label">Partner</span>
+  <div class="partner-callout-text"><strong>JapanesePod101</strong> — the listening section is where N5 candidates most often drop points. Short daily audio lessons from native speakers are one of the most effective ways to build ear for Japanese at this level. Free access available.</div>
+  <a class="partner-callout-cta" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">Try it free →</a>
+</div>
+
 ---
 
 ## People & Pronouns

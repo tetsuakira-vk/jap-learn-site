@@ -52,6 +52,12 @@ Don't wait until you've mastered one before starting the next. Overlap is fine a
 | Quiz | 10-question multiple choice — aim for daily reps |
 | Phrases | Real sentences with audio — great for listening practice |
 
+<div class="partner-callout">
+  <span class="partner-callout-label">Partner</span>
+  <div class="partner-callout-text"><strong>JapanesePod101</strong> — if you want structured audio lessons alongside the tools here, this is worth exploring. Free access available with short daily lessons from native speakers.</div>
+  <a class="partner-callout-cta" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">Try it free →</a>
+</div>
+
 ---
 
 ## Your first task right now

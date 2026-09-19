@@ -180,6 +180,12 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
 <span class="lc-banner-cta">Calculate my path →</span>
 </a>
 
+<div class="partner-callout partner-callout--home">
+  <span class="partner-callout-label">Partner</span>
+  <div class="partner-callout-text"><strong>JapanesePod101</strong> — audio-led lessons from complete beginner to advanced, built around real conversations. Free access available. A great complement for building listening comprehension alongside these tools.</div>
+  <a class="partner-callout-cta" href="https://www.japanesepod101.com/member/go.php?r=4787971&l=%2F" target="_blank" rel="noopener sponsored">Start free →</a>
+</div>
+
 ---
 
 <div class="home-phrases-wrap">
