@@ -258,6 +258,10 @@ Print-and-cut flashcard PDFs — all free, no sign-up needed.
     <div class="rc-top"><span class="rc-name">Kanji Study</span><span class="rc-badge freemium">Freemium</span></div>
     <div class="rc-desc">Android/iOS app focused purely on kanji — stroke order, readings, quizzes. One of the cleanest kanji-specific apps available.</div>
   </a>
+  <a class="resource-card" href="https://platwa.github.io/KanjiWidget/" target="_blank" rel="noopener">
+    <div class="rc-top"><span class="rc-name">KanjiWidget</span><span class="rc-badge free">Free</span></div>
+    <div class="rc-desc">Desktop widget for Windows that surfaces kanji on your screen for passive exposure, plus spaced-repetition review sessions and Anki deck import. Open source, no ads, no account. Windows-only, and the installer is unsigned so you may see a SmartScreen warning on first run.</div>
+  </a>
   <a class="resource-card" href="https://kamesame.com" target="_blank" rel="noopener">
     <div class="rc-top"><span class="rc-name">KameSame</span><span class="rc-badge free">Free</span></div>
     <div class="rc-desc">Reverse WaniKani — given an English meaning, produce the Japanese. Great for production practice and syncs with WaniKani progress.</div>
