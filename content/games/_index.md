@@ -9,6 +9,13 @@ Learn Japanese through play. All games run in your browser — no downloads, no 
 
 <div class="games-hub-grid">
 
+  <a class="game-hub-card" href="/games/kanadle/">
+    <div class="ghc-icon">🈁</div>
+    <div class="ghc-name">KANADLE</div>
+    <div class="ghc-desc">A new 5-kana Japanese word to guess every day, Wordle-style — 6 tries, one hint, and a streak to keep. Resets at midnight JST.</div>
+    <span class="ghc-badge ghc-badge--play">Play Now</span>
+  </a>
+
   <a class="game-hub-card" href="/games/battle/">
     <div class="ghc-icon">⚔️</div>
     <div class="ghc-name">Kanji Quest — Battle RPG</div>

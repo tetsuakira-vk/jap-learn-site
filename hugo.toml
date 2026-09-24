@@ -304,6 +304,13 @@ buildExpired = false
     weight = 58
 
   [[menu.main]]
+    identifier = "games-kanadle"
+    name = "KANADLE"
+    url = "/games/kanadle/"
+    parent = "games"
+    weight = 0
+
+  [[menu.main]]
     identifier = "games-battle"
     name = "Kanji Quest"
     url = "/games/battle/"

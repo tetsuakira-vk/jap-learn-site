@@ -152,23 +152,41 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
   </ul>
 </div>
 
-<div class="book-promo">
-  <img src="/images/book-promo-banner.jpg" alt="Japanese Unlocked — Complete Beginner Course">
-  <div class="book-promo-body">
-    <div class="book-promo-text">
-      <p>A complete structured path from zero to reading and speaking basic Japanese.</p>
-      <p>Six modules covering hiragana, katakana, vocabulary, sentence structure, conversation and kanji — with 200+ flashcards included. Written to go alongside the YouTube channel and the free content on this site.</p>
-      <div class="book-promo-badges">
-        <span class="book-promo-badge">PDF download</span>
-        <span class="book-promo-badge">Kindle eBook</span>
-        <span class="book-promo-badge">Paperback</span>
-        <span class="book-promo-badge">6 modules</span>
-        <span class="book-promo-badge">200+ flashcards</span>
-      </div>
-    </div>
-    <a href="/book/" class="book-promo-cta">Find out more →</a>
+<a class="kanadle-promo" href="/games/kanadle/" id="kanadle-promo">
+  <div class="kanadle-promo-icon">🈁</div>
+  <div class="kanadle-promo-body">
+    <div class="kanadle-promo-label">Daily Game</div>
+    <div class="kanadle-promo-title" id="kanadle-promo-title">Have you done today's KANADLE?</div>
+    <div class="kanadle-promo-desc" id="kanadle-promo-desc">Guess the 5-kana Japanese word in 6 tries. A new word every day, free — no signup.</div>
   </div>
-</div>
+  <span class="kanadle-promo-cta" id="kanadle-promo-cta">Play today's word →</span>
+</a>
+<script>
+(function() {
+  try {
+    var s = JSON.parse(localStorage.getItem('kanadle_v2') || '{}');
+    var EPOCH = new Date('2026-01-01T00:00:00+09:00');
+    var jst = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+    jst.setHours(0, 0, 0, 0);
+    var day = Math.floor((jst - EPOCH) / 86400000) + 1;
+    var title = document.getElementById('kanadle-promo-title');
+    var desc  = document.getElementById('kanadle-promo-desc');
+    var cta   = document.getElementById('kanadle-promo-cta');
+    if (s.day === day && s.status && s.status !== 'playing') {
+      // Already played today
+      title.textContent = '✅ Today’s KANADLE done — ' + (s.streak || 0) + '-day streak';
+      desc.textContent = 'Come back tomorrow for a new word. Resets at midnight JST.';
+      cta.textContent = 'View result →';
+    } else if (s.streak > 0) {
+      // Has a streak, hasn't played today yet
+      title.textContent = '🔥 ' + s.streak + '-day streak — today’s word is waiting';
+      desc.textContent = 'Guess the 5-kana Japanese word in 6 tries before the streak resets.';
+      cta.textContent = 'Continue streak →';
+    }
+    // else: never played — leave the default new-visitor copy as-is
+  } catch (e) {}
+})();
+</script>
 
 <a class="lc-banner" href="/learning-curve/">
 <div class="lc-banner-icon">📈</div>
@@ -324,4 +342,22 @@ Each section has a reference chart you can click to hear, and an interactive qui
   <div class="lp-step"><span class="lp-num">4</span><div><strong><a href="/jlpt/n5/">JLPT N5 vocab</a></strong> — the 800 most common words. Learn these first.</div></div>
   <div class="lp-step"><span class="lp-num">5</span><div><strong><a href="/phrases/">Phrases</a></strong> — real sentences with audio. Start using Japanese as early as possible.</div></div>
   <div class="lp-step"><span class="lp-num">6</span><div><strong><a href="/kanji/">Kanji</a></strong> — pick these up gradually as you build vocabulary, not all at once.</div></div>
+</div>
+
+<div class="book-promo">
+  <img src="/images/book-promo-banner.jpg" alt="Japanese Unlocked — Complete Beginner Course">
+  <div class="book-promo-body">
+    <div class="book-promo-text">
+      <p>A complete structured path from zero to reading and speaking basic Japanese.</p>
+      <p>Six modules covering hiragana, katakana, vocabulary, sentence structure, conversation and kanji — with 200+ flashcards included. Written to go alongside the YouTube channel and the free content on this site.</p>
+      <div class="book-promo-badges">
+        <span class="book-promo-badge">PDF download</span>
+        <span class="book-promo-badge">Kindle eBook</span>
+        <span class="book-promo-badge">Paperback</span>
+        <span class="book-promo-badge">6 modules</span>
+        <span class="book-promo-badge">200+ flashcards</span>
+      </div>
+    </div>
+    <a href="/book/" class="book-promo-cta">Find out more →</a>
+  </div>
 </div>
