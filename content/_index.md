@@ -145,10 +145,10 @@ description: "Japanese Unlocked — free interactive Japanese learning for begin
 <div class="whats-new">
   <div class="wn-hdr">Recently added</div>
   <ul class="wn-list">
-    <li><span class="wn-date">4 Jul 2026</span> Sentence ordering questions (問題５) added to <a href="/jlpt/n5/mock/">N5</a>, <a href="/jlpt/n4/mock/">N4</a> &amp; <a href="/jlpt/n3/mock/">N3</a> mocks</li>
-    <li><span class="wn-date">4 Jul 2026</span> <a href="/jlpt/mock/guide/">JLPT question-type guide</a> — every question type explained in plain English with interactive examples</li>
-    <li><span class="wn-date">4 Jul 2026</span> <a href="/jlpt/n3/mock/">N3 mock test</a> — full 50-question practice exam now live</li>
-    <li><span class="wn-date">22 Jun 2026</span> <a href="/book/">Japanese Unlocked course</a> — the complete beginner course is now available</li>
+    <li><span class="wn-date">2 Oct 2026</span> <a href="/jlpt/mock/">N1 &amp; N2 mock tests</a> — all five JLPT levels now have a full practice exam</li>
+    <li><span class="wn-date">2 Oct 2026</span> <a href="/quiz/">Script Quiz</a> — one quiz for hiragana, katakana, kanji, or a mix of all three</li>
+    <li><span class="wn-date">2 Oct 2026</span> <a href="/jlpt/n5/">N5 vocabulary list</a> expanded to 228 words, organised by topic</li>
+    <li><span class="wn-date">24 Sep 2026</span> <a href="/games/kanadle/">KANADLE</a> — a new 5-kana word to guess every day, Wordle-style</li>
   </ul>
 </div>
 
