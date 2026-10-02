@@ -1,6 +1,6 @@
 ---
 title: "JLPT Mock Tests — Free Practice Exams"
-description: "Free JLPT mock tests for N5, N4, and N3. Original practice questions in the official exam format — vocabulary, grammar, and reading. Timed and scored."
+description: "Free JLPT mock tests for N5 through N1. Original practice questions in the official exam format — vocabulary, grammar, and reading. Timed and scored."
 date: 2025-01-01
 showtoc: false
 ---
@@ -57,11 +57,29 @@ Practice tests that closely follow the official JLPT format — same question ty
   </div>
 
   <div class="sitemap-section">
-    <div class="sitemap-section-title">Coming Soon</div>
+    <div class="sitemap-section-title">N2 — Upper Intermediate</div>
     <ul class="sitemap-links">
-      <li style="opacity:0.45">N2 Mock Test</li>
-      <li style="opacity:0.45">N1 Mock Test</li>
+      <li><a href="/jlpt/n2/mock/">→ Take the N2 Mock Test</a></li>
     </ul>
+    <p style="font-size:0.82rem;color:var(--secondary);margin-top:0.6rem;line-height:1.5">
+      語彙 25 questions<br>
+      文法・読解 29 questions<br>
+      ~80 minutes<br>
+      <em>Listening not included</em>
+    </p>
+  </div>
+
+  <div class="sitemap-section">
+    <div class="sitemap-section-title">N1 — Advanced</div>
+    <ul class="sitemap-links">
+      <li><a href="/jlpt/n1/mock/">→ Take the N1 Mock Test</a></li>
+    </ul>
+    <p style="font-size:0.82rem;color:var(--secondary);margin-top:0.6rem;line-height:1.5">
+      語彙 25 questions<br>
+      文法・読解 30 questions<br>
+      ~90 minutes<br>
+      <em>Listening not included</em>
+    </p>
   </div>
 
 </div>

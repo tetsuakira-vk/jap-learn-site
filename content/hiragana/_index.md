@@ -6,7 +6,7 @@ date: 2025-01-01
 
 Hiragana is the first writing system to learn. 46 core characters (+ voiced/combo variants), each representing one syllable sound. Click any character to hear it pronounced.
 
-**[→ Take the Hiragana Quiz](/hiragana/quiz/)**
+**[→ Take the Hiragana Quiz](/hiragana/quiz/)** · [Try the mixed Script Quiz →](/quiz/?set=hiragana)
 
 ---
 

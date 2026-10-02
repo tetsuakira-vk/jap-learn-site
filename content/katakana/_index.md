@@ -6,7 +6,7 @@ date: 2025-01-01
 
 Katakana has the same 46 core sounds as hiragana — it's just a different set of shapes. Used mainly for foreign loan words (コーヒー = coffee, テレビ = TV), emphasis, and scientific/technical terms. Learn this right after hiragana since you already know all the sounds.
 
-**[→ Take the Katakana Quiz](quiz/)**
+**[→ Take the Katakana Quiz](quiz/)** · [Try the mixed Script Quiz →](/quiz/?set=katakana)
 
 ---
 
